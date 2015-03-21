@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Название:
+  = @sponsor.title
+%p
+  %b Специализация:
+  = @sponsor.specialization
+%p
+  %b Поддержка команды:
+  = @sponsor.sponsorship
+%p
+  %b Коэффициент лояльности:
+  = @sponsor.loyalty_factor
+%p
+  %b Стоимость полного пакета акций:
+  = @sponsor.cost_of_full_stake
+%p
+  %b Призовые за победу:
+  = @sponsor.win_prize
+%p
+  %b Призовые за ничью:
+  = @sponsor.draw_prize
+%p
+  %b Призовые за поражение:
+  = @sponsor.lost_prize
+
+= link_to 'Редактировать', edit_sponsor_path(@sponsor)
+\|
+= link_to 'Назад', sponsors_path

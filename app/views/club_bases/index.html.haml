@@ -1,0 +1,33 @@
+%h1 Базы клубов
+
+%table.table-bordered.table-hover.table-condensed
+  %thead
+    %tr
+      %th Клуб-владелец
+      %th Название
+      %th Уровень
+      %th Вместимость
+      %th Тренировочные поля
+      %th Коэффициент повышения опыта
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @club_bases.each do |club_basis|
+      %tr
+        %td= club_basis.owner
+        %td= club_basis.title
+        %td= club_basis.level
+        %td= club_basis.capacity
+        %td= club_basis.training_fields
+        %td= club_basis.experience_up.round(1)
+        %td= link_to 'Показать', club_basis
+        %td= link_to 'Редактировать', edit_club_basis_path(club_basis)
+        %td= link_to 'Х', club_basis, :method => :delete, :data => { :confirm => 'Вы уверены?' }
+
+%br
+<a class="btn btn-default" href="club_bases/new" role="button">Создать базу</a>
+-#= link_to 'New Club base', new_club_basis_path
+%br
+= paginate @club_bases

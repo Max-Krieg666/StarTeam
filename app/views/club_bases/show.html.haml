@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Владелец:
+  = @club_basis.owner
+%p
+  %b Название:
+  = @club_basis.title
+%p
+  %b Уровень:
+  = @club_basis.level
+%p
+  %b Вместимость:
+  = @club_basis.capacity
+%p
+  %b Тренировочные поля:
+  = @club_basis.training_fields
+%p
+  %b Коэффициент повышения опыта:
+  = @club_basis.experience_up
+
+= link_to 'Редактировать', edit_club_basis_path(@club_basis)
+\|
+= link_to 'Назад', club_bases_path

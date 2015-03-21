@@ -1,0 +1,46 @@
+%h1 Спонсоры
+
+%table.table-bordered.table-hover.table-condensed
+  %thead
+    %tr
+      %th Название
+      %th Специализация
+      %th Поддержка команды
+      %th Коэффициент лояльности
+      %th Стоимость полного пакета акций
+      %th Призовые за победу
+      %th Призовые за ничью
+      %th Призовые за поражение
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @sponsors.each do |sponsor|
+      %tr
+        %td= sponsor.title
+        %td= sponsor.specialization
+        %td= sponsor.sponsorship
+        %td= sponsor.loyalty_factor
+        %td
+          = sponsor.cost_of_full_stake
+          .glyphicon.glyphicon-usd
+        %td
+          = sponsor.win_prize.round(2)
+          .glyphicon.glyphicon-usd
+        %td
+          = sponsor.draw_prize.round(2)
+          .glyphicon.glyphicon-usd
+        %td
+          = sponsor.lost_prize.round(2)
+          .glyphicon.glyphicon-usd
+        %td= link_to 'Показать', sponsor
+        %td= link_to 'Редактировать', edit_sponsor_path(sponsor)
+        %td= link_to 'Х', sponsor, :method => :delete, :data => { :confirm => 'Вы уверены?' }
+
+%br
+
+<a class="btn btn-default" href="sponsors/new" role="button">Создать спонсора</a>
+-#= link_to 'Создать спонсора', new_sponsor_path
+%br
+= paginate @sponsors

@@ -1,0 +1,36 @@
+= form_for @club_basis do |f|
+  - if @club_basis.errors.any?
+    -#объяснение ошибки
+    =error_messages_for(@club_basis)
+
+  .row
+    .col-md-3
+      .form-group
+        = f.label :owner
+        = f.text_field :owner, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :level
+        = f.number_field :level, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :capacity
+        = f.number_field :capacity, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :training_fields
+        = f.number_field :training_fields, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :experience_up
+        = f.text_field :experience_up, class: "form-control"
+  .actions=f.submit nil, class: "btn btn-primary"

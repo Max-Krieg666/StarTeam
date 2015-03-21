@@ -1,0 +1,48 @@
+= form_for @sponsor do |f|
+  - if @sponsor.errors.any?
+    -#объяснение ошибки
+    =error_messages_for(@sponsor)
+  .row
+    .col-md-3
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: "form-control"
+    .col-md-3
+      .form-group
+        = f.label :specialization
+        = f.text_field :specialization, class: "form-control"
+    .col-md-3
+      .form-group
+        = f.label :sponsorship
+        = f.text_field :sponsorship, class: "form-control"
+    .col-md-3
+      .form-group
+        = f.label :loyalty_factor
+        = f.text_field :loyalty_factor, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :cost_of_full_stake
+        .input-group
+          = f.text_field :cost_of_full_stake, class: "form-control"
+          %span.input-group-addon.glyphicon.glyphicon-usd
+    .col-md-3
+      .form-group
+        = f.label :win_prize
+        .input-group
+          = f.text_field :win_prize, class: "form-control"
+          %span.input-group-addon.glyphicon.glyphicon-usd
+    .col-md-3
+      .form-group
+        = f.label :draw_prize
+        .input-group
+          = f.text_field :draw_prize, class: "form-control"
+          %span.input-group-addon.glyphicon.glyphicon-usd
+    .col-md-3
+      .form-group
+        = f.label :lost_prize
+        .input-group
+          = f.text_field :lost_prize, class: "form-control"
+          %span.input-group-addon.glyphicon.glyphicon-usd
+
+  .actions=f.submit nil, class: "btn btn-primary"
