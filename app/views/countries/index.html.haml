@@ -1,0 +1,36 @@
+%h1 Страны
+
+%table.table.table-bordered.table-hover
+  %thead
+    %tr
+      %th.text-center
+        .fa.fa-pencil
+        Название
+      %th.text-center
+        .fa.fa-flag
+        Флаг
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @countries.each do |country|
+      %tr
+        %td.text-center
+          = country.title
+        %td.text-center
+          = image_tag country.flag.url, alt: country.title
+        %td.text-center
+          = link_to country, class: "btn btn-link" do
+            = fa_icon "chevron-circle-right"
+        %td.text-center
+          = link_to edit_country_path(country), class: "btn btn-link" do
+            = fa_icon "wrench"
+        %td.text-center
+          = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: "btn btn-link" do
+            = fa_icon "trash-o"
+
+%br
+= link_to new_country_path, class:'btn btn-primary' do
+  = fa_icon "plus"
+  Создать страну

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314151937) do
+ActiveRecord::Schema.define(version: 20150611100631) do
 
   create_table "bases", force: :cascade do |t|
     t.string   "owner"
@@ -25,27 +25,53 @@ ActiveRecord::Schema.define(version: 20150314151937) do
   end
 
   create_table "club_bases", force: :cascade do |t|
-    t.string   "owner"
+    t.string   "owner",                         null: false
+    t.string   "title",                         null: false
+    t.integer  "level",           default: 1,   null: false
+    t.integer  "capacity",        default: 20,  null: false
+    t.integer  "training_fields", default: 1,   null: false
+    t.float    "experience_up",   default: 0.1, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
     t.string   "title"
-    t.integer  "level"
-    t.integer  "capacity"
-    t.integer  "training_fields"
-    t.float    "experience_up"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "flag_file_name"
+    t.string   "flag_content_type"
+    t.integer  "flag_file_size"
+    t.datetime "flag_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "sponsors", force: :cascade do |t|
-    t.string   "title"
-    t.string   "specialization"
-    t.string   "sponsorship"
-    t.decimal  "loyalty_factor",     precision: 20, scale: 2
-    t.float    "cost_of_full_stake"
-    t.float    "win_prize"
-    t.float    "draw_prize"
-    t.float    "lost_prize"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.string   "title",              limit: 30,                                         null: false
+    t.string   "specialization",     limit: 100,                                        null: false
+    t.string   "sponsorship",                                                           null: false
+    t.decimal  "loyalty_factor",                 precision: 3,  scale: 2, default: 1.0, null: false
+    t.decimal  "cost_of_full_stake",             precision: 20, scale: 2,               null: false
+    t.decimal  "win_prize",                      precision: 7,  scale: 2,               null: false
+    t.decimal  "draw_prize",                     precision: 7,  scale: 2,               null: false
+    t.decimal  "lost_prize",                     precision: 7,  scale: 2,               null: false
+    t.datetime "created_at",                                                            null: false
+    t.datetime "updated_at",                                                            null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "login",               limit: 24, null: false
+    t.string   "password_digest"
+    t.integer  "country_id"
+    t.string   "sex"
+    t.date     "birthday"
+    t.string   "mail",                           null: false
+    t.integer  "role"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end

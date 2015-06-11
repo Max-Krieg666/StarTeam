@@ -5,3 +5,6 @@ $body-bg: #fff;
 $brand-primary: #2dcc70;
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.alert-notice{
+  @extend .alert-success;
+}

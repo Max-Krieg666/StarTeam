@@ -1,7 +1,5 @@
 = form_for @sponsor do |f|
-  - if @sponsor.errors.any?
-    -#объяснение ошибки
-    =error_messages_for(@sponsor)
+  =error_messages_for(@sponsor)
   .row
     .col-md-3
       .form-group

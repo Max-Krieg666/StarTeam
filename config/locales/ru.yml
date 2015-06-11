@@ -33,6 +33,20 @@ ru:
         capacity: Вместимость
         training_fields: Тренировочные поля
         experience_up: Коэффициент повышения опыта
+      country:
+        flag: Флаг
+        title: Название
+      user:
+        country: Страна
+        login: Логин
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        avatar: Аватар
+        sex: Пол
+        birthday: День Рождения
+        mail: Адрес эл.почты
     models:
       sponsor: Спонсор
       club_base: База клуба
+      country: Страна
+      user: Пользователь

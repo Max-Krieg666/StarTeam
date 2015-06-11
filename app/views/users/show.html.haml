@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Login:
+  = @user.login
+%p
+  %b Password digest:
+  = @user.password_digest
+%p
+  %b Residence:
+  = @user.residence
+%p
+  %b Sex:
+  = @user.sex
+%p
+  %b Birthday:
+  = @user.birthday
+%p
+  %b Mail:
+  = @user.mail
+%p
+  %b Role:
+  = @user.role
+%p
+  %b Avatar:
+  = @user.avatar
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

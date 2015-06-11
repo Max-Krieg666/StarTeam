@@ -1,0 +1,50 @@
+= form_for @user do |f|
+  =error_messages_for(@user)
+
+  .row
+    .form-group
+      .fa.fa-user.li
+      =f.label :login
+      =f.text_field :login, class: "form-control"
+  .row
+    .form-group
+      .fa.fa-key.li
+      =f.label :password
+      =f.password_field :password, class: "form-control"
+  .row
+    .form-group
+      .fa.fa-key
+      .fa.fa-key.li
+      =f.label :password_confirmation
+      =f.password_field :password_confirmation, class: "form-control"
+  .row
+    .form-group
+      .fa.fa-picture-o
+      =f.label :avatar
+      =f.file_field :avatar
+  .row
+    .form-group
+      .fa.fa-home.li
+      = label_tag('user[country_id]', 'Страна')
+      = select_country('user[country_id]', @user.country_id)
+  .row
+    .form-group
+      .fa.fa-venus-mars.li
+      =f.label :sex
+      =f.select :sex, ['м','ж'], class: "form-control"
+  .row
+    .form-group
+      .fa.fa-birthday-cake.li
+      =f.label :birthday
+      =f.date_select :birthday, class: "form-control", start_year: 2015,
+        end_year: 1930, prompt: { :day => 'День', :month => 'Месяц', :year => 'Год' }
+  .row
+    .form-group
+      .fa.fa-envelope.li
+      =f.label :mail
+      =f.text_field :mail, class: "form-control"
+  .actions
+    -if @user.blank?
+      =f.submit 'Зарегистрироваться', class: "btn btn-primary"
+    -else
+      =f.submit 'Сохранить', class: "btn btn-primary"

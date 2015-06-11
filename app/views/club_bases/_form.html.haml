@@ -1,7 +1,5 @@
 = form_for @club_basis do |f|
-  - if @club_basis.errors.any?
-    -#объяснение ошибки
-    =error_messages_for(@club_basis)
+  =error_messages_for(@club_basis)
 
   .row
     .col-md-3

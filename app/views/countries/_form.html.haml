@@ -1,0 +1,15 @@
+= form_for @country do |f|
+  =error_messages_for(@country)
+
+  .row
+    .form-group
+      .fa.fa-pencil
+      = f.label :title
+      = f.text_field :title, class: "form-control"
+  .row
+    .form-group
+      .fa.fa-file-image-o
+      = f.label :flag
+      = f.file_field :flag
+  .actions
+    = f.submit 'Сохранить', class: "btn btn-primary"
