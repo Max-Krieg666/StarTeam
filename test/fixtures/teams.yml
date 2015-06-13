@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  title: MyString
+  sponsor_id: 
+  stadium_id: 
+  club_base_id: 
+  budget: 9.99
+  fans: 1
+
+two:
+  user_id: 
+  title: MyString
+  sponsor_id: 
+  stadium_id: 
+  club_base_id: 
+  budget: 9.99
+  fans: 1

@@ -43,6 +43,11 @@
       .fa.fa-envelope.li
       =f.label :mail
       =f.text_field :mail, class: "form-control"
+  -if @current_user.try(:administrator?)
+    .row
+      .form-group
+        =f.label :role
+        =f.select :role, User.roles.map.with_index{|name,i| [name,i]}, {},class: 'form-control'
   .actions
     -if @user.blank?
       =f.submit 'Зарегистрироваться', class: "btn btn-primary"

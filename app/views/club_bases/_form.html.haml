@@ -1,11 +1,6 @@
 = form_for @club_basis do |f|
+  =f.hidden_field :team_id
   =error_messages_for(@club_basis)
-
-  .row
-    .col-md-3
-      .form-group
-        = f.label :owner
-        = f.text_field :owner, class: "form-control"
   .row
     .col-md-3
       .form-group

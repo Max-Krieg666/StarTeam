@@ -1,35 +1,79 @@
-%h1 Listing users
+.page-header
+  %h1 Пользователи
 
-%table
+%table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
-      %th Login
-      %th Password digest
-      %th Residence
-      %th Sex
-      %th Birthday
-      %th Mail
-      %th Role
-      %th Avatar
       %th
+        .fa.fa-sort-numeric-asc.li
+          id
       %th
+        .fa.fa-user.li
+          Логин
       %th
-      
+        .fa.fa-picture-o.li
+          Аватар
+      %th
+        .fa.fa-home.li
+          Страна
+      %th
+        .fa.fa-venus-mars.li
+          Пол
+      %th
+        .fa.fa-birthday-cake.li
+          Дата рождения
+      %th
+        .fa.fa-envelope.li
+          Эл. почта
+      -if @current_user.role!=0
+        %th
+          .fa.fa-male.li
+            Роль
+        %th
+        %th
+      %th
+
   %tbody
     - @users.each do |user|
       %tr
+        %td= user.id
         %td= user.login
-        %td= user.password_digest
-        %td= user.residence
+        %td= image_tag(user.avatar.url(:thumb))
+        %td
+          -if user.country_id
+            =Country.find(id: user.country_id).title
         %td= user.sex
         %td= user.birthday
         %td= user.mail
-        %td= user.role
-        %td= user.avatar
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        -if @current_user.role!=0
+          %td= user.role_name
+          %td.text-center
+            = link_to edit_user_path(user), class: "btn btn-link" do
+              =fa_icon "edit"
+          %td.text-center
+            = link_to user, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+              =fa_icon "remove"
+        %td.text-center
+          = link_to user, class: "btn btn-link" do
+            =fa_icon "arrow-circle-right"
 
 %br
+-if @current_user.role!=0
+  = link_to new_user_path, class: "btn btn-primary" do
+    =fa_icon "user-plus"
+    Новый пользователь
 
-= link_to 'New User', new_user_path
+%br
+= paginate @users
+-#.btn-toolbar
+-#  =link_to new_user_path, class: 'btn btn-primary' do
+-#    =fa_icon 'user-plus'
+-#    Новый пользователь
+-#.list-group
+-#  -@users.each do |user|
+-#    =link_to user, class: 'list-group-item' do
+-#      =user.login
+-#      =surround ?(,?) do
+-#        %i=user.mail
+-#      %span.text-muted=user.role_name
+-#=paginate @users

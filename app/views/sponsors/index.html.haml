@@ -1,6 +1,6 @@
 %h1 Спонсоры
 
-%table.table-bordered.table-hover.table-condensed
+%table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th Название
@@ -20,20 +20,22 @@
       %tr
         %td= sponsor.title
         %td= sponsor.specialization
-        %td= sponsor.sponsorship
+        %td
+          -if sponsor.team_id
+            = Team.find(sponsor.team_id)
         %td= sponsor.loyalty_factor
         %td
           = sponsor.cost_of_full_stake
-          .glyphicon.glyphicon-usd
+          .fa.fa-usd
         %td
           = sponsor.win_prize.round(2)
-          .glyphicon.glyphicon-usd
+          .fa.fa-usd
         %td
           = sponsor.draw_prize.round(2)
-          .glyphicon.glyphicon-usd
+          .fa.fa-usd
         %td
           = sponsor.lost_prize.round(2)
-          .glyphicon.glyphicon-usd
+          .fa.fa-usd
         %td= link_to 'Показать', sponsor
         %td= link_to 'Редактировать', edit_sponsor_path(sponsor)
         %td= link_to 'Х', sponsor, :method => :delete, :data => { :confirm => 'Вы уверены?' }

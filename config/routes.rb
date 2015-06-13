@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :teams
+
+  resources :stadia
+
   resources :users
 
   resources :countries

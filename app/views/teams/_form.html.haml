@@ -1,0 +1,38 @@
+= form_for @team do |f|
+  =f.hidden_field :user
+  =error_messages_for(@team)
+
+  .row
+    .col-md-3
+      .form-group
+        .fa.fa-pencil.li
+        = f.label :title
+        = f.text_field :title, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        .fa.fa-money.li
+        = label_tag('team[sponsor_id]', 'Спонсор')
+        = select_sponsor('team[sponsor_id]', @team.sponsor_id)
+  -#.row
+  -#  .col-md-3
+  -#    .form-group
+  -#      = f.label :stadium
+  -#      = f.text_field :stadium, class: "form-control"
+  -#.row
+  -#  .col-md-3
+  -#    .form-group
+  -#      = f.label :club_base
+  -#      = f.text_field :club_base, class: "form-control"
+  -#.row
+  -#  .col-md-3
+  -#    .form-group
+  -#      = f.label :budget
+  -#      = f.text_field :budget, class: "form-control"
+  -#.row
+  -#  .col-md-3
+  -#    .form-group
+  -#      = f.label :fans
+  -#      = f.number_field :fans, class: "form-control"
+  .actions
+    = f.submit 'Сохранить', class: "btn btn-primary"

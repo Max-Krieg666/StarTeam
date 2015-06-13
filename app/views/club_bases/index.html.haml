@@ -1,6 +1,6 @@
 %h1 Базы клубов
 
-%table.table-bordered.table-hover.table-condensed
+%table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th Клуб-владелец
@@ -16,7 +16,7 @@
   %tbody
     - @club_bases.each do |club_basis|
       %tr
-        %td= club_basis.owner
+        %td= Team.find(club_basis.team_id)
         %td= club_basis.title
         %td= club_basis.level
         %td= club_basis.capacity

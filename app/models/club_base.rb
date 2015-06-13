@@ -1,6 +1,7 @@
 class ClubBase < ActiveRecord::Base
+  belongs_to :team
 
-  validates :owner, uniqueness: true, presence: true
+  #validates :owner, uniqueness: true, presence: true
   validates :title, presence: true, uniqueness: true, length: {maximum: 30}
   validates :level, presence: true
   validates :capacity, presence: true

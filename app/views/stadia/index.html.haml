@@ -1,0 +1,27 @@
+%h1 Listing stadia
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Capacity
+      %th Level
+      %th Team
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @stadia.each do |stadium|
+      %tr
+        %td= stadium.title
+        %td= stadium.capacity
+        %td= stadium.level
+        %td= stadium.team
+        %td= link_to 'Show', stadium
+        %td= link_to 'Edit', edit_stadium_path(stadium)
+        %td= link_to 'Destroy', stadium, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Stadium', new_stadium_path

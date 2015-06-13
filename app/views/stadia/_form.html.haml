@@ -1,0 +1,26 @@
+= form_for @stadium do |f|
+  =f.hidden_field :team_id
+  =error_messages_for(@stadium)
+
+  .row
+    .col-md-3
+      .form-group
+        = f.label :title
+        = f.text_field :title
+  .row
+    .col-md-3
+      .form-group
+        = f.label :capacity
+        = f.number_field :capacity
+  .row
+    .col-md-3
+      .form-group
+        = f.label :level
+        = f.number_field :level
+  .row
+    .col-md-3
+      .form-group
+        = f.label :team
+        = f.text_field :team
+  .actions
+    =f.submit nil, class: "btn btn-primary"

@@ -1,7 +1,7 @@
 class CreateClubBases < ActiveRecord::Migration
   def change
     create_table :club_bases do |t|
-      t.string :owner, null: false, unique: true
+      t.belongs_to :team, index: true, unique: true
       t.string :title, null: false, unique: true, length:30
       t.integer :level, null: false, default: 1
       t.integer :capacity, null: false, default: 20

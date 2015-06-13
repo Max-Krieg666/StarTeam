@@ -3,7 +3,7 @@ class CreateSponsors < ActiveRecord::Migration
     create_table :sponsors do |t|
       t.string :title, null: false, limit: 30, unique: true
       t.string :specialization, null: false, limit: 100
-      t.string :sponsorship, null: false, unique: true
+      t.belongs_to :team, index: true, unique: true
       t.decimal :loyalty_factor, :default=>1.0, precision: 3, scale: 2, null: false
       t.decimal :cost_of_full_stake, precision: 20, scale: 2, null: false
       t.decimal :win_prize, precision: 7, scale: 2, null: false

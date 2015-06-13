@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_action :admin_permission, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.page(params[:page]).order(:login)
   end
 
   # GET /users/1
@@ -25,29 +26,25 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        session[:user_id]=@user.id
-        format.html { redirect_to @user, notice: 'Пользователь успешно зарегистрирован.' }
-        format.json { render :show, status: :created, location: @user }
+    if @user.save
+      if @current_user
+        redirect_to @user, notice: 'Пользователь создан.'
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        @user.force_authenticate!(self)
+        redirect_to root_path, notice: 'Регистрация завершена.'
       end
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Пользователь успешно изменён.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      redirect_to @user, notice: 'Пользователь изменен.'
+    else
+      render :edit
     end
   end
 
@@ -69,6 +66,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:login, :password_digest, :residence, :sex, :birthday, :mail, :avatar)
+      attrs=[:login, :password, :password_confirmation, :sex, :birthday, :mail, :avatar]
+      attrs << :role if @current_user.try(:admin?)
+      params.require(:user).permit(*attrs)
     end
 end

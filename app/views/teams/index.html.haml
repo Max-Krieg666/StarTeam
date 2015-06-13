@@ -1,0 +1,33 @@
+%h1 Listing teams
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Title
+      %th Sponsor
+      %th Stadium
+      %th Club base
+      %th Budget
+      %th Fans
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @teams.each do |team|
+      %tr
+        %td= team.user
+        %td= team.title
+        %td= team.sponsor
+        %td= team.stadium
+        %td= team.club_base
+        %td= team.budget
+        %td= team.fans
+        %td= link_to 'Show', team
+        %td= link_to 'Edit', edit_team_path(team)
+        %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Team', new_team_path

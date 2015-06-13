@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611100631) do
+ActiveRecord::Schema.define(version: 20150613091724) do
 
   create_table "bases", force: :cascade do |t|
     t.string   "owner"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150611100631) do
   end
 
   create_table "club_bases", force: :cascade do |t|
-    t.string   "owner",                         null: false
+    t.integer  "team_id"
     t.string   "title",                         null: false
     t.integer  "level",           default: 1,   null: false
     t.integer  "capacity",        default: 20,  null: false
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150611100631) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
+
+  add_index "club_bases", ["team_id"], name: "index_club_bases_on_team_id"
 
   create_table "countries", force: :cascade do |t|
     t.string   "title"
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150611100631) do
   create_table "sponsors", force: :cascade do |t|
     t.string   "title",              limit: 30,                                         null: false
     t.string   "specialization",     limit: 100,                                        null: false
-    t.string   "sponsorship",                                                           null: false
+    t.integer  "team_id"
     t.decimal  "loyalty_factor",                 precision: 3,  scale: 2, default: 1.0, null: false
     t.decimal  "cost_of_full_stake",             precision: 20, scale: 2,               null: false
     t.decimal  "win_prize",                      precision: 7,  scale: 2,               null: false
@@ -57,6 +59,36 @@ ActiveRecord::Schema.define(version: 20150611100631) do
     t.datetime "created_at",                                                            null: false
     t.datetime "updated_at",                                                            null: false
   end
+
+  add_index "sponsors", ["team_id"], name: "index_sponsors_on_team_id"
+
+  create_table "stadia", force: :cascade do |t|
+    t.string   "title",      limit: 100, null: false
+    t.integer  "capacity",               null: false
+    t.integer  "level",                  null: false
+    t.integer  "team_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "stadia", ["team_id"], name: "index_stadia_on_team_id"
+
+  create_table "teams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title",         limit: 30,                          null: false
+    t.integer  "sponsor_id"
+    t.integer  "stadium_id"
+    t.integer  "club_basis_id"
+    t.decimal  "budget",                   precision: 20, scale: 2, null: false
+    t.integer  "fans",                                              null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "teams", ["club_basis_id"], name: "index_teams_on_club_basis_id"
+  add_index "teams", ["sponsor_id"], name: "index_teams_on_sponsor_id"
+  add_index "teams", ["stadium_id"], name: "index_teams_on_stadium_id"
+  add_index "teams", ["user_id"], name: "index_teams_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "login",               limit: 24, null: false

@@ -1,0 +1,24 @@
+%nav.navbar.navbar-inverse
+  .container
+    .navbar-header
+      =link_to ?#, class: "navbar-toggle collapsed", data: {toggle: "collapse", target: "#menu"} do
+        =fa_icon 'bars'
+      =link_to 'Моя страница', @current_user, class: 'navbar-brand'
+    #menu.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        -if @current_user
+          %li=link_to "Все пользователи", users_path
+          %li=link_to "Страны", countries_path
+          %li=link_to "Спонсоры", sponsors_path
+          %li=link_to "Стадионы", stadia_path
+          %li=link_to "Базы клубов", club_bases_path
+          %li=link_to "Создать команду", new_team_path
+      %ul.nav.navbar-nav.navbar-right
+        -if @current_user.blank?
+          %li=link_to "Зарегистрироваться", new_user_path
+          %li=link_to "Войти", login_path
+        -else
+          %li
+            %span.navbar-text=@current_user.login
+            %span.navbar-text=@current_user.mail
+            =link_to "Выйти", logout_path, data: {method: :patch}
