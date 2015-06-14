@@ -1,6 +1,6 @@
 %p
   %b Владелец:
-  = @club_basis.team.title
+  = @team.title
 %p
   %b Название:
   = @club_basis.title
@@ -17,6 +17,14 @@
   %b Коэффициент повышения опыта:
   = @club_basis.experience_up
 
-= link_to 'Редактировать', edit_club_basis_path(@club_basis)
-\|
-= link_to 'Назад', club_bases_path
+-if @current_user==@user || @current_user.moderator?
+  = link_to edit_club_basis_path(@club_basis), class: 'btn btn-danger' do
+    =fa_icon "edit"
+    Редактировать
+-if @current_user.moderator?
+  = link_to club_bases_path, class: 'btn btn-warning' do
+    =fa_icon "reply"
+    Все базы
+= link_to @club_basis.team, class: 'btn btn-info' do
+  =fa_icon "users"
+  =@team.title

@@ -1,7 +1,8 @@
 class ClubBasesController < ApplicationController
   before_action :set_club_basis, only: [:show, :edit, :update, :destroy]
   before_action :set_team, only: :new
-  @@current_team=0
+  before_action :admin_permission, only: :destroy
+
   # GET /club_bases
   # GET /club_bases.json
   def index
@@ -11,13 +12,14 @@ class ClubBasesController < ApplicationController
   # GET /club_bases/1
   # GET /club_bases/1.json
   def show
+    @team=Team.find(@club_basis.team_id)
+    @user=User.find(@team.user_id)
   end
 
   # GET /club_bases/new
   def new
-    @@current_team=@team
     @club_basis = ClubBase.new
-    @club_basis.team_id=@@current_team.id
+    @club_basis.team_id=@team.id
   end
 
   # GET /club_bases/1/edit
@@ -87,6 +89,6 @@ class ClubBasesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_basis_params
-      params.require(:club_basis).permit(:title, :level, :capacity, :training_fields, :experience_up, :team_id)
+      params.require(:club_basis).permit(:title,:team_id)#, :level, :capacity, :training_fields, :experience_up, :team_id)
     end
 end

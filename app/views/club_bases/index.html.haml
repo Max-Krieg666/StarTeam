@@ -16,18 +16,21 @@
   %tbody
     - @club_bases.each do |club_basis|
       %tr
-        %td= Team.find(club_basis.team_id)
+        %td
+          -t=Team.find(club_basis.team_id)
+          .text-danger= t.title
+          .text-success (#{User.find(t.user_id).login})
         %td= club_basis.title
         %td= club_basis.level
         %td= club_basis.capacity
         %td= club_basis.training_fields
         %td= club_basis.experience_up.round(1)
-        %td= link_to 'Показать', club_basis
-        %td= link_to 'Редактировать', edit_club_basis_path(club_basis)
+        %td= link_to '->', club_basis
+        %td= link_to 'Ред.', edit_club_basis_path(club_basis)
         %td= link_to 'Х', club_basis, :method => :delete, :data => { :confirm => 'Вы уверены?' }
 
 %br
-<a class="btn btn-default" href="club_bases/new" role="button">Создать базу</a>
+-#<a class="btn btn-default" href="club_bases/new" role="button">Создать базу</a>
 -#= link_to 'New Club base', new_club_basis_path
 %br
 = paginate @club_bases

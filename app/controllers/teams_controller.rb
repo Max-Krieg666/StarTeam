@@ -33,6 +33,9 @@ class TeamsController < ApplicationController
         sp=Sponsor.find(@team.sponsor_id)
         sp.team_id=@team.sponsor_id
         sp.save!
+        @current_user.team_id=@team.id
+        @current_user.team=@team
+        @current_user.save!
         format.html { redirect_to @team, notice: 'Команда успешно создана.' }
         format.json { render :show, status: :created, location: @team }
       else
@@ -59,7 +62,11 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+    sp_id=@team.sponsor_id
     @team.destroy
+    sp=Sponsor.find(sp)
+    sp.team_id=nil
+    sp.save!
     respond_to do |format|
       format.html { redirect_to @current_user, notice: 'Команда удалена.' }
       format.json { head :no_content }

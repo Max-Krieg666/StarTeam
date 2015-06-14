@@ -22,7 +22,9 @@
         %td= sponsor.specialization
         %td
           -if sponsor.team_id
-            = Team.find(sponsor.team_id)
+            -t=Team.find(sponsor.team_id)
+            .text-danger= t.title
+            .text-success (#{User.find(t.user_id).login})
         %td= sponsor.loyalty_factor
         %td
           = sponsor.cost_of_full_stake

@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20150613091724) do
   create_table "teams", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title",         limit: 30,                          null: false
-    t.integer  "sponsor_id"
+    t.integer  "sponsor_id",                                        null: false
     t.integer  "stadium_id"
     t.integer  "club_basis_id"
     t.decimal  "budget",                   precision: 20, scale: 2, null: false
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150613091724) do
 
   create_table "users", force: :cascade do |t|
     t.string   "login",               limit: 24, null: false
+    t.integer  "team_id"
     t.string   "password_digest"
     t.integer  "country_id"
     t.string   "sex"
@@ -105,5 +106,7 @@ ActiveRecord::Schema.define(version: 20150613091724) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  add_index "users", ["team_id"], name: "index_users_on_team_id"
 
 end

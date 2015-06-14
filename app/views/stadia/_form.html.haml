@@ -6,21 +6,22 @@
     .col-md-3
       .form-group
         = f.label :title
-        = f.text_field :title
-  .row
-    .col-md-3
-      .form-group
-        = f.label :capacity
-        = f.number_field :capacity
-  .row
-    .col-md-3
-      .form-group
-        = f.label :level
-        = f.number_field :level
-  .row
-    .col-md-3
-      .form-group
-        = f.label :team
-        = f.text_field :team
+        = f.text_field :title, class: "form-control"
+  -#для админа
+  -#.row
+  -#  .col-md-3
+  -#    .form-group
+  -#      = f.label :capacity
+  -#      = f.number_field :capacity
+  -#.row
+  -#  .col-md-3
+  -#    .form-group
+  -#      = f.label :level
+  -#      = f.number_field :level
+  -#.row
+  -#  .col-md-3
+  -#    .form-group
+  -#      = f.label :team
+  -#      = f.text_field :team
   .actions
     =f.submit nil, class: "btn btn-primary"

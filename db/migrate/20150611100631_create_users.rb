@@ -2,6 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :login, null: false, limit: 24, unique: true
+      t.references :team, index: true
       t.string :password_digest
       t.belongs_to :country
       t.string :sex
