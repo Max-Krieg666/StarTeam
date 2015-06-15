@@ -19,8 +19,8 @@ class Stadium < ActiveRecord::Base
 
   validates :team_id, presence: true
   validates :title, presence: true, uniqueness: true
-  validates_numericality_of :capacity, presence: true,
-    greater_than_or_equal_to: 0, only_integer: true
+  validates :capacity, presence: true, numericality: {
+    greater_than_or_equal_to: 0, only_integer: true}
   validates :level, presence: true, inclusion: { in: 1..5 }
 
   validates_with Level_check, on: :update

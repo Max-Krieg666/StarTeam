@@ -17,6 +17,12 @@
 %p
   %b Коэффициент лояльности:
   = @sponsor.loyalty_factor
+  -if @sponsor.loyalty_factor>5.0
+    =fa_icon "smile-o lg", style: "color: #00A400"
+  -elsif @sponsor.loyalty_factor>0.5
+    =fa_icon "meh-o lg", style: "color: #CDAD00"
+  -else
+    =fa_icon "frown-o lg", style: "color: #B22222"
 %p
   %b Стоимость полного пакета акций:
   = number_to_currency(@sponsor.cost_of_full_stake, locale: :en)
