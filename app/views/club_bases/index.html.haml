@@ -1,36 +1,54 @@
-%h1 Базы клубов
+.page-header
+  %h1 Базы клубов
 
 %table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
-      %th Клуб-владелец
-      %th Название
-      %th Уровень
-      %th Вместимость
-      %th Тренировочные поля
-      %th Коэффициент повышения опыта
+      %th.text-center
+        .fa.fa-users
+        Клуб-владелец
+      %th.text-center
+        .fa.fa-pencil
+        Название
+      %th.text-center
+        .fa.fa-level-up
+        Уровень
+      %th.text-center
+        .fa.fa-male
+        .fa.fa-soccer-ball-o
+        Вместимость
+      %th.text-center
+        .fa.fa-cubes
+        Тренировочные поля
+      %th.text-center
+        .fa.fa-asterisk
+        Коэффициент повышения опыта
       %th
-      %th
-      %th
+      -if @current_user.role!=0
+        %th
+        %th
       
   %tbody
     - @club_bases.each do |club_basis|
-      %tr
+      %tr.text-center
         %td
           -t=Team.find(club_basis.team_id)
-          .text-danger= t.title
-          .text-success (#{User.find(t.user_id).login})
+          = link_to t.title, t, style: "color: #00F"
         %td= club_basis.title
         %td= club_basis.level
         %td= club_basis.capacity
         %td= club_basis.training_fields
         %td= club_basis.experience_up.round(1)
-        %td= link_to '->', club_basis
-        %td= link_to 'Ред.', edit_club_basis_path(club_basis)
-        %td= link_to 'Х', club_basis, :method => :delete, :data => { :confirm => 'Вы уверены?' }
+        -if @current_user.role!=0
+          %td
+            = link_to edit_club_basis_path(club_basis), class: "btn btn-link" do
+              =fa_icon "edit"
+          %td
+            = link_to club_basis, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+              =fa_icon "remove"
+        %td
+          = link_to club_basis, class: "btn btn-link" do
+            =fa_icon "arrow-circle-right"
 
-%br
--#<a class="btn btn-default" href="club_bases/new" role="button">Создать базу</a>
--#= link_to 'New Club base', new_club_basis_path
 %br
 = paginate @club_bases

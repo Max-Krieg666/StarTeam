@@ -2,10 +2,11 @@
   %h3
     =@country.title
     = image_tag @country.flag.url, alt: @country.title
--#%p
--#  %b Флаг:
 
-
-= link_to 'Edit', edit_country_path(@country)
-\|
-= link_to 'Back', countries_path
+-if @current_user.moderator?
+  = link_to edit_country_path(@country), class: 'btn btn-danger' do
+    =fa_icon "edit"
+    Редактировать
+= link_to countries_path, class: 'btn btn-info' do
+  =fa_icon "flag"
+  Все страны

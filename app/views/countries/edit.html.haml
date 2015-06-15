@@ -2,6 +2,10 @@
 
 = render 'form'
 
-= link_to 'Show', @country
-\|
-= link_to 'Back', countries_path
+%br
+= link_to @country, class: 'btn btn-warning' do
+  =fa_icon "reply"
+  #{@country.title}
+= link_to countries_path, class: 'btn btn-info' do
+  =fa_icon "flag"
+  Все страны

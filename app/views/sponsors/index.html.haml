@@ -1,50 +1,75 @@
-%h1 Спонсоры
+.page-header
+  %h1 Спонсоры
 
 %table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
-      %th Название
-      %th Специализация
-      %th Поддержка команды
-      %th Коэффициент лояльности
-      %th Стоимость полного пакета акций
-      %th Призовые за победу
-      %th Призовые за ничью
-      %th Призовые за поражение
+      %th.text-center
+        .fa.fa-pencil
+        Название
+      %th.text-center
+        .fa.fa-truck
+        Специализация
+      %th.text-center
+        .fa.fa-users
+        Поддержка команды
+      %th.text-center
+        .fa.fa-cubes
+        Коэффициент лояльности
+      %th.text-center
+        .fa.fa-eye
+        Настроение
+      %th.text-center
+        .fa.fa-money
+        Стоимость полного пакета акций
+      %th.text-center Призовые за победу
+      %th.text-center Призовые за ничью
+      %th.text-center Призовые за поражение
       %th
-      %th
-      %th
+      -if @current_user.role!=0
+        %th
+        %th
       
   %tbody
     - @sponsors.each do |sponsor|
-      %tr
+      %tr.text-center
         %td= sponsor.title
         %td= sponsor.specialization
         %td
           -if sponsor.team_id
             -t=Team.find(sponsor.team_id)
-            .text-danger= t.title
-            .text-success (#{User.find(t.user_id).login})
+            =link_to t.title, t, style: "color: #00F"
         %td= sponsor.loyalty_factor
         %td
-          = sponsor.cost_of_full_stake
-          .fa.fa-usd
+          -if sponsor.loyalty_factor>5.0
+            .text-success
+              .fa.fa-smile-o.fa-lg
+          -elsif sponsor.loyalty_factor>0.5
+            .text-warning
+              .fa.fa-meh-o.fa-lg
+          -else
+            .text-danger
+              .fa.fa-frown-o.fa-lg
         %td
-          = sponsor.win_prize.round(2)
-          .fa.fa-usd
+          = number_to_currency(sponsor.cost_of_full_stake, locale: :en)
         %td
-          = sponsor.draw_prize.round(2)
-          .fa.fa-usd
+          = number_to_currency(sponsor.win_prize.round(2), locale: :en)
         %td
-          = sponsor.lost_prize.round(2)
-          .fa.fa-usd
-        %td= link_to 'Показать', sponsor
-        %td= link_to 'Редактировать', edit_sponsor_path(sponsor)
-        %td= link_to 'Х', sponsor, :method => :delete, :data => { :confirm => 'Вы уверены?' }
-
+          = number_to_currency(sponsor.draw_prize.round(2), locale: :en)
+        %td
+          = number_to_currency(sponsor.lost_prize.round(2), locale: :en)
+        -if @current_user.role!=0
+          %td
+            = link_to edit_sponsor_path(sponsor), class: "btn btn-link" do
+              =fa_icon "edit"
+          %td
+            = link_to sponsor, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+              =fa_icon "remove"
+        %td
+          = link_to sponsor, class: "btn btn-link" do
+            =fa_icon "arrow-circle-right"
 %br
 
 <a class="btn btn-default" href="sponsors/new" role="button">Создать спонсора</a>
--#= link_to 'Создать спонсора', new_sponsor_path
 %br
 = paginate @sponsors

@@ -45,8 +45,23 @@ ru:
         sex: Пол
         birthday: День Рождения
         mail: Адрес эл.почты
+      team:
+        user: Владелец
+        title: Название
+        sponsor: Спонсор
+        stadium: Стадион
+        club_basis: База клуба
+        budget: Бюджет
+        fans: Фаны
+      stadium:
+        title: Название
+        capacity: Вместительность
+        level: Уровень
+        team: Команда
     models:
       sponsor: Спонсор
       club_base: База клуба
+      stadium: Стадион
       country: Страна
       user: Пользователь
+      team: Команда

@@ -1,30 +1,36 @@
-%p#notice= notice
-
+-team=Team.find(@sponsor.team_id)
 %p
   %b Название:
   = @sponsor.title
 %p
+  %b Поддержка команды:
+  =link_to team.title, team, style: "color: #00F"
+%p
   %b Специализация:
   = @sponsor.specialization
-%p
-  %b Поддержка команды:
-  = @sponsor.sponsorship
 %p
   %b Коэффициент лояльности:
   = @sponsor.loyalty_factor
 %p
   %b Стоимость полного пакета акций:
-  = @sponsor.cost_of_full_stake
+  = number_to_currency(@sponsor.cost_of_full_stake, locale: :en)
 %p
   %b Призовые за победу:
-  = @sponsor.win_prize
+  = number_to_currency(@sponsor.win_prize, locale: :en)
 %p
   %b Призовые за ничью:
-  = @sponsor.draw_prize
+  = number_to_currency(@sponsor.draw_prize, locale: :en)
 %p
   %b Призовые за поражение:
-  = @sponsor.lost_prize
+  = number_to_currency(@sponsor.lost_prize, locale: :en)
 
-= link_to 'Редактировать', edit_sponsor_path(@sponsor)
-\|
-= link_to 'Назад', sponsors_path
+-if @current_user.moderator?
+  = link_to edit_sponsor_path(@sponsor), class: 'btn btn-danger' do
+    =fa_icon "edit"
+    Редактировать
+= link_to sponsors_path, class: 'btn btn-warning' do
+  =fa_icon "reply"
+  Все спонсоры
+= link_to team, class: 'btn btn-info' do
+  =fa_icon "users"
+  К команде << #{team.title} >>

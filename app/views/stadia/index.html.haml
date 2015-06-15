@@ -1,27 +1,41 @@
-%h1 Listing stadia
+.page-header
+  %h1 Стадионы команд
 
-%table
+%table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
-      %th Title
-      %th Capacity
-      %th Level
-      %th Team
+      %th.text-center
+        .fa.fa-pencil
+        Название
+      %th.text-center
+        .fa.fa-users
+        Команда
+      %th.text-center
+        .fa.fa-male
+        Вместительность
+      %th.text-center
+        .fa.fa-level-up
+        Уровень
       %th
-      %th
-      %th
+      -if @current_user.role!=0
+        %th
+        %th
       
   %tbody
     - @stadia.each do |stadium|
-      %tr
+      %tr.text-center
         %td= stadium.title
-        %td= stadium.capacity
+        %td
+          = link_to stadium.team.title, stadium.team, style: "color: #00F"
+        %td= number_to_human(stadium.capacity, locale: :en, units: {thousand: "K"})
         %td= stadium.level
-        %td= stadium.team
-        %td= link_to 'Show', stadium
-        %td= link_to 'Edit', edit_stadium_path(stadium)
-        %td= link_to 'Destroy', stadium, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Stadium', new_stadium_path
+        -if @current_user.role!=0
+          %td
+            = link_to edit_stadium_path(stadium), class: "btn btn-link" do
+              =fa_icon "edit"
+          %td
+            = link_to stadium, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+              =fa_icon "remove"
+        %td
+          = link_to stadium, class: "btn btn-link" do
+            =fa_icon "arrow-circle-right"

@@ -1,12 +1,12 @@
 %p
   %b Владелец:
-  = @team.title
+  = link_to @team.title, @team, style: "color: #00F"
 %p
   %b Название:
   = @stadium.title
 %p
   %b Вместительность:
-  = @stadium.capacity
+  = number_to_human(@stadium.capacity, locale: :en, units: {thousand: "K"})
 %p
   %b Уровень:
   = @stadium.level
@@ -18,7 +18,7 @@
 -if @current_user.moderator?
   = link_to stadia_path, class: 'btn btn-warning' do
     =fa_icon "reply"
-    Все базы
+    Все стадионы
 = link_to @stadium.team, class: 'btn btn-info' do
   =fa_icon "users"
   =@team.title

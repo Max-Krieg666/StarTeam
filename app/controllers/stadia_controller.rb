@@ -1,7 +1,7 @@
 class StadiaController < ApplicationController
   before_action :set_stadium, only: [:show, :edit, :update, :destroy]
   before_action :set_team, only: :new
-  before_action :admin_permission, only: :destroy
+  before_action :admin_permission, only: [:destroy, :index]
 
   # GET /stadia
   # GET /stadia.json

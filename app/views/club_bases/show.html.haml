@@ -1,6 +1,6 @@
 %p
   %b Владелец:
-  = @team.title
+  =link_to @team.title, @team, style: "color: #00F"
 %p
   %b Название:
   = @club_basis.title
@@ -25,6 +25,6 @@
   = link_to club_bases_path, class: 'btn btn-warning' do
     =fa_icon "reply"
     Все базы
-= link_to @club_basis.team, class: 'btn btn-info' do
+= link_to @team, class: 'btn btn-info' do
   =fa_icon "users"
   =@team.title

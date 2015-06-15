@@ -1,31 +1,42 @@
-%p
-  %b Владелец:
-  = @team.user.login
-%p
-  %b Название:
-  = @team.title
-%p
-  %b Спонсор:
-  = Sponsor.find(@team.sponsor_id).title
-%p
-  %b Стадион:
-  = @team.stadium_id
-%p
-  %b База клуба:
-  = @team.club_basis_id
-%p
-  %b Бюджет:
-  .fa.fa-usd
-  = @team.budget
-%p
-  %b Фаны:
-  = @team.fans
-
-= link_to 'Edit', edit_team_path(@team)
-\|
-= link_to 'Back', teams_path
-
--if @team.stadium_id.blank? && @team.user==@current_user
-  = link_to 'Перейти к созданию стадиона',{:action => :new, :controller => :stadia,:team_id => @team.id}, class: 'btn btn-primary'
--if @team.club_basis_id.blank? && @team.user==@current_user
-  = link_to 'Перейти к созданию базы клуба',{:action => :new, :controller => :club_bases,:team_id => @team.id}, class: 'btn btn-primary'
+.text-center
+  .page-header
+    %h1= @team.title
+  %p
+    %b Владелец:
+    =link_to @team.user.login, @team.user, style:"color: #FFA500", class: 'btn btn-link'
+  %p
+    %b Спонсор:
+    -sp=Sponsor.find(@team.sponsor_id)
+    =link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
+    %p
+      %b Стадион:
+      -if @team.stadium_id
+        -st=Stadium.find(@team.stadium_id)
+        =link_to "#{st.title} (#{number_to_human(st.capacity, locale: :en, units: {thousand: "K"})} #{Russian.p(st.capacity,'место','места','мест')})", st, style:"color: #F00", class: 'btn btn-link'
+      -else
+        Не создан
+  %p
+    %b База клуба:
+    -if @team.club_basis_id
+      -cb=ClubBase.find(@team.club_basis_id)
+      =link_to cb.title, cb, style: "color: #458B74", class: 'btn btn-link'
+    -else
+      Не создана
+  %p
+    %b Бюджет:
+    = number_to_currency(@team.budget, precision: 3, locale: :en)
+  %p
+    %b Фаны:
+    .fa.fa-users
+    =number_to_human(@team.fans, locale: :en, units: {thousand: "K",million:"M"})
+  -if @current_user==@team.user || @current_user.moderator?
+    = link_to edit_team_path(@team), class: 'btn btn-danger' do
+      =fa_icon "edit"
+      Редактировать
+    = link_to teams_path, class: 'btn btn-warning' do
+      =fa_icon "reply"
+      Все команды
+  -if @team.stadium_id.blank? && @team.user==@current_user
+    = link_to 'Перейти к созданию стадиона',{:action => :new, :controller => :stadia,:team_id => @team.id}, class: 'btn btn-primary'
+  -if @team.club_basis_id.blank? && @team.user==@current_user
+    = link_to 'Перейти к созданию базы клуба',{:action => :new, :controller => :club_bases,:team_id => @team.id}, class: 'btn btn-primary'

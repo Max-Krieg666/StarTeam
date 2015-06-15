@@ -3,17 +3,21 @@
     .navbar-header
       =link_to ?#, class: "navbar-toggle collapsed", data: {toggle: "collapse", target: "#menu"} do
         =fa_icon 'bars'
-      %div{class:'btn-group'}
-        %button{id: "main_menu_btn", type: "button",class: "btn btn-link navbar-brand dropdown-toggle",data: {toggle: "dropdown"}}
-          Меню
-          %span{class:"caret"}
-        %ul{class:'dropdown-menu'}
-          .li=link_to 'Моя страница', @current_user,class: 'btn btn-link'#, class: 'navbar-brand'
-          .li=link_to 'Моя команда', @current_user.team,class: 'btn btn-link'#, class: 'navbar-brand'
+      -if @current_user
+        %div{class:'btn-group'}
+          %button{id: "main_menu_btn", type: "button",class: "btn btn-link navbar-brand dropdown-toggle",data: {toggle: "dropdown"}}
+            Меню
+            %span{class:"caret"}
+          %ul{class:'dropdown-menu'}
+            .li=link_to 'Моя страница', @current_user,class: 'btn btn-link'#, class: 'navbar-brand'
+            .li=link_to 'Моя команда', @current_user.team,class: 'btn btn-link'#, class: 'navbar-brand'
+      -else
+        %span.h3.navbar-text Футбольный менеджер StarTeam
     #menu.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        -if @current_user
-          %li=link_to "Все пользователи", users_path
+      -if @current_user
+        %ul.nav.nav-pills
+          -#было %ul.nav.navbar-nav
+          %li.active=link_to "Все пользователи", users_path
           %li=link_to "Страны", countries_path
           %li=link_to "Спонсоры", sponsors_path
           %li=link_to "Стадионы", stadia_path

@@ -1,6 +1,9 @@
-%p
-  %b Логин:
-  = @user.login
+.page-header
+  %h1= @user.login
+-if @user.team
+  %p
+    %b Команда:
+    = link_to @user.team.title,@user.team, style: "color: #00F"
 %p
   %b Аватар:
 %p
@@ -12,7 +15,7 @@
 %p
   %b Страна:
   -if @user.country_id
-    =Country.find(id: user.country_id).title
+    =Country.find(user.country_id).title
   -else
     .text-danger.li Не выбрана!
 %p
@@ -27,14 +30,21 @@
 %p
   %b Адрес эл. почты:
   = @user.mail
-%p
-  %b Роль:
-  = @user.role_name
-
 -if @current_user==@user || @current_user.moderator?
+  %p
+    %b Роль:
+    = @user.role_name
   = link_to edit_user_path(@user), class: 'btn btn-danger' do
     =fa_icon "edit"
     Редактировать
 = link_to users_path, class: 'btn btn-info' do
   =fa_icon "users"
   Все пользователи
+-if @user.team
+  = link_to @user.team, class: 'btn btn-primary' do
+    =fa_icon "chevron-circle-right"
+    К команде << #{@user.team.title} >>
+-else
+  = link_to @user, class: 'btn btn-warning disabled' do
+    =fa_icon "chevron-circle-right"
+    Команда не создана!

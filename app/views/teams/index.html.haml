@@ -1,15 +1,15 @@
-%h1 Listing teams
+%h1 Команды
 
-%table
+%table.table.table-bordered.table-condensed.table-hover
   %thead
     %tr
-      %th User
-      %th Title
-      %th Sponsor
-      %th Stadium
-      %th Club base
-      %th Budget
-      %th Fans
+      %th Владелец
+      %th Название
+      %th Спонсор
+      %th Стадион
+      %th База клуба
+      %th Бюджет
+      %th Фаны
       %th
       %th
       %th
@@ -17,17 +17,32 @@
   %tbody
     - @teams.each do |team|
       %tr
-        %td= team.user
-        %td= team.title
-        %td= team.sponsor
-        %td= team.stadium
-        %td= team.club_base
+        %td= link_to team.user.login, team.user, style:"color: #FFA500"
+        %td= link_to team.title, team,  style:"color: #00F"
+        %td
+          -sp=Sponsor.find(team.sponsor_id)
+          =link_to sp.title, sp, style:"color: #550"
+        %td
+          -if team.stadium_id
+            -st=Stadium.find(team.stadium_id)
+            =link_to st.title, st, style: "color: #F00"
+          -else
+            .text-danger Не создан!
+        %td
+          -if team.club_basis_id
+            -cb=ClubBase.find(team.club_basis_id)
+            =link_to cb.title, cb, style: "color: #458B74"
+          -else
+            .text-danger Не создана!
         %td= team.budget
-        %td= team.fans
-        %td= link_to 'Show', team
-        %td= link_to 'Edit', edit_team_path(team)
-        %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Team', new_team_path
+        %td= number_to_human(team.fans, locale: :en, units: {thousand: "K",million:"M"})
+        -if @current_user.role!=0
+          %td.text-center
+            = link_to edit_team_path(team), class: "btn btn-link" do
+              =fa_icon "edit"
+          %td.text-center
+            = link_to team, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+              =fa_icon "remove"
+        %td.text-center
+          = link_to team, class: "btn btn-link" do
+            =fa_icon "arrow-circle-right"

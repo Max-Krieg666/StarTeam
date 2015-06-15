@@ -4,46 +4,64 @@
 %table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
-      %th
-        .fa.fa-sort-numeric-asc.li
-          id
-      %th
-        .fa.fa-user.li
-          Логин
-      %th
-        .fa.fa-picture-o.li
-          Аватар
-      %th
-        .fa.fa-home.li
-          Страна
-      %th
-        .fa.fa-venus-mars.li
-          Пол
-      %th
-        .fa.fa-birthday-cake.li
-          Дата рождения
-      %th
-        .fa.fa-envelope.li
-          Эл. почта
+      %th.text-center
+        .fa.fa-sort-numeric-asc
+        id
+      %th.text-center
+        .fa.fa-user
+        Логин
+      %th.text-center
+        .fa.fa-users
+        Команда
+      %th.text-center
+        .fa.fa-picture-o
+        Аватар
+      %th.text-center
+        .fa.fa-home
+        Страна
+      %th.text-center
+        .fa.fa-venus-mars
+        Пол
+      %th.text-center
+        .fa.fa-birthday-cake
+        Дата рождения
+      %th.text-center
+        .fa.fa-envelope
+        Эл. почта
       -if @current_user.role!=0
-        %th
-          .fa.fa-male.li
-            Роль
+        %th.text-center
+          .fa.fa-street-view
+          Роль
         %th
         %th
       %th
 
   %tbody
     - @users.each do |user|
-      %tr
+      %tr.text-center
         %td= user.id
         %td= user.login
-        %td= image_tag(user.avatar.url(:thumb))
+        %td
+          -if user.team
+            =link_to user.team.title, user.team, style: "color: #00F"
+          -else
+            .text-danger.li Не создана!
+        %td
+          -if user.avatar.blank?
+            .text-danger.li Аватар не загружен!
+          -else
+            =image_tag user.avatar.url(:thumb)
         %td
           -if user.country_id
-            =Country.find(id: user.country_id).title
+            =Country.find(user.country_id).title
+          -else
+            .text-danger.li Не выбрана!
         %td= user.sex
-        %td= user.birthday
+        %td
+          -if user.birthday
+            = user.birthday
+          -else
+            .text-danger.li Не выбрано!
         %td= user.mail
         -if @current_user.role!=0
           %td= user.role_name

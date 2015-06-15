@@ -1,5 +1,7 @@
-%h1 New country
+%h1 Новая страна
 
 = render 'form'
 
-= link_to 'Back', countries_path
+= link_to countries_path, class: 'btn btn-info' do
+  =fa_icon "flag"
+  Все страны

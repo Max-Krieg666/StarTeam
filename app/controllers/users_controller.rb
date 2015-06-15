@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         redirect_to @user, notice: 'Пользователь создан.'
       else
         @user.force_authenticate!(self)
-        redirect_to root_path, notice: 'Регистрация завершена.'
+        redirect_to @user, notice: 'Регистрация завершена.'
       end
     else
       render :new

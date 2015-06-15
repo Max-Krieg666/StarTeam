@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    @teams = Team.order("title")
   end
 
   # GET /teams/1
@@ -31,7 +31,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         sp=Sponsor.find(@team.sponsor_id)
-        sp.team_id=@team.sponsor_id
+        sp.team_id=@team.id
         sp.save!
         @current_user.team_id=@team.id
         @current_user.team=@team

@@ -1,4 +1,5 @@
-%h1 Страны
+.page-header
+  %h1 Страны
 
 %table.table.table-bordered.table-hover
   %thead
@@ -15,18 +16,18 @@
       
   %tbody
     - @countries.each do |country|
-      %tr
-        %td.text-center
+      %tr.text-center
+        %td
           = country.title
-        %td.text-center
+        %td
           = image_tag country.flag.url, alt: country.title
-        %td.text-center
+        %td
           = link_to country, class: "btn btn-link" do
             = fa_icon "chevron-circle-right"
-        %td.text-center
+        %td
           = link_to edit_country_path(country), class: "btn btn-link" do
             = fa_icon "wrench"
-        %td.text-center
+        %td
           = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: "btn btn-link" do
             = fa_icon "trash-o"
 
