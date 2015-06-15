@@ -1,5 +1,7 @@
 %h1 Новый спонсор
 
 = render 'form'
-
-= link_to 'Назад', sponsors_path
+%br
+= link_to sponsors_path, class: 'btn btn-info' do
+  =fa_icon "reply"
+  Все спонсоры

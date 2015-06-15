@@ -70,6 +70,8 @@
             =fa_icon "arrow-circle-right"
 %br
 
-<a class="btn btn-default" href="sponsors/new" role="button">Создать спонсора</a>
+=link_to new_sponsor_path, class: "btn btn-default" do
+  =fa_icon "plus"
+  Создать спонсора
 %br
 = paginate @sponsors

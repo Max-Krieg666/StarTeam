@@ -10,15 +10,15 @@
 %p
   %b Уровень:
   = @stadium.level
-
--if @current_user==@user || @current_user.moderator?
-  = link_to edit_stadium_path(@stadium), class: 'btn btn-danger' do
-    =fa_icon "edit"
-    Редактировать
--if @current_user.moderator?
-  = link_to stadia_path, class: 'btn btn-warning' do
-    =fa_icon "reply"
-    Все стадионы
-= link_to @stadium.team, class: 'btn btn-info' do
-  =fa_icon "users"
-  =@team.title
+.btn-group
+  = link_to @stadium.team, class: 'btn btn-info' do
+    =fa_icon "users"
+    =@team.title
+  -if @current_user==@user || @current_user.moderator?
+    = link_to edit_stadium_path(@stadium), class: 'btn btn-danger' do
+      =fa_icon "edit"
+      Редактировать
+  -if @current_user.moderator?
+    = link_to stadia_path, class: 'btn btn-warning' do
+      =fa_icon "reply"
+      Все стадионы

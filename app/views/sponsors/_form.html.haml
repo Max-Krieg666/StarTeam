@@ -1,15 +1,16 @@
 = form_for @sponsor do |f|
-  -#=f.hidden_field :team
   =error_messages_for(@sponsor)
   .row
     .col-md-3
       .form-group
         = f.label :title
         = f.text_field :title, class: "form-control"
+  .row
     .col-md-3
       .form-group
         = f.label :specialization
         = f.text_field :specialization, class: "form-control"
+  .row
     .col-md-3
       .form-group
         = f.label :loyalty_factor
@@ -20,24 +21,6 @@
         = f.label :cost_of_full_stake
         .input-group
           = f.text_field :cost_of_full_stake, class: "form-control"
-          %span.input-group-addon.fa.fa-usd
-    .col-md-3
-      .form-group
-        = f.label :win_prize
-        .input-group
-          = f.text_field :win_prize, class: "form-control"
-          %span.input-group-addon.fa.fa-usd
-    .col-md-3
-      .form-group
-        = f.label :draw_prize
-        .input-group
-          = f.text_field :draw_prize, class: "form-control"
-          %span.input-group-addon.fa.fa-usd
-    .col-md-3
-      .form-group
-        = f.label :lost_prize
-        .input-group
-          = f.text_field :lost_prize, class: "form-control"
           %span.input-group-addon.fa.fa-usd
 
   .actions=f.submit nil, class: "btn btn-primary"

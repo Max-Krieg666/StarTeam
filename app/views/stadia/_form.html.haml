@@ -7,21 +7,16 @@
       .form-group
         = f.label :title
         = f.text_field :title, class: "form-control"
-  -#для админа
-  -#.row
-  -#  .col-md-3
-  -#    .form-group
-  -#      = f.label :capacity
-  -#      = f.number_field :capacity
-  -#.row
-  -#  .col-md-3
-  -#    .form-group
-  -#      = f.label :level
-  -#      = f.number_field :level
-  -#.row
-  -#  .col-md-3
-  -#    .form-group
-  -#      = f.label :team
-  -#      = f.text_field :team
+  -if @current_user.moderator?
+    .row
+      .col-md-3
+        .form-group
+          = f.label :capacity
+          = f.number_field :capacity, class: "form-control"
+    .row
+      .col-md-3
+        .form-group
+          = f.label :level
+          = f.number_field :level, class: "form-control"
   .actions
     =f.submit nil, class: "btn btn-primary"

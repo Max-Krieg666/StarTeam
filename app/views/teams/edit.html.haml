@@ -1,7 +1,11 @@
-%h1 Editing team
+%h1 Редактирование команды
 
 = render 'form'
-
-= link_to 'Show', @team
-\|
-= link_to 'Back', teams_path
+%br
+.btn-group
+  = link_to @team, class: 'btn btn-warning' do
+    =fa_icon "reply"
+    #{@team.title}
+  = link_to teams_path, class: 'btn btn-info' do
+    =fa_icon "list"
+    Все команды

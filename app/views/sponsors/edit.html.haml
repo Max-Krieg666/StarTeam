@@ -1,7 +1,11 @@
-%h1 Редактирование спонсоров
+%h1 Редактирование спонсора
 
 = render 'form'
-
-= link_to 'Показать', @sponsor
-\|
-= link_to 'Назад', sponsors_path
+%br
+.btn-group
+  = link_to @sponsor, class: 'btn btn-warning' do
+    =fa_icon "reply"
+    #{@sponsor.title}
+  = link_to sponsors_path, class: 'btn btn-info' do
+    =fa_icon "list"
+    Все спонсоры

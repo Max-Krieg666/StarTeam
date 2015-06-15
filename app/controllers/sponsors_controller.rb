@@ -1,5 +1,6 @@
 class SponsorsController < ApplicationController
   before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
+  before_action :admin_permission, except: [:show]
 
   # GET /sponsors
   # GET /sponsors.json
@@ -25,7 +26,10 @@ class SponsorsController < ApplicationController
   # POST /sponsors.json
   def create
     @sponsor = Sponsor.new(sponsor_params)
-
+    sp=sponsor_params[:cost_of_full_stake]
+    @sponsor.win_prize=sp/1000.0
+    @sponsor.draw_prize=sp/2000.0
+    @sponsor.lost_prize=sp/8000.0
     #respond_to do |format|
       if @sponsor.save
         #format.html { redirect_to @sponsor, notice: 'Спонсор успешно создан.' }
@@ -74,6 +78,6 @@ class SponsorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sponsor_params
-      params.require(:sponsor).permit(:title, :specialization, :loyalty_factor, :cost_of_full_stake, :win_prize, :draw_prize, :lost_prize)
+      params.require(:sponsor).permit(:title, :specialization, :loyalty_factor, :cost_of_full_stake)#, :win_prize, :draw_prize, :lost_prize)
     end
 end

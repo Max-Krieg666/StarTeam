@@ -1,7 +1,12 @@
-%h1 Editing stadium
+%h1 Редактирование стадиона
 
 = render 'form'
-
-= link_to 'Show', @stadium
-\|
-= link_to 'Back', stadia_path
+%br
+-t=Team.find(@current_user.team_id)
+.btn-group
+  = link_to @stadium, class: 'btn btn-info' do
+    =fa_icon "reply"
+    =@stadium.title
+  = link_to t, class: 'btn btn-warning' do
+    =fa_icon "users"
+    Команда << #{t.title} >>

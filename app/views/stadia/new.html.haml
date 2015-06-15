@@ -1,5 +1,8 @@
 %h1 Создание стадиона
 
 = render 'form'
-
-= link_to 'Назад', stadia_path
+%br
+-t=Team.find(@current_user.team_id)
+= link_to t, class: 'btn btn-info' do
+  =fa_icon "reply"
+  Вернуться к команде << #{t.title} >>
