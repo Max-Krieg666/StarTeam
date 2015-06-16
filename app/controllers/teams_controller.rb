@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user_id=@current_user.id
-    @team.budget=1000000.0
+    @team.budget=2000000.0
     @team.fans=50
     respond_to do |format|
       if @team.save
@@ -81,6 +81,9 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:title, :sponsor_id, :stadium_id, :club_basis_id, :budget, :fans)
+      attrs=[:title, :sponsor_id]
+      attrs << :budget if @current_user.try(:admin?)
+      attrs << :fans if @current_user.try(:admin?)
+      params.require(:user).permit(*attrs)
     end
 end

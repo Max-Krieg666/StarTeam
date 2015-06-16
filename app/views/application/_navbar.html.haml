@@ -22,6 +22,7 @@
           %li=link_to "Спонсоры", sponsors_path
           %li=link_to "Стадионы", stadia_path
           %li=link_to "Базы клубов", club_bases_path
+          %li=link_to "Игроки", players_path
           %li=link_to "Создать команду", new_team_path
       %ul.nav.navbar-nav.navbar-right
         -if @current_user.blank?
@@ -31,4 +32,8 @@
           %li
             %span.navbar-text=@current_user.login
             %span.navbar-text=@current_user.mail
+            -t=@current_user.team
+            -if t
+              %span.navbar-text=t.title
+              %span.navbar-text="Бюджет: #{number_to_currency(t.budget, precision: 3, locale: :en)}"
             =link_to "Выйти", logout_path, data: {method: :patch}

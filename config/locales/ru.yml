@@ -58,6 +58,15 @@ ru:
         capacity: Вместительность
         level: Уровень
         team: Команда
+      player:
+        name: Игрок (Имя & Фамилия)
+        country: Национальность
+        position1: Основная позиция
+        position2: Дополнительная позиция
+        talent: Талант
+        age: Возраст
+        skill_level: Мастерство
+        price: Цена
     models:
       sponsor: Спонсор
       club_base: База клуба
@@ -65,3 +74,4 @@ ru:
       country: Страна
       user: Пользователь
       team: Команда
+      player: Игрок

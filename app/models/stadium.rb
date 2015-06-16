@@ -1,20 +1,4 @@
-class Level_check < ActiveModel::Validator
-  def validate(record)
-    if condition
-      record.errors.add :level, 'Слишком низкий уровень стадиона для постройки новых мест!'
-    end
-  end
-
-  private
-  def condition
-    record.capacity>1000 && record.level==1 ||
-      record.capacity>5000 && record.level==2 ||
-        record.capacity>20000 && record.level==3 ||
-          record.capacity>50000 && record.level==4
-  end
-end
 class Stadium < ActiveRecord::Base
-  include ActiveModel::Validations
   belongs_to :team
 
   validates :team_id, presence: true
@@ -22,8 +6,6 @@ class Stadium < ActiveRecord::Base
   validates :capacity, presence: true, numericality: {
     greater_than_or_equal_to: 0, only_integer: true}
   validates :level, presence: true, inclusion: { in: 1..5 }
-
-  validates_with Level_check, on: :update
 end
 # level 1 --> COST: FREE  ;  capacity 200-1 000 [default]
 ## seatcost: $500

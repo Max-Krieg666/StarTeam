@@ -27,7 +27,7 @@
         %td= stadium.title
         %td
           = link_to stadium.team.title, stadium.team, style: "color: #00F"
-        %td= number_to_human(stadium.capacity, locale: :en, units: {thousand: "K"})
+        %td= stadium.capacity
         %td= stadium.level
         -if @current_user.role!=0
           %td

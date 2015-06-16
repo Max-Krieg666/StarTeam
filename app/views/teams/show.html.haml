@@ -12,7 +12,8 @@
       %b Стадион:
       -if @team.stadium_id
         -st=Stadium.find(@team.stadium_id)
-        =link_to "#{st.title} (#{number_to_human(st.capacity, locale: :en, units: {thousand: "K"})} #{Russian.p(st.capacity,'место','места','мест')})", st, style:"color: #F00", class: 'btn btn-link'
+        -stc=st.capacity
+        =link_to "#{st.title} (#{stc} #{Russian.p(stc,'место','места','мест')})", st, style:"color: #F00", class: 'btn btn-link'
       -else
         Не создан
   %p

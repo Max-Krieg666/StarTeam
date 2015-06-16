@@ -1,5 +1,7 @@
 class Country < ActiveRecord::Base
   has_many :users
+  has_many :players
+
   validates :flag, attachment_presence: true,
             attachment_content_type: {content_type: /\Aimage\/.*\Z/},
             attachment_size: {less_than: 0.2.megabytes},

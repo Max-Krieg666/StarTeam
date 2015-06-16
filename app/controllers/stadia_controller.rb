@@ -24,6 +24,42 @@ class StadiaController < ApplicationController
 
   # GET /stadia/1/edit
   def edit
+    old_level=@stadium.level
+    if !params[:level].blank? && params[:level]!="" && params[:level].to_i != old_level
+      lvl=params[:level].to_i
+      if lvl!=old_level+1
+        flash[:danger]='Неправильный параметр уровня стадиона!'
+        redirect_to @stadium
+      elsif lvl>5
+        flash[:danger]='Ваш стадион имеет максимальный уровень!'
+        redirect_to @stadium
+      else
+        if old_level==1
+          cost=200000
+        elsif old_level==2
+          cost=500000
+        elsif old_level==3
+          cost=1000000
+        elsif old_level==4
+          cost=2500000
+        else
+          flash[:danger]='Неправильное значение уровня стадиона!'
+          redirect_to @stadium
+        end
+        team=Team.find(@stadium.team_id)
+        if team.budget-cost<0
+          flash[:danger]='На вашем счету недостаточно средств для улучшения стадиона!'
+          redirect_to @stadium
+        else
+          team.budget-=cost
+          team.save!
+          @stadium.update(level:lvl)
+          redirect_to @stadium, notice: 'Уровень стадиона успешно повышен.'
+        end
+      end
+    else
+      redirect_to @stadium
+    end
   end
 
   # POST /stadia
@@ -54,13 +90,51 @@ class StadiaController < ApplicationController
   # PATCH/PUT /stadia/1
   # PATCH/PUT /stadia/1.json
   def update
-    respond_to do |format|
-      if @stadium.update(stadium_params)
-        format.html { redirect_to @stadium, notice: 'Стадион успешно изменён.' }
-        format.json { render :show, status: :ok, location: @stadium }
+    old_cap=@stadium.capacity
+    cp=params[:stadium][:capacity]
+    cpi=cp.to_i
+    if cpi<old_cap
+      flash[:danger]='Новое значение стадиона не может быть меньше предыдущего!'
+      redirect_to @stadium
+    elsif cp.size>6
+      flash[:danger]='Вы ввели слишком большое число!'
+      redirect_to @stadium
+    elsif cpi
+      r,lvl=cpi-old_cap,@stadium.level
+      if cpi>1000 && lvl==1 || cpi>5000 && lvl==2 || cpi>20000 && lvl==3 || cpi>50000 && lvl==4
+        flash[:danger]='Слишком низкий уровень стадиона для постройки новых мест!'
+        redirect_to @stadium
       else
-        format.html { render :edit }
-        format.json { render json: @stadium.errors, status: :unprocessable_entity }
+        if lvl==1
+          cost=r*500
+        elsif lvl==2
+          cost=r*400
+        elsif lvl==3
+          cost=r*300
+        elsif lvl==4
+          cost=r*200
+        elsif lvl==5
+          cost=r*100
+        else
+          flash[:danger]='Не удалось изменить вместительность стадиона! Что-то пошло не так!'
+          redirect_to @stadium
+        end
+        team=Team.find(@stadium.team_id)
+        if team.budget-cost<0
+          flash[:danger]='На вашем счету недостаточно средств для модернизации стадиона!'
+          redirect_to @stadium
+        else
+          team.budget-=cost
+          team.save!
+          @stadium.update(capacity:cpi)
+          redirect_to @stadium, notice: 'Стадион успешно модернизирован.'
+        end
+      end
+    else
+      if @stadium.update(stadium_params)
+        redirect_to @stadium, notice: 'Стадион успешно изменён.'
+      else
+        render :edit
       end
     end
   end

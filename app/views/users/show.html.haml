@@ -15,7 +15,9 @@
 %p
   %b Страна:
   -if @user.country_id
-    =Country.find(user.country_id).title
+    -c=Country.find(@user.country_id)
+    =link_to c.title, c, class: 'btn btn-link', style: "color: #00688B"
+    =image_tag c.flag.url
   -else
     .text-danger.li Не выбрана!
 %p

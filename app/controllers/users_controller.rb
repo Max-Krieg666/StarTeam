@@ -66,7 +66,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      attrs=[:login, :password, :password_confirmation, :sex, :birthday, :mail, :avatar]
+      attrs=[:login, :password, :password_confirmation, :sex, :birthday, :mail, :avatar, :country_id]
       attrs << :role if @current_user.try(:admin?)
       params.require(:user).permit(*attrs)
     end

@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require font-awesome
+ *= require jquery-tablesorter/theme.black-ice
  *= require_tree .
  *= require_self
  */

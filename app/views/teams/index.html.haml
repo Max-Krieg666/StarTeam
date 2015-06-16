@@ -25,7 +25,7 @@
         %td
           -if team.stadium_id
             -st=Stadium.find(team.stadium_id)
-            =link_to st.title, st, style: "color: #F00"
+            =link_to "#{st.title} (#{st.capacity})", st, style: "color: #F00"
           -else
             .text-danger Не создан!
         %td

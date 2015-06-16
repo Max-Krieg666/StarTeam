@@ -7,12 +7,16 @@
 %p
   %b Уровень:
   = @club_basis.level
+  -if @club_basis.level<5
+    =link_to "+",{action: :edit,level: @club_basis.level+1}, class: 'btn btn-default btn-sm'
 %p
   %b Вместимость:
   = @club_basis.capacity
 %p
   %b Тренировочные поля:
   = @club_basis.training_fields
+  -if @club_basis.training_fields<5
+    =link_to "+",{action: :edit,training_fields: @club_basis.training_fields+1}, class: 'btn btn-default btn-sm'
 %p
   %b Коэффициент повышения опыта:
   = @club_basis.experience_up

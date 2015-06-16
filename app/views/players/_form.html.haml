@@ -1,0 +1,41 @@
+= form_for @player do |f|
+  =error_messages_for(@player)
+
+  .row
+    .col-md-3
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        -#.fa.fa-home.li
+        = label_tag('player[country_id]', 'Национальность')
+        = select_country('player[country_id]', @player.country_id)
+  -pss=%w(Ld Cd Rd Cdm Lm Cm Rm Cam Lf Cf Rf)
+  .row
+    .col-md-1
+      .form-group
+        = f.label :position1
+        = f.select :position1, ["Gk"]+pss, class: "form-control"
+    .col-md-1
+      .form-group
+        = f.label :position2
+        = f.select :position2, [""]+pss, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :talent
+        = f.number_field :talent, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :age
+        = f.number_field :age, class: "form-control"
+  .row
+    .col-md-3
+      .form-group
+        = f.label :skill_level
+        = f.number_field :skill_level, class: "form-control"
+  .actions
+    = f.submit 'Сохранить', class: "btn btn-primary"
