@@ -29,7 +29,129 @@
   %p
     %b Фаны:
     .fa.fa-users
-    =number_to_human(@team.fans, locale: :en, units: {thousand: "K",million:"M"})
+    = @team.fans
+  %br
+  -if @players.size!=0
+    %table.table.table-bordered.table-hover.table-condensed
+      %thead
+        %tr{class: 'success'}
+          %th.text-center
+            №
+          %th.text-center
+            .fa.fa-male
+            Игрок
+          %th.text-center
+            .fa.fa-flag
+            Национальность
+          %th.text-center
+            .fa.fa-bookmark
+            Позиция
+          %th.text-center
+            .fa.fa-level-up
+            Талант
+          %th.text-center
+            .fa.fa-history
+            Возраст
+          %th.text-center
+            .fa.fa-line-chart
+            Мастерство
+          %th.text-center
+            .fa.fa-money
+            Цена
+          %th.text-center{title: "Специальные умения"}
+            .fa.fa-flash
+          %th.text-center{title: "Игры"}
+            .fa.fa-exclamation-triangle
+          %th.text-center{title: "Пропущенные голы"}
+            .fa.fa-minus
+            .fa.fa-futbol-o
+          %th.text-center{title: "Забитые голы"}
+            .fa.fa-plus
+            .fa.fa-futbol-o
+          %th.text-center{title: "Автоголы"}
+            .fa.fa-frown-o
+            .fa.fa-futbol-o
+          %th.text-center{style: "color: #FF0",title: "Жёлтые карточки"}
+            .fa.fa-square
+          %th.text-center{style: "color: #D00",title: "Красные карточки"}
+            .fa.fa-square
+          %th.text-center{title: "Основной состав/запас"} О/З
+          -if @current_user==@team.user
+            %th
+            %th
+          -else
+            %th
+          %th
+
+      %tbody
+        - @players.each do |pl|
+          -c=Country.find(pl.country_id)
+          %tr.text-center
+            %td
+              %strong= pl.number
+            %td
+              = pl.name
+              = fa_icon 'copyright', title: 'Капитан' if pl.captain
+            %td= image_tag c.flag.url, title: c.title
+            %td
+              -if pl.position2 && pl.position1!='Gk'
+                #{pl.position1} / #{pl.position2}
+              -else
+                #{pl.position1}
+            %td= pl.talent
+            %td= pl.age
+            %td= pl.skill_level
+            %td
+              -a,count,i="#{pl.price}".reverse,0,0
+              -while a[i]!='.'
+                -count+=1;i+=1
+              #{number_to_currency(pl.price, locale: :en, precision: count)}
+            %td
+              -str=""
+              -if pl.special_skill1
+                -str=str+pl.special_skill1+"-#{pl.num_sp_s1}"
+                -str=str+" / "+pl.special_skill2+"-#{pl.num_sp_s2}" if pl.special_skill2
+                -str=str+" / "+pl.special_skill3+"-#{pl.num_sp_s3}" if pl.special_skill3
+              #{str}
+            %td #{pl.season_games}/#{pl.all_games}
+            %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
+            %td #{pl.season_goals}/#{pl.all_goals}
+            %td #{pl.season_autogoals}/#{pl.all_autogoals}
+            %td #{pl.season_yellow_cards}/#{pl.all_yellow_cards}
+            %td #{pl.season_red_cards}/#{pl.all_red_cards}
+            %td
+              -if pl.basic
+                .li{style:"color: #00F", title:"Основной состав"} О
+              -else
+                .li{style:"color: #D00", title:"Запас"} З
+            -if @current_user==@team.user
+              %td
+                = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
+                  =fa_icon 'wrench'
+              %td
+                = link_to pl, method: :delete, controller: :player_in_teams, :data => { :confirm => 'Продать игрока за полцены на рынок свободных агентов? Игрок потеряет все спец. умения. Это действие отменить нельзя!' }, title: 'Продать игрока', class: "btn btn-link" do
+                  =fa_icon 'usd'
+                  =fa_icon 'sign-out'
+            -else
+              %td
+                = link_to '#', :data => { :confirm => 'Создать заявку на покупку этого игрока?' }, title: 'Купить игрока', class: "btn btn-link" do
+                  .glyphicon.glyphicon-transfer
+            %td
+              = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
+                =fa_icon 'street-view'
+  -else
+    %h3.text-danger Необходимо купить игроков:
+    .btn-group
+      = link_to "/teams/#{@team.id}/random_players?random=true", confirm: 'Вы уверены?',class: 'btn btn-default', style:"color: #00F" do
+        =fa_icon "users"
+        =fa_icon "random"
+        Заполнить рандомно
+      = link_to players_path, class: 'btn btn-default', style:"color: #EE6A50" do
+        =fa_icon "male"
+        =fa_icon "male"
+        Выбрать вручную
+    %br
+    %br
   -if @current_user==@team.user || @current_user.moderator?
     = link_to edit_team_path(@team), class: 'btn btn-danger' do
       =fa_icon "edit"

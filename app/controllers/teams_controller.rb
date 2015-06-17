@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :random_players]
 
   # GET /teams
   # GET /teams.json
@@ -7,9 +7,22 @@ class TeamsController < ApplicationController
     @teams = Team.order("title")
   end
 
+  def random_players
+    if PlayerInTeam.where(team_id:@team.id).to_a.size>0
+      flash[:danger]='Невозможно рандомизировать состав'
+      redirect_to @team
+    else
+      #while PlayerInTeam.where(team_id:@team.id).to_a.size
+      #pls=Player.all
+      #тут функция беспощадного рандома игроков
+      redirect_to @team
+    end
+  end
+
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @players=PlayerInTeam.where(team_id:@team.id).order("position1").to_a
   end
 
   # GET /teams/new
@@ -18,7 +31,7 @@ class TeamsController < ApplicationController
   end
 
   # GET /teams/1/edit
-  def edit
+  def edit=
   end
 
   # POST /teams

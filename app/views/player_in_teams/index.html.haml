@@ -1,0 +1,42 @@
+.page-header
+  %h1 Игроки в командах
+
+%table.table.table-hover.table-condensed.table-bordered
+  %thead
+    %tr
+      %th Season goals
+      %th All goals
+      %th
+      %th
+      %th
+
+  %tbody
+    - @player_in_teams.each do |player_in_team|
+      %tr
+        %td= player_in_team.special_skill1
+        %td= player_in_team.num_sp_s1
+        %td= player_in_team.special_skill2
+        %td= player_in_team.num_sp_s2
+        %td= player_in_team.special_skill3
+        %td= player_in_team.num_sp_s3
+        %td= player_in_team.number
+        %td= player_in_team.season_games
+        %td= player_in_team.all_games
+        %td= player_in_team.season_goals
+        %td= player_in_team.all_goals
+        %td= player_in_team.season_autogoals
+        %td= player_in_team.all_autogoals
+        %td= player_in_team.season_yellow_cards
+        %td= player_in_team.all_yellow_cards
+        %td= player_in_team.season_red_cards
+        %td= player_in_team.all_red_cards
+        %td= player_in_team.status
+        %td= player_in_team.can_play
+        %td= player_in_team.injured
+        %td= link_to 'Show', player_in_team
+        %td= link_to 'Edit', edit_player_in_team_path(player_in_team)
+        %td= link_to 'Destroy', player_in_team, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Player in team', new_player_in_team_path

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :player_in_teams
+
   resources :players
 
   resources :teams
@@ -12,7 +14,11 @@ Rails.application.routes.draw do
   resources :club_bases
 
   resources :sponsors
-
+  resources :teams do
+    member do
+      get 'random_players', to: 'teams#random_players', as: :random_players
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'login' => "sessions#new", as: :login

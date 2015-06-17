@@ -1,0 +1,15 @@
+.page-header
+  %h1 Редактирование номера игрока
+
+= render 'form'
+
+%br
+-t=Team.find(@current_user.team_id)
+.btn-group
+  = link_to @player_in_team, class: 'btn btn-warning' do
+    =fa_icon "male"
+    #{@player.name}
+  -if t
+    = link_to t, class: 'btn btn-primary' do
+      =fa_icon "users"
+      Моя команда

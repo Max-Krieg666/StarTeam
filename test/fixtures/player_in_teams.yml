@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  special_skill1: MyString
+  num_sp_s1: 1
+  special_skill2: MyString
+  num_sp_s2: 1
+  special_skill3: MyString
+  num_sp_s3: 1
+  number: 1
+  season_games: 1
+  all_games: 1
+  season_goals: 1
+  all_goals: 1
+  season_autogoals: 1
+  all_autogoals: 1
+  season_yellow_cards: 1
+  all_yellow_cards: 1
+  season_red_cards: 1
+  all_red_cards: 1
+  status: MyString
+  can_play: 
+  injured: 1
+
+two:
+  special_skill1: MyString
+  num_sp_s1: 1
+  special_skill2: MyString
+  num_sp_s2: 1
+  special_skill3: MyString
+  num_sp_s3: 1
+  number: 1
+  season_games: 1
+  all_games: 1
+  season_goals: 1
+  all_goals: 1
+  season_autogoals: 1
+  all_autogoals: 1
+  season_yellow_cards: 1
+  all_yellow_cards: 1
+  season_red_cards: 1
+  all_red_cards: 1
+  status: MyString
+  can_play: 
+  injured: 1

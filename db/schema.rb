@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616114158) do
+ActiveRecord::Schema.define(version: 20150617113238) do
 
   create_table "bases", force: :cascade do |t|
     t.string   "owner"
@@ -46,6 +46,50 @@ ActiveRecord::Schema.define(version: 20150616114158) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  create_table "player_in_teams", force: :cascade do |t|
+    t.string   "name",                  limit: 50,                null: false
+    t.integer  "country_id"
+    t.string   "position1",                                       null: false
+    t.string   "position2"
+    t.integer  "talent",                                          null: false
+    t.integer  "age",                                             null: false
+    t.integer  "skill_level",                                     null: false
+    t.float    "price",                                           null: false
+    t.integer  "team_id",                                         null: false
+    t.string   "special_skill1",        limit: 2
+    t.integer  "num_sp_s1"
+    t.string   "special_skill2",        limit: 2
+    t.integer  "num_sp_s2"
+    t.string   "special_skill3",        limit: 2
+    t.integer  "num_sp_s3"
+    t.integer  "number"
+    t.integer  "season_games",                     default: 0
+    t.integer  "all_games",                        default: 0
+    t.integer  "season_goals",                     default: 0
+    t.integer  "all_goals",                        default: 0
+    t.integer  "season_passes",                    default: 0
+    t.integer  "all_passes",                       default: 0
+    t.integer  "season_conceded_goals",            default: 0
+    t.integer  "all_conceded_goals",               default: 0
+    t.integer  "season_autogoals",                 default: 0
+    t.integer  "all_autogoals",                    default: 0
+    t.integer  "season_yellow_cards",              default: 0
+    t.integer  "all_yellow_cards",                 default: 0
+    t.integer  "season_red_cards",                 default: 0
+    t.integer  "all_red_cards",                    default: 0
+    t.string   "status",                limit: 30
+    t.boolean  "basic"
+    t.boolean  "can_play",                         default: true
+    t.integer  "games_missed",                     default: 0
+    t.integer  "injured",                          default: 0
+    t.boolean  "captain"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "player_in_teams", ["country_id"], name: "index_player_in_teams_on_country_id"
+  add_index "player_in_teams", ["team_id"], name: "index_player_in_teams_on_team_id"
 
   create_table "players", force: :cascade do |t|
     t.string   "name",        limit: 50, null: false

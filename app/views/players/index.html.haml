@@ -1,7 +1,10 @@
+-team=Team.find(@current_user.team_id)
 .page-header
   %h1 Игроки
+  -if !team
+    .small.text-danger Необходимо создать команду, чтобы приобретение игроков стало доступным
 
-%table.table.table-bordered.table-hover.table-condensed
+%table.table-responsive.table-bordered.table-hover
   %thead
     %tr
       %th.text-center
@@ -29,6 +32,7 @@
         .fa.fa-star
         Качество игрока
       %th
+      %th
       -if @current_user.role!=0
         %th
         %th
@@ -37,8 +41,8 @@
     - @players.each do |player|
       %tr.text-center
         %td= player.name
+        -c=player.country
         %td
-          -c=player.country
           = image_tag c.flag.url, title: "#{c.title}"
         %td
           = player.position1
@@ -47,7 +51,11 @@
         %td= player.talent
         %td= player.age
         %td= player.skill_level
-        %td= number_to_currency(player.price, locale: :en)
+        %td
+          -a,count,i="#{player.price}".reverse,0,0
+          -while a[i]!='.'
+            -count+=1;i+=1
+          = number_to_currency(player.price, locale: :en, precision: count)
         %td
           =player.level_define/2.0
           -max=5
@@ -68,6 +76,13 @@
         %td
           = link_to player, class: "btn btn-link" do
             =fa_icon "street-view"
+        %td
+          -if team
+            = link_to new_player_in_team_path(name: player.name), data:{confirm: 'Вы уверены?'}, class: "btn btn-default" do
+              =fa_icon "share-square-o"
+              Купить
+          -else
+            .text-danger Покупка не доступна
 %br
 
 -if @current_user.role!=0

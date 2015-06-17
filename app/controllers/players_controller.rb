@@ -29,7 +29,7 @@ class PlayersController < ApplicationController
     tal=player_params[:talent].to_i
     skill=player_params[:skill_level].to_i
     age=player_params[:age].to_i
-    @player.price=tal*10000.0*skill/age
+    @player.price=(tal*10000.0*skill/age).round(3)
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Игрок успешно создан.' }
