@@ -26,10 +26,10 @@
         ="№#{pl.number}"
       .list-group-item{title: "Позиция"}
         .fa.fa-bookmark
-        -if pl.position2 && pl.position1!='Gk'
-          #{pl.position1} / #{pl.position2}
-        -else
-          #{pl.position1}
+        -str="#{pl.position1}"
+        -if !pl.position2.blank?
+          -str+=" / #{pl.position2}"
+        =str
       .list-group-item{title: "Талант"}
         .fa.fa-level-up
         #{pl.talent}

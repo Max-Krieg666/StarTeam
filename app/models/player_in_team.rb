@@ -11,8 +11,11 @@ class PlayerInTeam < ActiveRecord::Base
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
   validates :price, presence: true
   validates :basic, inclusion: { in: [true, false] }
-  validates :team_id, presence: true
-  validates :number, presence: true, inclusion: { in: 1..99 }
+  validates :team_id, inclusion: { in: 0..1000000 } #0 зарезервирован и обозначает,что данной команды нет
+  validates :none, inclusion: { in: [true, false] }
+  validates :number, presence: true, inclusion: { in: 1..99 }, allow_nil: true
   validates :status, presence: true, inclusion: { in: %w(active injured penalty(redcard) penalty(2yellowcards))}
-  validates_uniqueness_of :number, scope: :team_id
+  # validates_uniqueness_of :number, scope: :team_id if self.team_id>0
 end
+
+

@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.order("name")
+    @players = Player.where(inteam: false).includes(:country).page(params[:page]).order("countries.title")
   end
 
   # GET /players/1
@@ -30,6 +30,7 @@ class PlayersController < ApplicationController
     skill=player_params[:skill_level].to_i
     age=player_params[:age].to_i
     @player.price=(tal*10000.0*skill/age).round(3)
+    @player.inteam=false
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Игрок успешно создан.' }
@@ -47,7 +48,7 @@ class PlayersController < ApplicationController
     tal=player_params[:talent]
     skill=player_params[:skill_level]
     age=player_params[:age]
-    @player.price=tal.to_i*1000.0*skill.to_i/age.to_i
+    @player.price=(tal.to_i*10000.0*skill.to_i/age.to_i).round(3)
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to @player, notice: 'Игрок измёнен.' }
@@ -62,6 +63,7 @@ class PlayersController < ApplicationController
   # DELETE /players/1
   # DELETE /players/1.json
   def destroy
+    raise "fuck u!"
     @player.destroy
     respond_to do |format|
       format.html { redirect_to players_url, notice: 'Игрок удалён.' }

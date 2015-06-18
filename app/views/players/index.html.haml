@@ -44,10 +44,11 @@
         -c=player.country
         %td
           = image_tag c.flag.url, title: "#{c.title}"
-        %td
-          = player.position1
-          -if player.position2!=""
-            =player.position2
+        %td{title: player.right_alph_srt(player.position1)}
+          -str="#{player.position1}"
+          -if !player.position2.blank?
+            -str+=" / #{player.position2}"
+          =str
         %td= player.talent
         %td= player.age
         %td= player.skill_level
@@ -89,3 +90,6 @@
   = link_to new_player_path, class: "btn btn-default" do
     =fa_icon "plus"
     Новый игрок
+
+%br
+=paginate @players

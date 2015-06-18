@@ -86,18 +86,22 @@
       %tbody
         - @players.each do |pl|
           -c=Country.find(pl.country_id)
-          %tr.text-center
+          -if pl.basic
+            -styl="#CEF6CE"
+          -else
+            -styl="#F6D9D9"
+          %tr.text-center{style:"background: #{styl}"}
             %td
               %strong= pl.number
             %td
               = pl.name
               = fa_icon 'copyright', title: 'Капитан' if pl.captain
             %td= image_tag c.flag.url, title: c.title
-            %td
-              -if pl.position2 && pl.position1!='Gk'
-                #{pl.position1} / #{pl.position2}
-              -else
-                #{pl.position1}
+            %td{title: pl.right_alph_srt(pl.position1)}
+              -str="#{pl.position1}"
+              -if !pl.position2.blank?
+                -str+=" / #{pl.position2}"
+              =str
             %td= pl.talent
             %td= pl.age
             %td= pl.skill_level
@@ -142,7 +146,7 @@
   -else
     %h3.text-danger Необходимо купить игроков:
     .btn-group
-      = link_to "/teams/#{@team.id}/random_players?random=true", confirm: 'Вы уверены?',class: 'btn btn-default', style:"color: #00F" do
+      = link_to "/teams/#{@team.id}/random_players?random=true",class: 'btn btn-default', data:{confirm: 'Пожалуйста, подождите несколько секунд...'},style:"color: #00F" do
         =fa_icon "users"
         =fa_icon "random"
         Заполнить рандомно

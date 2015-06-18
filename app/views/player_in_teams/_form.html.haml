@@ -1,10 +1,10 @@
 = form_for @player_in_team do |f|
   -if params[:name]
-    =f.hidden_field :name, value: params[:name]
-  -else
-    =f.hidden_field :name, value: params[:player_in_team][:name]
+    -n=params[:name]
+  -elsif params[:player_in_team] && params[:player_in_team][:name]
+    -n=params[:player_in_team][:name]
+  =f.hidden_field :name, value: n
   =error_messages_for(@player_in_team)
-
   .row
     .col-md-2
       .form-group
@@ -20,5 +20,8 @@
         = f.select :basic, {"Основной состав"=>true, "Запас"=>false}, class: "form-control"
   .actions
     .btn-group
-      = f.submit 'Купить', class: "btn btn-warning"
+      -if Player.where(name:n,inteam:true).to_a.size>0
+        = f.submit 'Сохранить', class: "btn btn-warning"
+      -else
+        = f.submit 'Купить', class: "btn btn-warning"
       =link_to 'Отменить', players_path, class: "btn btn-danger"

@@ -8,7 +8,7 @@
 .btn-group
   = link_to @player_in_team, class: 'btn btn-warning' do
     =fa_icon "male"
-    #{@player.name}
+    #{@player_in_team.name}
   -if t
     = link_to t, class: 'btn btn-primary' do
       =fa_icon "users"

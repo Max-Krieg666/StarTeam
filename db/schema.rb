@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617113238) do
+ActiveRecord::Schema.define(version: 20150618100451) do
 
   create_table "bases", force: :cascade do |t|
     t.string   "owner"
@@ -48,15 +48,15 @@ ActiveRecord::Schema.define(version: 20150617113238) do
   end
 
   create_table "player_in_teams", force: :cascade do |t|
-    t.string   "name",                  limit: 50,                null: false
+    t.string   "name",                  limit: 50,                 null: false
     t.integer  "country_id"
-    t.string   "position1",                                       null: false
+    t.string   "position1",                                        null: false
     t.string   "position2"
-    t.integer  "talent",                                          null: false
-    t.integer  "age",                                             null: false
-    t.integer  "skill_level",                                     null: false
-    t.float    "price",                                           null: false
-    t.integer  "team_id",                                         null: false
+    t.integer  "talent",                                           null: false
+    t.integer  "age",                                              null: false
+    t.integer  "skill_level",                                      null: false
+    t.float    "price",                                            null: false
+    t.integer  "team_id",                                          null: false
     t.string   "special_skill1",        limit: 2
     t.integer  "num_sp_s1"
     t.string   "special_skill2",        limit: 2
@@ -84,24 +84,26 @@ ActiveRecord::Schema.define(version: 20150617113238) do
     t.integer  "games_missed",                     default: 0
     t.integer  "injured",                          default: 0
     t.boolean  "captain"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.boolean  "none",                             default: false
   end
 
   add_index "player_in_teams", ["country_id"], name: "index_player_in_teams_on_country_id"
   add_index "player_in_teams", ["team_id"], name: "index_player_in_teams_on_team_id"
 
   create_table "players", force: :cascade do |t|
-    t.string   "name",        limit: 50, null: false
+    t.string   "name",        limit: 50,                 null: false
     t.integer  "country_id"
-    t.string   "position1",              null: false
+    t.string   "position1",                              null: false
     t.string   "position2"
-    t.integer  "talent",                 null: false
-    t.integer  "age",                    null: false
-    t.integer  "skill_level",            null: false
-    t.float    "price",                  null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "talent",                                 null: false
+    t.integer  "age",                                    null: false
+    t.integer  "skill_level",                            null: false
+    t.float    "price",                                  null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "inteam",                 default: false
   end
 
   add_index "players", ["country_id"], name: "index_players_on_country_id"

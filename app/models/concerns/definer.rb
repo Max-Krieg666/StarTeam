@@ -3,6 +3,35 @@ module Definer
 
   @@posit=%w(Gk Ld Cd Rd Cdm Lm Cm Rm Cam Lf Cf Rf)
 
+  def right_alph_srt(pos)
+    case pos
+    when 'Gk'
+      1
+    when 'Ld'
+      2
+    when 'Cd'
+      3
+    when 'Rd'
+      4
+    when 'Lm'
+      5
+    when 'Cdm'
+      6
+    when 'Cm'
+      7
+    when 'Cam'
+      8
+    when 'Rm'
+      9
+    when 'Lf'
+      10
+    when 'Cf'
+      11
+    else# 'Rf'
+      12
+    end
+  end
+
   def level_define
     if talent==9
       if skill_level>100
