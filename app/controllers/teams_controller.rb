@@ -8,7 +8,8 @@ class TeamsController < ApplicationController
   end
 
   def random_players #тут метод беспощадного рандома игроков
-    if PlayerInTeam.where(team_id:@team.id,none: false).to_a.size>0
+    pit=PlayerInTeam.where(team_id:@team.id,none: false).to_a
+    if pit.size>0 && params[:random].blank?
       flash[:danger]='Невозможно рандомизировать состав'
       redirect_to @team
     else
@@ -27,7 +28,7 @@ class TeamsController < ApplicationController
       rfs=Player.where(position1: "Rf").to_a
       x=another([],gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
       cost,line_up=x[0],x[1]
-      while cost.round(3)>@team.budget
+      while cost>@team.budget
         x=another(line_up,gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
         cost,line_up=x[0],x[1]
       end
@@ -60,7 +61,7 @@ class TeamsController < ApplicationController
             end
           end
         else
-          if @team.update!(budget: @team.budget-pl.price)
+          if @team.update(budget: @team.budget-pl.price)
             a=PlayerInTeam.new
             a.name=pl.name
             a.team_id=@team.id
@@ -70,6 +71,7 @@ class TeamsController < ApplicationController
             a.position1=pl.position1
             a.position2=pl.position2
             a.talent=pl.talent
+            a.pos=right_alph_srt(pl.position1)
             a.age=pl.age
             a.skill_level=pl.skill_level
             a.price=pl.price
@@ -82,7 +84,7 @@ class TeamsController < ApplicationController
                 plrs.update(captain:false)
               end
             end
-            if a.save!
+            if a.save
               pl.update(inteam:true)
             else
               flash[:danger]='Не получилось обновить игрока!'
@@ -104,7 +106,7 @@ class TeamsController < ApplicationController
           end
         else
           crs=PlayerInTeam.where(team_id:@team.id,position1:t[i].position1).order("skill_level desc").limit(2).to_a
-          if t[i].id==crs[0] || t[i].id==crs[1]
+          if t[i].id==crs[0].id || t[i].id==crs[1].id
             t[i].basic=true
           end
         end
@@ -117,7 +119,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @players=PlayerInTeam.where(team_id:@team.id, none:false).order(basic: :desc).to_a
+    @players=PlayerInTeam.where(team_id:@team.id, none:false).order(basic: :desc,pos: :asc,skill_level: :desc).to_a
   end
 
   # GET /teams/new
@@ -192,7 +194,7 @@ class TeamsController < ApplicationController
       while x!=how
         (how-x).times do
           z=rand(mas.size)
-          if mas[z].price<250000
+          if mas[z].price<210000
             a<<z
             x+=1
           end

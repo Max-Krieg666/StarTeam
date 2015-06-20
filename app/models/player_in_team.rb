@@ -15,7 +15,6 @@ class PlayerInTeam < ActiveRecord::Base
   validates :none, inclusion: { in: [true, false] }
   validates :number, presence: true, inclusion: { in: 1..99 }, allow_nil: true
   validates :status, presence: true, inclusion: { in: %w(active injured penalty(redcard) penalty(2yellowcards))}
-  # validates_uniqueness_of :number, scope: :team_id if self.team_id>0
 end
 
 

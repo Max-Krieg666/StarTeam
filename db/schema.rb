@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618100451) do
+ActiveRecord::Schema.define(version: 20150620223231) do
 
   create_table "bases", force: :cascade do |t|
     t.string   "owner"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20150618100451) do
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
     t.boolean  "none",                             default: false
+    t.integer  "pos"
   end
 
   add_index "player_in_teams", ["country_id"], name: "index_player_in_teams_on_country_id"

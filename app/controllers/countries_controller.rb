@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :check_user
 
   # GET /countries
   # GET /countries.json
@@ -10,6 +11,9 @@ class CountriesController < ApplicationController
   # GET /countries/1
   # GET /countries/1.json
   def show
+    @users = User.includes(:country).where(country_id:@country.id)
+    @players = Player.includes(:country).where(country_id:@country.id,inteam:false).order(:name)
+    @player_in_teams = PlayerInTeam.includes(:country).where(country_id:@country.id,none:false).order(:name)
   end
 
   # GET /countries/new

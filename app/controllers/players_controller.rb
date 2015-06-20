@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.where(inteam: false).includes(:country).page(params[:page]).order("countries.title")
+    @players = Player.where(inteam: false).includes(:country).order("countries.title,players.name").page(params[:page])
   end
 
   # GET /players/1

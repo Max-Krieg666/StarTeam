@@ -34,7 +34,7 @@
             =link_to cb.title, cb, style: "color: #458B74"
           -else
             .text-danger Не создана!
-        %td= team.budget
+        %td= number_to_currency(team.budget, precision: 3, locale: :en)
         %td= number_to_human(team.fans, locale: :en, units: {thousand: "K",million:"M"})
         -if @current_user.role!=0
           %td.text-center

@@ -1,4 +1,5 @@
 class PlayerInTeamsController < ApplicationController
+  include Definer
   before_action :set_player_in_team, only: [:show, :edit, :update, :destroy]
   before_action :admin_permission, only: [:index]
   # GET /player_in_teams
@@ -29,9 +30,12 @@ class PlayerInTeamsController < ApplicationController
   # POST /player_in_teams.json
   def create
     team=Team.find(@current_user.team_id)
-    agent=Player.where(name: params[:player_in_team][:name]).first if params[:player_in_team][:name]
-    agent=Player.where(name: params[:name]).first if params[:name]
-    if agent
+    nam=params[:name] if params[:name]
+    nam=params[:player_in_team][:name] if params[:player_in_team][:name]
+    agent=Player.where(name: nam).first
+    pl_it=PlayerInTeam.where(name:nam,team_id:0,none:true).first
+    #raise (agent && !pl_it).inspect
+    if !agent.blank? && pl_it.blank?
       if !team
         flash[:danger]='Прежде, чем покупать игроков, создайте команду!'
         redirect_to @current_user
@@ -40,11 +44,25 @@ class PlayerInTeamsController < ApplicationController
         redirect_to players_path
       else
         str=1
+        player=PlayerInTeam.where(team_id: team.id, position1:agent.position1).first
         if params[:player_in_team][:basic]=='true'
-          player=PlayerInTeam.where(team_id: team.id, position1:agent.position1).first
           if player
-            player.basic=false
-            if player.save!
+            if player.position1!='Cm' || player.position1!='Cd'
+              k=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").first
+              if player.id==k.id
+                player.basic=true
+              else
+                k.update(basic:false)
+              end
+            else
+              crs=PlayerInTeam.where(team_id:team.id,position1:agent.position1).order("skill_level desc").limit(2).to_a
+              if player.id==crs[0].id || player.id==crs[1].id
+                player.basic=true
+              else
+                crs[1].update(basic:false)
+              end
+            end
+            if player.save
               str=2
             else
               str=3
@@ -57,6 +75,7 @@ class PlayerInTeamsController < ApplicationController
           @player_in_team.country_id=agent.country_id
           @player_in_team.position1=agent.position1
           @player_in_team.position2=agent.position2
+          @player_in_team.pos=right_alph_srt(agent.position1)
           @player_in_team.talent=agent.talent
           @player_in_team.age=agent.age
           @player_in_team.skill_level=agent.skill_level
@@ -101,6 +120,14 @@ class PlayerInTeamsController < ApplicationController
           render :new
         end
       end
+    elsif !pl_it.blank?
+      pl_it.team_id=team.id
+      pl_it.none=false
+      pl_it.number=params[:player_in_team][:number] if params[:player_in_team][:number]
+      agent.inteam=true
+      agent.save!
+      pl_it.save!
+      redirect_to team, notice: 'Игрок куплен.'
     else
       flash[:danger]='Не удалось купить игрока.'
       redirect_to team
