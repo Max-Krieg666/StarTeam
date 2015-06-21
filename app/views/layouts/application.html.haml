@@ -9,5 +9,35 @@
   %body
     =render 'navbar'
     .container
+      -if @current_user
+        -t=@current_user.team
+        -if t
+          -pls_size=PlayerInTeam.where(team_id: t.id).to_a.size
+          -if t.club_basis_id.blank?
+            .alert.alert-warning.fade.in
+              %button{class:'close',"aria-hidden":'true',"data-dismiss":'alert',"type":'button'}x
+              %strong Вы не построили базу клуба!
+              =link_to 'Построить базу клуба сейчас',new_club_basis_path(team_id:t.id), class:'btn btn-danger', type:'button'
+          -if t.stadium_id.blank?
+            .alert.alert-warning.fade.in
+              %button{class:'close',"aria-hidden":'true',"data-dismiss":'alert',"type":'button'}x
+              %strong Вы не построили стадион!
+              =link_to 'Построить стадион сейчас',new_stadium_path(team_id:t.id), class:'btn btn-danger', type:'button'
+          -if pls_size<18
+            .alert.alert-warning.fade.in
+              %button{class:'close',"aria-hidden":'true',"data-dismiss":'alert',"type":'button'}x
+              %strong Для оформления заявки на попадание в чемпионат вам осталось приобрести #{18-pls_size} #{Russian.p(18-pls_size,'игрока','игрока','игроков')}
+            .progress
+              -x=(pls_size/18.0*100).round(0)
+              .progress-bar-warning{role:"progressbar", "aria-valuenow":"#{x}".to_i, "aria-valuemin":0,"aria-valuemax":100, style: "width: #{x}%;"}
+                -if x>40
+                  .text-center Команда укомплектована на #{x}%: #{pls_size} из 18 игроков
+                -else
+                  .text-center #{x}%
+        -else
+          .alert.alert-danger.fade.in
+            %button{class:'close',"aria-hidden":'true',"data-dismiss":'alert',"type":'button'}x
+            %strong Вы не создали команду!
+            =link_to 'Создать команду прямо сейчас',new_team_path, class:'btn btn-danger', type:'button'
       =render 'flash_messages'
       =yield

@@ -41,3 +41,9 @@
 = link_to players_path, class: 'btn btn-info' do
   =fa_icon "users"
   Все игроки
+-if @current_user.team
+  = link_to new_player_in_team_path(name: @player.name), data:{confirm: 'Вы уверены?'}, class: "btn btn-default" do
+    =fa_icon "share-square-o"
+    Купить
+-else
+  .text-danger Покупка не доступна

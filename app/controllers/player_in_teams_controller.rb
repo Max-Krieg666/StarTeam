@@ -30,107 +30,146 @@ class PlayerInTeamsController < ApplicationController
   # POST /player_in_teams.json
   def create
     team=Team.find(@current_user.team_id)
+    cb=ClubBase.find(team.club_basis_id)
     nam=params[:name] if params[:name]
     nam=params[:player_in_team][:name] if params[:player_in_team][:name]
     agent=Player.where(name: nam).first
     pl_it=PlayerInTeam.where(name:nam,team_id:0,none:true).first
-    #raise (agent && !pl_it).inspect
-    if !agent.blank? && pl_it.blank?
-      if !team
-        flash[:danger]='Прежде, чем покупать игроков, создайте команду!'
-        redirect_to @current_user
-      elsif team.budget<agent.price
-        flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
-        redirect_to players_path
-      else
-        str=1
-        player=PlayerInTeam.where(team_id: team.id, position1:agent.position1).first
-        if params[:player_in_team][:basic]=='true'
-          if player
-            if player.position1!='Cm' || player.position1!='Cd'
-              k=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").first
-              if player.id==k.id
-                player.basic=true
-              else
-                k.update(basic:false)
-              end
-            else
-              crs=PlayerInTeam.where(team_id:team.id,position1:agent.position1).order("skill_level desc").limit(2).to_a
-              if player.id==crs[0].id || player.id==crs[1].id
-                player.basic=true
-              else
-                crs[1].update(basic:false)
-              end
-            end
-            if player.save
-              str=2
-            else
-              str=3
-            end
-          end
-        end
-        if str!=3
-          @player_in_team=PlayerInTeam.new
-          @player_in_team.name=agent.name
-          @player_in_team.country_id=agent.country_id
-          @player_in_team.position1=agent.position1
-          @player_in_team.position2=agent.position2
-          @player_in_team.pos=right_alph_srt(agent.position1)
-          @player_in_team.talent=agent.talent
-          @player_in_team.age=agent.age
-          @player_in_team.skill_level=agent.skill_level
-          @player_in_team.price=agent.price
-          @player_in_team.team_id=team.id
-          @player_in_team.basic=(params[:player_in_team][:basic]=='true')
-          @player_in_team.number=params[:player_in_team][:number]
-          @player_in_team.all_games=0
-          @player_in_team.season_games=0
-          @player_in_team.all_autogoals=0
-          @player_in_team.season_autogoals=0
-          @player_in_team.all_conceded_goals=0 if agent.position1=='Gk'
-          @player_in_team.season_conceded_goals=0 if agent.position1=='Gk'
-          @player_in_team.all_goals=0
-          @player_in_team.season_goals=0
-          @player_in_team.season_passes=0
-          @player_in_team.all_passes=0
-          @player_in_team.all_yellow_cards=0
-          @player_in_team.season_yellow_cards=0
-          @player_in_team.all_red_cards=0
-          @player_in_team.season_red_cards=0
-          @player_in_team.status='active'
-          @player_in_team.can_play=true
-          @player_in_team.games_missed=0
-          @player_in_team.injured=0
-          p=PlayerInTeam.where(team_id:team.id, none: false).order("price desc").first
-          @player_in_team.captain=(p && p.price<agent.price)
-          respond_to do |format|
-            if @player_in_team.save
-              team.budget-=@player_in_team.price
-              team.save!
-              agent.update(inteam:true)
-              format.html { redirect_to @player_in_team, notice: 'Игрок куплен.' }
-              format.json { render :show, status: :created, location: @player_in_team }
-            else
-              format.html { render :new}
-              format.json { render json: @player_in_team.errors, status: :unprocessable_entity }
-            end
-          end
-        else
-          flash[:danger]='Не удалось изменить статус игрока, попробуйте позже.'
-          render :new
-        end
-      end
-    elsif !pl_it.blank?
-      pl_it.team_id=team.id
-      pl_it.none=false
-      pl_it.number=params[:player_in_team][:number] if params[:player_in_team][:number]
-      agent.inteam=true
-      agent.save!
-      pl_it.save!
-      redirect_to team, notice: 'Игрок куплен.'
+    if !team
+      flash[:danger]='Прежде, чем покупать игроков, создайте команду!'
+      redirect_to new_team_path
+    elsif cb.capacity==PlayerInTeam.where(team_id:team.id).to_a.size
+      flash[:danger]='Расширьте базу клуба для покупки новых игроков!'
+      redirect_to cb
     else
-      flash[:danger]='Не удалось купить игрока.'
-      redirect_to team
+      if !agent.blank? && pl_it.blank?
+        if team.budget<agent.price
+          flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
+          redirect_to players_path
+        else
+          str=1
+          player=PlayerInTeam.where(team_id: team.id, position1:agent.position1).first
+          if params[:player_in_team][:basic]=='true'
+            if player
+              if player.position1!='Cm' || player.position1!='Cd'
+                k=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").first
+                if !k
+                  player.basic=true
+                elsif player.skill_level>k.skill_level
+                  player.basic=true
+                  k.update(basic:false)
+                else
+                  player.basic=false
+                end
+              else
+                crs=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").limit(2).to_a
+                if crs.size<2
+                  player.basic=true
+                elsif player.skill_level>crs[0].skill_level || player.skill_level>crs[1].skill_level
+                  player.basic=true
+                  crs[1].update(basic:false)
+                else
+                  player.basic=false
+                end
+              end
+              if player.save
+                str=2
+              else
+                str=3
+              end
+            end
+          end
+          if str!=3
+            @player_in_team=PlayerInTeam.new
+            @player_in_team.name=agent.name
+            @player_in_team.country_id=agent.country_id
+            @player_in_team.position1=agent.position1
+            @player_in_team.position2=agent.position2
+            @player_in_team.pos=right_alph_srt(agent.position1)
+            @player_in_team.talent=agent.talent
+            @player_in_team.age=agent.age
+            @player_in_team.skill_level=agent.skill_level
+            @player_in_team.price=agent.price
+            @player_in_team.team_id=team.id
+            @player_in_team.basic=(params[:player_in_team][:basic]=='true')
+            @player_in_team.number=params[:player_in_team][:number]
+            @player_in_team.all_games=0
+            @player_in_team.season_games=0
+            @player_in_team.all_autogoals=0
+            @player_in_team.season_autogoals=0
+            @player_in_team.all_conceded_goals=0 if agent.position1=='Gk'
+            @player_in_team.season_conceded_goals=0 if agent.position1=='Gk'
+            @player_in_team.all_goals=0
+            @player_in_team.season_goals=0
+            @player_in_team.season_passes=0
+            @player_in_team.all_passes=0
+            @player_in_team.all_yellow_cards=0
+            @player_in_team.season_yellow_cards=0
+            @player_in_team.all_red_cards=0
+            @player_in_team.season_red_cards=0
+            @player_in_team.status='active'
+            @player_in_team.can_play=true
+            @player_in_team.games_missed=0
+            @player_in_team.injured=0
+            if @player_in_team.position1!='Cm' || @player_in_team.position1!='Cd'
+              k=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").first
+              if !k
+                @player_in_team.basic=true
+              elsif player.skill_level>k.skill_level
+                @player_in_team.basic=true
+                k.update(basic:false)
+              else
+                @player_in_team.basic=false
+              end
+            else
+              crs=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").limit(2).to_a
+              if crs.size<2
+                @player_in_team.basic=true
+              elsif @player_in_team.skill_level>crs[0].skill_level || @player_in_team.skill_level>crs[1].skill_level
+                @player_in_team.basic=true
+                crs[1].update(basic:false)
+              else
+                @player_in_team.basic=false
+              end
+            end
+            p=PlayerInTeam.where(team_id:team.id, none: false).order("price desc").first
+            @player_in_team.captain=(p && p.price<agent.price)
+            respond_to do |format|
+              if @player_in_team.save
+                team.budget-=@player_in_team.price
+                team.save!
+                agent.update(inteam:true)
+                format.html { redirect_to @player_in_team, notice: 'Игрок куплен.' }
+                format.json { render :show, status: :created, location: @player_in_team }
+              else
+                format.html { render :new}
+                format.json { render json: @player_in_team.errors, status: :unprocessable_entity }
+              end
+            end
+          else
+            flash[:danger]='Не удалось изменить статус игрока, попробуйте позже.'
+            render :new
+          end
+        end
+      elsif !pl_it.blank?
+        if team.budget<agent.price
+          flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
+          redirect_to players_path
+        else
+          pl_it.team_id=team.id
+          pl_it.none=false
+          pl_it.number=params[:player_in_team][:number] if params[:player_in_team][:number]
+          agent.inteam=true
+          team.budget-=pl_it.price
+          team.save!
+          agent.save!
+          pl_it.save!
+          redirect_to team, notice: 'Игрок куплен.'
+        end
+      else
+        flash[:danger]='Не удалось купить игрока.'
+        redirect_to team
+      end
     end
   end
 
@@ -187,9 +226,9 @@ class PlayerInTeamsController < ApplicationController
       player=pl
     end
     if player.update(basic:true)
-      if agent.save!
-        team.update!(budget:team.budget+pl.price/2.0)
-        @player_in_team.update!(none:true,captain:false,team_id:0)
+      if agent.save
+        team.update(budget:team.budget+pl.price/2.0)
+        @player_in_team.update(none:true,captain:false,team_id:0)
         respond_to do |format|
           format.html { redirect_to team, notice: 'Игрок уволен из Вашей команды и стал свободным агентом.' }
           format.json { head :no_content }

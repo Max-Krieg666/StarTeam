@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
+  include Definer
   before_action :set_team, only: [:show, :edit, :update, :destroy, :random_players]
-
+  before_action :check_user
   # GET /teams
   # GET /teams.json
   def index
@@ -16,16 +17,16 @@ class TeamsController < ApplicationController
       #для укомплектования состава выбераем 18 игроков - 11 основа + 7 запас
       #2 Gk + 2 Ld + 3 Cd +2 Rd + 1 Lm + 3 Cm + 2 Rm + 1 Lf + 1 Cf + 1 Rf
       #основа: gk,ld,2cd,rd,lm,2cm,rm,cf,rf
-      gks=Player.where(position1: "Gk").to_a
-      lds=Player.where(position1: "Ld").to_a
-      cds=Player.where(position1: "Cd").to_a
-      rds=Player.where(position1: "Rd").to_a
-      lms=Player.where(position1: "Lm").to_a
-      cms=Player.where(position1: "Cm").to_a
-      rms=Player.where(position1: "Rm").to_a
-      lfs=Player.where(position1: "Lf").to_a
-      cfs=Player.where(position1: "Cf").to_a
-      rfs=Player.where(position1: "Rf").to_a
+      gks=Player.where(position1: "Gk",inteam:false).to_a
+      lds=Player.where(position1: "Ld",inteam:false).to_a
+      cds=Player.where(position1: "Cd",inteam:false).to_a
+      rds=Player.where(position1: "Rd",inteam:false).to_a
+      lms=Player.where(position1: "Lm",inteam:false).to_a
+      cms=Player.where(position1: "Cm",inteam:false).to_a
+      rms=Player.where(position1: "Rm",inteam:false).to_a
+      lfs=Player.where(position1: "Lf",inteam:false).to_a
+      cfs=Player.where(position1: "Cf",inteam:false).to_a
+      rfs=Player.where(position1: "Rf",inteam:false).to_a
       x=another([],gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
       cost,line_up=x[0],x[1]
       while cost>@team.budget
@@ -35,29 +36,53 @@ class TeamsController < ApplicationController
       for i in 0...line_up.size
         pl=line_up[i]
         pla=PlayerInTeam.where(team_id: 0, name: pl.name,none:true).first
-        if pla
+        if !(pla.blank?)
           if @team.budget<pla.price
             flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
-            redirect_to players_path
           else
             if pl.update(inteam:true)
               if @team.update!(budget: @team.budget-pl.price)
-                pls=PlayerInTeam.where(team_id:@team.id).map{|x| x.number}
+                pls=PlayerInTeam.where(team_id:@team.id).map{|x| x.number}.compact!
                 pla.number=num(pls)
                 pla.team_id=@team.id
                 pla.basic=false
                 pla.none=false
+                if pla.position1!='Cm' && pla.position1!='Cd'
+                  k=PlayerInTeam.where(team_id:@team.id,position1:pla.position1).order("skill_level desc").first
+                  if !k
+                    pla.basic=true
+                  elsif pla.skill_level>k.skill_level
+                    pla.basic=true
+                    k.update(basic:false)
+                  else
+                    pla.basic=false
+                  end
+                else
+                  crs=PlayerInTeam.where(team_id:@team.id,position1:pla.position1).order("skill_level desc").limit(2).to_a
+                  if crs.size<2
+                    pla.basic=true
+                  elsif pla.skill_level>crs[0].skill_level || pla.skill_level>crs[1].skill_level
+                    pla.basic=true
+                    crs[1].update(basic:false)
+                  else
+                    pla.basic=false
+                  end
+                end
+                plrs=PlayerInTeam.where(team_id:@team.id).order("price desc").first
+                if plrs
+                  if plrs.price<pla.price
+                    pla.captain=true
+                    plrs.update(captain:false)
+                  end
+                end
                 if !(pla.save!)
                   flash[:danger]='Не удалось обновить team_id!'
-                  redirect_to players_path
                 end
               else
                 flash[:danger]='Ошибка в бюджете!'
-                redirect_to players_path
               end
             else
               flash[:danger]='Действие не удалось!'
-              redirect_to players_path
             end
           end
         else
@@ -75,44 +100,50 @@ class TeamsController < ApplicationController
             a.age=pl.age
             a.skill_level=pl.skill_level
             a.price=pl.price
-            a.basic=false
             a.status='active'
+            a.none=false
             plrs=PlayerInTeam.where(team_id:@team.id).order("price desc").first
+            pls=PlayerInTeam.where(team_id:@team.id).map{|x| x.number}.compact!
+            a.number=num(pls)
+            if a.position1!='Cm' || a.position1!='Cd'
+              k=PlayerInTeam.where(team_id:@team.id,position1:a.position1).order("skill_level desc").first
+              if !k
+                a.basic=true
+              elsif a.skill_level>k.skill_level
+                a.basic=true
+                k.update(basic:false)
+              else
+                a.basic=false
+              end
+            else
+              crs=PlayerInTeam.where(team_id:@team.id,position1:a.position1).order("skill_level desc").limit(2).to_a
+              if crs.size<2
+                a.basic=true
+              elsif a.skill_level>crs[0].skill_level || a.skill_level>crs[1].skill_level
+                a.basic=true
+                crs[1].update(basic:false)
+              else
+                a.basic=false
+              end
+            end
             if plrs
-              if plrs.price<pl.price
+              if a.price>plrs.price
                 a.captain=true
                 plrs.update(captain:false)
               end
             end
             if a.save
               pl.update(inteam:true)
-            else
-              flash[:danger]='Не получилось обновить игрока!'
-              redirect_to @team
             end
           else
             flash[:danger]='Что-то пошло не так!'
-            redirect_to @team
           end
         end
       end
-      t=@team.player_in_teams.to_a
-      for i in 0...t.size
-        pls=PlayerInTeam.where(team_id:@team.id).map{|x| x.number}.compact!
-        t[i].number=num(pls)
-        if t[i].position1!='Cm' || t[i].position1!='Cd'
-          if t[i].id==PlayerInTeam.where(team_id:@team.id,position1:t[i].position1).order("skill_level desc").first.id
-            t[i].basic=true
-          end
-        else
-          crs=PlayerInTeam.where(team_id:@team.id,position1:t[i].position1).order("skill_level desc").limit(2).to_a
-          if t[i].id==crs[0].id || t[i].id==crs[1].id
-            t[i].basic=true
-          end
-        end
-        t[i].save!
+      if @team.size==18
+        flash[:notice]='Команда успешно укомплектована.'
       end
-      redirect_to @team, notice: 'Команда успешно укомплектована.'
+      redirect_to @team
     end
   end
 
@@ -228,8 +259,10 @@ class TeamsController < ApplicationController
     end
     def num(mas)
       n=rand(99)+1
-      while mas.include?(n)
-        n=rand(99)+1
+      if !(mas.blank?)
+        while mas.include?(n)
+          n=rand(99)+1
+        end
       end
       return n
     end
@@ -239,6 +272,6 @@ class TeamsController < ApplicationController
       attrs=[:title, :sponsor_id]
       attrs << :budget if @current_user.try(:admin?)
       attrs << :fans if @current_user.try(:admin?)
-      params.require(:user).permit(*attrs)
+      params.require(:team).permit(*attrs)
     end
 end

@@ -3,7 +3,15 @@
   %h1 Игроки
   -if !team
     .small.text-danger Необходимо создать команду, чтобы приобретение игроков стало доступным
+.row
+  =form_tag players_path, :method => 'get' do
+    .input-group
+      .col-lg-6
+        = text_field_tag :search, params[:search], class: 'form-control'
+        .input-group-btn
+          = submit_tag "Искать по имени или позиции", :name => nil, class:'btn btn-default'
 
+%br
 %table.table-responsive.table-bordered.table-hover
   %thead
     %tr
@@ -31,11 +39,11 @@
       %th.text-center
         .fa.fa-star
         Качество игрока
-      %th
-      %th
-      -if @current_user.role!=0
-        %th
-        %th
+      -#%th
+      -#%th
+      -#-if @current_user.role!=0
+      -#  %th
+      -#  %th
       
   %tbody
     - @players.each do |player|

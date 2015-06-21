@@ -20,7 +20,7 @@
     %b База клуба:
     -if @team.club_basis_id
       -cb=ClubBase.find(@team.club_basis_id)
-      =link_to cb.title, cb, style: "color: #458B74", class: 'btn btn-link'
+      =link_to cb.title+" (#{cb.level})", cb, style: "color: #458B74", class: 'btn btn-link'
     -else
       Не создана
   %p
@@ -67,6 +67,9 @@
             .fa.fa-futbol-o
           %th.text-center{title: "Забитые голы"}
             .fa.fa-plus
+            .fa.fa-futbol-o
+          %th.text-center{title: "Голевые пасы"}
+            .fa.fa-share
             .fa.fa-futbol-o
           %th.text-center{title: "Автоголы"}
             .fa.fa-frown-o
@@ -120,6 +123,7 @@
             %td #{pl.season_games}/#{pl.all_games}
             %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
             %td #{pl.season_goals}/#{pl.all_goals}
+            %td #{pl.season_passes}/#{pl.all_passes}
             %td #{pl.season_autogoals}/#{pl.all_autogoals}
             %td #{pl.season_yellow_cards}/#{pl.all_yellow_cards}
             %td #{pl.season_red_cards}/#{pl.all_red_cards}

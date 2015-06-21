@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
   has_many :player_in_teams
 
   validates :title, presence: true, uniqueness: true, length: {maximum: 50}
-  validates :sponsor, presence: true
+  validates :sponsor_id, presence: true
   validates :budget, presence: true
   validates :fans, presence: true
 end

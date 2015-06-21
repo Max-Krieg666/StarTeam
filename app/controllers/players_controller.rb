@@ -5,7 +5,11 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.where(inteam: false).includes(:country).order("countries.title,players.name").page(params[:page])
+    @players = Player.includes(:country).order("countries.title,players.name").search(params[:search]).page(params[:page])
+    if @players.size.zero? && params[:search].blank?
+      flash[:danger] = "Игроков с таким именем нет!"
+      @projects = Player.where(inteam: false).includes(:country).order("countries.title,players.name").page(params[:page])
+    end
   end
 
   # GET /players/1

@@ -9,4 +9,12 @@ class Player < ActiveRecord::Base
   validates :age, presence: true, inclusion: { in: 16..39 }
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
   validates :price, presence: true
+
+  def self.search(search)
+    if search
+      where('inteam = ? and (name LIKE ? or position1 LIKE ?)',false,"%"+search+"%","%"+search+"%")
+    else
+      where('inteam = ?',false)
+    end
+  end
 end
