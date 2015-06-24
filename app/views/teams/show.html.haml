@@ -31,7 +31,9 @@
     .fa.fa-users
     = @team.fans
   %br
-  -if @players.size!=0
+  -kol=@players.size
+  -if kol!=0
+    -av_skills,av_tal,av_age,av_price=0,0,0,0
     %table.table.table-bordered.table-hover.table-condensed
       %thead
         %tr{class: 'success'}
@@ -88,6 +90,10 @@
 
       %tbody
         - @players.each do |pl|
+          -av_skills+=pl.skill_level
+          -av_age+=pl.age
+          -av_price+=pl.price
+          -av_tal+=pl.talent
           -c=Country.find(pl.country_id)
           -if pl.basic
             -styl="#CEF6CE"
@@ -147,6 +153,29 @@
             %td
               = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
                 =fa_icon 'street-view'
+    %table.table.table-bordered
+      %thead
+        %tr{class: 'info'}
+          %th.text-center
+            Среднее
+            %br
+            по команде:
+          %th.text-center
+            Талант
+            .text-danger
+              =(av_tal/kol.to_f).round(1)
+          %th.text-center
+            Возраст
+            .text-danger
+              =(av_age/kol.to_f).round(2)
+          %th.text-center
+            Мастерство
+            .text-danger
+              =(av_skills/kol.to_f).round(2)
+          %th.text-center
+            Цена
+            .text-danger
+              =number_to_currency(av_price/kol.to_f, locale: :en, precision: 3)
   -else
     %h3.text-danger Необходимо купить игроков:
     .btn-group
