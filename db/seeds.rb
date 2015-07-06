@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Страны
-countries=HTTParty.get 'http://api.vk.com/method/database.getCountries?v=5.21&need_all=1&count=500'
+require '../lib/tasks/bd3'
 c1=[]
-countries['response']['items'].each do |attrs|
-  c1<<Country.new(title: attrs['title'])
+for i in 0...@c1.size
+  c1<<Country.new(title:@c1[i])
 end
 unknown=File.new("#{Rails.root}/flags/flags/shiny/24/Unknown.png")
 for i in 0...c1.size
