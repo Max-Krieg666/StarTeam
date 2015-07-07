@@ -5,4 +5,8 @@ require 'httparty'
 @countries['response']['items'].each do |attrs|
   @c1<<attrs['title']
 end
-@pos=%w(Gk Ld Cd Rd Cdm Lm Cm Rm Cam Lf Cf Rf)
+@pos=%w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf) #Cdm и Cam не определены
+@pos<<'Cm'
+@pos<<'Cd'
+@pos<<'Cm'
+@pos<<'Cf'
