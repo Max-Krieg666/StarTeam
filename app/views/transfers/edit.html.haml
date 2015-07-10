@@ -1,0 +1,12 @@
+-if @transfer.status=='Завершён' || @transfer.status=='Отменён'
+  %h1 Нельзя редактировать данное трансферное предложение
+-else
+  %h1 Редактирование трансферного предложения
+
+  = render 'form'
+
+  = link_to 'Показать', @transfer
+
+= link_to transfers_path, class: 'btn btn-info' do
+  =fa_icon "reply"
+  Все трансферы

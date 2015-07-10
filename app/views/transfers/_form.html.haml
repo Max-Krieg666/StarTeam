@@ -1,0 +1,12 @@
+= form_for @transfer do |f|
+  =f.hidden_field :player_id, value: params[:player_id]
+  =error_messages_for(@transfer)
+  -if params[:player_id]
+    -pl=PlayerInTeam.find(params[:player_id])
+  -else
+    -pl=@transfer.player
+  .form-group
+    = f.label :cost
+    = f.number_field :cost, class: "form-control", min: pl.price/2.0, max: pl.price*2
+  .actions
+    = f.submit nil, class: "btn btn-primary"

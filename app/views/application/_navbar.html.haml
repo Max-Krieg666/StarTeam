@@ -23,6 +23,7 @@
           %li=link_to "Стадионы", stadia_path
           %li=link_to "Базы клубов", club_bases_path
           %li=link_to "Игроки", players_path
+          %li=link_to "Трансферы", transfers_path
           %li=link_to "Создать команду", new_team_path if !@current_user.team
           %li=link_to "Создать игрока", new_player_path if @current_user.moderator?
       %ul.nav.navbar-nav.navbar-right

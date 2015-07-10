@@ -1,0 +1,71 @@
+.text-center
+  .page-header
+    %h1 Создание нового трансферного предложения
+    -pl=PlayerInTeam.find(params[:player_id])
+    -c=Country.find(pl.country_id)
+    %h3
+      =pl.name
+      =image_tag c.flag.url, title: "#{c.title}"
+  .row.text-danger
+    .col-md-2
+    .col-md-4
+      .list-group
+        %h3.list-group-item.active{style: "color: #00F"}
+          .fa.fa-male
+          =pl.name
+          =image_tag c.flag.url, title: "#{c.title}"
+          -max=5
+          .row{style: "color: #FFD700"}
+            -cel,ost=pl.level_define/2,pl.level_define%2
+            -cel.times do
+              .fa.fa-star
+            -if pl.level_define%2!=0
+              .fa.fa-star-half-o
+            -(max-cel-ost).times do
+              .fa.fa-star-o
+          ="№#{pl.number}"
+        .list-group-item{title: "Позиция"}
+          .fa.fa-bookmark
+          -str="#{pl.position1}"
+          -if !pl.position2.blank?
+            -str+=" / #{pl.position2}"
+          =str
+        .list-group-item{title: "Талант"}
+          .fa.fa-level-up
+          #{pl.talent}
+        .list-group-item{title: "Возраст"}
+          .fa.fa-history
+          #{pl.age} #{Russian.p(pl.age, "год", "года", "лет")}
+        .list-group-item{title: "Мастерство"}
+          .fa.fa-line-chart
+          #{pl.skill_level}
+        .list-group-item{title: "Цена"}
+          .fa.fa-money
+          -a,count,i="#{pl.price}".reverse,0,0
+          -while a[i]!='.'
+            -count+=1;i+=1
+          #{number_to_currency(pl.price, locale: :en, precision: count)}
+        .list-group-item{title: "Специальные умения"}
+          .fa.fa-flash
+          -str=""
+          -if pl.special_skill1
+            -str=str+pl.special_skill1+"-#{pl.num_sp_s1}"
+            -str=str+" / "+pl.special_skill2+"-#{pl.num_sp_s2}" if pl.special_skill2
+            -str=str+" / "+pl.special_skill3+"-#{pl.num_sp_s3}" if pl.special_skill3
+            #{str}
+          -else
+            Спец. умений нет
+    .col-md-2
+    .col-md-3
+      %br
+      %br
+      %br
+      %br
+      %br
+      = render 'form'
+  = link_to transfers_path, class: 'btn btn-info' do
+    =fa_icon "reply"
+    Все трансферы
+  = link_to @current_user.team, class: 'btn btn-warning' do
+    =fa_icon "users"
+    Моя команда

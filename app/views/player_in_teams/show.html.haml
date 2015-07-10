@@ -75,8 +75,10 @@
         -else
           .li{style:"color: #D00"} [Запас]
 
-
+  .col-md-1
   .col-md-2
+    %br
+    %br
     .list-group
       %h4.list-group-item.active{style: "color: #00F", title: "Статистика"}
         .glyphicon.glyphicon-stats
@@ -100,6 +102,8 @@
       .list-group-item{style: "color: #D00",title: "Красные карточки"}
         .fa.fa-square
   .col-md-2
+    %br
+    %br
     .list-group.h4
       .list-group-item.active{style: "color: #00F",title: "Текущий сезон"}
         .fa.fa-clock-o
@@ -119,6 +123,8 @@
       .list-group-item
         =pl.season_red_cards
   .col-md-2
+    %br
+    %br
     .list-group.h4
       .list-group-item.active{style: "color: #00F",title: "Карьера"}
         .fa.fa-history
@@ -144,4 +150,4 @@
     Редактировать
 = link_to t, class: 'btn btn-info' do
   =fa_icon "users"
-  Моя команда
+  #{t.title}

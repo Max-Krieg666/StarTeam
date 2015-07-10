@@ -1,0 +1,21 @@
+%h1 Информация о трансфере игрока
+
+%p
+  %b Игрок:
+  = @transfer.player
+%p
+  %b Продавец:
+  = @transfer.vendor
+%p
+  %b Покупатель:
+  = @transfer.purchaser
+%p
+  %b Итоговая стоимость:
+  = @transfer.cost
+%p
+  %b Статус:
+  = @transfer.status
+
+= link_to 'Редактировать', edit_transfer_path(@transfer)
+\|
+= link_to 'Все трансферы', transfers_path

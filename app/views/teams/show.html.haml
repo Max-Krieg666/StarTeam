@@ -146,6 +146,8 @@
                 = link_to pl, method: :delete, controller: :player_in_teams, :data => { :confirm => 'Продать игрока за полцены на рынок свободных агентов? Игрок потеряет все спец. умения. Это действие отменить нельзя!' }, title: 'Продать игрока', class: "btn btn-link" do
                   =fa_icon 'usd'
                   =fa_icon 'sign-out'
+                = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
+                  .glyphicon.glyphicon-transfer
             -else
               %td
                 = link_to '#', :data => { :confirm => 'Создать заявку на покупку этого игрока?' }, title: 'Купить игрока', class: "btn btn-link" do

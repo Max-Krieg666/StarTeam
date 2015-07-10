@@ -96,6 +96,12 @@ ru:
         can_play: Может ли играть?
         games_missed: Пропускает матчей
         injured: Степень тяжести травмы
+      transfer:
+        player: Игрок
+        vendor: Клуб-продавец
+        purchaser: Клуб-покупатель
+        cost: Итоговая сумма
+        status: Статус
     models:
       sponsor: Спонсор
       club_base: База клуба
@@ -105,3 +111,4 @@ ru:
       team: Команда
       player: Игрок
       player_in_team: Игрок в команде
+      transfer: Трансфер
