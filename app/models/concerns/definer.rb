@@ -3,32 +3,43 @@ module Definer
 
   @@posit=%w(Gk Ld Cd Rd Cdm Lm Cm Rm Cam Lf Cf Rf)
 
+  def state_in_human(state)
+    case state
+      when 0
+        'свободен'
+      when 1
+        'в команде'
+      else #2
+        'завершил карьеру'
+    end
+  end
+
   def right_alph_srt(pos)
     case pos
-    when 'Gk'
-      1
-    when 'Ld'
-      2
-    when 'Cd'
-      3
-    when 'Rd'
-      4
-    when 'Lm'
-      5
-    when 'Cdm'
-      6
-    when 'Cm'
-      7
-    when 'Cam'
-      8
-    when 'Rm'
-      9
-    when 'Lf'
-      10
-    when 'Cf'
-      11
-    else# 'Rf'
-      12
+      when 'Gk'
+        1
+      when 'Ld'
+        2
+      when 'Cd'
+        3
+      when 'Rd'
+        4
+      when 'Lm'
+        5
+      when 'Cdm'
+        6
+      when 'Cm'
+        7
+      when 'Cam'
+        8
+      when 'Rm'
+        9
+      when 'Lf'
+        10
+      when 'Cf'
+        11
+      else# 'Rf'
+        12
     end
   end
 

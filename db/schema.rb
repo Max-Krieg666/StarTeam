@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150710140345) do
 
-  create_table "bases", force: :cascade do |t|
-    t.string   "owner"
-    t.string   "title"
-    t.integer  "level"
-    t.integer  "capacity"
-    t.integer  "training_fields"
-    t.float    "experience_up"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
   create_table "club_bases", force: :cascade do |t|
     t.integer  "team_id"
     t.string   "title",                         null: false
@@ -47,16 +36,20 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "player_in_teams", force: :cascade do |t|
-    t.string   "name",                  limit: 50,                 null: false
+  create_table "players", force: :cascade do |t|
+    t.string   "name",                  limit: 50,                    null: false
     t.integer  "country_id"
-    t.string   "position1",                                        null: false
+    t.string   "position1",                                           null: false
     t.string   "position2"
-    t.integer  "talent",                                           null: false
-    t.integer  "age",                                              null: false
-    t.integer  "skill_level",                                      null: false
-    t.float    "price",                                            null: false
-    t.integer  "team_id",                                          null: false
+    t.integer  "talent",                                              null: false
+    t.integer  "age",                                                 null: false
+    t.integer  "skill_level",                                         null: false
+    t.float    "price",                                               null: false
+    t.boolean  "in_team",                          default: false
+    t.integer  "state"
+    t.integer  "team_id"
+    t.boolean  "none",                             default: false
+    t.integer  "pos"
     t.string   "special_skill1",        limit: 2
     t.integer  "num_sp_s1"
     t.string   "special_skill2",        limit: 2
@@ -78,36 +71,18 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.integer  "all_yellow_cards",                 default: 0
     t.integer  "season_red_cards",                 default: 0
     t.integer  "all_red_cards",                    default: 0
-    t.string   "status",                limit: 30
+    t.string   "status",                limit: 30, default: "active"
     t.boolean  "basic"
     t.boolean  "can_play",                         default: true
     t.integer  "games_missed",                     default: 0
     t.integer  "injured",                          default: 0
     t.boolean  "captain"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.boolean  "none",                             default: false
-    t.integer  "pos"
-  end
-
-  add_index "player_in_teams", ["country_id"], name: "index_player_in_teams_on_country_id"
-  add_index "player_in_teams", ["team_id"], name: "index_player_in_teams_on_team_id"
-
-  create_table "players", force: :cascade do |t|
-    t.string   "name",        limit: 50,                 null: false
-    t.integer  "country_id"
-    t.string   "position1",                              null: false
-    t.string   "position2"
-    t.integer  "talent",                                 null: false
-    t.integer  "age",                                    null: false
-    t.integer  "skill_level",                            null: false
-    t.float    "price",                                  null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "inteam",                 default: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
   add_index "players", ["country_id"], name: "index_players_on_country_id"
+  add_index "players", ["team_id"], name: "index_players_on_team_id"
 
   create_table "sponsors", force: :cascade do |t|
     t.string   "title",              limit: 30,                                         null: false

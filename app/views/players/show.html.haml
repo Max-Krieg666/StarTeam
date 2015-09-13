@@ -2,7 +2,7 @@
   %h1= @player.name
 %p
   %b Национальность:
-  -c=@player.country
+  -c = @player.country
   =link_to c.title, c, class: 'btn btn-link', style: "color: #00688B"
   =image_tag c.flag.url
 %p

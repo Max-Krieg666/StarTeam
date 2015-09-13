@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
     @players = Player.includes(:country).order("countries.title,players.name").search(params[:search]).page(params[:page])
     if @players.size.zero? && params[:search].blank?
       flash[:danger] = "Игроков с таким именем нет!"
-      @players = Player.where(inteam: false).includes(:country).order("countries.title,players.name").page(params[:page])
+      @players = Player.where(in_team: false).includes(:country).order("countries.title,players.name").page(params[:page])
     end
   end
 
@@ -34,7 +34,6 @@ class PlayersController < ApplicationController
     skill=player_params[:skill_level].to_i
     age=player_params[:age].to_i
     @player.price=(tal*10000.0*skill/age).round(3)
-    @player.inteam=false
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Игрок успешно создан.' }

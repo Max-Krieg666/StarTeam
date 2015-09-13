@@ -20,8 +20,9 @@
           %tr.text-center
             %td=link_to user.login,user,style:"color: #FFA500"
             %td
-              -if user.team
-                =link_to user.team.title, user.team, style: "color: #00F"
+              -t = user.team
+              -if t
+                =link_to t.title, t, style: "color: #00F"
               -else
                 .text-danger.li Не создана!
   -else
@@ -58,7 +59,7 @@
       %tbody
         - @player_in_teams.each do |pl|
           %tr.text-center
-            -t=pl.team
+            -t = pl.team
             %td=link_to t.title, t, style: "color: #00F"
             %td=link_to pl.name, pl, style: "color: #410405"
             %td{title: pl.right_alph_srt(pl.position1)}

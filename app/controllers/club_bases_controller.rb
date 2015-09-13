@@ -12,14 +12,14 @@ class ClubBasesController < ApplicationController
   # GET /club_bases/1
   # GET /club_bases/1.json
   def show
-    @team=Team.find(@club_basis.team_id)
-    @user=User.find(@team.user_id)
+    @team = @club_basis.team
+    @user = @team.user
   end
 
   # GET /club_bases/new
   def new
     @club_basis = ClubBase.new
-    @club_basis.team_id=@team.id
+    @club_basis.team_id = @team.id
   end
 
   # GET /club_bases/1/edit

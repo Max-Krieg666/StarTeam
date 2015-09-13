@@ -1,17 +1,19 @@
 require File.expand_path(File.dirname(__FILE__) + "/bd1.rb")
 require File.expand_path(File.dirname(__FILE__) + "/bd2.rb")
 require File.expand_path(File.dirname(__FILE__) + "/bd3.rb")
-DEF=2
+DEF = 2
 
 desc "Создание #{DEF} игроков"
 namespace :players do
   task :create=>:environment do
-    DEF.times do
-      x,bar=rand(90)+1,""
-      pl=Player.new
-      pl.position1=@pos[rand(@pos.size)]
-      pl.position2=""
-      tal=rand(700)+1
+    DEF.times do |i|
+      x, bar = rand(90)+1, ""
+      pl = Player.new
+      pl.position1 = @pos[rand(@pos.size)]
+      pl.position2 = ""
+      pl.state = 0
+      pl.basic = false
+      tal = rand(700)+1
       k=(case tal
       when 0..88
         1
@@ -76,17 +78,17 @@ namespace :players do
       else
         rand(25..74)
       end)
-      pl.skill_level=l
-      pl.price=pl.talent*pl.skill_level*10000/pl.age
+      pl.skill_level = l
+      pl.price = pl.talent*pl.skill_level*10000/pl.age
       case x
       when 1,5,10,12,23 #Россия
-        name=@rus_names[rand(@rus_names.size)]
-        lastname=@rus_lastnames[rand(@rus_lastnames.size)]
-        pl.country_id=160
+        name = @rus_names[rand(@rus_names.size)]
+        lastname = @rus_lastnames[rand(@rus_lastnames.size)]
+        pl.country_id = 160
       when 2,13,24 #Англия
-        name=@eng_names[rand(@eng_names.size)]
-        lastname=@eng_lastnames[rand(@eng_lastnames.size)]
-        pl.country_id=237
+        name = @eng_names[rand(@eng_names.size)]
+        lastname = @eng_lastnames[rand(@eng_lastnames.size)]
+        pl.country_id = 237
       when 3,25 #Ирландия
         name=@irl_names[rand(@irl_names.size)]
         lastname=@irl_lastnames[rand(@irl_lastnames.size)]
@@ -226,8 +228,9 @@ namespace :players do
           pl.country_id=mas[rand(mas.size)]
         end
       end
-      pl.name=name+" "+bar+lastname
+      pl.name = name+" "+bar+lastname
       pl.save!
+      puts "#{i+1}: " + pl.name + " <" + pl.country.title + ">"
     end
   end
 end

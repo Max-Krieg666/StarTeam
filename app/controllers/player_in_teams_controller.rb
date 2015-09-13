@@ -138,7 +138,7 @@ class PlayerInTeamsController < ApplicationController
               if @player_in_team.save
                 team.budget-=@player_in_team.price
                 team.save!
-                agent.update(inteam:true)
+                agent.update(in_team:true)
                 format.html { redirect_to @player_in_team, notice: 'Игрок куплен.' }
                 format.json { render :show, status: :created, location: @player_in_team }
               else
@@ -159,7 +159,7 @@ class PlayerInTeamsController < ApplicationController
           pl_it.team_id=team.id
           pl_it.none=false
           pl_it.number=params[:player_in_team][:number] if params[:player_in_team][:number]
-          agent.inteam=true
+          agent.in_team=true
           team.budget-=pl_it.price
           team.save!
           agent.save!
@@ -192,7 +192,7 @@ class PlayerInTeamsController < ApplicationController
   def destroy
     pl=@player_in_team
     team=Team.find(@current_user.team_id)
-    agent=Player.where(inteam:true,name:pl.name).first
+    agent=Player.where(in_team:true,name:pl.name).first
     agent.price=(pl.talent*10000.0*pl.skill_level/pl.age).round(3)
     agent.price+=100000 if !pl.position2.blank?
     sum=0
@@ -200,7 +200,7 @@ class PlayerInTeamsController < ApplicationController
     sum+=pl.num_sp_s2 if pl.num_sp_s2
     sum+=pl.num_sp_s3 if pl.num_sp_s3
     agent.price+=25000*sum
-    agent.inteam=false
+    agent.in_team=false
     if pl.basic
       gks,i=PlayerInTeam.where(team_id: team.id, none: false, position1:'Gk').to_a,0
       while i<gks.size

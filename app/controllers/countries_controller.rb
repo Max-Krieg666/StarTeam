@@ -12,8 +12,8 @@ class CountriesController < ApplicationController
   # GET /countries/1.json
   def show
     @users = User.includes(:country).where(country_id:@country.id)
-    @players = Player.includes(:country).where(country_id:@country.id,inteam:false).order(:name)
-    @player_in_teams = PlayerInTeam.includes(:country).where(country_id:@country.id,none:false).order(:name)
+    @players = Player.includes(:country).where(country_id:@country.id,in_team:false).order(:name)
+    @player_in_teams = Player.includes(:country).where(country_id:@country.id,in_team:true).order(:name)
   end
 
   # GET /countries/new

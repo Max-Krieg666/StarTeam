@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :transfers
 
-  resources :player_in_teams
+  resources :player_in_teams, only: [:show]
 
   resources :players
 
