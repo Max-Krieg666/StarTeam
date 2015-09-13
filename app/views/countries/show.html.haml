@@ -58,7 +58,7 @@
       %tbody
         - @player_in_teams.each do |pl|
           %tr.text-center
-            -t=Team.find(pl.team_id)
+            -t=pl.team
             %td=link_to t.title, t, style: "color: #00F"
             %td=link_to pl.name, pl, style: "color: #410405"
             %td{title: pl.right_alph_srt(pl.position1)}
