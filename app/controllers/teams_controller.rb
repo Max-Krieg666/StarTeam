@@ -150,8 +150,8 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @players = Player.where(team_id: @team.id, none: false).order(basic: :desc, pos: :asc, skill_level: :desc).to_a
-    @club_basis = ClubBase.find(@team.club_basis_id)
+    @players = Player.where(team_id: @team.id).order(basic: :desc, pos: :asc, skill_level: :desc).to_a
+    @club_basis = @team.club_basis_id ? ClubBase.find(@team.club_basis_id) : nil
     @stadium = @team.stadium
   end
 
@@ -210,7 +210,7 @@ class TeamsController < ApplicationController
     sp = Sponsor.find(sp_id)
     sp.team_id = nil
     sp.save!
-    # TODO при удалении команды отпускать на свободный рыно@club_basisк всех игроков в ней
+    # TODO при удалении команды отпускать на свободный рынок всех игроков в ней
     respond_to do |format|
       format.html { redirect_to @current_user, notice: 'Команда удалена.' }
       format.json { head :no_content }
@@ -222,7 +222,7 @@ class TeamsController < ApplicationController
     def set_team
       @team = Team.find(params[:id])
     end
-
+    # TODO разобраться с этими стрёмными методами
     def my_rand(mas,how)
       a,x=[],0
       while x!=how

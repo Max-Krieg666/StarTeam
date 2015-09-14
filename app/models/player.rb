@@ -1,8 +1,11 @@
 class Player < ActiveRecord::Base
   include Definer
+  include Basic_Player
   belongs_to :country
   belongs_to :team
   has_many :transfers
+
+  after_initialize :pos_define
 
   validates :name, presence: true, uniqueness: true, length: {maximum: 50}
   validates :country_id, presence: true
@@ -14,10 +17,13 @@ class Player < ActiveRecord::Base
   validates :price, presence: true
   validates :basic, inclusion: { in: [true, false] }
   validates :team_id, inclusion: { in: 0..1000000 }, allow_blank: true #0 зарезервирован и обозначает,что данной команды нет
-  validates :none, inclusion: { in: [true, false] }
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
   validates :status, presence: true, inclusion: { in: %w(active injured transfer penalty(redcard) penalty(2yellowcards))}
   validates :state, inclusion: { in: 0..2}
+
+  def pos_define
+    self.pos = right_alph_srt(self.position1)
+  end
 
   def self.search(search)
     if search

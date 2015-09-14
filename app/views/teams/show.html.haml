@@ -180,7 +180,7 @@
   -else
     %h3.text-danger Необходимо купить игроков:
     .btn-group
-      = link_to "/teams/#{@team.id}/random_players?random=true",class: 'btn btn-default', data:{confirm: 'Пожалуйста, подождите несколько секунд...'},style:"color: #00F" do
+      = link_to "/teams/#{@team.id}/random_players?random=true", class: 'btn btn-default', data:{confirm: 'Пожалуйста, подождите несколько секунд...'},style:"color: #00F" do
         =fa_icon "users"
         =fa_icon "random"
         Заполнить рандомно

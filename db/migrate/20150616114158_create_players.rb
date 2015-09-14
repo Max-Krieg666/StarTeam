@@ -14,7 +14,6 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :state, default: 0 # 0 - свободен, 1 - в команде, 2 - завершил карьеру
       # игрок в команде
       t.belongs_to :team, index: true
-      t.boolean :none, default: false
       t.integer :pos
       t.string :special_skill1, limit: 2 # спецумение 1
       t.integer :num_sp_s1 # уровень спецумения 1

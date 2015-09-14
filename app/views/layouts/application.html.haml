@@ -12,7 +12,7 @@
       -if @current_user
         -t=@current_user.team
         -if t
-          -pls_size=Player.where(team_id: t.id, none: false).to_a.size
+          -pls_size=Player.where(team_id: t.id, state: 1, in_team: true).to_a.size
           -if t.club_basis_id.blank?
             .alert.alert-warning.fade.in
               %button{class:'close',"aria-hidden"=>'true',"data-dismiss"=>'alert',"type"=>'button'}x

@@ -1,12 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + "/bd1.rb")
 require File.expand_path(File.dirname(__FILE__) + "/bd2.rb")
 require File.expand_path(File.dirname(__FILE__) + "/bd3.rb")
-DEF = 2
+COUNT = 2
 
-desc "Создание #{DEF} игроков"
+desc "Создание #{COUNT} игроков"
 namespace :players do
   task :create=>:environment do
-    DEF.times do |i|
+    puts "#{COUNT} players_create: START!"
+    COUNT.times do |i|
       x, bar = rand(90)+1, ""
       pl = Player.new
       pl.position1 = @pos[rand(@pos.size)]
@@ -218,19 +219,22 @@ namespace :players do
           #ar1:Бахрейн,Ирак,Кувейт,Оман,Катар,Саудовская Аравия и ОАЭ
           bar=@ar1_prephixes[rand(@ar1_prephixes.size)]
           lastname=@ar1_lastnames[rand(@ar1_lastnames.size)]
-          mas=[18,73,97,142,85,168,141]
-          pl.country_id=mas[rand(mas.size)]
+          mas = [18,73,97,142,85,168,141]
+          s = mas.size
+          pl.country_id = mas[rand(s)]
         else
           #ar2:Иордания,Ливан,Палестина,Сирия
           bar=@ar2_prephixes[rand(@ar2_prephixes.size)]
           lastname=@ar2_lastnames[rand(@ar2_lastnames.size)]
-          mas=[72,104,150,182]
-          pl.country_id=mas[rand(mas.size)]
+          mas = [72,104,150,182]
+          s = mas.size
+          pl.country_id=mas[rand(s)]
         end
       end
       pl.name = name+" "+bar+lastname
       pl.save!
       puts "#{i+1}: " + pl.name + " <" + pl.country.title + ">"
     end
+    puts "#{COUNT} players_create: OK!"
   end
 end

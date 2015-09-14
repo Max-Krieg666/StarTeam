@@ -28,28 +28,28 @@ class PlayerInTeamsController < ApplicationController
 
   # POST /player_in_teams
   # POST /player_in_teams.json
-  def create
-    team=Team.find(@current_user.team_id)
-    cb=ClubBase.find(team.club_basis_id)
-    nam=params[:name] if params[:name]
-    nam=params[:player_in_team][:name] if params[:player_in_team][:name]
-    agent=Player.where(name: nam).first
-    pl_it=PlayerInTeam.where(name:nam,team_id:0,none:true).first
-    if !team
-      flash[:danger]='Прежде, чем покупать игроков, создайте команду!'
-      redirect_to new_team_path
-    elsif cb.capacity==PlayerInTeam.where(team_id:team.id).to_a.size
-      flash[:danger]='Расширьте базу клуба для покупки новых игроков!'
-      redirect_to cb
-    else
-      if !agent.blank? && pl_it.blank?
-        if team.budget<agent.price
-          flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
-          redirect_to players_path
-        else
-          str=1
-          player=PlayerInTeam.where(team_id: team.id, position1:agent.position1).first
-          if params[:player_in_team][:basic]=='true'
+  # def create
+  #   team=Team.find(@current_user.team_id)
+  #   cb=ClubBase.find(team.club_basis_id)
+  #   nam=params[:name] if params[:name]
+  #   nam=params[:player_in_team][:name] if params[:player_in_team][:name]
+  #   agent=Player.where(name: nam).first
+  #   pl_it=PlayerInTeam.where(name:nam,team_id:0,none:true).first
+  #   if !team
+  #     flash[:danger]='Прежде, чем покупать игроков, создайте команду!'
+  #     redirect_to new_team_path
+  #   elsif cb.capacity==PlayerInTeam.where(team_id:team.id).to_a.size
+  #     flash[:danger]='Расширьте базу клуба для покупки новых игроков!'
+  #     redirect_to cb
+  #   else
+  #     if !agent.blank? && pl_it.blank?
+  #       if team.budget<agent.price
+  #         flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
+  #         redirect_to players_path
+  #       else
+  #         str=1
+  #         player=PlayerInTeam.where(team_id: team.id, position1:agent.position1).first
+  #         if params[:player_in_team][:basic]=='true'
             if player
               if player.position1!='Cm' || player.position1!='Cd'
                 k=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").first
@@ -80,37 +80,37 @@ class PlayerInTeamsController < ApplicationController
             end
           end
           if str!=3
-            @player_in_team=PlayerInTeam.new
-            @player_in_team.name=agent.name
-            @player_in_team.country_id=agent.country_id
-            @player_in_team.position1=agent.position1
-            @player_in_team.position2=agent.position2
-            @player_in_team.pos=right_alph_srt(agent.position1)
-            @player_in_team.talent=agent.talent
-            @player_in_team.age=agent.age
-            @player_in_team.skill_level=agent.skill_level
-            @player_in_team.price=agent.price
-            @player_in_team.team_id=team.id
-            @player_in_team.basic=(params[:player_in_team][:basic]=='true')
-            @player_in_team.number=params[:player_in_team][:number]
-            @player_in_team.all_games=0
-            @player_in_team.season_games=0
-            @player_in_team.all_autogoals=0
-            @player_in_team.season_autogoals=0
-            @player_in_team.all_conceded_goals=0 if agent.position1=='Gk'
-            @player_in_team.season_conceded_goals=0 if agent.position1=='Gk'
-            @player_in_team.all_goals=0
-            @player_in_team.season_goals=0
-            @player_in_team.season_passes=0
-            @player_in_team.all_passes=0
-            @player_in_team.all_yellow_cards=0
-            @player_in_team.season_yellow_cards=0
-            @player_in_team.all_red_cards=0
-            @player_in_team.season_red_cards=0
-            @player_in_team.status='active'
-            @player_in_team.can_play=true
-            @player_in_team.games_missed=0
-            @player_in_team.injured=0
+            # @player_in_team=PlayerInTeam.new
+            # @player_in_team.name=agent.name
+            # @player_in_team.country_id=agent.country_id
+            # @player_in_team.position1=agent.position1
+            # @player_in_team.position2=agent.position2
+            # @player_in_team.pos=right_alph_srt(agent.position1)
+            # @player_in_team.talent=agent.talent
+            # @player_in_team.age=agent.age
+            # @player_in_team.skill_level=agent.skill_level
+            # @player_in_team.price=agent.price
+            # @player_in_team.team_id=team.id
+            # @player_in_team.basic=(params[:player_in_team][:basic]=='true')
+            # @player_in_team.number=params[:player_in_team][:number]
+            # @player_in_team.all_games=0
+            # @player_in_team.season_games=0
+            # @player_in_team.all_autogoals=0
+            # @player_in_team.season_autogoals=0
+            # @player_in_team.all_conceded_goals=0 if agent.position1=='Gk'
+            # @player_in_team.season_conceded_goals=0 if agent.position1=='Gk'
+            # @player_in_team.all_goals=0
+            # @player_in_team.season_goals=0
+            # @player_in_team.season_passes=0
+            # @player_in_team.all_passes=0
+            # @player_in_team.all_yellow_cards=0
+            # @player_in_team.season_yellow_cards=0
+            # @player_in_team.all_red_cards=0
+            # @player_in_team.season_red_cards=0
+            # @player_in_team.status='active'
+            # @player_in_team.can_play=true
+            # @player_in_team.games_missed=0
+            # @player_in_team.injured=0
             if @player_in_team.position1!='Cm' || @player_in_team.position1!='Cd'
               k=PlayerInTeam.where(team_id:team.id,position1:player.position1).order("skill_level desc").first
               if !k

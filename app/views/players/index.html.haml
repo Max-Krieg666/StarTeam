@@ -87,7 +87,7 @@
             =fa_icon "street-view"
         %td
           -if team
-            = link_to nil, class: "btn btn-default", id: 'buy_player' do
+            = link_to buy_player_player_path(player), class: "btn btn-default", id: 'buy_player' do
               =fa_icon "share-square-o"
               Купить
           -else

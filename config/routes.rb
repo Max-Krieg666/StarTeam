@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   resources :player_in_teams, only: [:show]
 
-  resources :players
+  resources :players do
+    member do
+      get 'buy_player', to: 'players#buy_player', as: :buy_player
+    end
+  end
 
   resources :teams
 

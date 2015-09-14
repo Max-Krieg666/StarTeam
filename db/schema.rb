@@ -46,9 +46,8 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.integer  "skill_level",                                         null: false
     t.float    "price",                                               null: false
     t.boolean  "in_team",                          default: false
-    t.integer  "state"
+    t.integer  "state",                            default: 0
     t.integer  "team_id"
-    t.boolean  "none",                             default: false
     t.integer  "pos"
     t.string   "special_skill1",        limit: 2
     t.integer  "num_sp_s1"
@@ -72,7 +71,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.integer  "season_red_cards",                 default: 0
     t.integer  "all_red_cards",                    default: 0
     t.string   "status",                limit: 30, default: "active"
-    t.boolean  "basic"
+    t.boolean  "basic",                            default: false
     t.boolean  "can_play",                         default: true
     t.integer  "games_missed",                     default: 0
     t.integer  "injured",                          default: 0
