@@ -3,17 +3,17 @@
 
 # Страны
 require_relative '../lib/tasks/bd3'
-c1=[]
+c1 = []
 for i in 0...@c1.size
-  c1<<Country.new(title:@c1[i])
+  c1 << Country.new(title:@c1[i])
 end
-unknown=File.new("#{Rails.root}/flags/flags/shiny/24/Unknown.png")
+unknown = File.new("#{Rails.root}/flags/flags/shiny/24/Unknown.png")
 for i in 0...c1.size
   begin
-    flag=File.new("#{Rails.root}/flags/flags/shiny/24/#{c1[i].title}.png")
-    c1[i].flag=flag
+    flag = File.new("#{Rails.root}/flags/flags/shiny/24/#{c1[i].title}.png")
+    c1[i].flag = flag
   rescue
-    c1[i].flag=unknown
+    c1[i].flag = unknown
   end
   c1[i].save!
 end

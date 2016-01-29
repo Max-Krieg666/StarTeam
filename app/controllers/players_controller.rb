@@ -6,10 +6,10 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.includes(:country).order("countries.title,players.name").search(params[:search]).page(params[:page])
+    @players = Player.includes(:country).order("countries.title, players.name").search(params[:search]).page(params[:page])
     if @players.size.zero? && params[:search].blank?
       flash[:danger] = "Игроков с таким именем нет!"
-      @players = Player.where(in_team: false, state: 0).includes(:country).order("countries.title,players.name").page(params[:page])
+      @players = Player.where(in_team: false, state: 0).includes(:country).order("countries.title, players.name").page(params[:page])
     end
   end
 
@@ -34,7 +34,7 @@ class PlayersController < ApplicationController
     tal = player_params[:talent].to_i
     skill = player_params[:skill_level].to_i
     age= player_params[:age].to_i
-    @player.price = (tal*10000.0*skill/age).round(3)
+    @player.price = (tal * 10000.0 * skill / age).round(3)
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Игрок успешно создан.' }

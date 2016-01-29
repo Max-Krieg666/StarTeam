@@ -1,7 +1,7 @@
 desc "Создание 3 пользователей с разными правами"
 namespace :users do
-  task :create=>:environment do
-    print '3 players_create: '
+  task :create => :environment do
+    print '3 users_create: '
     User.create(login: "Admin", password: "administrator",
                 mail: "admin@test.ru", sex: 'м', role: 2)
     print '. '

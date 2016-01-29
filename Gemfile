@@ -12,7 +12,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 gem 'execjs'
+
+# интернационализация
 gem 'rails-i18n'
+# русификация
 gem 'russian'
 
 # Use jquery as the JavaScript library
@@ -43,6 +46,8 @@ gem 'mechanize'
 # Icons
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+
+gem 'uuid'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
