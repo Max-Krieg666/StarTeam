@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150710140345) do
 
-  create_table "bases", force: :cascade do |t|
-    t.string   "owner"
-    t.string   "title"
-    t.integer  "level"
-    t.integer  "capacity"
-    t.integer  "training_fields"
-    t.float    "experience_up"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
   create_table "club_bases", force: :cascade do |t|
     t.integer  "team_id"
     t.string   "title",                         null: false
