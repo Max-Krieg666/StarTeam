@@ -1,9 +1,14 @@
 # Страны
 
-
 Rails.root.join('lib', 'tasks', 'bd3')
 
 ActiveRecord::Base.transaction do
+  @c1 += ['Абхазия', 'Аланд', 'Англия', 'Канарские острова',
+    'Кокосовые острова (Килинг)', 'Майотта', 'Нидерландские Антиллы',
+    'Остров Рождества', 'Уэльс', 'Сен-Бартельми',
+    'Северная Ирландия', 'Северный Кипр', 'Сомалиленд', 'Шотландия',
+    'Южная Осетия', 'Южная Георгия и Южные Сандвичевы Острова']
+
   for i in 0...@c1.size
     c = Country.new(title: @c1[i])
     begin
@@ -12,16 +17,6 @@ ActiveRecord::Base.transaction do
       c.flag = File.new(Rails.root.join('flags', 'flags', 'shiny', '24', 'Unknown.png'))
     end
     c.save!
-  end
-
-  additional_countries = ['Абхазия', 'Аланд', 'Англия', 'Канарские острова',
-    'Кокосовые острова (Килинг)', 'Майотта', 'Нидерландские Антиллы',
-    'Остров Рождества', 'Уэльс', 'Сен-Бартельми',
-    'Северная Ирландия', 'Северный Кипр', 'Сомалиленд', 'Шотландия',
-    'Южная Осетия', 'Южная Георгия и Южные Сандвичевы Острова']
-
-  additional_countries.each do |country_title|
-    Country.create!(title: country_title, flag: File.new(Rails.root.join('flags', 'flags', 'shiny', '24', "#{country_title}.png")))
   end
 
   puts "Стран создано: #{Country.count}"
