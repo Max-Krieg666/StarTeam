@@ -18,6 +18,8 @@ gem 'rails-i18n'
 # русификация
 gem 'russian'
 
+#TODO add gem 'devise'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-tablesorter'
