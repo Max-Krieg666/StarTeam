@@ -1,6 +1,6 @@
 class CreatePlayers < ActiveRecord::Migration
   def change
-    create_table :players do |t|
+    create_table :players, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string :name, null: false, unique: true, limit: 50
       t.belongs_to :country, index: true
       t.string :position1, null: false
@@ -13,7 +13,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.boolean :in_team, default: false
       t.integer :state, default: 0 # 0 - свободен, 1 - в команде, 2 - завершил карьеру
       # игрок в команде
-      t.belongs_to :team, index: true
+      t.uuid :team_id, index: true
       t.integer :pos
       t.string :special_skill1, limit: 2 # спецумение 1
       t.integer :num_sp_s1 # уровень спецумения 1
@@ -40,11 +40,16 @@ class CreatePlayers < ActiveRecord::Migration
       t.boolean :basic, default: false # основной состав, если true, иначе - запасной
       t.boolean :can_play, default: true # может ли играть игрок в след. матче
       t.integer :games_missed, default: 0 # сколько осталось пропустить матчей, чтобы начать играть
-      t.integer :injured, default: 0 # степень тяжести травмы
+      t.boolean :injured, default: false # наличие травмы
       t.boolean :captain # капитан или нет
+      t.float :morale # мораль
+      t.float :physical_condition # физ. готовность
+      
+      # TODO подумать, как сделать такую штуку как карьера
+      # типо 20 - 25 лет - FC Ross
+      # типо 25 - 40 лет - FC Manguul
 
       t.timestamps null: false
     end
-    add_foreign_key :players, :countries
   end
 end

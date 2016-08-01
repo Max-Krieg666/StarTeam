@@ -13,8 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20150710140345) do
 
-  create_table "club_bases", force: :cascade do |t|
-    t.integer  "team_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "club_bases", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "team_id"
     t.string   "title",                         null: false
     t.integer  "level",           default: 1,   null: false
     t.integer  "capacity",        default: 20,  null: false
@@ -24,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "updated_at",                    null: false
   end
 
-  add_index "club_bases", ["team_id"], name: "index_club_bases_on_team_id"
+  add_index "club_bases", ["team_id"], name: "index_club_bases_on_team_id", using: :btree
 
   create_table "countries", force: :cascade do |t|
     t.string   "title"
@@ -36,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "players", force: :cascade do |t|
+  create_table "players", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name",                  limit: 50,                    null: false
     t.integer  "country_id"
     t.string   "position1",                                           null: false
@@ -47,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.float    "price",                                               null: false
     t.boolean  "in_team",                          default: false
     t.integer  "state",                            default: 0
-    t.integer  "team_id"
+    t.uuid     "team_id"
     t.integer  "pos"
     t.string   "special_skill1",        limit: 2
     t.integer  "num_sp_s1"
@@ -74,19 +78,21 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.boolean  "basic",                            default: false
     t.boolean  "can_play",                         default: true
     t.integer  "games_missed",                     default: 0
-    t.integer  "injured",                          default: 0
+    t.boolean  "injured",                          default: false
     t.boolean  "captain"
+    t.float    "morale"
+    t.float    "physical_condition"
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
   end
 
-  add_index "players", ["country_id"], name: "index_players_on_country_id"
-  add_index "players", ["team_id"], name: "index_players_on_team_id"
+  add_index "players", ["country_id"], name: "index_players_on_country_id", using: :btree
+  add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
 
-  create_table "sponsors", force: :cascade do |t|
+  create_table "sponsors", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "title",              limit: 30,                                         null: false
     t.string   "specialization",     limit: 100,                                        null: false
-    t.integer  "team_id"
+    t.uuid     "team_id"
     t.decimal  "loyalty_factor",                 precision: 3,  scale: 2, default: 1.0, null: false
     t.decimal  "cost_of_full_stake",             precision: 20, scale: 2,               null: false
     t.decimal  "win_prize",                      precision: 7,  scale: 2,               null: false
@@ -96,53 +102,46 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "updated_at",                                                            null: false
   end
 
-  add_index "sponsors", ["team_id"], name: "index_sponsors_on_team_id"
+  add_index "sponsors", ["team_id"], name: "index_sponsors_on_team_id", using: :btree
 
-  create_table "stadia", force: :cascade do |t|
+  create_table "stadia", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "title",      limit: 100, null: false
     t.integer  "capacity",               null: false
     t.integer  "level",                  null: false
-    t.integer  "team_id"
+    t.uuid     "team_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "stadia", ["team_id"], name: "index_stadia_on_team_id"
+  add_index "stadia", ["team_id"], name: "index_stadia_on_team_id", using: :btree
 
-  create_table "teams", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "title",         limit: 30,                          null: false
-    t.integer  "sponsor_id",                                        null: false
-    t.integer  "stadium_id"
-    t.integer  "club_basis_id"
-    t.decimal  "budget",                   precision: 20, scale: 2, null: false
-    t.integer  "fans",                                              null: false
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+  create_table "teams", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "user_id"
+    t.string   "title",      limit: 30,                          null: false
+    t.decimal  "budget",                precision: 20, scale: 2, null: false
+    t.integer  "fans",                                           null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
-  add_index "teams", ["club_basis_id"], name: "index_teams_on_club_basis_id"
-  add_index "teams", ["sponsor_id"], name: "index_teams_on_sponsor_id"
-  add_index "teams", ["stadium_id"], name: "index_teams_on_stadium_id"
-  add_index "teams", ["user_id"], name: "index_teams_on_user_id"
+  add_index "teams", ["user_id"], name: "index_teams_on_user_id", using: :btree
 
-  create_table "transfers", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "vendor_id"
-    t.integer  "purchaser_id"
-    t.float    "cost"
+  create_table "transfers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "player_id"
+    t.uuid     "vendor_id"
+    t.uuid     "purchaser_id"
+    t.float    "cost",         null: false
     t.string   "status"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "transfers", ["player_id"], name: "index_transfers_on_player_id"
-  add_index "transfers", ["purchaser_id"], name: "index_transfers_on_purchaser_id"
-  add_index "transfers", ["vendor_id"], name: "index_transfers_on_vendor_id"
+  add_index "transfers", ["player_id"], name: "index_transfers_on_player_id", using: :btree
+  add_index "transfers", ["purchaser_id"], name: "index_transfers_on_purchaser_id", using: :btree
+  add_index "transfers", ["vendor_id"], name: "index_transfers_on_vendor_id", using: :btree
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "login",               limit: 24, null: false
-    t.integer  "team_id"
     t.string   "password_digest"
     t.integer  "country_id"
     t.string   "sex"
@@ -156,7 +155,5 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
-
-  add_index "users", ["team_id"], name: "index_users_on_team_id"
 
 end
