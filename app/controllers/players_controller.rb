@@ -3,37 +3,29 @@ class PlayersController < ApplicationController
   before_action :set_team, only: [:buy_player]
   before_action :admin_permission, except: [:show, :index]
 
-  # GET /players
-  # GET /players.json
   def index
-    @players = Player.includes(:country).order("countries.title, players.name").search(params[:search]).page(params[:page])
-    if @players.size.zero? && params[:search].blank?
-      flash[:danger] = "Игроков с таким именем нет!"
-      @players = Player.where(in_team: false, state: 0).includes(:country).order("countries.title, players.name").page(params[:page])
+    @players = Player.includes(:country).order('countries.title, players.name').search(params[:search]).page(params[:page])
+    if @players.blank? && params[:search].blank?
+      flash[:danger] = 'Игроков с таким именем нет!'
+      @players = Player.where(in_team: false, state: 0).includes(:country).order('countries.title, players.name').page(params[:page])
     end
   end
 
-  # GET /players/1
-  # GET /players/1.json
   def show
   end
 
-  # GET /players/new
   def new
     @player = Player.new
   end
 
-  # GET /players/1/edit
   def edit
   end
 
-  # POST /players
-  # POST /players.json
   def create
     @player = Player.new(player_params)
     tal = player_params[:talent].to_i
     skill = player_params[:skill_level].to_i
-    age= player_params[:age].to_i
+    age = player_params[:age].to_i
     @player.price = (tal * 10000.0 * skill / age).round(3)
     respond_to do |format|
       if @player.save
@@ -48,45 +40,53 @@ class PlayersController < ApplicationController
 
   def buy_player
     # приходит id игрока
-    cb = ClubBase.find(@team.club_basis_id)
+    cb = ClubBase.find(@current_user_team.club_basis_id) if @current_user_team
     # если игрок нашелся по id и свободен
-    @player = Player.where(id: params[:id], state: 0).first
-    if !@team
+    @player = Player.find(params[:id])
+    unless @current_user_team
       flash[:danger] = 'Прежде, чем покупать игроков, создайте команду!'
       redirect_to new_team_path
-    elsif cb.capacity == Player.where(team_id: @team.id, state: 1, in_team: true).to_a.size
+    elsif @player.state != 0 || @player.in_team
+      flash[:danger] = 'Произошла ошибка!'
+      redirect_to players_path
+    elsif cb.capacity == @current_user_team.players.count
       flash[:danger] = 'Расширьте базу клуба для покупки новых игроков!'
       redirect_to cb
-    elsif @team.budget < @player.price
+    elsif @current_user_team.budget < @player.price
       flash[:danger] = 'На счету Вашей команды недостаточно средств для покупки данного игрока!'
       redirect_to players_path
     else # приобретение игрока возможно
       @player.in_team = true
       @player.state = 1
-      # TODO подумать об автоизменении места игрока в команде и капитанства
-
-      if @player.save
-        @team.budget -= @player.price
-        @team.save!
-        # TODO продумать маршрут успешной покупки игрока
-        format.html { redirect_to @player, notice: 'Игрок куплен.' }
-        format.json { render :show, status: :created, location: @player }
-      else
-        format.html { render :new}
-        format.json { render json: @player.errors, status: :unprocessable_entity }
+      @player.team = @current_user_team
+      captain = @current_user_team.players.order('price desc').limit(1)
+      if @player.price > captain.price
+        @player.captain = true
+        captain.update!(captain: false)
       end
 
+      respond_to do |format|
+        if @player.save
+          @current_user_team.players << @player
+          @current_user_team.budget -= @player.price
+          @current_user_team.save!
+
+          format.html { redirect_to @player, notice: 'Игрок куплен.' }
+          format.json { render :show, status: :created, location: @player }
+        else
+          format.html { render :new }
+          format.json { render json: @player.errors, status: :unprocessable_entity }
+        end
+      end
     end
   end
 
-  # PATCH/PUT /players/1
-  # PATCH/PUT /players/1.json
   def update
     # TODO продумать update, хотя бы минимальный
     tal = player_params[:talent]
     skill = player_params[:skill_level]
     age = player_params[:age]
-    @player.price=(tal.to_i*10000.0*skill.to_i/age.to_i).round(3)
+    @player.price = (tal.to_i * 10000.0 * skill.to_i / age.to_i).round(3)
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to @player, notice: 'Игрок измёнен.' }
@@ -98,17 +98,15 @@ class PlayersController < ApplicationController
     end
   end
 
-  # DELETE /players/1
-  # DELETE /players/1.json
-  def destroy
-    # TODO продумать удаление
-    raise "fuck u!"
-    @player.destroy
-    respond_to do |format|
-      format.html { redirect_to players_url, notice: 'Игрок удалён.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   # TODO продумать удаление
+  #   raise "fuck u!"
+  #   @player.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to players_url, notice: 'Игрок удалён.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -116,12 +114,11 @@ class PlayersController < ApplicationController
       @player = Player.find(params[:id])
     end
 
-    def set_team
-      @team = @current_user.team
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :country_id, :position1, :position2, :talent, :age, :skill_level)#, :price)
+      params.require(:player).permit(
+        :name, :country_id, :position1, :position2,
+        :talent, :age, :skill_level
+      ) #, :price)
     end
 end

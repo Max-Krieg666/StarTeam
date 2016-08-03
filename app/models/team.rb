@@ -3,7 +3,7 @@ class Team < ActiveRecord::Base
   has_one :sponsor
   has_one :stadium
   has_one :club_basis
-  has_many :player_in_teams
+  has_many :players
   has_many :transfers
 
   validates :title, presence: true, uniqueness: true, length: {maximum: 50}

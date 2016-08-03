@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   before_action :set_current_user
@@ -9,39 +7,40 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     if session[:user_id].present?
-      @current_user=User.find(session[:user_id])
+      @current_user = User.find(session[:user_id])
+      @current_user_team = @current_user.team if @current_user.team.present?
     end
   end
 
   def require_login
     if @current_user
-      flash[:danger]='Требуется авторизация'
+      flash[:danger] = 'Требуется авторизация'
       redirect_to login_path
     end
   end
   def check_user
     if @current_user.blank?
-      flash[:danger]="Необходимо войти в систему для просмотра данной страницы!"
+      flash[:danger] = "Необходимо войти в систему для просмотра данной страницы!"
       redirect_to root_path
     end
   end
 
-  def manager_permission
-    unless @current_user.try(:manager?)
-      flash[:danger]='Недостаточно прав'
+  def moderator_permission
+    unless @current_user.try(:moderator?)
+      flash[:danger] = 'Недостаточно прав'
       redirect_to login_path
     end
   end
 
   def admin_permission
     unless @current_user.try(:administrator?)
-      flash[:danger]='Недостаточно прав'
+      flash[:danger] = 'Недостаточно прав'
       redirect_to login_path
     end
   end
 
-  def render_error(msg='Доступ запрещён')
-    flash[:render]=msg
+  def render_error(msg = 'Доступ запрещён')
+    flash[:render] = msg
     redirect_to root_path
   end
 end

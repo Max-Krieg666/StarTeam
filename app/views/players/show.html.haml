@@ -1,16 +1,13 @@
 .page-header
-  %h1= @player.name
+  %h1 = @player.name
 %p
   %b Национальность:
   -c = @player.country
-  =link_to c.title, c, class: 'btn btn-link', style: "color: #00688B"
-  =image_tag c.flag.url
+  = link_to c.title, c, class: 'btn btn-link', style: "color: #00688B"
+  = image_tag c.flag.url
 %p
   %b Позиция:
-  = @player.position1
-  -if @player.position2!=""
-    ="/"
-    = @player.position2
+  = @player.full_position_name
 %p
   %b Талант:
   = @player.talent
@@ -25,24 +22,24 @@
   = number_to_currency(@player.price, locale: :en)
 %p
   %b Качество:
-  -max=5
-  -cel,ost=@player.level_define/2,@player.level_define%2
+  -max = 5
+  -cel, ost = @player.level_define / 2, @player.level_define % 2
   -cel.times do
-    =fa_icon 'star'
-  -if ost!=0
-    =fa_icon 'star-half-o'
+    = fa_icon 'star'
+  -if ost
+    = fa_icon 'star-half-o'
   -(max-cel-ost).times do
-    =fa_icon 'star-o'
+    = fa_icon 'star-o'
 
 -if @current_user.moderator?
   = link_to edit_player_path(@player), class: 'btn btn-danger' do
-    =fa_icon "wrench"
+    = fa_icon "wrench"
     Редактировать
 = link_to players_path, class: 'btn btn-info' do
-  =fa_icon "users"
+  = fa_icon "users"
   Все игроки
--if @current_user.team
-  = link_to new_player_in_team_path(name: @player.name), data:{confirm: 'Вы уверены?'}, class: "btn btn-default" do
+-if @current_user_team
+  = link_to new_player_in_team_path(name: @player.name), data: { confirm: 'Вы уверены?' }, class: "btn btn-default" do
     =fa_icon "share-square-o"
     Купить
 -else

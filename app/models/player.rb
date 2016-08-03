@@ -5,13 +5,14 @@ class Player < ActiveRecord::Base
   belongs_to :team
   has_many :transfers
 
-  after_initialize :pos_define
+  POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf)
+
   before_validation :set_price, on: :create
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :country_id, presence: true
-  validates :position1, presence: true, inclusion: { in: @@posit }
-  validates :position2, inclusion: { in: [nil] + @@posit }
+  validates :position1, presence: true, inclusion: { in: 0..9 }
+  # validates :position2, inclusion: { in: [nil] + @@posit }
   validates :talent, presence: true, inclusion: { in: 1..9 }
   validates :age, presence: true, inclusion: { in: 16..39 }
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
@@ -22,17 +23,18 @@ class Player < ActiveRecord::Base
   validates :status, presence: true, inclusion: { in: %w(active injured transfer penalty(redcard) penalty(2yellowcards))}
   validates :state, inclusion: { in: 0..2 }
 
+  def full_position_name
+    return POSITIONS[position1] if position2.nil?
+    POSITIONS[position1] + '/' + POSITIONS[position2]
+  end
+
   def set_price
     self.price = (talent * skill_level * 10000 / age).round(3) if price.blank?
   end
 
-  def pos_define
-    self.pos = right_alph_srt(self.position1)
-  end
-
   def self.search(search)
     if search
-      where('in_team = ? and (name LIKE ? or position1 LIKE ?)', false, '%' + search + '%', '%' + search + '%')
+      where('in_team = ? and (name LIKE ? or position1 = ?)', false, '%' + search + '%', search.to_i )
     else
       where('in_team = ?', false)
     end

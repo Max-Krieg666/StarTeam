@@ -2,11 +2,11 @@ class TeamsController < ApplicationController
   include Definer
   before_action :set_team, only: [:show, :edit, :update, :destroy, :random_players]
   before_action :check_user
-  # GET /teams
-  # GET /teams.json
+
   def index
     @teams = Team.order("title")
   end
+
   # TODO переделать срочно!!!!
   def random_players #тут метод беспощадного рандома игроков
     pit=PlayerInTeam.where(team_id:@team.id,none: false).to_a
@@ -147,25 +147,20 @@ class TeamsController < ApplicationController
     end
   end
 
-  # GET /teams/1
-  # GET /teams/1.json
+
   def show
-    @players = Player.where(team_id: @team.id).order(basic: :desc, pos: :asc, skill_level: :desc).to_a
+    @players = @team.players.order('basic asc, position1 asc, skill_level desc')
     @club_basis = @team.club_basis_id ? ClubBase.find(@team.club_basis_id) : nil
     @stadium = @team.stadium
   end
 
-  # GET /teams/new
   def new
     @team = Team.new
   end
 
-  # GET /teams/1/edit
   def edit
   end
 
-  # POST /teams
-  # POST /teams.json
   def create
     @team = Team.new(team_params)
     @team.user_id = @current_user.id
@@ -188,8 +183,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /teams/1
-  # PATCH/PUT /teams/1.json
   def update
     respond_to do |format|
       if @team.update(team_params)
@@ -202,8 +195,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # DELETE /teams/1
-  # DELETE /teams/1.json
   def destroy
     sp_id = @team.sponsor_id
     @team.destroy
@@ -218,7 +209,6 @@ class TeamsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_team
       @team = Team.find(params[:id])
     end
@@ -238,11 +228,13 @@ class TeamsController < ApplicationController
       end
       return a
     end
+    
     def func(ind,pos,line)
       for i in 0...ind.size
         line<<pos[ind[i]]
       end
     end
+
     def another(line_up,gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
       cost=0
       func(my_rand(gks,2),gks,line_up)
@@ -260,6 +252,7 @@ class TeamsController < ApplicationController
       end
       return [cost.round(3),line_up]
     end
+
     def num(mas)
       n=rand(99)+1
       if !(mas.blank?)
@@ -270,11 +263,11 @@ class TeamsController < ApplicationController
       return n
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      attrs=[:title, :sponsor_id]
-      attrs << :budget if @current_user.try(:admin?)
-      attrs << :fans if @current_user.try(:admin?)
+      attrs = [:title, :sponsor_id]
+      if @current_user.try(:admin?)
+        attrs += [:budget, :fans]
+      end
       params.require(:team).permit(*attrs)
     end
 end

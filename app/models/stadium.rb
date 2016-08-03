@@ -3,8 +3,7 @@ class Stadium < ActiveRecord::Base
 
   validates :team_id, presence: true
   validates :title, presence: true, uniqueness: true
-  validates :capacity, presence: true, numericality: {
-    greater_than_or_equal_to: 0, only_integer: true}
+  validates :capacity, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :level, presence: true, inclusion: { in: 1..5 }
 end
 # level 1 --> COST: FREE  ;  capacity 200-1 000 [default]
@@ -15,5 +14,5 @@ end
 ## seatcost: $300
 # level 4 --> COST: $1 000 000  ;  capacity 20 001-50 000
 ## seatcost: $200
-# level 5 --> COST: $2 500 000  ;  capacity 50 001>
+# level 5 --> COST: $2 500 000  ;  capacity 50 001-100 000
 ## seatcost: $100
