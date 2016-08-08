@@ -16,7 +16,7 @@
         = f.select :basic, {"Основной состав"=>true, "Запас"=>false}, class: "form-control"
   .actions
     .btn-group
-      -if Player.where(name:n,in_team:true).to_a.size>0
+      -if Player.where(name: n, state: 1).to_a.size > 0
         = f.submit 'Сохранить', class: "btn btn-warning"
       -else
         = f.submit 'Купить', class: "btn btn-warning"

@@ -31,6 +31,7 @@ gem 'rails-i18n'
 # russify
 gem 'russian'
 
+# authentification
 # TODO add gem 'devise'
 
 # json api

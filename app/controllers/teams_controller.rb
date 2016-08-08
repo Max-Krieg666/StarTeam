@@ -4,29 +4,29 @@ class TeamsController < ApplicationController
   before_action :check_user
 
   def index
-    @teams = Team.order("title")
+    @teams = Team.order('title')
   end
 
   # TODO переделать срочно!!!!
   def random_players #тут метод беспощадного рандома игроков
-    pit=PlayerInTeam.where(team_id:@team.id,none: false).to_a
-    if pit.size>0 && params[:random].blank?
+    pit = PlayerInTeam.where(team_id: @team.id, none: false).to_a
+    if pit.size > 0 && params[:random].blank?
       flash[:danger]='Невозможно рандомизировать состав'
       redirect_to @team
     else
       #для укомплектования состава выбераем 18 игроков - 11 основа + 7 запас
       #2 Gk + 2 Ld + 3 Cd +2 Rd + 1 Lm + 3 Cm + 2 Rm + 1 Lf + 1 Cf + 1 Rf
       #основа: gk,ld,2cd,rd,lm,2cm,rm,cf,rf
-      gks=Player.where(position1: "Gk",in_team:false).to_a
-      lds=Player.where(position1: "Ld",in_team:false).to_a
-      cds=Player.where(position1: "Cd",in_team:false).to_a
-      rds=Player.where(position1: "Rd",in_team:false).to_a
-      lms=Player.where(position1: "Lm",in_team:false).to_a
-      cms=Player.where(position1: "Cm",in_team:false).to_a
-      rms=Player.where(position1: "Rm",in_team:false).to_a
-      lfs=Player.where(position1: "Lf",in_team:false).to_a
-      cfs=Player.where(position1: "Cf",in_team:false).to_a
-      rfs=Player.where(position1: "Rf",in_team:false).to_a
+      gks=Player.where(position1: "Gk", state: 0).to_a
+      lds=Player.where(position1: "Ld", state: 0).to_a
+      cds=Player.where(position1: "Cd", state: 0).to_a
+      rds=Player.where(position1: "Rd", state: 0).to_a
+      lms=Player.where(position1: "Lm", state: 0).to_a
+      cms=Player.where(position1: "Cm", state: 0).to_a
+      rms=Player.where(position1: "Rm", state: 0).to_a
+      lfs=Player.where(position1: "Lf", state: 0).to_a
+      cfs=Player.where(position1: "Cf", state: 0).to_a
+      rfs=Player.where(position1: "Rf", state: 0).to_a
       x=another([],gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
       cost,line_up=x[0],x[1]
       while cost>@team.budget
@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
           if @team.budget<pla.price
             flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
           else
-            if pl.update(in_team:true)
+            if pl.update(staate: 1)
               if @team.update!(budget: @team.budget-pl.price)
                 pls=PlayerInTeam.where(team_id:@team.id).map{|x| x.number}.compact!
                 pla.number=num(pls)
@@ -133,7 +133,7 @@ class TeamsController < ApplicationController
               end
             end
             if a.save
-              pl.update(in_team:true)
+              pl.update(state: 1)
             end
           else
             flash[:danger]='Что-то пошло не так!'
@@ -209,65 +209,66 @@ class TeamsController < ApplicationController
   end
 
   private
-    def set_team
-      @team = Team.find(params[:id])
-    end
-    # TODO разобраться с этими стрёмными методами
-    def my_rand(mas,how)
-      a,x=[],0
-      while x!=how
-        (how-x).times do
-          z=rand(mas.size)
-          if mas[z].price<210000
-            a<<z
-            x+=1
-          end
-        end
-        a.uniq!
-        x=a.size
-      end
-      return a
-    end
-    
-    def func(ind,pos,line)
-      for i in 0...ind.size
-        line<<pos[ind[i]]
-      end
-    end
-
-    def another(line_up,gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
-      cost=0
-      func(my_rand(gks,2),gks,line_up)
-      func(my_rand(lds,2),lds,line_up)
-      func(my_rand(cds,3),cds,line_up)
-      func(my_rand(rds,2),rds,line_up)
-      func(my_rand(lms,1),lms,line_up)
-      func(my_rand(cms,3),cms,line_up)
-      func(my_rand(rms,2),rms,line_up)
-      func(my_rand(lfs,1),lfs,line_up)
-      func(my_rand(cfs,1),cfs,line_up)
-      func(my_rand(rfs,1),rfs,line_up)
-      for k in 0...line_up.size
-        cost+=line_up[k].price
-      end
-      return [cost.round(3),line_up]
-    end
-
-    def num(mas)
-      n=rand(99)+1
-      if !(mas.blank?)
-        while mas.include?(n)
-          n=rand(99)+1
+  
+  def set_team
+    @team = Team.find(params[:id])
+  end
+  # TODO разобраться с этими стрёмными методами
+  def my_rand(mas,how)
+    a,x=[],0
+    while x!=how
+      (how-x).times do
+        z=rand(mas.size)
+        if mas[z].price<210000
+          a<<z
+          x+=1
         end
       end
-      return n
+      a.uniq!
+      x=a.size
     end
+    return a
+  end
+  
+  def func(ind,pos,line)
+    for i in 0...ind.size
+      line<<pos[ind[i]]
+    end
+  end
 
-    def team_params
-      attrs = [:title, :sponsor_id]
-      if @current_user.try(:admin?)
-        attrs += [:budget, :fans]
-      end
-      params.require(:team).permit(*attrs)
+  def another(line_up,gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
+    cost=0
+    func(my_rand(gks,2),gks,line_up)
+    func(my_rand(lds,2),lds,line_up)
+    func(my_rand(cds,3),cds,line_up)
+    func(my_rand(rds,2),rds,line_up)
+    func(my_rand(lms,1),lms,line_up)
+    func(my_rand(cms,3),cms,line_up)
+    func(my_rand(rms,2),rms,line_up)
+    func(my_rand(lfs,1),lfs,line_up)
+    func(my_rand(cfs,1),cfs,line_up)
+    func(my_rand(rfs,1),rfs,line_up)
+    for k in 0...line_up.size
+      cost+=line_up[k].price
     end
+    return [cost.round(3),line_up]
+  end
+
+  def num(mas)
+    n=rand(99)+1
+    if !(mas.blank?)
+      while mas.include?(n)
+        n=rand(99)+1
+      end
+    end
+    return n
+  end
+
+  def team_params
+    attrs = [:title, :sponsor_id]
+    if @current_user.try(:admin?)
+      attrs += [:budget, :fans]
+    end
+    params.require(:team).permit(*attrs)
+  end
 end

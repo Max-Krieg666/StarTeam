@@ -148,14 +148,15 @@ class ClubBasesController < ApplicationController
   end
 
   private
-    def set_club_basis
-      @club_basis = ClubBase.find(params[:id])
-    end
+  
+  def set_club_basis
+    @club_basis = ClubBase.find(params[:id])
+  end
 
-    def set_team
-      @team = Team.find(params[:team_id])
-    end
-    def club_basis_params
-      params.require(:club_basis).permit(:title,:team_id)#, :level, :capacity, :training_fields, :experience_up, :team_id)
-    end
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
+  def club_basis_params
+    params.require(:club_basis).permit(:title,:team_id)#, :level, :capacity, :training_fields, :experience_up, :team_id)
+  end
 end

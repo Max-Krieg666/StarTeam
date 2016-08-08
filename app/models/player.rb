@@ -1,6 +1,6 @@
 class Player < ActiveRecord::Base
   include Definer
-  include Basic_Player
+  # include Basic_Player
   belongs_to :country
   belongs_to :team
   has_many :transfers
@@ -17,7 +17,6 @@ class Player < ActiveRecord::Base
   validates :age, presence: true, inclusion: { in: 16..39 }
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
   validates :price, presence: true
-  validates :basic, inclusion: { in: [true, false] }
   validates :team_id, inclusion: { in: 0..1000000 }, allow_blank: true # 0 зарезервирован и обозначает, что данной команды нет
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
   validates :status, presence: true, inclusion: { in: %w(active injured transfer penalty(redcard) penalty(2yellowcards))}
@@ -34,9 +33,9 @@ class Player < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('in_team = ? and (name LIKE ? or position1 = ?)', false, '%' + search + '%', search.to_i )
+      where('state = ? and (name LIKE ? or position1 = ?)', 1, '%' + search + '%', search.to_i )
     else
-      where('in_team = ?', false)
+      where('state = ?', 1)
     end
   end
 

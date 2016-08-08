@@ -139,15 +139,16 @@ class StadiaController < ApplicationController
   end
 
   private
-    def set_stadium
-      @stadium = Stadium.find(params[:id])
-    end
+  
+  def set_stadium
+    @stadium = Stadium.find(params[:id])
+  end
 
-    def set_team
-      @team = Team.find(params[:team_id])
-    end
-    
-    def stadium_params
-      params.require(:stadium).permit(:title,:team_id)#, :capacity, :level, :team_id)
-    end
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
+  
+  def stadium_params
+    params.require(:stadium).permit(:title,:team_id)#, :capacity, :level, :team_id)
+  end
 end

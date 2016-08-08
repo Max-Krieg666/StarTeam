@@ -47,13 +47,14 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      attrs = [:login, :password, :password_confirmation, :sex, :birthday, :mail, :avatar, :country_id]
-      attrs << :role if @current_user.try(:admin?)
-      params.require(:user).permit(*attrs)
-    end
+  def user_params
+    attrs = [:login, :password, :password_confirmation, :sex, :birthday, :mail, :avatar, :country_id]
+    attrs << :role if @current_user.try(:admin?)
+    params.require(:user).permit(*attrs)
+  end
 end

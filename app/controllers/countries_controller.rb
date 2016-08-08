@@ -8,8 +8,8 @@ class CountriesController < ApplicationController
 
   def show
     @users = User.includes(:country).where(country_id: @country.id)
-    @players = Player.includes(:country).where(country_id: @country.id, in_team: false).order(:name)
-    @player_in_teams = Player.includes(:country).where(country_id: @country.id, in_team: true).order(:name)
+    @players = Player.includes(:country).where(country_id: @country.id, state: 0).order(:name)
+    @player_in_teams = Player.includes(:country).where(country_id: @country.id, state: 1).order(:name)
   end
 
   def new
@@ -54,11 +54,12 @@ class CountriesController < ApplicationController
   end
 
   private
-    def set_country
-      @country = Country.find(params[:id])
-    end
+  
+  def set_country
+    @country = Country.find(params[:id])
+  end
 
-    def country_params
-      params.require(:country).permit(:title, :flag)
-    end
+  def country_params
+    params.require(:country).permit(:title, :flag)
+  end
 end

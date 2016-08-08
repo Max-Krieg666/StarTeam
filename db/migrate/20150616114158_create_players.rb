@@ -9,9 +9,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :age, null: false
       t.integer :skill_level, null: false
       t.float :price, null: false
-
-      t.boolean :in_team, default: false
       t.integer :state, default: 0 # 0 - свободен, 1 - в команде, 2 - завершил карьеру
+
       # игрок в команде
       t.uuid :team_id, index: true
       t.string :special_skill1, limit: 2 # спецумение 1
