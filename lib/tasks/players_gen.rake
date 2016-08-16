@@ -1,11 +1,11 @@
-require File.expand_path(File.dirname(__FILE__) + "/bd1.rb")
-require File.expand_path(File.dirname(__FILE__) + "/bd2.rb")
-require File.expand_path(File.dirname(__FILE__) + "/bd3.rb")
+require File.expand_path(File.dirname(__FILE__) + '/bd1.rb')
+require File.expand_path(File.dirname(__FILE__) + '/bd2.rb')
+require File.expand_path(File.dirname(__FILE__) + '/bd3.rb')
 COUNT = 2
 
 desc "Создание #{COUNT} игроков"
 namespace :players do
-  task :create => :environment do
+  task create: :environment do
     puts "#{COUNT} players_create: START!"
     COUNT.times do |i|
       x, bar = rand(90) + 1, ''
@@ -68,7 +68,7 @@ namespace :players do
         end
       )
       pl.age = age
-      lvl = rand(400)+1
+      lvl = rand(400) + 1
       l = (
         case lvl
         when 0..88
@@ -88,7 +88,7 @@ namespace :players do
       pl.skill_level = l
       pl.price = (pl.talent * pl.skill_level * 10000 / pl.age).round(3)
       case x
-      when 1, 5, 10, 12, 23 #Россия
+      when 1, 5, 10, 12, 23 # Россия
         name = @rus_names[rand(@rus_names.size)]
         lastname = @rus_lastnames[rand(@rus_lastnames.size)]
         pl.country_id = 160
@@ -118,7 +118,7 @@ namespace :players do
         pl.country_id = 61
       when 8, 11, 31 # Исландия
         name = @isl_names[rand(@isl_names.size)]
-        bar=@isl_names[rand(@isl_names.size)]+" " if rand(50)>15
+        bar = @isl_names[rand(@isl_names.size)] + ' ' if rand(50) > 15
         lastname = @isl_lastnames[rand(@isl_lastnames.size)]
         pl.country_id = 76
       when 9, 14, 30 # Испания
@@ -156,7 +156,7 @@ namespace :players do
       when 43, 45 # Румыния или Молдова
         name = @rom_names[rand(@rom_names.size)]
         lastname = @rom_lastnames[rand(@rom_lastnames.size)]
-        pl.country_id = (rand(86)>=rand(100) ? 162:125)
+        pl.country_id = (rand(86) >= rand(100) ? 162 : 125)
       when 46, 48 # Финляндия
         name = @fin_names[rand(@fin_names.size)]
         lastname = @fin_lastnames[rand(@fin_lastnames.size)]
@@ -176,7 +176,7 @@ namespace :players do
       when 56, 58 # Сербия и Черногория
         name = @srb_names[rand(@srb_names.size)]
         lastname = @srb_lastnames[rand(@srb_lastnames.size)]
-        pl.country_id = (rand(95)>=rand(100) ? 179:218)
+        pl.country_id = (rand(95) >= rand(100) ? 179 : 218)
       when 57, 59 # Израиль
         name = @isr_names[rand(@isr_names.size)]
         lastname = @isr_lastnames[rand(@isr_lastnames.size)]

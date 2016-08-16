@@ -1,7 +1,7 @@
 class Sponsor < ActiveRecord::Base
   belongs_to :team
 
-  validates :title, presence: true, uniqueness: true, length:{maximum: 30 }
+  validates :title, presence: true, uniqueness: true, length: { maximum: 30 }
   validates :specialization, presence: true, length: { maximum: 100 }
   validates :loyalty_factor, presence: true, numericality: { greater_than: -5.0 }
   validates :cost_of_full_stake, presence: true
