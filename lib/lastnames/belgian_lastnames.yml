@@ -1,0 +1,652 @@
+---
+- lastname: Adriaenssens
+- lastname: Andries
+- lastname: Annaert
+- lastname: Apers
+- lastname: Appelmans
+- lastname: Arens
+- lastname: Assouline
+- lastname: Audenaerde
+- lastname: Audenaert
+- lastname: Backeljauw
+- lastname: Baert
+- lastname: Baetens
+- lastname: Barbieur
+- lastname: Batens
+- lastname: Batte
+- lastname: Baus
+- lastname: Bauwens
+- lastname: Bayens
+- lastname: Beck
+- lastname: Beeldens
+- lastname: Beirnaert
+- lastname: Biestman
+- lastname: Bleyenberg
+- lastname: Blommaert
+- lastname: Blommen
+- lastname: Boel
+- lastname: Boenne
+- lastname: Boeyhaert
+- lastname: Boeykens
+- lastname: Bogaert
+- lastname: Bollaert
+- lastname: Bollens
+- lastname: Bolsens
+- lastname: Bolsius
+- lastname: Bolssens
+- lastname: Boodts
+- lastname: Boon
+- lastname: Boone
+- lastname: Bordui
+- lastname: Boryn
+- lastname: Bosman
+- lastname: Braem
+- lastname: Brees
+- lastname: Broeckaert
+- lastname: Bruylant
+- lastname: Brys
+- lastname: Bryssinck
+- lastname: Buelens
+- lastname: Burghgraeve
+- lastname: Burin
+- lastname: Burm
+- lastname: Buys
+- lastname: Buytaert
+- lastname: Calens
+- lastname: Callaert
+- lastname: Callens
+- lastname: Camerier
+- lastname: Camerman
+- lastname: Cant
+- lastname: Cap
+- lastname: Cappaert
+- lastname: Cappeart
+- lastname: Cathoir
+- lastname: Claes
+- lastname: Claessens
+- lastname: Claeys
+- lastname: Claus
+- lastname: Clessens
+- lastname: Cleyman
+- lastname: Cleys
+- lastname: Clijsters
+- lastname: Cockelenberg
+- lastname: cohl
+- lastname: Colpaert
+- lastname: Coninx
+- lastname: Cools
+- lastname: Coolssens
+- lastname: Coppenol
+- lastname: Coppens
+- lastname: Coppieters
+- lastname: Cordemans
+- lastname: Cornet
+- lastname: Daelman
+- lastname: Daenis
+- lastname: Daens
+- lastname: Danssaert
+- lastname: De Beul
+- lastname: De Bilde
+- lastname: De Bock
+- lastname: de Boeck
+- lastname: De Both
+- lastname: De Caluwaert
+- lastname: De Keersmaeker
+- lastname: De Maere
+- lastname: de Meeter
+- lastname: De Mevius
+- lastname: De Mey
+- lastname: De Neef
+- lastname: De Roover
+- lastname: De Ryck
+- lastname: De Schepper
+- lastname: De Smedt
+- lastname: De Vooght
+- lastname: De Waele
+- lastname: De wilde
+- lastname: De Wilde
+- lastname: Debacker
+- lastname: Debaere
+- lastname: Debakker
+- lastname: Debergé
+- lastname: Debeukelaer
+- lastname: Debeule
+- lastname: Debisschop
+- lastname: Deblieck
+- lastname: Deblock
+- lastname: Debock
+- lastname: Deboey
+- lastname: Debot
+- lastname: Debruyn
+- lastname: Decaluwaert
+- lastname: Decaluwe
+- lastname: Decauwer
+- lastname: Deckers
+- lastname: Declark
+- lastname: Decleene
+- lastname: Decleir
+- lastname: Declerck
+- lastname: Declercq
+- lastname: Decock
+- lastname: Deconinck
+- lastname: Deconserere
+- lastname: Decook
+- lastname: Decraen
+- lastname: Dedauw
+- lastname: Dedecker
+- lastname: Dedobbelaer
+- lastname: Dedycker
+- lastname: Deflandre
+- lastname: Degeest
+- lastname: Degols
+- lastname: Dehert
+- lastname: Dehooge
+- lastname: Dejaeck
+- lastname: Dejonghe
+- lastname: Dekerf
+- lastname: Dekever
+- lastname: Delaet
+- lastname: Delannoy
+- lastname: Delee
+- lastname: Delsemme
+- lastname: Deluguerre
+- lastname: Demaere
+- lastname: Demaesschalck
+- lastname: Demaeyer
+- lastname: Deman
+- lastname: Demartelaere
+- lastname: Demeulenaer
+- lastname: Demeuleneire
+- lastname: Demeurichy
+- lastname: Demeyer
+- lastname: Demol
+- lastname: Demunck
+- lastname: Dens
+- lastname: Denul
+- lastname: Depaepe
+- lastname: Depoorter
+- lastname: Depraeter
+- lastname: Depuysselaer
+- lastname: Depuysseleyr
+- lastname: Deridder
+- lastname: Derock
+- lastname: Deroeck
+- lastname: Deroover
+- lastname: Derop
+- lastname: Desarthe
+- lastname: Deschaepmeester
+- lastname: Deschepper
+- lastname: Desmet
+- lastname: Desutter
+- lastname: Detonnelaere
+- lastname: Devael
+- lastname: Deverman
+- lastname: Devleeschouwer
+- lastname: Devogel
+- lastname: Devos
+- lastname: Devriendt
+- lastname: Dewaele
+- lastname: Dewalsch
+- lastname: Deweert
+- lastname: Dewilde
+- lastname: Dewispelaere
+- lastname: Dewit
+- lastname: Dewitte
+- lastname: Dewreede
+- lastname: Dewulf
+- lastname: Deyaert
+- lastname: D'Haenens
+- lastname: D'Hondt
+- lastname: D'Hooghe
+- lastname: Didden
+- lastname: Dielens
+- lastname: Dierickx
+- lastname: Dobbelaer
+- lastname: D'Olieslager
+- lastname: Donckers
+- lastname: Droge
+- lastname: Duerinckx
+- lastname: Dupon
+- lastname: Durinck
+- lastname: Eeckelaert
+- lastname: Elseneer
+- lastname: Engels
+- lastname: Erregeers
+- lastname: Felix
+- lastname: Ferdinandus
+- lastname: Fierens
+- lastname: Fiers
+- lastname: Franck
+- lastname: Franssens
+- lastname: Frissyn
+- lastname: Fruytier
+- lastname: Geert
+- lastname: Geldmeyer
+- lastname: Gerdollendorf
+- lastname: Gertodtenhaupt
+- lastname: Gevaert
+- lastname: Gielen
+- lastname: Gillis
+- lastname: Goddaert
+- lastname: Goeman
+- lastname: Goethals
+- lastname: Goosens
+- lastname: Goossens
+- lastname: Grandsaerd
+- lastname: Group
+- lastname: Gyselinck
+- lastname: Haeck
+- lastname: Hanssens
+- lastname: Havelange
+- lastname: Heirbaut
+- lastname: Heirman
+- lastname: Heirwegh
+- lastname: Hembrecht
+- lastname: Henderickx
+- lastname: Hermans
+- lastname: Herreman
+- lastname: Herreweghe
+- lastname: Heyman
+- lastname: Heyndrickx
+- lastname: Hillegeer
+- lastname: Himbrecht
+- lastname: Hoelebrand
+- lastname: Hoenaert
+- lastname: Hoeykens
+- lastname: Hoskens
+- lastname: Houziaux
+- lastname: Huygens
+- lastname: Impens
+- lastname: Ingels
+- lastname: Jacobs
+- lastname: Janssens
+- lastname: Jaspers
+- lastname: Joos
+- lastname: Joossens
+- lastname: Jungbloet
+- lastname: Kaessens
+- lastname: Kahan
+- lastname: Keersmaekers
+- lastname: Kegels
+- lastname: Kins
+- lastname: Kluskens
+- lastname: Klysen
+- lastname: Korsten
+- lastname: Lambrechts
+- lastname: Lampers
+- lastname: Lapierre
+- lastname: Lardenoit
+- lastname: Laurens
+- lastname: Laurentius
+- lastname: Laureys
+- lastname: Lauwens
+- lastname: Leekens
+- lastname: Lekens
+- lastname: Lemmens
+- lastname: Lerminie
+- lastname: Leyn
+- lastname: Leys
+- lastname: Leysen
+- lastname: Lisabeth
+- lastname: Lockefeer
+- lastname: Loef
+- lastname: Loens
+- lastname: Lokermans
+- lastname: Lorie
+- lastname: Lossie
+- lastname: Lütz
+- lastname: Madereel
+- lastname: Maes
+- lastname: Malisse
+- lastname: Malschaert
+- lastname: Maris
+- lastname: Martens
+- lastname: Mattens
+- lastname: Matthyssens
+- lastname: Meerschaert
+- lastname: Meersman
+- lastname: Mees
+- lastname: Meessens
+- lastname: Megroedt
+- lastname: Meinhut
+- lastname: Meintjies
+- lastname: Meirte
+- lastname: Melis
+- lastname: Mellemans
+- lastname: Melsen
+- lastname: Mercator
+- lastname: Mercken
+- lastname: Merckx
+- lastname: Mets
+- lastname: Meul
+- lastname: Meuleman
+- lastname: Meys
+- lastname: Meyskens
+- lastname: Michielssens
+- lastname: Middag
+- lastname: Middelkamp
+- lastname: Mingeroedt
+- lastname: Moens
+- lastname: Moenssens
+- lastname: Moerenhout
+- lastname: Moliekens
+- lastname: Mortier
+- lastname: Muel
+- lastname: Mul
+- lastname: Naudts
+- lastname: Neirinck
+- lastname: Nelis
+- lastname: Nielandt
+- lastname: Nijs
+- lastname: Nilis
+- lastname: Nimmegeer
+- lastname: Nonneman
+- lastname: Nuyts
+- lastname: Nys
+- lastname: Ongenae
+- lastname: Onghena
+- lastname: Oosterling
+- lastname: Opsomer
+- lastname: Palet
+- lastname: Paling
+- lastname: Palmkoek
+- lastname: Panis
+- lastname: Passemier
+- lastname: Pauwels
+- lastname: Peesmeesters
+- lastname: Peeters
+- lastname: Peirsman
+- lastname: Penne
+- lastname: Penneman
+- lastname: Persyn
+- lastname: Peters
+- lastname: Phippaerts
+- lastname: Picavet
+- lastname: Piersens
+- lastname: Piessens
+- lastname: Pieters
+- lastname: Pilaet
+- lastname: Poppe
+- lastname: Praet
+- lastname: Prevoost
+- lastname: Provost
+- lastname: Puylaert
+- lastname: Puymbroek
+- lastname: Raes
+- lastname: Reiss
+- lastname: Remy
+- lastname: Renders
+- lastname: Renkens
+- lastname: Reyns
+- lastname: rochus
+- lastname: Roeges
+- lastname: Roegiers
+- lastname: Roels
+- lastname: Rogiers
+- lastname: Rombaut
+- lastname: Rooman
+- lastname: Rooms
+- lastname: Rotthier
+- lastname: Rottier
+- lastname: Rouwens
+- lastname: Rutgeerts
+- lastname: Ruthgeerts
+- lastname: Ryckaert
+- lastname: Sack
+- lastname: Santon
+- lastname: Schaekers
+- lastname: Schaelles
+- lastname: Schaillee
+- lastname: Schaut
+- lastname: Scheerders
+- lastname: Scheers
+- lastname: Schefold
+- lastname: Schelfaut
+- lastname: Schelfhout
+- lastname: Scholliers
+- lastname: Schoonvliet
+- lastname: Schroyens
+- lastname: Schuerman
+- lastname: Scifo
+- lastname: Segers
+- lastname: Seghers
+- lastname: Serfontein
+- lastname: Siebos
+- lastname: Sleeuwaert
+- lastname: Slegers
+- lastname: Sloss
+- lastname: Smekens
+- lastname: Smet
+- lastname: Smidts
+- lastname: Snel
+- lastname: Snoeck
+- lastname: Soetens
+- lastname: Speckstadt
+- lastname: Speeck
+- lastname: Speek
+- lastname: Staelens
+- lastname: Staes
+- lastname: Staessens
+- lastname: Stals
+- lastname: Steibs
+- lastname: Stevens
+- lastname: Strobbens
+- lastname: Strylemans
+- lastname: Stuer
+- lastname: Suetens
+- lastname: Suy
+- lastname: Swan
+- lastname: Syx
+- lastname: Theunis
+- lastname: Thielens
+- lastname: Thielman
+- lastname: Thiry
+- lastname: Thoen
+- lastname: Thomas
+- lastname: Tilleman
+- lastname: Tillens
+- lastname: Tillis
+- lastname: Tillman
+- lastname: Timmermans
+- lastname: Triest
+- lastname: Truyens
+- lastname: Vael
+- lastname: Vaerewyck
+- lastname: Van Achte
+- lastname: Van Acker
+- lastname: Van Aelst
+- lastname: Van Aken
+- lastname: Van Belleghem
+- lastname: Van Berlo
+- lastname: Van Bocxlaer
+- lastname: Van Bogaert
+- lastname: Van Bogget
+- lastname: Van Boxlaer
+- lastname: Van Brandt
+- lastname: Van Britsom
+- lastname: Van Broeck
+- lastname: Van Brussel
+- lastname: Van Buel
+- lastname: Van Butsel
+- lastname: Van Campenhout
+- lastname: Van Cansinck
+- lastname: Van Carpels
+- lastname: Van Cauteren
+- lastname: Van Craenenbroeck
+- lastname: Van Dam
+- lastname: Van Damme
+- lastname: Van de Kamp
+- lastname: Van de Perre
+- lastname: Van de Velde
+- lastname: Van de Ven
+- lastname: Van de Vloet
+- lastname: Van de Voorde
+- lastname: Van de Walle
+- lastname: Van den Abeele
+- lastname: Van den Berghe
+- lastname: Van den Bosch
+- lastname: Van den Branden
+- lastname: Van den Broeck
+- lastname: Van Den Brucke
+- lastname: Van den Eeden
+- lastname: Van den Eynde
+- lastname: Van den Nieuwenhuyzen
+- lastname: Van den Wyngaert
+- lastname: Van der Aa
+- lastname: van der Elst
+- lastname: Van der Elst
+- lastname: Van der Graf
+- lastname: Van der Heyden
+- lastname: Van der Kelen
+- lastname: Van der Linden
+- lastname: Van der Poorten
+- lastname: Van der Straeten
+- lastname: Van der Weken
+- lastname: Van Der Wouwer
+- lastname: Van Dongen
+- lastname: Van Driessche
+- lastname: Van Duyse
+- lastname: Van Eetvelt
+- lastname: Van Eyck
+- lastname: Van Eynde
+- lastname: Van Garsse
+- lastname: Van Gaver
+- lastname: Van Gaveren
+- lastname: Van Geem
+- lastname: Van Geertsom
+- lastname: Van Geetsom
+- lastname: Van Geffen
+- lastname: Van Gerrewey
+- lastname: Van Geyte
+- lastname: Van Gheem
+- lastname: Van Goethem
+- lastname: Van Goey
+- lastname: Van Guyse
+- lastname: Van Gysel
+- lastname: Van Haelst
+- lastname: Van Haute
+- lastname: Van Haver
+- lastname: Van Havermaat
+- lastname: Van Herck
+- lastname: Van Herrewegen
+- lastname: Van Hese
+- lastname: Van Hoey
+- lastname: Van Hoeywegen
+- lastname: Van Holst
+- lastname: Van Hoost
+- lastname: Van Hootegem
+- lastname: Van Hoylandt
+- lastname: Van Hoyweghen
+- lastname: Van Immerseel
+- lastname: Van Kemseke
+- lastname: Van Kerckhove
+- lastname: Van kerckhoven
+- lastname: Van Kerckhoven
+- lastname: Van Laecken
+- lastname: Van Laere
+- lastname: Van Lancker
+- lastname: Van Landeghem
+- lastname: Van Langenhove
+- lastname: Van Lierop
+- lastname: Van Linden
+- lastname: Van Marcke
+- lastname: Van Mechelen
+- lastname: Van Mele
+- lastname: Van Meygroot
+- lastname: Van Mieghem
+- lastname: Van Moer
+- lastname: Van Mullem
+- lastname: Van Nieulande
+- lastname: Van Noppen
+- lastname: Van Oppens
+- lastname: Van Overloop
+- lastname: Van Overmeire
+- lastname: Van Peteghem
+- lastname: Van Poele
+- lastname: Van Poucke
+- lastname: Van Praet
+- lastname: Van Puymbroeck
+- lastname: Van Puymbrouck
+- lastname: Van Queckelberghe
+- lastname: Van Raemdonck
+- lastname: Van Ranst
+- lastname: Van Reeth
+- lastname: Van Remoortel
+- lastname: Van Remoortere
+- lastname: Van Riet
+- lastname: Van Rompu
+- lastname: Van Roost
+- lastname: Van Rossem
+- lastname: Van Roy
+- lastname: Van Royen
+- lastname: Van Ryckheghem
+- lastname: Van Snick
+- lastname: Van Stappen
+- lastname: Van Steenbergen
+- lastname: Van Steendam
+- lastname: Van Strydonck
+- lastname: van Ullesen
+- lastname: Van Vlem
+- lastname: Van Vlierberghe
+- lastname: Van Vosselen
+- lastname: Van Wesemael
+- lastname: Van Wiele
+- lastname: Van Wolvelaer
+- lastname: Vanderstratton
+- lastname: Vandervliet
+- lastname: Vangheluwe
+- lastname: vanhoudt
+- lastname: Veesaert
+- lastname: Veldkamp
+- lastname: Verbeeck
+- lastname: Verbeke
+- lastname: Verberckmoes
+- lastname: Verbraeken
+- lastname: Verbuyst
+- lastname: Vercammen
+- lastname: Vercauteren
+- lastname: Vercruysse
+- lastname: Vereecke
+- lastname: Vereecken
+- lastname: Verellen
+- lastname: Verflieren
+- lastname: Vergauwen
+- lastname: Verguts
+- lastname: Verhaegen
+- lastname: Verhavert
+- lastname: Verhille
+- lastname: Verley
+- lastname: Vermeiren
+- lastname: Vermeirsch
+- lastname: Vermeulen
+- lastname: Vernimmen
+- lastname: Verplancke
+- lastname: Versmissen
+- lastname: Verstraeten
+- lastname: Verstuyft
+- lastname: Vertenten
+- lastname: Vincke
+- lastname: Vischspoel
+- lastname: Vlaeminck
+- lastname: Vlyminck
+- lastname: Voet
+- lastname: Vonck
+- lastname: Waem
+- lastname: Wagemans
+- lastname: Wagenaer
+- lastname: Want
+- lastname: Wauman
+- lastname: Wauters
+- lastname: Weydeman
+- lastname: Weyenberg
+- lastname: Weyn
+- lastname: Weynacker
+- lastname: Wijmeersch
+- lastname: Wilmots
+- lastname: Woeste
+- lastname: Wuytack
+- lastname: Wymeersich
+- lastname: Wynen
+- lastname: Zaman
+- lastname: Zegers
+- lastname: Ziebosch
