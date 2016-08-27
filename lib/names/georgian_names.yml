@@ -4,6 +4,7 @@
 - name: Abram
 - name: Adam
 - name: Akaki
+- name: Akakide
 - name: Aleksandre
 - name: Ambrosi
 - name: Amiran
@@ -11,6 +12,7 @@
 - name: Andro
 - name: Anri
 - name: Anzor
+- name: Ameirin
 - name: Archil
 - name: Avksenti
 - name: Avtandil
@@ -25,6 +27,7 @@
 - name: Daniel
 - name: Davit
 - name: Daviti
+- name: Demna
 - name: Eduard
 - name: Erekle
 - name: Gaioz
@@ -45,6 +48,9 @@
 - name: Isidore
 - name: Iuri
 - name: Ivane
+- name: Kaha
+- name: Kahaber
+- name: Ketevan
 - name: Koba
 - name: Konstantine
 - name: Korneli
@@ -59,6 +65,7 @@
 - name: Merab
 - name: Mikheil
 - name: Misho
+- name: Murman  
 - name: Murtaz
 - name: Nika
 - name: Nikoloz
@@ -75,8 +82,10 @@
 - name: Revazi
 - name: Reziko
 - name: Rostom
+- name: Ruslan
 - name: Saba
 - name: Sandro
+- name: Shota
 - name: Simon
 - name: Simoni
 - name: Soso
@@ -84,6 +93,7 @@
 - name: Stepane
 - name: Tamaz
 - name: Tamazi
+- name: Tariel
 - name: Tedore
 - name: Teimuraz
 - name: Teimurazi
@@ -98,6 +108,7 @@
 - name: Valeri
 - name: Valerian
 - name: Vano
+- name: Varlam
 - name: Vasil
 - name: Vaso
 - name: Vazha
@@ -105,6 +116,7 @@
 - name: Vladimer
 - name: Zaal
 - name: Zakaria
+- name: Zeynab
 - name: Zurab
 - name: Zviad
 - name: Zviadi

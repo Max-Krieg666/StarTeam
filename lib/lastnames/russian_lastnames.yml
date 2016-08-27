@@ -18,6 +18,7 @@
 - lastname: Antyuhin
 - lastname: Aparin
 - lastname: Apraxin
+- lastname: Argamakov
 - lastname: Arsov
 - lastname: Artamov
 - lastname: Asimov
@@ -30,13 +31,18 @@
 - lastname: Baikov
 - lastname: Bakhtin
 - lastname: Bakhvalov
+- lastname: Baklanov
+- lastname: Baklanovich
+- lastname: Baklanovskiy
 - lastname: Bakunin
+- lastname: Balaban
 - lastname: Balakirev
 - lastname: Balakleets
 - lastname: Balanchine
 - lastname: Balk
 - lastname: Banketik
 - lastname: Barabanschikov
+- lastname: Baranenko
 - lastname: Baranov
 - lastname: Baranskiy
 - lastname: Barishnikov
@@ -53,6 +59,7 @@
 - lastname: Batukhtin
 - lastname: Baturin
 - lastname: Bazhukov
+- lastname: Begeldeev
 - lastname: Beketov
 - lastname: Belaia
 - lastname: Belanov
@@ -62,6 +69,8 @@
 - lastname: Beloi
 - lastname: Belotserkovskiy
 - lastname: Belov
+- lastname: Beloyar
+- lastname: Beloyarovskiy
 - lastname: Belyakov
 - lastname: Beregovoi
 - lastname: Berezhniy
@@ -268,6 +277,7 @@
 - lastname: Gordiev
 - lastname: Gordievskiy
 - lastname: Gorlovich
+- lastname: Gorshkov
 - lastname: Goryachev
 - lastname: Govorov
 - lastname: Grachev
@@ -303,13 +313,16 @@
 - lastname: Khvorostovskiy
 - lastname: Ignatov
 - lastname: Ilchenko
+- lastname: Ilyin
 - lastname: Ilyukhin
 - lastname: Instinskiy
 - lastname: Ipatiev
+- lastname: Istomin
 - lastname: Isyanov
 - lastname: Itsov
 - lastname: Ivakin
 - lastname: Ivanskiy
+- lastname: Ivchenko
 - lastname: Ivelitchenko
 - lastname: Izmailov
 - lastname: Yakovinskiy
@@ -524,6 +537,7 @@
 - lastname: Lyublin
 - lastname: Machtcenko
 - lastname: Macinko
+- lastname: Macko
 - lastname: Mahayev
 - lastname: Maigourov
 - lastname: Maikov
@@ -564,6 +578,7 @@
 - lastname: Melekhin
 - lastname: Mendeleev
 - lastname: Merinov
+- lastname: Merezhko
 - lastname: Meshcheryakov
 - lastname: Miasnikov
 - lastname: Mikhaylichenko
@@ -576,6 +591,7 @@
 - lastname: Minkovskiy
 - lastname: Miroshnichenkp
 - lastname: Mishin
+- lastname: Mischenko
 - lastname: Mizin
 - lastname: Mizirov
 - lastname: Modin
@@ -591,8 +607,8 @@
 - lastname: Morgunov
 - lastname: Moroshkin
 - lastname: Morozov
-- lastname: Morozov
 - lastname: Moskalets
+- lastname: Moskalev
 - lastname: Moskvin
 - lastname: Mostovoi
 - lastname: Motkov
@@ -600,6 +616,8 @@
 - lastname: Motov
 - lastname: Mozarov
 - lastname: Mravinskiy
+- lastname: Mukin
+- lastname: Mukhin
 - lastname: Mullov
 - lastname: Murin
 - lastname: Mushailov
@@ -611,7 +629,7 @@
 - lastname: Naryshkin
 - lastname: Nasemnov
 - lastname: Nasenko
-- lastname: Nassarouline
+- lastname: Nassaroulin
 - lastname: Naumov
 - lastname: Nazarov
 - lastname: Nebogatov
@@ -634,7 +652,6 @@
 - lastname: Nikulin
 - lastname: Nizienko
 - lastname: Nizovtsev
-- lastname: Nosov
 - lastname: Nosov
 - lastname: Novakovskiy
 - lastname: Novikov
@@ -1007,6 +1024,7 @@
 - lastname: Yagudin
 - lastname: Yakolev
 - lastname: Yakovlev
+- lastname: Yakushev
 - lastname: Yakushkin
 - lastname: Yanovskiy
 - lastname: Yanovskiy

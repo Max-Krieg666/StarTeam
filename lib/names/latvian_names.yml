@@ -1,12 +1,18 @@
 ---
+- name: Aaigars
 - name: Anatolijs
 - name: Andrejs
 - name: Andris
 - name: Artjoms
 - name: Artūrs
+- name: Arvids
+- name: Atis
 - name: Augusts
+- name: Auseklis
 - name: Bendiks
+- name: Brencis
 - name: Daniels
+- name: Didzis
 - name: Eduards
 - name: Ervīns
 - name: Filips
@@ -20,6 +26,7 @@
 - name: Jānis
 - name: Jāzeps
 - name: Juris
+- name: Karlis
 - name: Kaspars
 - name: Kirils
 - name: Klaudijs
@@ -27,7 +34,9 @@
 - name: Kristiāns
 - name: Ludis
 - name: Ludvigs
+- name: Mariss
 - name: Markuss
+- name: Matiss
 - name: Miervaldis
 - name: Mihails
 - name: Miķelis
@@ -42,6 +51,8 @@
 - name: Toms
 - name: Valdis
 - name: Valērijs
+- name: Varis
+- name: Viesturs
 - name: Vilhelms
 - name: Vilis
 - name: Visvaldis
