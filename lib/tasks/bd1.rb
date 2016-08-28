@@ -5,16 +5,15 @@
 # convertcase https://convertcase.net/
 # ==================================================
 
+# fantasynamegenerators.com - угарный генератор, дохрена имен
 
 # ОСТАЛОСЬ::::::::
 
 
 # АФРИКА
-# https://tekeli.li/onomastikon/Africa/Eastern/index.html
 # https://tekeli.li/onomastikon/Africa/Central/index.html
 # https://tekeli.li/onomastikon/Africa/Western/index.html
 # https://tekeli.li/onomastikon/Africa/Southern/index.html
-# https://tekeli.li/onomastikon/Africa/Islands/index.html
 
 # АЗИЯ:
 # https://tekeli.li/onomastikon/Middle-East/index.html
