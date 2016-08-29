@@ -43,16 +43,14 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   create_table "players", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name",                  limit: 50,                    null: false
     t.integer  "country_id"
-    t.string   "position1",                                           null: false
-    t.string   "position2"
+    t.integer  "position1",                                           null: false
+    t.integer  "position2"
     t.integer  "talent",                                              null: false
     t.integer  "age",                                                 null: false
     t.integer  "skill_level",                                         null: false
     t.float    "price",                                               null: false
-    t.boolean  "in_team",                          default: false
     t.integer  "state",                            default: 0
     t.uuid     "team_id"
-    t.integer  "pos"
     t.string   "special_skill1",        limit: 2
     t.integer  "num_sp_s1"
     t.string   "special_skill2",        limit: 2

@@ -1,5 +1,3 @@
-require File.expand_path(File.dirname(__FILE__) + '/bd1.rb')
-require File.expand_path(File.dirname(__FILE__) + '/bd2.rb')
 require File.expand_path(File.dirname(__FILE__) + '/bd3.rb')
 COUNT = 2
 
