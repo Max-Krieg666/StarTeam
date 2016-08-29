@@ -9,11 +9,8 @@
 
 # ОСТАЛОСЬ::::::::
 
-
 # АФРИКА
-# https://tekeli.li/onomastikon/Africa/Central/index.html
 # https://tekeli.li/onomastikon/Africa/Western/index.html
-# https://tekeli.li/onomastikon/Africa/Southern/index.html
 
 # АЗИЯ:
 # https://tekeli.li/onomastikon/Middle-East/index.html
