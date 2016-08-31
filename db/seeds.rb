@@ -2,15 +2,8 @@ Rails.root.join('lib', 'tasks', 'bd3')
 
 if Country.count.zero?
   ActiveRecord::Base.transaction do
-    @c1 += ['Абхазия', 'Аланд', 'Англия', 'Канарские острова',
-      'Кокосовые острова (Килинг)', 'Майотта', 'Нидерландские Антиллы',
-      'Остров Рождества', 'Уэльс', 'Сен-Бартельми',
-      'Северная Ирландия', 'Северный Кипр', 'Сомалиленд', 'Шотландия',
-      'Южная Осетия', 'Южная Георгия и Южные Сандвичевы Острова'
-    ]
-
-    @c1.each do |item|
-      c = Country.new(title: item)
+    @c1.each do |id, item|
+      c = Country.new(id: id, title: item)
       begin
         c.flag = File.new(Rails.root.join('flags', 'flags', 'shiny', '24', "#{item}.png"))
       rescue
