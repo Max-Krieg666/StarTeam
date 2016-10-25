@@ -3,29 +3,24 @@ class StadiaController < ApplicationController
   before_action :set_team, only: :new
   before_action :admin_permission, only: [:destroy, :index]
 
-  # GET /stadia
-  # GET /stadia.json
   def index
     @stadia = Stadium.all
   end
 
-  # GET /stadia/1
-  # GET /stadia/1.json
   def show
-    @team=Team.find(@stadium.team_id)
-    @user=User.find(@team.user_id)
+    @team = @stadium.team
+    @user = @team.user
   end
 
-  # GET /stadia/new
   def new
     @stadium = Stadium.new
     @stadium.team_id=@team.id
   end
 
-  # GET /stadia/1/edit
+  # TODO посмотреть что это
   def edit
     old_level=@stadium.level
-    if !params[:level].blank? && params[:level]!="" && params[:level].to_i != old_level
+    if !params[:level].blank? && !params[:level].blank? && params[:level].to_i != old_level
       lvl=params[:level].to_i
       if lvl!=old_level+1
         flash[:danger]='Неправильный параметр уровня стадиона!'
@@ -62,8 +57,6 @@ class StadiaController < ApplicationController
     end
   end
 
-  # POST /stadia
-  # POST /stadia.json
   def create
     hash=params
     other_hash={"stadium"=>params[:stadium]}
@@ -87,8 +80,6 @@ class StadiaController < ApplicationController
     end
   end
 
-  # PATCH/PUT /stadia/1
-  # PATCH/PUT /stadia/1.json
   def update
     old_cap=@stadium.capacity
     cp=params[:stadium][:capacity]
@@ -139,8 +130,6 @@ class StadiaController < ApplicationController
     end
   end
 
-  # DELETE /stadia/1
-  # DELETE /stadia/1.json
   def destroy
     @stadium.destroy
     respond_to do |format|
@@ -150,16 +139,16 @@ class StadiaController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_stadium
-      @stadium = Stadium.find(params[:id])
-    end
+  
+  def set_stadium
+    @stadium = Stadium.find(params[:id])
+  end
 
-    def set_team
-      @team = Team.find(params[:team_id])
-    end
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def stadium_params
-      params.require(:stadium).permit(:title,:team_id)#, :capacity, :level, :team_id)
-    end
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
+  
+  def stadium_params
+    params.require(:stadium).permit(:title,:team_id)#, :capacity, :level, :team_id)
+  end
 end

@@ -67,15 +67,6 @@ ru:
         age: Возраст
         skill_level: Мастерство
         price: Цена
-      player_in_team:
-        name: Игрок (Имя & Фамилия)
-        country: Национальность
-        position1: Основная позиция
-        position2: Дополнительная позиция
-        talent: Талант
-        age: Возраст
-        skill_level: Мастерство
-        price: Цена
         special_skill1: Спец. умения
         num_sp_s1: Уровень спец. умения
         number: Номер
@@ -110,5 +101,4 @@ ru:
       user: Пользователь
       team: Команда
       player: Игрок
-      player_in_team: Игрок в команде
       transfer: Трансфер

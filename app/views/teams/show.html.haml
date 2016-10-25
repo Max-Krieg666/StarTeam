@@ -6,20 +6,19 @@
     =link_to @team.user.login, @team.user, style:"color: #FFA500", class: 'btn btn-link'
   %p
     %b Спонсор:
-    -sp=Sponsor.find(@team.sponsor_id)
+    -sp = @team.sponsor
     =link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
     %p
       %b Стадион:
-      -if @team.stadium_id
-        -st=Stadium.find(@team.stadium_id)
-        -stc=st.capacity
-        =link_to "#{st.title} (#{stc} #{Russian.p(stc,'место','места','мест')})", st, style:"color: #F00", class: 'btn btn-link'
+      -if @stadium
+        -stc = @stadium.capacity
+        =link_to "#{@stadium.title} (#{stc} #{Russian.p(stc,'место','места','мест')})", @stadium, style:"color: #F00", class: 'btn btn-link'
       -else
         Не создан
   %p
     %b База клуба:
-    -if @team.club_basis_id
-      -cb=ClubBase.find(@team.club_basis_id)
+    -if @club_basis
+      -cb = @club_basis
       =link_to cb.title+" (#{cb.level})", cb, style: "color: #458B74", class: 'btn btn-link'
     -else
       Не создана
@@ -94,7 +93,7 @@
           -av_age+=pl.age
           -av_price+=pl.price
           -av_tal+=pl.talent
-          -c=Country.find(pl.country_id)
+          -c=pl.country
           -if pl.basic
             -styl="#CEF6CE"
           -else
@@ -181,7 +180,7 @@
   -else
     %h3.text-danger Необходимо купить игроков:
     .btn-group
-      = link_to "/teams/#{@team.id}/random_players?random=true",class: 'btn btn-default', data:{confirm: 'Пожалуйста, подождите несколько секунд...'},style:"color: #00F" do
+      = link_to "/teams/#{@team.id}/random_players?random=true", class: 'btn btn-default', data:{confirm: 'Пожалуйста, подождите несколько секунд...'},style:"color: #00F" do
         =fa_icon "users"
         =fa_icon "random"
         Заполнить рандомно

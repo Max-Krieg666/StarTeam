@@ -1,2719 +1,2827 @@
 ---
 - name: Zotarri Said-Shah
   country_id: 142
-  position1: Lm
+  position1: 4
   talent: 4
   age: 25
   skill_level: 44
 - name: Donovan Yoval
   country_id: 188
-  position1: Rf
+  position1: 9
   talent: 4
   age: 21
   skill_level: 35
 - name: Mate Krnjatic
   country_id: 215
-  position1: Rf
+  position1: 9
   talent: 9
   age: 21
   skill_level: 106
 - name: Hjetil Grodal
   country_id: 140
-  position1: Cf
+  position1: 8
   talent: 7
   age: 22
   skill_level: 47
-- name: Rami Vilhelmsson
+- name: Rami Vilhe4sson
   country_id: 222
-  position1: Cf
+  position1: 8
   talent: 6
   age: 25
   skill_level: 48
 - name: Rami Tangrem
   country_id: 222
-  position1: Cf
+  position1: 8
   talent: 3
   age: 17
   skill_level: 45
 - name: Dag Rotterbu
   country_id: 222
-  position1: Ld
+  position1: 1
   talent: 2
   age: 35
   skill_level: 39
 - name: Pawel Sobre
   country_id: 237
-  position1: Lf
+  position1: 7
   talent: 5
   age: 18
   skill_level: 67
 - name: Max Born
   country_id: 237
-  position1: Ld
+  position1: 1
   talent: 8
   age: 17
   skill_level: 31
 - name: Ben Raily
   country_id: 237
-  position1: Ld
+  position1: 1
   talent: 2
   age: 27
   skill_level: 44
 - name: John Consteble
   country_id: 237
-  position1: Ld
+  position1: 1
   talent: 3
   age: 37
   skill_level: 45
 - name: Langston Huge
   country_id: 237
-  position1: Ld
+  position1: 1
   talent: 9
   age: 20
   skill_level: 76
 - name: Robin van der Platt
   country_id: 135
-  position1: Cf
+  position1: 8
   talent: 5
   age: 22
   skill_level: 34
 - name: Daniel Bara Monzelo
   country_id: 157
-  position1: Ld
+  position1: 1
   talent: 8
   age: 30
   skill_level: 60
-- name: Angel San-Jilman
+- name: Angel San-Ji4an
   country_id: 122
-  position1: Cd
+  position1: 2
   talent: 2
   age: 22
   skill_level: 57
 - name: Jeak Ixe
   country_id: 108
-  position1: Rm
+  position1: 6
   talent: 5
   age: 22
   skill_level: 33
 - name: Felix Aureiro
   country_id: 29
-  position1: Cf
+  position1: 8
   talent: 9
   age: 21
   skill_level: 88
 - name: Alessandro Barbossa Estevez
   country_id: 29
-  position1: Cm
+  position1: 5
   talent: 9
   age: 18
   skill_level: 122
-- name: David Nurdkvist
+- name: David Nu3kvist
   country_id: 222
-  position1: Lm
+  position1: 4
   talent: 8
   age: 18
   skill_level: 120
 - name: Frank Young
   country_id: 163
-  position1: Lm
+  position1: 4
   talent: 7
   age: 18
   skill_level: 64
 - name: Nils Graav
   country_id: 197
-  position1: Gk
+  position1: 0
   talent: 2
   age: 38
   skill_level: 26
 - name: Serjio Suarez
   country_id: 77
-  position1: Gk
+  position1: 0
   talent: 5
   age: 18
   skill_level: 33
 - name: Borje Tabradala
   country_id: 77
-  position1: Cd
+  position1: 2
   talent: 7
   age: 24
   skill_level: 63
-- name: Jerardo Villa
+- name: Jera3o Villa
   country_id: 77
-  position1: Gk
+  position1: 0
   talent: 8
   age: 22
   skill_level: 78
 - name: Talel Shaylen
   country_id: 212
-  position1: Gk
+  position1: 0
   talent: 6
   age: 27
   skill_level: 42
 - name: Timo Schneider
   country_id: 52
-  position1: Gk
+  position1: 0
   talent: 9
   age: 20
   skill_level: 68
 - name: Thomas Hennig Vessen
   country_id: 61
-  position1: Gk
+  position1: 0
   talent: 6
   age: 36
   skill_level: 66
 - name: Hendrik Nikolsson
   country_id: 222
-  position1: Gk
+  position1: 0
   talent: 4
   age: 32
   skill_level: 64
 - name: Khalid-Bukhangar Aribi
   country_id: 5
-  position1: Gk
+  position1: 0
   talent: 5
   age: 27
   skill_level: 39
-- name: Wilfred Gope
+- name: Wi7red Gope
   country_id: 107
-  position1: Gk
+  position1: 0
   talent: 3
   age: 32
   skill_level: 38
 - name: Salem Hamis Bashir
   country_id: 141
-  position1: Ld
+  position1: 1
   talent: 7
   age: 25
   skill_level: 62
-- name: Erik Leine Halldorsson
+- name: Erik Leine Hal1orsson
   country_id: 140
-  position1: Ld
+  position1: 1
   talent: 7
   age: 29
   skill_level: 53
 - name: Kirill Drozdov
   country_id: 125
-  position1: Cd
+  position1: 2
   talent: 7
   age: 29
   skill_level: 49
 - name: Branimir Petrinich
   country_id: 27
-  position1: Cd
+  position1: 2
   talent: 7
   age: 27
   skill_level: 54
 - name: Gorav Hishi
   country_id: 132
-  position1: Cd
+  position1: 2
   talent: 2
   age: 29
   skill_level: 32
-- name: Gerhard Sederberg
+- name: Gerha3 Sederberg
   country_id: 222
-  position1: Rd
+  position1: 3
   talent: 5
   age: 31
   skill_level: 46
 - name: Fredrik Klinberg
   country_id: 140
-  position1: Rd
+  position1: 3
   talent: 3
   age: 32
   skill_level: 32
 - name: Thomas Bo Hanssen
   country_id: 61
-  position1: Ld
+  position1: 1
   talent: 5
   age: 35
   skill_level: 68
 - name: Migel Delia
   country_id: 118
-  position1: Lm
+  position1: 4
   talent: 5
   age: 20
   skill_level: 50
-- name: Guillhermo Esqalada Supreza
+- name: Guillhe6o Esqalada Supreza
   country_id: 206
-  position1: Cm
+  position1: 5
   talent: 8
   age: 31
   skill_level: 67
 - name: Wan Pac-Chon
   country_id: 171
-  position1: Cm
+  position1: 5
   talent: 5
   age: 28
   skill_level: 56
 - name: John Sorokatini
   country_id: 208
-  position1: Cm
+  position1: 5
   talent: 3
   age: 28
   skill_level: 34
 - name: Sunil Takhla
   country_id: 208
-  position1: Cm
+  position1: 5
   talent: 1
   age: 31
   skill_level: 31
 - name: Monesh Ralulu
   country_id: 208
-  position1: Rf
+  position1: 9
   talent: 3
   age: 29
   skill_level: 30
 - name: Frederik Foxwell
   country_id: 57
-  position1: Rm
+  position1: 6
   talent: 7
   age: 31
   skill_level: 67
 - name: Kleber Fortleza Gonzalez
   country_id: 94
-  position1: Rm
+  position1: 6
   talent: 7
   age: 25
   skill_level: 55
 - name: Juarez Kristish
   country_id: 94
-  position1: Lm
+  position1: 4
   talent: 6
   age: 24
   skill_level: 37
 - name: Juarez Milito
   country_id: 94
-  position1: Cm
+  position1: 5
   talent: 5
   age: 28
   skill_level: 47
 - name: Boris Schreibmann
   country_id: 69
-  position1: Cm
+  position1: 5
   talent: 6
   age: 29
   skill_level: 44
 - name: Ilia Jedinak
   country_id: 219
-  position1: Cm
+  position1: 5
   talent: 4
   age: 26
   skill_level: 63
 - name: Milos Godvall
   country_id: 219
-  position1: Lm
+  position1: 4
   talent: 2
   age: 28
   skill_level: 38
 - name: Alain Martinez
   country_id: 220
-  position1: Rm
+  position1: 6
   talent: 7
   age: 18
   skill_level: 26
 - name: Jenkun Lo Sun
   country_id: 89
-  position1: Rd
+  position1: 3
   talent: 3
   age: 36
   skill_level: 50
 - name: Ba Guan
   country_id: 89
-  position1: Cm
+  position1: 5
   talent: 8
   age: 22
   skill_level: 57
 - name: Manuel Andres Prietta
   country_id: 77
-  position1: Cd
+  position1: 2
   talent: 7
   age: 22
   skill_level: 35
 - name: Carlos Reyna Cuellar
   country_id: 77
-  position1: Cd
+  position1: 2
   talent: 5
   age: 29
   skill_level: 66
 - name: Francesco Alberto Maneyra
   country_id: 77
-  position1: Ld
+  position1: 1
   talent: 4
   age: 34
   skill_level: 51
 - name: Luis Pablo Aranes
   country_id: 77
-  position1: Rf
+  position1: 9
   talent: 2
   age: 20
   skill_level: 29
 - name: Sebastian Justino Perez
   country_id: 77
-  position1: Rm
+  position1: 6
   talent: 5
   age: 26
   skill_level: 49
 - name: Christiano El-Pano Thorres
   country_id: 54
-  position1: Cd
+  position1: 2
   talent: 7
   age: 21
   skill_level: 46
 - name: Limberg de Rosa
   country_id: 25
-  position1: Cm
+  position1: 5
   talent: 7
   age: 19
   skill_level: 31
-- name: Carmello Bonashan
+- name: Ca6ello Bonashan
   country_id: 25
-  position1: Rf
+  position1: 9
   talent: 5
   age: 33
   skill_level: 51
 - name: Yurai Kannotidis
   country_id: 58
-  position1: Cd
+  position1: 2
   talent: 2
   age: 29
   skill_level: 36
 - name: Manolis Gannos
   country_id: 58
-  position1: Rd
+  position1: 3
   talent: 5
   age: 30
   skill_level: 54
 - name: Christos Ioannidiss
   country_id: 58
-  position1: Lf
+  position1: 7
   talent: 8
   age: 20
   skill_level: 57
 - name: Alkinoos Thanatos
   country_id: 58
-  position1: Cd
+  position1: 2
   talent: 7
   age: 19
   skill_level: 69
 - name: Mironas Remos
   country_id: 58
-  position1: Gk
+  position1: 0
   talent: 5
   age: 29
   skill_level: 43
 - name: Lasaros Perellis
   country_id: 87
-  position1: Rf
+  position1: 9
   talent: 5
   age: 27
   skill_level: 49
 - name: Andy Makita
   country_id: 86
-  position1: Gk
+  position1: 0
   talent: 2
   age: 18
   skill_level: 37
 - name: Alreddin Domui
   country_id: 242
-  position1: Cf
+  position1: 8
   talent: 4
   age: 21
   skill_level: 47
 - name: Kamjel Bergsman
   country_id: 188
-  position1: Rm
+  position1: 6
   talent: 4
   age: 35
   skill_level: 42
 - name: Iezekiel Mrishio
   country_id: 193
-  position1: Cd
+  position1: 2
   talent: 4
   age: 23
   skill_level: 37
 - name: Mauri Sierra Ninjo
   country_id: 41
-  position1: Lm
+  position1: 4
   talent: 5
   age: 26
   skill_level: 44
 - name: Goran Susach
   country_id: 27
-  position1: Cd
+  position1: 2
   talent: 5
   age: 37
   skill_level: 43
 - name: Maxim Chadin
   country_id: 160
-  position1: Cd
+  position1: 2
   talent: 7
   age: 27
   skill_level: 41
 - name: Alexander Azurin
   country_id: 160
-  position1: Lf
+  position1: 7
   talent: 6
   age: 19
   skill_level: 49
 - name: Gleb Petrenko
   country_id: 160
-  position1: Cf
+  position1: 8
   talent: 3
   age: 33
   skill_level: 41
 - name: Vladimir Smirnov
   country_id: 160
-  position1: Gk
+  position1: 0
   talent: 5
   age: 24
   skill_level: 50
 - name: Alexey Nedyuginskiy
   country_id: 160
-  position1: Gk
+  position1: 0
   talent: 4
   age: 19
   skill_level: 55
 - name: Gennadiy Kreschenskiy
   country_id: 160
-  position1: Rd
+  position1: 3
   talent: 1
   age: 36
   skill_level: 51
 - name: Oleg Tarutinskiy
   country_id: 160
-  position1: Gk
+  position1: 0
   talent: 4
   age: 27
   skill_level: 45
 - name: Carlos Reyes
   country_id: 77
-  position1: Cf
+  position1: 8
   talent: 3
   age: 26
   skill_level: 66
 - name: Derliz Isaak Trige
   country_id: 25
-  position1: Cd
+  position1: 2
   talent: 6
   age: 28
   skill_level: 36
 - name: Migel Helguerado
   country_id: 77
-  position1: Cd
+  position1: 2
   talent: 6
   age: 18
   skill_level: 41
-- name: Jonatan Faldini
+- name: Jonatan Fa1ini
   country_id: 78
-  position1: Rd
+  position1: 3
   talent: 3
   age: 33
   skill_level: 48
 - name: Bahiyarin Jari
   country_id: 30
-  position1: Cf
+  position1: 8
   talent: 4
   age: 34
   skill_level: 40
 - name: Patris Gakhundg
   country_id: 86
-  position1: Rm
+  position1: 6
   talent: 6
   age: 24
   skill_level: 38
 - name: Kirill Verpakovskis
   country_id: 101
-  position1: Cf
+  position1: 8
   talent: 6
   age: 27
   skill_level: 44
 - name: Silgu Nulin
   country_id: 89
-  position1: Rf
+  position1: 9
   talent: 2
   age: 25
   skill_level: 34
 - name: Elias A. Artz
   country_id: 2
-  position1: Cm
+  position1: 5
   talent: 5
   age: 22
   skill_level: 41
 - name: Kaspar Richerts
   country_id: 2
-  position1: Lf
+  position1: 7
   talent: 3
   age: 31
   skill_level: 48
 - name: Piter van VakThori
   country_id: 135
-  position1: Lf
+  position1: 7
   talent: 4
   age: 28
   skill_level: 28
 - name: Vanskart Hallstroem
   country_id: 222
-  position1: Ld
+  position1: 1
   talent: 2
   age: 25
   skill_level: 33
 - name: Kim Mun Jun
   country_id: 230
-  position1: Rf
+  position1: 9
   talent: 4
   age: 23
   skill_level: 39
 - name: Ragnar Jorgijenson
   country_id: 76
-  position1: Cf
+  position1: 8
   talent: 7
   age: 20
   skill_level: 45
 - name: Olafur Thor Gottkalsson
   country_id: 76
-  position1: Cd
+  position1: 2
   talent: 3
   age: 33
   skill_level: 71
-- name: Gudmundur Thor Thordarsson
+- name: Gudmundur Thor Tho3arsson
   country_id: 76
-  position1: Rm
+  position1: 6
   talent: 9
   age: 20
   skill_level: 35
 - name: Shabba Dzinkambani
   country_id: 114
-  position1: Lf
+  position1: 7
   talent: 6
   age: 36
   skill_level: 30
 - name: Rafiz Talimov
   country_id: 203
-  position1: Rf
+  position1: 9
   talent: 5
   age: 21
   skill_level: 33
 - name: Jeankarlo de Ruumen
   country_id: 29
-  position1: Cd
+  position1: 2
   talent: 3
   age: 22
   skill_level: 28
-- name: Viktor Krugkov
+- name: Viktor Kru0ov
   country_id: 160
-  position1: Lm
+  position1: 4
   talent: 4
   age: 35
   skill_level: 47
 - name: Zanad Al-Djanubi
   country_id: 187
-  position1: Rf
+  position1: 9
   talent: 2
   age: 29
   skill_level: 42
 - name: Julian Stuart
   country_id: 237
-  position1: Rf
+  position1: 9
   talent: 5
   age: 17
   skill_level: 31
 - name: Maarvin Andrade
   country_id: 47
-  position1: Cm
+  position1: 5
   talent: 7
   age: 19
   skill_level: 43
 - name: Yens Graubber
   country_id: 52
-  position1: Cf
+  position1: 8
   talent: 6
   age: 30
   skill_level: 57
-- name: Yost Hillfkant
+- name: Yost Hil7kant
   country_id: 52
-  position1: Lm
+  position1: 4
   talent: 2
   age: 29
   skill_level: 21
 - name: Klaus Hammerli
   country_id: 2
-  position1: Cf
+  position1: 8
   talent: 9
   age: 20
   skill_level: 73
 - name: Elio di Marienello
   country_id: 78
-  position1: Gk
+  position1: 0
   talent: 3
   age: 26
   skill_level: 51
 - name: Virgilio Bonaseo
   country_id: 185
-  position1: Gk
+  position1: 0
   talent: 3
   age: 22
   skill_level: 34
 - name: Gor Azaryan
   country_id: 12
-  position1: Gk
+  position1: 0
   talent: 8
   age: 22
   skill_level: 57
 - name: Alirian Gedzjia
   country_id: 4
-  position1: Cd
+  position1: 2
   talent: 3
   age: 37
   skill_level: 34
 - name: Vitaliy Drobyazko
   country_id: 19
-  position1: Rf
+  position1: 9
   talent: 5
   age: 27
   skill_level: 38
 - name: Felix Espineyra
   country_id: 157
-  position1: Rf
+  position1: 9
   talent: 7
   age: 19
   skill_level: 52
 - name: Troy Golsgrade
   country_id: 75
-  position1: Rf
+  position1: 9
   talent: 4
   age: 21
   skill_level: 40
 - name: Garret Bonner
   country_id: 75
-  position1: Cm
+  position1: 5
   talent: 6
   age: 20
   skill_level: 46
 - name: Gavin J. Hillander
   country_id: 75
-  position1: Gk
+  position1: 0
   talent: 7
   age: 38
   skill_level: 38
 - name: Fernando Brown
   country_id: 75
-  position1: Cf
+  position1: 8
   talent: 1
   age: 29
   skill_level: 41
 - name: Derek Karrer
   country_id: 75
-  position1: Lf
+  position1: 7
   talent: 5
   age: 33
   skill_level: 60
 - name: Suao Kao-Hun
   country_id: 112
-  position1: Rd
+  position1: 3
   talent: 3
   age: 20
   skill_level: 26
 - name: Buncha Chaopun
   country_id: 191
-  position1: Cd
+  position1: 2
   talent: 5
   age: 25
   skill_level: 43
 - name: Hrvoje Glibich
   country_id: 215
-  position1: Cf
+  position1: 8
   talent: 7
   age: 22
   skill_level: 44
 - name: Gevork Akhayan
   country_id: 12
-  position1: Cm
+  position1: 5
   talent: 3
   age: 28
   skill_level: 40
 - name: Revaz Chagishvili
   country_id: 59
-  position1: Cm
+  position1: 5
   talent: 6
   age: 29
   skill_level: 38
 - name: Oscar Ariaza
   country_id: 9
-  position1: Ld
+  position1: 1
   talent: 3
   age: 29
   skill_level: 49
-- name: Jack Armstrong
+- name: Jack A6strong
   country_id: 138
-  position1: Cd
+  position1: 2
   talent: 7
   age: 28
   skill_level: 56
 - name: Neil Lindi
   country_id: 138
-  position1: Rm
+  position1: 6
   talent: 5
   age: 37
   skill_level: 48
-- name: Ildefonso Rivas
+- name: I1efonso Rivas
   country_id: 38
-  position1: Lf
+  position1: 7
   talent: 8
   age: 27
   skill_level: 59
 - name: Ramon Lucio
   country_id: 96
-  position1: Rm
+  position1: 6
   talent: 6
   age: 25
   skill_level: 48
 - name: Abdul Razaak Al-Zakrani
   country_id: 168
-  position1: Ld
+  position1: 1
   talent: 2
   age: 37
   skill_level: 52
 - name: Daudi Jaalu
   country_id: 46
-  position1: Rm
+  position1: 6
   talent: 5
   age: 34
   skill_level: 38
 - name: Beysen Makarchuk
   country_id: 81
-  position1: Ld
+  position1: 1
   talent: 1
   age: 22
   skill_level: 39
 - name: Ognen Bjelitza
   country_id: 27
-  position1: Cf
+  position1: 8
   talent: 6
   age: 31
   skill_level: 37
-- name: Arda Sakhshin
+- name: A3a Sakhshin
   country_id: 201
-  position1: Rf
+  position1: 9
   talent: 4
   age: 34
   skill_level: 58
 - name: Saud Al-Mutrab
   country_id: 150
-  position1: Lm
+  position1: 4
   talent: 2
   age: 29
   skill_level: 33
 - name: Suoka Takidzava
   country_id: 234
-  position1: Cf
+  position1: 8
   talent: 5
   age: 18
   skill_level: 37
 - name: Evans Vestvatter
   country_id: 197
-  position1: Cm
+  position1: 5
   talent: 5
   age: 21
   skill_level: 42
 - name: Yakub Nasser
   country_id: 1
-  position1: Rf
+  position1: 9
   talent: 5
   age: 28
   skill_level: 65
-- name: Akosh Sczeld
+- name: Akosh Scze1
   country_id: 37
-  position1: Cm
+  position1: 5
   talent: 5
   age: 37
   skill_level: 88
 - name: Danil Kobenkov
   country_id: 160
-  position1: Rd
+  position1: 3
   talent: 4
   age: 31
   skill_level: 36
 - name: Dominico Monto
   country_id: 78
-  position1: Cd
+  position1: 2
   talent: 5
   age: 33
   skill_level: 62
-- name: Jerard Andres Barbossa
+- name: Jera3 Andres Barbossa
   country_id: 77
-  position1: Rm
+  position1: 6
   talent: 7
   age: 35
   skill_level: 41
 - name: Givi Burnadze
   country_id: 59
-  position1: Rm
+  position1: 6
   talent: 8
   age: 31
   skill_level: 37
-- name: Daniel Ardiles
+- name: Daniel A3iles
   country_id: 84
-  position1: Lf
+  position1: 7
   talent: 7
   age: 27
   skill_level: 55
 - name: Landon Dennis
   country_id: 46
-  position1: Rm
+  position1: 6
   talent: 8
   age: 19
   skill_level: 59
-- name: Gavin Minaugard
+- name: Gavin Minauga3
   country_id: 177
-  position1: Lf
+  position1: 7
   talent: 5
   age: 23
   skill_level: 41
 - name: Yukka Varkalla
   country_id: 210
-  position1: Cm
+  position1: 5
   talent: 6
   age: 24
   skill_level: 45
 - name: Oscar Manuel Satero
   country_id: 122
-  position1: Gk
+  position1: 0
   talent: 6
   age: 23
   skill_level: 58
 - name: Ramon Gonzalez
   country_id: 122
-  position1: Cd
+  position1: 2
   talent: 9
   age: 17
   skill_level: 73
 - name: Gayo Castelli
   country_id: 78
-  position1: Lm
+  position1: 4
   talent: 6
   age: 20
   skill_level: 50
 - name: Matteo Vives
   country_id: 78
-  position1: Cf
+  position1: 8
   talent: 6
   age: 17
   skill_level: 23
 - name: Mario Viana
   country_id: 78
-  position1: Lf
+  position1: 7
   talent: 6
   age: 26
   skill_level: 58
 - name: Luca Cyan
   country_id: 78
-  position1: Cf
+  position1: 8
   talent: 3
   age: 37
   skill_level: 60
 - name: Gennaro Latzioni
   country_id: 78
-  position1: Cd
+  position1: 2
   talent: 7
   age: 19
   skill_level: 35
 - name: Pietro Nikodemo
   country_id: 78
-  position1: Rd
+  position1: 3
   talent: 5
   age: 29
   skill_level: 40
 - name: Lyubosh Zubek
   country_id: 219
-  position1: Ld
+  position1: 1
   talent: 2
   age: 28
   skill_level: 37
 - name: Radoslav Lagish
   country_id: 219
-  position1: Cf
+  position1: 8
   talent: 6
   age: 25
   skill_level: 55
 - name: Tiziano di Chrisante
   country_id: 78
-  position1: Rd
+  position1: 3
   talent: 2
   age: 18
   skill_level: 34
 - name: Andrea di Tora
   country_id: 78
-  position1: Rd
+  position1: 3
   talent: 8
   age: 17
   skill_level: 89
 - name: Marko Balissimi
   country_id: 78
-  position1: Ld
+  position1: 1
   talent: 5
   age: 27
   skill_level: 47
 - name: Francesco Beotzi
   country_id: 78
-  position1: Lf
+  position1: 7
   talent: 1
   age: 21
   skill_level: 56
 - name: Andrea Ponzi
   country_id: 78
-  position1: Rd
+  position1: 3
   talent: 2
   age: 36
   skill_level: 41
 - name: Gianluigi Petzi
   country_id: 78
-  position1: Cm
+  position1: 5
   talent: 3
   age: 35
   skill_level: 45
 - name: Magn Fitzagi
   country_id: 78
-  position1: Cf
+  position1: 8
   talent: 6
   age: 21
   skill_level: 50
 - name: Kvint Beniliccio
   country_id: 78
-  position1: Rd
+  position1: 3
   talent: 6
   age: 26
   skill_level: 59
 - name: Dominico Arezzo
   country_id: 78
-  position1: Lm
+  position1: 4
   talent: 5
   age: 25
   skill_level: 100
 - name: Paolo Versaccio
   country_id: 78
-  position1: Lm
+  position1: 4
   talent: 5
   age: 20
   skill_level: 48
 - name: Greg Frage
   country_id: 45
-  position1: Rd
+  position1: 3
   talent: 5
   age: 21
   skill_level: 47
 - name: Shaun Kavanage
   country_id: 75
-  position1: Rf
+  position1: 9
   talent: 4
   age: 34
   skill_level: 67
-- name: Srdgan Drietz
+- name: S3gan Drietz
   country_id: 179
-  position1: Cm
+  position1: 5
   talent: 4
   age: 25
   skill_level: 45
 - name: Jakim El-Djarnas
   country_id: 119
-  position1: Gk
+  position1: 0
   talent: 6
   age: 27
   skill_level: 55
 - name: Rene Moriset
   country_id: 213
-  position1: Rm
+  position1: 6
   talent: 5
   age: 26
   skill_level: 37
-- name: Rodolfo Etterigo
+- name: Rodo7o Etterigo
   country_id: 157
-  position1: Rd
+  position1: 3
   talent: 7
   age: 31
   skill_level: 66
 - name: Njedraye Jederson
   country_id: 94
-  position1: Rd
+  position1: 3
   talent: 9
   age: 30
   skill_level: 65
 - name: Allore Delson Kandidu
   country_id: 29
-  position1: Cf
+  position1: 8
   talent: 5
   age: 27
   skill_level: 59
 - name: Rock Nguani
   country_id: 92
-  position1: Ld
+  position1: 1
   talent: 7
   age: 21
   skill_level: 44
 - name: Kursan Turaman
   country_id: 201
-  position1: Lm
+  position1: 4
   talent: 6
   age: 21
   skill_level: 42
 - name: Vicenzo Parast
   country_id: 1
-  position1: Ld
+  position1: 1
   talent: 7
   age: 37
   skill_level: 18
 - name: Matush Zherko
   country_id: 183
-  position1: Rd
+  position1: 3
   talent: 7
   age: 20
   skill_level: 54
 - name: Kondovani Jarret
   country_id: 189
-  position1: Cd
+  position1: 2
   talent: 3
   age: 27
   skill_level: 35
 - name: Slavisa Stoykovich
   country_id: 27
-  position1: Lm
+  position1: 4
   talent: 6
   age: 26
   skill_level: 36
 - name: Babadu Tidjub
   country_id: 174
-  position1: Rd
+  position1: 3
   talent: 3
   age: 17
   skill_level: 56
 - name: Jean-Baptist Njendanjo
   country_id: 32
-  position1: Rm
+  position1: 6
   talent: 3
   age: 21
   skill_level: 43
-- name: Ricardo Caliarduccio
+- name: Rica3o Calia3uccio
   country_id: 78
-  position1: Lm
+  position1: 4
   talent: 7
   age: 17
   skill_level: 13
 - name: Melvir Camey
   country_id: 103
-  position1: Gk
+  position1: 0
   talent: 3
   age: 24
   skill_level: 37
 - name: Costa Rubeyro Agoyres
   country_id: 157
-  position1: Rd
+  position1: 3
   talent: 2
   age: 33
   skill_level: 45
 - name: Costinha Ratu
   country_id: 157
-  position1: Cf
+  position1: 8
   talent: 9
   age: 18
   skill_level: 70
 - name: Juliano Skartozzi
   country_id: 78
-  position1: Lm
+  position1: 4
   talent: 5
   age: 20
   skill_level: 35
 - name: Oanu Vasil Dragun
   country_id: 162
-  position1: Ld
+  position1: 1
   talent: 5
   age: 34
   skill_level: 41
-- name: Tomard Esgill Grimstadt
+- name: Toma3 Esgill Grimstadt
   country_id: 140
-  position1: Rm
+  position1: 6
   talent: 7
   age: 32
   skill_level: 48
 - name: Yakub-Martin Taurensen
   country_id: 207
-  position1: Cd
+  position1: 2
   talent: 2
   age: 32
   skill_level: 40
 - name: Reymond Benua Jayndel
   country_id: 86
-  position1: Cd
+  position1: 2
   talent: 7
   age: 21
   skill_level: 31
 - name: Uppendra Chettri
   country_id: 132
-  position1: Lf
+  position1: 7
   talent: 2
   age: 27
   skill_level: 59
 - name: Mabuatchi Zuaram-Duguma
   country_id: 110
-  position1: Lm
+  position1: 4
   talent: 6
   age: 34
   skill_level: 44
 - name: Alexis Emiri
   country_id: 77
-  position1: Cf
+  position1: 8
   talent: 6
   age: 36
   skill_level: 34
 - name: Slamet Jedde
   country_id: 71
-  position1: Cd
+  position1: 2
   talent: 6
   age: 19
   skill_level: 43
-- name: Josh Coldorn
+- name: Josh Co1orn
   country_id: 163
-  position1: Gk
+  position1: 0
   talent: 3
   age: 32
   skill_level: 68
 - name: Grim Bergsveinn Tremsted
   country_id: 76
-  position1: Rd
+  position1: 3
   talent: 5
   age: 29
   skill_level: 38
-- name: Arni Kristinn Ulfsson
+- name: Arni Kristinn U7sson
   country_id: 76
-  position1: Cd
+  position1: 2
   talent: 3
   age: 17
   skill_level: 33
-- name: Jargi Bardisson
+- name: Jargi Ba3isson
   country_id: 76
-  position1: Rm
+  position1: 6
   talent: 6
   age: 35
   skill_level: 59
 - name: Atli Blaengr Kriimson
   country_id: 76
-  position1: Lm
+  position1: 4
   talent: 5
   age: 20
   skill_level: 44
 - name: Audunn Veler
   country_id: 140
-  position1: Rd
+  position1: 3
   talent: 9
   age: 18
   skill_level: 95
 - name: Aleksey Petrov
   country_id: 160
-  position1: Cd
+  position1: 2
   talent: 3
   age: 31
   skill_level: 56
 - name: Egor Ponomarev
   country_id: 160
-  position1: Lf
+  position1: 7
   talent: 7
   age: 18
   skill_level: 32
 - name: Boris Lebedev
   country_id: 160
-  position1: Rd
+  position1: 3
   talent: 3
   age: 33
   skill_level: 41
 - name: Timur Vdovenko
   country_id: 160
-  position1: Gk
+  position1: 0
   talent: 8
   age: 38
   skill_level: 26
 - name: Semen Vorobyev
   country_id: 160
-  position1: Cm
+  position1: 5
   talent: 3
   age: 22
   skill_level: 15
 - name: Gennadiy Chumachenko
   country_id: 160
-  position1: Rd
+  position1: 3
   talent: 3
   age: 33
   skill_level: 45
-- name: Armen Kazanyan
+- name: A6en Kazanyan
   country_id: 160
-  position1: Rf
+  position1: 9
   talent: 6
   age: 18
   skill_level: 36
-- name: Helmut Metzhelber
+- name: He4ut Metzhelber
   country_id: 221
-  position1: Lm
+  position1: 4
   talent: 7
   age: 25
   skill_level: 75
 - name: Ovidiu Tabresku
   country_id: 162
-  position1: Rm
+  position1: 6
   talent: 5
   age: 19
   skill_level: 69
 - name: Adalsteinn Arevsen
   country_id: 76
-  position1: Gk
+  position1: 0
   talent: 5
   age: 24
   skill_level: 37
 - name: Wesley Oranjestadt
   country_id: 108
-  position1: Rd
+  position1: 3
   talent: 6
   age: 18
   skill_level: 46
 - name: Florian Jeladin
   country_id: 184
-  position1: Rm
+  position1: 6
   talent: 1
   age: 34
   skill_level: 41
 - name: Michel Golaynek
   country_id: 125
-  position1: Gk
+  position1: 0
   talent: 6
   age: 26
   skill_level: 43
 - name: Hervi Sayvidge
   country_id: 39
-  position1: Cf
+  position1: 8
   talent: 2
   age: 19
   skill_level: 45
 - name: Neno Pfannenstiel
   country_id: 52
-  position1: Rd
+  position1: 3
   talent: 4
   age: 32
   skill_level: 43
 - name: Raymondos Kvinesh
   country_id: 101
-  position1: Cd
+  position1: 2
   talent: 5
   age: 23
   skill_level: 32
 - name: Garsia Gonzalo Marchini
   country_id: 11
-  position1: Cm
+  position1: 5
   talent: 7
   age: 23
   skill_level: 63
 - name: Anthony Breddi
   country_id: 75
-  position1: Cm
+  position1: 5
   talent: 4
   age: 20
   skill_level: 51
 - name: Nakubu Makoma
   country_id: 92
-  position1: Rm
+  position1: 6
   talent: 6
   age: 30
   skill_level: 48
 - name: Husseyn Al Alavir
   country_id: 18
-  position1: Lm
+  position1: 4
   talent: 6
   age: 26
   skill_level: 45
 - name: Alvgeirr Atli Patterson
   country_id: 76
-  position1: Cm
+  position1: 5
   talent: 5
   age: 22
   skill_level: 38
 - name: Daugur Mar Fletventsson
   country_id: 76
-  position1: Lf
+  position1: 7
   talent: 4
   age: 31
   skill_level: 35
 - name: Chad Rubi
   country_id: 237
-  position1: Rf
+  position1: 9
   talent: 8
   age: 21
   skill_level: 92
 - name: Tanos Kalamatos
   country_id: 58
-  position1: Rd
+  position1: 3
   talent: 6
   age: 31
   skill_level: 80
 - name: Panagyotis Katsonis
   country_id: 58
-  position1: Cf
+  position1: 8
   talent: 3
   age: 31
   skill_level: 42
 - name: Giorgos Tallasinnos
   country_id: 58
-  position1: Cf
+  position1: 8
   talent: 5
   age: 35
   skill_level: 40
 - name: Patelis Dalaras
   country_id: 58
-  position1: Lm
+  position1: 4
   talent: 8
   age: 28
   skill_level: 46
 - name: Modoko Guadkhan
   country_id: 217
-  position1: Rd
+  position1: 3
   talent: 3
   age: 25
   skill_level: 38
 - name: Johannes Bolin
   country_id: 222
-  position1: Gk
+  position1: 0
   talent: 3
   age: 29
   skill_level: 44
 - name: Carlos Cosvall
   country_id: 188
-  position1: Lm
+  position1: 4
   talent: 6
   age: 34
   skill_level: 47
 - name: Mirsad Dogovich
   country_id: 27
-  position1: Cd
+  position1: 2
   talent: 5
   age: 21
   skill_level: 25
 - name: Vladan Moynich
   country_id: 27
-  position1: Cf
+  position1: 8
   talent: 4
   age: 28
   skill_level: 51
 - name: Zvonimir Neteyrich
   country_id: 179
-  position1: Cm
+  position1: 5
   talent: 2
   age: 22
   skill_level: 35
-- name: Ergerd Strakosha
+- name: Erge3 Strakosha
   country_id: 4
-  position1: Ld
+  position1: 1
   talent: 2
   age: 28
   skill_level: 55
 - name: Kostas Pukelevichyus
   country_id: 106
-  position1: Rf
+  position1: 9
   talent: 6
   age: 23
   skill_level: 45
 - name: Evgeniy Zhilin
   country_id: 160
-  position1: Rm
+  position1: 6
   talent: 8
   age: 20
   skill_level: 77
 - name: Ivan Kirsanov
   country_id: 160
-  position1: Lm
+  position1: 4
   talent: 7
   age: 37
   skill_level: 57
 - name: Yakov Venyukovin
   country_id: 160
-  position1: Ld
+  position1: 1
   talent: 3
   age: 18
   skill_level: 41
 - name: Nikolay Aliev
   country_id: 204
-  position1: Rd
+  position1: 3
   talent: 2
   age: 28
   skill_level: 34
 - name: Ettepen Modesto Lanuf
   country_id: 214
-  position1: Cd
+  position1: 2
   talent: 5
   age: 26
   skill_level: 36
 - name: Carles Sierra
   country_id: 90
-  position1: Rm
+  position1: 6
   talent: 3
   age: 28
   skill_level: 67
 - name: Yakov Gofstein
   country_id: 69
-  position1: Cm
+  position1: 5
   talent: 5
   age: 27
   skill_level: 45
 - name: Francis fon Laan
   country_id: 243
-  position1: Rd
+  position1: 3
   talent: 5
   age: 33
   skill_level: 56
 - name: Viktor Htochkov
   country_id: 24
-  position1: Cd
+  position1: 2
   talent: 7
   age: 28
   skill_level: 33
 - name: Nedjad Klaynich
   country_id: 184
-  position1: Lf
+  position1: 7
   talent: 7
   age: 27
   skill_level: 63
 - name: Mirze Gurtievski
   country_id: 113
-  position1: Ld
+  position1: 1
   talent: 6
   age: 21
   skill_level: 58
 - name: Trepp Saume
   country_id: 31
-  position1: Lf
+  position1: 7
   talent: 2
   age: 29
   skill_level: 33
-- name: Sylvio Erivonaldo
+- name: Sylvio Erivona1o
   country_id: 29
-  position1: Rf
+  position1: 9
   talent: 4
   age: 31
   skill_level: 48
 - name: Koffen Moexxil
   country_id: 231
-  position1: Ld
+  position1: 1
   talent: 4
   age: 34
   skill_level: 58
 - name: Daniel Berri
   country_id: 245
-  position1: Gk
+  position1: 0
   talent: 7
   age: 22
   skill_level: 66
 - name: Mario Moor
   country_id: 56
-  position1: Cf
+  position1: 8
   talent: 5
   age: 28
   skill_level: 51
 - name: Egor Tanasov
   country_id: 125
-  position1: Rd
+  position1: 3
   talent: 4
   age: 32
   skill_level: 44
 - name: Hironobo Mitsuni
   country_id: 234
-  position1: Cm
+  position1: 5
   talent: 4
   age: 35
   skill_level: 53
 - name: Jon Causemeyker
   country_id: 135
-  position1: Cf
+  position1: 8
   talent: 2
   age: 31
   skill_level: 50
 - name: Roman Korolev
   country_id: 19
-  position1: Cf
+  position1: 8
   talent: 5
   age: 29
   skill_level: 44
 - name: Ostap Lunev
   country_id: 19
-  position1: Cf
+  position1: 8
   talent: 2
   age: 37
   skill_level: 44
 - name: Makhdi Hasheminnasab
   country_id: 74
-  position1: Rf
+  position1: 9
   talent: 5
   age: 25
   skill_level: 55
 - name: Emerton Sammers
   country_id: 233
-  position1: Cm
+  position1: 5
   talent: 9
   age: 21
   skill_level: 56
 - name: Irgi Nejjmar
   country_id: 219
-  position1: Ld
+  position1: 1
   talent: 3
   age: 28
   skill_level: 59
 - name: Pal Blaeng Hallbursen
   country_id: 76
-  position1: Cf
+  position1: 8
   talent: 2
   age: 26
   skill_level: 33
 - name: Salgedr Salgedrsson
   country_id: 76
-  position1: Rd
+  position1: 3
   talent: 3
   age: 22
   skill_level: 37
 - name: Julio Saraus
   country_id: 53
-  position1: Rd
+  position1: 3
   talent: 4
   age: 19
   skill_level: 48
 - name: Ahmad Ben Assari
   country_id: 73
-  position1: Cf
+  position1: 8
   talent: 3
   age: 26
   skill_level: 51
 - name: Padrage Power
   country_id: 75
-  position1: Cm
+  position1: 5
   talent: 9
   age: 29
   skill_level: 87
-- name: Riccardu de la Castro
+- name: Ricca3u de la Castro
   country_id: 136
-  position1: Rm
+  position1: 6
   talent: 6
   age: 36
   skill_level: 54
-- name: Dario Wildmann
+- name: Dario Wi1mann
   country_id: 52
-  position1: Gk
+  position1: 0
   talent: 5
   age: 26
   skill_level: 58
-- name: Maxford Armer
+- name: Maxfo3 A6er
   country_id: 39
-  position1: Ld
+  position1: 1
   talent: 7
   age: 22
   skill_level: 49
 - name: Yaali Rodaz
   country_id: 49
-  position1: Gk
+  position1: 0
   talent: 5
   age: 26
   skill_level: 71
 - name: Demofelis Sengidis
   country_id: 58
-  position1: Ld
+  position1: 1
   talent: 6
   age: 29
   skill_level: 40
 - name: Lucas Saventos
   country_id: 58
-  position1: Rd
+  position1: 3
   talent: 2
   age: 22
   skill_level: 45
 - name: Miksalis Mozarakis
   country_id: 58
-  position1: Cd
+  position1: 2
   talent: 7
   age: 17
   skill_level: 35
 - name: Teofil Reyden
   country_id: 13
-  position1: Rd
+  position1: 3
   talent: 7
   age: 19
   skill_level: 19
 - name: Sighero Siounoda
   country_id: 234
-  position1: Cd
+  position1: 2
   talent: 6
   age: 35
   skill_level: 71
-- name: Valdes Salcido
+- name: Va1es Salcido
   country_id: 206
-  position1: Cd
+  position1: 2
   talent: 1
   age: 31
   skill_level: 64
 - name: Alessio Espozito
   country_id: 78
-  position1: Cd
+  position1: 2
   talent: 5
   age: 22
   skill_level: 69
 - name: Cezar Ector Christovao
   country_id: 11
-  position1: Lm
+  position1: 4
   talent: 2
   age: 28
   skill_level: 46
 - name: Nestor Fabiano Arshe
   country_id: 11
-  position1: Cm
+  position1: 5
   talent: 4
   age: 27
   skill_level: 58
 - name: Frederik Soguk
   country_id: 222
-  position1: Cm
+  position1: 5
   talent: 2
   age: 34
   skill_level: 30
 - name: Nenad Kastelle
   country_id: 221
-  position1: Lm
+  position1: 4
   talent: 8
   age: 26
   skill_level: 55
 - name: Nikolay Beknazarov
   country_id: 98
-  position1: Rm
+  position1: 6
   talent: 3
   age: 27
   skill_level: 33
-- name: Edwin Porfiriu
+- name: Edwin Po9iriu
   country_id: 41
-  position1: Rm
+  position1: 6
   talent: 4
   age: 25
   skill_level: 45
 - name: Fareno Quinonhes
   country_id: 49
-  position1: Cm
+  position1: 5
   talent: 6
   age: 28
   skill_level: 55
 - name: Clemens Viewu
   country_id: 213
-  position1: Lm
+  position1: 4
   talent: 4
   age: 28
   skill_level: 41
 - name: Slavko Sushnik
   country_id: 184
-  position1: Cd
+  position1: 2
   talent: 1
   age: 26
   skill_level: 38
 - name: Raul de los dos Guerrero
   country_id: 122
-  position1: Cm
+  position1: 5
   talent: 6
   age: 18
   skill_level: 66
 - name: Clave Lotta
   country_id: 66
-  position1: Cf
+  position1: 8
   talent: 6
   age: 30
   skill_level: 45
 - name: Derek Hilstadt
   country_id: 222
-  position1: Cf
+  position1: 8
   talent: 5
   age: 20
   skill_level: 47
 - name: Felipe Motta
   country_id: 78
-  position1: Cf
+  position1: 8
   talent: 4
   age: 28
   skill_level: 79
 - name: Veniamino Rossi
   country_id: 78
-  position1: Lm
+  position1: 4
   talent: 3
   age: 23
   skill_level: 43
 - name: Fabio Rossi
   country_id: 78
-  position1: Rf
+  position1: 9
   talent: 8
   age: 23
   skill_level: 64
 - name: Gianluca Albertini
   country_id: 78
-  position1: Lf
+  position1: 7
   talent: 6
   age: 29
   skill_level: 60
-- name: Gianccardo Fettino
+- name: Giancca3o Fettino
   country_id: 78
-  position1: Cm
+  position1: 5
   talent: 6
   age: 27
   skill_level: 45
 - name: Kadai Nakadsima
   country_id: 234
-  position1: Cm
+  position1: 5
   talent: 6
   age: 18
   skill_level: 41
 - name: Daysuke Nava
   country_id: 234
-  position1: Lf
+  position1: 7
   talent: 2
   age: 25
   skill_level: 58
 - name: Florin Savichi
   country_id: 125
-  position1: Rd
+  position1: 3
   talent: 3
   age: 35
   skill_level: 41
 - name: Pattarapong Yansuk
   country_id: 191
-  position1: Cm
+  position1: 5
   talent: 9
   age: 25
   skill_level: 50
 - name: Somphet Shriyakem
   country_id: 191
-  position1: Ld
+  position1: 1
   talent: 6
   age: 24
   skill_level: 52
 - name: Damid Induoil
   country_id: 224
-  position1: Rm
+  position1: 6
   talent: 6
   age: 38
   skill_level: 54
 - name: Jorje Andres Guerro
   country_id: 225
-  position1: Rm
+  position1: 6
   talent: 4
   age: 34
   skill_level: 57
 - name: Juan Jelli Fedjino
   country_id: 225
-  position1: Gk
+  position1: 0
   talent: 2
   age: 31
   skill_level: 41
 - name: Umberto Yestigarribia
   country_id: 153
-  position1: Rf
+  position1: 9
   talent: 6
   age: 21
   skill_level: 56
 - name: Fuke de la Krua
   country_id: 111
-  position1: Rm
+  position1: 6
   talent: 2
   age: 27
   skill_level: 31
 - name: Marcos Sonetaro
   country_id: 206
-  position1: Rm
+  position1: 6
   talent: 7
   age: 29
   skill_level: 69
 - name: Dani Munez
   country_id: 77
-  position1: Cd
+  position1: 2
   talent: 8
   age: 18
   skill_level: 39
 - name: Jeber Abellar Denaho
   country_id: 206
-  position1: Cm
+  position1: 5
   talent: 5
   age: 27
   skill_level: 68
-- name: Chatmongkoy Pandtaysong
+- name: Chatmon0oy Pandtaysong
   country_id: 191
-  position1: Rd
+  position1: 3
   talent: 5
   age: 28
   skill_level: 51
 - name: Mornual Gan
   country_id: 70
-  position1: Lf
+  position1: 7
   talent: 3
   age: 27
   skill_level: 42
 - name: Hodja Murak
   country_id: 70
-  position1: Cd
+  position1: 2
   talent: 5
   age: 28
   skill_level: 41
 - name: Tomonori Soda
   country_id: 234
-  position1: Lm
+  position1: 4
   talent: 8
   age: 23
   skill_level: 78
 - name: Katsu Kudo
   country_id: 234
-  position1: Cd
+  position1: 2
   talent: 2
   age: 31
   skill_level: 41
 - name: Orellien Nasimento
   country_id: 108
-  position1: Lf
+  position1: 7
   talent: 8
   age: 21
   skill_level: 64
 - name: Torsten Kunzl
   country_id: 52
-  position1: Cm
+  position1: 5
   talent: 2
   age: 26
   skill_level: 34
 - name: Augustino Olley
   country_id: 20
-  position1: Gk
+  position1: 0
   talent: 5
   age: 34
   skill_level: 34
-- name: "Edward N'Jodo"
+- name: "Edwa3 N'Jodo"
   country_id: 83
-  position1: Gk
+  position1: 0
   talent: 3
   age: 19
   skill_level: 41
 - name: Yoseph Quenne
   country_id: 101
-  position1: Rm
+  position1: 6
   talent: 1
   age: 35
   skill_level: 30
 - name: Pedro Manuel Allejandro
   country_id: 90
-  position1: Cf
+  position1: 8
   talent: 6
   age: 36
   skill_level: 50
 - name: Ekama Kandu
   country_id: 86
-  position1: Rd
+  position1: 3
   talent: 3
   age: 19
   skill_level: 52
 - name: Romano Buvach
   country_id: 215
-  position1: Ld
+  position1: 1
   talent: 2
   age: 31
   skill_level: 36
 - name: Airos Haralambus
   country_id: 87
-  position1: Cd
+  position1: 2
   talent: 4
   age: 34
   skill_level: 49
 - name: "Johann O'Monnag"
   country_id: 75
-  position1: Rm
+  position1: 6
   talent: 6
   age: 29
   skill_level: 40
 - name: Mikhay Blangu
   country_id: 125
-  position1: Ld
+  position1: 1
   talent: 6
   age: 28
   skill_level: 40
 - name: Andrey Rusu
   country_id: 125
-  position1: Cm
+  position1: 5
   talent: 2
   age: 24
   skill_level: 48
 - name: Ravo Luti
   country_id: 228
-  position1: Ld
+  position1: 1
   talent: 6
   age: 37
   skill_level: 32
 - name: Goran Jukich
   country_id: 184
-  position1: Cm
+  position1: 5
   talent: 2
   age: 21
   skill_level: 27
 - name: Zoran Bregovich
   country_id: 179
-  position1: Cf
+  position1: 8
   talent: 8
   age: 35
   skill_level: 74
-- name: Edward Harnetteble
+- name: Edwa3 Harnetteble
   country_id: 86
-  position1: Lm
+  position1: 4
   talent: 2
   age: 32
   skill_level: 35
 - name: Alois Ammatin
   country_id: 166
-  position1: Cd
+  position1: 2
   talent: 5
   age: 35
   skill_level: 38
 - name: Anthony Salaya
   country_id: 166
-  position1: Lf
+  position1: 7
   talent: 8
   age: 23
   skill_level: 67
 - name: Gregory Jaynandan
   country_id: 45
-  position1: Cm
+  position1: 5
   talent: 2
   age: 26
   skill_level: 45
-- name: Lars Dagard Risberg
+- name: Lars Daga3 Risberg
   country_id: 61
-  position1: Lm
+  position1: 4
   talent: 8
   age: 32
   skill_level: 75
-- name: Peter Numand Volden
+- name: Peter Numand Vo1en
   country_id: 61
-  position1: Lf
+  position1: 7
   talent: 5
   age: 30
   skill_level: 47
 - name: Hans-Erik Ersted
   country_id: 61
-  position1: Rf
+  position1: 9
   talent: 5
   age: 27
   skill_level: 38
 - name: Bjorn-Kristian Gravesen
   country_id: 61
-  position1: Cd
+  position1: 2
   talent: 2
   age: 33
   skill_level: 69
 - name: Bength Sigthson
   country_id: 222
-  position1: Rm
+  position1: 6
   talent: 1
   age: 38
   skill_level: 24
 - name: Frederik Allstroem
   country_id: 222
-  position1: Ld
+  position1: 1
   talent: 6
   age: 26
   skill_level: 54
 - name: Freder Magnusson
   country_id: 222
-  position1: Cm
+  position1: 5
   talent: 2
   age: 29
   skill_level: 44
 - name: Yon Kruzka
   country_id: 215
-  position1: Cm
+  position1: 5
   talent: 2
   age: 27
   skill_level: 74
-- name: Almir Ikanovich
+- name: A4ir Ikanovich
   country_id: 27
-  position1: Lf
+  position1: 7
   talent: 2
   age: 34
   skill_level: 49
 - name: Michael Shelton
   country_id: 84
-  position1: Lf
+  position1: 7
   talent: 7
   age: 24
   skill_level: 59
 - name: Robert Gottliebe
   country_id: 52
-  position1: Gk
+  position1: 0
   talent: 8
   age: 35
   skill_level: 38
 - name: Krusavyanu Donitsa
   country_id: 162
-  position1: Cf
+  position1: 8
   talent: 1
   age: 35
   skill_level: 67
 - name: Christian Tortellio
   country_id: 78
-  position1: Ld
+  position1: 1
   talent: 5
   age: 19
   skill_level: 40
 - name: Bulyiga Melnik
   country_id: 19
-  position1: Rd
+  position1: 3
   talent: 2
   age: 33
   skill_level: 36
 - name: Glindur King
   country_id: 245
-  position1: Cm
+  position1: 5
   talent: 9
   age: 18
   skill_level: 108
 - name: Luis Alberto Alves
   country_id: 25
-  position1: Rd
+  position1: 3
   talent: 3
   age: 37
   skill_level: 45
 - name: "Mvizera N'Dikunmana"
   country_id: 161
-  position1: Cm
+  position1: 5
   talent: 5
   age: 33
   skill_level: 52
 - name: "Said N'Segnigutmana"
   country_id: 161
-  position1: Rf
+  position1: 9
   talent: 6
   age: 21
   skill_level: 56
 - name: Naim Pangofel
   country_id: 69
-  position1: Lm
+  position1: 4
   talent: 7
   age: 23
   skill_level: 41
-- name: Rudolf Zinger
+- name: Rudo7 Zinger
   country_id: 69
-  position1: Gk
+  position1: 0
   talent: 6
   age: 17
   skill_level: 32
 - name: Tomaso der Lindsche
   country_id: 135
-  position1: Rd
+  position1: 3
   talent: 5
   age: 25
   skill_level: 62
 - name: Thomas Jay Simpson
   country_id: 163
-  position1: Rf
+  position1: 9
   talent: 5
   age: 26
   skill_level: 41
 - name: Joseph Valentine
   country_id: 237
-  position1: Cd
+  position1: 2
   talent: 8
   age: 32
   skill_level: 81
 - name: Shaun Robert Istwood
   country_id: 237
-  position1: Lm
+  position1: 4
   talent: 5
   age: 18
   skill_level: 60
 - name: Torre Nobel
   country_id: 237
-  position1: Cd
+  position1: 2
   talent: 3
   age: 32
   skill_level: 37
 - name: John Marko
   country_id: 237
-  position1: Lf
+  position1: 7
   talent: 2
   age: 28
   skill_level: 38
 - name: Kurt Caindey
   country_id: 237
-  position1: Rm
+  position1: 6
   talent: 3
   age: 36
   skill_level: 45
 - name: Roger Kingsley
   country_id: 237
-  position1: Cf
+  position1: 8
   talent: 4
   age: 30
   skill_level: 45
 - name: Johnni Sims
   country_id: 237
-  position1: Rm
+  position1: 6
   talent: 6
   age: 21
   skill_level: 48
 - name: Denny Rand
   country_id: 237
-  position1: Lf
+  position1: 7
   talent: 5
   age: 21
   skill_level: 64
 - name: Brayan Breddok
   country_id: 237
-  position1: Rf
+  position1: 9
   talent: 5
   age: 27
   skill_level: 50
 - name: Jason Mackendale
   country_id: 237
-  position1: Gk
+  position1: 0
   talent: 6
   age: 26
   skill_level: 67
 - name: Djelvani Boun
   country_id: 173
-  position1: Cm
+  position1: 5
   talent: 7
   age: 27
   skill_level: 47
 - name: Roberto Montell
   country_id: 122
-  position1: Ld
+  position1: 1
   talent: 5
   age: 28
   skill_level: 36
 - name: Georgio Cuommo
   country_id: 78
-  position1: Cd
+  position1: 2
   talent: 5
   age: 33
   skill_level: 39
 - name: Lassaro Ramozzio
   country_id: 153
-  position1: Cf
+  position1: 8
   talent: 5
   age: 22
   skill_level: 42
-- name: Valeri Osvalden
+- name: Valeri Osva1en
   country_id: 90
-  position1: Rm
+  position1: 6
   talent: 3
   age: 29
   skill_level: 44
 - name: Elar Zverko
   country_id: 228
-  position1: Lf
+  position1: 7
   talent: 5
   age: 19
   skill_level: 37
-- name: Villman Olmedo
+- name: Vil4an O4edo
   country_id: 225
-  position1: Cm
+  position1: 5
   talent: 6
   age: 19
   skill_level: 56
 - name: Kimberli Jackers
   country_id: 28
-  position1: Cm
+  position1: 5
   talent: 7
   age: 26
   skill_level: 67
 - name: Osmar Dase
   country_id: 11
-  position1: Gk
+  position1: 0
   talent: 6
   age: 24
   skill_level: 49
 - name: Joren van der Eyred
   country_id: 135
-  position1: Rm
+  position1: 6
   talent: 8
   age: 32
   skill_level: 59
 - name: Batist Longo
   country_id: 221
-  position1: Rd
+  position1: 3
   talent: 6
   age: 29
   skill_level: 42
 - name: "Rishar Hesst-N'Zie"
   country_id: 120
-  position1: Cd
+  position1: 2
   talent: 3
   age: 24
   skill_level: 46
 - name: Mansur Hodja
   country_id: 150
-  position1: Cf
+  position1: 8
   talent: 1
   age: 27
   skill_level: 41
 - name: Atari Kona
   country_id: 95
-  position1: Rd
+  position1: 3
   talent: 4
   age: 28
   skill_level: 57
 - name: Adalheidur Gudmundsson
   country_id: 76
-  position1: Cf
+  position1: 8
   talent: 7
   age: 23
   skill_level: 55
 - name: Mukhjn Rubeeru
   country_id: 37
-  position1: Cm
+  position1: 5
   talent: 2
   age: 26
   skill_level: 34
 - name: Marian Orshula
   country_id: 183
-  position1: Cf
+  position1: 8
   talent: 2
   age: 35
   skill_level: 51
 - name: Saul Martinez Igurolla
   country_id: 122
-  position1: Cm
+  position1: 5
   talent: 7
   age: 24
   skill_level: 71
 - name: Hasan Zollin
   country_id: 160
-  position1: Lm
+  position1: 4
   talent: 2
   age: 24
   skill_level: 31
 - name: Avtondil Hoyava
   country_id: 59
-  position1: Gk
+  position1: 0
   talent: 6
   age: 22
   skill_level: 56
 - name: Akhan Evjinskiy
   country_id: 81
-  position1: Cm
+  position1: 5
   talent: 7
   age: 23
   skill_level: 37
 - name: Usama Sida
   country_id: 182
-  position1: Rm
+  position1: 6
   talent: 9
   age: 26
   skill_level: 59
 - name: Afanasiy Talanov
   country_id: 160
-  position1: Cf
+  position1: 8
   talent: 3
   age: 19
   skill_level: 55
 - name: Alexander Nemelskiy
   country_id: 160
-  position1: Lm
+  position1: 4
   talent: 4
   age: 34
   skill_level: 43
 - name: Boris Sleptsov
   country_id: 160
-  position1: Ld
+  position1: 1
   talent: 3
   age: 32
   skill_level: 39
-- name: Wardle Sifo
+- name: Wa3le Sifo
   country_id: 231
-  position1: Rf
+  position1: 9
   talent: 5
   age: 29
   skill_level: 34
 - name: Naef Al-Jiaye
   country_id: 168
-  position1: Gk
+  position1: 0
   talent: 3
   age: 33
   skill_level: 45
 - name: Clint Ernest Al Muame
   country_id: 163
-  position1: Rm
+  position1: 6
   talent: 6
   age: 26
   skill_level: 36
 - name: Ajax Adrianakis
   country_id: 58
-  position1: Rd
+  position1: 3
   talent: 7
   age: 30
   skill_level: 73
 - name: Spyros Papazoglu
   country_id: 58
-  position1: Cf
+  position1: 8
   talent: 7
   age: 27
   skill_level: 40
 - name: Stelios Voskopulos
   country_id: 58
-  position1: Rd
+  position1: 3
   talent: 2
   age: 33
   skill_level: 36
 - name: Nikos Lidakis
   country_id: 58
-  position1: Rm
+  position1: 6
   talent: 7
   age: 18
   skill_level: 68
 - name: Yannis Varolis
   country_id: 58
-  position1: Gk
+  position1: 0
   talent: 2
   age: 26
   skill_level: 31
 - name: Antonis Tzivaios
   country_id: 58
-  position1: Cd
+  position1: 2
   talent: 5
   age: 27
   skill_level: 38
 - name: Ivan Guintolli
   country_id: 78
-  position1: Rm
+  position1: 6
   talent: 3
   age: 35
   skill_level: 78
 - name: Giovanni Inverizzi
   country_id: 78
-  position1: Lf
+  position1: 7
   talent: 5
   age: 38
   skill_level: 46
 - name: Robertino Bonazzi
   country_id: 78
-  position1: Rm
+  position1: 6
   talent: 2
   age: 37
   skill_level: 30
 - name: Andrea Macagni
   country_id: 78
-  position1: Lm
+  position1: 4
   talent: 4
   age: 37
   skill_level: 67
 - name: Pietro Kalabreze
   country_id: 78
-  position1: Rm
+  position1: 6
   talent: 1
   age: 34
   skill_level: 26
 - name: Jass Fish
   country_id: 56
-  position1: Cd
+  position1: 2
   talent: 3
   age: 26
   skill_level: 45
 - name: Rossi Fish
   country_id: 56
-  position1: Cf
+  position1: 8
   talent: 7
   age: 26
   skill_level: 59
 - name: Pat Rutt
   country_id: 56
-  position1: Rm
+  position1: 6
   talent: 2
   age: 29
   skill_level: 36
 - name: Jack Kirvan
   country_id: 221
-  position1: Cm
+  position1: 5
   talent: 6
   age: 28
   skill_level: 36
 - name: Seku Umari Llariot
   country_id: 50
-  position1: Rd
+  position1: 3
   talent: 3
   age: 21
   skill_level: 45
 - name: Mehdi Abdelhadd
   country_id: 199
-  position1: Cf
+  position1: 8
   talent: 2
   age: 29
   skill_level: 38
-- name: Uve Ulsen Edholm
+- name: Uve Ulsen Edho4
   country_id: 140
-  position1: Rf
+  position1: 9
   talent: 9
   age: 17
   skill_level: 131
 - name: Angel Lopes Aurino Heles
   country_id: 220
-  position1: Lm
+  position1: 4
   talent: 7
   age: 19
   skill_level: 58
 - name: Sorin Perez
   country_id: 220
-  position1: Cd
+  position1: 2
   talent: 3
   age: 30
   skill_level: 41
-- name: Gjurdgiu Bahchon
+- name: Gju3giu Bahchon
   country_id: 201
-  position1: Rm
+  position1: 6
   talent: 6
   age: 19
   skill_level: 40
 - name: Kemal Oklu
   country_id: 201
-  position1: Rd
+  position1: 3
   talent: 5
   age: 28
   skill_level: 50
-- name: Adulfo Metjes
+- name: Adu7o Metjes
   country_id: 49
-  position1: Ld
+  position1: 1
   talent: 6
   age: 19
   skill_level: 35
 - name: Sokratis Mitropanos
   country_id: 58
-  position1: Cd
+  position1: 2
   talent: 3
   age: 31
   skill_level: 55
 - name: Dimitrius Parios
   country_id: 58
-  position1: Cm
+  position1: 5
   talent: 2
   age: 37
   skill_level: 38
 - name: Kostas Valamas
   country_id: 58
-  position1: Gk
+  position1: 0
   talent: 6
   age: 34
   skill_level: 35
 - name: Clarence Akunja
   country_id: 220
-  position1: Rm
+  position1: 6
   talent: 6
   age: 36
   skill_level: 70
 - name: Biao Linfen
   country_id: 89
-  position1: Gk
+  position1: 0
   talent: 3
   age: 35
   skill_level: 53
 - name: Jose Luiz Artidaz
   country_id: 11
-  position1: Lf
+  position1: 7
   talent: 6
   age: 36
   skill_level: 41
 - name: Luis Arregona
   country_id: 220
-  position1: Cd
+  position1: 2
   talent: 9
   age: 31
   skill_level: 97
 - name: Nabikh Akbar
   country_id: 16
-  position1: Rd
+  position1: 3
   talent: 2
   age: 37
   skill_level: 38
 - name: Mariann Revak
   country_id: 183
-  position1: Gk
+  position1: 0
   talent: 1
   age: 37
   skill_level: 43
 - name: Georgiy Semishvili
   country_id: 59
-  position1: Cm
+  position1: 5
   talent: 4
   age: 38
   skill_level: 31
 - name: Tobbi de Miroll
   country_id: 31
-  position1: Rf
+  position1: 9
   talent: 2
   age: 38
   skill_level: 34
 - name: Vutikorn Regansantere
   country_id: 100
-  position1: Cm
+  position1: 5
   talent: 5
   age: 19
   skill_level: 38
 - name: Quing Xiaodgia
   country_id: 89
-  position1: Cd
+  position1: 2
   talent: 6
   age: 19
   skill_level: 57
 - name: Isam Gafni
   country_id: 199
-  position1: Cd
+  position1: 2
   talent: 5
   age: 18
   skill_level: 30
 - name: Zaulhissam Sabri
   country_id: 115
-  position1: Lm
+  position1: 4
   talent: 5
   age: 18
   skill_level: 33
 - name: Francesco El Franko
   country_id: 122
-  position1: Gk
+  position1: 0
   talent: 7
   age: 19
   skill_level: 83
 - name: Leon van der Hayze
   country_id: 135
-  position1: Ld
+  position1: 1
   talent: 1
   age: 23
   skill_level: 57
 - name: Marcos Nova
   country_id: 206
-  position1: Rf
+  position1: 9
   talent: 8
   age: 31
   skill_level: 61
 - name: Ludovik Sloboda
   country_id: 219
-  position1: Cf
+  position1: 8
   talent: 4
   age: 26
   skill_level: 51
-- name: Richard Manson
+- name: Richa3 Manson
   country_id: 75
-  position1: Cd
+  position1: 2
   talent: 4
   age: 37
   skill_level: 34
 - name: Jung Tan Sinh
   country_id: 55
-  position1: Cm
+  position1: 5
   talent: 3
   age: 19
   skill_level: 28
 - name: Hallvor Minesberg
   country_id: 207
-  position1: Lf
+  position1: 7
   talent: 3
   age: 34
   skill_level: 56
 - name: Einar Kristian Johansson
   country_id: 76
-  position1: Cf
+  position1: 8
   talent: 7
   age: 28
   skill_level: 62
 - name: Sneff Gnupson
   country_id: 76
-  position1: Gk
+  position1: 0
   talent: 7
   age: 35
   skill_level: 76
 - name: Andrea Ivokini
   country_id: 78
-  position1: Gk
+  position1: 0
   talent: 8
   age: 20
   skill_level: 60
 - name: Christofer Winking
   country_id: 84
-  position1: Ld
+  position1: 1
   talent: 5
   age: 23
   skill_level: 51
-- name: Peters Jacholm
+- name: Peters Jacho4
   country_id: 210
-  position1: Cf
+  position1: 8
   talent: 3
   age: 32
   skill_level: 38
 - name: Viktor Bogjanar
   country_id: 37
-  position1: Gk
+  position1: 0
   talent: 4
   age: 27
   skill_level: 37
 - name: Nelson Ze Urgo
   country_id: 80
-  position1: Gk
+  position1: 0
   talent: 6
   age: 28
   skill_level: 52
 - name: Kodzi Miamoto
   country_id: 234
-  position1: Cm
+  position1: 5
   talent: 5
   age: 22
   skill_level: 28
 - name: Kunio Palonato
   country_id: 234
-  position1: Ld
+  position1: 1
   talent: 5
   age: 34
   skill_level: 37
 - name: Ekio Lakayoto
   country_id: 234
-  position1: Lf
+  position1: 7
   talent: 6
   age: 18
   skill_level: 45
 - name: Patrick Adu
   country_id: 163
-  position1: Rd
+  position1: 3
   talent: 6
   age: 28
   skill_level: 41
-- name: Moyas Bronfeld
+- name: Moyas Bronfe1
   country_id: 69
-  position1: Cf
+  position1: 8
   talent: 3
   age: 31
   skill_level: 38
 - name: Miguel Delia
   country_id: 118
-  position1: Lm
+  position1: 4
   talent: 5
   age: 20
   skill_level: 50
 - name: Rene Mishe
   country_id: 108
-  position1: Rm
+  position1: 6
   talent: 1
   age: 35
   skill_level: 31
 - name: Lennart Boogdense
   country_id: 222
-  position1: Cd
+  position1: 2
   talent: 2
   age: 33
   skill_level: 39
 - name: Cевеци Амброзо
   country_id: 208
-  position1: Rf
+  position1: 9
   talent: 8
   age: 34
   skill_level: 61
-- name: Marc Tewelde
+- name: Marc Tewe1e
   country_id: 52
-  position1: Rm
+  position1: 6
   talent: 9
   age: 21
   skill_level: 76
 - name: Bernd Odulis
   country_id: 52
-  position1: Lm
+  position1: 4
   talent: 3
   age: 31
   skill_level: 37
+- name: Joao Seidi
+  country_id: 159
+  position1: 6
+  talent: 4
+  age: 21
+  skill_level: 28
+- name: Rico Stumpf
+  country_id: 52
+  position1: 2
+  talent: 5
+  age: 34
+  skill_level: 60
+- name: Precha Khattivong
+  country_id: 193
+  position1: 8
+  talent: 6
+  age: 28
+  skill_level: 48
+- name: Tony Cundasami
+  country_id: 111
+  position1: 9
+  talent: 2
+  age: 24
+  skill_level: 38
+- name: Velimir Deket
+  country_id: 27
+  position1: 0
+  talent: 5
+  age: 22
+  skill_level: 56
+- name: Marc van Dijk
+  country_id: 137
+  position1: 2
+  talent: 5
+  age: 18
+  skill_level: 38
+- name: Bernt Johanessen
+  country_id: 142
+  position1: 3
+  talent: 1
+  age: 35
+  skill_level: 53
+- name: Ba3 Magnus Dave
+  country_id: 142
+  position1: 5
+  talent: 3
+  age: 24
+  skill_level: 40
+- name: Aritz Moreno
+  country_id: 79
+  position1: 5
+  talent: 7
+  age: 33
+  skill_level: 48
+- name: Hristo Bozhanov
+  country_id: 24
+  position1: 5
+  talent: 3
+  age: 28
+  skill_level: 31
+- name: Cevher Sayar
+  country_id: 203
+  position1: 8
+  talent: 7
+  age: 21
+  skill_level: 54
+- name: Erol Yuksel
+  country_id: 203
+  position1: 3
+  talent: 5
+  age: 20
+  skill_level: 39
+- name: Christophe Feghouli
+  country_id: 242
+  position1: 1
+  talent: 5
+  age: 29
+  skill_level: 44
+- name: Milan Babic
+  country_id: 181
+  position1: 3
+  talent: 9
+  age: 37
+  skill_level: 29
+- name: Nacho Pueyo
+  country_id: 79
+  position1: 9
+  talent: 6
+  age: 23
+  skill_level: 67
+- name: Dennis Lange
+  country_id: 52
+  position1: 0
+  talent: 4
+  age: 24
+  skill_level: 36
+- name: Paul McStay
+  country_id: 250
+  position1: 0
+  talent: 7
+  age: 19
+  skill_level: 68
+- name: Nick Low
+  country_id: 250
+  position1: 6
+  talent: 5
+  age: 23
+  skill_level: 30

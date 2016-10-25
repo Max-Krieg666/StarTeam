@@ -4,12 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user=User.where(login: params[:login]).first
+    @user = User.where(login: params[:login]).first
     if @user && @user.authenticate(params[:password])
-      session[:user_id]=@user.id
+      session[:user_id] = @user.id
       redirect_to @user, notice: 'Авторизация прошла успешно'
     else
-      flash[:danger]='Неверное имя пользователя или пароль'
+      flash[:danger] = 'Неверное имя пользователя или пароль'
       render :new
     end
   end

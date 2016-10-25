@@ -1,7 +1,6 @@
--team=Team.find(@current_user.team_id)
 .page-header
   %h1 Игроки
-  -if !team
+  -unless @current_user_team
     .small.text-danger Необходимо создать команду, чтобы приобретение игроков стало доступным
 .row
   =form_tag players_path, :method => 'get' do
@@ -49,55 +48,50 @@
     - @players.each do |player|
       %tr.text-center
         %td= player.name
-        -c=player.country
+        -c = player.country
         %td
           = image_tag c.flag.url, title: "#{c.title}"
-        %td{title: player.right_alph_srt(player.position1)}
-          -str="#{player.position1}"
-          -if !player.position2.blank?
-            -str+=" / #{player.position2}"
-          =str
+        %td
+          = player.full_position_name
         %td= player.talent
         %td= player.age
         %td= player.skill_level
         %td
-          -a,count,i="#{player.price}".reverse,0,0
-          -while a[i]!='.'
-            -count+=1;i+=1
-          = number_to_currency(player.price, locale: :en, precision: count)
+          = number_to_currency(player.price, locale: :en, precision: 3)
         %td
-          =player.level_define/2.0
-          -max=5
-          -cel,ost=player.level_define/2,player.level_define%2
+          -# TODO подумать как это сократить
+          -cel, ost = player.level_define / 2, player.level_define % 2
+          = cel
+          -max = 5
           -cel.times do
             .fa.fa-star
-          -if player.level_define%2!=0
+          -if ost
             .fa.fa-star-half-o
           -(max-cel-ost).times do
             .fa.fa-star-o
-        -if @current_user.role!=0
+        -if @current_user.moderator?
           %td
             = link_to edit_player_path(player), class: "btn btn-link" do
-              =fa_icon "wrench"
+              = fa_icon "wrench"
           %td
             = link_to player, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
-              =fa_icon "trash"
+              = fa_icon "trash"
         %td
           = link_to player, class: "btn btn-link" do
-            =fa_icon "street-view"
+            = fa_icon "street-view"
         %td
-          -if team
-            = link_to new_player_in_team_path(name: player.name), data:{confirm: 'Вы уверены?'}, class: "btn btn-default" do
-              =fa_icon "share-square-o"
+          -if @current_user_team
+            = link_to buy_player_player_path(player), class: "btn btn-default", id: 'buy_player' do
+              = fa_icon "share-square-o"
               Купить
           -else
             .text-danger Покупка не доступна
 %br
 
--if @current_user.role!=0
+-if @current_user.moderator?
   = link_to new_player_path, class: "btn btn-default" do
-    =fa_icon "plus"
+    = fa_icon "plus"
     Новый игрок
 
 %br
-=paginate @players
+= paginate @players

@@ -32,7 +32,7 @@
     - @club_bases.each do |club_basis|
       %tr.text-center
         %td
-          -t=Team.find(club_basis.team_id)
+          -t = club_basis.team
           = link_to t.title, t, style: "color: #00F"
         %td= club_basis.title
         %td= club_basis.level

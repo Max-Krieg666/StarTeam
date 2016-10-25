@@ -2,9 +2,9 @@ class ClubBase < ActiveRecord::Base
   belongs_to :team
 
   validates :team_id, presence: true
-  validates :title, presence: true, uniqueness: true, length: {maximum: 30}
+  validates :title, presence: true, uniqueness: true, length: { maximum: 30 }
   validates :level, presence: true, inclusion: { in: 1..5 }
-  validates :capacity, presence: true, inclusion: { in: [20,23,26,30,35]}
+  validates :capacity, presence: true, inclusion: { in: [20,23,26,30,35] }
   validates :training_fields, presence: true, inclusion: { in: 1..5 }
   validates :experience_up, presence: true, inclusion: { in: 0.1..2.0 }
 end

@@ -2,31 +2,31 @@ class TeamsController < ApplicationController
   include Definer
   before_action :set_team, only: [:show, :edit, :update, :destroy, :random_players]
   before_action :check_user
-  # GET /teams
-  # GET /teams.json
+
   def index
-    @teams = Team.order("title")
+    @teams = Team.order('title')
   end
 
+  # TODO переделать срочно!!!!
   def random_players #тут метод беспощадного рандома игроков
-    pit=PlayerInTeam.where(team_id:@team.id,none: false).to_a
-    if pit.size>0 && params[:random].blank?
+    pit = PlayerInTeam.where(team_id: @team.id, none: false).to_a
+    if pit.size > 0 && params[:random].blank?
       flash[:danger]='Невозможно рандомизировать состав'
       redirect_to @team
     else
       #для укомплектования состава выбераем 18 игроков - 11 основа + 7 запас
       #2 Gk + 2 Ld + 3 Cd +2 Rd + 1 Lm + 3 Cm + 2 Rm + 1 Lf + 1 Cf + 1 Rf
       #основа: gk,ld,2cd,rd,lm,2cm,rm,cf,rf
-      gks=Player.where(position1: "Gk",inteam:false).to_a
-      lds=Player.where(position1: "Ld",inteam:false).to_a
-      cds=Player.where(position1: "Cd",inteam:false).to_a
-      rds=Player.where(position1: "Rd",inteam:false).to_a
-      lms=Player.where(position1: "Lm",inteam:false).to_a
-      cms=Player.where(position1: "Cm",inteam:false).to_a
-      rms=Player.where(position1: "Rm",inteam:false).to_a
-      lfs=Player.where(position1: "Lf",inteam:false).to_a
-      cfs=Player.where(position1: "Cf",inteam:false).to_a
-      rfs=Player.where(position1: "Rf",inteam:false).to_a
+      gks=Player.where(position1: "Gk", state: 0).to_a
+      lds=Player.where(position1: "Ld", state: 0).to_a
+      cds=Player.where(position1: "Cd", state: 0).to_a
+      rds=Player.where(position1: "Rd", state: 0).to_a
+      lms=Player.where(position1: "Lm", state: 0).to_a
+      cms=Player.where(position1: "Cm", state: 0).to_a
+      rms=Player.where(position1: "Rm", state: 0).to_a
+      lfs=Player.where(position1: "Lf", state: 0).to_a
+      cfs=Player.where(position1: "Cf", state: 0).to_a
+      rfs=Player.where(position1: "Rf", state: 0).to_a
       x=another([],gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
       cost,line_up=x[0],x[1]
       while cost>@team.budget
@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
           if @team.budget<pla.price
             flash[:danger]='На счету Вашей команды недостаточно средств для покупки данного игрока!'
           else
-            if pl.update(inteam:true)
+            if pl.update(staate: 1)
               if @team.update!(budget: @team.budget-pl.price)
                 pls=PlayerInTeam.where(team_id:@team.id).map{|x| x.number}.compact!
                 pla.number=num(pls)
@@ -87,7 +87,7 @@ class TeamsController < ApplicationController
           end
         else
           if @team.update(budget: @team.budget-pl.price)
-            a=PlayerInTeam.new
+            a=Player.new
             a.name=pl.name
             a.team_id=@team.id
             a.position1=pl.position1
@@ -133,7 +133,7 @@ class TeamsController < ApplicationController
               end
             end
             if a.save
-              pl.update(inteam:true)
+              pl.update(state: 1)
             end
           else
             flash[:danger]='Что-то пошло не так!'
@@ -147,35 +147,32 @@ class TeamsController < ApplicationController
     end
   end
 
-  # GET /teams/1
-  # GET /teams/1.json
+
   def show
-    @players=PlayerInTeam.where(team_id:@team.id, none:false).order(basic: :desc,pos: :asc,skill_level: :desc).to_a
+    @players = @team.players.order('basic asc, position1 asc, skill_level desc')
+    @club_basis = @team.club_basis_id ? ClubBase.find(@team.club_basis_id) : nil
+    @stadium = @team.stadium
   end
 
-  # GET /teams/new
   def new
     @team = Team.new
   end
 
-  # GET /teams/1/edit
   def edit
   end
 
-  # POST /teams
-  # POST /teams.json
   def create
     @team = Team.new(team_params)
-    @team.user_id=@current_user.id
-    @team.budget=2000000.0
-    @team.fans=50
+    @team.user_id = @current_user.id
+    @team.budget = 2000000.0
+    @team.fans = 50
     respond_to do |format|
       if @team.save
-        sp=Sponsor.find(@team.sponsor_id)
-        sp.team_id=@team.id
+        sp = Sponsor.find(@team.sponsor_id)
+        sp.team_id = @team.id
         sp.save!
-        @current_user.team_id=@team.id
-        @current_user.team=@team
+        @current_user.team_id = @team.id
+        @current_user.team = @team
         @current_user.save!
         format.html { redirect_to @team, notice: 'Команда успешно создана.' }
         format.json { render :show, status: :created, location: @team }
@@ -186,8 +183,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /teams/1
-  # PATCH/PUT /teams/1.json
   def update
     respond_to do |format|
       if @team.update(team_params)
@@ -200,14 +195,13 @@ class TeamsController < ApplicationController
     end
   end
 
-  # DELETE /teams/1
-  # DELETE /teams/1.json
   def destroy
-    sp_id=@team.sponsor_id
+    sp_id = @team.sponsor_id
     @team.destroy
-    sp=Sponsor.find(sp_id)
-    sp.team_id=nil
+    sp = Sponsor.find(sp_id)
+    sp.team_id = nil
     sp.save!
+    # TODO при удалении команды отпускать на свободный рынок всех игроков в ней
     respond_to do |format|
       format.html { redirect_to @current_user, notice: 'Команда удалена.' }
       format.json { head :no_content }
@@ -215,63 +209,66 @@ class TeamsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_team
-      @team = Team.find(params[:id])
-    end
-
-    def my_rand(mas,how)
-      a,x=[],0
-      while x!=how
-        (how-x).times do
-          z=rand(mas.size)
-          if mas[z].price<210000
-            a<<z
-            x+=1
-          end
-        end
-        a.uniq!
-        x=a.size
-      end
-      return a
-    end
-    def func(ind,pos,line)
-      for i in 0...ind.size
-        line<<pos[ind[i]]
-      end
-    end
-    def another(line_up,gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
-      cost=0
-      func(my_rand(gks,2),gks,line_up)
-      func(my_rand(lds,2),lds,line_up)
-      func(my_rand(cds,3),cds,line_up)
-      func(my_rand(rds,2),rds,line_up)
-      func(my_rand(lms,1),lms,line_up)
-      func(my_rand(cms,3),cms,line_up)
-      func(my_rand(rms,2),rms,line_up)
-      func(my_rand(lfs,1),lfs,line_up)
-      func(my_rand(cfs,1),cfs,line_up)
-      func(my_rand(rfs,1),rfs,line_up)
-      for k in 0...line_up.size
-        cost+=line_up[k].price
-      end
-      return [cost.round(3),line_up]
-    end
-    def num(mas)
-      n=rand(99)+1
-      if !(mas.blank?)
-        while mas.include?(n)
-          n=rand(99)+1
+  
+  def set_team
+    @team = Team.find(params[:id])
+  end
+  # TODO разобраться с этими стрёмными методами
+  def my_rand(mas,how)
+    a,x=[],0
+    while x!=how
+      (how-x).times do
+        z=rand(mas.size)
+        if mas[z].price<210000
+          a<<z
+          x+=1
         end
       end
-      return n
+      a.uniq!
+      x=a.size
     end
+    return a
+  end
+  
+  def func(ind,pos,line)
+    for i in 0...ind.size
+      line<<pos[ind[i]]
+    end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def team_params
-      attrs=[:title, :sponsor_id]
-      attrs << :budget if @current_user.try(:admin?)
-      attrs << :fans if @current_user.try(:admin?)
-      params.require(:team).permit(*attrs)
+  def another(line_up,gks,lds,cds,rds,lms,cms,rms,lfs,cfs,rfs)
+    cost=0
+    func(my_rand(gks,2),gks,line_up)
+    func(my_rand(lds,2),lds,line_up)
+    func(my_rand(cds,3),cds,line_up)
+    func(my_rand(rds,2),rds,line_up)
+    func(my_rand(lms,1),lms,line_up)
+    func(my_rand(cms,3),cms,line_up)
+    func(my_rand(rms,2),rms,line_up)
+    func(my_rand(lfs,1),lfs,line_up)
+    func(my_rand(cfs,1),cfs,line_up)
+    func(my_rand(rfs,1),rfs,line_up)
+    for k in 0...line_up.size
+      cost+=line_up[k].price
     end
+    return [cost.round(3),line_up]
+  end
+
+  def num(mas)
+    n=rand(99)+1
+    if !(mas.blank?)
+      while mas.include?(n)
+        n=rand(99)+1
+      end
+    end
+    return n
+  end
+
+  def team_params
+    attrs = [:title, :sponsor_id]
+    if @current_user.try(:admin?)
+      attrs += [:budget, :fans]
+    end
+    params.require(:team).permit(*attrs)
+  end
 end
