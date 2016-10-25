@@ -62,7 +62,7 @@
             = user.birthday
           -else
             .text-danger.li Не выбрано!
-        %td= user.mail
+        %td= user.email
         -if @current_user.role!=0
           %td= user.role_name
           %td
@@ -92,6 +92,6 @@
 -#    =link_to user, class: 'list-group-item' do
 -#      =user.login
 -#      =surround ?(,?) do
--#        %i=user.mail
+-#        %i=user.email
 -#      %span.text-muted=user.role_name
 -#=paginate @users

@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable and 
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable#, :omniauthable
   has_one :team
   belongs_to :country
 
@@ -13,12 +17,11 @@ class User < ActiveRecord::Base
   @@roles = %w(Пользователь Модератор Администратор)
 
   before_validation :set_default_role, :check_bday
-  validates :password, length: { minimum: 6, if: 'password.present?' }, presence: { on: :create }
+  validates_confirmation_of :password
   validates :role, presence: true, inclusion: { in: 0...@@roles.size }
   validates :login, presence: true, length: { minimum: 3, maximum: 24 },
             uniqueness: true, exclusion: { in: %w(admin god root) }
-  validates :sex, inclusion: { in: %w(м ж) }
-  validates :mail, presence: true, uniqueness: { case_sensitive: false },
+  validates :email, presence: true, uniqueness: { case_sensitive: false },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   def role_name

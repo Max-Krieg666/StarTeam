@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    attrs = [:login, :password, :password_confirmation, :sex, :birthday, :mail, :avatar, :country_id]
+    attrs = [:login, :password, :sex, :birthday, :email, :avatar, :country_id]
     attrs << :role if @current_user.try(:admin?)
     params.require(:user).permit(*attrs)
   end

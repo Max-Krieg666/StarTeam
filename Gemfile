@@ -26,13 +26,15 @@ gem 'jquery-tablesorter'
 gem 'therubyracer', platforms: :ruby
 gem 'execjs'
 
-# internationalize
-gem 'rails-i18n'
 # russify
 gem 'russian'
 
 # authentification
-# TODO add gem 'devise'
+gem 'devise'
+gem 'devise-i18n'
+
+# internationalize
+gem 'rails-i18n'
 
 # json api
 gem 'jbuilder', '~> 2.0'
@@ -44,8 +46,5 @@ gem 'mechanize'
 
 group :development, :test do
   gem 'byebug'
-
   gem 'web-console', '~> 2.0'
-
-  gem 'spring', '~> 1.3.6'
 end
