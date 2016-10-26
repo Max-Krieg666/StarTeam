@@ -185,7 +185,7 @@
   talent: 7
   age: 25
   skill_level: 62
-- name: Erik Leine Hal1orsson
+- name: Erik Leine Halldorsson
   country_id: 142
   position1: 1
   talent: 7
@@ -383,7 +383,7 @@
   talent: 5
   age: 30
   skill_level: 54
-- name: Christos Ioannidiss
+- name: Christos Ioannidis
   country_id: 60
   position1: 7
   talent: 8
@@ -503,7 +503,7 @@
   talent: 6
   age: 18
   skill_level: 41
-- name: Jonatan Fa1ini
+- name: Jonatan Faldini
   country_id: 80
   position1: 3
   talent: 3
@@ -821,7 +821,7 @@
   talent: 5
   age: 28
   skill_level: 65
-- name: Akosh Scze1
+- name: Akosh Sczeld
   country_id: 39
   position1: 5
   talent: 5
@@ -1007,7 +1007,7 @@
   talent: 4
   age: 34
   skill_level: 67
-- name: S3gan Drietz
+- name: Srdgan Drietz
   country_id: 181
   position1: 5
   talent: 4
@@ -1025,7 +1025,7 @@
   talent: 5
   age: 26
   skill_level: 37
-- name: Rodo7o Etterigo
+- name: Rodolfo Etterigo
   country_id: 159
   position1: 3
   talent: 7
@@ -1169,7 +1169,7 @@
   talent: 6
   age: 19
   skill_level: 43
-- name: Josh Co1orn
+- name: Josh Coldorn
   country_id: 165
   position1: 0
   talent: 3
@@ -1181,13 +1181,13 @@
   talent: 5
   age: 29
   skill_level: 38
-- name: Arni Kristinn U7sson
+- name: Arni Kristinn Ulfsson
   country_id: 78
   position1: 2
   talent: 3
   age: 17
   skill_level: 33
-- name: Jargi Ba3isson
+- name: Jargi Bardisson
   country_id: 78
   position1: 6
   talent: 6
@@ -1403,7 +1403,7 @@
   talent: 2
   age: 22
   skill_level: 35
-- name: Erge3 Strakosha
+- name: Ergerd Strakosha
   country_id: 6
   position1: 1
   talent: 2
@@ -1487,7 +1487,7 @@
   talent: 2
   age: 29
   skill_level: 33
-- name: Sylvio Erivona1o
+- name: Sylvio Erivonaldo
   country_id: 31
   position1: 9
   talent: 4
@@ -1643,7 +1643,7 @@
   talent: 6
   age: 35
   skill_level: 71
-- name: Va1es Salcido
+- name: Valdes Salcido
   country_id: 208
   position1: 2
   talent: 1
@@ -1985,7 +1985,7 @@
   talent: 8
   age: 32
   skill_level: 75
-- name: Peter Numand Vo1en
+- name: Peter Numand Volden
   country_id: 63
   position1: 7
   talent: 5
@@ -2441,7 +2441,7 @@
   talent: 2
   age: 29
   skill_level: 38
-- name: Uve Ulsen Edho4
+- name: Uve Ulsen Edholm
   country_id: 142
   position1: 9
   talent: 9
@@ -2459,7 +2459,7 @@
   talent: 3
   age: 30
   skill_level: 41
-- name: Gju3giu Bahchon
+- name: Gjurgiu Bahchon
   country_id: 203
   position1: 6
   talent: 6
@@ -2675,7 +2675,7 @@
   talent: 6
   age: 28
   skill_level: 41
-- name: Moyas Bronfe1
+- name: Moyas Bronfeld
   country_id: 71
   position1: 8
   talent: 3
@@ -2903,3 +2903,225 @@
   talent: 1
   age: 34
   skill_level: 43
+- name: Rosario Cuenca
+  country_id: 79
+  position1: 0
+  talent: 6
+  age: 25
+  skill_level: 42
+- name: Asamoah B. Neyumi
+  country_id: 47
+  position1: 3
+  talent: 3
+  age: 31
+  skill_level: 47
+- name: John Affulie
+  country_id: 47
+  position1: 7
+  talent: 5
+  age: 23
+  skill_level: 51
+- name: Baffur Amiemang
+  country_id: 47
+  position1: 6
+  talent: 2
+  age: 29
+  skill_level: 39
+- name: Abedi Mensah
+  country_id: 47
+  position1: 1
+  talent: 4
+  age: 25
+  skill_level: 35
+- name: Emmanuel Bansu-Ofori
+  country_id: 47
+  position1: 2
+  talent: 9
+  age: 27
+  skill_level: 59
+- name: Jeff Tetteh
+  country_id: 47
+  position1: 5
+  talent: 1
+  age: 18
+  skill_level: 40
+- name: Gilbert Amartey
+  country_id: 47
+  position1: 0
+  talent: 7
+  age: 26
+  skill_level: 44
+- name: Ebenezer Mumuni
+  country_id: 47
+  position1: 6
+  talent: 2
+  age: 19
+  skill_level: 42
+- name: Yakubu Boateng
+  country_id: 47
+  position1: 4
+  talent: 5
+  age: 17
+  skill_level: 32
+- name: Wakaso Ayeh
+  country_id: 47
+  position1: 8
+  talent: 8
+  age: 35
+  skill_level: 59
+- name: Jordan Atsu-Gyimah
+  country_id: 47
+  position1: 4
+  talent: 5
+  age: 30
+  skill_level: 55
+- name: Solomon Assifuah
+  country_id: 47
+  position1: 8
+  talent: 3
+  age: 37
+  skill_level: 74
+- name: Le Phan Vinh
+  country_id: 42
+  position1: 8
+  talent: 7
+  age: 26
+  skill_level: 48
+- name: Nguen Xiong Cong 
+  country_id: 42
+  position1: 4
+  talent: 4
+  age: 37
+  skill_level: 44
+- name: Van Doan Cuong
+  country_id: 42
+  position1: 0
+  talent: 4
+  age: 23
+  skill_level: 38
+- name: Noel Velasquez
+  country_id: 55
+  position1: 6
+  talent: 4
+  age: 23
+  skill_level: 29
+- name: Ever Paz
+  country_id: 55
+  position1: 1
+  talent: 7
+  age: 36
+  skill_level: 47
+- name: Odis Figueroa
+  country_id: 55
+  position1: 6
+  talent: 3
+  age: 32
+  skill_level: 38
+- name: Luis Cezar Lozano
+  country_id: 55
+  position1: 8
+  talent: 1
+  age: 27
+  skill_level: 53
+- name: Alfredo Izaguirre
+  country_id: 55
+  position1: 6
+  talent: 4
+  age: 27
+  skill_level: 38
+- name: Oscar Rubilio Guevarra
+  country_id: 55
+  position1: 5
+  talent: 3
+  age: 36
+  skill_level: 65
+- name: Hernan Mendieta
+  country_id: 155
+  position1: 3
+  talent: 5
+  age: 19
+  skill_level: 46
+- name: Marcos Patino
+  country_id: 155
+  position1: 6
+  talent: 5
+  age: 32
+  skill_level: 41
+- name: Victor Riverras Rojas
+  country_id: 155
+  position1: 0
+  talent: 7
+  age: 24
+  skill_level: 46
+- name: Nestor Echeverria
+  country_id: 155
+  position1: 7
+  talent: 5
+  age: 38
+  skill_level: 51
+- name: Eduardo Cecilio Ortigoza
+  country_id: 155
+  position1: 8
+  talent: 9
+  age: 22
+  skill_level: 38
+- name: Bruno Villar
+  country_id: 155
+  position1: 1
+  talent: 4
+  age: 34
+  skill_level: 38
+- name: Edgar Julio Valdez
+  country_id: 155
+  position1: 0
+  talent: 7
+  age: 33
+  skill_level: 49
+- name: Fabian Dietiker
+  country_id: 223
+  position1: 8
+  talent: 1
+  age: 33
+  skill_level: 45
+- name: Gabriel Oesch
+  country_id: 223
+  position1: 0
+  talent: 7
+  age: 33
+  skill_level: 70
+- name: Flurin Isler
+  country_id: 223
+  position1: 1
+  talent: 4
+  age: 23
+  skill_level: 28
+- name: Nathan Oberlin
+  country_id: 223
+  position1: 2
+  talent: 3
+  age: 31
+  skill_level: 58
+- name: Samuel Mayer
+  country_id: 223
+  position1: 3
+  talent: 5
+  age: 22
+  skill_level: 45
+- name: Enea Berconi
+  country_id: 223
+  position1: 4
+  talent: 6
+  age: 27
+  skill_level: 40
+- name: Andri Oppliger
+  country_id: 223
+  position1: 5
+  talent: 9
+  age: 25
+  skill_level: 35
+- name: Marten Walliser
+  country_id: 223
+  position1: 5
+  talent: 8
+  age: 28
+  skill_level: 45
