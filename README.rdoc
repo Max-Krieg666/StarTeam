@@ -1,28 +1,18 @@
-== README
+# StarTeam
+main fm-game project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== STATISTICS
 
-Things you may want to cover:
+==== Players:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+27 Oct 2016
+position1: 0 --- 62 GK
+position1: 1 --- 48 LD
+position1: 2 --- 66 CD
+position1: 3 --- 62 RD
+position1: 4 --- 50 LM
+position1: 5 --- 72 CM
+position1: 6 --- 64 RM
+position1: 7 --- 43 LF
+position1: 8 --- 63 CF
+position1: 9 --- 35 RF
