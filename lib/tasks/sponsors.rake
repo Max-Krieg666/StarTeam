@@ -19,3 +19,4 @@ namespace :sponsors do
     puts 'OK!'
   end
 end
+# TODO переписать использую стандартный гем)

@@ -1547,7 +1547,7 @@
   talent: 5
   age: 25
   skill_level: 55
-- name: Emerton Sammers
+- name: Emerthon Sammers
   country_id: 235
   position1: 5
   talent: 9
@@ -2987,7 +2987,7 @@
   talent: 7
   age: 26
   skill_level: 48
-- name: Nguen Xiong Cong 
+- name: Nguyen Xiong Cong 
   country_id: 42
   position1: 4
   talent: 4
@@ -3138,7 +3138,7 @@
   age: 29
   skill_level: 46
 - name: Nattarat Nopnech
-  country_id: 42
+  country_id: 193
   position1: 5
   talent: 8
   age: 25
@@ -3156,7 +3156,7 @@
   age: 33
   skill_level: 30
 - name: Surak Mankachong
-  country_id: 42
+  country_id: 193
   position1: 1
   talent: 6
   age: 28
@@ -3286,7 +3286,7 @@
   position1: 5
   talent: 4
   age: 29
-  skill_level: 
+  skill_level: 38
 - name: Thiago Rodriguez Marcinho
   country_id: 29
   position1: 3
@@ -3360,7 +3360,7 @@
   age: 26
   skill_level: 36
 - name: Phornsak Sutthisa
-  country_id: 42
+  country_id: 193
   position1: 3
   talent: 3
   age: 35
@@ -3962,8 +3962,8 @@
 - name: Marc Tauirapu
   country_id: 216
   position1: 2
-  talent: 27
-  age: 4
+  talent: 6
+  age: 21
   skill_level: 34
 - name: Goce Mirtonov
   country_id: 115
@@ -4054,7 +4054,7 @@
   position1: 2
   talent: 8
   age: 24
-  skill_level: 
+  skill_level: 50
 - name: Amando Tekos
   country_id: 55
   position1: 2
@@ -4175,3 +4175,99 @@
   talent: 3
   age: 25
   skill_level: 43
+- name: Yen Sun Yoon
+  country_id: 232
+  position1: 9
+  talent: 3
+  age: 27
+  skill_level: 54
+- name: Pablo Gaglianone
+  country_id: 208
+  position1: 9
+  talent: 4
+  age: 31
+  skill_level: 41
+- name: Craig Connaty
+  country_id: 245
+  position1: 9
+  talent: 1
+  age: 28
+  skill_level: 44
+- name: Jeremy Newall
+  country_id: 245
+  position1: 9
+  talent: 3
+  age: 34
+  skill_level: 78
+- name: Gilian van Weert
+  country_id: 137
+  position1: 9
+  talent: 3
+  age: 30
+  skill_level: 41
+- name: Rudy Merckx
+  country_id: 21
+  position1: 9
+  talent: 5
+  age: 19
+  skill_level: 23
+- name: Junior Elessa
+  country_id: 85
+  position1: 9
+  talent: 5
+  age: 35
+  skill_level: 38
+- name: Omid Khosrafi
+  country_id: 76
+  position1: 9
+  talent: 6
+  age: 22
+  skill_level: 37
+- name: Adisak Khummek
+  country_id: 193
+  position1: 9
+  talent: 4
+  age: 24
+  skill_level: 44
+- name: Nurul Pinthakul
+  country_id: 193
+  position1: 9
+  talent: 5
+  age: 34
+  skill_level: 41
+- name: Nurut Saengsee
+  country_id: 193
+  position1: 9
+  talent: 9
+  age: 21
+  skill_level: 48
+- name: Intharat Promdard
+  country_id: 193
+  position1: 9
+  talent: 7
+  age: 28
+  skill_level: 55
+- name: Nguyen Thanh Luong
+  country_id: 42
+  position1: 9
+  talent: 3
+  age: 33
+  skill_level: 48
+- name: Paulica Tuculeanu
+  country_id: 164
+  position1: 9
+  talent: 6
+  age: 20
+  skill_level: 56
+- name: Matthew Richman
+  country_id: 239
+  position1: 9
+  talent: 6
+  age: 21
+  skill_level: 50
+- name: Alexander Olsson
+  country_id: 224
+  position1: 9
+  talent: 2
+  age: 27
+  skill_level: 47

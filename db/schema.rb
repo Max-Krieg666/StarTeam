@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20161025191834) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "title"
+    t.string   "title_en"
     t.string   "flag_file_name"
     t.string   "flag_content_type"
     t.integer  "flag_file_size"
