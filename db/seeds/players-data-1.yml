@@ -4271,3 +4271,267 @@
   talent: 2
   age: 27
   skill_level: 47
+- name: Thomas Berdho
+  country_id: 9
+  position1: 1
+  talent: 5
+  age: 33
+  skill_level: 35
+- name: Maarten der Stein
+  country_id: 21
+  position1: 1
+  talent: 2
+  age: 27
+  skill_level: 45
+- name: Ruslan Ismatullin
+  country_id: 162
+  position1: 1
+  talent: 2
+  age: 26
+  skill_level: 41
+- name: Joonas Elfsberg
+  country_id: 212
+  position1: 1
+  talent: 6
+  age: 22
+  skill_level: 43
+- name: Theophanis Kostastos
+  country_id: 59
+  position1: 1
+  talent: 3
+  age: 33
+  skill_level: 44
+- name: Vincent Sol-Aren
+  country_id: 21
+  position1: 1
+  talent: 3
+  age: 30
+  skill_level: 56
+- name: Sid Hislop
+  country_id: 199
+  position1: 1
+  talent: 4
+  age: 18
+  skill_level: 38
+- name: Florian Berall
+  country_id: 109
+  position1: 1
+  talent: 1
+  age: 18
+  skill_level: 45
+- name: Todjau Laffour
+  country_id: 196
+  position1: 1
+  talent: 8
+  age: 18
+  skill_level: 34
+- name: Ouro Koppaniel
+  country_id: 196
+  position1: 1
+  talent: 5
+  age: 35
+  skill_level: 41
+- name: Macih Numood
+  country_id: 150
+  position1: 1
+  talent: 6
+  age: 36
+  skill_level: 65
+- name: Shota Novuashvili
+  country_id: 60
+  position1: 1
+  talent: 5
+  age: 38
+  skill_level: 28
+- name: Guillermo Tajo
+  country_id: 156
+  position1: 1
+  talent: 8
+  age: 20
+  skill_level: 64
+- name: Vitor Moises Caneira
+  country_id: 222
+  position1: 1
+  talent: 6
+  age: 23
+  skill_level: 37
+- name: Tariq Noualoffoak
+  country_id: 150
+  position1: 1
+  talent: 2
+  age: 31
+  skill_level: 34
+- name: Mirad Lesny
+  country_id: 205
+  position1: 1
+  talent: 4
+  age: 34
+  skill_level: 46
+- name: Arseniy Nenuzhniy
+  country_id: 162
+  position1: 1
+  talent: 3
+  age: 33
+  skill_level: 39
+- name: Andree Oran
+  country_id: 38
+  position1: 1
+  talent: 7
+  age: 21
+  skill_level: 57
+- name: Miguel-Jonay Cabas Orenue-Talho
+  country_id: 38
+  position1: 1
+  talent: 5
+  age: 18
+  skill_level: 25
+- name: Ruud van Cessink
+  country_id: 137
+  position1: 1
+  talent: 7
+  age: 26
+  skill_level: 39
+- name: Sandor Mosscha
+  country_id: 37
+  position1: 1
+  talent: 7
+  age: 25
+  skill_level: 64
+- name: Petar Miccu
+  country_id: 115
+  position1: 1
+  talent: 5
+  age: 28
+  skill_level: 44
+- name: Radoslav Pernes
+  country_id: 221
+  position1: 1
+  talent: 5
+  age: 30
+  skill_level: 35
+- name: Marian Tobasek
+  country_id: 158
+  position1: 1
+  talent: 3
+  age: 20
+  skill_level: 42
+- name: Sigurd Bartson
+  country_id: 142
+  position1: 1
+  talent: 6
+  age: 24
+  skill_level: 35
+- name: Indridi Atli Olafsson
+  country_id: 78
+  position1: 1
+  talent: 9
+  age: 17
+  skill_level: 25
+- name: Gretar Sigurdsson
+  country_id: 78
+  position1: 1
+  talent: 5
+  age: 29
+  skill_level: 35
+- name: Gylfi Guðbrandrsson
+  country_id: 78
+  position1: 1
+  talent: 3
+  age: 35
+  skill_level: 38
+- name: Heiðarr Ketillsson
+  country_id: 78
+  position1: 1
+  talent: 4
+  age: 28
+  skill_level: 44
+- name: Bergolfr Rauðr Yngvarrsson
+  country_id: 78
+  position1: 1
+  talent: 7
+  age: 25
+  skill_level: 59
+- name: Peng Cheng Lo-Sung
+  country_id: 91
+  position1: 1
+  talent: 5
+  age: 32
+  skill_level: 30
+- name: Zang-Zheng Pang
+  country_id: 91
+  position1: 1
+  talent: 5
+  age: 38
+  skill_level: 38
+- name: Christoff Kurss
+  country_id: 2
+  position1: 1
+  talent: 6
+  age: 19
+  skill_level: 35
+- name: Chen Young Mundao
+  country_id: 232
+  position1: 1
+  talent: 6
+  age: 23
+  skill_level: 46
+- name: Yokio Lakayoto
+  country_id: 236
+  position1: 1
+  talent: 3
+  age: 31
+  skill_level: 38
+- name: Alexey Losevskiy
+  country_id: 206
+  position1: 1
+  talent: 7
+  age: 25
+  skill_level: 41
+- name: Steffen Burgsen
+  country_id: 142
+  position1: 1
+  talent: 5
+  age: 35
+  skill_level: 31
+- name: Artur Gzdunek
+  country_id: 158
+  position1: 1
+  talent: 4
+  age: 27
+  skill_level: 68
+- name: Edwin Boughdon
+  country_id: 243
+  position1: 1
+  talent: 1
+  age: 26
+  skill_level: 41
+- name: Tynis Konel
+  country_id: 230
+  position1: 1
+  talent: 2
+  age: 35
+  skill_level: 40
+- name: Arman Koshiev
+  country_id: 12
+  position1: 1
+  talent: 3
+  age: 22
+  skill_level: 37
+- name: Kevin Birnbacher
+  country_id: 52
+  position1: 1
+  talent: 3
+  age: 32
+  skill_level: 52
+- name: Seol Mon-Xio Chung
+  country_id: 232
+  position1: 1
+  talent: 7
+  age: 21
+  skill_level: 58
+- name: Sao-Bang Nam Kio
+  country_id: 232
+  position1: 1
+  talent: 5
+  age: 34
+  skill_level: 70
