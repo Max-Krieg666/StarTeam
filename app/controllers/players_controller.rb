@@ -39,7 +39,7 @@ class PlayersController < ApplicationController
     cb = ClubBase.find(@current_user_team.club_basis_id) if @current_user_team
     # если игрок нашелся по id и свободен
     @player = Player.find(params[:id])
-    unless @current_user_team
+    if !@current_user_team
       flash[:danger] = 'Прежде, чем покупать игроков, создайте команду!'
       redirect_to new_team_path
     elsif @player.state != 0
