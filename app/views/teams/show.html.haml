@@ -105,11 +105,8 @@
               = pl.name
               = fa_icon 'copyright', title: 'Капитан' if pl.captain
             %td= image_tag c.flag.url, title: c.title
-            %td{title: pl.right_alph_srt(pl.position1)}
-              -str="#{pl.position1}"
-              -if !pl.position2.blank?
-                -str+=" / #{pl.position2}"
-              =str
+            %td{title: pl.position1}
+              = pl.full_position_name
             %td= pl.talent
             %td= pl.age
             %td= pl.skill_level

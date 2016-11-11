@@ -96,7 +96,6 @@ class TeamsController < ApplicationController
             a.position1=pl.position1
             a.position2=pl.position2
             a.talent=pl.talent
-            a.pos=right_alph_srt(pl.position1)
             a.age=pl.age
             a.skill_level=pl.skill_level
             a.price=pl.price

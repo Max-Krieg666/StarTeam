@@ -24,6 +24,13 @@
       =f.file_field :avatar
   .row
     .form-group
+      -# TODO добавить чекбокс "создать команду автоматически", название команды
+      -#  + предупредить, что игроки команда создастся автоматчески
+      -# ВТОРОЙ TODO сделать автомат.создание команды
+      -# ТРЕТИЙ TODO разобраться с отправкой на email писем Confirmable
+      -# 4й TODO добавить модуль Recoverable собственноручный
+      -# 5й TODO добавить модуль lockable
+      -# 6й TODO добавить модуль OMNIAUTH
       .fa.fa-home.li
       = label_tag('user[country_id]', 'Страна')
       = select_country('user[country_id]', @user.country_id)

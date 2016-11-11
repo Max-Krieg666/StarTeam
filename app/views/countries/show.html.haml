@@ -62,11 +62,8 @@
             -t = pl.team
             %td=link_to t.title, t, style: "color: #00F"
             %td=link_to pl.name, pl, style: "color: #410405"
-            %td{title: pl.right_alph_srt(pl.position1)}
-              -str="#{pl.position1}"
-              -if !pl.position2.blank?
-                -str+=" / #{pl.position2}"
-              =str
+            %td{title: pl.position1}
+              = pl.full_position_name
             %td= pl.talent
             %td= pl.age
             %td= pl.skill_level
@@ -119,11 +116,8 @@
         - @players.each do |player|
           %tr.text-center
             %td= link_to player.name, player, style: "color: #106C7A"
-            %td{title: player.right_alph_srt(player.position1)}
-              -str="#{player.position1}"
-              -if !player.position2.blank?
-                -str+=" / #{player.position2}"
-              =str
+            %td{title: player.position1}
+              = player.full_position_name
             %td= player.talent
             %td= player.age
             %td= player.skill_level
