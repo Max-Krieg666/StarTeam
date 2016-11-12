@@ -42,4 +42,12 @@ class Player < ActiveRecord::Base
   def set_price
     self.price ||= ((skill_level * talent * 10000) / age.to_f).round(3)
   end
+
+  def quality
+    ld = self.level_define
+    cel = ld / 2
+    ost = ld % 2
+    quality_l = 5 - cel - ost
+    [cel, ost, quality_l] 
+  end
 end

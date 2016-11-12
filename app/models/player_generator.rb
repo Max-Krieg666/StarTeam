@@ -1,16 +1,14 @@
 class PlayerGenerator
   POS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf Cm Cd Cm Cf).freeze
 
-  def initialize(count, x = nil)
+  def initialize(count, x = nil, pos = nil, state = 0)
     ActiveRecord::Base.transaction do
     	count.times do |i|
         x = rand(252) if x.nil?
         pl = Player.new
-        ts = POS[rand(POS.size)]
-        raise ts if ts==0
-        pl.position1 = ts
+        pl.position1 = pos || POS[rand(POS.size)]
         pl.position2 = ''
-        pl.state = 0
+        pl.state = state
         pl.basic = false
         pl.talent = (
           case rand(700) + 1

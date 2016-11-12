@@ -59,29 +59,26 @@
         %td
           = number_to_currency(player.price, locale: :en, precision: 3)
         %td
-          -# TODO подумать как это сократить
-          -cel, ost = player.level_define / 2, player.level_define % 2
-          = cel
-          -max = 5
-          -cel.times do
-            .fa.fa-star
-          -if ost
-            .fa.fa-star-half-o
-          -(max-cel-ost).times do
-            .fa.fa-star-o
+          -quality = player.quality
+          -quality[0].times do
+            = fa_icon 'star'
+          -if quality[1] == 1
+            = fa_icon 'star-half-o'
+          -quality[2].times do
+            = fa_icon 'star-o'
         -if @current_user.moderator?
           %td
-            = link_to edit_player_path(player), class: "btn btn-link" do
+            = link_to edit_player_path(player), class: 'btn btn-link' do
               = fa_icon "wrench"
           %td
-            = link_to player, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+            = link_to player, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
               = fa_icon "trash"
         %td
-          = link_to player, class: "btn btn-link" do
+          = link_to player, class: 'btn btn-link' do
             = fa_icon "street-view"
         %td
           -if @current_user_team
-            = link_to buy_player_player_path(player), class: "btn btn-default", id: 'buy_player' do
+            = link_to buy_player_player_path(player), class: 'btn btn-default', id: 'buy_player' do
               = fa_icon "share-square-o"
               Купить
           -else
@@ -89,7 +86,7 @@
 %br
 
 -if @current_user.moderator?
-  = link_to new_player_path, class: "btn btn-default" do
+  = link_to new_player_path, class: 'btn btn-default' do
     = fa_icon "plus"
     Новый игрок
 

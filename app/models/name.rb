@@ -94,9 +94,11 @@ class Name
       file_names = 'bulgarian'
       file_lastnames = 'bulgarian'
     when 25
-      # Боливия TODO!!!
-      # file_names = 'bolivian'
-      # file_lastnames = 'bolivian'
+      # Боливия
+      chance = rand(500)
+      word = chance > 350 ? 'bolivian' : 'spain'
+      file_names = word
+      file_lastnames = word
     when 27
       # Босния и Герцеговина
       file_names = 'bosnian'
@@ -106,7 +108,7 @@ class Name
       file_names = 'botswana'
       file_lastnames = 'botswana'
     when 30
-      # Бруней-Даруссалам
+      # Бруней-Даруссалам TODO!!!
       # file_names = 'brunei'
       # file_lastnames = 'brunei'
     when 31

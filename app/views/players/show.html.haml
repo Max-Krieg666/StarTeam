@@ -22,13 +22,12 @@
   = number_to_currency(@player.price, locale: :en)
 %p
   %b Качество:
-  -max = 5
-  -cel, ost = @player.level_define / 2, @player.level_define % 2
-  -cel.times do
+  -quality = @player.quality
+  -quality[0].times do
     = fa_icon 'star'
-  -if ost
+  -if quality[1] == 1
     = fa_icon 'star-half-o'
-  -(max-cel-ost).times do
+  -quality[2].times do
     = fa_icon 'star-o'
 
 -if @current_user.moderator?

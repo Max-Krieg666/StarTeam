@@ -30,8 +30,8 @@
     .fa.fa-users
     = @team.fans
   %br
-  -kol=@players.size
-  -if kol!=0
+  -num = @players.size
+  -if num != 0
     -av_skills,av_tal,av_age,av_price=0,0,0,0
     %table.table.table-bordered.table-hover.table-condensed
       %thead
@@ -174,19 +174,6 @@
             Цена
             .text-danger
               =number_to_currency(av_price/kol.to_f, locale: :en, precision: 3)
-  -else
-    %h3.text-danger Необходимо купить игроков:
-    .btn-group
-      = link_to "/teams/#{@team.id}/random_players?random=true", class: 'btn btn-default', data:{confirm: 'Пожалуйста, подождите несколько секунд...'},style:"color: #00F" do
-        =fa_icon "users"
-        =fa_icon "random"
-        Заполнить рандомно
-      = link_to players_path, class: 'btn btn-default', style:"color: #EE6A50" do
-        =fa_icon "male"
-        =fa_icon "male"
-        Выбрать вручную
-    %br
-    %br
   -if @current_user==@team.user || @current_user.moderator?
     = link_to edit_team_path(@team), class: 'btn btn-danger' do
       =fa_icon "edit"
@@ -195,6 +182,6 @@
       =fa_icon "reply"
       Все команды
   -if @team.stadium_id.blank? && @team.user==@current_user
-    = link_to 'Перейти к созданию стадиона',{:action => :new, :controller => :stadia,:team_id => @team.id}, class: 'btn btn-primary'
+    = link_to 'Перейти к созданию стадиона', { action: :new, controller: :stadia, team_id: @team.id }, class: 'btn btn-primary'
   -if @team.club_basis_id.blank? && @team.user==@current_user
-    = link_to 'Перейти к созданию базы клуба',{:action => :new, :controller => :club_bases,:team_id => @team.id}, class: 'btn btn-primary'
+    = link_to 'Перейти к созданию базы клуба',{ action: :new, controller: :club_bases, team_id: @team.id }, class: 'btn btn-primary'

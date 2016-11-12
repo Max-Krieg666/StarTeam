@@ -101,7 +101,6 @@ class ClubBasesController < ApplicationController
     end
   end
 
-  #TODO не первый раз вижу - убран респонд ду формат. Если работает, убрать везде!
   def create
     hash = params
     hash.delete(hash.keys[2])
@@ -109,42 +108,26 @@ class ClubBasesController < ApplicationController
     @club_basis = ClubBase.new(club_basis_params)
     @team = Team.find(club_basis_params[:team_id])
     @club_basis.team = @team
-    #respond_to do |format|
-      if @club_basis.save
-        @team.club_basis_id = @club_basis.id
-        @team.save!
-        redirect_to @club_basis, notice: 'База успешно создана.'
-        #format.html { redirect_to @club_basis, notice: 'Club base was successfully created.' }
-        #format.json { render :show, status: :created, location: @club_basis }
-      else
-        render :new
-        #format.html { render :new }
-        #format.json { render json: @club_basis.errors, status: :unprocessable_entity }
-      end
-    #end
+    if @club_basis.save
+      @team.club_basis_id = @club_basis.id
+      @team.save!
+      redirect_to @club_basis, notice: 'База успешно создана.'
+    else
+      render :new
+    end
   end
 
   def update
-    #respond_to do |format|
-      if @club_basis.update(club_basis_params)
-        redirect_to @club_basis, notice: 'База успешно изменена.'
-        #format.html { redirect_to @club_basis, notice: 'Club base was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @club_basis }
-      else
-        render :edit
-        #format.html { render :edit }
-        #format.json { render json: @club_basis.errors, status: :unprocessable_entity }
-      end
-    #end
+    if @club_basis.update(club_basis_params)
+      redirect_to @club_basis, notice: 'База успешно изменена.'
+    else
+      render :edit
+    end
   end
 
   def destroy
     @club_basis.destroy
     redirect_to club_bases_url, notice: 'База успешно удалена.'
-    #respond_to do |format|
-      #format.html { redirect_to club_bases_url, notice: 'Club base was successfully destroyed.' }
-      #format.json { head :no_content }
-    #end
   end
 
   private
@@ -157,6 +140,6 @@ class ClubBasesController < ApplicationController
     @team = Team.find(params[:team_id])
   end
   def club_basis_params
-    params.require(:club_basis).permit(:title,:team_id)#, :level, :capacity, :training_fields, :experience_up, :team_id)
+    params.require(:club_basis).permit(:title)#:level, :capacity, :training_fields, :experience_up, :team_id)
   end
 end

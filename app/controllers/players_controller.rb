@@ -4,10 +4,14 @@ class PlayersController < ApplicationController
   before_action :admin_permission, except: [:show, :index]
 
   def index
-    @players = Player.includes(:country).order('countries.title, players.name').search(params[:search]).page(params[:page])
-    if @players.blank? && params[:search].blank?
-      flash[:danger] = 'Игроков с таким именем нет!'
-      @players = Player.where(state: 0).includes(:country).order('countries.title, players.name').page(params[:page])
+    # TODO поиск по хар-кам
+    if params[:search].blank?
+      @players = Player.where(state: 0).limit(500).includes(:country).order('countries.title, players.name').page(params[:page])
+    else
+      @players = Player.limit(500).includes(:country).order('countries.title, players.name').search(params[:search]).page(params[:page])
+      if @players.blank?
+        flash[:danger].now = 'Игроков с таким именем нет!'
+      end
     end
   end
 
@@ -43,7 +47,7 @@ class PlayersController < ApplicationController
       flash[:danger] = 'Прежде, чем покупать игроков, создайте команду!'
       redirect_to new_team_path
     elsif @player.state != 0
-      flash[:danger] = 'Произошла ошибка!'
+      flash[:danger] = 'Игрок недоступен для покупки!'
       redirect_to players_path
     elsif cb.capacity == @current_user_team.players.count
       flash[:danger] = 'Расширьте базу клуба для покупки новых игроков!'

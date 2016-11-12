@@ -467,7 +467,7 @@
   talent: 5
   age: 24
   skill_level: 50
-- name: Alexey Nedyuginskiy
+- name: Alexey Nedyuzhinskiy
   country_id: 162
   position1: 0
   talent: 4
@@ -2814,13 +2814,13 @@
   age: 24
   skill_level: 36
 - name: Paul McStay
-  country_id: 252
+  country_id: 250
   position1: 0
   talent: 7
   age: 19
   skill_level: 68
 - name: Nick Low
-  country_id: 252
+  country_id: 250
   position1: 6
   talent: 5
   age: 23
