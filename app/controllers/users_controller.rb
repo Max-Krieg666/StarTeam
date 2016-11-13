@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  #TODO подумать об отдельных методах на восстановление пароля, регистрацию и т.д.
+  # 2й TODO разобраться с отправкой на email писем Confirmable
+  # 3й TODO добавить модуль Recoverable собственноручный
+  # 4й TODO добавить модуль lockable
+  # 5й TODO добавить модуль OMNIAUTH
   before_action :admin_permission, except: [:new, :create, :update,:show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -50,6 +55,10 @@ class UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def registration_params
+    params.require(:user).permit(:login, :password, :sex, :birthday, :email, :avatar, :country_id, :team_country_id)
   end
 
   def user_params

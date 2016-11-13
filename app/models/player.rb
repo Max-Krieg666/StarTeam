@@ -32,6 +32,7 @@ class Player < ActiveRecord::Base
   end
 
   def self.search(search)
+    #TODO сделать крутой поиск
     if search
       where('state = ? and (name LIKE ? or position1 = ?)', 1, '%' + search + '%', search.to_i )
     else
@@ -48,6 +49,7 @@ class Player < ActiveRecord::Base
     cel = ld / 2
     ost = ld % 2
     quality_l = 5 - cel - ost
-    [cel, ost, quality_l] 
+    [cel, ost, quality_l]
   end
+  # TODO добавить метод, определяющий возможность выбора POSITION2
 end

@@ -1,62 +1,67 @@
 = form_for @user do |f|
   =error_messages_for(@user)
-
+  Поля, обязательные к заполнению. отмечены звёздочкой.
   .row
-    .form-group
+    .form-group.col-md-3
       .fa.fa-user.li
-      =f.label :login
-      =f.text_field :login, class: 'form-control'
+      = f.label :login
+      *
+      = f.text_field :login, class: 'form-control'
   .row
-    .form-group
+    .form-group.col-md-3
+      .fa.fa-envelope.li
+      Указывайте правильный email, на него будет выслано письмо со ссылкой для активации.
+      = f.label :email
+      *
+      = f.text_field :email, class: 'form-control'
+  .row
+    .form-group.col-md-3
       .fa.fa-key.li
-      =f.label :password
-      =f.password_field :password, class: 'form-control'
+      = f.label :password
+      *
+      = f.password_field :password, class: 'form-control'
   .row
-    .form-group
+    .form-group.col-md-3
       .fa.fa-key
       .fa.fa-key.li
-      =f.label :password_confirmation
-      =f.password_field :password_confirmation, class: 'form-control'
+      = f.label :password_confirmation
+      *
+      = f.password_field :password_confirmation, class: 'form-control'
   .row
-    .form-group
+    .form-group.col-md-3
       .fa.fa-picture-o
-      =f.label :avatar
-      =f.file_field :avatar
+      = f.label :avatar
+      = f.file_field :avatar
   .row
-    .form-group
-      -# TODO добавить чекбокс "создать команду автоматически", название команды
-      -#  + предупредить, что игроки будут заполнены автоматом:: 13 из выбранной страны и 5 из других
-      -# ВТОРОЙ TODO сделать автомат.создание команды
-      -# ТРЕТИЙ TODO разобраться с отправкой на email писем Confirmable
-      -# 4й TODO добавить модуль Recoverable собственноручный
-      -# 5й TODO добавить модуль lockable
-      -# 6й TODO добавить модуль OMNIAUTH
+    .form-group.col-md-3
       .fa.fa-home.li
       = label_tag('user[country_id]', 'Страна')
+      *
       = select_country('user[country_id]', @user.country_id)
   .row
     .form-group
+      .fa.fa-home.li
+      Футболисты Вашей команды будут иметь гражданство этой страны
+      = label_tag('user[team_country_id]', 'Страна')
+      *
+      = select_country('user[team_country_id]', params[:user].present? ? params[:user][:team_country_id] : nil)
+  .row
+    .form-group.col-md-3
       .fa.fa-venus-mars.li
-      =f.label :sex
-      =f.select :sex, ['м','ж'], class: 'form-control'
+      = f.label :sex
+      = f.select :sex, ['','м','ж'], class: 'form-control'
   .row
-    .form-group
+    .form-group.col-md-3
       .fa.fa-birthday-cake.li
-      =f.label :birthday
-      =f.date_select :birthday, class: 'form-control', start_year: 2015,
-        end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
-  .row
-    .form-group
-      .fa.fa-envelope.li
-      =f.label :email
-      =f.text_field :email, class: 'form-control'
+      = f.label :birthday
+      = f.date_select :birthday, class: 'form-control', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
   -if @current_user.try(:administrator?)
     .row
       .form-group
-        =f.label :role
-        =f.select :role, User.roles.map.with_index{ |name,i| [name, i] }, {}, class: 'form-control'
+        = f.label :role
+        = f.select :role, User.roles.map.with_index{ |name,i| [name, i] }, {}, class: 'form-control'
   .actions
     -if @user.blank?
-      =f.submit 'Зарегистрироваться', class: 'btn btn-primary'
+      = f.submit 'Зарегистрироваться', class: 'btn btn-primary'
     -else
-      =f.submit 'Сохранить', class: 'btn btn-primary'
+      = f.submit 'Сохранить', class: 'btn btn-primary'

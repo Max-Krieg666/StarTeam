@@ -34,6 +34,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :all_yellow_cards, default: 0 # всего ж.к. за карьеру
       t.integer :season_red_cards, default: 0 # всего к.к. в сезоне
       t.integer :all_red_cards, default: 0 # всего к.к. за карьеру
+      # TODO подумать о переводе в цифры
       t.string :status, limit: 30, default: 'active' # статус игрока: 'active','injured', 'penalty-redcard', 'penalty-yellowcards'
       t.boolean :basic, default: false # основной состав, если true, иначе - запасной
       t.boolean :can_play, default: true # может ли играть игрок в след. матче
