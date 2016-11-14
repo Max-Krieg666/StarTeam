@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
   has_many :transfers
 
   validates :title, presence: true, uniqueness: true, length: {maximum: 50}
-  validates :sponsor_id, presence: true
+  validates :sponsor, presence: true
   validates :budget, presence: true
   validates :fans, presence: true
 end

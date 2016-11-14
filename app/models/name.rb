@@ -17,8 +17,8 @@ class Name
     file_names = nil
     file_lastnames = nil
     case @country_id
-    when 1, 7, 10, 15, 17, 20, 23, 36, 39, 57, 65, 130, 145, 146, 147, 149, 157, 172, 177, 178, 179, 199, 235, 239, 241, 244, 252
-      # Австралия, Ангилья, Антигуа и Барбуда, Багамы, Барбадос, Белиз, Бермуды, Великобритания, Виргинские острова, Гренада, Доминика, Монтсеррат, Остров Мэн, Остров Норфолк, Острова Кайман, Острова Теркс и Кайкос, Питкерн, Остров Святой Елены, Сент-Винсент и Гренадины, Сент-Китс и Невис, Сент-Люсия, Тринидад и Тобаго, Ямайка, Англия, Кокосовые острова (Килинг), Остров Рождества, Южная Георгия и Южные Сандвичевы Острова
+    when 1, 7, 10, 15, 17, 20, 23, 36, 39, 45, 57, 65, 130, 145, 146, 147, 149, 157, 172, 177, 178, 179, 199, 235, 239, 241, 244, 252
+      # Австралия, Ангилья, Антигуа и Барбуда, Багамы, Барбадос, Белиз, Бермуды, Великобритания, Виргинские острова, Гайана, Гренада, Доминика, Монтсеррат, Остров Мэн, Остров Норфолк, Острова Кайман, Острова Теркс и Кайкос, Питкерн, Остров Святой Елены, Сент-Винсент и Гренадины, Сент-Китс и Невис, Сент-Люсия, Тринидад и Тобаго, Ямайка, Англия, Кокосовые острова (Килинг), Остров Рождества, Южная Георгия и Южные Сандвичевы Острова
       file_names = 'english'
       file_lastnames = 'english'
     when 2
@@ -40,21 +40,25 @@ class Name
     when 6, 165, 40, 61, 174
       # Американское Самоа, США, Британские, Виргинские острова, США, Гуам, Северные Марианские острова
       file_names = 'american'
-      file_lastnames = 'american'
+      file_lastnames = 'american' #TODO!!!!
     when 8, 29, 51, 82, 159, 169
       # Ангола, Бразилия, Гвинея-Бисау, Кабо-Верде, Португалия, Сан-Томе и Принсипи
       file_names = 'portuguese'
       file_lastnames = 'portuguese'
-    when 9, 11, 38, 54, 66, 79, 92, 124, 155, 156, 166, 208, 222, 227, 240
-      # Андорра, Аргентина, Венесуэла, Гибралтар, Доминиканская Республика, Испания, Колумбия, Мексика, Парагвай, Перу, Сальвадор, Уругвай, Чили, Эквадор, Канарские острова
-      chance = rand(500)
-      word = if chance > 415
-          'spain_basque'
-        elsif chance < 86
-          'spain_catalonian'
-        else
-          'spain'
-        end
+    when 9, 11, 38, 54, 55, 66, 79, 92, 124, 155, 156, 166, 208, 222, 227, 240
+      # Андорра, Аргентина, Венесуэла, Гибралтар, Гондурас, Доминиканская Республика, Испания, Колумбия, Мексика, Парагвай, Перу, Сальвадор, Уругвай, Чили, Эквадор, Канарские острова
+      word =  if @country_id == 79
+                chance = rand(500)
+                if chance > 415
+                  'spain_basque'
+                elsif chance < 86
+                  'spain_catalonian'
+                else
+                  'spain'
+                end
+              else
+                'spain'
+              end
       file_names = word
       file_lastnames = word
     when 12
@@ -127,10 +131,6 @@ class Name
       # Вануату
       # file_names = 'vanuatu'
       # file_lastnames = 'vanuatu'
-    when 35
-      # Ватикан
-      # file_names = 'vatican'
-      # file_lastnames = 'vatican'
     when 37
       # Венгрия
       file_names = 'hungarian'
@@ -147,14 +147,6 @@ class Name
       # Габон
       file_names = 'gabon'
       file_lastnames = 'gabon'
-    when 44
-      # Гаити
-      # file_names = 'haiti'
-      # file_lastnames = 'haiti'
-    when 45
-      # Гайана
-      # file_names = 'hayana'
-      # file_lastnames = 'hayana'
     when 46
       # Гамбия
       file_names = 'gambian'
@@ -163,8 +155,8 @@ class Name
       # Гана
       file_names = 'ghana'
       file_lastnames = 'ghana'
-    when 48, 122, 128, 141, 161, 180, 207, 214, 215, 216, 242, 246
-      # Гваделупа, Мартиника, Монако, Новая Каледония, Реюньон, Сент-Пьер и Микелон, Уоллис и Футуна, Франция, Французская Гвиана, Французская Полинезия, Майотта, Сен-Бартельми
+    when 44, 48, 122, 128, 141, 161, 180, 207, 214, 215, 216, 242, 246
+      # Гаити, Гваделупа, Мартиника, Монако, Новая Каледония, Реюньон, Сент-Пьер и Микелон, Уоллис и Футуна, Франция, Французская Гвиана, Французская Полинезия, Майотта, Сен-Бартельми
       file_names = 'french'
       file_lastnames = 'french'
     when 49
@@ -184,10 +176,6 @@ class Name
       word = rand(100) > 49 ? 'english' : 'french'
       file_names = word
       file_lastnames = word
-    when 55
-      # Гондурас
-      # file_names = 'honduras'
-      # file_lastnames = 'honduras'
     when 56, 91, 114, 194
       # Гонконг, Китай, Макао, Тайвань
       file_names = 'chinese'
@@ -252,8 +240,8 @@ class Name
       # Исландия
       file_names = 'icelandic'
       file_lastnames = 'icelandic'
-    when 80, 168
-      # Италия, Сан-Марино
+    when 35, 80, 168
+      # Ватикан, Италия, Сан-Марино
       file_names = 'italian'
       file_lastnames = 'italian'
     when 83
@@ -364,8 +352,8 @@ class Name
       file_lastnames = 'mali'
     when 119
       # Мальдивы
-      # file_names = 'maldives'
-      # file_lastnames = 'maldives'
+      file_names = 'maldives'
+      file_lastnames = 'maldives'
     when 120
       # Мальта
       file_names = 'maltese'
@@ -501,8 +489,8 @@ class Name
       file_lastnames = 'slovenian'
     when 187
       # Соломоновы Острова
-      # file_names = 'solomon_islands'
-      # file_lastnames = 'solomon_islands'
+      file_names = 'solomon_islands'
+      file_lastnames = 'solomon_islands'
     when 188, 249
       # Сомали, Сомалиленд
       file_names = 'somali'
@@ -648,15 +636,13 @@ class Name
       # Шотландия
       file_names = 'scotland'
       file_lastnames = 'scotland'
-    else
-      #
     end
     if file_names.present?
       file_names += '_names.yml'
       file_lastnames += '_lastnames.yml'
       return [file_names, file_lastnames]
     else
-      raise "имён для страны #{@country_id} нету"
+      raise "имён для страны #{@country_id} нету!"
     end
   end
 end

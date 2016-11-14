@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
 
   def show
     @players = @team.players.order('basic asc, position1 asc, skill_level desc')
-    @club_basis = @team.club_basis_id ? ClubBase.find(@team.club_basis_id) : nil
+    @club_basis = @team.club_basis ? @team.club_basis : nil
     @stadium = @team.stadium
   end
 
@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
     @team.fans = 50
     respond_to do |format|
       if @team.save
-        sp = Sponsor.find(@team.sponsor_id)
+        sp = Sponsor.find(@team.sponsor.id)
         sp.team_id = @team.id
         sp.save!
         @current_user.team_id = @team.id
@@ -55,9 +55,8 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    sp_id = @team.sponsor_id
+    sp = @team.sponsor
     @team.destroy
-    sp = Sponsor.find(sp_id)
     sp.team_id = nil
     sp.save!
     # TODO при удалении команды отпускать на свободный рынок всех игроков в ней
@@ -124,7 +123,7 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    attrs = [:title, :sponsor_id]
+    attrs = [:title, :sponsor]
     if @current_user.try(:admin?)
       attrs += [:budget, :fans]
     end

@@ -4535,3 +4535,21 @@
   talent: 5
   age: 34
   skill_level: 70
+- name: Howard Oxnard
+  country_id: 57
+  position1: 8
+  talent: 5
+  age: 21
+  skill_level: 41
+- name: Kondwani Ngumbi
+  country_id: 68
+  position1: 8
+  talent: 3
+  age: 27
+  skill_level: 37
+- name: Ahmed Louly
+  country_id: 112
+  position1: 8
+  talent: 1
+  age: 35
+  skill_level: 40

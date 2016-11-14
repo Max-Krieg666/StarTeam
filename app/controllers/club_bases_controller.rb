@@ -107,9 +107,9 @@ class ClubBasesController < ApplicationController
     hash.update(club_basis: params[:club_base])
     @club_basis = ClubBase.new(club_basis_params)
     @team = Team.find(club_basis_params[:team_id])
-    @club_basis.team = @team
+    @club_basis.team_id = @team.id
     if @club_basis.save
-      @team.club_basis_id = @club_basis.id
+      @team.club_basis = @club_basis
       @team.save!
       redirect_to @club_basis, notice: 'База успешно создана.'
     else

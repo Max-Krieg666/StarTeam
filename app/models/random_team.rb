@@ -1,4 +1,5 @@
 class RandomTeam
+  attr_reader :players
   # класс для рандомизации команды
   SCHEMAS = [
     '4-4-2>1', '4-4-2>2', '4-4-2>3', '4-4-2>4',
@@ -9,38 +10,51 @@ class RandomTeam
   ]
 
   FOOTBALLERS_POSITIONS = {
-  	SCHEMAS[0] => { 0: 2, 1: 1, 2: 3, 3: 2, 4: 1, 5: 3, 6: 2, 7: 1, 8: 2, 9: 1 },
-  	SCHEMAS[1] => { 0: 2, 1: 2, 2: 3, 3: 1, 4: 2, 5: 3, 6: 1, 7: 1, 8: 2, 9: 1 },
-  	SCHEMAS[2] => { 0: 2, 1: 2, 2: 3, 3: 1, 4: 2, 5: 3, 6: 2, 8: 3 },
-  	SCHEMAS[3] => { 0: 2, 1: 2, 2: 3, 3: 2, 4: 2, 5: 3, 6: 1, 8: 3 }
-    SCHEMAS[4] => { 0: 2, 1: 1, 2: 3, 3: 2, 4: 2, 5: 3, 6: 1, 7: 1, 8: 2, 9: 1 },
-    SCHEMAS[5] => { 0: 2, 1: 1, 2: 3, 3: 1, 4: 1, 5: 3, 6: 1, 7: 2, 8: 2, 9: 2 },
-    SCHEMAS[6] => { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 3, 6: 2, 7: 1, 8: 2, 9: 1 },
-    SCHEMAS[7] => { 0: 2, 1: 1, 2: 2, 3: 1, 4: 2, 5: 4, 6: 2, 7: 1, 8: 2, 9: 1 },
-    SCHEMAS[8] => { 0: 2, 1: 1, 2: 3, 3: 1, 4: 2, 5: 4, 6: 1, 7: 1, 8: 2, 9: 1 },
-    SCHEMAS[9] => { 0: 2, 1: 2, 2: 2, 3: 1, 4: 2, 5: 4, 6: 2, 7: 1, 8: 1, 9: 1 },
-    SCHEMAS[10] => { 0: 2, 1: 1, 2: 3, 3: 1, 4: 2, 5: 3, 6: 2, 7: 1, 8: 2, 9: 1 },
-    SCHEMAS[11] => { 0: 2, 1: 1, 2: 2, 3: 2, 4: 1, 5: 3, 6: 2, 7: 2, 8: 2, 9: 1 },
-    SCHEMAS[12] => { 0: 2, 1: 1, 2: 2, 3: 2, 4: 2, 5: 3, 6: 1, 7: 1, 8: 2, 9: 2 },
-    SCHEMAS[13] => { 0: 2, 1: 2, 2: 2, 3: 1, 4: 2, 5: 3, 6: 1, 7: 2, 8: 2, 9: 1 },
-    SCHEMAS[14] => { 0: 2, 1: 2, 2: 2, 3: 1, 4: 2, 5: 3, 6: 2, 8: 4 },
-    SCHEMAS[15] => { 0: 2, 1: 1, 2: 3, 3: 1, 4: 2, 5: 4, 6: 1, 8: 4 },
-    SCHEMAS[16] => { 0: 2, 1: 2, 2: 3, 3: 1, 4: 1, 5: 3, 6: 1, 7: 2, 8: 2, 9: 1 },
-    SCHEMAS[17] => { 0: 2, 1: 1, 2: 3, 3: 1, 4: 1, 5: 3, 6: 1, 7: 2, 8: 3, 9: 1 },
-    SCHEMAS[18] => { 0: 2, 1: 1, 2: 3, 3: 1, 4: 1, 5: 2, 6: 1, 7: 2, 8: 3, 9: 2 }
+  	SCHEMAS[0] => { 0 => 2, 1 => 1, 2 => 3, 3 => 2, 4 => 1, 5 => 3, 6 => 2, 7 => 1, 8 => 2, 9 => 1 },
+  	SCHEMAS[1] => { 0 => 2, 1 => 2, 2 => 3, 3 => 1, 4 => 2, 5 => 3, 6 => 1, 7 => 1, 8 => 2, 9 => 1 },
+  	SCHEMAS[2] => { 0 => 2, 1 => 2, 2 => 3, 3 => 1, 4 => 2, 5 => 3, 6 => 2, 8 => 3 },
+  	SCHEMAS[3] => { 0 => 2, 1 => 2, 2 => 3, 3 => 2, 4 => 2, 5 => 3, 6 => 1, 8 => 3 },
+    SCHEMAS[4] => { 0 => 2, 1 => 1, 2 => 3, 3 => 2, 4 => 2, 5 => 3, 6 => 1, 7 => 1, 8 => 2, 9 => 1 },
+    SCHEMAS[5] => { 0 => 2, 1 => 1, 2 => 3, 3 => 1, 4 => 1, 5 => 3, 6 => 1, 7 => 2, 8 => 2, 9 => 2 },
+    SCHEMAS[6] => { 0 => 2, 1 => 2, 2 => 2, 3 => 2, 4 => 1, 5 => 3, 6 => 2, 7 => 1, 8 => 2, 9 => 1 },
+    SCHEMAS[7] => { 0 => 2, 1 => 1, 2 => 2, 3 => 1, 4 => 2, 5 => 4, 6 => 2, 7 => 1, 8 => 2, 9 => 1 },
+    SCHEMAS[8] => { 0 => 2, 1 => 1, 2 => 3, 3 => 1, 4 => 2, 5 => 4, 6 => 1, 7 => 1, 8 => 2, 9 => 1 },
+    SCHEMAS[9] => { 0 => 2, 1 => 2, 2 => 2, 3 => 1, 4 => 2, 5 => 4, 6 => 2, 7 => 1, 8 => 1, 9 => 1 },
+    SCHEMAS[10] => { 0 => 2, 1 => 1, 2 => 3, 3 => 1, 4 => 2, 5 => 3, 6 => 2, 7 => 1, 8 => 2, 9 => 1 },
+    SCHEMAS[11] => { 0 => 2, 1 => 1, 2 => 2, 3 => 2, 4 => 1, 5 => 3, 6 => 2, 7 => 2, 8 => 2, 9 => 1 },
+    SCHEMAS[12] => { 0 => 2, 1 => 1, 2 => 2, 3 => 2, 4 => 2, 5 => 3, 6 => 1, 7 => 1, 8 => 2, 9 => 2 },
+    SCHEMAS[13] => { 0 => 2, 1 => 2, 2 => 2, 3 => 1, 4 => 2, 5 => 3, 6 => 1, 7 => 2, 8 => 2, 9 => 1 },
+    SCHEMAS[14] => { 0 => 2, 1 => 2, 2 => 2, 3 => 1, 4 => 2, 5 => 3, 6 => 2, 8 => 4 },
+    SCHEMAS[15] => { 0 => 2, 1 => 1, 2 => 3, 3 => 1, 4 => 2, 5 => 4, 6 => 1, 8 => 4 },
+    SCHEMAS[16] => { 0 => 2, 1 => 2, 2 => 3, 3 => 1, 4 => 1, 5 => 3, 6 => 1, 7 => 2, 8 => 2, 9 => 1 },
+    SCHEMAS[17] => { 0 => 2, 1 => 1, 2 => 3, 3 => 1, 4 => 1, 5 => 3, 6 => 1, 7 => 2, 8 => 3, 9 => 1 },
+    SCHEMAS[18] => { 0 => 2, 1 => 1, 2 => 3, 3 => 1, 4 => 1, 5 => 2, 6 => 1, 7 => 2, 8 => 3, 9 => 2 }
   }
 
   def initialize(team)
-  	main_country_id = team.country_id
-    schema = SHEMAS[rand(19)]
-    players = []
+  	main_country_id = team.user.country_id #переделать на team.country_id
+    schema = SCHEMAS[rand(19)]
+    pl_positions = (schema.length == 10 ? (0..9).to_a : [0, 1, 2, 3, 4, 5, 6, 8])
+    @players = []
     players_count_main = 0 # д.б. 13
     players_count_foreigners = 0 # д.б. 5
     footballers_positions = FOOTBALLERS_POSITIONS[schema]
     footballers_positions.each do |pos, count|
-      #TODO тут написать метод выбора страны set_country
       count.times do
-        players << random_player(pos, main_country_id, team.id)
+        #set_country
+        chance = rand(100)
+        if chance > 66 && players_count_foreigners < 5 || players_count_main == 13
+          k = rand(252)
+          while k == main_country_id
+            k = rand(252)
+          end
+          pl_c_id = k
+          players_count_foreigners += 1
+        elsif chance <= 66 && players_count_main < 13 || players_count_foreigners == 5
+          pl_c_id = main_country_id
+          players_count_main += 1
+        end
+        @players << random_player(pos, pl_c_id, team.id)
       end
     end
   end
@@ -57,8 +71,8 @@ class RandomTeam
     pl.state = 1
     pl.basic = false
     pl.talent = PlayerGenerator.rand_talent
-    pl.age = PlayerGenerator.rand_age
-    pl.skill_level = PlayerGenerator.rand_skill_level
+    pl.age = PlayerGenerator.rand_age(pl.talent)
+    pl.skill_level = PlayerGenerator.rand_skill_level(pl.talent)
     pl.price = (pl.talent * pl.skill_level * 10000 / pl.age).round(3)
     pl
   end

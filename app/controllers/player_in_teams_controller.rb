@@ -23,7 +23,7 @@ class PlayerInTeamsController < ApplicationController
 
   # def create
   #   team=Team.find(@current_user.team_id)
-  #   cb=ClubBase.find(team.club_basis_id)
+  #   cb=team.club_basis
   #   nam=params[:name] if params[:name]
   #   nam=params[:player_in_team][:name] if params[:player_in_team][:name]
   #   agent=Player.where(name: nam).first

@@ -7,12 +7,13 @@
         .fa.fa-pencil.li
         = f.label :title
         = f.text_field :title, class: "form-control"
+        -#TODO подумать о рандомной генерации спонсора для команды
   .row
     .col-md-3
       .form-group
         .fa.fa-money.li
-        = label_tag('team[sponsor_id]', 'Спонсор')
-        = select_sponsor('team[sponsor_id]', @team.sponsor_id)
+        = label_tag('team[sponsor]', 'Спонсор')
+        = select_sponsor('team[sponsor]', @team.sponsor)
   -#.row
   -#  .col-md-3
   -#    .form-group

@@ -10,15 +10,14 @@
     =render 'navbar'
     .container
       -if @current_user
-        -t=@current_user.team
-        -if t
-          -pls_size=Player.where(team_id: t.id, state: 1).to_a.size
-          -if t.club_basis_id.blank?
+        -if @current_user_team
+          -pls_size=Player.where(team_id: @current_user_team.id, state: 1).to_a.size
+          -if !@current_user_team.club_basis
             .alert.alert-warning.fade.in
               %button{class:'close',"aria-hidden"=>'true',"data-dismiss"=>'alert',"type"=>'button'}x
               %strong Вы не построили базу клуба!
               =link_to 'Построить базу клуба сейчас',new_club_basis_path(team_id:t.id), class:'btn btn-danger', type:'button'
-          -if t.stadium_id.blank?
+          -if !@current_user_team.stadium
             .alert.alert-warning.fade.in
               %button{class:'close',"aria-hidden"=>'true',"data-dismiss"=>'alert',"type"=>'button'}x
               %strong Вы не построили стадион!
@@ -27,6 +26,7 @@
             .alert.alert-warning.fade.in
               %button{class:'close',"aria-hidden"=>'true',"data-dismiss"=>'alert',"type"=>'button'}x
               %strong Для оформления заявки на попадание в чемпионат вам осталось приобрести #{18-pls_size} #{Russian.p(18-pls_size,'игрока','игрока','игроков')}
+              -#TODO прогресс бар выпилить!
             .progress
               -x=(pls_size/18.0*100).round(0)
               .progress-bar-warning{role:"progressbar", "aria-valuenow"=>"#{x}".to_i, "aria-valuemin"=>0,"aria-valuemax"=>100, style: "width: #{x}%;"}
