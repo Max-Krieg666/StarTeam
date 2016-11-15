@@ -5,7 +5,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :title, null: false, limit: 30, unique: true
       t.decimal :budget, precision: 20, scale: 2, null: false, default: 250000.0
       t.integer :fans, null: false
-      #TODO добавить ассоциацию с country
+      t.belongs_to :country
 
       t.timestamps null: false
     end

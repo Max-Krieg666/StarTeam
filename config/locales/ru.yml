@@ -37,7 +37,7 @@ ru:
         flag: Флаг
         title: Название
       user:
-        country: Страна
+        country: Страна проживания
         login: Логин
         password: Пароль
         password_confirmation: Подтверждение пароля
@@ -46,8 +46,9 @@ ru:
         birthday: День Рождения
         mail: Адрес эл.почты
       team:
+        country: Страна
         user: Владелец
-        title: Название
+        title: Название команды
         sponsor: Спонсор
         stadium: Стадион
         club_basis: База клуба

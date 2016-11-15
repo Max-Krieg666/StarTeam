@@ -43,7 +43,7 @@ class RandomTeam
       count.times do
         #set_country
         chance = rand(100)
-        if chance > 66 && players_count_foreigners < 5 || players_count_main == 13
+        if chance > 70 && players_count_foreigners < 5 || players_count_main == 13
           k = rand(252)
           while k == main_country_id
             k = rand(252)

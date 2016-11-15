@@ -1,65 +1,109 @@
+-#TODO либо отдельный метод регистрасьон в контроллер, либо PARTIAL
 = form_for @user do |f|
   =error_messages_for(@user)
-  Поля, обязательные к заполнению. отмечены звёздочкой.
-  .row
-    .form-group.col-md-3
-      .fa.fa-user.li
-      = f.label :login
-      *
-      = f.text_field :login, class: 'form-control'
-  .row
-    .form-group.col-md-3
-      .fa.fa-envelope.li
-      Указывайте правильный email, на него будет выслано письмо со ссылкой для активации.
-      = f.label :email
-      *
-      = f.text_field :email, class: 'form-control'
-  .row
-    .form-group.col-md-3
-      .fa.fa-key.li
-      = f.label :password
-      *
-      = f.password_field :password, class: 'form-control'
-  .row
-    .form-group.col-md-3
-      .fa.fa-key
-      .fa.fa-key.li
-      = f.label :password_confirmation
-      *
-      = f.password_field :password_confirmation, class: 'form-control'
-  .row
-    .form-group.col-md-3
-      .fa.fa-picture-o
-      = f.label :avatar
-      = f.file_field :avatar
-  .row
-    .form-group.col-md-3
-      .fa.fa-home.li
-      = label_tag('user[country_id]', 'Страна')
-      *
-      = select_country('user[country_id]', @user.country_id)
-  .row
-    .form-group
-      .fa.fa-home.li
-      Футболисты Вашей команды будут иметь гражданство этой страны
-      = label_tag('user[team_country_id]', 'Страна')
-      *
-      = select_country('user[team_country_id]', params[:user].present? ? params[:user][:team_country_id] : nil)
-  .row
-    .form-group.col-md-3
-      .fa.fa-venus-mars.li
-      = f.label :sex
-      = f.select :sex, ['','м','ж'], class: 'form-control'
-  .row
-    .form-group.col-md-3
-      .fa.fa-birthday-cake.li
-      = f.label :birthday
-      = f.date_select :birthday, class: 'form-control', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
-  -if @current_user.try(:administrator?)
-    .row
-      .form-group
-        = f.label :role
-        = f.select :role, User.roles.map.with_index{ |name,i| [name, i] }, {}, class: 'form-control'
+  -#TODO добавить в контроллер пермит парамс на командуууууу
+  -#TODO допилить вёрстку
+  .help-block
+    .fa.fa-info-circle.li
+      = t('info-blocks.registration.whats_asterisk')
+  %ul.nav.nav-tabs
+    %li.active
+      %a{ "data-toggle" => "tab", href: "#user_info" }= t('info-blocks.registration.user_info')
+    %li
+      %a{ "data-toggle" => "tab", href: "#team_info" }= t('info-blocks.registration.team_info')
+  / Tab panes
+  .tab-content
+    #user_info.tab-pane.active
+      .row
+        .form-group.col-md-3
+          .fa.fa-user.li
+          -#TODO bootstrap check login auto
+          = f.label :login
+          *
+          = f.text_field :login, class: 'form-control'
+      .row
+        .form-group.col-md-3
+          .fa.fa-envelope.li
+          = f.label :email
+          *
+          = f.text_field :email, class: 'form-control'
+        .form-group.col-md-3
+          .help-block
+            .fa.fa-info-circle.li
+            = t('info-blocks.registration.right_email')
+      .row
+        .form-group.col-md-3
+          .fa.fa-key.li
+          -#TODO bootstrap strength meter
+          = f.label :password
+          *
+          = f.password_field :password, class: 'form-control'
+      .row
+        .form-group.col-md-3
+          .fa.fa-key
+          .fa.fa-key.li
+          = f.label :password_confirmation
+          *
+          = f.password_field :password_confirmation, class: 'form-control'
+      .row
+        .form-group.col-md-3
+          .fa.fa-picture-o
+          = f.label :avatar
+          = f.file_field :avatar
+      .row
+        .form-group.col-md-3
+          .fa.fa-home.li
+          = f.label :country
+          *
+          = select_country('user[country_id]', @user.country_id)
+        .form-group.col-md-3
+          .help-block
+            .fa.fa-info-circle.li
+            = t('info-blocks.registration.your_country')
+        .row
+          .form-group.col-md-3
+            .fa.fa-venus-mars.li
+            -#TODO м ж перевод
+            = f.label :sex
+            = f.select :sex, ['', 'м', 'ж'], class: 'form-control'
+        .row
+          .form-group.col-md-3
+            .fa.fa-birthday-cake.li
+            = f.label :birthday
+            = f.date_select :birthday, class: 'form-control', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
+        -if @current_user.try(:administrator?)
+          .row
+            .form-group
+              = f.label :role
+              = f.select :role, User.roles.map.with_index { |name, i| [name, i] }, {}, class: 'form-control'
+    #team_info.tab-pane
+      .row
+        .col-md-3
+          .form-group
+            .fa.fa-pencil.li
+            = label_tag Team.human_attribute_name(:title)
+            *
+            = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
+      .row
+        .form-group
+          .fa.fa-flag.li
+          = label_tag Team.human_attribute_name(:country)
+          *
+          = select_country('team[team_country_id]', params[:user].present? ? params[:user][:team_country_id] : nil)
+        .form-group.col-md-3
+          .help-block
+            .fa.fa-info-circle.li
+            = t('info-blocks.registration.team_country')
+  .help-block
+    .fa.fa-info-circle.li
+      = t('info-blocks.registration.attention')
+  %ul.nav.nav-tabs
+    %li.active
+      %a{ "data-toggle" => "tab", href: "#user_info" }= t('info-blocks.registration.user_info')
+    %li
+      %a{ "data-toggle" => "tab", href: "#team_info" }= t('info-blocks.registration.team_info')
+  -#TODO разработать правила участия и кнопку CONFIRM
+  -#TODO перевести уже все надписи ВЕЗДЕ, Хель подери!!!
   .actions
     -if @user.blank?
       = f.submit 'Зарегистрироваться', class: 'btn btn-primary'

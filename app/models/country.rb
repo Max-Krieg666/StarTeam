@@ -1,5 +1,6 @@
 class Country < ActiveRecord::Base
   has_many :users
+  has_many :teams
   has_many :players
 
   validates :flag, attachment_presence: true,
