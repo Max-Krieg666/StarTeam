@@ -32,7 +32,7 @@ class RandomTeam
   }
 
   def initialize(team)
-  	main_country_id = team.user.country_id #переделать на team.country_id
+  	main_country_id = team.user.country_id
     schema = SCHEMAS[rand(19)]
     pl_positions = (schema.length == 10 ? (0..9).to_a : [0, 1, 2, 3, 4, 5, 6, 8])
     @players = []
@@ -44,9 +44,9 @@ class RandomTeam
         #set_country
         chance = rand(100)
         if chance > 70 && players_count_foreigners < 5 || players_count_main == 13
-          k = rand(252)
+          k = rand(252) + 1
           while k == main_country_id
-            k = rand(252)
+            k = rand(252) + 1
           end
           pl_c_id = k
           players_count_foreigners += 1
@@ -57,6 +57,7 @@ class RandomTeam
         @players << random_player(pos, pl_c_id, team.id)
       end
     end
+    @players
   end
 
   private

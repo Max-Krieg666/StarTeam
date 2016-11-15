@@ -40,7 +40,7 @@ class Name
     when 6, 165, 40, 61, 174
       # Американское Самоа, США, Британские, Виргинские острова, США, Гуам, Северные Марианские острова
       file_names = 'american'
-      file_lastnames = 'american' #TODO!!!!
+      file_lastnames = 'english'
     when 8, 29, 51, 82, 159, 169
       # Ангола, Бразилия, Гвинея-Бисау, Кабо-Верде, Португалия, Сан-Томе и Принсипи
       file_names = 'portuguese'
@@ -630,8 +630,8 @@ class Name
       # file_lastnames = 'abkhazian'
     when 245
       # Уэльс
-      file_names = 'wales'
-      file_lastnames = 'wales'
+      file_names = 'welsh'
+      file_lastnames = 'welsh'
     when 250
       # Шотландия
       file_names = 'scotland'
