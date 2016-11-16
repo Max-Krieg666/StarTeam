@@ -9,8 +9,8 @@
 - lastname: Bruce
 - lastname: Buchan
 - lastname: Buchanan
-- lastname: Cameron crooked nose
-- lastname: Campbell crooked mouth
+- lastname: Cameron
+- lastname: Campbell
 - lastname: Chattan
 - lastname: Chisholm
 - lastname: Clark
@@ -30,28 +30,28 @@
 - lastname: Farquharson
 - lastname: Ferguson
 - lastname: Fletcher
-- lastname: Forbes - forba field/district
-- lastname: Fraser de Frisselle, O Fr strawberry?
+- lastname: Forbes
+- lastname: Fraser
 - lastname: Galbraith
 - lastname: Gordon
 - lastname: Gow
 - lastname: Graham
 - lastname: Grant
 - lastname: Gunn
-- lastname: Hamilton flat topped hill
+- lastname: Hamilton
 - lastname: Hannay
 - lastname: Hay
 - lastname: Henderson
 - lastname: Innes
 - lastname: Johnston
 - lastname: Keith
-- lastname: Kennedy - 'ugly head'
+- lastname: Kennedy
 - lastname: Kerr
 - lastname: Lamont
 - lastname: Leith
 - lastname: Lennox
-- lastname: Leslie placename, may be 'leas cuilinn' garden of hollies
-- lastname: Lindsay placename Lindsey, Lincoln's wetland
+- lastname: Leslie
+- lastname: Lindsay
 - lastname: Livingstone
 - lastname: Logan
 - lastname: MacAlister
@@ -121,10 +121,6 @@
 - lastname: Wemyss
 - lastname: Wotherspoon
 - lastname: Young
-- lastname:  
- - lastname: Surnames
- - lastname: 
-- lastname: Many clan and family names are preceded by Mac- or 'son of' so were originally patronymics. Many surnames which are not recognised as a separate clan are associated with one and entitled to wear their chief's tartan. From the C14th on, the Lowlanders were mostly speakers of Scots (a dialect of English) and the Highlanders of Gaelic. By the C15th, bynames and nicknames were becoming inherited surnames in the Lowlands and most people had a fixed family surname by the C16th. In the Highlands, patronymics continued to be used regularly into the C17th century and sometimes later. Until the C17th, a woman always retained her own byname or surname on marriage and it was not common practice for her to adopt her husband's name until the late C19th or early C20th. Modern Scottish law tends to identify a woman by her original name.
 - lastname: Abercrombie
 - lastname: Abercromby
 - lastname: Abernethy
@@ -207,15 +203,15 @@
 - lastname: Kirbishly
 - lastname: Kivlochan
 - lastname: Knock
-- lastname: Kyle strait/channel
+- lastname: Kyle
 - lastname: Lamond
 - lastname: Lauder
 - lastname: Lithgow
 - lastname: Lloyd
 - lastname: Lochhead
 - lastname: Lochore
-- lastname: Lyall ON 'Liulfr' + wolf
-- lastname: Lyle from the island
+- lastname: Lyall
+- lastname: Lyle
 - lastname: MacAlonie
 - lastname: MacAra
 - lastname: MacArdle

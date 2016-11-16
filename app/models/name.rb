@@ -111,10 +111,10 @@ class Name
       # Ботсвана
       file_names = 'botswana'
       file_lastnames = 'botswana'
-    when 30
-      # Бруней-Даруссалам TODO!!!
-      # file_names = 'brunei'
-      # file_lastnames = 'brunei'
+    when 30, 73, 117, 182
+      # Бруней-Даруссалам, Индонезия, Малайзия, Сингапур
+      file_names = 'malay'
+      file_lastnames = 'malay'
     when 31
       # Буркина-Фасо
       file_names = 'burkina_faso'
@@ -125,12 +125,12 @@ class Name
       file_lastnames = 'burundi'
     when 33
       # Бутан
-      # file_names = 'butan'
-      # file_lastnames = 'butan'
+      file_names = 'bhutan'
+      file_lastnames = 'bhutan'
     when 34
       # Вануату
-      # file_names = 'vanuatu'
-      # file_lastnames = 'vanuatu'
+      file_names = 'polinesian'
+      file_lastnames = 'vanuatu'
     when 37
       # Венгрия
       file_names = 'hungarian'
@@ -224,10 +224,6 @@ class Name
       # Индия
       file_names = 'indian'
       file_lastnames = 'indian'
-    when 73
-      # Индонезия
-      file_names = 'indonesian'
-      file_lastnames = 'indonesian'
     when 76
       # Иран
       file_names = 'iranian'
@@ -342,10 +338,6 @@ class Name
       # Малави
       file_names = 'malawi'
       file_lastnames = 'malawi'
-    when 117
-      # Малайзия
-      file_names = 'malaysian'
-      file_lastnames = 'malaysian'
     when 118
       # Мали
       file_names = 'mali'
@@ -475,10 +467,6 @@ class Name
       # Сербия, Черногория
       file_names = 'serbian'
       file_lastnames = 'serbian'
-    when 182
-      # Сингапур
-      # file_names = 'singapour'
-      # file_lastnames = 'singapour'
     when 185
       # Словакия
       file_names = 'slovak'
@@ -525,8 +513,8 @@ class Name
       file_lastnames = 'tonga'
     when 200
       # Тувалу
-      # file_names = 'tuvaluan'
-      # file_lastnames = 'tuvaluan'
+      file_names = 'polinesian'
+      file_lastnames = 'tuvaluan'
     when 201
       # Тунис
       file_names = 'tunisian'
@@ -598,8 +586,8 @@ class Name
       file_lastnames = 'swedish'
     when 226
       # Шри-Ланка
-      # file_names = 'sri_lanka'
-      # file_lastnames = 'sri_lanka'
+      file_names = 'sri_lankan'
+      file_lastnames = 'sri_lankan'
     when 228
       # Экваториальная Гвинея
       file_names = 'equatorial_guinea'
