@@ -38,27 +38,20 @@
           -while a[i]!='.'
             -count+=1;i+=1
           = number_to_currency(transfer.cost, locale: :en, precision: count)
-        - case transfer.status
-          - when 'Активен'
-            -col="#32CD32"
-          - when 'Завершён'
-            -col="#FF3030"
-          - else
-            -col="#5CACEE"
-        %td{style: "color: "+col}
+        %td{style: "color: " + "#{transfer.statuses_in_colors}"}
           = transfer.status
         %td
-          = link_to transfer, class: "btn btn-link" do
+          = link_to transfer, class: 'btn btn-link' do
             =fa_icon "arrow-circle-right"
         -if @current_user.id==transfer.player.team.user.id
           %td
             = link_to edit_transfer_path(transfer), class: "btn btn-link" do
               =fa_icon "wrench"
           %td
-            = link_to transfer, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
+            = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
               =fa_icon "remove"
         -else
           %td
-            = link_to edit_transfer_path(transfer), class: "btn btn-link", title: 'Купить игрока' do
+            = link_to edit_transfer_path(transfer), class: 'btn btn-link', title: 'Купить игрока' do
               .glyphicon.glyphicon-transfer
 %br

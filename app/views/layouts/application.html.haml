@@ -9,7 +9,7 @@
   %body
     =render 'navbar'
     .container
-      -if @current_user
+      -if @current_user && @current_user.user?
         -if @current_user_team
           -pls_size=Player.where(team_id: @current_user_team.id, state: 1).to_a.size
           -if !@current_user_team.club_basis
@@ -34,10 +34,5 @@
                   .text-center Команда укомплектована на #{x}%: #{pls_size} из 18 игроков
                 -else
                   .text-center #{x}%
-        -else
-          .alert.alert-danger.fade.in
-            %button{class:'close',"aria-hidden"=>'true',"data-dismiss"=>'alert',"type"=>'button'}x
-            %strong Вы не создали команду!
-            =link_to 'Создать команду прямо сейчас',new_team_path, class:'btn btn-danger', type:'button'
       =render 'flash_messages'
       =yield

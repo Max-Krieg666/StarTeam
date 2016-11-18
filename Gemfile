@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'paperclip'
+gem 'bootstrap-select-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 

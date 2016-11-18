@@ -60,22 +60,22 @@
           .help-block
             .fa.fa-info-circle.li
             = t('info-blocks.registration.your_country')
+      .row
+        .form-group.col-md-3
+          .fa.fa-venus-mars.li
+          -#TODO м ж - integer значения + починить
+          = f.label :sex
+          = select_tag('user[sex]', options_for_select(User.sexes.to_a, @user.sex), class: 'selectpicker')
+      .row
+        .form-group.col-md-3
+          .fa.fa-birthday-cake.li
+          = f.label :birthday
+          = f.date_select :birthday, class: 'form-control', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
+      -if @current_user.try(:administrator?)
         .row
-          .form-group.col-md-3
-            .fa.fa-venus-mars.li
-            -#TODO м ж перевод
-            = f.label :sex
-            = f.select :sex, ['', 'м', 'ж'], class: 'form-control'
-        .row
-          .form-group.col-md-3
-            .fa.fa-birthday-cake.li
-            = f.label :birthday
-            = f.date_select :birthday, class: 'form-control', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
-        -if @current_user.try(:administrator?)
-          .row
-            .form-group
-              = f.label :role
-              = f.select :role, User.roles.map.with_index { |name, i| [name, i] }, {}, class: 'form-control'
+          .form-group
+            = f.label :role
+            = f.select :role, User.roles.map.with_index { |name, i| [name, i] }, {}, class: 'form-control'
     #team_info.tab-pane
       .row
         .col-md-3

@@ -5,7 +5,7 @@ class CreateTransfers < ActiveRecord::Migration
       t.uuid :vendor_id, index: true, class_name: 'Team'
       t.uuid :purchaser_id, index: true, class_name: 'Team'
       t.float :cost, null: false
-      t.string :status
+      t.integer :status
 
       t.timestamps null: false
     end

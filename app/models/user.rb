@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
 
   cattr_reader :roles
 
+  enum sex: [
+    :not_specified,
+    :male,
+    :female
+  ]
+
   validates :avatar,
             attachment_content_type: { content_type: /\Aimage\/.*\Z/ },
             attachment_size: { less_than: 1.megabytes },
@@ -17,7 +23,6 @@ class User < ActiveRecord::Base
   validates :role, presence: true, inclusion: { in: 0...@@roles.size }
   validates :login, presence: true, length: { minimum: 3, maximum: 24 },
             uniqueness: true, exclusion: { in: %w(admin god root) }
-  validates :sex, inclusion: { in: %w(м ж) }
   validates :email, presence: true, uniqueness: { case_sensitive: false },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 

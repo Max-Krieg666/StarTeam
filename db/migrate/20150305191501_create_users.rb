@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string :login, null: false, limit: 24, unique: true
       t.belongs_to :country
-      t.string :sex
+      t.integer :sex
       t.date :birthday
       t.integer :role
       t.attachment :avatar

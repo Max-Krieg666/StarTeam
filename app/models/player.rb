@@ -15,19 +15,25 @@ class Player < ActiveRecord::Base
 
   POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf)
 
+  enum status: [
+    :active,
+    :injured,
+    :penalty_redcard,
+    :penalty_yellowcards,
+    :transfer
+  ]
+
   before_validation :set_price, on: :create
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :country_id, presence: true
   validates :position1, presence: true, inclusion: { in: 0..9 }
-  # validates :position2, inclusion: { in: [nil] + @@posit }
   validates :talent, presence: true, inclusion: { in: 1..9 }
   validates :age, presence: true, inclusion: { in: 16..39 }
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
   validates :price, presence: true
   validates :team_id, inclusion: { in: 0..1000000 }, allow_blank: true # 0 зарезервирован и обозначает, что данной команды нет
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
-  validates :status, presence: true, inclusion: { in: %w(active injured transfer penalty(redcard) penalty(2yellowcards))}
   validates :state, inclusion: { in: 0..2 }
 
   def full_position_name
