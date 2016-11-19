@@ -28,7 +28,7 @@
           %li= link_to "Создать игрока", new_player_path if @current_user.moderator?
       %ul.nav.navbar-nav.navbar-right
         -if @current_user.blank?
-          %li= link_to "Зарегистрироваться", new_user_path
+          %li= link_to "Зарегистрироваться", registration_users_path
           %li= link_to "Войти", login_path
         -else
           %li

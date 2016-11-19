@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 
   resources :stadia
 
-  resources :users
+  resources :users do
+    collection do
+      get 'registration'
+      patch 'confirmation'
+    end
+  end
 
   resources :countries
 

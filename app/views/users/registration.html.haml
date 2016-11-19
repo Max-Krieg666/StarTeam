@@ -1,7 +1,7 @@
--#TODO либо отдельный метод регистрасьон в контроллер, либо PARTIAL
+.page-header
+  %h1 Регистрация
 = form_for @user do |f|
   =error_messages_for(@user)
-  -#TODO добавить в контроллер пермит парамс на командуууууу
   -#TODO допилить вёрстку
   .help-block
     .fa.fa-info-circle.li
@@ -17,7 +17,7 @@
       .row
         .form-group.col-md-3
           .fa.fa-user.li
-          -#TODO bootstrap check login auto
+          -#TODO jquery check login auto
           = f.label :login
           *
           = f.text_field :login, class: 'form-control'
@@ -58,6 +58,7 @@
           = select_country('user[country_id]', @user.country_id)
         .form-group.col-md-3
           .help-block
+            %br
             .fa.fa-info-circle.li
             = t('info-blocks.registration.your_country')
       .row
@@ -67,36 +68,37 @@
           = f.label :sex
           = select_tag('user[sex]', options_for_select(User.sexes.to_a, @user.sex), class: 'selectpicker')
       .row
-        .form-group.col-md-3
+        .form-group.col-md-6
           .fa.fa-birthday-cake.li
           = f.label :birthday
-          = f.date_select :birthday, class: 'form-control', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
+          = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
       -if @current_user.try(:administrator?)
         .row
           .form-group
             = f.label :role
             = f.select :role, User.roles.map.with_index { |name, i| [name, i] }, {}, class: 'form-control'
+      .help-block
+        .fa.fa-info-circle.li
+          = t('info-blocks.registration.attention')
     #team_info.tab-pane
       .row
-        .col-md-3
-          .form-group
-            .fa.fa-pencil.li
-            = label_tag Team.human_attribute_name(:title)
-            *
-            = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
+        .form-group.col-md-3
+          .fa.fa-pencil.li
+          -#TODO jquery check title auto
+          = label_tag Team.human_attribute_name(:title)
+          *
+          = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
       .row
-        .form-group
+        .form-group.col-md-3
           .fa.fa-flag.li
           = label_tag Team.human_attribute_name(:country)
           *
-          = select_country('team[team_country_id]', params[:user].present? ? params[:user][:team_country_id] : nil)
+          = select_country('team[team_country_id]', params[:team].try(:[], :team_country_id))
+        %br
         .form-group.col-md-3
           .help-block
             .fa.fa-info-circle.li
             = t('info-blocks.registration.team_country')
-  .help-block
-    .fa.fa-info-circle.li
-      = t('info-blocks.registration.attention')
 
   -#TODO разработать правила участия и кнопку CONFIRM
   -#TODO перевести уже все надписи ВЕЗДЕ, Хель подери!!!

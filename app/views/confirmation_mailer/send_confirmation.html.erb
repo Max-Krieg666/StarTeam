@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= t('mailers.welcome') %>, <%= @user.login %>!</h1>
+    <p>
+      <%= t('mailers.successfully_signed') %>: <%= @team.title %>.<br>
+    </p>
+    <p>
+      <%= t('mailers.to_confirm_follow_this_link') %>: <%= @url %>.
+    </p>
+    <p><%= t('mailers.thanks_for_joining') %>!</p>
+  </body>
+</html>

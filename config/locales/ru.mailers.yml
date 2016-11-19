@@ -1,0 +1,7 @@
+ru:
+  mailers:
+    registration: Регистрация в StarTeam
+    welcome: Добро пожаловать в футбольный менеджер StarTeam
+    successfully_signed: Вы успешно зарегистрировали в StarTeam команду
+    to_confirm_follow_this_link: Чтобы подтвердить аккаунт, пожалуйста, пройдите по ссылке
+    thanks_for_joining: Спасибо, что Вы с нами! Успешного дня

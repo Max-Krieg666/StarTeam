@@ -29,6 +29,7 @@ gem 'execjs'
 
 # russify
 gem 'russian'
+gem 'faker'
 
 # authentification
 # gem 'devise' -> fuck this!

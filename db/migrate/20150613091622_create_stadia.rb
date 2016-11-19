@@ -4,7 +4,7 @@ class CreateStadia < ActiveRecord::Migration
       t.string :title, null: false, limit: 100, unique: true
       t.integer :capacity, null: false
       t.integer :level, null: false
-      t.uuid :team_id, index: true, unique: true
+      t.belongs_to :team
 
       t.timestamps null: false
     end

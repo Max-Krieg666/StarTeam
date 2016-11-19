@@ -77,14 +77,14 @@
 
 %br
 -if @current_user.role!=0
-  = link_to new_user_path, class: "btn btn-default" do
+  = link_to registration_users_path, class: "btn btn-default" do
     =fa_icon "user-plus"
     Новый пользователь
 
 %br
 = paginate @users
 -#.btn-toolbar
--#  =link_to new_user_path, class: 'btn btn-primary' do
+-#  =link_to registration_users_path, class: 'btn btn-primary' do
 -#    =fa_icon 'user-plus'
 -#    Новый пользователь
 -#.list-group

@@ -42,14 +42,14 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   end
 
   create_table "players", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "name",                  limit: 50,                    null: false
+    t.string   "name",                  limit: 50,                 null: false
     t.integer  "country_id"
-    t.integer  "position1",                                           null: false
+    t.integer  "position1",                                        null: false
     t.integer  "position2"
-    t.integer  "talent",                                              null: false
-    t.integer  "age",                                                 null: false
-    t.integer  "skill_level",                                         null: false
-    t.float    "price",                                               null: false
+    t.integer  "talent",                                           null: false
+    t.integer  "age",                                              null: false
+    t.integer  "skill_level",                                      null: false
+    t.float    "price",                                            null: false
     t.integer  "state",                            default: 0
     t.uuid     "team_id"
     t.string   "special_skill1",        limit: 2
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.integer  "all_yellow_cards",                 default: 0
     t.integer  "season_red_cards",                 default: 0
     t.integer  "all_red_cards",                    default: 0
-    t.string   "status",                limit: 30, default: "active"
+    t.integer  "status",                           default: 0
     t.boolean  "basic",                            default: false
     t.boolean  "can_play",                         default: true
     t.integer  "games_missed",                     default: 0
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.boolean  "captain"
     t.float    "morale"
     t.float    "physical_condition"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   add_index "players", ["country_id"], name: "index_players_on_country_id", using: :btree
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   create_table "sponsors", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "title",              limit: 30,                                         null: false
     t.string   "specialization",     limit: 100,                                        null: false
-    t.uuid     "team_id"
+    t.integer  "team_id"
     t.decimal  "loyalty_factor",                 precision: 3,  scale: 2, default: 1.0, null: false
     t.decimal  "cost_of_full_stake",             precision: 20, scale: 2,               null: false
     t.decimal  "win_prize",                      precision: 7,  scale: 2,               null: false
@@ -100,8 +100,6 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "created_at",                                                            null: false
     t.datetime "updated_at",                                                            null: false
   end
-
-  add_index "sponsors", ["team_id"], name: "index_sponsors_on_team_id", using: :btree
 
   create_table "stadia", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "title",      limit: 100, null: false
@@ -115,22 +113,21 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   add_index "stadia", ["team_id"], name: "index_stadia_on_team_id", using: :btree
 
   create_table "teams", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "user_id"
-    t.string   "title",      limit: 30,                          null: false
-    t.decimal  "budget",                precision: 20, scale: 2, null: false
-    t.integer  "fans",                                           null: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.integer  "user_id"
+    t.string   "title",      limit: 30,                                             null: false
+    t.decimal  "budget",                precision: 20, scale: 2, default: 250000.0, null: false
+    t.integer  "fans",                                           default: 20,       null: false
+    t.integer  "country_id"
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
   end
-
-  add_index "teams", ["user_id"], name: "index_teams_on_user_id", using: :btree
 
   create_table "transfers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "player_id"
     t.uuid     "vendor_id"
     t.uuid     "purchaser_id"
     t.float    "cost",         null: false
-    t.string   "status"
+    t.integer  "status"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -142,9 +139,9 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "login",                  limit: 24,              null: false
     t.integer  "country_id"
-    t.string   "sex"
+    t.integer  "sex",                               default: 0
     t.date     "birthday"
-    t.integer  "role"
+    t.integer  "role",                              default: 0
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -157,13 +154,13 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
