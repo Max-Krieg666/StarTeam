@@ -28,8 +28,6 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "updated_at",                    null: false
   end
 
-  add_index "club_bases", ["team_id"], name: "index_club_bases_on_team_id", using: :btree
-
   create_table "countries", force: :cascade do |t|
     t.string   "title"
     t.string   "title_en"
@@ -91,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   create_table "sponsors", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "title",              limit: 30,                                         null: false
     t.string   "specialization",     limit: 100,                                        null: false
-    t.integer  "team_id"
+    t.uuid     "team_id"
     t.decimal  "loyalty_factor",                 precision: 3,  scale: 2, default: 1.0, null: false
     t.decimal  "cost_of_full_stake",             precision: 20, scale: 2,               null: false
     t.decimal  "win_prize",                      precision: 7,  scale: 2,               null: false
@@ -110,10 +108,8 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.datetime "updated_at",             null: false
   end
 
-  add_index "stadia", ["team_id"], name: "index_stadia_on_team_id", using: :btree
-
   create_table "teams", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.integer  "user_id"
+    t.uuid     "user_id"
     t.string   "title",      limit: 30,                                             null: false
     t.decimal  "budget",                precision: 20, scale: 2, default: 250000.0, null: false
     t.integer  "fans",                                           default: 20,       null: false

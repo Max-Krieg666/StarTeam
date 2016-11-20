@@ -27,8 +27,8 @@
           -else
             .text-danger Не создан!
         %td
-          -if team.club_basis
-            =link_to team.club_basis.title, team.club_basis, style: "color: #458B74"
+          -if team.club_base
+            =link_to team.club_base.title, team.club_base, style: "color: #458B74"
           -else
             .text-danger Не создана!
         %td= number_to_currency(team.budget, precision: 3, locale: :en)

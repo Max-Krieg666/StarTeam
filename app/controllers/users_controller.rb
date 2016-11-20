@@ -33,15 +33,14 @@ class UsersController < ApplicationController
 
   def create
     # не работает если sex = 2..................
-    #TODO ActiveRecord::Base.transaction ???
+    # TODO ActiveRecord::Base.transaction ???
     @user = User.new(user_params)
     @user.confirmation_sent_at = DateTime.current
-    @user.sex = s
     @user.confirmation_token = SecureRandom.uuid
-    if @user.save
-      @team = Team.new(team_params)
-      # @team.sponsor = Sponsor.create_rand
-      @team.save!
+    @team = Team.new(team_params)
+    # @team.sponsor = Sponsor.create_rand
+    if @user.save && @team.save
+      RandomTeam.new(@team)
       if @current_user
         redirect_to @user, notice: 'Пользователь создан.'
       else
@@ -51,7 +50,7 @@ class UsersController < ApplicationController
         redirect_to @user, notice: 'Регистрация завершена.'
       end
     else
-      render :new
+      render :registration
     end
   end
 

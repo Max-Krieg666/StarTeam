@@ -7,7 +7,7 @@
   %p
     %b Спонсор:
     -sp = @team.sponsor
-    =link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
+    -=link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
     %p
       %b Стадион:
       -if @stadium
@@ -17,8 +17,8 @@
         Не создан
   %p
     %b База клуба:
-    -if @club_basis
-      -cb = @club_basis
+    -if @club_base
+      -cb = @club_base
       =link_to cb.title+" (#{cb.level})", cb, style: "color: #458B74", class: 'btn btn-link'
     -else
       Не создана
@@ -184,5 +184,5 @@
   -if @team.user == @current_user
     -if !@team.stadium
       = link_to 'Перейти к созданию стадиона', { action: :new, controller: :stadia, team_id: @team.id }, class: 'btn btn-primary'
-    -if !@team.club_basis
+    -if !@team.club_base
       = link_to 'Перейти к созданию базы клуба', { action: :new, controller: :club_bases, team_id: @team.id }, class: 'btn btn-primary'

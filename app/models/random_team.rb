@@ -32,7 +32,7 @@ class RandomTeam
   }
 
   def initialize(team)
-  	main_country_id = team.user.country_id
+  	main_country_id = team.country_id
     schema = SCHEMAS[rand(19)]
     pl_positions = (schema.length == 10 ? (0..9).to_a : [0, 1, 2, 3, 4, 5, 6, 8])
     @players = []
@@ -41,7 +41,7 @@ class RandomTeam
     footballers_positions = FOOTBALLERS_POSITIONS[schema]
     footballers_positions.each do |pos, count|
       count.times do
-        #set_country
+        # рандомный выбор по странам игроков в порядке - по позициям
         chance = rand(100)
         if chance > 70 && players_count_foreigners < 5 || players_count_main == 13
           k = rand(252) + 1
@@ -57,7 +57,6 @@ class RandomTeam
         @players << random_player(pos, pl_c_id, team.id)
       end
     end
-    @players
   end
 
   private
@@ -75,6 +74,7 @@ class RandomTeam
     pl.age = PlayerGenerator.rand_age(pl.talent)
     pl.skill_level = PlayerGenerator.rand_skill_level(pl.talent)
     pl.price = (pl.talent * pl.skill_level * 10000 / pl.age).round(3)
+    pl.save!
     pl
   end
 

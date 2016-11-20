@@ -1,27 +1,27 @@
 .page-header
-  %h1= @club_basis.title
+  %h1= @club_base.title
 %p
   %b Владелец:
   =link_to @team.title, @team, style: "color: #00F"
 %p
   %b Уровень:
-  = @club_basis.level
-  -if @club_basis.level<5
-    =link_to "+",{action: :edit,level: @club_basis.level+1}, class: 'btn btn-default btn-sm'
+  = @club_base.level
+  -if @club_base.level<5
+    =link_to "+",{action: :edit,level: @club_base.level+1}, class: 'btn btn-default btn-sm'
 %p
   %b Вместимость:
-  = @club_basis.capacity
+  = @club_base.capacity
 %p
   %b Тренировочные поля:
-  = @club_basis.training_fields
-  -if @club_basis.training_fields<5
-    =link_to "+",{action: :edit,training_fields: @club_basis.training_fields+1}, class: 'btn btn-default btn-sm'
+  = @club_base.training_fields
+  -if @club_base.training_fields<5
+    =link_to "+",{action: :edit,training_fields: @club_base.training_fields+1}, class: 'btn btn-default btn-sm'
 %p
   %b Коэффициент повышения опыта:
-  = @club_basis.experience_up
+  = @club_base.experience_up
 
 -if @current_user==@user || @current_user.moderator?
-  = link_to edit_club_basis_path(@club_basis), class: 'btn btn-danger' do
+  = link_to edit_club_basis_path(@club_base), class: 'btn btn-danger' do
     =fa_icon "edit"
     Редактировать
 -if @current_user.moderator?

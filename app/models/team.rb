@@ -3,7 +3,7 @@ class Team < ActiveRecord::Base
   belongs_to :country
   has_one :sponsor
   has_one :stadium
-  has_one :club_basis
+  has_one :club_base
   has_many :players
   has_many :transfers
 
