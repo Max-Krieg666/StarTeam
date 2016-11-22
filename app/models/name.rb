@@ -380,8 +380,8 @@ class Name
       file_lastnames = 'maori'
     when 142, 225
       # Норвегия, Шпицберген и Ян Майен
-      file_names = 'norway'
-      file_lastnames = 'norway'
+      file_names = 'norwegian'
+      file_lastnames = 'norwegian'
     when 148
       # Острова Кука
       file_names = 'maori'

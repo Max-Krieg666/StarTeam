@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'starteam@yandex.ru'
+  default from: 'no-reply.starteam@yandex.ru'
   layout 'mailer'
 end

@@ -1,5 +1,5 @@
 class RandomTeam
-  attr_reader :players
+  attr_reader :team, :main_country_id
   # класс для рандомизации команды
   SCHEMAS = [
     '4-4-2>1', '4-4-2>2', '4-4-2>3', '4-4-2>4',
@@ -32,10 +32,13 @@ class RandomTeam
   }
 
   def initialize(team)
-  	main_country_id = team.country_id
+    @team = team
+  	@main_country_id = team.country_id
+  end
+
+  def generate
     schema = SCHEMAS[rand(19)]
     pl_positions = (schema.length == 10 ? (0..9).to_a : [0, 1, 2, 3, 4, 5, 6, 8])
-    @players = []
     players_count_main = 0 # д.б. 13
     players_count_foreigners = 0 # д.б. 5
     footballers_positions = FOOTBALLERS_POSITIONS[schema]
@@ -45,18 +48,19 @@ class RandomTeam
         chance = rand(100)
         if chance > 70 && players_count_foreigners < 5 || players_count_main == 13
           k = rand(252) + 1
-          while k == main_country_id
+          while k == @main_country_id
             k = rand(252) + 1
           end
           pl_c_id = k
           players_count_foreigners += 1
         elsif chance <= 66 && players_count_main < 13 || players_count_foreigners == 5
-          pl_c_id = main_country_id
+          pl_c_id = @main_country_id
           players_count_main += 1
         end
-        @players << random_player(pos, pl_c_id, team.id)
+        random_player(pos, pl_c_id, @team.id)
       end
     end
+    return
   end
 
   private
@@ -66,8 +70,7 @@ class RandomTeam
     pl.team_id = team_id
     pl.country_id = country_id
     pl.name = Name.new(country_id).rand_name
-    pl.position1 = position || PlayerGenerator::POS[rand(PlayerGenerator::POS.size)]
-    pl.position2 = ''
+    pl.position1 = position || rand(PlayerGenerator::POS.size)
     pl.state = 1
     pl.basic = false
     pl.talent = PlayerGenerator.rand_talent

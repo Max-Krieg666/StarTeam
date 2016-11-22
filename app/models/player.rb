@@ -32,7 +32,6 @@ class Player < ActiveRecord::Base
   validates :age, presence: true, inclusion: { in: 16..39 }
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
   validates :price, presence: true
-  validates :team_id, inclusion: { in: 0..1000000 }, allow_blank: true # 0 зарезервирован и обозначает, что данной команды нет
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
   validates :state, inclusion: { in: 0..2 }
 

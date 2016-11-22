@@ -93,7 +93,7 @@
           .fa.fa-flag.li
           = label_tag Team.human_attribute_name(:country)
           *
-          = select_country('team[team_country_id]', params[:team].try(:[], :team_country_id))
+          = select_country('team[country_id]', params[:team].try(:[], :country_id))
         %br
         .form-group.col-md-3
           .help-block

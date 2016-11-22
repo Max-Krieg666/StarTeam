@@ -7,7 +7,7 @@
   %p
     %b Спонсор:
     -sp = @team.sponsor
-    -=link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
+    -#=link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
     %p
       %b Стадион:
       -if @stadium
@@ -136,8 +136,9 @@
                 .li{style:"color: #D00", title:"Запас"} З
             -if @current_user==@team.user
               %td
-                = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-                  =fa_icon 'wrench'
+                -# TODO измнить путь!!!
+                -#= link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
+                -#  =fa_icon 'wrench'
               %td
                 = link_to pl, method: :delete, controller: :player_in_teams, :data => { :confirm => 'Продать игрока за полцены на рынок свободных агентов? Игрок потеряет все спец. умения. Это действие отменить нельзя!' }, title: 'Продать игрока', class: "btn btn-link" do
                   =fa_icon 'usd'
@@ -161,19 +162,19 @@
           %th.text-center
             Талант
             .text-danger
-              =(av_tal/kol.to_f).round(1)
+              =(av_tal/num.to_f).round(1)
           %th.text-center
             Возраст
             .text-danger
-              =(av_age/kol.to_f).round(2)
+              =(av_age/num.to_f).round(2)
           %th.text-center
             Мастерство
             .text-danger
-              =(av_skills/kol.to_f).round(2)
+              =(av_skills/num.to_f).round(2)
           %th.text-center
             Цена
             .text-danger
-              =number_to_currency(av_price/kol.to_f, locale: :en, precision: 3)
+              =number_to_currency(av_price/num.to_f, locale: :en, precision: 3)
   -if @current_user == @team.user || @current_user.moderator?
     = link_to edit_team_path(@team), class: 'btn btn-danger' do
       =fa_icon "edit"

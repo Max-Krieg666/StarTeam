@@ -32,22 +32,24 @@ class UsersController < ApplicationController
   end
 
   def create
-    # не работает если sex = 2..................
     # TODO ActiveRecord::Base.transaction ???
     @user = User.new(user_params)
     @user.confirmation_sent_at = DateTime.current
     @user.confirmation_token = SecureRandom.uuid
-    @team = Team.new(team_params)
-    # @team.sponsor = Sponsor.create_rand
-    if @user.save && @team.save
-      RandomTeam.new(@team)
-      if @current_user
-        redirect_to @user, notice: 'Пользователь создан.'
-      else
-        # ОТПРАВКА СООБЩЕНИЯ
-        ConfirmationMailer.send_confirmation(@user, @team).deliver_later
-        @user.force_authenticate!(self)
-        redirect_to @user, notice: 'Регистрация завершена.'
+    if @user.save!
+      @team = Team.new(team_params)
+      @team.user_id = @user.id
+      # @team.sponsor = Sponsor.create_rand
+      if @team.save!
+        RandomTeam.new(@team).generate
+        if @current_user
+          redirect_to @user, notice: 'Пользователь создан.'
+        else
+          # ОТПРАВКА СООБЩЕНИЯ
+          ConfirmationMailer.send_confirmation(@user, @team).deliver_later
+          @user.force_authenticate!(self)
+          redirect_to @user, notice: 'Регистрация завершена.'
+        end
       end
     else
       render :registration
