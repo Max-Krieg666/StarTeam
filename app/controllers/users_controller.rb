@@ -46,6 +46,8 @@ class UsersController < ApplicationController
           redirect_to @user, notice: 'Пользователь создан.'
         else
           # ОТПРАВКА СООБЩЕНИЯ
+          # using Postfix for dev
+          # todo JOB
           ConfirmationMailer.send_confirmation(@user, @team).deliver_later
           @user.force_authenticate!(self)
           redirect_to @user, notice: 'Регистрация завершена.'
