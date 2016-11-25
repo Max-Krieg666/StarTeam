@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   include Definer
+  include ActionView::Helpers::NumberHelper
   # include Basic_Player
 
   # TODO добавить поля ХАРАКТЕРИСТИК (20!)!
@@ -12,8 +13,15 @@ class Player < ActiveRecord::Base
   belongs_to :country
   belongs_to :team
   has_many :transfers
-
+  
+  #TODO positions на enum
   POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf)
+
+  enum state: [
+    :free_agent,
+    :in_team,
+    :retired
+  ]
 
   enum status: [
     :active,
@@ -25,7 +33,7 @@ class Player < ActiveRecord::Base
 
   before_validation :set_price, on: :create
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
+  validates :name, presence: true, uniqueness: { scope: [:position1, :age, :skill_level, :talent] }, length: { maximum: 50 }
   validates :country_id, presence: true
   validates :position1, presence: true, inclusion: { in: 0..9 }
   validates :talent, presence: true, inclusion: { in: 1..9 }
@@ -33,15 +41,10 @@ class Player < ActiveRecord::Base
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
   validates :price, presence: true
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
-  validates :state, inclusion: { in: 0..2 }
 
   def full_position_name
     return POSITIONS[position1] if position2.nil?
     POSITIONS[position1] + '/' + POSITIONS[position2]
-  end
-
-  def set_price
-    self.price = (talent * skill_level * 10000 / age).round(3) if price.blank?
   end
 
   def self.search(search)
@@ -54,7 +57,7 @@ class Player < ActiveRecord::Base
   end
 
   def set_price
-    self.price ||= ((skill_level * talent * 10000) / age.to_f).round(3)
+    self.price ||= (skill_level * talent * 10000 / age.to_f).round(3) if price.blank?
   end
 
   def quality
@@ -63,6 +66,10 @@ class Player < ActiveRecord::Base
     ost = ld % 2
     quality_l = 5 - cel - ost
     [cel, ost, quality_l]
+  end
+
+  def price_to_currency
+    number_to_currency(price, locale: :en, precision: 3)
   end
   # TODO добавить метод, определяющий возможность выбора POSITION2
 end

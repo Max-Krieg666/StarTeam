@@ -1,0 +1,150 @@
+-c = @player.country
+-t = @player.team
+.page-header
+  %h2
+    = @player.name
+    = image_tag c.flag.url, title: c.title
+    = fa_icon 'copyright', title: 'Капитан' if @player.captain
+  = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
+.row.text-danger.text-center
+  .col-md-4
+    .list-group
+      %h3.list-group-item.active{style: "color: #00F"}
+        .fa.fa-male
+        = @player.name
+        = image_tag c.flag.url, title: c.title
+        -max=5
+        .row{style: "color: #FFD700"}
+          -quality = @player.quality
+          -quality[0].times do
+            = fa_icon 'star'
+          -if quality[1] == 1
+            = fa_icon 'star-half-o'
+          -quality[2].times do
+            = fa_icon 'star-o'
+        = "№#{@player.number}"
+      .list-group-item{title: "Позиция"}
+        .fa.fa-bookmark
+        = @player.full_position_name
+      .list-group-item{title: "Талант"}
+        .fa.fa-level-up
+        = @player.talent
+      .list-group-item{title: "Возраст"}
+        .fa.fa-history
+        #{@player.age} #{Russian.p(@player.age, "год", "года", "лет")}
+      .list-group-item{title: "Мастерство"}
+        .fa.fa-line-chart
+        = @player.skill_level
+      .list-group-item{title: "Цена"}
+        .fa.fa-money
+        = @player.price_to_currency
+      .list-group-item{title: "Специальные умения"}
+        .fa.fa-flash
+        -str=""
+        -if @player.special_skill1
+          -str=str+@player.special_skill1+"-#{@player.num_sp_s1}"
+          -str=str+" / "+@player.special_skill2+"-#{@player.num_sp_s2}" if @player.special_skill2
+          -str=str+" / "+@player.special_skill3+"-#{@player.num_sp_s3}" if @player.special_skill3
+          #{str}
+        -else
+          Спец. умений нет
+      .list-group-item
+        Готовность к игре:
+        -if @player.can_play
+          %strong.text-success Да (#{@player.status})
+        -else
+          %strong.text-danger Нет (#{@player.status})
+        -if @player.games_missed != 0
+          Выбыл на #{@player.games_missed} #{Russian.p(@player.injured,"игру","игры","игр")}. Причина:
+          -if @player.injured != 0
+            = fa_icon "plus-square", style: "color: #F00"
+            = @player.injured
+          -if @player.status == 'penalty'
+            = fa_icon "square", style: "color: #FF0" if @player.games_missed == 1
+            = fa_icon "square", style: "color: #D00" if @player.games_missed == 2
+        %br
+        -if @player.basic
+          .li{style:"color: #00F"} [Основной состав]
+        -else
+          .li{style:"color: #D00"} [Запас]
+
+  .col-md-1
+  .col-md-2
+    %br
+    %br
+    .list-group
+      %h4.list-group-item.active{style: "color: #00F", title: "Статистика"}
+        .glyphicon.glyphicon-stats
+      .list-group-item{title: "Игры"}
+        .fa.fa-exclamation-triangle
+      -if @player.position1 == 0
+        .list-group-item{title: "Пропущенные голы"}
+          .fa.fa-minus
+          .fa.fa-futbol-o
+      .list-group-item{title: "Забитые голы"}
+        .fa.fa-plus
+        .fa.fa-futbol-o
+      .list-group-item{title: "Голевые пасы"}
+        .fa.fa-share
+        .fa.fa-futbol-o
+      .list-group-item{title: "Автоголы"}
+        .fa.fa-frown-o
+        .fa.fa-futbol-o
+      .list-group-item{style: "color: #FF0", title: "Жёлтые карточки"}
+        .fa.fa-square
+      .list-group-item{style: "color: #D00", title: "Красные карточки"}
+        .fa.fa-square
+  .col-md-2
+    %br
+    %br
+    .list-group.h4
+      .list-group-item.active{style: "color: #00F", title: "Текущий сезон"}
+        .fa.fa-clock-o
+      .list-group-item
+        = @player.season_games
+      -if @player.position1 == 0
+        .list-group-item
+          = @player.season_conceded_goals
+      .list-group-item
+        = @player.season_goals
+      .list-group-item
+        = @player.season_passes
+      .list-group-item
+        = @player.season_autogoals
+      .list-group-item
+        = @player.season_yellow_cards
+      .list-group-item
+        = @player.season_red_cards
+  .col-md-2
+    %br
+    %br
+    .list-group.h4
+      .list-group-item.active{style: "color: #00F",title: "Карьера"}
+        .fa.fa-history
+      .list-group-item
+        = @player.all_games
+      -if @player.position1 == 0
+        .list-group-item
+          = @player.all_conceded_goals
+      .list-group-item
+        = @player.all_goals
+      .list-group-item
+        = @player.all_passes
+      .list-group-item
+        = @player.all_autogoals
+      .list-group-item
+        = @player.all_yellow_cards
+      .list-group-item
+        = @player.all_red_cards
+
+-if @current_user.moderator?
+  = link_to edit_player_in_team_path(@player_in_team), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
+    = fa_icon "wrench"
+    Редактировать
+= link_to t, class: 'btn btn-info' do
+  = fa_icon "users"
+  = t.title
+= link_to sell_player_path(@player), class: 'btn btn-danger' do
+  = fa_icon 'usd'
+  = fa_icon 'sign-out'
+  Продать игрока

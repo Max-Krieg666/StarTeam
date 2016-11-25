@@ -56,8 +56,7 @@
         %td= player.talent
         %td= player.age
         %td= player.skill_level
-        %td
-          = number_to_currency(player.price, locale: :en, precision: 3)
+        %td= player.price_to_currency
         %td
           -quality = player.quality
           -quality[0].times do
@@ -78,7 +77,7 @@
             = fa_icon "street-view"
         %td
           -if @current_user_team
-            = link_to buy_player_player_path(player), class: 'btn btn-default', id: 'buy_player' do
+            = link_to buy_player_path(player), method: :patch, class: 'btn btn-default', id: 'buy' do
               = fa_icon "share-square-o"
               Купить
           -else

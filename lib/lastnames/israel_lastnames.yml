@@ -87,11 +87,7 @@
 - lastname: Yakobovitch
 - lastname: Yedidyah
 - lastname: Zahavy
-- lastname:  
- - lastname:  
- - lastname: 
 - lastname: Britain
-- lastname: 
 - lastname: Abraham
 - lastname: Abrams
 - lastname: Abramsky
@@ -162,7 +158,7 @@
 - lastname: Deutsch
 - lastname: Diamond
 - lastname: Dienesman
-- lastname: d'Israeli
+- lastname: "d'Israeli"
 - lastname: Dresner
 - lastname: Dreyfuss
 - lastname: Duchan

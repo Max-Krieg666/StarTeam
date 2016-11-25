@@ -1,45 +1,7 @@
-.page-header
-  %h1= @player.name
-%p
-  %b Национальность:
-  -c = @player.country
-  = link_to c.title, c, class: 'btn btn-link', style: "color: #00688B"
-  = image_tag c.flag.url
-%p
-  %b Позиция:
-  = @player.full_position_name
-%p
-  %b Талант:
-  = @player.talent
-%p
-  %b Возраст:
-  = @player.age
-%p
-  %b Мастерство:
-  = @player.skill_level
-%p
-  %b Цена:
-  = number_to_currency(@player.price, locale: :en)
-%p
-  %b Качество:
-  -quality = @player.quality
-  -quality[0].times do
-    = fa_icon 'star'
-  -if quality[1] == 1
-    = fa_icon 'star-half-o'
-  -quality[2].times do
-    = fa_icon 'star-o'
-
--if @current_user.moderator?
-  = link_to edit_player_path(@player), class: 'btn btn-danger' do
-    = fa_icon "wrench"
-    Редактировать
-= link_to players_path, class: 'btn btn-info' do
-  = fa_icon "users"
-  Все игроки
--if @current_user_team
-  = link_to new_player_in_team_path(name: @player.name), data: { confirm: 'Вы уверены?' }, class: "btn btn-default" do
-    =fa_icon "share-square-o"
-    Купить
--else
-  .text-danger Покупка не доступна
+-case @player.state
+-when 'free_agent'
+  = render 'show_player'
+-when 'in_team'
+  = render 'show_player_in_team'
+-else # retired (veteran)
+  = render 'show_retired_player'

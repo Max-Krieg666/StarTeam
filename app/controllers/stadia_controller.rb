@@ -57,15 +57,8 @@ class StadiaController < ApplicationController
   end
 
   def create
-    hash = params
-    other_hash = {"stadium"=>params[:stadium]}
-    stadium_params.delete(hash.keys[0])
-    stadium_params.update(other_hash)
     @stadium = Stadium.new(stadium_params)
-    @team = Team.find(stadium_params[:team_id]) #TODO переделать на @current_user_team
-    @stadium.team_id = @team.id
-    @stadium.capacity = 200
-    @stadium.level = 1
+    @stadium.team_id = @current_user_team.id
     respond_to do |format|
       if @stadium.save
         format.html { redirect_to @stadium, notice: 'Стадион успешно создан.' }
@@ -77,6 +70,7 @@ class StadiaController < ApplicationController
     end
   end
 
+  # TODO посмотреть что это
   def update
     old_cap=@stadium.capacity
     cp=params[:stadium][:capacity]
@@ -146,6 +140,6 @@ class StadiaController < ApplicationController
   end
   
   def stadium_params
-    params.require(:stadium).permit(:title,:team_id)#, :capacity, :level, :team_id)
+    params.require(:stadium).permit(:title)#, :capacity, :level, :team_id)
   end
 end

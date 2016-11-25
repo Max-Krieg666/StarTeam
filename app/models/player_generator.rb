@@ -13,7 +13,6 @@ class PlayerGenerator
         pl.talent = self.rand_talent
         pl.age = self.rand_age(pl.talent)
         pl.skill_level = self.rand_skill_level(pl.talent)
-        pl.price = (pl.talent * pl.skill_level * 10000 / pl.age).round(3)
         pl.name = Name.new(x).rand_name
         pl.country_id = x
         pl.save!

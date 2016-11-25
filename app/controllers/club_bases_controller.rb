@@ -14,7 +14,6 @@ class ClubBasesController < ApplicationController
 
   def new
     @club_base = ClubBase.new
-    @club_base.team_id = @team.id
   end
 
   # TODO это ваще что??!
@@ -102,15 +101,9 @@ class ClubBasesController < ApplicationController
   end
 
   def create
-    hash = params
-    hash.delete(hash.keys[2])
-    hash.update(club_base: params[:club_base])
     @club_base = ClubBase.new(club_base_params)
-    @team = Team.find(club_base_params[:team_id])
-    @club_base.team_id = @team.id
+    @club_base.team_id = @current_user_team.id
     if @club_base.save
-      @team.club_base = @club_base
-      @team.save!
       redirect_to @club_base, notice: 'База успешно создана.'
     else
       render :new
@@ -139,6 +132,7 @@ class ClubBasesController < ApplicationController
   def set_team
     @team = Team.find(params[:team_id])
   end
+
   def club_base_params
     params.require(:club_base).permit(:title)#:level, :capacity, :training_fields, :experience_up, :team_id)
   end

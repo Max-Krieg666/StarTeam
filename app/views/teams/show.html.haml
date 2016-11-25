@@ -80,7 +80,7 @@
           %th.text-center{style: "color: #D00",title: "Красные карточки"}
             .fa.fa-square
           %th.text-center{title: "Основной состав/запас"} О/З
-          -if @current_user==@team.user
+          -if @current_user == @team.user
             %th
             %th
           -else
@@ -89,6 +89,7 @@
 
       %tbody
         - @players.each do |pl|
+          -#todo вынести подсчет в модельку)
           -av_skills+=pl.skill_level
           -av_age+=pl.age
           -av_price+=pl.price
@@ -110,12 +111,9 @@
             %td= pl.talent
             %td= pl.age
             %td= pl.skill_level
+            %td= pl.price_to_currency
             %td
-              -a,count,i="#{pl.price}".reverse,0,0
-              -while a[i]!='.'
-                -count+=1;i+=1
-              #{number_to_currency(pl.price, locale: :en, precision: count)}
-            %td
+              -# todo вынести в модельку!
               -str=""
               -if pl.special_skill1
                 -str=str+pl.special_skill1+"-#{pl.num_sp_s1}"
@@ -131,23 +129,19 @@
             %td #{pl.season_red_cards}/#{pl.all_red_cards}
             %td
               -if pl.basic
-                .li{style:"color: #00F", title:"Основной состав"} О
+                .li{style: "color: #00F", title: "Основной состав"} О
               -else
-                .li{style:"color: #D00", title:"Запас"} З
-            -if @current_user==@team.user
+                .li{style: "color: #D00", title: "Запас"} З
+            -if @current_user == @team.user
               %td
-                -# TODO измнить путь!!!
+                -# TODO изменить путь!!!
                 -#= link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-                -#  =fa_icon 'wrench'
+                -#= fa_icon 'wrench'
               %td
-                = link_to pl, method: :delete, controller: :player_in_teams, :data => { :confirm => 'Продать игрока за полцены на рынок свободных агентов? Игрок потеряет все спец. умения. Это действие отменить нельзя!' }, title: 'Продать игрока', class: "btn btn-link" do
-                  =fa_icon 'usd'
-                  =fa_icon 'sign-out'
+                = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-link' do
+                  = fa_icon 'usd'
+                  = fa_icon 'sign-out'
                 = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
-                  .glyphicon.glyphicon-transfer
-            -else
-              %td
-                = link_to '#', :data => { :confirm => 'Создать заявку на покупку этого игрока?' }, title: 'Купить игрока', class: "btn btn-link" do
                   .glyphicon.glyphicon-transfer
             %td
               = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
