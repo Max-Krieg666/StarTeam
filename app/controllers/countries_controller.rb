@@ -1,6 +1,7 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :edit, :update, :destroy]
   before_action :check_user
+  before_action :admin_permission, except: [:index, :show]
 
   def index
     @countries = Country.page(params[:page]).order(:title)
@@ -60,6 +61,6 @@ class CountriesController < ApplicationController
   end
 
   def country_params
-    params.require(:country).permit(:title, :flag)
+    params.require(:country).permit(:title, :flag, :title_en)
   end
 end

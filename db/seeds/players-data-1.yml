@@ -2874,31 +2874,31 @@
   age: 21
   skill_level: 36
 - name: Andri Gislasson
-  country_id: 80
+  country_id: 78
   position1: 7
   talent: 6
   age: 20
   skill_level: 54
 - name: Bjarni Holmar Ormarsson
-  country_id: 80
+  country_id: 78
   position1: 4
   talent: 2
   age: 28
   skill_level: 34
 - name: Arnar Sigrunarsson
-  country_id: 80
+  country_id: 78
   position1: 7
   talent: 3
   age: 25
   skill_level: 57
 - name: Fannar Sigurdarsson
-  country_id: 80
+  country_id: 78
   position1: 4
   talent: 6
   age: 23
   skill_level: 42
 - name: Garpur Thordarsson
-  country_id: 80
+  country_id: 78
   position1: 2
   talent: 1
   age: 34

@@ -1,0 +1,17 @@
+%li.active= link_to 'Все пользователи', users_path
+%li.dropdown
+  %a.dropdown-toggle{href: "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"} 
+    Страны
+    %b.caret
+    %ul.dropdown-menu{"role" => "menu"}
+      %li
+        %a{href: countries_path} 
+          Все страны
+        %a{href: new_country_path} 
+          Создать страну
+%li= link_to 'Спонсоры', sponsors_path
+%li= link_to 'Стадионы', stadia_path
+%li= link_to 'Базы клубов', club_bases_path
+%li= link_to 'Игроки', players_path
+%li= link_to 'Трансферы', transfers_path
+%li= link_to 'Создать игрока', new_player_path

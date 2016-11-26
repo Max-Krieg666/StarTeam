@@ -6,33 +6,6 @@
       .form-group
         .fa.fa-pencil.li
         = f.label :title
-        = f.text_field :title, class: "form-control"
-        -#TODO подумать о рандомной генерации спонсора для команды
-  .row
-    .col-md-3
-      .form-group
-        .fa.fa-money.li
-        = label_tag('team[sponsor]', 'Спонсор')
-        = select_sponsor('team[sponsor]', @team.sponsor)
-  -#.row
-  -#  .col-md-3
-  -#    .form-group
-  -#      = f.label :stadium
-  -#      = f.text_field :stadium, class: "form-control"
-  -#.row
-  -#  .col-md-3
-  -#    .form-group
-  -#      = f.label :club_base
-  -#      = f.text_field :club_base, class: "form-control"
-  -#.row
-  -#  .col-md-3
-  -#    .form-group
-  -#      = f.label :budget
-  -#      = f.text_field :budget, class: "form-control"
-  -#.row
-  -#  .col-md-3
-  -#    .form-group
-  -#      = f.label :fans
-  -#      = f.number_field :fans, class: "form-control"
+        = f.text_field :title, class: 'form-control'
   .actions
-    = f.submit 'Сохранить', class: "btn btn-primary"
+    = f.submit 'Сохранить', class: 'btn btn-primary'

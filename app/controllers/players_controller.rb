@@ -3,14 +3,10 @@ class PlayersController < ApplicationController
   before_action :admin_permission, only: [:new, :create, :destroy]
 
   def index
-    # TODO поиск по хар-кам
-    if params[:search].blank?
-      @players = Player.where(state: 0).limit(500).includes(:country).order('countries.title, players.name').page(params[:page])
+    if search_params
+      @players = Search.new(search_params).apply_search.limit(200).includes(:country).order('countries.title, players.name').page(params[:page])
     else
-      @players = Player.limit(500).includes(:country).order('countries.title, players.name').search(params[:search]).page(params[:page])
-      if @players.blank?
-        flash[:danger].now = 'Игроков с таким именем нет!'
-      end
+      @players = Player.where(state: 0).limit(500).includes(:country).order('countries.title, players.name').page(params[:page])
     end
   end
 
@@ -126,6 +122,13 @@ class PlayersController < ApplicationController
     params.require(:player).permit(
       :name, :country_id, :position1, :position2,
       :talent, :age, :skill_level
+    )
+  end
+
+  def search_params
+    return if params[:search].blank?
+    params.require(:search).permit(
+      :name, :country_id, :position1, :skill_level, :talent, :age
     )
   end
 end

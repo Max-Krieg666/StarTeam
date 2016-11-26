@@ -860,7 +860,9 @@
 - lastname: Terauchi
 - lastname: Teshigahara
 - lastname: Teshima
+- lastname: Tezuka
 - lastname: Tochikura
+- lastname: Toda
 - lastname: Togo
 - lastname: Tojo
 - lastname: Tokaji
@@ -889,6 +891,7 @@
 - lastname: Tsucgimoto
 - lastname: Tsuchie
 - lastname: Tsuda
+- lastname: Tsudzuri
 - lastname: Tsuji
 - lastname: Tsujimoto
 - lastname: Tsujimura
@@ -903,6 +906,7 @@
 - lastname: Tsumemasa
 - lastname: Tsumura
 - lastname: Tsunoda
+- lastname: Tsunoi
 - lastname: Tsurimi
 - lastname: Tsuruga
 - lastname: Tsuruya
@@ -923,15 +927,19 @@
 - lastname: Ukiyo
 - lastname: Umari
 - lastname: Umehara
+- lastname: Umeda
 - lastname: Umeki
 - lastname: Uno
 - lastname: Uoya
 - lastname: Urogataya
 - lastname: Usami
 - lastname: Ushiba
+- lastname: Utada
 - lastname: Utagawa
 - lastname: Wakai
+- lastname: Wakata
 - lastname: Wakatsuki
+- lastname: Wakuri
 - lastname: Watabe
 - lastname: Watanabe
 - lastname: Watari
@@ -990,3 +998,4 @@
 - lastname: Yuasa
 - lastname: Yuhara
 - lastname: Yunokawa
+- lastname: Yuuma

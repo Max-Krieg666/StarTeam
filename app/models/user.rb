@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   def check_bday
     return if self.birthday.blank?
-    self.errors[:birthday] << ' не существует!' if birthday > Time.now
+    self.errors[:birthday] << ' не существует!' if birthday > Time.zone.now
   end
 
   def force_authenticate!(controller)

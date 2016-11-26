@@ -1,6 +1,8 @@
 .text-center
   .page-header
-    %h1= @team.title
+    %h1
+      = @team.title
+      = image_tag @team.country.flag.url, title: @team.country.title
   %p
     %b Владелец:
     =link_to @team.user.login, @team.user, style:"color: #FFA500", class: 'btn btn-link'

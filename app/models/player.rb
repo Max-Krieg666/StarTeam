@@ -47,15 +47,6 @@ class Player < ActiveRecord::Base
     POSITIONS[position1] + '/' + POSITIONS[position2]
   end
 
-  def self.search(search)
-    #TODO сделать крутой поиск
-    if search
-      where('state = ? and (name LIKE ? or position1 = ?)', 1, '%' + search + '%', search.to_i )
-    else
-      where('state = ?', 1)
-    end
-  end
-
   def set_price
     self.price ||= (skill_level * talent * 10000 / age.to_f).round(3) if price.blank?
   end

@@ -36,6 +36,7 @@ ru:
       country:
         flag: Флаг
         title: Название
+        title_en: Название (английский)
       user:
         country: Страна проживания
         login: Логин
