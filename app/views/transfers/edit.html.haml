@@ -1,4 +1,4 @@
--if @transfer.status=='Завершён' || @transfer.status=='Отменён'
+-if @transfer.status == 1 || @transfer.status == 2
   %h1 Нельзя редактировать данное трансферное предложение
 -else
   %h1 Редактирование трансферного предложения

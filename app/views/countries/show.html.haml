@@ -1,11 +1,11 @@
 .text-center
   .page-header
     %h3
-      =@country.title
+      = @country.title
       = image_tag @country.flag.url, alt: @country.title
   %br
   %h4 Пользователи:
-  -if @users.size>0
+  -if @users.any?
     %table.table.table-bordered.table-hover.table-condensed
       %thead
         %tr{class: 'success'}
@@ -18,18 +18,19 @@
       %tbody
         - @users.each do |user|
           %tr.text-center
-            %td=link_to user.login,user,style:"color: #FFA500"
+            %td= link_to user.login, user, style:"color: #FFA500"
             %td
               -t = user.team
               -if t
-                =link_to t.title, t, style: "color: #00F"
+                = link_to t.title, t, style: "color: #00F"
               -else
                 .text-danger.li Не создана!
+        = paginate @users, param_name: 'users_page'
   -else
     %h5.text-danger Пользователей из данной страны нет!
   %br
   %h4 Игроки в командах:
-  -if @player_in_teams.size>0
+  -if @players_in_teams.any?
     %table.table.table-bordered.table-hover.table-condensed
       %thead
         %tr{class: 'success'}
@@ -57,39 +58,31 @@
             .fa.fa-star
             Качество игрока
       %tbody
-        - @player_in_teams.each do |pl|
+        - @players_in_teams.each do |pl|
           %tr.text-center
             -t = pl.team
-            %td=link_to t.title, t, style: "color: #00F"
-            %td=link_to pl.name, pl, style: "color: #410405"
-            %td{title: pl.right_alph_srt(pl.position1)}
-              -str="#{pl.position1}"
-              -if !pl.position2.blank?
-                -str+=" / #{pl.position2}"
-              =str
+            %td= link_to t.title, t, style: "color: #00F"
+            %td= link_to pl.name, pl, style: "color: #410405"
+            %td{title: pl.position1}
+              = pl.full_position_name
             %td= pl.talent
             %td= pl.age
             %td= pl.skill_level
+            %td= pl.price_to_currency
             %td
-              -a,count,i="#{pl.price}".reverse,0,0
-              -while a[i]!='.'
-                -count+=1;i+=1
-              #{number_to_currency(pl.price, locale: :en, precision: count)}
-            %td
-              =pl.level_define/2.0
-              -max=5
-              -cel,ost=pl.level_define/2,pl.level_define%2
-              -cel.times do
-                .fa.fa-star
-              -if pl.level_define%2!=0
-                .fa.fa-star-half-o
-              -(max-cel-ost).times do
-                .fa.fa-star-o
+              -quality = pl.quality
+              -quality[0].times do
+                = fa_icon 'star'
+              -if quality[1] == 1
+                = fa_icon 'star-half-o'
+              -quality[2].times do
+                = fa_icon 'star-o'
+        = paginate @players_in_teams, param_name: 'players_in_teams_page'
   -else
     %h5.text-danger Представители данной страны не играют ни за один клуб!
   %br
   %h4 Свободные агенты:
-  -if @players.size>0
+  -if @players.any?
     %table.table.table-responsive.table-bordered.table-hover
       %thead
         %tr{class: 'success'}
@@ -119,29 +112,21 @@
         - @players.each do |player|
           %tr.text-center
             %td= link_to player.name, player, style: "color: #106C7A"
-            %td{title: player.right_alph_srt(player.position1)}
-              -str="#{player.position1}"
-              -if !player.position2.blank?
-                -str+=" / #{player.position2}"
-              =str
+            %td{title: player.position1}
+              = player.full_position_name
             %td= player.talent
             %td= player.age
             %td= player.skill_level
+            %td= player.price_to_currency
             %td
-              -a,count,i="#{player.price}".reverse,0,0
-              -while a[i]!='.'
-                -count+=1;i+=1
-              = number_to_currency(player.price, locale: :en, precision: count)
-            %td
-              =player.level_define/2.0
-              -max=5
-              -cel,ost=player.level_define/2,player.level_define%2
-              -cel.times do
-                .fa.fa-star
-              -if player.level_define%2!=0
-                .fa.fa-star-half-o
-              -(max-cel-ost).times do
-                .fa.fa-star-o
+              -quality = player.quality
+              -quality[0].times do
+                = fa_icon 'star'
+              -if quality[1] == 1
+                = fa_icon 'star-half-o'
+              -quality[2].times do
+                = fa_icon 'star-o'
+        = paginate @players, param_name: 'players_page'
   -else
     %h5.text-danger Игроков из данной страны нет!
   %br

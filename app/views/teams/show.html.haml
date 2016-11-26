@@ -1,13 +1,15 @@
 .text-center
   .page-header
-    %h1= @team.title
+    %h1
+      = @team.title
+      = image_tag @team.country.flag.url, title: @team.country.title
   %p
     %b Владелец:
     =link_to @team.user.login, @team.user, style:"color: #FFA500", class: 'btn btn-link'
   %p
     %b Спонсор:
     -sp = @team.sponsor
-    =link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
+    -#=link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
     %p
       %b Стадион:
       -if @stadium
@@ -17,8 +19,8 @@
         Не создан
   %p
     %b База клуба:
-    -if @club_basis
-      -cb = @club_basis
+    -if @club_base
+      -cb = @club_base
       =link_to cb.title+" (#{cb.level})", cb, style: "color: #458B74", class: 'btn btn-link'
     -else
       Не создана
@@ -30,8 +32,8 @@
     .fa.fa-users
     = @team.fans
   %br
-  -kol=@players.size
-  -if kol!=0
+  -num = @players.size
+  -if num != 0
     -av_skills,av_tal,av_age,av_price=0,0,0,0
     %table.table.table-bordered.table-hover.table-condensed
       %thead
@@ -80,7 +82,7 @@
           %th.text-center{style: "color: #D00",title: "Красные карточки"}
             .fa.fa-square
           %th.text-center{title: "Основной состав/запас"} О/З
-          -if @current_user==@team.user
+          -if @current_user == @team.user
             %th
             %th
           -else
@@ -89,6 +91,7 @@
 
       %tbody
         - @players.each do |pl|
+          -#todo вынести подсчет в модельку)
           -av_skills+=pl.skill_level
           -av_age+=pl.age
           -av_price+=pl.price
@@ -105,20 +108,14 @@
               = pl.name
               = fa_icon 'copyright', title: 'Капитан' if pl.captain
             %td= image_tag c.flag.url, title: c.title
-            %td{title: pl.right_alph_srt(pl.position1)}
-              -str="#{pl.position1}"
-              -if !pl.position2.blank?
-                -str+=" / #{pl.position2}"
-              =str
+            %td{title: pl.position1}
+              = pl.full_position_name
             %td= pl.talent
             %td= pl.age
             %td= pl.skill_level
+            %td= pl.price_to_currency
             %td
-              -a,count,i="#{pl.price}".reverse,0,0
-              -while a[i]!='.'
-                -count+=1;i+=1
-              #{number_to_currency(pl.price, locale: :en, precision: count)}
-            %td
+              -# todo вынести в модельку!
               -str=""
               -if pl.special_skill1
                 -str=str+pl.special_skill1+"-#{pl.num_sp_s1}"
@@ -134,22 +131,19 @@
             %td #{pl.season_red_cards}/#{pl.all_red_cards}
             %td
               -if pl.basic
-                .li{style:"color: #00F", title:"Основной состав"} О
+                .li{style: "color: #00F", title: "Основной состав"} О
               -else
-                .li{style:"color: #D00", title:"Запас"} З
-            -if @current_user==@team.user
+                .li{style: "color: #D00", title: "Запас"} З
+            -if @current_user == @team.user
               %td
-                = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-                  =fa_icon 'wrench'
+                -# TODO изменить путь!!!
+                -#= link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
+                -#= fa_icon 'wrench'
               %td
-                = link_to pl, method: :delete, controller: :player_in_teams, :data => { :confirm => 'Продать игрока за полцены на рынок свободных агентов? Игрок потеряет все спец. умения. Это действие отменить нельзя!' }, title: 'Продать игрока', class: "btn btn-link" do
-                  =fa_icon 'usd'
-                  =fa_icon 'sign-out'
+                = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-link' do
+                  = fa_icon 'usd'
+                  = fa_icon 'sign-out'
                 = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
-                  .glyphicon.glyphicon-transfer
-            -else
-              %td
-                = link_to '#', :data => { :confirm => 'Создать заявку на покупку этого игрока?' }, title: 'Купить игрока', class: "btn btn-link" do
                   .glyphicon.glyphicon-transfer
             %td
               = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
@@ -164,40 +158,28 @@
           %th.text-center
             Талант
             .text-danger
-              =(av_tal/kol.to_f).round(1)
+              =(av_tal/num.to_f).round(1)
           %th.text-center
             Возраст
             .text-danger
-              =(av_age/kol.to_f).round(2)
+              =(av_age/num.to_f).round(2)
           %th.text-center
             Мастерство
             .text-danger
-              =(av_skills/kol.to_f).round(2)
+              =(av_skills/num.to_f).round(2)
           %th.text-center
             Цена
             .text-danger
-              =number_to_currency(av_price/kol.to_f, locale: :en, precision: 3)
-  -else
-    %h3.text-danger Необходимо купить игроков:
-    .btn-group
-      = link_to "/teams/#{@team.id}/random_players?random=true", class: 'btn btn-default', data:{confirm: 'Пожалуйста, подождите несколько секунд...'},style:"color: #00F" do
-        =fa_icon "users"
-        =fa_icon "random"
-        Заполнить рандомно
-      = link_to players_path, class: 'btn btn-default', style:"color: #EE6A50" do
-        =fa_icon "male"
-        =fa_icon "male"
-        Выбрать вручную
-    %br
-    %br
-  -if @current_user==@team.user || @current_user.moderator?
+              =number_to_currency(av_price/num.to_f, locale: :en, precision: 3)
+  -if @current_user == @team.user || @current_user.moderator?
     = link_to edit_team_path(@team), class: 'btn btn-danger' do
       =fa_icon "edit"
       Редактировать
     = link_to teams_path, class: 'btn btn-warning' do
       =fa_icon "reply"
       Все команды
-  -if @team.stadium_id.blank? && @team.user==@current_user
-    = link_to 'Перейти к созданию стадиона',{:action => :new, :controller => :stadia,:team_id => @team.id}, class: 'btn btn-primary'
-  -if @team.club_basis_id.blank? && @team.user==@current_user
-    = link_to 'Перейти к созданию базы клуба',{:action => :new, :controller => :club_bases,:team_id => @team.id}, class: 'btn btn-primary'
+  -if @team.user == @current_user
+    -if !@team.stadium
+      = link_to 'Перейти к созданию стадиона', { action: :new, controller: :stadia, team_id: @team.id }, class: 'btn btn-primary'
+    -if !@team.club_base
+      = link_to 'Перейти к созданию базы клуба', { action: :new, controller: :club_bases, team_id: @team.id }, class: 'btn btn-primary'

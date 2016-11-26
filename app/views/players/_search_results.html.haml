@@ -1,0 +1,84 @@
+-if @players.blank?
+  %h2.text-danger
+    По Вашему запросу игроки не найдены!
+-else
+  %table.table-responsive.table-bordered.table-hover
+    %thead
+      %tr
+        %th.text-center
+          .fa.fa-male
+          Игрок
+        %th.text-center
+          .fa.fa-flag
+          Национальность
+        %th.text-center
+          .fa.fa-bookmark
+          Позиция
+        %th.text-center
+          .fa.fa-level-up
+          Талант
+        %th.text-center
+          .fa.fa-history
+          Возраст
+        %th.text-center
+          .fa.fa-line-chart
+          Мастерство
+        %th.text-center
+          .fa.fa-money
+          Цена
+        %th.text-center
+          .fa.fa-star
+          Качество игрока
+        -#%th
+        -#%th
+        -#-if @current_user.role!=0
+        -#  %th
+        -#  %th
+        
+    %tbody
+      - @players.each do |player|
+        %tr.text-center
+          %td= player.name
+          -c = player.country
+          %td
+            = image_tag c.flag.url, title: "#{c.title}"
+          %td
+            = player.full_position_name
+          %td= player.talent
+          %td= player.age
+          %td= player.skill_level
+          %td= player.price_to_currency
+          %td
+            -quality = player.quality
+            -quality[0].times do
+              = fa_icon 'star'
+            -if quality[1] == 1
+              = fa_icon 'star-half-o'
+            -quality[2].times do
+              = fa_icon 'star-o'
+          -if @current_user.moderator?
+            %td
+              = link_to edit_player_path(player), class: 'btn btn-link' do
+                = fa_icon "wrench"
+            %td
+              = link_to player, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
+                = fa_icon "trash"
+          %td
+            = link_to player, class: 'btn btn-link' do
+              = fa_icon "street-view"
+          %td
+            -if @current_user_team
+              = link_to buy_player_path(player), method: :patch, class: 'btn btn-default', id: 'buy' do
+                = fa_icon "share-square-o"
+                Купить
+            -else
+              .text-danger Покупка не доступна
+  %br
+
+  -if @current_user.moderator?
+    = link_to new_player_path, class: 'btn btn-default' do
+      = fa_icon "plus"
+      Новый игрок
+
+  %br
+  = paginate @players

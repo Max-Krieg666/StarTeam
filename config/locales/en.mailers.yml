@@ -1,0 +1,7 @@
+en:
+  mailers:
+    registration: Registration at StarTeam
+    welcome: Welcome to StarTeam football manager
+    successfully_signed: You was successfully registered to StarTeam and created a team
+    to_confirm_follow_this_link: To confirm your account, just follow this link
+    thanks_for_joining: Thanks for joining and have a great day

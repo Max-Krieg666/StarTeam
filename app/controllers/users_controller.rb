@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :admin_permission, except: [:new, :create, :update,:show]
+  #TODO подумать об отдельных методах на восстановление пароля, регистрацию и т.д.
+  # 2й TODO разобраться с отправкой на email писем Confirmable
+  # 3й TODO добавить модуль Recoverable собственноручный
+  # 4й TODO добавить модуль lockable
+  # 5й TODO добавить модуль OMNIAUTH
+  before_action :admin_permission, except: [:new, :create, :update, :show, :registration]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,30 +14,53 @@ class UsersController < ApplicationController
   def show
   end
 
-  def new
+  def registration
     @user = User.new
+  end
+
+  def confirmation
+    u = @user.where(confirmation_token: confirmation_params[:confirmation_token]).first
+    if u && u.confirmed_at.present?
+      u.update!(confirmed_at: DateTime.current)
+      redirect_to u, notice: 'Вы успешно подтвердили свой аккаунт!'
+    else
+      redirect_to root_path, error: 'Ключ подтверждения невалиден!'
+    end
   end
 
   def edit
   end
 
   def create
+    # TODO ActiveRecord::Base.transaction ???
     @user = User.new(user_params)
-    if @user.save
-      if @current_user
-        redirect_to @user, notice: 'Пользователь создан.'
-      else
-        @user.force_authenticate!(self)
-        redirect_to @user, notice: 'Регистрация завершена.'
+    @user.confirmation_sent_at = DateTime.current
+    @user.confirmation_token = SecureRandom.uuid
+    if @user.save!
+      @team = Team.new(team_params)
+      @team.user_id = @user.id
+      # @team.sponsor = Sponsor.create_rand
+      if @team.save!
+        RandomTeam.new(@team).generate
+        if @current_user
+          redirect_to @user, notice: 'Пользователь создан.'
+        else
+          # ОТПРАВКА СООБЩЕНИЯ
+          # using Postfix for dev
+          # todo JOB
+          ConfirmationMailer.send_confirmation(@user, @team).deliver_later
+          @user.force_authenticate!(self)
+          redirect_to @user, notice: 'Регистрация завершена.'
+        end
       end
     else
-      render :new
+      render :registration
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'Пользователь изменен.'
+      redirect_to @user, notice: 'Пользователь изменён.'
     else
       render :edit
     end
@@ -53,8 +81,16 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    attrs = [:login, :password, :password_confirmation, :sex, :birthday, :mail, :avatar, :country_id]
+    attrs = [:login, :password, :sex, :birthday, :email, :avatar, :country_id]
     attrs << :role if @current_user.try(:admin?)
     params.require(:user).permit(*attrs)
+  end
+
+  def confirmation_params
+    params.require(:user).permit(:confirmation_token)
+  end
+
+  def team_params
+    params.require(:team).permit(:title, :country_id)
   end
 end

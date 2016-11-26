@@ -137,8 +137,6 @@
 - name: Çaatay
 - name: Cabbar
 - name: Cafer
-- name: 
-- name: 
 - name: Çaglar
 - name: Cahid
 - name: Cahil
@@ -429,15 +427,13 @@
 - name: Koray
 - name: Korkmaz
 - name: Korkud
-- name: 
-- name: 
 - name: Korkut
-- name: 	Kubilay
-	- name: 	Kudret
-	- name: 	Kulu
-	- name: 	Kumsal
-	- name: Kurat
-	- name: Kursat
+- name: Kubilay
+- name: Kudret
+- name: Kulu
+- name: Kumsal
+- name: Kurat
+- name: Kursat
 - name: Kurt
 - name: Kürþat
 - name: Kutbeddîn

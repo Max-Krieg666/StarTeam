@@ -1,1 +1,0 @@
-json.extract! @player_in_team, :id, :special_skill1, :num_sp_s1, :special_skill2, :num_sp_s2, :special_skill3, :num_sp_s3, :number, :season_games, :all_games, :season_goals, :all_goals, :season_autogoals, :all_autogoals, :season_yellow_cards, :all_yellow_cards, :season_red_cards, :all_red_cards, :status, :can_play, :injured, :created_at, :updated_at

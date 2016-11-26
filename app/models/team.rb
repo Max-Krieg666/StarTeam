@@ -1,13 +1,13 @@
 class Team < ActiveRecord::Base
   belongs_to :user
+  belongs_to :country
   has_one :sponsor
   has_one :stadium
-  has_one :club_basis
+  has_one :club_base
   has_many :players
   has_many :transfers
 
-  validates :title, presence: true, uniqueness: true, length: {maximum: 50}
-  validates :sponsor_id, presence: true
+  validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
   validates :budget, presence: true
   validates :fans, presence: true
 end

@@ -1,4 +1,4 @@
-json.array!(@club_bases) do |club_basis|
-  json.extract! club_basis, :id, :owner, :title, :level, :capacity, :training_fields, :experience_up
-  json.url club_basis_url(club_basis, format: :json)
+json.array!(@club_bases) do |club_base|
+  json.extract! club_base, :id, :owner, :title, :level, :capacity, :training_fields, :experience_up
+  json.url club_base_url(club_base, format: :json)
 end

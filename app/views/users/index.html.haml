@@ -62,7 +62,7 @@
             = user.birthday
           -else
             .text-danger.li Не выбрано!
-        %td= user.mail
+        %td= user.email
         -if @current_user.role!=0
           %td= user.role_name
           %td
@@ -77,14 +77,14 @@
 
 %br
 -if @current_user.role!=0
-  = link_to new_user_path, class: "btn btn-default" do
+  = link_to registration_users_path, class: "btn btn-default" do
     =fa_icon "user-plus"
     Новый пользователь
 
 %br
 = paginate @users
 -#.btn-toolbar
--#  =link_to new_user_path, class: 'btn btn-primary' do
+-#  =link_to registration_users_path, class: 'btn btn-primary' do
 -#    =fa_icon 'user-plus'
 -#    Новый пользователь
 -#.list-group
@@ -92,6 +92,6 @@
 -#    =link_to user, class: 'list-group-item' do
 -#      =user.login
 -#      =surround ?(,?) do
--#        %i=user.mail
+-#        %i=user.email
 -#      %span.text-muted=user.role_name
 -#=paginate @users

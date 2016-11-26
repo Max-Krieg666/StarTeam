@@ -85,26 +85,26 @@
 - lastname: Daenis
 - lastname: Daens
 - lastname: Danssaert
-- lastname: De Beul
-- lastname: De Bilde
-- lastname: De Bock
+- lastname: de Beul
+- lastname: de Bilde
+- lastname: de Bock
 - lastname: de Boeck
-- lastname: De Both
-- lastname: De Caluwaert
-- lastname: De Keersmaeker
-- lastname: De Maere
+- lastname: de Both
+- lastname: de Caluwaert
+- lastname: de Keersmaeker
+- lastname: de Maere
 - lastname: de Meeter
-- lastname: De Mevius
-- lastname: De Mey
-- lastname: De Neef
-- lastname: De Roover
-- lastname: De Ryck
-- lastname: De Schepper
-- lastname: De Smedt
-- lastname: De Vooght
-- lastname: De Waele
-- lastname: De wilde
-- lastname: De Wilde
+- lastname: de Mevius
+- lastname: de Mey
+- lastname: de Neef
+- lastname: de Roover
+- lastname: de Ryck
+- lastname: de Schepper
+- lastname: de Smedt
+- lastname: de Vooght
+- lastname: de Waele
+- lastname: de wilde
+- lastname: de Wilde
 - lastname: Debacker
 - lastname: Debaere
 - lastname: Debakker
@@ -195,14 +195,14 @@
 - lastname: Dewreede
 - lastname: Dewulf
 - lastname: Deyaert
-- lastname: D'Haenens
-- lastname: D'Hondt
-- lastname: D'Hooghe
+- lastname: "D'Haenens"
+- lastname: "D'Hondt"
+- lastname: "D'Hooghe"
 - lastname: Didden
 - lastname: Dielens
 - lastname: Dierickx
 - lastname: Dobbelaer
-- lastname: D'Olieslager
+- lastname: "D'Olieslager"
 - lastname: Donckers
 - lastname: Droge
 - lastname: Duerinckx
@@ -452,146 +452,146 @@
 - lastname: Truyens
 - lastname: Vael
 - lastname: Vaerewyck
-- lastname: Van Achte
-- lastname: Van Acker
-- lastname: Van Aelst
-- lastname: Van Aken
-- lastname: Van Belleghem
-- lastname: Van Berlo
-- lastname: Van Bocxlaer
-- lastname: Van Bogaert
-- lastname: Van Bogget
-- lastname: Van Boxlaer
-- lastname: Van Brandt
-- lastname: Van Britsom
-- lastname: Van Broeck
-- lastname: Van Brussel
-- lastname: Van Buel
-- lastname: Van Butsel
-- lastname: Van Campenhout
-- lastname: Van Cansinck
-- lastname: Van Carpels
-- lastname: Van Cauteren
-- lastname: Van Craenenbroeck
-- lastname: Van Dam
-- lastname: Van Damme
-- lastname: Van de Kamp
-- lastname: Van de Perre
-- lastname: Van de Velde
-- lastname: Van de Ven
-- lastname: Van de Vloet
-- lastname: Van de Voorde
-- lastname: Van de Walle
-- lastname: Van den Abeele
-- lastname: Van den Berghe
-- lastname: Van den Bosch
-- lastname: Van den Branden
-- lastname: Van den Broeck
-- lastname: Van Den Brucke
-- lastname: Van den Eeden
-- lastname: Van den Eynde
-- lastname: Van den Nieuwenhuyzen
-- lastname: Van den Wyngaert
-- lastname: Van der Aa
+- lastname: van Achte
+- lastname: van Acker
+- lastname: van Aelst
+- lastname: van Aken
+- lastname: van Belleghem
+- lastname: van Berlo
+- lastname: van Bocxlaer
+- lastname: van Bogaert
+- lastname: van Bogget
+- lastname: van Boxlaer
+- lastname: van Brandt
+- lastname: van Britsom
+- lastname: van Broeck
+- lastname: van Brussel
+- lastname: van Buel
+- lastname: van Butsel
+- lastname: van Campenhout
+- lastname: van Cansinck
+- lastname: van Carpels
+- lastname: van Cauteren
+- lastname: van Craenenbroeck
+- lastname: van Dam
+- lastname: van Damme
+- lastname: van de Kamp
+- lastname: van de Perre
+- lastname: van de Velde
+- lastname: van de Ven
+- lastname: van de Vloet
+- lastname: van de Voorde
+- lastname: van de Walle
+- lastname: van den Abeele
+- lastname: van den Berghe
+- lastname: van den Bosch
+- lastname: van den Branden
+- lastname: van den Broeck
+- lastname: van den Brucke
+- lastname: van den Eeden
+- lastname: van den Eynde
+- lastname: van den Nieuwenhuyzen
+- lastname: van den Wyngaert
+- lastname: van der Aa
 - lastname: van der Elst
-- lastname: Van der Elst
-- lastname: Van der Graf
-- lastname: Van der Heyden
-- lastname: Van der Kelen
-- lastname: Van der Linden
-- lastname: Van der Poorten
-- lastname: Van der Straeten
-- lastname: Van der Weken
-- lastname: Van Der Wouwer
-- lastname: Van Dongen
-- lastname: Van Driessche
-- lastname: Van Duyse
-- lastname: Van Eetvelt
-- lastname: Van Eyck
-- lastname: Van Eynde
-- lastname: Van Garsse
-- lastname: Van Gaver
-- lastname: Van Gaveren
-- lastname: Van Geem
-- lastname: Van Geertsom
-- lastname: Van Geetsom
-- lastname: Van Geffen
-- lastname: Van Gerrewey
-- lastname: Van Geyte
-- lastname: Van Gheem
-- lastname: Van Goethem
-- lastname: Van Goey
-- lastname: Van Guyse
-- lastname: Van Gysel
-- lastname: Van Haelst
-- lastname: Van Haute
-- lastname: Van Haver
-- lastname: Van Havermaat
-- lastname: Van Herck
-- lastname: Van Herrewegen
-- lastname: Van Hese
-- lastname: Van Hoey
-- lastname: Van Hoeywegen
-- lastname: Van Holst
-- lastname: Van Hoost
-- lastname: Van Hootegem
-- lastname: Van Hoylandt
-- lastname: Van Hoyweghen
-- lastname: Van Immerseel
-- lastname: Van Kemseke
-- lastname: Van Kerckhove
-- lastname: Van kerckhoven
-- lastname: Van Kerckhoven
-- lastname: Van Laecken
-- lastname: Van Laere
-- lastname: Van Lancker
-- lastname: Van Landeghem
-- lastname: Van Langenhove
-- lastname: Van Lierop
-- lastname: Van Linden
-- lastname: Van Marcke
-- lastname: Van Mechelen
-- lastname: Van Mele
-- lastname: Van Meygroot
-- lastname: Van Mieghem
-- lastname: Van Moer
-- lastname: Van Mullem
-- lastname: Van Nieulande
-- lastname: Van Noppen
-- lastname: Van Oppens
-- lastname: Van Overloop
-- lastname: Van Overmeire
-- lastname: Van Peteghem
-- lastname: Van Poele
-- lastname: Van Poucke
-- lastname: Van Praet
-- lastname: Van Puymbroeck
-- lastname: Van Puymbrouck
-- lastname: Van Queckelberghe
-- lastname: Van Raemdonck
-- lastname: Van Ranst
-- lastname: Van Reeth
-- lastname: Van Remoortel
-- lastname: Van Remoortere
-- lastname: Van Riet
-- lastname: Van Rompu
-- lastname: Van Roost
-- lastname: Van Rossem
-- lastname: Van Roy
-- lastname: Van Royen
-- lastname: Van Ryckheghem
-- lastname: Van Snick
-- lastname: Van Stappen
-- lastname: Van Steenbergen
-- lastname: Van Steendam
-- lastname: Van Strydonck
+- lastname: van der Elst
+- lastname: van der Graf
+- lastname: van der Heyden
+- lastname: van der Kelen
+- lastname: van der Linden
+- lastname: van der Poorten
+- lastname: van der Straeten
+- lastname: van der Weken
+- lastname: van der Wouwer
+- lastname: van Dongen
+- lastname: van Driessche
+- lastname: van Duyse
+- lastname: van Eetvelt
+- lastname: van Eyck
+- lastname: van Eynde
+- lastname: van Garsse
+- lastname: van Gaver
+- lastname: van Gaveren
+- lastname: van Geem
+- lastname: van Geertsom
+- lastname: van Geetsom
+- lastname: van Geffen
+- lastname: van Gerrewey
+- lastname: van Geyte
+- lastname: van Gheem
+- lastname: van Goethem
+- lastname: van Goey
+- lastname: van Guyse
+- lastname: van Gysel
+- lastname: van Haelst
+- lastname: van Haute
+- lastname: van Haver
+- lastname: van Havermaat
+- lastname: van Herck
+- lastname: van Herrewegen
+- lastname: van Hese
+- lastname: van Hoey
+- lastname: van Hoeywegen
+- lastname: van Holst
+- lastname: van Hoost
+- lastname: van Hootegem
+- lastname: van Hoylandt
+- lastname: van Hoyweghen
+- lastname: van Immerseel
+- lastname: van Kemseke
+- lastname: van Kerckhove
+- lastname: van kerckhoven
+- lastname: van Kerckhoven
+- lastname: van Laecken
+- lastname: van Laere
+- lastname: van Lancker
+- lastname: van Landeghem
+- lastname: van Langenhove
+- lastname: van Lierop
+- lastname: van Linden
+- lastname: van Marcke
+- lastname: van Mechelen
+- lastname: van Mele
+- lastname: van Meygroot
+- lastname: van Mieghem
+- lastname: van Moer
+- lastname: van Mullem
+- lastname: van Nieulande
+- lastname: van Noppen
+- lastname: van Oppens
+- lastname: van Overloop
+- lastname: van Overmeire
+- lastname: van Peteghem
+- lastname: van Poele
+- lastname: van Poucke
+- lastname: van Praet
+- lastname: van Puymbroeck
+- lastname: van Puymbrouck
+- lastname: van Queckelberghe
+- lastname: van Raemdonck
+- lastname: van Ranst
+- lastname: van Reeth
+- lastname: van Remoortel
+- lastname: van Remoortere
+- lastname: van Riet
+- lastname: van Rompu
+- lastname: van Roost
+- lastname: van Rossem
+- lastname: van Roy
+- lastname: van Royen
+- lastname: van Ryckheghem
+- lastname: van Snick
+- lastname: van Stappen
+- lastname: van Steenbergen
+- lastname: van Steendam
+- lastname: van Strydonck
 - lastname: van Ullesen
-- lastname: Van Vlem
-- lastname: Van Vlierberghe
-- lastname: Van Vosselen
-- lastname: Van Wesemael
-- lastname: Van Wiele
-- lastname: Van Wolvelaer
+- lastname: van Vlem
+- lastname: van Vlierberghe
+- lastname: van Vosselen
+- lastname: van Wesemael
+- lastname: van Wiele
+- lastname: van Wolvelaer
 - lastname: Vanderstratton
 - lastname: Vandervliet
 - lastname: Vangheluwe

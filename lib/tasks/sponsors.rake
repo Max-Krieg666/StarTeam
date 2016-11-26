@@ -1,4 +1,4 @@
-DEF = 30
+DEF = 10
 
 desc "Генерация #{DEF} спонсоров"
 
@@ -19,3 +19,4 @@ namespace :sponsors do
     puts 'OK!'
   end
 end
+# TODO переписать использую стандартный гем)

@@ -1,0 +1,756 @@
+- id: 1
+  title: Австралия
+  title_en: Australia
+- id: 2
+  title: Австрия
+  title_en: Austria
+- id: 3
+  title: Азербайджан
+  title_en: Azerbaijan
+- id: 4
+  title: Албания
+  title_en: Albania
+- id: 5
+  title: Алжир
+  title_en: Algeria
+- id: 6
+  title: Американское Самоа
+  title_en: American Samoa
+- id: 7
+  title: Ангилья
+  title_en: Anguilla
+- id: 8
+  title: Ангола
+  title_en: Angola
+- id: 9
+  title: Андорра
+  title_en: Andorra
+- id: 10
+  title: Антигуа и Барбуда
+  title_en: Antigua and Barbuda
+- id: 11
+  title: Аргентина
+  title_en: Argentina
+- id: 12
+  title: Армения
+  title_en: Armenia
+- id: 13
+  title: Аруба
+  title_en: Aruba
+- id: 14
+  title: Афганистан
+  title_en: Afghanistan
+- id: 15
+  title: Багамы
+  title_en: The Bahamas
+- id: 16
+  title: Бангладеш
+  title_en: Bangladesh
+- id: 17
+  title: Барбадос
+  title_en: Barbados
+- id: 18
+  title: Бахрейн
+  title_en: Bahrain
+- id: 19
+  title: Беларусь
+  title_en: Belarus
+- id: 20
+  title: Белиз
+  title_en: Belize
+- id: 21
+  title: Бельгия
+  title_en: Belgium
+- id: 22
+  title: Бенин
+  title_en: Benin
+- id: 23
+  title: Бермуды
+  title_en: The Bermudes
+- id: 24
+  title: Болгария
+  title_en: Bulgaria
+- id: 25
+  title: Боливия
+  title_en: Bolivia
+- id: 26
+  title: Бонайре, Синт-Эстатиус и Саба
+  title_en: Caribbean Netherlands
+- id: 27
+  title: Босния и Герцеговина
+  title_en: Bosnia and Herzegovina
+- id: 28
+  title: Ботсвана
+  title_en: Botswana
+- id: 29
+  title: Бразилия
+  title_en: Brazil
+- id: 30
+  title: Бруней-Даруссалам
+  title_en: Brunei Darussalam
+- id: 31
+  title: Буркина-Фасо
+  title_en: Burkina Faso
+- id: 32
+  title: Бурунди
+  title_en: Burundi
+- id: 33
+  title: Бутан
+  title_en: Bhutan
+- id: 34
+  title: Вануату
+  title_en: Vanuatu
+- id: 35
+  title: Ватикан
+  title_en: Vatican
+- id: 36
+  title: Великобритания
+  title_en: UK
+- id: 37
+  title: Венгрия
+  title_en: Hungary
+- id: 38
+  title: Венесуэла
+  title_en: Venezuela
+- id: 39
+  title: Виргинские острова, Британские
+  title_en: British Virgin Islands
+- id: 40
+  title: Виргинские острова, США
+  title_en: US Virgin Islands
+- id: 41
+  title: Восточный Тимор
+  title_en: East Timor
+- id: 42
+  title: Вьетнам
+  title_en: Vietnam
+- id: 43
+  title: Габон
+  title_en: Gabon
+- id: 44
+  title: Гаити
+  title_en: Haiti
+- id: 45
+  title: Гайана
+  title_en: Guyana
+- id: 46
+  title: Гамбия
+  title_en: Gambia
+- id: 47
+  title: Гана
+  title_en: Ghana
+- id: 48
+  title: Гваделупа
+  title_en: Guadeloupe
+- id: 49
+  title: Гватемала
+  title_en: Guatemala
+- id: 50
+  title: Гвинея
+  title_en: Guinea
+- id: 51
+  title: Гвинея-Бисау
+  title_en: Guinea-Bissau
+- id: 52
+  title: Германия
+  title_en: Germany
+- id: 53
+  title: Гернси
+  title_en: Guernsey
+- id: 54
+  title: Гибралтар
+  title_en: Gibraltar
+- id: 55
+  title: Гондурас
+  title_en: Honduras
+- id: 56
+  title: Гонконг
+  title_en: Hong Kong
+- id: 57
+  title: Гренада
+  title_en: Grenada
+- id: 58
+  title: Гренландия
+  title_en: Greenland
+- id: 59
+  title: Греция
+  title_en: Greece
+- id: 60
+  title: Грузия
+  title_en: Georgia
+- id: 61
+  title: Гуам
+  title_en: Guam
+- id: 62
+  title: Дания
+  title_en: Denmark
+- id: 63
+  title: Джерси
+  title_en: Jersey
+- id: 64
+  title: Джибути
+  title_en: Djibouti
+- id: 65
+  title: Доминика
+  title_en: Dominica
+- id: 66
+  title: Доминиканская Республика
+  title_en: Dominican Republic
+- id: 67
+  title: Египет
+  title_en: Egypt
+- id: 68
+  title: Замбия
+  title_en: Zambia
+- id: 69
+  title: Западная Сахара
+  title_en: West Sahara
+- id: 70
+  title: Зимбабве
+  title_en: Zimbabwe
+- id: 71
+  title: Израиль
+  title_en: Israel
+- id: 72
+  title: Индия
+  title_en: India
+- id: 73
+  title: Индонезия
+  title_en: Indonesia
+- id: 74
+  title: Иордания
+  title_en: Jordan
+- id: 75
+  title: Ирак
+  title_en: Iraq
+- id: 76
+  title: Иран
+  title_en: Iran
+- id: 77
+  title: Ирландия
+  title_en: Ireland
+- id: 78
+  title: Исландия
+  title_en: Iceland
+- id: 79
+  title: Испания
+  title_en: Spain
+- id: 80
+  title: Италия
+  title_en: Italy
+- id: 81
+  title: Йемен
+  title_en: Yemen
+- id: 82
+  title: Кабо-Верде
+  title_en: Cape Verde
+- id: 83
+  title: Казахстан
+  title_en: Kazakhstan
+- id: 84
+  title: Камбоджа
+  title_en: Cambodia
+- id: 85
+  title: Камерун
+  title_en: Cameroon
+- id: 86
+  title: Канада
+  title_en: Canata
+- id: 87
+  title: Катар
+  title_en: Qatar
+- id: 88
+  title: Кения
+  title_en: Kenia
+- id: 89
+  title: Кипр
+  title_en: Cyprus
+- id: 90
+  title: Кирибати
+  title_en: Kiribati
+- id: 91
+  title: Китай
+  title_en: China
+- id: 92
+  title: Колумбия
+  title_en: Colombia
+- id: 93
+  title: Коморы
+  title_en: Comoros
+- id: 94
+  title: Конго
+  title_en: Congo
+- id: 95
+  title: Конго, демократическая республика
+  title_en: Democratic Republic of the Congo
+- id: 96
+  title: Коста-Рика
+  title_en: Costa Rica
+- id: 97
+  title: "Кот-д'Ивуар"
+  title_en: "Côte d'Ivoire"
+- id: 98
+  title: Куба
+  title_en: Cuba
+- id: 99
+  title: Кувейт
+  title_en: Kuwait
+- id: 100
+  title: Кыргызстан
+  title_en: Kyrgyzstan
+- id: 101
+  title: Кюрасао
+  title_en: Curacao
+- id: 102
+  title: Лаос
+  title_en: Laos
+- id: 103
+  title: Латвия
+  title_en: Latvia
+- id: 104
+  title: Лесото
+  title_en: Lesotho
+- id: 105
+  title: Либерия
+  title_en: Liberia
+- id: 106
+  title: Ливан
+  title_en: Lebanon
+- id: 107
+  title: Ливия
+  title_en: Libya
+- id: 108
+  title: Литва
+  title_en: Lithuania
+- id: 109
+  title: Лихтенштейн
+  title_en: Liechtenstein
+- id: 110
+  title: Люксембург
+  title_en: Luxembourg
+- id: 111
+  title: Маврикий
+  title_en: Mauritius
+- id: 112
+  title: Мавритания
+  title_en: Mauritania
+- id: 113
+  title: Мадагаскар
+  title_en: Madagascar
+- id: 114
+  title: Макао
+  title_en: Macau
+- id: 115
+  title: Македония
+  title_en: Macedonia
+- id: 116
+  title: Малави
+  title_en: Malawi
+- id: 117
+  title: Малайзия
+  title_en: Malaysia
+- id: 118
+  title: Мали
+  title_en: Mali
+- id: 119
+  title: Мальдивы
+  title_en: Maldives
+- id: 120
+  title: Мальта
+  title_en: Malta
+- id: 121
+  title: Марокко
+  title_en: Marocco
+- id: 122
+  title: Мартиника
+  title_en: Martinique
+- id: 123
+  title: Маршалловы Острова
+  title_en: Marshall Islands
+- id: 124
+  title: Мексика
+  title_en: Mexico
+- id: 125
+  title: Микронезия, федеративные штаты
+  title_en: Federated States of Micronesia
+- id: 126
+  title: Мозамбик
+  title_en: Mozambique
+- id: 127
+  title: Молдова
+  title_en: Moldova
+- id: 128
+  title: Монако
+  title_en: Monaco
+- id: 129
+  title: Монголия
+  title_en: Mongolia
+- id: 130
+  title: Монтсеррат
+  title_en: Monserrat
+- id: 131
+  title: Мьянма
+  title_en: Myanmar
+- id: 132
+  title: Намибия
+  title_en: Namibia
+- id: 133
+  title: Науру
+  title_en: Nauru
+- id: 134
+  title: Непал
+  title_en: Nepal
+- id: 135
+  title: Нигер
+  title_en: Niger
+- id: 136
+  title: Нигерия
+  title_en: Nigeria
+- id: 137
+  title: Нидерланды
+  title_en: Netherlands
+- id: 138
+  title: Никарагуа
+  title_en: Nicaragua
+- id: 139
+  title: Ниуэ
+  title_en: Niue
+- id: 140
+  title: Новая Зеландия
+  title_en: New Zealand
+- id: 141
+  title: Новая Каледония
+  title_en: New Caledonia
+- id: 142
+  title: Норвегия
+  title_en: Norway
+- id: 143
+  title: Объединенные Арабские Эмираты
+  title_en: United Arab Emirates
+- id: 144
+  title: Оман
+  title_en: Oman
+- id: 145
+  title: Остров Мэн
+  title_en: Isle of Man
+- id: 146
+  title: Остров Норфолк
+  title_en: Norfolk Island
+- id: 147
+  title: Острова Кайман
+  title_en: Cayman Islands
+- id: 148
+  title: Острова Кука
+  title_en: Cook Islands
+- id: 149
+  title: Острова Теркс и Кайкос
+  title_en: Turks and Caicos Islands
+- id: 150
+  title: Пакистан
+  title_en: Pakistan
+- id: 151
+  title: Палау
+  title_en: Palau
+- id: 152
+  title: Палестинская автономия
+  title_en: Palestinian Authority
+- id: 153
+  title: Панама
+  title_en: Panama
+- id: 154
+  title: Папуа - Новая Гвинея
+  title_en: Papua New Guinea
+- id: 155
+  title: Парагвай
+  title_en: Paraguay
+- id: 156
+  title: Перу
+  title_en: Peru
+- id: 157
+  title: Питкерн
+  title_en: Pitkern
+- id: 158
+  title: Польша
+  title_en: Poland
+- id: 159
+  title: Португалия
+  title_en: Portugal
+- id: 160
+  title: Пуэрто-Рико
+  title_en: Puerto-Rico
+- id: 161
+  title: Реюньон
+  title_en: Reunion
+- id: 162
+  title: Россия
+  title_en: Russia
+- id: 163
+  title: Руанда
+  title_en: Rwanda
+- id: 164
+  title: Румыния
+  title_en: Romania
+- id: 165
+  title: США
+  title_en: USA
+- id: 166
+  title: Сальвадор
+  title_en: Salvador
+- id: 167
+  title: Самоа
+  title_en: Samoa
+- id: 168
+  title: Сан-Марино
+  title_en: San Marino
+- id: 169
+  title: Сан-Томе и Принсипи
+  title_en: Sao Tome and Principe
+- id: 170
+  title: Саудовская Аравия
+  title_en: Saudi Arabia
+- id: 171
+  title: Свазиленд
+  title_en: Swaziland
+- id: 172
+  title: Остров Святой Елены
+  title_en: Saint Helena Island
+- id: 173
+  title: Северная Корея
+  title_en: North Korea
+- id: 174
+  title: Северные Марианские острова
+  title_en: Northern Mariana Islands
+- id: 175
+  title: Сейшелы
+  title_en: Seychelles
+- id: 176
+  title: Сенегал
+  title_en: Senegal
+- id: 177
+  title: Сент-Винсент и Гренадины
+  title_en: Saint Vincent and Grenadines
+- id: 178
+  title: Сент-Китс и Невис
+  title_en: Saint Kitts and Nevis
+- id: 179
+  title: Сент-Люсия
+  title_en: Saint Lucia
+- id: 180
+  title: Сент-Пьер и Микелон
+  title_en: Saint Pierre and Miquelon
+- id: 181
+  title: Сербия
+  title_en: Serbia
+- id: 182
+  title: Сингапур
+  title_en: Singapore
+- id: 183
+  title: Синт-Мартен
+  title_en: Sint Maarten
+- id: 184
+  title: Сирийская Арабская Республика
+  title_en: Syrian Arab Republic
+- id: 185
+  title: Словакия
+  title_en: Slovakia
+- id: 186
+  title: Словения
+  title_en: Slovenia
+- id: 187
+  title: Соломоновы Острова
+  title_en: Solomon Islands
+- id: 188
+  title: Сомали
+  title_en: Somali
+- id: 189
+  title: Судан
+  title_en: Sudan
+- id: 190
+  title: Суринам
+  title_en: Surinam
+- id: 191
+  title: Сьерра-Леоне
+  title_en: Sierra-Leone
+- id: 192
+  title: Таджикистан
+  title_en: Tajikistan
+- id: 193
+  title: Таиланд
+  title_en: Thailand
+- id: 194
+  title: Тайвань
+  title_en: Taiwan
+- id: 195
+  title: Танзания
+  title_en: Tansania
+- id: 196
+  title: Того
+  title_en: Togo
+- id: 197
+  title: Токелау
+  title_en: Tokelau
+- id: 198
+  title: Тонга
+  title_en: Tonga
+- id: 199
+  title: Тринидад и Тобаго
+  title_en: Trinidad and Tobago
+- id: 200
+  title: Тувалу
+  title_en: Tuvalu
+- id: 201
+  title: Тунис
+  title_en: Tunisia
+- id: 202
+  title: Туркменистан
+  title_en: Turkmenistan
+- id: 203
+  title: Турция
+  title_en: Turkey
+- id: 204
+  title: Уганда
+  title_en: Uganda
+- id: 205
+  title: Узбекистан
+  title_en: Uzbekistan
+- id: 206
+  title: Украина
+  title_en: Ukraine
+- id: 207
+  title: Уоллис и Футуна
+  title_en: Wallis and Futuna
+- id: 208
+  title: Уругвай
+  title_en: Uruguay
+- id: 209
+  title: Фарерские острова
+  title_en: Faroe Islands
+- id: 210
+  title: Фиджи
+  title_en: Fiji
+- id: 211
+  title: Филиппины
+  title_en: Philippines
+- id: 212
+  title: Финляндия
+  title_en: Finland
+- id: 213
+  title: Фолклендские острова
+  title_en: Falkland Islands
+- id: 214
+  title: Франция
+  title_en: France
+- id: 215
+  title: Французская Гвиана
+  title_en: French Guiana
+- id: 216
+  title: Французская Полинезия
+  title_en: French Polinesia
+- id: 217
+  title: Хорватия
+  title_en: Croatia
+- id: 218
+  title: Центрально-Африканская Республика
+  title_en: Central African Republic
+- id: 219
+  title: Чад
+  title_en: Chad
+- id: 220
+  title: Черногория
+  title_en: Montenegro
+- id: 221
+  title: Чехия
+  title_en: Czech
+- id: 222
+  title: Чили
+  title_en: Chili
+- id: 223
+  title: Швейцария
+  title_en: Switzerland
+- id: 224
+  title: Швеция
+  title_en: Sweden
+- id: 225
+  title: Шпицберген и Ян Майен
+  title_en: Spitsbergen and Yan Mayen
+- id: 226
+  title: Шри-Ланка
+  title_en: Sri-Lanka
+- id: 227
+  title: Эквадор
+  title_en: Equador
+- id: 228
+  title: Экваториальная Гвинея
+  title_en: Equatorial Guinea
+- id: 229
+  title: Эритрея
+  title_en: Eritrea
+- id: 230
+  title: Эстония
+  title_en: Estonia
+- id: 231
+  title: Эфиопия
+  title_en: Ethiopia
+- id: 232
+  title: Южная Корея
+  title_en: South Korea
+- id: 233
+  title: Южно-Африканская Республика
+  title_en: South African Republic
+- id: 234
+  title: Южный Судан
+  title_en: South Sudan
+- id: 235
+  title: Ямайка
+  title_en: Jamaica
+- id: 236
+  title: Япония
+  title_en: Japan
+- id: 237
+  title: Абхазия
+  title_en: Abkhazia
+- id: 238
+  title: Аланд
+  title_en: Aland
+- id: 239
+  title: Англия
+  title_en: England
+- id: 240
+  title: Канарские острова
+  title_en: Canary Islands
+- id: 241
+  title: Кокосовые острова (Килинг)
+  title_en: Cocos Island (Keeling)
+- id: 242
+  title: Майотта
+  title_en: Mayotta
+- id: 243
+  title: Нидерландские Антиллы
+  title_en: Netherlands Antilles
+- id: 244
+  title: Остров Рождества
+  title_en: Christmas Island
+- id: 245
+  title: Уэльс
+  title_en: Wales
+- id: 246
+  title: Сен-Бартельми
+  title_en: Saint Barthelemy
+- id: 247
+  title: Северная Ирландия
+  title_en: Northern Ireland
+- id: 248
+  title: Северный Кипр
+  title_en: Northern Cyprus
+- id: 249
+  title: Сомалиленд
+  title_en: Somaliland
+- id: 250
+  title: Шотландия
+  title_en: Scotland
+- id: 251
+  title: Южная Осетия
+  title_en: South Ossetia
+- id: 252
+  title: Южная Георгия и Южные Сандвичевы Острова
+  title_en: South Georgia and South Sandwich Islands

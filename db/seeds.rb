@@ -1,11 +1,9 @@
-Rails.root.join('lib', 'tasks', 'bd3')
-
 if Country.count.zero?
   ActiveRecord::Base.transaction do
-    @c1.each do |id, item|
-      c = Country.new(id: id, title: item)
+    YAML::load_file(Rails.root.join('db', 'seeds', 'countries.yml')).each do |country|
+      c = Country.new(country)
       begin
-        c.flag = File.new(Rails.root.join('flags', 'flags', 'shiny', '24', "#{item}.png"))
+        c.flag = File.new(Rails.root.join('flags', 'flags', 'shiny', '24', "#{c.title}.png"))
       rescue
         c.flag = File.new(Rails.root.join('flags', 'flags', 'shiny', '24', 'Unknown.png'))
       end

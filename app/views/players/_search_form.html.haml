@@ -1,0 +1,21 @@
+= form_tag players_path, method: 'get' do
+  .row
+    .input-group
+      .form-group.col-lg-4
+        = label_tag 'Игрок' #:name
+        = text_field_tag 'search[name]', params[:search].try(:[], :name), class: 'form-control'
+      .form-group.col-lg-3
+        = label_tag 'Страна' #:country_id
+        = select_country('search[country_id]', params[:search].try(:[], :country_id))
+      .form-group.col-lg-3
+        = label_tag 'Позиция' #:position1
+        = select_position1('search[position1]', params[:search].try(:[], :position1))
+      .input-group-btn
+        = submit_tag 'Искать', name: nil, class:'btn btn-default'
+  .row
+    .form-group.col-lg-2
+      = label_tag 'Мастерство >' #:skill_level
+      = text_field_tag 'search[skill_level]', params[:search].try(:[], :skill_level), class: 'form-control'
+    .form-group.col-lg-1
+      = label_tag 'Талант >' #:talent
+      = text_field_tag 'search[talent]', params[:search].try(:[], :talent), class: 'form-control'

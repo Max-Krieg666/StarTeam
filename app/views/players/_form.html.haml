@@ -9,15 +9,14 @@
   .row
     .col-md-3
       .form-group
-        -#.fa.fa-home.li
         = label_tag('player[country_id]', 'Национальность')
         = select_country('player[country_id]', @player.country_id)
-  -pss=%w(Ld Cd Rd Cdm Lm Cm Rm Cam Lf Cf Rf)
+  -pss = %w(Ld Cd Rd Cdm Lm Cm Rm Cam Lf Cf Rf)
   .row
     .col-md-1
       .form-group
         = f.label :position1
-        = f.select :position1, ["Gk"]+pss, class: "form-control"
+        = f.select :position1, Player::POSITIONS, class: "form-control"
     .col-md-1
       .form-group
         = f.label :position2

@@ -2,7 +2,6 @@
 
 = render 'form'
 %br
--t=Team.find(@current_user.team_id)
-= link_to t, class: 'btn btn-info' do
+= link_to @current_user_team, class: 'btn btn-info' do
   =fa_icon "reply"
-  Вернуться к команде << #{t.title} >>
+  Вернуться к команде << #{@current_user_team.title} >>

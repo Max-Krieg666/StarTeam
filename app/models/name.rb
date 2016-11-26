@@ -17,8 +17,8 @@ class Name
     file_names = nil
     file_lastnames = nil
     case @country_id
-    when 1, 7, 10, 15, 17, 20, 23, 36, 39, 57, 65, 130, 145, 146, 147, 149, 157, 172, 177, 178, 179, 199, 235, 239, 241, 244, 252
-      # Австралия, Ангилья, Антигуа и Барбуда, Багамы, Барбадос, Белиз, Бермуды, Великобритания, Виргинские острова, Гренада, Доминика, Монтсеррат, Остров Мэн, Остров Норфолк, Острова Кайман, Острова Теркс и Кайкос, Питкерн, Остров Святой Елены, Сент-Винсент и Гренадины, Сент-Китс и Невис, Сент-Люсия, Тринидад и Тобаго, Ямайка, Англия, Кокосовые острова (Килинг), Остров Рождества, Южная Георгия и Южные Сандвичевы Острова
+    when 1, 7, 10, 15, 17, 20, 23, 36, 39, 45, 57, 65, 125, 130, 145, 146, 147, 149, 157, 172, 177, 178, 179, 199, 235, 239, 241, 244, 252
+      # Австралия, Ангилья, Антигуа и Барбуда, Багамы, Барбадос, Белиз, Бермуды, Великобритания, Виргинские острова, Гайана, Гренада, Доминика, Микронезия, федеративные штаты, Монтсеррат, Остров Мэн, Остров Норфолк, Острова Кайман, Острова Теркс и Кайкос, Питкерн, Остров Святой Елены, Сент-Винсент и Гренадины, Сент-Китс и Невис, Сент-Люсия, Тринидад и Тобаго, Ямайка, Англия, Кокосовые острова (Килинг), Остров Рождества, Южная Георгия и Южные Сандвичевы Острова
       file_names = 'english'
       file_lastnames = 'english'
     when 2
@@ -40,21 +40,25 @@ class Name
     when 6, 165, 40, 61, 174
       # Американское Самоа, США, Британские, Виргинские острова, США, Гуам, Северные Марианские острова
       file_names = 'american'
-      file_lastnames = 'american'
-    when 8, 29, 51, 82, 159, 169
-      # Ангола, Бразилия, Гвинея-Бисау, Кабо-Верде, Португалия, Сан-Томе и Принсипи
+      file_lastnames = 'english'
+    when 8, 29, 41, 51, 82, 159, 169
+      # Ангола, Бразилия, Восточный Тимор, Гвинея-Бисау, Кабо-Верде, Португалия, Сан-Томе и Принсипи
       file_names = 'portuguese'
       file_lastnames = 'portuguese'
-    when 9, 11, 38, 54, 66, 79, 92, 124, 155, 156, 166, 208, 222, 227, 240
-      # Андорра, Аргентина, Венесуэла, Гибралтар, Доминиканская Республика, Испания, Колумбия, Мексика, Парагвай, Перу, Сальвадор, Уругвай, Чили, Эквадор, Канарские острова
-      chance = rand(500)
-      word = if chance > 415
-          'spain_basque'
-        elsif chance < 86
-          'spain_catalonian'
-        else
-          'spain'
-        end
+    when 9, 11, 38, 49, 54, 55, 66, 79, 92, 96, 98, 124, 138, 153, 155, 156, 166, 208, 222, 227, 240
+      # Андорра, Аргентина, Венесуэла, Гватемала, Гибралтар, Гондурас, Доминиканская Республика, Испания, Колумбия, Коста-Рика, Куба, Мексика, Никарагуа, Панама, Парагвай, Перу, Сальвадор, Уругвай, Чили, Эквадор, Канарские острова
+      word =  if @country_id == 79
+                chance = rand(500)
+                if chance > 415
+                  'spain_basque'
+                elsif chance < 86
+                  'spain_catalonian'
+                else
+                  'spain'
+                end
+              else
+                'spain'
+              end
       file_names = word
       file_lastnames = word
     when 12
@@ -94,9 +98,11 @@ class Name
       file_names = 'bulgarian'
       file_lastnames = 'bulgarian'
     when 25
-      # Боливия TODO!!!
-      # file_names = 'bolivian'
-      # file_lastnames = 'bolivian'
+      # Боливия
+      chance = rand(500)
+      word = chance > 350 ? 'bolivian' : 'spain'
+      file_names = word
+      file_lastnames = word
     when 27
       # Босния и Герцеговина
       file_names = 'bosnian'
@@ -105,10 +111,10 @@ class Name
       # Ботсвана
       file_names = 'botswana'
       file_lastnames = 'botswana'
-    when 30
-      # Бруней-Даруссалам
-      # file_names = 'brunei'
-      # file_lastnames = 'brunei'
+    when 30, 73, 117, 182
+      # Бруней-Даруссалам, Индонезия, Малайзия, Сингапур
+      file_names = 'malay'
+      file_lastnames = 'malay'
     when 31
       # Буркина-Фасо
       file_names = 'burkina_faso'
@@ -119,24 +125,16 @@ class Name
       file_lastnames = 'burundi'
     when 33
       # Бутан
-      # file_names = 'butan'
-      # file_lastnames = 'butan'
+      file_names = 'bhutan'
+      file_lastnames = 'bhutan'
     when 34
       # Вануату
-      # file_names = 'vanuatu'
-      # file_lastnames = 'vanuatu'
-    when 35
-      # Ватикан
-      # file_names = 'vatican'
-      # file_lastnames = 'vatican'
+      file_names = 'polinesian'
+      file_lastnames = 'vanuatu'
     when 37
       # Венгрия
       file_names = 'hungarian'
       file_lastnames = 'hungarian'
-    when 41
-      # Восточный Тимор
-      # file_names = 'east_timor'
-      # file_lastnames = 'east_timor'
     when 42
       # Вьетнам
       file_names = 'vietnamese'
@@ -145,14 +143,6 @@ class Name
       # Габон
       file_names = 'gabon'
       file_lastnames = 'gabon'
-    when 44
-      # Гаити
-      # file_names = 'haiti'
-      # file_lastnames = 'haiti'
-    when 45
-      # Гайана
-      # file_names = 'hayana'
-      # file_lastnames = 'hayana'
     when 46
       # Гамбия
       file_names = 'gambian'
@@ -161,14 +151,10 @@ class Name
       # Гана
       file_names = 'ghana'
       file_lastnames = 'ghana'
-    when 48, 122, 128, 141, 161, 180, 207, 214, 215, 216, 242, 246
-      # Гваделупа, Мартиника, Монако, Новая Каледония, Реюньон, Сент-Пьер и Микелон, Уоллис и Футуна, Франция, Французская Гвиана, Французская Полинезия, Майотта, Сен-Бартельми
+    when 44, 48, 122, 128, 141, 161, 180, 207, 214, 215, 216, 242, 246
+      # Гаити, Гваделупа, Мартиника, Монако, Новая Каледония, Реюньон, Сент-Пьер и Микелон, Уоллис и Футуна, Франция, Французская Гвиана, Французская Полинезия, Майотта, Сен-Бартельми
       file_names = 'french'
       file_lastnames = 'french'
-    when 49
-      # Гватемала
-      # file_names = 'guatemala'
-      # file_lastnames = 'guatemala'
     when 50
       # Гвинея
       file_names = 'guinean'
@@ -182,10 +168,6 @@ class Name
       word = rand(100) > 49 ? 'english' : 'french'
       file_names = word
       file_lastnames = word
-    when 55
-      # Гондурас
-      # file_names = 'honduras'
-      # file_lastnames = 'honduras'
     when 56, 91, 114, 194
       # Гонконг, Китай, Макао, Тайвань
       file_names = 'chinese'
@@ -234,10 +216,6 @@ class Name
       # Индия
       file_names = 'indian'
       file_lastnames = 'indian'
-    when 73
-      # Индонезия
-      file_names = 'indonesian'
-      file_lastnames = 'indonesian'
     when 76
       # Иран
       file_names = 'iranian'
@@ -250,8 +228,8 @@ class Name
       # Исландия
       file_names = 'icelandic'
       file_lastnames = 'icelandic'
-    when 80, 168
-      # Италия, Сан-Марино
+    when 35, 80, 168
+      # Ватикан, Италия, Сан-Марино
       file_names = 'italian'
       file_lastnames = 'italian'
     when 83
@@ -287,26 +265,18 @@ class Name
       # Конго, Конго, демократическая республика
       file_names = 'congo'
       file_lastnames = 'congo'
-    when 96
-      # Коста-Рика
-      # file_names = 'costa_rica'
-      # file_lastnames = 'costa_rica'
     when 97
       # Кот д`Ивуар
       file_names = 'cotedivoire'
       file_lastnames = 'cotedivoire'
-    when 98
-      # Куба
-      # file_names = 'cubinian'
-      # file_lastnames = 'cubinian'
     when 100
       # Кыргызстан
       file_names = 'kyrgyz'
       file_lastnames = 'kyrgyz'
     when 102
       # Лаос
-      # file_names = 'laos'
-      # file_lastnames = 'laos'
+      file_names = 'laos'
+      file_lastnames = 'laos'
     when 103
       # Латвия
       file_names = 'latvian'
@@ -352,30 +322,22 @@ class Name
       # Малави
       file_names = 'malawi'
       file_lastnames = 'malawi'
-    when 117
-      # Малайзия
-      file_names = 'malaysian'
-      file_lastnames = 'malaysian'
     when 118
       # Мали
       file_names = 'mali'
       file_lastnames = 'mali'
     when 119
       # Мальдивы
-      # file_names = 'maldives'
-      # file_lastnames = 'maldives'
+      file_names = 'maldives'
+      file_lastnames = 'maldives'
     when 120
       # Мальта
       file_names = 'maltese'
       file_lastnames = 'maltese'
     when 123
       # Маршалловы Острова
-      # file_names = 'marshalles'
-      # file_lastnames = 'marshalles'
-    when 125
-      # Микронезия, федеративные штаты
-      # file_names = 'micronesian'
-      # file_lastnames = 'micronesian'
+      file_names = 'english'
+      file_lastnames = 'marshalles'
     when 126
       # Мозамбик
       file_names = 'mozambique'
@@ -398,8 +360,8 @@ class Name
       file_lastnames = 'namibian'
     when 133
       # Науру
-      # file_names = 'nauru'
-      # file_lastnames = 'nauru'
+      file_names = 'english'
+      file_lastnames = 'nauru'
     when 134
       # Непал
       file_names = 'nepalese'
@@ -412,18 +374,14 @@ class Name
       # Нигерия
       file_names = 'nigerian'
       file_lastnames = 'nigerian'
-    when 138
-      # Никарагуа
-      # file_names = 'nicaragua'
-      # file_lastnames = 'Никарагуа'
     when 139, 140, 197
       # Ниуэ, Новая Зеландия, Токелау
       file_names = 'maori'
       file_lastnames = 'maori'
     when 142, 225
       # Норвегия, Шпицберген и Ян Майен
-      file_names = 'norway'
-      file_lastnames = 'norway'
+      file_names = 'norwegian'
+      file_lastnames = 'norwegian'
     when 148
       # Острова Кука
       file_names = 'maori'
@@ -434,12 +392,8 @@ class Name
       file_lastnames = 'pakistan'
     when 151
       # Палау
-      # file_names = 'palau'
-      # file_lastnames = 'palau'
-    when 153
-      # Панама
-      # file_names = 'panama'
-      # file_lastnames = 'panama'
+      file_names = 'english'
+      file_lastnames = 'palau'
     when 154
       # Папуа - Новая Гвинея
       file_names = 'papua_new_guinea'
@@ -471,8 +425,8 @@ class Name
       file_lastnames = 'samoan'
     when 171
       # Свазиленд
-      # file_names = 'swaziland'
-      # file_lastnames = 'swaziland'
+      file_names = rand(44) > 27 ? 'swaziland' : 'south_african'
+      file_lastnames = 'swaziland'
     when 173, 232
       # Северная Корея, Южная Корея
       file_names = 'korean'
@@ -485,10 +439,6 @@ class Name
       # Сербия, Черногория
       file_names = 'serbian'
       file_lastnames = 'serbian'
-    when 182
-      # Сингапур
-      # file_names = 'singapour'
-      # file_lastnames = 'singapour'
     when 185
       # Словакия
       file_names = 'slovak'
@@ -499,8 +449,8 @@ class Name
       file_lastnames = 'slovenian'
     when 187
       # Соломоновы Острова
-      # file_names = 'solomon_islands'
-      # file_lastnames = 'solomon_islands'
+      file_names = 'solomon_islands'
+      file_lastnames = 'solomon_islands'
     when 188, 249
       # Сомали, Сомалиленд
       file_names = 'somali'
@@ -535,8 +485,8 @@ class Name
       file_lastnames = 'tonga'
     when 200
       # Тувалу
-      # file_names = 'tuvaluan'
-      # file_lastnames = 'tuvaluan'
+      file_names = 'polinesian'
+      file_lastnames = 'tuvaluan'
     when 201
       # Тунис
       file_names = 'tunisian'
@@ -608,16 +558,16 @@ class Name
       file_lastnames = 'swedish'
     when 226
       # Шри-Ланка
-      # file_names = 'sri_lanka'
-      # file_lastnames = 'sri_lanka'
+      file_names = 'sri_lankan'
+      file_lastnames = 'sri_lankan'
     when 228
       # Экваториальная Гвинея
       file_names = 'equatorial_guinea'
       file_lastnames = 'equatorial_guinea'
     when 229
       # Эритрея
-      # file_names = 'eastern_african'
-      # file_lastnames = 'eritrea'
+      file_names = 'eastern_african'
+      file_lastnames = 'eritrean'
     when 230
       # Эстония
       file_names = 'estonian'
@@ -636,25 +586,23 @@ class Name
       file_lastnames = 'japanese'
     when 237, 251
       # Абхазия, Южная Осетия
-      # file_names = 'abkhazian'
-      # file_lastnames = 'abkhazian'
+      file_names = 'abkhazian'
+      file_lastnames = 'abkhazian'
     when 245
       # Уэльс
-      file_names = 'wales'
-      file_lastnames = 'wales'
+      file_names = 'welsh'
+      file_lastnames = 'welsh'
     when 250
       # Шотландия
       file_names = 'scotland'
       file_lastnames = 'scotland'
-    else
-      #
     end
     if file_names.present?
       file_names += '_names.yml'
       file_lastnames += '_lastnames.yml'
       return [file_names, file_lastnames]
     else
-      raise "имён для страны #{@country_id} нету"
+      raise "имён для страны #{@country_id} нету!"
     end
   end
 end

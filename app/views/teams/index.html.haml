@@ -20,23 +20,20 @@
         %td= link_to team.user.login, team.user, style:"color: #FFA500"
         %td= link_to team.title, team,  style:"color: #00F"
         %td
-          -sp=Sponsor.find(team.sponsor_id)
-          =link_to sp.title, sp, style:"color: #550"
+          = link_to team.sponsor.title, team.sponsor, style:"color: #550"
         %td
-          -if team.stadium_id
-            -st=Stadium.find(team.stadium_id)
-            =link_to "#{st.title} (#{st.capacity})", st, style: "color: #F00"
+          -if team.stadium
+            = link_to "#{team.stadium.title} (#{team.stadium.capacity})", team.stadium, style: "color: #F00"
           -else
             .text-danger Не создан!
         %td
-          -if team.club_basis_id
-            -cb=ClubBase.find(team.club_basis_id)
-            =link_to cb.title, cb, style: "color: #458B74"
+          -if team.club_base
+            =link_to team.club_base.title, team.club_base, style: "color: #458B74"
           -else
             .text-danger Не создана!
         %td= number_to_currency(team.budget, precision: 3, locale: :en)
         %td= number_to_human(team.fans, locale: :en, units: {thousand: "K",million:"M"})
-        -if @current_user.role!=0
+        -if @current_user.moderator?
           %td.text-center
             = link_to edit_team_path(team), class: "btn btn-link" do
               =fa_icon "edit"

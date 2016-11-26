@@ -1,0 +1,10 @@
+en:
+  info-blocks:
+    registration:
+      user_info: User registry information
+      team_info: Team creation
+      whats_asterisk: The fields which must be filled are marked with an asterisk.
+      right_email: Specify a valid email, it will be sent an email with an activation link.
+      your_country: Specify your country.
+      tem_country: Football players of your team will have the citizenship of this country.
+      attention: "Don't forget to fill data about your team on the next tab."

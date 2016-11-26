@@ -1,7 +1,7 @@
 module Definer
   extend ActiveSupport::Concern
 
-  @@posit = %w(Gk Ld Cd Rd Cdm Lm Cm Rm Cam Lf Cf Rf)
+  @@posit = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf)
 
   def state_in_human(state)
     case state

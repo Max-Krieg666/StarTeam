@@ -1,15 +1,16 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :edit, :update, :destroy]
   before_action :check_user
+  before_action :admin_permission, except: [:index, :show]
 
   def index
     @countries = Country.page(params[:page]).order(:title)
   end
 
   def show
-    @users = User.includes(:country).where(country_id: @country.id)
-    @players = Player.includes(:country).where(country_id: @country.id, state: 0).order(:name)
-    @player_in_teams = Player.includes(:country).where(country_id: @country.id, state: 1).order(:name)
+    @users = User.includes(:country).where(country_id: @country.id).page(params[:users_page])
+    @players = Player.includes(:country).where(country_id: @country.id, state: 0).order(:name, :position1).page(params[:players_page])
+    @players_in_teams = Player.includes(:country).where(country_id: @country.id, state: 1).order(:name, :position1).page(params[:players_in_teams_page])
   end
 
   def new
@@ -60,6 +61,6 @@ class CountriesController < ApplicationController
   end
 
   def country_params
-    params.require(:country).permit(:title, :flag)
+    params.require(:country).permit(:title, :flag, :title_en)
   end
 end

@@ -1,13 +1,12 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
-  before_action :set_team, only: [:buy_player]
-  before_action :admin_permission, except: [:show, :index]
+  before_action :set_player, except: [:index, :new, :create]
+  before_action :admin_permission, only: [:new, :create, :destroy]
 
   def index
-    @players = Player.includes(:country).order('countries.title, players.name').search(params[:search]).page(params[:page])
-    if @players.blank? && params[:search].blank?
-      flash[:danger] = 'Игроков с таким именем нет!'
-      @players = Player.where(state: 0).includes(:country).order('countries.title, players.name').page(params[:page])
+    if search_params
+      @players = Search.new(search_params).apply_search.limit(200).includes(:country).order('countries.title, players.name').page(params[:page])
+    else
+      @players = Player.where(state: 0).limit(500).includes(:country).order('countries.title, players.name').page(params[:page])
     end
   end
 
@@ -23,10 +22,6 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.new(player_params)
-    tal = player_params[:talent].to_i
-    skill = player_params[:skill_level].to_i
-    age = player_params[:age].to_i
-    @player.price = (tal * 10000.0 * skill / age).round(3)
     if @player.save
       redirect_to @player, notice: 'Игрок успешно создан.'
     else
@@ -34,17 +29,19 @@ class PlayersController < ApplicationController
     end
   end
 
-  def buy_player
+  def buy
     # приходит id игрока
-    cb = ClubBase.find(@current_user_team.club_basis_id) if @current_user_team
+    cb = @current_user_team.club_base
     # если игрок нашелся по id и свободен
-    @player = Player.find(params[:id])
-    unless @current_user_team
+    if !@current_user_team
       flash[:danger] = 'Прежде, чем покупать игроков, создайте команду!'
       redirect_to new_team_path
-    elsif @player.state != 0
-      flash[:danger] = 'Произошла ошибка!'
+    elsif @player.state != 'free_agent'
+      flash[:danger] = 'Игрок недоступен для покупки!'
       redirect_to players_path
+    elsif !cb
+      flash[:danger] = 'Создайте базу клуба, чтобы покупать новых игроков!'
+      redirect_to @current_user_team
     elsif cb.capacity == @current_user_team.players.count
       flash[:danger] = 'Расширьте базу клуба для покупки новых игроков!'
       redirect_to cb
@@ -52,24 +49,47 @@ class PlayersController < ApplicationController
       flash[:danger] = 'На счету Вашей команды недостаточно средств для покупки данного игрока!'
       redirect_to players_path
     else # приобретение игрока возможно
-      @player.state = 1
-      @player.team = @current_user_team
-      captain = @current_user_team.players.order('price desc').limit(1)
-      if @player.price > captain.price
-        @player.captain = true
-        captain.update!(captain: false)
-      end
+      ActiveRecord::Base.transaction do
+        @player.state = 1
+        @player.team_id = @current_user_team.id
+        # todo выынести проверку на капитана в модель
+        # captain = @current_user_team.players.order('price desc').limit(1)
+        # if @player.price > captain.price
+        #   @player.captain = true
+        #   captain.update!(captain: false)
+        # end
+        if @player.save
+          @current_user_team.budget -= @player.price
+          @current_user_team.save!
 
-      if @player.save
-        # @current_user_team.players << @player TODO ???????????????
-        @current_user_team.budget -= @player.price
-        @current_user_team.save!
-
-        redirect_to @player, notice: 'Игрок куплен.'
-      else
-        render :new
+          redirect_to @player, notice: 'Игрок куплен.'
+        else
+          render :new
+        end
       end
     end
+  end
+
+  def sell
+    ActiveRecord::Base.transaction do
+      # TODO сделать по человечески
+      # if @player.basic
+      #   pls = @current_user_team.players.where(position1: @player.position1, state: 1, basic: false)
+      #   pls.each do |pl|
+      #     @player.update!(basic: true) if pl.id != @player.id
+      #   end
+      #   @player.basic = false
+      #   if @player.captain
+      #     p = @current_user_team.players.order("price desc").limit(2)
+      #     p.first.name == @player.name ? p.first.update!(captain: true) : p.last.update!(captain: true)
+      #     @player.captain = false
+      #   end
+      # end
+      @player.update!(state: 0, team_id: nil)
+      # TODO тут же добавить запись о забитых голах и т.д. и запись о клубе
+      @current_user_team.update!(budget: @current_user_team.budget + @player.price / 2.0)
+    end
+    redirect_to @current_user_team, notice: 'Игрок уволен из Вашей команды и стал свободным агентом.'
   end
 
   def update
@@ -77,7 +97,7 @@ class PlayersController < ApplicationController
     tal = player_params[:talent]
     skill = player_params[:skill_level]
     age = player_params[:age]
-    @player.price = (tal.to_i * 10000.0 * skill.to_i / age.to_i).round(3)
+    @player.price = (tal.to_i * 10000.0 * skill.to_i / age.to_f).round(3)
     if @player.update(player_params)
       redirect_to @player, notice: 'Игрок измёнен.'
     else
@@ -85,12 +105,12 @@ class PlayersController < ApplicationController
     end
   end
 
-  # def destroy
+  def destroy
   #   # TODO продумать удаление
   #   raise "fuck u!"
   #   @player.destroy
   #   redirect_to players_url, notice: 'Игрок удалён.'
-  # end
+  end
 
   private
     
@@ -102,6 +122,13 @@ class PlayersController < ApplicationController
     params.require(:player).permit(
       :name, :country_id, :position1, :position2,
       :talent, :age, :skill_level
+    )
+  end
+
+  def search_params
+    return if params[:search].blank?
+    params.require(:search).permit(
+      :name, :country_id, :position1, :skill_level, :talent, :age
     )
   end
 end
