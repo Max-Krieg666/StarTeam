@@ -1,11 +1,7 @@
 class ClubBasesController < ApplicationController
-  before_action :set_club_base, only: [:show, :edit, :update, :destroy]
-  before_action :set_team, only: :new
+  before_action :set_club_base, except: [:new]
+  before_action :set_team, only: [:new]
   before_action :admin_permission, only: :destroy
-
-  def index
-    @club_bases = ClubBase.page(params[:page])
-  end
 
   def show
     @team = @club_base.team
@@ -16,87 +12,56 @@ class ClubBasesController < ApplicationController
     @club_base = ClubBase.new
   end
 
-  # TODO это ваще что??!
   def edit
-    team=Team.find(@club_base.team_id)
-    old_level=@club_base.level
-    old_tr=@club_base.training_fields
-    if !params[:level].blank? && params[:level]!="" && params[:level].to_i != old_level
-      lvl=params[:level].to_i
-      if lvl!=old_level+1
-        flash[:danger]='Неправильный параметр уровня базы клуба!'
-        redirect_to @club_base
-      elsif lvl>5
-        flash[:danger]='База клуба имеет максимальный уровень!'
-        redirect_to @club_base
-      else
-        if old_level==1
-          cost,exp,cap=50000,0.2,23
-        elsif old_level==2
-          cost,exp,cap=400000,0.4,26
-        elsif old_level==3
-          cost,exp,cap=1000000,0.75,30
-        elsif old_level==4
-          cost,exp,cap=2500000,1.0,35
-        else
-          flash[:danger]='Неправильное значение уровня базы клуба!'
-          redirect_to @club_base
-        end
-        if team.budget-cost<0
-          flash[:danger]='На вашем счету недостаточно средств для улучшения базы клуба!'
-          redirect_to @club_base
-        else
-          team.budget-=cost
-          team.save!
-          @club_base.update(level:lvl,experience_up:exp,capacity:cap)
-          redirect_to @club_base, notice: 'Уровень базы клуба успешно повышен.'
-        end
-      end
-    elsif !params[:training_fields].blank? && params[:training_fields]!=""# && params[:training_fields].to_i != old_tr
-      tlvl=params[:training_fields].to_i
-      if tlvl!=old_tr+1
-        flash[:danger]='Неправильный параметр уровня базы клуба!'
-        redirect_to @club_base
-      elsif tlvl>5
-        flash[:danger]='Максимальное количество тренировочных полей достигнуто!'
-        redirect_to @club_base
-      else
-        if old_tr==1
-          cost,k=250000,1.2
-        elsif old_tr==2
-          cost,k=750000,1.5
-        elsif old_tr==3
-          cost,k=1500000,1.75
-        elsif old_tr==4
-          cost,k=3000000,2.0
-        else
-          flash[:danger]='Неправильное значение уровня базы клуба!'
-          redirect_to @club_base
-        end
-        if team.budget-cost<0
-          flash[:danger]='На вашем счету недостаточно средств для улучшения уровня базы клуба!'
-          redirect_to @club_base
-        else
-          lev=@club_base.level
-          if lev==1
-            exp=0.1
-          elsif lev==2
-            exp=0.2
-          elsif lev==3
-            exp=0.4
-          elsif lev==4
-            exp=0.75
-          elsif lev==5
-            exp=1.0
-          end
-          team.budget-=cost
-          team.save!
-          @club_base.update!(training_fields:tlvl,experience_up:(exp*k).round(1))
-          redirect_to @club_base, notice: 'Уровень базы клуба успешно повышен.'
-        end
-      end
-    else
+    # todo изменение названия базы
+  end
+
+  def level_up
+    team = @club_base.team
+    # увеличение уровня базы клуба
+    if @club_base.level == 5
+      flash[:danger] = 'База клуба имеет максимальный уровень!'
       redirect_to @club_base
+    else
+      values = ClubBase::LEVELS[@club_base.level]
+      if team.budget - values[0] < 0 # цена больше бюджета
+        flash[:danger] = 'На вашем счету недостаточно средств для улучшения базы клуба!'
+        redirect_to @club_base
+      else
+        ActiveRecord::Base.transaction do
+          team.budget -= values[0]
+          team.save!
+          @club_base.level += 1
+          @club_base.experience_up += values[1]
+          @club_base.capacity = values[2]
+          @club_base.save!
+        end
+        redirect_to @club_base, notice: 'Уровень базы клуба успешно повышен.'
+      end 
+    end
+  end
+
+  def training_fields_up
+    team = @club_base.team
+    # увеличение к-во тренировочных полей
+    if @club_base.training_fields == 5
+      flash[:danger] = 'Максимальное количество тренировочных полей достигнуто!'
+      redirect_to @club_base
+    else
+      values = ClubBase::TRAINING_FIELDS[@club_base.training_fields]
+      if team.budget - values[0] < 0 # цена больше бюджета
+        flash[:danger] = 'На вашем счету недостаточно средств для постройик нового тренировочного поля!'
+        redirect_to @club_base
+      else
+        ActiveRecord::Base.transaction do
+          team.budget -= values[0]
+          team.save!
+          @club_base.training_fields += 1
+          @club_base.experience_up += values[1]
+          @club_base.save!
+        end
+        redirect_to @club_base, notice: 'Построено новое тренировочное поле.'
+      end
     end
   end
 

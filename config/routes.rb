@@ -23,7 +23,12 @@ Rails.application.routes.draw do
 
   resources :countries
 
-  resources :club_bases
+  resources :club_bases, except: [:index] do
+    member do
+      patch 'level_up'
+      patch 'training_fields_up'
+    end
+  end
 
   resources :sponsors
 

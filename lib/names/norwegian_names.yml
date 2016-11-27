@@ -1867,7 +1867,6 @@
 - name: Isleiv
 - name: Ismael
 - name: Isolv
-- name: Israel
 - name: Isrød
 - name: Isse
 - name: Istvan
@@ -1875,7 +1874,6 @@
 - name: Ivald
 - name: Ivalde
 - name: Ivan
-- name: Iwan
 - name: Ivar
 - name: Iver
 - name: Ivert
@@ -1886,7 +1884,6 @@
 - name: Jack
 - name: Jackie
 - name: Jackson
-- name: Jacky
 - name: Jacob
 - name: Jacobus
 - name: Jacques
@@ -2157,7 +2154,7 @@
 - name: Karentius
 - name: Karenus
 - name: Karesius
-- name: Kari 1
+- name: Kari
 - name: Karinus
 - name: Karl
 - name: Karle
@@ -2188,7 +2185,7 @@
 - name: Kassander
 - name: Kastor
 - name: Katarinus
-- name: Kato 1
+- name: Kato
 - name: Kator
 - name: Katrinius
 - name: Katrinus
@@ -2357,7 +2354,7 @@
 - name: Karentius
 - name: Karenus
 - name: Karesius
-- name: Kari 1
+- name: Kari
 - name: Karinus
 - name: Karl
 - name: Karle
@@ -2388,7 +2385,7 @@
 - name: Kassander
 - name: Kastor
 - name: Katarinus
-- name: Kato 1
+- name: Kato
 - name: Kator
 - name: Katrinius
 - name: Katrinus
@@ -3081,15 +3078,12 @@
 - name: Pauli
 - name: Paulin
 - name: Paulmar
-- name: Paulo 1
 - name: Paulov
 - name: Paulus
 - name: Paw
 - name: Pavel
-- name: Pawel
 - name: Pe
 - name: Peder
-- name: Pedro
 - name: Peer
 - name: Peik
 - name: Pekka
@@ -3363,7 +3357,7 @@
 - name: Salvig
 - name: Sam
 - name: Sami
-- name: Sammi 1
+- name: Sammi
 - name: Sammy
 - name: Samson
 - name: Samuel
@@ -3417,7 +3411,7 @@
 - name: Selmer
 - name: Sem
 - name: Seming
-- name: Semmi 1
+- name: Semmi
 - name: Semming
 - name: Semund
 - name: Seppo
@@ -4017,7 +4011,7 @@
 - name: Unnulv
 - name: Unnvald
 - name: Unnvar
-- name: Uno 1
+- name: Uno
 - name: Unvald
 - name: Urban
 - name: Urbanus
