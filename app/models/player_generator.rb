@@ -92,4 +92,12 @@ class PlayerGenerator
       rand(25..74)
     end
   end
+
+  def self.rand_number(presence_numbers)
+    num = rand(100) + 1
+    while presence_numbers.include?(num)
+      num = rand(100) + 1
+    end
+    num
+  end
 end

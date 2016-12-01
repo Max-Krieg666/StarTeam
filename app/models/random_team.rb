@@ -1,6 +1,7 @@
 class RandomTeam
-  attr_reader :team, :main_country_id
+  attr_reader :team, :main_country_id, :numbers
   # класс для рандомизации команды
+
   SCHEMAS = [
     '4-4-2>1', '4-4-2>2', '4-4-2>3', '4-4-2>4',
     '4-3-3>1', '4-3-3>2', '4-3-3>3',
@@ -34,6 +35,7 @@ class RandomTeam
   def initialize(team)
     @team = team
   	@main_country_id = team.country_id
+    @numbers = []
   end
 
   def generate
@@ -77,11 +79,12 @@ class RandomTeam
       pl.talent = PlayerGenerator.rand_talent
       pl.age = PlayerGenerator.rand_age(pl.talent)
       pl.skill_level = PlayerGenerator.rand_skill_level(pl.talent)
-      pl.price = (pl.talent * pl.skill_level * 10000 / pl.age).round(3)
+      pl.number = PlayerGenerator.rand_number(@numbers)
+      @numbers << pl.number
       pl.save!
       pl
-      #TODO pl.number
       #TODO pl.captain
+      #TODO pl.basic
     rescue ActiveRecord::RecordInvalid
       pl.name = Name.new(country_id).rand_name
       pl.save!

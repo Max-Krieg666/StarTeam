@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # 3й TODO добавить модуль Recoverable собственноручный
   # 4й TODO добавить модуль lockable
   # 5й TODO добавить модуль OMNIAUTH
-  before_action :admin_permission, except: [:new, :create, :update, :show, :registration]
+  before_action :admin_permission, only: [:index, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,15 +12,17 @@ class UsersController < ApplicationController
   end
 
   def show
+    @country = @user.country
   end
 
   def registration
+    redirect_to @current_user if @current_user
     @user = User.new
   end
 
   def confirmation
-    u = @user.where(confirmation_token: confirmation_params[:confirmation_token]).first
-    if u && u.confirmed_at.present?
+    u = User.where(confirmation_token: confirmation_params[:confirmation_token]).first
+    if u && !u.confirmed_at.present?
       u.update!(confirmed_at: DateTime.current)
       redirect_to u, notice: 'Вы успешно подтвердили свой аккаунт!'
     else
@@ -32,29 +34,30 @@ class UsersController < ApplicationController
   end
 
   def create
-    # TODO ActiveRecord::Base.transaction ???
-    @user = User.new(user_params)
-    @user.confirmation_sent_at = DateTime.current
-    @user.confirmation_token = SecureRandom.uuid
-    if @user.save!
-      @team = Team.new(team_params)
-      @team.user_id = @user.id
-      # @team.sponsor = Sponsor.create_rand
-      if @team.save!
-        RandomTeam.new(@team).generate
-        if @current_user
-          redirect_to @user, notice: 'Пользователь создан.'
-        else
-          # ОТПРАВКА СООБЩЕНИЯ
-          # using Postfix for dev
-          # todo JOB
-          ConfirmationMailer.send_confirmation(@user, @team).deliver_later
-          @user.force_authenticate!(self)
-          redirect_to @user, notice: 'Регистрация завершена.'
+    ActiveRecord::Base.transaction do
+      @user = User.new(user_params)
+      @user.confirmation_sent_at = DateTime.current
+      @user.confirmation_token = SecureRandom.uuid
+      if @user.save!
+        @team = Team.new(team_params)
+        @team.user_id = @user.id
+        # @team.sponsor = Sponsor.create_rand
+        if @team.save!
+          RandomTeam.new(@team).generate
+          if @current_user
+            redirect_to @user, notice: 'Пользователь создан.'
+          else
+            # ОТПРАВКА СООБЩЕНИЯ
+            # using Postfix for dev
+            # todo JOB
+            ConfirmationMailer.send_confirmation(@user, @team).deliver_later
+            @user.force_authenticate!(self)
+            redirect_to @user, notice: 'Регистрация завершена.'
+          end
         end
+      else
+        render :registration
       end
-    else
-      render :registration
     end
   end
 

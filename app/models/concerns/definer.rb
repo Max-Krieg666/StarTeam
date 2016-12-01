@@ -1,19 +1,6 @@
 module Definer
   extend ActiveSupport::Concern
 
-  @@posit = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf)
-
-  def state_in_human(state)
-    case state
-      when 0
-        'свободен'
-      when 1
-        'в команде'
-      else #2
-        'завершил карьеру'
-    end
-  end
-
   def level_define
     if talent == 9
       if skill_level > 100

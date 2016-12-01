@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'registration'
-      patch 'confirmation'
+      get 'confirmation'
     end
   end
 

@@ -19,7 +19,7 @@ class ClubBase < ActiveRecord::Base
   validates :level, presence: true, inclusion: { in: 1..5 }
   validates :capacity, presence: true, inclusion: { in: [20, 22, 24, 26, 30] }
   validates :training_fields, presence: true, inclusion: { in: 1..5 }
-  validates :experience_up, presence: true, inclusion: { in: 0.1..2.0 }
+  validates :experience_up, presence: true, inclusion: { in: 0.0..2.0 }
 end
 # level 1 --> capacity 20 \ COST: FREE \ experience_up 0.0 [default]
 # level 2 --> capacity 23 \ COST: $50 000 \ experience_up 0.2

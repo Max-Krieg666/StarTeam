@@ -32,145 +32,145 @@
     .fa.fa-users
     = @team.fans
   %br
-  -num = @players.size
-  -if num != 0
-    -av_skills,av_tal,av_age,av_price=0,0,0,0
-    %table.table.table-bordered.table-hover.table-condensed
-      %thead
-        %tr{class: 'success'}
-          %th.text-center
-            №
-          %th.text-center
-            .fa.fa-male
-            Игрок
-          %th.text-center
-            .fa.fa-flag
-            Национальность
-          %th.text-center
-            .fa.fa-bookmark
-            Позиция
-          %th.text-center
-            .fa.fa-level-up
-            Талант
-          %th.text-center
-            .fa.fa-history
-            Возраст
-          %th.text-center
-            .fa.fa-line-chart
-            Мастерство
-          %th.text-center
-            .fa.fa-money
-            Цена
-          %th.text-center{title: "Специальные умения"}
-            .fa.fa-flash
-          %th.text-center{title: "Игры"}
-            .fa.fa-exclamation-triangle
-          %th.text-center{title: "Пропущенные голы"}
-            .fa.fa-minus
-            .fa.fa-futbol-o
-          %th.text-center{title: "Забитые голы"}
-            .fa.fa-plus
-            .fa.fa-futbol-o
-          %th.text-center{title: "Голевые пасы"}
-            .fa.fa-share
-            .fa.fa-futbol-o
-          %th.text-center{title: "Автоголы"}
-            .fa.fa-frown-o
-            .fa.fa-futbol-o
-          %th.text-center{style: "color: #FF0",title: "Жёлтые карточки"}
-            .fa.fa-square
-          %th.text-center{style: "color: #D00",title: "Красные карточки"}
-            .fa.fa-square
-          %th.text-center{title: "Основной состав/запас"} О/З
-          -if @current_user == @team.user
-            %th
-            %th
-          -else
-            %th
+  -av_skills,av_tal,av_age,av_price=0,0,0,0
+  %table.table.table-bordered.table-hover.table-condensed
+    %thead
+      %tr{class: 'success'}
+        %th.text-center
+          №
+        %th.text-center
+          .fa.fa-male
+          Игрок
+        %th.text-center
+          .fa.fa-flag
+          Национальность
+        %th.text-center
+          .fa.fa-bookmark
+          Позиция
+        %th.text-center
+          .fa.fa-level-up
+          Талант
+        %th.text-center
+          .fa.fa-history
+          Возраст
+        %th.text-center
+          .fa.fa-line-chart
+          Мастерство
+        %th.text-center
+          .fa.fa-money
+          Цена
+        %th.text-center{title: "Специальные умения"}
+          .fa.fa-flash
+        %th.text-center{title: "Игры"}
+          .fa.fa-exclamation-triangle
+        %th.text-center{title: "Пропущенные голы"}
+          .fa.fa-minus
+          .fa.fa-futbol-o
+        %th.text-center{title: "Забитые голы"}
+          .fa.fa-plus
+          .fa.fa-futbol-o
+        %th.text-center{title: "Голевые пасы"}
+          .fa.fa-share
+          .fa.fa-futbol-o
+        %th.text-center{title: "Автоголы"}
+          .fa.fa-frown-o
+          .fa.fa-futbol-o
+        %th.text-center{style: "color: #FF0",title: "Жёлтые карточки"}
+          .fa.fa-square
+        %th.text-center{style: "color: #D00",title: "Красные карточки"}
+          .fa.fa-square
+        %th.text-center{title: "Основной состав/запас"} О/З
+        -if @current_user == @team.user
           %th
-
-      %tbody
-        - @players.each do |pl|
-          -#todo вынести подсчет в модельку)
-          -av_skills+=pl.skill_level
-          -av_age+=pl.age
-          -av_price+=pl.price
-          -av_tal+=pl.talent
-          -c=pl.country
-          -if pl.basic
-            -styl="#CEF6CE"
-          -else
-            -styl="#F6D9D9"
-          %tr.text-center{style:"background: #{styl}"}
+        %th
+        %th
+    %tbody
+      - @players.each do |pl|
+        -#todo вынести подсчет в модельку)
+        -av_skills+=pl.skill_level
+        -av_age+=pl.age
+        -av_price+=pl.price
+        -av_tal+=pl.talent
+        -c=pl.country
+        -if pl.basic
+          -styl="#CEF6CE"
+        -else
+          -styl="#F6D9D9"
+        %tr.text-center{style:"background: #{styl}"}
+          %td
+            %strong= pl.number
+          %td
+            = pl.name
+            = fa_icon 'copyright', title: 'Капитан' if pl.captain
+          %td= image_tag c.flag.url, title: c.title
+          %td{title: pl.position1}
+            = pl.full_position_name
+          %td= pl.talent
+          %td= pl.age
+          %td= pl.skill_level
+          %td= pl.price_to_currency
+          %td
+            -# todo вынести в модельку!
+            -str=""
+            -if pl.special_skill1
+              -str=str+pl.special_skill1+"-#{pl.num_sp_s1}"
+              -str=str+" / "+pl.special_skill2+"-#{pl.num_sp_s2}" if pl.special_skill2
+              -str=str+" / "+pl.special_skill3+"-#{pl.num_sp_s3}" if pl.special_skill3
+            #{str}
+          %td #{pl.season_games}/#{pl.all_games}
+          %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
+          %td #{pl.season_goals}/#{pl.all_goals}
+          %td #{pl.season_passes}/#{pl.all_passes}
+          %td #{pl.season_autogoals}/#{pl.all_autogoals}
+          %td #{pl.season_yellow_cards}/#{pl.all_yellow_cards}
+          %td #{pl.season_red_cards}/#{pl.all_red_cards}
+          %td
+            -if pl.basic
+              .li{style: "color: #00F", title: "Основной состав"} О
+            -else
+              .li{style: "color: #D00", title: "Запас"} З
+          -if @current_user == @team.user
             %td
-              %strong= pl.number
+              -# TODO изменить путь!!!
+              -#= link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
+              -#= fa_icon 'wrench'
             %td
-              = pl.name
-              = fa_icon 'copyright', title: 'Капитан' if pl.captain
-            %td= image_tag c.flag.url, title: c.title
-            %td{title: pl.position1}
-              = pl.full_position_name
-            %td= pl.talent
-            %td= pl.age
-            %td= pl.skill_level
-            %td= pl.price_to_currency
-            %td
-              -# todo вынести в модельку!
-              -str=""
-              -if pl.special_skill1
-                -str=str+pl.special_skill1+"-#{pl.num_sp_s1}"
-                -str=str+" / "+pl.special_skill2+"-#{pl.num_sp_s2}" if pl.special_skill2
-                -str=str+" / "+pl.special_skill3+"-#{pl.num_sp_s3}" if pl.special_skill3
-              #{str}
-            %td #{pl.season_games}/#{pl.all_games}
-            %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
-            %td #{pl.season_goals}/#{pl.all_goals}
-            %td #{pl.season_passes}/#{pl.all_passes}
-            %td #{pl.season_autogoals}/#{pl.all_autogoals}
-            %td #{pl.season_yellow_cards}/#{pl.all_yellow_cards}
-            %td #{pl.season_red_cards}/#{pl.all_red_cards}
-            %td
-              -if pl.basic
-                .li{style: "color: #00F", title: "Основной состав"} О
-              -else
-                .li{style: "color: #D00", title: "Запас"} З
-            -if @current_user == @team.user
-              %td
-                -# TODO изменить путь!!!
-                -#= link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-                -#= fa_icon 'wrench'
-              %td
-                = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-link' do
-                  = fa_icon 'usd'
-                  = fa_icon 'sign-out'
-                = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
-                  .glyphicon.glyphicon-transfer
-            %td
-              = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
-                =fa_icon 'street-view'
-    %table.table.table-bordered
-      %thead
-        %tr{class: 'info'}
-          %th.text-center
-            Среднее
-            %br
-            по команде:
-          %th.text-center
-            Талант
-            .text-danger
-              =(av_tal/num.to_f).round(1)
-          %th.text-center
-            Возраст
-            .text-danger
-              =(av_age/num.to_f).round(2)
-          %th.text-center
-            Мастерство
-            .text-danger
-              =(av_skills/num.to_f).round(2)
-          %th.text-center
-            Цена
-            .text-danger
-              =number_to_currency(av_price/num.to_f, locale: :en, precision: 3)
+              = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-link' do
+                = fa_icon 'usd'
+                = fa_icon 'sign-out'
+              = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
+                .glyphicon.glyphicon-transfer
+          %td
+            = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
+              = fa_icon 'street-view'
+  -num = @players.size
+  %table.table.table-bordered
+    %thead
+      %tr{class: 'info'}
+        %th.text-center
+          Всего игроков:
+          .text-danger
+            = num
+        %th.text-center
+          Среднее
+          %br
+          по команде:
+        %th.text-center
+          Талант
+          .text-danger
+            =(av_tal/num.to_f).round(1)
+        %th.text-center
+          Возраст
+          .text-danger
+            =(av_age/num.to_f).round(2)
+        %th.text-center
+          Мастерство
+          .text-danger
+            =(av_skills/num.to_f).round(2)
+        %th.text-center
+          Цена
+          .text-danger
+            =number_to_currency(av_price/num.to_f, locale: :en, precision: 3)
   -if @current_user == @team.user || @current_user.moderator?
     = link_to edit_team_path(@team), class: 'btn btn-danger' do
       =fa_icon "edit"

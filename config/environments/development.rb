@@ -13,11 +13,20 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # mailer
-  config.action_mailer.default_url_options = { host: '127.0.0.1' }
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.raise_delivery_errors = true
+  # Don't care if the mailer can't send.
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: 'smtp.yandex.ru',
+      port: 587,
+      domain: 'localhost',
+      user_name: 'no-reply.starteam@yandex.ru',
+      password: 'zxcvasdf',
+      authentication: :plain
+      #openssl_verify_mode: 'SSL'
+  }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

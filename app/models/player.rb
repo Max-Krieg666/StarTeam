@@ -48,7 +48,7 @@ class Player < ActiveRecord::Base
   end
 
   def set_price
-    self.price ||= (skill_level * talent * 10000 / age.to_f).round(3) if price.blank?
+    self.price ||= (skill_level * talent * 10000 / age.to_f).round(3)
   end
 
   def quality

@@ -3,7 +3,7 @@
 -if @user.team
   %p
     %b Команда:
-    = link_to @user.team.title,@user.team, style: "color: #00F"
+    = link_to @user.team.title, @user.team, style: "color: #00F"
 %p
   %b Аватар:
 %p
@@ -11,15 +11,11 @@
   -if @user.avatar.blank?
     .text-danger.li Аватар не загружен!
   -else
-    =image_tag @user.avatar.url(:medium)
+    = image_tag @user.avatar.url(:medium)
 %p
   %b Страна:
-  -if @user.country_id
-    -c=Country.find(@user.country_id)
-    =link_to c.title, c, class: 'btn btn-link', style: "color: #00688B"
-    =image_tag c.flag.url
-  -else
-    .text-danger.li Не выбрана!
+  = link_to @country.title, @country, class: 'btn btn-link', style: "color: #00688B"
+  = image_tag @country.flag.url
 %p
   %b Пол:
   = @user.sex
@@ -32,21 +28,27 @@
 %p
   %b Адрес эл. почты:
   = @user.email
--if @current_user==@user || @current_user.moderator?
+%p
+  %b Статус аккаунта:
+  -if @user.confirmed_at.present?
+    .text-success.li Подтверждён
+  -else
+    .text-danger.li Не подтверждён
+-if @current_user == @user || @current_user.moderator?
   %p
     %b Роль:
     = @user.role_name
   = link_to edit_user_path(@user), class: 'btn btn-danger' do
-    =fa_icon "edit"
+    = fa_icon "edit"
     Редактировать
 = link_to users_path, class: 'btn btn-info' do
-  =fa_icon "users"
+  = fa_icon "users"
   Все пользователи
 -if @user.team
   = link_to @user.team, class: 'btn btn-primary' do
-    =fa_icon "chevron-circle-right"
+    = fa_icon "chevron-circle-right"
     К команде << #{@user.team.title} >>
 -else
   = link_to @user, class: 'btn btn-warning disabled' do
-    =fa_icon "chevron-circle-right"
+    = fa_icon "chevron-circle-right"
     Команда не создана!

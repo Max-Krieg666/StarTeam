@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.integer  "level",           default: 1,   null: false
     t.integer  "capacity",        default: 20,  null: false
     t.integer  "training_fields", default: 1,   null: false
-    t.float    "experience_up",   default: 0.1, null: false
+    t.float    "experience_up",   default: 0.0, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -100,12 +100,12 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   end
 
   create_table "stadia", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "title",      limit: 100, null: false
-    t.integer  "capacity",               null: false
-    t.integer  "level",                  null: false
+    t.string   "title",      limit: 100,               null: false
+    t.integer  "capacity",               default: 200, null: false
+    t.integer  "level",                  default: 1,   null: false
     t.uuid     "team_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "teams", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
