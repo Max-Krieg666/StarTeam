@@ -35,7 +35,7 @@ class PlayersController < ApplicationController
     # если игрок нашелся по id и свободен
     if !@current_user_team
       flash[:danger] = 'Прежде, чем покупать игроков, создайте команду!'
-      redirect_to new_team_path
+      redirect_to @current_user
     elsif @player.state != 'free_agent'
       flash[:danger] = 'Игрок недоступен для покупки!'
       redirect_to players_path
@@ -52,19 +52,18 @@ class PlayersController < ApplicationController
       ActiveRecord::Base.transaction do
         @player.state = 1
         @player.team_id = @current_user_team.id
-        # todo выынести проверку на капитана в модель
-        # captain = @current_user_team.players.order('price desc').limit(1)
-        # if @player.price > captain.price
-        #   @player.captain = true
-        #   captain.update!(captain: false)
-        # end
+        @player.number = PlayerGenerator.rand_number(@current_user_team.players.map(&:number))
+        captain = @current_user_team.captain
+        if @player.price > captain.price
+          @player.captain = true
+          captain.update!(captain: false)
+        end
         if @player.save
           @current_user_team.budget -= @player.price
           @current_user_team.save!
-
           redirect_to @player, notice: 'Игрок куплен.'
         else
-          render :new
+          render :index
         end
       end
     end

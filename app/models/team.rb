@@ -10,4 +10,8 @@ class Team < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
   validates :budget, presence: true
   validates :fans, presence: true
+
+  def captain
+    players.order('price desc').limit(1).first
+  end
 end

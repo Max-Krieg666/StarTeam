@@ -9,19 +9,18 @@
   %p
     %b Спонсор:
     -sp = @team.sponsor
-    -#=link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
+    = link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
     %p
       %b Стадион:
       -if @stadium
         -stc = @stadium.capacity
-        =link_to "#{@stadium.title} (#{stc} #{Russian.p(stc,'место','места','мест')})", @stadium, style:"color: #F00", class: 'btn btn-link'
+        = link_to "#{@stadium.title} (#{stc} #{Russian.p(stc,'место','места','мест')})", @stadium, style: "color: #F00", class: 'btn btn-link'
       -else
         Не создан
   %p
     %b База клуба:
     -if @club_base
-      -cb = @club_base
-      =link_to cb.title+" (#{cb.level})", cb, style: "color: #458B74", class: 'btn btn-link'
+      = link_to @club_base.title + " (#{@club_base.level})", @club_base, style: "color: #458B74", class: 'btn btn-link'
     -else
       Не создана
   %p
@@ -29,7 +28,7 @@
     = number_to_currency(@team.budget, precision: 3, locale: :en)
   %p
     %b Фаны:
-    .fa.fa-users
+    %span.fa.fa-users
     = @team.fans
   %br
   -av_skills,av_tal,av_age,av_price=0,0,0,0

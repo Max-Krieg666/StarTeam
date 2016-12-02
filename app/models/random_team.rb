@@ -48,14 +48,14 @@ class RandomTeam
       count.times do
         # рандомный выбор по странам игроков в порядке - по позициям
         chance = rand(100)
-        if chance > 77 && players_count_foreigners < 5 || players_count_main == 13
+        if chance > 76 && players_count_foreigners < 5 || players_count_main == 13
           k = rand(252) + 1
           while k == @main_country_id
             k = rand(252) + 1
           end
           pl_c_id = k
           players_count_foreigners += 1
-        elsif chance <= 77 && players_count_main < 13 || players_count_foreigners == 5
+        elsif chance <= 76 && players_count_main < 13 || players_count_foreigners == 5
           pl_c_id = @main_country_id
           players_count_main += 1
         end
@@ -83,7 +83,6 @@ class RandomTeam
       @numbers << pl.number
       pl.save!
       pl
-      #TODO pl.captain
       #TODO pl.basic
     rescue ActiveRecord::RecordInvalid
       pl.name = Name.new(country_id).rand_name

@@ -41,14 +41,14 @@ class UsersController < ApplicationController
       if @user.save!
         @team = Team.new(team_params)
         @team.user_id = @user.id
-        # @team.sponsor = Sponsor.create_rand
         if @team.save!
+          Sponsor.create_rand(@team.id)
           RandomTeam.new(@team).generate
+          @team.captain.update(captain: true)
           if @current_user
             redirect_to @user, notice: 'Пользователь создан.'
           else
             # ОТПРАВКА СООБЩЕНИЯ
-            # using Postfix for dev
             # todo JOB
             ConfirmationMailer.send_confirmation(@user, @team).deliver_later
             @user.force_authenticate!(self)
