@@ -1,26 +1,19 @@
--if @sponsor.team_id
-  -team=Team.find(@sponsor.team_id)
--else
-  -team=nil
 .text-center
   .page-header
     %h1= @sponsor.title
-    -if team
-      =link_to "[#{team.title}]", team, style: "color: #00F"
-    -else
-      .text-danger [Спонсор свободен!]
+    = link_to "[#{@sponsor.team.title}]", @sponsor.team, style: "color: #00F"
   %p
     %b Специализация:
-    = @sponsor.specialization
+    = t("specialization.#{@sponsor.specialization}")
   %p
     %b Коэффициент лояльности:
     = @sponsor.loyalty_factor
-    -if @sponsor.loyalty_factor>5.0
-      =fa_icon "smile-o lg", style: "color: #00A400"
-    -elsif @sponsor.loyalty_factor>0.5
-      =fa_icon "meh-o lg", style: "color: #CDAD00"
+    -if @sponsor.loyalty_factor > 5.0
+      = fa_icon "smile-o lg", style: "color: #00A400"
+    -elsif @sponsor.loyalty_factor > 0.5
+      = fa_icon "meh-o lg", style: "color: #CDAD00"
     -else
-      =fa_icon "frown-o lg", style: "color: #B22222"
+      = fa_icon "frown-o lg", style: "color: #B22222"
   %p
     %b Стоимость полного пакета акций:
     = number_to_currency(@sponsor.cost_of_full_stake, locale: :en)
@@ -35,14 +28,10 @@
     = number_to_currency(@sponsor.lost_prize, locale: :en)
 
   .btn-group
-    = link_to sponsors_path, class: 'btn btn-warning' do
-      =fa_icon "reply"
-      Все спонсоры
-    -if team
-      = link_to team, class: 'btn btn-info' do
-        =fa_icon "users"
-        К команде << #{team.title} >>
+    = link_to @sponsor.team, class: 'btn btn-info' do
+      = fa_icon "users"
+      К команде << #{@sponsor.team.title} >>
     -if @current_user.moderator?
       = link_to edit_sponsor_path(@sponsor), class: 'btn btn-danger' do
-        =fa_icon "edit"
+        = fa_icon "edit"
         Редактировать

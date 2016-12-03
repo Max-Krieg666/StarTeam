@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sponsors
+  resources :sponsors, only: [:show, :edit, :update]
 
   resources :teams
 

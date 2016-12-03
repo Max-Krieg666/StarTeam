@@ -11,15 +11,14 @@
     .container
       -if @current_user && @current_user.user?
         -if @current_user_team
-          -pls_size=Player.where(team_id: @current_user_team.id, state: 1).to_a.size
           -if !@current_user_team.club_base
             .alert.alert-warning.fade.in
-              %button{class:'close',"aria-hidden"=>'true',"data-dismiss"=>'alert',"type"=>'button'}x
+              %button{class: 'close', "aria-hidden" => 'true', "data-dismiss" => 'alert', "type" => 'button'}x
               %strong Вы не построили базу клуба!
               -#=link_to 'Построить базу клуба сейчас',new_club_basis_path(team_id:t.id), class:'btn btn-danger', type:'button'
           -if !@current_user_team.stadium
             .alert.alert-warning.fade.in
-              %button{class:'close',"aria-hidden"=>'true',"data-dismiss"=>'alert',"type"=>'button'}x
+              %button{class: 'close', "aria-hidden" => 'true', "data-dismiss" => 'alert', "type" => 'button'}x
               %strong Вы не построили стадион!
               -#=link_to 'Построить стадион сейчас',new_stadium_path(team_id:t.id), class:'btn btn-danger', type:'button'
       =render 'flash_messages'

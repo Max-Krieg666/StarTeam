@@ -14,4 +14,8 @@ class Team < ActiveRecord::Base
   def captain
     players.order('price desc').limit(1).first
   end
+
+  def squad_size
+    players.size
+  end
 end

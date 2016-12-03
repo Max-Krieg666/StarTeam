@@ -1,7 +1,7 @@
 class ClubBasesController < ApplicationController
   before_action :set_club_base, except: [:new, :create]
   before_action :set_team, only: [:new]
-  before_action :admin_permission, only: :destroy
+  # before_action :admin_permission, only: :destroy
 
   def show
     @team = @club_base.team

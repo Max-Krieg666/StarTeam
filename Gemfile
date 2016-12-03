@@ -27,16 +27,9 @@ gem 'jquery-tablesorter'
 gem 'therubyracer', platforms: :ruby
 gem 'execjs'
 
-# russify
-gem 'russian'
-gem 'faker'
-
-# authentification
-# gem 'devise' -> fuck this!
-# gem 'devise-i18n'
-
 # internationalize
 gem 'rails-i18n'
+gem 'russian'
 
 # json api
 gem 'jbuilder', '~> 2.0'

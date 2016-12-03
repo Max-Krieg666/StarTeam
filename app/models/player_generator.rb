@@ -25,7 +25,7 @@ class PlayerGenerator
   end
 
   def self.rand_talent
-    case rand(700) + 1
+    case SecureRandom.random_number(700)
     when 0..88
       1
     when 89..168
@@ -36,11 +36,11 @@ class PlayerGenerator
       4
     when 348..479
       5
-    when 480..545
+    when 480..548
       6
-    when 546..611
+    when 549..612
       7
-    when 612..666
+    when 613..666
       8
     else
       9
@@ -48,7 +48,7 @@ class PlayerGenerator
   end
 
   def self.rand_age(talent)
-    case rand(1000) + 1
+    case SecureRandom.random_number(1000)
     when 0..88
       talent >= 7 ? 25 : (talent < 3 ? 31 : 29)
     when 89..168
@@ -77,7 +77,7 @@ class PlayerGenerator
   end
 
   def self.rand_skill_level(talent)
-    case rand(400) + 1
+    case SecureRandom.random_number(400)
     when 0..88
       talent > 5 ? rand(45..63) : rand(25..44)
     when 89..168

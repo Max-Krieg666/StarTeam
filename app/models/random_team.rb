@@ -39,19 +39,18 @@ class RandomTeam
   end
 
   def generate
-    schema = SCHEMAS[rand(19)]
-    pl_positions = (schema.length == 10 ? (0..9).to_a : [0, 1, 2, 3, 4, 5, 6, 8])
+    schema = SCHEMAS[SecureRandom.random_number(19)]
     players_count_main = 0 # д.б. 13
     players_count_foreigners = 0 # д.б. 5
     footballers_positions = FOOTBALLERS_POSITIONS[schema]
     footballers_positions.each do |pos, count|
       count.times do
         # рандомный выбор по странам игроков в порядке - по позициям
-        chance = rand(100)
+        chance = SecureRandom.random_number(100)
         if chance > 76 && players_count_foreigners < 5 || players_count_main == 13
-          k = rand(252) + 1
+          k = SecureRandom.random_number(252) + 1
           while k == @main_country_id
-            k = rand(252) + 1
+            k = SecureRandom.random_number(252) + 1
           end
           pl_c_id = k
           players_count_foreigners += 1
@@ -59,7 +58,7 @@ class RandomTeam
           pl_c_id = @main_country_id
           players_count_main += 1
         end
-        random_player(pos, pl_c_id, @team.id)
+        random_player(pos, pl_c_id)
       end
     end
     return
@@ -67,21 +66,21 @@ class RandomTeam
 
   private
 
-  def random_player(position, country_id, team_id)
+  def random_player(position = nil, country_id)
     begin
       pl = Player.new
-      pl.team_id = team_id
+      pl.team_id = @team.id
       pl.country_id = country_id
       pl.name = Name.new(country_id).rand_name
-      pl.position1 = position || rand(PlayerGenerator::POS.size)
+      pl.position1 = position || SecureRandom.random_number(PlayerGenerator::POS.size)
       pl.state = 1
       pl.basic = false
       pl.talent = PlayerGenerator.rand_talent
       pl.age = PlayerGenerator.rand_age(pl.talent)
       pl.skill_level = PlayerGenerator.rand_skill_level(pl.talent)
       pl.number = PlayerGenerator.rand_number(@numbers)
-      @numbers << pl.number
       pl.save!
+      @numbers << pl.number
       pl
       #TODO pl.basic
     rescue ActiveRecord::RecordInvalid

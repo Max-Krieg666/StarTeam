@@ -9,7 +9,7 @@ class Name
     files = define_file
     file1 = YAML.load_file(Rails.root.join('lib', 'names', files[0]))
     file2 = YAML.load_file(Rails.root.join('lib', 'lastnames', files[1]))
-    name = file1[rand(file1.size)]['name'] + ' ' + file2[rand(file2.size)]['lastname']
+    name = file1[SecureRandom.random_number(file1.size)]['name'] + ' ' + file2[SecureRandom.random_number(file2.size)]['lastname']
     name
   end
 
@@ -300,8 +300,8 @@ class Name
     when 110
       # Люксембург
       word = rand(100) < 12 ? 'german' : 'french'
-      file_names = 'lithuanian'
-      file_lastnames = 'lithuanian'
+      file_names = word
+      file_lastnames = word
     when 111
       # Маврикий
       file_names = 'mauritius'

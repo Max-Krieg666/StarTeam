@@ -87,16 +87,16 @@ ActiveRecord::Schema.define(version: 20150710140345) do
   add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
 
   create_table "sponsors", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "title",              limit: 30,                                         null: false
-    t.string   "specialization",     limit: 100,                                        null: false
+    t.string   "title",              limit: 30,                                        null: false
+    t.integer  "specialization",                                                       null: false
     t.uuid     "team_id"
-    t.decimal  "loyalty_factor",                 precision: 3,  scale: 2, default: 1.0, null: false
-    t.decimal  "cost_of_full_stake",             precision: 20, scale: 2,               null: false
-    t.decimal  "win_prize",                      precision: 7,  scale: 2,               null: false
-    t.decimal  "draw_prize",                     precision: 7,  scale: 2,               null: false
-    t.decimal  "lost_prize",                     precision: 7,  scale: 2,               null: false
-    t.datetime "created_at",                                                            null: false
-    t.datetime "updated_at",                                                            null: false
+    t.decimal  "loyalty_factor",                precision: 3,  scale: 2, default: 1.0, null: false
+    t.decimal  "cost_of_full_stake",            precision: 20, scale: 2,               null: false
+    t.decimal  "win_prize",                     precision: 7,  scale: 2,               null: false
+    t.decimal  "draw_prize",                    precision: 7,  scale: 2,               null: false
+    t.decimal  "lost_prize",                    precision: 7,  scale: 2,               null: false
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
   end
 
   create_table "stadia", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
