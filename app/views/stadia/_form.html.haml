@@ -1,22 +1,10 @@
 = form_for @stadium do |f|
-  =f.hidden_field :team_id
-  =error_messages_for(@stadium)
+  = error_messages_for(@stadium)
 
   .row
     .col-md-3
       .form-group
         = f.label :title
-        = f.text_field :title, class: "form-control"
-  -if @current_user.moderator?
-    .row
-      .col-md-3
-        .form-group
-          = f.label :capacity
-          = f.number_field :capacity, class: "form-control"
-    .row
-      .col-md-3
-        .form-group
-          = f.label :level
-          = f.number_field :level, class: "form-control"
+        = f.text_field :title, class: 'form-control'
   .actions
-    =f.submit nil, class: "btn btn-primary"
+    = f.submit 'Сохранить', class: 'btn btn-primary'

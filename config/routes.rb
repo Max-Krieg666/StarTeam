@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 
   resources :teams, except: [:new, :create]
 
-  resources :stadia
+  resources :stadia, except: [:index] do
+    member do
+      patch 'level_up'
+      patch 'capacity_up'
+    end
+  end
 
   resources :users do
     collection do

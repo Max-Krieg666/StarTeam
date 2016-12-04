@@ -1,6 +1,5 @@
 class ClubBasesController < ApplicationController
   before_action :set_club_base, except: [:new, :create]
-  before_action :set_team, only: [:new]
   # before_action :admin_permission, only: :destroy
 
   def show
@@ -13,7 +12,6 @@ class ClubBasesController < ApplicationController
   end
 
   def edit
-    # todo изменение названия базы
   end
 
   def level_up
@@ -77,7 +75,7 @@ class ClubBasesController < ApplicationController
 
   def update
     if @club_base.update(club_base_params)
-      redirect_to @club_base, notice: 'База успешно изменена.'
+      redirect_to @club_base, notice: 'Название базы успешно изменено.'
     else
       render :edit
     end
@@ -94,11 +92,7 @@ class ClubBasesController < ApplicationController
     @club_base = ClubBase.find(params[:id])
   end
 
-  def set_team
-    @team = Team.find(params[:team_id])
-  end
-
   def club_base_params
-    params.require(:club_base).permit(:title)#:level, :capacity, :training_fields, :experience_up, :team_id)
+    params.require(:club_base).permit(:title)
   end
 end
