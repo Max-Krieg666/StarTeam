@@ -12,7 +12,7 @@ class Team < ActiveRecord::Base
   validates :fans, presence: true
 
   def captain
-    players.order('price desc').limit(1).first
+    players.order('skill_level desc').first
   end
 
   def squad_size

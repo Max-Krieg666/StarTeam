@@ -54,7 +54,7 @@ class PlayersController < ApplicationController
         @player.team_id = @current_user_team.id
         @player.number = PlayerGenerator.rand_number(@current_user_team.players.map(&:number))
         captain = @current_user_team.captain
-        if @player.price > captain.price
+        if @player.skill_level > captain.skill_level
           @player.captain = true
           captain.update!(captain: false)
         end

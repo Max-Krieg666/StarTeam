@@ -58,8 +58,6 @@
         %th.text-center
           .fa.fa-money
           Цена
-        %th.text-center{title: "Специальные умения"}
-          .fa.fa-flash
         %th.text-center{title: "Игры"}
           .fa.fa-exclamation-triangle
         %th.text-center{title: "Пропущенные голы"}
@@ -102,7 +100,6 @@
           %td= pl.age
           %td= pl.skill_level
           %td= pl.price_to_currency
-          %td= pl.show_special_skills
           %td #{pl.season_games}/#{pl.all_games}
           %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
           %td #{pl.season_goals}/#{pl.all_goals}
@@ -117,9 +114,8 @@
               .li{style: "color: #D00", title: "Запас"} З
           -if @current_user == @team.user
             %td
-              -# TODO изменить путь!!!
-              -#= link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-              -#= fa_icon 'wrench'
+              / = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
+              / = fa_icon 'wrench'
             %td
               = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-link' do
                 = fa_icon 'usd'
@@ -127,7 +123,7 @@
               = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
                 .glyphicon.glyphicon-transfer
           %td
-            = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
+            = link_to pl, class: 'btn btn-link', title: 'Обзор игрока' do
               = fa_icon 'street-view'
   %table.table.table-bordered
     %thead

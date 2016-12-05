@@ -3,8 +3,8 @@
 .page-header
   %h2
     = @player.name
+    = fa_icon "copyright", title: 'Капитан' if @player.captain
     = image_tag c.flag.url, title: c.title
-    = fa_icon 'copyright', title: 'Капитан' if @player.captain
   = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
 .row.text-danger.text-center
   .col-md-4
