@@ -13,7 +13,6 @@
         .fa.fa-male
         = @player.name
         = image_tag c.flag.url, title: c.title
-        -max=5
         .row{style: "color: #FFD700"}
           -quality = @player.quality
           -quality[0].times do
@@ -40,14 +39,7 @@
         = @player.price_to_currency
       .list-group-item{title: "Специальные умения"}
         .fa.fa-flash
-        -str=""
-        -if @player.special_skill1
-          -str=str+@player.special_skill1+"-#{@player.num_sp_s1}"
-          -str=str+" / "+@player.special_skill2+"-#{@player.num_sp_s2}" if @player.special_skill2
-          -str=str+" / "+@player.special_skill3+"-#{@player.num_sp_s3}" if @player.special_skill3
-          #{str}
-        -else
-          Спец. умений нет
+        = @player.show_special_skills
       .list-group-item
         Готовность к игре:
         -if @player.can_play

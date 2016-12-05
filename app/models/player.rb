@@ -15,7 +15,7 @@ class Player < ActiveRecord::Base
   has_many :transfers
   
   #TODO positions на enum
-  POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf)
+  POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf).freeze
 
   enum state: [
     :free_agent,
@@ -52,7 +52,7 @@ class Player < ActiveRecord::Base
   end
 
   def quality
-    ld = self.level_define
+    ld = level_define
     cel = ld / 2
     ost = ld % 2
     quality_l = 5 - cel - ost
@@ -62,5 +62,31 @@ class Player < ActiveRecord::Base
   def price_to_currency
     number_to_currency(price, locale: :en, precision: 3)
   end
-  # TODO добавить метод, определяющий возможность выбора POSITION2
+
+  def show_special_skills
+    return 'Нет спец. умений' if special_skill1.blank?
+    str = special_skill1 + "-#{num_sp_s1}"
+    str += ' / ' + special_skill2 + "-#{num_sp_s2}" if special_skill2
+    str += ' / ' + special_skill3 + "-#{num_sp_s3}" if special_skill3
+    str
+  end
+
+  def choose_position2
+    case position1
+    when 1, 3 # Ld, Rd
+      [2]
+    when 2 # Cd
+      [1, 3]
+    when 4, 6 # Lm, Rm
+      [5]
+    when 5 # Cm
+      [4, 6]
+    when 7, 9 # Lf, Rf
+      [8]
+    when 8 # Cf
+      [7, 9]
+    else # 0 = Gk
+      []
+    end
+  end
 end

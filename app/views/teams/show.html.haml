@@ -5,16 +5,15 @@
       = image_tag @team.country.flag.url, title: @team.country.title
   %p
     %b Владелец:
-    =link_to @team.user.login, @team.user, style:"color: #FFA500", class: 'btn btn-link'
+    = link_to @team.user.login, @team.user, style: "color: #FFA500", class: 'btn btn-link'
   %p
     %b Спонсор:
-    -sp = @team.sponsor
-    = link_to sp.title, sp, style:"color: #550", class: 'btn btn-link'
+    = link_to @team.sponsor.title, @team.sponsor, style: "color: #550", class: 'btn btn-link'
     %p
       %b Стадион:
       -if @stadium
         -stc = @stadium.capacity
-        = link_to "#{@stadium.title} (#{stc} #{Russian.p(stc,'место','места','мест')})", @stadium, style: "color: #F00", class: 'btn btn-link'
+        = link_to "#{@stadium.title} (#{stc} #{Russian.p(stc, 'место', 'места', 'мест')})", @stadium, style: "color: #F00", class: 'btn btn-link'
       -else
         Не создан
   %p
@@ -30,8 +29,9 @@
     %b Фаны:
     %span.fa.fa-users
     = @team.fans
+
   %br
-  -av_skills,av_tal,av_age,av_price=0,0,0,0
+
   %table.table.table-bordered.table-hover.table-condensed
     %thead
       %tr{class: 'success'}
@@ -85,37 +85,24 @@
         %th
     %tbody
       - @players.each do |pl|
-        -#todo вынести подсчет в модельку)
-        -av_skills+=pl.skill_level
-        -av_age+=pl.age
-        -av_price+=pl.price
-        -av_tal+=pl.talent
-        -c=pl.country
         -if pl.basic
-          -styl="#CEF6CE"
+          -style = "#CEF6CE"
         -else
-          -styl="#F6D9D9"
-        %tr.text-center{style:"background: #{styl}"}
+          -style = "#F6D9D9"
+        %tr.text-center{style: "background: #{style}"}
           %td
             %strong= pl.number
           %td
             = pl.name
             = fa_icon 'copyright', title: 'Капитан' if pl.captain
-          %td= image_tag c.flag.url, title: c.title
+          %td= image_tag pl.country.flag.url, title: pl.country.title
           %td{title: pl.position1}
             = pl.full_position_name
           %td= pl.talent
           %td= pl.age
           %td= pl.skill_level
           %td= pl.price_to_currency
-          %td
-            -# todo вынести в модельку!
-            -str=""
-            -if pl.special_skill1
-              -str=str+pl.special_skill1+"-#{pl.num_sp_s1}"
-              -str=str+" / "+pl.special_skill2+"-#{pl.num_sp_s2}" if pl.special_skill2
-              -str=str+" / "+pl.special_skill3+"-#{pl.num_sp_s3}" if pl.special_skill3
-            #{str}
+          %td= pl.show_special_skills
           %td #{pl.season_games}/#{pl.all_games}
           %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
           %td #{pl.season_goals}/#{pl.all_goals}
@@ -142,14 +129,13 @@
           %td
             = link_to pl, class: 'btn btn-link', title:'Обзор игрока' do
               = fa_icon 'street-view'
-  -num = @team.squad_size
   %table.table.table-bordered
     %thead
       %tr{class: 'info'}
         %th.text-center
           Всего игроков:
           .text-danger
-            = num
+            = @team.squad_size
         %th.text-center
           Среднее
           %br
@@ -157,28 +143,28 @@
         %th.text-center
           Талант
           .text-danger
-            =(av_tal/num.to_f).round(1)
+            = @team.averages[:av_tal]
         %th.text-center
           Возраст
           .text-danger
-            =(av_age/num.to_f).round(2)
+            = @team.averages[:av_age]
         %th.text-center
           Мастерство
           .text-danger
-            =(av_skills/num.to_f).round(2)
+            = @team.averages[:av_skills]
         %th.text-center
           Цена
           .text-danger
-            =number_to_currency(av_price/num.to_f, locale: :en, precision: 3)
+            = @team.averages[:av_price]
   -if @current_user == @team.user || @current_user.moderator?
     = link_to edit_team_path(@team), class: 'btn btn-danger' do
-      =fa_icon "edit"
+      = fa_icon "edit"
       Редактировать
     = link_to teams_path, class: 'btn btn-warning' do
-      =fa_icon "reply"
+      = fa_icon "reply"
       Все команды
   -if @team.user == @current_user
-    -if !@team.stadium
+    -unless @team.stadium
       = link_to 'Перейти к созданию стадиона', { action: :new, controller: :stadia, team_id: @team.id }, class: 'btn btn-primary'
     -if !@team.club_base
       = link_to 'Перейти к созданию базы клуба', { action: :new, controller: :club_bases, team_id: @team.id }, class: 'btn btn-primary'

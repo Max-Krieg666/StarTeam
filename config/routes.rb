@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   resources :transfers
 
-  resources :players do
+  resources :players, except: [:destroy] do
     member do
       patch 'buy'
       patch 'sell'

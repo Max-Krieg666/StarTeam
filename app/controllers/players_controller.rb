@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, except: [:index, :new, :create]
-  before_action :admin_permission, only: [:new, :create, :destroy]
+  before_action :admin_permission, only: [:new, :create]
 
   def index
     if search_params
@@ -102,13 +102,6 @@ class PlayersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-  #   # TODO продумать удаление
-  #   raise "fuck u!"
-  #   @player.destroy
-  #   redirect_to players_url, notice: 'Игрок удалён.'
   end
 
   private
