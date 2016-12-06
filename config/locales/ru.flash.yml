@@ -1,0 +1,22 @@
+ru:
+  flash:
+    authorization_required: Требуется авторизация.
+    must_be_logged: Необходимо войти в систему для просмотра данной страницы.
+    insufficient_privileges: Недостаточно прав.
+    access_denied: Доступ запрещён.
+    bases:
+      maximum_level: База клуба имеет максимальный уровень.
+      not_enough_money: На вашем счету недостаточно средств для улучшения базы клуба.
+      upgraded: База клуба успешно модернизирована.
+      maximum_training_fields: Достигнуто максимальное количество тренировочных полей.
+      created: База клуба успешно создана.
+      title_was_edited: Название базы клуба успешно изменено.
+      destroyed: База клуба успешно удалена.
+    countries:
+      created: Страна создана.
+      edited: Страна изменена.
+      destroyed: Страна удалена.
+    sessions:
+      authorization_succeeded: Авторизация прошла успешно.
+      incorrect: Неверное имя пользователя или пароль.
+      logout: Выход выполнен.

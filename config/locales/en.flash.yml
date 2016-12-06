@@ -1,0 +1,22 @@
+en:
+  flash:
+    authorization_required: Authorization required.
+    must_be_logged: You must be logged in to view this page.
+    insufficient_privileges: Insufficient privileges.
+    access_denied: Access denied.
+    bases:
+      maximum_level: Club base has a maximum level.
+      not_enough_money: On your account has insufficient money to upgrade the club base.
+      upgraded: Club base was successfully upgraded.
+      maximum_training_fields: Has reached the maximum number of training fields.
+      created: Club base was successfully created.
+      title_was_edited: Club base's title was successfully edited.
+      destroyed: Club base was successfully destroyed.
+    countries:
+      created: Country was created.
+      edited: Country was edited.
+      destroyed: Country was destroyed.
+    sessions:
+      authorization_succeeded: Authorization succeeded.
+      incorrect: Incorrect username or password.
+      logout: Logged out.

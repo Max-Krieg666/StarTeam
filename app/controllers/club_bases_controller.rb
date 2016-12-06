@@ -18,12 +18,12 @@ class ClubBasesController < ApplicationController
     team = @club_base.team
     # увеличение уровня базы клуба
     if @club_base.level == 5
-      flash[:danger] = 'База клуба имеет максимальный уровень!'
+      flash[:danger] = I18n.t('flash.bases.maximum_level')
       redirect_to @club_base
     else
       values = ClubBase::LEVELS[@club_base.level]
       if team.budget - values[0] < 0 # цена больше бюджета
-        flash[:danger] = 'На вашем счету недостаточно средств для улучшения базы клуба!'
+        flash[:danger] = I18n.t('flash.bases.not_enough_money')
         redirect_to @club_base
       else
         ActiveRecord::Base.transaction do
@@ -34,8 +34,8 @@ class ClubBasesController < ApplicationController
           @club_base.capacity = values[2]
           @club_base.save!
         end
-        redirect_to @club_base, notice: 'Уровень базы клуба успешно повышен.'
-      end 
+        redirect_to @club_base, notice: I18n.t('flash.bases.upgraded')
+      end
     end
   end
 
@@ -43,12 +43,12 @@ class ClubBasesController < ApplicationController
     team = @club_base.team
     # увеличение к-во тренировочных полей
     if @club_base.training_fields == 5
-      flash[:danger] = 'Максимальное количество тренировочных полей достигнуто!'
+      flash[:danger] = I18n.t('flash.bases.maximum_training_fields')
       redirect_to @club_base
     else
       values = ClubBase::TRAINING_FIELDS[@club_base.training_fields]
       if team.budget - values[0] < 0 # цена больше бюджета
-        flash[:danger] = 'На вашем счету недостаточно средств для постройик нового тренировочного поля!'
+        flash[:danger] = I18n.t('flash.bases.not_enough_money')
         redirect_to @club_base
       else
         ActiveRecord::Base.transaction do
@@ -58,7 +58,7 @@ class ClubBasesController < ApplicationController
           @club_base.experience_up += values[1]
           @club_base.save!
         end
-        redirect_to @club_base, notice: 'Построено новое тренировочное поле.'
+        redirect_to @club_base, notice: I18n.t('flash.bases.upgraded')
       end
     end
   end
@@ -67,7 +67,7 @@ class ClubBasesController < ApplicationController
     @club_base = ClubBase.new(club_base_params)
     @club_base.team_id = @current_user_team.id
     if @club_base.save
-      redirect_to @club_base, notice: 'База успешно создана.'
+      redirect_to @club_base, notice: I18n.t('flash.bases.created')
     else
       render :new
     end
@@ -75,7 +75,7 @@ class ClubBasesController < ApplicationController
 
   def update
     if @club_base.update(club_base_params)
-      redirect_to @club_base, notice: 'Название базы успешно изменено.'
+      redirect_to @club_base, notice: I18n.t('flash.bases.title_was_edited')
     else
       render :edit
     end
@@ -83,7 +83,7 @@ class ClubBasesController < ApplicationController
 
   def destroy
     @club_base.destroy
-    redirect_to club_bases_url, notice: 'База успешно удалена.'
+    redirect_to club_bases_url, notice: I18n.t('flash.bases.destroyed')
   end
 
   private

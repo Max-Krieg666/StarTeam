@@ -15,32 +15,33 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if @current_user
-      flash[:danger] = 'Требуется авторизация'
+      flash[:danger] = I18n.t('flash.authorization_required')
       redirect_to login_path
     end
   end
+
   def check_user
     if @current_user.blank?
-      flash[:danger] = "Необходимо войти в систему для просмотра данной страницы!"
+      flash[:danger] = I18n.t('flash.must_be_logged')
       redirect_to root_path
     end
   end
 
   def moderator_permission
     unless @current_user.try(:moderator?)
-      flash[:danger] = 'Недостаточно прав'
+      flash[:danger] = I18n.t('flash.insufficient_privileges')
       redirect_to login_path
     end
   end
 
   def admin_permission
     unless @current_user.try(:administrator?)
-      flash[:danger] = 'Недостаточно прав'
+      flash[:danger] = I18n.t('flash.insufficient_privileges')
       redirect_to login_path
     end
   end
 
-  def render_error(msg = 'Доступ запрещён')
+  def render_error(msg = I18n.t('flash.access_denied'))
     flash[:render] = msg
     redirect_to root_path
   end
