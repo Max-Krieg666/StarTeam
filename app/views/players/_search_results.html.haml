@@ -39,11 +39,9 @@
       - @players.each do |player|
         %tr.text-center
           %td= player.name
-          -c = player.country
           %td
-            = image_tag c.flag.url, title: "#{c.title}"
-          %td
-            = player.full_position_name
+            = image_tag player.country.flag.url, title: player.country.title
+          %td= player.full_position_name
           %td= player.talent
           %td= player.age
           %td= player.skill_level
@@ -70,7 +68,7 @@
             -if @current_user_team
               = link_to buy_player_path(player), method: :patch, class: 'btn btn-default', id: 'buy' do
                 = fa_icon "share-square-o"
-                Купить
+                = t('buttons.buy')
             -else
               .text-danger Покупка не доступна
   %br

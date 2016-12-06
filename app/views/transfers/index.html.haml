@@ -34,6 +34,7 @@
         %td
           = link_to transfer.purchaser.title, transfer.purchaser, style: "color: #00F" if transfer.purchaser
         %td
+          / TODO: вынести в модель....
           -a,count,i="#{transfer.cost}".reverse,0,0
           -while a[i]!='.'
             -count+=1;i+=1
@@ -42,14 +43,14 @@
           = transfer.status
         %td
           = link_to transfer, class: 'btn btn-link' do
-            =fa_icon "arrow-circle-right"
-        -if @current_user.id==transfer.player.team.user.id
+            = fa_icon "arrow-circle-right"
+        -if @current_user == transfer.player.team.user
           %td
-            = link_to edit_transfer_path(transfer), class: "btn btn-link" do
-              =fa_icon "wrench"
+            = link_to edit_transfer_path(transfer), class: 'btn btn-link' do
+              = fa_icon "wrench"
           %td
             = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              =fa_icon "remove"
+              = fa_icon "remove"
         -else
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link', title: 'Купить игрока' do

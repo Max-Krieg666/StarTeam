@@ -13,7 +13,7 @@ class CreatePlayers < ActiveRecord::Migration
 
       # игрок в команде
       t.uuid :team_id, index: true
-      t.string :special_skill1, limit: 2 # спецумение 1
+      t.string :special_skill1, limit: 2 # спецумение 1 #TODO integer
       t.integer :num_sp_s1 # уровень спецумения 1
       t.string :special_skill2, limit: 2 # спецумение 2
       t.integer :num_sp_s2 # уровень спецумения 2

@@ -7,7 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    =render 'navbar'
+    = render 'navbar'
     .container
       -if @current_user && @current_user.user?
         -if @current_user_team
@@ -21,5 +21,5 @@
               %button{class: 'close', "aria-hidden" => 'true', "data-dismiss" => 'alert', "type" => 'button'}x
               %strong Вы не построили стадион!
               -#=link_to 'Построить стадион сейчас',new_stadium_path(team_id:t.id), class:'btn btn-danger', type:'button'
-      =render 'flash_messages'
-      =yield
+      = render 'flash_messages'
+      = yield

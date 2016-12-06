@@ -1,7 +1,7 @@
 .page-header
   %h1 Регистрация
 = form_for @user do |f|
-  =error_messages_for(@user)
+  = error_messages_for(@user)
   -#TODO допилить вёрстку
   .help-block
     .fa.fa-info-circle.li
@@ -71,7 +71,7 @@
         .form-group.col-md-6
           .fa.fa-birthday-cake.li
           = f.label :birthday
-          = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: 'День', month: 'Месяц', year: 'Год' }
+          = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
       -if @current_user.try(:administrator?)
         .row
           .form-group
@@ -101,9 +101,8 @@
             = t('info-blocks.registration.team_country')
 
   -#TODO разработать правила участия и кнопку CONFIRM
-  -#TODO перевести уже все надписи ВЕЗДЕ, Хель подери!!!
   .actions
     -if @user.blank?
-      = f.submit 'Зарегистрироваться', class: 'btn btn-primary'
+      = f.submit t('buttons.sign_up'), class: 'btn btn-primary'
     -else
-      = f.submit 'Сохранить', class: 'btn btn-primary'
+      = f.submit t('buttons.save'), class: 'btn btn-primary'

@@ -42,7 +42,7 @@ class PlayersController < ApplicationController
     elsif !cb
       flash[:danger] = 'Создайте базу клуба, чтобы покупать новых игроков!'
       redirect_to @current_user_team
-    elsif cb.capacity == @current_user_team.players.count
+    elsif cb.capacity == @current_user_team.squad_size
       flash[:danger] = 'Расширьте базу клуба для покупки новых игроков!'
       redirect_to cb
     elsif @current_user_team.budget < @player.price

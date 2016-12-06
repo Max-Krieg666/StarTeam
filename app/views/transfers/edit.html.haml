@@ -5,8 +5,8 @@
 
   = render 'form'
 
-  = link_to 'Показать', @transfer
+  = link_to t('buttons.show'), @transfer
 
 = link_to transfers_path, class: 'btn btn-info' do
-  =fa_icon "reply"
+  = fa_icon "reply"
   Все трансферы

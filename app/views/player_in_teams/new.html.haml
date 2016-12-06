@@ -1,8 +1,8 @@
 -if params[:name]
-  -pl=Player.where(name: params[:name]).first
+  -pl = Player.where(name: params[:name]).first
 -else
-  -pl=Player.where(name: params[:player_in_team][:name]).first
--c=Country.find(pl.country_id)
+  -pl = Player.where(name: params[:player_in_team][:name]).first
+-c = Country.find(pl.country_id)
 .page-header
   %h1 Покупка игрока
 
@@ -11,23 +11,19 @@
     .list-group
       %h4.list-group-item.active{style: "color: #00F"}
         .fa.fa-male
-        =pl.name
-        =image_tag c.flag.url, title: "#{c.title}"
-        -max=5
+        = pl.name
+        = image_tag c.flag.url, title: "#{c.title}"
         .row{style: "color: #FFD700"}
-          -cel,ost=pl.level_define/2,pl.level_define%2
-          -cel.times do
-            .fa.fa-star
-          -if pl.level_define%2!=0
-            .fa.fa-star-half-o
-          -(max-cel-ost).times do
-            .fa.fa-star-o
+          -quality = @player.quality
+          -quality[0].times do
+            = fa_icon 'star'
+          -if quality[1] == 1
+            = fa_icon 'star-half-o'
+          -quality[2].times do
+            = fa_icon 'star-o'
       .list-group-item
         .fa.fa-bookmark
-        -if !pl.position2.blank? && pl.position1!='Gk'
-          Позиция: #{pl.position1} / #{pl.position2}
-        -else
-          Позиция: #{pl.position1}
+        = pl.full_position_name
       .list-group-item
         .fa.fa-level-up
         Талант: #{pl.talent}
@@ -39,20 +35,16 @@
         Мастерство: #{pl.skill_level}
       .list-group-item
         .fa.fa-money
-        -a,count,i="#{pl.price}".reverse,0,0
-        -while a[i]!='.'
-          -count+=1;i+=1
-        Цена: #{number_to_currency(pl.price, locale: :en, precision: count)}
+        Цена: #{pl.price_to_currency}
 %br
 = render 'form'
 %br
 .btn-group
   = link_to players_path, class: 'btn btn-info' do
-    =fa_icon "male"
-    =fa_icon "male"
+    = fa_icon "male"
+    = fa_icon "male"
     Все игроки
-  -t=Team.find(@current_user.team_id)
-  -if t
-    = link_to t, class: 'btn btn-primary' do
-      =fa_icon "users"
+  -if @current_user_team
+    = link_to @current_user_team, class: 'btn btn-primary' do
+      = fa_icon "users"
       Моя команда

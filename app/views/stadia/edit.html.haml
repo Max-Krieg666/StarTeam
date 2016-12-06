@@ -7,7 +7,7 @@
 .btn-group
   = link_to @stadium, class: 'btn btn-info' do
     = fa_icon "reply"
-    Назад
+    = t('buttons.back')
   = link_to @stadium.team, class: 'btn btn-warning' do
     = fa_icon "users"
     Команда << #{@stadium.team.title} >>

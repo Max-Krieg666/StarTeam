@@ -4,23 +4,24 @@
     .col-md-3
       .form-group
         = f.label :title
-        = f.text_field :title, class: "form-control"
+        = f.text_field :title, class: 'form-control'
   .row
     .col-md-3
       .form-group
         = f.label :specialization
-        = f.text_field :specialization, class: "form-control"
+        = f.text_field :specialization, class: 'form-control'
   .row
     .col-md-3
       .form-group
         = f.label :loyalty_factor
-        = f.text_field :loyalty_factor, class: "form-control"
+        = f.text_field :loyalty_factor, class: 'form-control'
   .row
     .col-md-3
       .form-group
         = f.label :cost_of_full_stake
         .input-group
-          = f.text_field :cost_of_full_stake, class: "form-control"
+          = f.text_field :cost_of_full_stake, class: 'form-control'
           %span.input-group-addon.fa.fa-usd
 
-  .actions=f.submit nil, class: "btn btn-primary"
+  .actions
+    =f.submit t('buttons.save'), class: 'btn btn-primary'

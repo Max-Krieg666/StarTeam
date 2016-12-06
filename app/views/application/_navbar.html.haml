@@ -2,7 +2,7 @@
   .container
     .navbar-header
       = link_to ?#, class: "navbar-toggle collapsed", data: { toggle: "collapse", target: "#menu" } do
-        =fa_icon 'bars'
+        = fa_icon 'bars'
       -if @current_user
         %div{ class: 'btn-group' }
           %button{ id: "main_menu_btn", type: "button", class: "btn btn-link navbar-brand dropdown-toggle", data: { toggle: "dropdown" } }
@@ -31,4 +31,4 @@
             -if @current_user_team
               %span.navbar-text= @current_user_team.title
               %span.navbar-text= "Бюджет: #{number_to_currency(@current_user_team.budget, precision: 3, locale: :en)}"
-            = link_to "Выйти", logout_path, data: { method: :patch }
+            = link_to t('buttons.logout'), logout_path, data: { method: :patch }

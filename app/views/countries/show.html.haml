@@ -18,7 +18,7 @@
       %tbody
         - @users.each do |user|
           %tr.text-center
-            %td= link_to user.login, user, style:"color: #FFA500"
+            %td= link_to user.login, user, style: "color: #FFA500"
             %td
               -t = user.team
               -if t
@@ -132,8 +132,8 @@
   %br
   -if @current_user.moderator?
     = link_to edit_country_path(@country), class: 'btn btn-danger' do
-      =fa_icon "edit"
-      Редактировать
+      = fa_icon "edit"
+      = t('buttons.edit')
   = link_to countries_path, class: 'btn btn-info' do
-    =fa_icon "flag"
+    = fa_icon "flag"
     Все страны

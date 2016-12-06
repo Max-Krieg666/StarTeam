@@ -5,9 +5,6 @@
   %thead
     %tr
       %th.text-center
-        .fa.fa-sort-numeric-asc
-        id
-      %th.text-center
         .fa.fa-user
         Логин
       %th.text-center
@@ -28,7 +25,7 @@
       %th.text-center
         .fa.fa-envelope
         Эл. почта
-      -if @current_user.role!=0
+      -if @current_user.moderator?
         %th.text-center
           .fa.fa-street-view
           Роль
@@ -39,7 +36,6 @@
   %tbody
     - @users.each do |user|
       %tr.text-center
-        %td= user.id
         %td= user.login
         %td
           -if user.team
@@ -50,12 +46,8 @@
           -if user.avatar.blank?
             .text-danger.li Аватар не загружен!
           -else
-            =image_tag user.avatar.url(:thumb)
-        %td
-          -if user.country_id
-            =Country.find(user.country_id).title
-          -else
-            .text-danger.li Не выбрана!
+            = image_tag user.avatar.url(:thumb)
+        %td= user.country.title
         %td= user.sex
         %td
           -if user.birthday
@@ -63,23 +55,17 @@
           -else
             .text-danger.li Не выбрано!
         %td= user.email
-        -if @current_user.role!=0
+        -if @current_user.moderator?
           %td= user.role_name
           %td
-            = link_to edit_user_path(user), class: "btn btn-link" do
-              =fa_icon "edit"
+            = link_to edit_user_path(user), class: 'btn btn-link' do
+              = fa_icon "edit"
           %td
-            = link_to user, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
-              =fa_icon "remove"
+            = link_to user, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
+              = fa_icon "remove"
         %td
-          = link_to user, class: "btn btn-link" do
-            =fa_icon "arrow-circle-right"
-
-%br
--if @current_user.role!=0
-  = link_to registration_users_path, class: "btn btn-default" do
-    =fa_icon "user-plus"
-    Новый пользователь
+          = link_to user, class: 'btn btn-link' do
+            = fa_icon "arrow-circle-right"
 
 %br
 = paginate @users

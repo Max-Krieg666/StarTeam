@@ -16,6 +16,5 @@
   %b Статус:
   = @transfer.status
 
-= link_to 'Редактировать', edit_transfer_path(@transfer)
-\|
-= link_to 'Все трансферы', transfers_path
+= link_to t('buttons.edit'), edit_transfer_path(@transfer), class: 'btn btn-danger'
+= link_to 'Все трансферы', transfers_path, class: 'btn btn-primary'

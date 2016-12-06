@@ -132,11 +132,11 @@
 -if @current_user.moderator?
   = link_to edit_player_in_team_path(@player_in_team), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
     = fa_icon "wrench"
-    Редактировать
+    = t('buttons.edit')
 = link_to t, class: 'btn btn-info' do
   = fa_icon "users"
   = t.title
 = link_to sell_player_path(@player), class: 'btn btn-danger' do
   = fa_icon 'usd'
   = fa_icon 'sign-out'
-  Продать игрока
+  = t('buttons.sell')

@@ -1,5 +1,5 @@
 = form_for @team do |f|
-  =error_messages_for(@team)
+  = error_messages_for(@team)
 
   .row
     .col-md-3
@@ -8,4 +8,4 @@
         = f.label :title
         = f.text_field :title, class: 'form-control'
   .actions
-    = f.submit 'Сохранить', class: 'btn btn-primary'
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

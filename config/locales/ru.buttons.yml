@@ -1,0 +1,19 @@
+ru:
+  buttons:
+    sign_up: Зарегистрироваться
+    sign_in: Войти
+    logout: Выйти
+    save: Сохранить
+    show: Показать
+    edit: Редактировать
+    back: Назад
+    buy: Купить
+    sell: Продать
+    increase: Увеличить
+    confirm: Подтвердить
+    cancel: Отменить
+    search: Искать
+  prompt:
+    day: День
+    month: Месяц
+    year: Год

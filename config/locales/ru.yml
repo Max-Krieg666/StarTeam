@@ -44,7 +44,7 @@ ru:
         password_confirmation: Подтверждение пароля
         avatar: Аватар
         sex: Пол
-        birthday: День Рождения
+        birthday: Дата рождения
         mail: Адрес эл.почты
       team:
         country: Страна

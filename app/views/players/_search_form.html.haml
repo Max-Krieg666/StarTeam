@@ -11,7 +11,7 @@
         = label_tag 'Позиция' #:position1
         = select_position1('search[position1]', params[:search].try(:[], :position1))
       .input-group-btn
-        = submit_tag 'Искать', name: nil, class:'btn btn-default'
+        = submit_tag t('buttons.search'), name: nil, class:'btn btn-default'
   .row
     .form-group.col-lg-2
       = label_tag 'Мастерство >' #:skill_level

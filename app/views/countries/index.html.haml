@@ -22,13 +22,13 @@
         %td
           = image_tag country.flag.url, alt: country.title
         %td
-          = link_to country, class: "btn btn-link" do
+          = link_to country, class: 'btn btn-link' do
             = fa_icon "chevron-circle-right"
         %td
-          = link_to edit_country_path(country), class: "btn btn-link" do
+          = link_to edit_country_path(country), class: 'btn btn-link' do
             = fa_icon "wrench"
         %td
-          = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: "btn btn-link" do
+          = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: 'btn btn-link' do
             = fa_icon "trash-o"
 
 %br
@@ -37,4 +37,4 @@
   Создать страну
 
 %br
-=paginate @countries
+= paginate @countries

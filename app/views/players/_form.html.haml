@@ -1,11 +1,11 @@
 = form_for @player do |f|
-  =error_messages_for(@player)
+  = error_messages_for(@player)
 
   .row
     .col-md-3
       .form-group
         = f.label :name
-        = f.text_field :name, class: "form-control"
+        = f.text_field :name, class: 'form-control'
   .row
     .col-md-3
       .form-group
@@ -16,25 +16,25 @@
     .col-md-1
       .form-group
         = f.label :position1
-        = f.select :position1, Player::POSITIONS, class: "form-control"
+        = f.select :position1, Player::POSITIONS, class: 'form-control'
     .col-md-1
       .form-group
         = f.label :position2
-        = f.select :position2, [""]+pss, class: "form-control"
+        = f.select :position2, [''] + pss, class: 'form-control'
   .row
     .col-md-3
       .form-group
         = f.label :talent
-        = f.number_field :talent, class: "form-control"
+        = f.number_field :talent, class: 'form-control'
   .row
     .col-md-3
       .form-group
         = f.label :age
-        = f.number_field :age, class: "form-control"
+        = f.number_field :age, class: 'form-control'
   .row
     .col-md-3
       .form-group
         = f.label :skill_level
-        = f.number_field :skill_level, class: "form-control"
+        = f.number_field :skill_level, class: 'form-control'
   .actions
-    = f.submit 'Сохранить', class: "btn btn-primary"
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

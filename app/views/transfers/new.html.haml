@@ -1,8 +1,8 @@
 .text-center
   .page-header
     %h1 Создание нового трансферного предложения
-    -pl=PlayerInTeam.find(params[:player_id])
-    -c=Country.find(pl.country_id)
+    -pl = PlayerInTeam.find(params[:player_id])
+    -c = Country.find(pl.country_id)
     %h3
       = pl.name
       = image_tag c.flag.url, title: c.title

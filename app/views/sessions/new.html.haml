@@ -1,11 +1,12 @@
 .page-header
   %h1 Авторизация
 
-=form_tag login_path do
+= form_tag login_path do
   .form-group
-    =label_tag :login, User.human_attribute_name(:login)
-    =text_field_tag :login, nil, class: 'form-control'
+    = label_tag :login, User.human_attribute_name(:login)
+    = text_field_tag :login, nil, class: 'form-control'
   .form-group
-    =label_tag :password, User.human_attribute_name(:password)
-    =password_field_tag :password, nil, class: 'form-control'
-  .actions=submit_tag "Войти", class: 'btn btn-primary'
+    = label_tag :password, User.human_attribute_name(:password)
+    = password_field_tag :password, nil, class: 'form-control'
+  .actions
+    = submit_tag t('buttons.sign_in'), class: 'btn btn-primary'
