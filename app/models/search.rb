@@ -1,8 +1,9 @@
 class Search
   attr_accessor :query
-  attr_reader :country_id, :name, :position1, :skill_level, :talent, :age
+  attr_reader :country_id, :name, :position1, :skill_level, :talent
 
   def initialize(params)
+    # TODO not works
     super(params)
   end
 

@@ -38,7 +38,7 @@
   = fa_icon "users"
   Все игроки
 -if @current_user_team
-  = link_to new_player_in_team_path(name: @player.name), data: { confirm: 'Вы уверены?' }, class: 'btn btn-default' do
+  = link_to buy_processing_player_path(@player), class: 'btn btn-default', id: 'buy' do
     = fa_icon "share-square-o"
     = t('buttons.buy')
 -else

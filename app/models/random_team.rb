@@ -45,6 +45,7 @@ class RandomTeam
     players_count_foreigners = 0 # д.б. 5
     footballers_positions = FOOTBALLERS_POSITIONS[schema]
     footballers_positions.each do |pos, count|
+      pos_players = []
       count.times do
         # рандомный выбор по странам игроков в порядке - по позициям
         chance = SecureRandom.random_number(100)
@@ -57,8 +58,10 @@ class RandomTeam
           pl_c_id = @main_country_id
           players_count_main += 1
         end
-        random_player(pos, pl_c_id)
+        pos_players << random_player(pos, pl_c_id)
       end
+      c = count > 1 ? count - 1 : count
+      pos_players.sort_by{ |p| p.skill_level }.last(c).each { |pl| pl.update(basic: true) }
     end
     return
   end
@@ -80,7 +83,6 @@ class RandomTeam
     pl.save!
     @numbers << pl.number
     pl
-    # TODO pl.basic
   rescue ActiveRecord::RecordInvalid
     pl.name = Name.new(country_id).rand_name
     pl.save!

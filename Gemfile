@@ -23,6 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jquery-tablesorter'
+# gem 'jquery-validation-rails' + TODO https://habrahabr.ru/post/213077/
 
 gem 'therubyracer', platforms: :ruby
 gem 'execjs'

@@ -38,10 +38,10 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       @user.confirmation_sent_at = DateTime.current
       @user.confirmation_token = SecureRandom.uuid
-      if @user.save!
+      if @user.save
         @team = Team.new(team_params)
         @team.user_id = @user.id
-        if @team.save!
+        if @team.save
           Sponsor.create_rand(@team.id)
           RandomTeam.new(@team).generate
           @team.captain.update(captain: true)

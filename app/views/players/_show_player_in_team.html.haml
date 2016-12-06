@@ -6,6 +6,7 @@
     = fa_icon "copyright", title: 'Капитан' if @player.captain
     = image_tag c.flag.url, title: c.title
   = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
+  = image_tag t.country.flag.url, title: t.country.title
 .row.text-danger.text-center
   .col-md-4
     .list-group
@@ -129,14 +130,15 @@
       .list-group-item
         = @player.all_red_cards
 
--if @current_user.moderator?
-  = link_to edit_player_in_team_path(@player_in_team), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
-    = fa_icon "wrench"
-    = t('buttons.edit')
-= link_to t, class: 'btn btn-info' do
-  = fa_icon "users"
-  = t.title
-= link_to sell_player_path(@player), class: 'btn btn-danger' do
-  = fa_icon 'usd'
-  = fa_icon 'sign-out'
-  = t('buttons.sell')
+.btn-group
+  = link_to t, class: 'btn btn-info' do
+    = fa_icon "users"
+    = t.title
+  -if @current_user_team == t
+    / = link_to edit_player_in_team_path(@player_in_team), class: 'btn btn-danger' do
+    /  = fa_icon "wrench"
+    /  = t('buttons.edit')
+    = link_to sell_player_path(@player), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
+      = fa_icon 'usd'
+      = fa_icon 'sign-out'
+      = t('buttons.sell')

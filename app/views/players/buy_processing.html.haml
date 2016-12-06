@@ -1,0 +1,62 @@
+.page-header
+  %h1 Покупка игрока
+
+.row.text-danger.text-center
+  .col-md-4
+    .list-group
+      %h4.list-group-item.active{style: "color: #00F"}
+        .fa.fa-male
+        = @player.name
+        = image_tag @player.country.flag.url, title: @player.country.title
+        .row{style: "color: #FFD700"}
+          -quality = @player.quality
+          -quality[0].times do
+            = fa_icon 'star'
+          -if quality[1] == 1
+            = fa_icon 'star-half-o'
+          -quality[2].times do
+            = fa_icon 'star-o'
+      .list-group-item
+        .fa.fa-bookmark
+        = @player.full_position_name
+      .list-group-item
+        .fa.fa-level-up
+        Талант: #{@player.talent}
+      .list-group-item
+        .fa.fa-history
+        Возраст: #{@player.age} #{Russian.p(@player.age, "год", "года", "лет")}
+      .list-group-item
+        .fa.fa-line-chart
+        Мастерство: #{@player.skill_level}
+      .list-group-item
+        .fa.fa-money
+        Цена: #{@player.price_to_currency}
+%br
+
+= form_for @player, url: buy_player_path, method: :patch do |f|
+  = error_messages_for(@player)
+
+  .row
+    .col-md-2
+      .form-group
+        = f.label :number
+        = f.number_field :number, class: 'form-control', min: 1, max: 99
+    .col-md-2
+      .form-group
+        = f.label 'Роль в команде'
+        = f.select :basic, { "Основной состав" => true, "Запас" => false }, class: 'form-control'
+  .actions
+    .btn-group
+      = f.submit t('buttons.buy'), data: { confirm: 'Вы уверены?' }, class: 'btn btn-warning'
+      = link_to t('buttons.cancel'), @player, class: 'btn btn-danger'
+
+%br
+.btn-group
+  = link_to players_path, class: 'btn btn-info' do
+    = fa_icon "male"
+    = fa_icon "male"
+    Все игроки
+  -if @current_user_team
+    = link_to @current_user_team, class: 'btn btn-primary' do
+      = fa_icon "users"
+      Моя команда

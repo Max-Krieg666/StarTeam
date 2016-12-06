@@ -16,7 +16,6 @@ class PlayerGenerator
         pl.name = Name.new(x).rand_name
         pl.country_id = x
         pl.save!
-        # puts "#{i + 1}: " + pl.name + " <#{x}>"
       end
       puts "#{count} players_create: OK!"
     end

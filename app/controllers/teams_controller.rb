@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @players = @team.players.order('basic asc, position1 asc, skill_level desc')
+    @players = @team.players.order('basic desc, position1 asc, skill_level desc')
     @club_base = @team.club_base
     @stadium = @team.stadium
   end

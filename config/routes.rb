@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :players, except: [:destroy] do
     member do
+      get 'buy_processing'
       patch 'buy'
       patch 'sell'
     end

@@ -66,7 +66,7 @@
               = fa_icon "street-view"
           %td
             -if @current_user_team
-              = link_to buy_player_path(player), method: :patch, class: 'btn btn-default', id: 'buy' do
+              = link_to buy_processing_player_path(player), class: 'btn btn-default' do
                 = fa_icon "share-square-o"
                 = t('buttons.buy')
             -else

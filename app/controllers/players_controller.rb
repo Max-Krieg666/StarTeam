@@ -29,9 +29,12 @@ class PlayersController < ApplicationController
     end
   end
 
+  def buy_processing
+  end
+
   def buy
     # приходит id игрока
-    cb = @current_user_team.club_base
+    cb = @current_user_team.club_base if @current_user_team
     # если игрок нашелся по id и свободен
     if !@current_user_team
       flash[:danger] = 'Прежде, чем покупать игроков, создайте команду!'
@@ -52,43 +55,51 @@ class PlayersController < ApplicationController
       ActiveRecord::Base.transaction do
         @player.state = 1
         @player.team_id = @current_user_team.id
-        @player.number = PlayerGenerator.rand_number(@current_user_team.players.map(&:number))
+        @player.number = buy_processing_params[:number]
+        if buy_processing_params[:basic] == 'true'
+          @current_user_team.players.where(position1: @player.position1, basic: true).first.update(basic: false)
+          @player.basic = buy_processing_params[:basic]
+        end
         captain = @current_user_team.captain
         if @player.skill_level > captain.skill_level
           @player.captain = true
-          captain.update!(captain: false)
+          captain.update(captain: false)
         end
         if @player.save
           @current_user_team.budget -= @player.price
           @current_user_team.save!
           redirect_to @player, notice: 'Игрок куплен.'
         else
-          render :index
+          render :buy_processing
         end
       end
     end
   end
 
   def sell
-    ActiveRecord::Base.transaction do
-      # TODO сделать по человечески
-      # if @player.basic
-      #   pls = @current_user_team.players.where(position1: @player.position1, state: 1, basic: false)
-      #   pls.each do |pl|
-      #     @player.update!(basic: true) if pl.id != @player.id
-      #   end
-      #   @player.basic = false
-      #   if @player.captain
-      #     p = @current_user_team.players.order("price desc").limit(2)
-      #     p.first.name == @player.name ? p.first.update!(captain: true) : p.last.update!(captain: true)
-      #     @player.captain = false
-      #   end
-      # end
-      @player.update!(state: 0, team_id: nil)
-      # TODO тут же добавить запись о забитых голах и т.д. и запись о клубе
-      @current_user_team.update!(budget: @current_user_team.budget + @player.price / 2.0)
+    if @player.team == @current_user_team
+      ActiveRecord::Base.transaction do
+        # TODO сделать по человечески
+        # if @player.basic
+        #   pls = @current_user_team.players.where(position1: @player.position1, state: 1, basic: false)
+        #   pls.each do |pl|
+        #     @player.update!(basic: true) if pl.id != @player.id
+        #   end
+        #   @player.basic = false
+        #   if @player.captain
+        #     p = @current_user_team.players.order("price desc").limit(2)
+        #     p.first.name == @player.name ? p.first.update!(captain: true) : p.last.update!(captain: true)
+        #     @player.captain = false
+        #   end
+        # end
+        @player.update!(state: 0, team_id: nil)
+        # TODO тут же добавить запись о забитых голах и т.д. и запись о клубе
+        @current_user_team.update!(budget: @current_user_team.budget + @player.price / 2.0)
+      end
+      redirect_to @current_user_team, notice: 'Игрок уволен из Вашей команды и стал свободным агентом.'
+    else
+      redirect_to @player, danger: 'Недостаточно прав для совершения данного действия.'
     end
-    redirect_to @current_user_team, notice: 'Игрок уволен из Вашей команды и стал свободным агентом.'
   end
 
   def update
@@ -114,6 +125,12 @@ class PlayersController < ApplicationController
     params.require(:player).permit(
       :name, :country_id, :position1, :position2,
       :talent, :age, :skill_level
+    )
+  end
+
+  def buy_processing_params
+    params.require(:player).permit(
+      :number, :basic
     )
   end
 
