@@ -18,7 +18,7 @@ class ClubBasesController < ApplicationController
     team = @club_base.team
     # увеличение уровня базы клуба
     if @club_base.level == 5
-      flash[:danger] = I18n.t('flash.bases.maximum_level')
+      flash[:danger] = I18n.t('flash.bases.max_level')
       redirect_to @club_base
     else
       values = ClubBase::LEVELS[@club_base.level]

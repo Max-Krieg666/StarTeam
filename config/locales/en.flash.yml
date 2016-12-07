@@ -5,12 +5,12 @@ en:
     insufficient_privileges: Insufficient privileges.
     access_denied: Access denied.
     bases:
-      maximum_level: Club base has a maximum level.
-      not_enough_money: On your account has insufficient money to upgrade the club base.
+      max_level: Club base has a maximum level.
+      not_enough_money: On account of your team is not enough money to upgrade the club base.
       upgraded: Club base was successfully upgraded.
       maximum_training_fields: Has reached the maximum number of training fields.
       created: Club base was successfully created.
-      title_was_edited: Club base's title was successfully edited.
+      title_was_edited: "Club base's title was successfully edited."
       destroyed: Club base was successfully destroyed.
     countries:
       created: Country was created.
@@ -20,3 +20,24 @@ en:
       authorization_succeeded: Authorization succeeded.
       incorrect: Incorrect username or password.
       logout: Logged out.
+    players:
+      created: New player was successfully created.
+      no_team: You must create a team before buying players.
+      not_available: This player is not available for bying.
+      no_club_base: You must create a club base before buying players.
+      club_base_low_level: You must upgrade a club base before buying new players.
+      not_enough_money: On account of your team is not enough money to buy this player.
+      buyed: Player was buyed.
+      edited: Player was edited.
+      sold: The player fired from your team and became a free agent.
+    sponsors:
+      edited: Sponsor was edited.
+    stadiums:
+      title_changed: "Stadium's title was changed."
+      created: Stadium was created.
+      not_enough_money: "On account of your team is not enough money to upgrade stadium! Needs: "
+      upgraded: Stadium was upgraded.
+      low_capacity: "New capacity's value can't be less than previous value."
+      low_level: You must increase a stadium level before upgrading of a capacity.
+      max_capacity: Capacity's value is maximum.
+      max_level: Your stadium has a maximum level.

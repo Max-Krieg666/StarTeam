@@ -23,7 +23,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if @player.save
-      redirect_to @player, notice: 'Игрок успешно создан.'
+      redirect_to @player, notice: I18n.t('flash.players.created')
     else
       render :new
     end
@@ -37,19 +37,19 @@ class PlayersController < ApplicationController
     cb = @current_user_team.club_base if @current_user_team
     # если игрок нашелся по id и свободен
     if !@current_user_team
-      flash[:danger] = 'Прежде, чем покупать игроков, создайте команду!'
+      flash[:danger] = I18n.t('flash.players.no_team')
       redirect_to @current_user
     elsif @player.state != 'free_agent'
-      flash[:danger] = 'Игрок недоступен для покупки!'
+      flash[:danger] = I18n.t('flash.players.not_available')
       redirect_to players_path
     elsif !cb
-      flash[:danger] = 'Создайте базу клуба, чтобы покупать новых игроков!'
+      flash[:danger] = I18n.t('flash.players.no_club_base')
       redirect_to @current_user_team
     elsif cb.capacity == @current_user_team.squad_size
-      flash[:danger] = 'Расширьте базу клуба для покупки новых игроков!'
+      flash[:danger] = I18n.t('flash.players.club_base_low_level')
       redirect_to cb
     elsif @current_user_team.budget < @player.price
-      flash[:danger] = 'На счету Вашей команды недостаточно средств для покупки данного игрока!'
+      flash[:danger] = I18n.t('flash.players.not_enough_money')
       redirect_to players_path
     else # приобретение игрока возможно
       ActiveRecord::Base.transaction do
@@ -68,7 +68,7 @@ class PlayersController < ApplicationController
         if @player.save
           @current_user_team.budget -= @player.price
           @current_user_team.save!
-          redirect_to @player, notice: 'Игрок куплен.'
+          redirect_to @player, notice: I18n.t('flash.players.buyed')
         else
           render :buy_processing
         end
@@ -96,9 +96,9 @@ class PlayersController < ApplicationController
         # TODO тут же добавить запись о забитых голах и т.д. и запись о клубе
         @current_user_team.update!(budget: @current_user_team.budget + @player.price / 2.0)
       end
-      redirect_to @current_user_team, notice: 'Игрок уволен из Вашей команды и стал свободным агентом.'
+      redirect_to @current_user_team, notice: I18n.t('flash.players.sold')
     else
-      redirect_to @player, danger: 'Недостаточно прав для совершения данного действия.'
+      redirect_to @player, danger: I18n.t('flash.insufficient_privileges')
     end
   end
 
@@ -109,7 +109,7 @@ class PlayersController < ApplicationController
     age = player_params[:age]
     @player.price = (tal.to_i * 10000.0 * skill.to_i / age.to_f).round(3)
     if @player.update(player_params)
-      redirect_to @player, notice: 'Игрок измёнен.'
+      redirect_to @player, notice: I18n.t('flash.players.edited')
     else
       render :edit
     end
