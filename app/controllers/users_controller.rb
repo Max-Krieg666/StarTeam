@@ -50,7 +50,7 @@ class UsersController < ApplicationController
           else
             # ОТПРАВКА СООБЩЕНИЯ
             # todo JOB
-            ConfirmationMailer.send_confirmation(@user, @team).deliver_later
+            # ConfirmationMailer.send_confirmation(@user, @team).deliver_later
             @user.force_authenticate!(self)
             redirect_to @user, notice: 'Регистрация завершена.'
           end

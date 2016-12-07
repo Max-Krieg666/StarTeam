@@ -77,28 +77,33 @@ class PlayersController < ApplicationController
   end
 
   def sell
-    if @player.team == @current_user_team
+    if @player.team != @current_user_team.squad_size
+      redirect_to @player, danger: I18n.t('flash.insufficient_privileges')
+    elsif @current_user_team.squad_size < 15
+      redirect_to @current_user_team, notice: I18n.t('flash.teams.low_squad')
+    else
+    # TODO добавить проверку на то, есть ли травмы или дисквалификации - нельзя продавать тогда.
       ActiveRecord::Base.transaction do
-        # TODO сделать по человечески
-        # if @player.basic
-        #   pls = @current_user_team.players.where(position1: @player.position1, state: 1, basic: false)
-        #   pls.each do |pl|
-        #     @player.update!(basic: true) if pl.id != @player.id
-        #   end
-        #   @player.basic = false
-        #   if @player.captain
-        #     p = @current_user_team.players.order("price desc").limit(2)
-        #     p.first.name == @player.name ? p.first.update!(captain: true) : p.last.update!(captain: true)
-        #     @player.captain = false
-        #   end
-        # end
-        @player.update!(state: 0, team_id: nil)
+        if @player.basic
+          pl = @current_user_team.players.where(position1: @player.position1, basic: false).order('skill_level desc').first
+          if pl
+            pl.update(basic: true)
+            @player.basic = false
+            if @player.captain
+              p = @current_user_team.players.order('skill_level desc').limit(1).offset(1)
+              p.update(captain: true)
+              @player.captain = false
+            end
+          else
+            redirect_to @player, danger: I18n.t('flash.players.last')
+          end
+        end
+        @player.update(state: 0, team_id: nil)
         # TODO тут же добавить запись о забитых голах и т.д. и запись о клубе
-        @current_user_team.update!(budget: @current_user_team.budget + @player.price / 2.0)
+        @current_user_team.budget += @player.price / 2.0
+        @current_user_team.save
       end
       redirect_to @current_user_team, notice: I18n.t('flash.players.sold')
-    else
-      redirect_to @player, danger: I18n.t('flash.insufficient_privileges')
     end
   end
 

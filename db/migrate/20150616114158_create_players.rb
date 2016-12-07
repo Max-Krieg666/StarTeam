@@ -5,6 +5,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.belongs_to :country, index: true
       t.integer :position1, null: false
       t.integer :position2
+      t.integer :real_position, null: false # реальная позиция
+      t.float :efficienty, default: 1.0 # эффективность игрока на позиции
       t.integer :talent, null: false
       t.integer :age, null: false
       t.integer :skill_level, null: false
@@ -40,8 +42,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :games_missed, default: 0 # сколько осталось пропустить матчей, чтобы начать играть
       t.boolean :injured, default: false # наличие травмы
       t.boolean :captain # капитан или нет
-      t.float :morale # мораль
-      t.float :physical_condition # физ. готовность
+      t.integer :morale, default: 5 # мораль
+      t.float :physical_condition, default: 1.0 # физ. готовность
       
       # TODO подумать, как сделать такую штуку как карьера
       # типо 20 - 25 лет - FC Ross

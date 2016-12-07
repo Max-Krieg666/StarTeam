@@ -3,6 +3,8 @@ class Player < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   # include Basic_Player
 
+  # TODO добавить callback на real_position before save 
+
   # TODO добавить поля ХАРАКТЕРИСТИК (20!)!
   # 6 защитных: Отбор, Опека, Подкат, Выбор позиции, Лидерство, Прессинг
   # 6 атакующих: Удар, Дриблинг, Сила удара, Пас, Навес, Игра головой
