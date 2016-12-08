@@ -3,8 +3,6 @@ class Player < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   # include Basic_Player
 
-  # TODO добавить callback на real_position before save 
-
   # TODO добавить поля ХАРАКТЕРИСТИК (20!)!
   # 6 защитных: Отбор, Опека, Подкат, Выбор позиции, Лидерство, Прессинг
   # 6 атакующих: Удар, Дриблинг, Сила удара, Пас, Навес, Игра головой
@@ -34,6 +32,7 @@ class Player < ActiveRecord::Base
   ]
 
   before_validation :set_price, on: :create
+  before_validation :set_real_position, on: :create
 
   validates :name, presence: true, uniqueness: { scope: [:position1, :age, :skill_level, :talent] }, length: { maximum: 50 }
   validates :country_id, presence: true
@@ -49,8 +48,16 @@ class Player < ActiveRecord::Base
     POSITIONS[position1] + '/' + POSITIONS[position2]
   end
 
+  def real_position_name
+    POSITIONS[real_position]
+  end
+
   def set_price
     self.price ||= (skill_level * talent * 10000 / age.to_f).round(3)
+  end
+
+  def set_real_position
+    self.real_position ||= position1
   end
 
   def quality
@@ -89,6 +96,30 @@ class Player < ActiveRecord::Base
       [7, 9]
     else # 0 = Gk
       []
+    end
+  end
+
+  def is_position_keeper?
+    position1 == 0
+  end
+
+  def is_position_defend?
+    [1, 2, 3].include?(position1)
+  end
+
+  def is_position_midfield?
+    [4, 5, 6].include?(position1)
+  end
+
+  def is_position_attack?
+    [7, 8, 9].include?(position1)
+  end
+
+  def change_efficienty
+    #TODO доделать вычисление эффекивности
+    if position1 == real_position
+      1.0
+    else
     end
   end
 end

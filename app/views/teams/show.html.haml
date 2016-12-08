@@ -45,7 +45,7 @@
         %th.text-center
           .fa.fa-flag
           Национальность
-        %th.text-center
+        %th.text-center{'colspan': 2}
           .fa.fa-bookmark
           Позиция
         %th.text-center
@@ -60,21 +60,26 @@
         %th.text-center
           .fa.fa-money
           Цена
-        / TODO подумать об измененении картинок...
+        / TODO подумать об измененении иконок font-awesome...
         %th.text-center{title: "Игры"}
           .fa.fa-exclamation-triangle
         %th.text-center{title: "Пропущенные голы"}
-          .fa.fa-minus
-          .fa.fa-futbol-o
+          .fa-stack
+            .fa.fa-futbol-o.fa-stack-2x
+            .fa.fa-minus.fa-stack-1x{style: 'color: #D00'}
         %th.text-center{title: "Забитые голы"}
-          .fa.fa-plus
-          .fa.fa-futbol-o
+          .fa-stack
+            .fa.fa-futbol-o.fa-stack-2x
+            .fa.fa-plus.fa-stack-1x{style: 'color: #D00'}
         %th.text-center{title: "Голевые пасы"}
-          .fa.fa-share
-          .fa.fa-futbol-o
+          .fa-stack
+            .fa.fa-futbol-o.fa-stack-2x
+            .fa.fa-share.fa-stack-1x{style: 'color: #D00'}
         %th.text-center{title: "Автоголы"}
-          .fa.fa-frown-o
-          .fa.fa-futbol-o
+          .fa-stack
+            .fa.fa-futbol-o.fa-stack-2x
+            .fa-stack-1x{style: 'color: #D00'}
+              A
         %th.text-center{style: "color: #FF0", title: "Жёлтые карточки"}
           .fa.fa-square
         %th.text-center{style: "color: #D00", title: "Красные карточки"}
@@ -97,8 +102,11 @@
             = pl.name
             = fa_icon 'copyright', title: 'Капитан' if pl.captain
           %td= image_tag pl.country.flag.url, title: pl.country.title
+          / TODO подумать как лучше отображать
           %td{title: pl.position1}
             = pl.full_position_name
+          %td{title: pl.real_position}
+            = pl.real_position_name
           %td= pl.talent
           %td= pl.age
           %td= pl.skill_level

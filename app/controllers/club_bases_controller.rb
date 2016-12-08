@@ -1,6 +1,6 @@
 class ClubBasesController < ApplicationController
+  before_action :check_user
   before_action :set_club_base, except: [:new, :create]
-  # before_action :admin_permission, only: :destroy
 
   def show
     @team = @club_base.team
@@ -79,11 +79,6 @@ class ClubBasesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @club_base.destroy
-    redirect_to club_bases_url, notice: I18n.t('flash.bases.destroyed')
   end
 
   private

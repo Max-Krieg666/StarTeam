@@ -24,6 +24,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jquery-tablesorter'
 # gem 'jquery-validation-rails' + TODO https://habrahabr.ru/post/213077/
+# gem 'spinjs-rails' + TODO https://github.com/dnagir/spinjs-rails
 
 gem 'therubyracer', platforms: :ruby
 gem 'execjs'

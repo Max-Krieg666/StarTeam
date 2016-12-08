@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
-  before_action :set_team, except: [:destroy, :index]
   before_action :check_user
+  before_action :set_team, except: [:destroy, :index]
 
   def index
     @teams = Team.order('title')

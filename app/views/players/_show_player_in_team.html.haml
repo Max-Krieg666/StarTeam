@@ -26,8 +26,18 @@
             = fa_icon 'star-o'
         = "№#{@player.number}"
       .list-group-item{title: "Позиция"}
-        .fa.fa-bookmark
-        = @player.full_position_name
+        .div
+          .fa.fa-bookmark
+          Номинальная позиция:
+          = @player.full_position_name
+        .div
+          .fa.fa-bookmark
+          Реальная позиция:
+          = @player.real_position_name
+        .div
+          .fa.fa-bookmark
+          Эффективность:
+          = "#{(@player.efficienty * 100).to_i}%"
       .list-group-item{title: "Талант"}
         .fa.fa-level-up
         = @player.talent
@@ -84,7 +94,7 @@
         .fa.fa-share
         .fa.fa-futbol-o
       .list-group-item{title: "Автоголы"}
-        .fa.fa-frown-o
+        .fa.fa-adn
         .fa.fa-futbol-o
       .list-group-item{style: "color: #FF0", title: "Жёлтые карточки"}
         .fa.fa-square

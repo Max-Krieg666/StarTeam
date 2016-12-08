@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # 3й TODO добавить модуль Recoverable собственноручный
   # 4й TODO добавить модуль lockable
   # 5й TODO добавить модуль OMNIAUTH
+  before_action :check_user, except: [:registration]
   before_action :admin_permission, only: [:index, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
           else
             # ОТПРАВКА СООБЩЕНИЯ
             # todo JOB
-            # ConfirmationMailer.send_confirmation(@user, @team).deliver_later
+            ConfirmationMailer.send_confirmation(@user, @team).deliver_later
             @user.force_authenticate!(self)
             redirect_to @user, notice: 'Регистрация завершена.'
           end

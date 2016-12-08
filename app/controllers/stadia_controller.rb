@@ -1,6 +1,6 @@
 class StadiaController < ApplicationController
+  before_action :check_user
   before_action :set_stadium, except: [:create, :new]
-  before_action :admin_permission, only: [:destroy]
 
   def show
     @team = @stadium.team
@@ -86,15 +86,6 @@ class StadiaController < ApplicationController
         redirect_to @stadium, notice: I18n.t('flash.stadiums.upgraded')
       end
     end
-  end
-
-  def destroy
-    # TODO разобраться надо ли это
-    # @stadium.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to stadia_url, notice: 'Стадион удалён.' }
-    #   format.json { head :no_content }
-    # end
   end
 
   private

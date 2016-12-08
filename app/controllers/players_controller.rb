@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_action :check_user
   before_action :set_player, except: [:index, :new, :create]
   before_action :admin_permission, only: [:new, :create]
 

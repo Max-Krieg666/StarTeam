@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.integer  "country_id"
     t.integer  "position1",                                        null: false
     t.integer  "position2"
+    t.integer  "real_position",                                    null: false
+    t.float    "efficienty",                       default: 1.0
     t.integer  "talent",                                           null: false
     t.integer  "age",                                              null: false
     t.integer  "skill_level",                                      null: false
@@ -77,8 +79,8 @@ ActiveRecord::Schema.define(version: 20150710140345) do
     t.integer  "games_missed",                     default: 0
     t.boolean  "injured",                          default: false
     t.boolean  "captain"
-    t.float    "morale"
-    t.float    "physical_condition"
+    t.integer  "morale",                           default: 5
+    t.float    "physical_condition",               default: 1.0
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
   end

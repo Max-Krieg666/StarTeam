@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :teams, except: [:new, :create]
 
-  resources :stadia, except: [:index] do
+  resources :stadia, except: [:index, :destroy] do
     member do
       patch 'level_up'
       patch 'capacity_up'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   resources :countries
 
-  resources :club_bases, except: [:index] do
+  resources :club_bases, except: [:index, :destroy] do
     member do
       patch 'level_up'
       patch 'training_fields_up'

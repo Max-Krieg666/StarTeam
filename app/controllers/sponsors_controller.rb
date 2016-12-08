@@ -1,4 +1,5 @@
 class SponsorsController < ApplicationController
+  before_action :check_user
   before_action :admin_permission, except: [:show]
   before_action :set_sponsor
 
