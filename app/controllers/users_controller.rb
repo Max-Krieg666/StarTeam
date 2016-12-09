@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # 3й TODO добавить модуль Recoverable собственноручный
   # 4й TODO добавить модуль lockable
   # 5й TODO добавить модуль OMNIAUTH
-  before_action :check_user, except: [:registration]
+  before_action :check_user, except: [:registration, :create]
   before_action :admin_permission, only: [:index, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
             # todo JOB
             ConfirmationMailer.send_confirmation(@user, @team).deliver_later
             @user.force_authenticate!(self)
-            redirect_to @user, notice: I18n.t('flash.users.registration_competed')
+            redirect_to @user, notice: I18n.t('flash.users.registration_completed')
           end
         end
       else
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    attrs = [:login, :password, :sex, :birthday, :email, :avatar, :country_id]
+    attrs = [:login, :password, :sex, :birthday, :email, :avatar, :country_id, :password_confirmation]
     attrs << :role if @current_user.try(:admin?)
     params.require(:user).permit(*attrs)
   end

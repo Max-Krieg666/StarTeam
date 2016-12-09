@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   ]
 
   before_validation :login_and_email_strip, on: :save
+  before_validation :set_default_role, :check_bday
 
   validates :avatar,
             attachment_content_type: { content_type: /\Aimage\/.*\Z/ },
@@ -25,9 +26,7 @@ class User < ActiveRecord::Base
             attachment_file_name: { matches: [/png\Z/, /gif\Z/, /jpe?g\Z/] }
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }
 
-  before_validation :set_default_role, :check_bday
   validates :password, length: { minimum: 6, if: 'password.present?' }, presence: { on: :create }
-  validates :role, presence: true, inclusion: { in: 0...@@roles.size }
   validates :login, presence: true, length: { minimum: 3, maximum: 24 },
             uniqueness: true, exclusion: { in: %w(admin god root) }
   validates :email, presence: true, uniqueness: { case_sensitive: false },
@@ -39,15 +38,15 @@ class User < ActiveRecord::Base
   end
 
   def moderator?
-    role == 1 || administrator?
+    role == 'moderator' || administrator?
   end
 
   def administrator?
-    role == 2
+    role == 'administrator'
   end
 
   def user?
-    role.zero?
+    role == 'user'
   end
 
   def set_default_role

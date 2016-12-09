@@ -1,14 +1,12 @@
 class Search
-  attr_accessor :query
-  attr_reader :country_id, :name, :position1, :skill_level, :talent
+  attr_accessor :query, :country_id, :name, :position1, :skill_level, :talent, :age
 
   def initialize(params)
-    # TODO not works
     super(params)
   end
 
   def apply_search
-    @query = Player.where(state: 0)
+    @query = Player.free_agent
     countries_search
     name_search
     position_inspect

@@ -78,24 +78,29 @@
     %br
     %br
     .list-group
-      / TODO подумать об измененении картинок...
       %h4.list-group-item.active{style: "color: #00F", title: "Статистика"}
         .glyphicon.glyphicon-stats
       .list-group-item{title: "Игры"}
         .fa.fa-exclamation-triangle
-      -if @player.position1 == 0
+      -if @player.goalkeeper?
         .list-group-item{title: "Пропущенные голы"}
-          .fa.fa-minus
-          .fa.fa-futbol-o
+          .fa-stack
+            .fa.fa-futbol-o.fa-stack-2x
+            .fa-stack-1x.fa_icon_addition.fa_symbol_bold
+              П
       .list-group-item{title: "Забитые голы"}
-        .fa.fa-plus
-        .fa.fa-futbol-o
+        .fa-stack
+          .fa.fa-futbol-o.fa-stack-2x
+          .fa.fa-plus.fa-stack-1x.fa_icon_addition
       .list-group-item{title: "Голевые пасы"}
-        .fa.fa-share
-        .fa.fa-futbol-o
+        .fa-stack
+          .fa.fa-futbol-o.fa-stack-2x
+          .fa.fa-share.fa-stack-1x.fa_icon_addition
       .list-group-item{title: "Автоголы"}
-        .fa.fa-adn
-        .fa.fa-futbol-o
+        .fa-stack
+          .fa.fa-futbol-o.fa-stack-2x
+          .fa-stack-1x.fa_icon_addition.fa_symbol_bold
+            А
       .list-group-item{style: "color: #FF0", title: "Жёлтые карточки"}
         .fa.fa-square
       .list-group-item{style: "color: #D00", title: "Красные карточки"}
@@ -108,7 +113,7 @@
         .fa.fa-clock-o
       .list-group-item
         = @player.season_games
-      -if @player.position1 == 0
+      -if @player.goalkeeper?
         .list-group-item
           = @player.season_conceded_goals
       .list-group-item
@@ -129,7 +134,7 @@
         .fa.fa-history
       .list-group-item
         = @player.all_games
-      -if @player.position1 == 0
+      -if @player.goalkeeper?
         .list-group-item
           = @player.all_conceded_goals
       .list-group-item

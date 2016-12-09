@@ -1,4 +1,6 @@
 class Team < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
+  
   belongs_to :user
   belongs_to :country
   has_one :sponsor

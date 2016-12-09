@@ -13,6 +13,9 @@ class Player < ActiveRecord::Base
   belongs_to :country
   belongs_to :team
   has_many :transfers
+
+  scope :free_agent, -> { where(status: 0) }
+
   
   #TODO positions на enum
   POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf).freeze
@@ -58,6 +61,10 @@ class Player < ActiveRecord::Base
 
   def set_real_position
     self.real_position ||= position1
+  end
+
+  def goalkeeper?
+    position1 == 0
   end
 
   def quality

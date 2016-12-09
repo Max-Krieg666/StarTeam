@@ -1,4 +1,4 @@
-/ TODO добавить отображение real_position, efficienty, morale, physical_condition
+/ TODO добавить отображение morale, physical_condition
 
 .text-center
   .page-header
@@ -66,20 +66,21 @@
         %th.text-center{title: "Пропущенные голы"}
           .fa-stack
             .fa.fa-futbol-o.fa-stack-2x
-            .fa.fa-minus.fa-stack-1x{style: 'color: #D00'}
+            .fa-stack-1x.fa_icon_addition
+              П
         %th.text-center{title: "Забитые голы"}
           .fa-stack
             .fa.fa-futbol-o.fa-stack-2x
-            .fa.fa-plus.fa-stack-1x{style: 'color: #D00'}
+            .fa.fa-plus.fa-stack-1x.fa_icon_addition
         %th.text-center{title: "Голевые пасы"}
           .fa-stack
             .fa.fa-futbol-o.fa-stack-2x
-            .fa.fa-share.fa-stack-1x{style: 'color: #D00'}
+            .fa.fa-share.fa-stack-1x.fa_icon_addition
         %th.text-center{title: "Автоголы"}
           .fa-stack
             .fa.fa-futbol-o.fa-stack-2x
-            .fa-stack-1x{style: 'color: #D00'}
-              A
+            .fa-stack-1x.fa_icon_addition
+              А
         %th.text-center{style: "color: #FF0", title: "Жёлтые карточки"}
           .fa.fa-square
         %th.text-center{style: "color: #D00", title: "Красные карточки"}
@@ -163,15 +164,17 @@
           Цена
           .text-danger
             = @team.averages[:av_price]
-  -if @current_user == @team.user || @current_user.moderator?
-    = link_to edit_team_path(@team), class: 'btn btn-danger' do
-      = fa_icon "edit"
-      Редактировать
-    = link_to teams_path, class: 'btn btn-warning' do
-      = fa_icon "reply"
-      Все команды
-  -if @team.user == @current_user
-    -unless @team.stadium
-      = link_to 'Перейти к созданию стадиона', { action: :new, controller: :stadia, team_id: @team.id }, class: 'btn btn-primary'
-    -if !@team.club_base
-      = link_to 'Перейти к созданию базы клуба', { action: :new, controller: :club_bases, team_id: @team.id }, class: 'btn btn-primary'
+  .btn-group
+    -if @current_user == @team.user || @current_user.moderator?
+      = link_to edit_team_path(@team), class: 'btn btn-danger' do
+        = fa_icon "edit"
+        Редактировать
+    -if @current_user.moderator?
+      = link_to teams_path, class: 'btn btn-warning' do
+        = fa_icon "reply"
+        Все команды
+    -if @current_user == @team.user
+      -unless @team.stadium
+        = link_to 'Перейти к созданию стадиона', { action: :new, controller: :stadia }, class: 'btn btn-primary'
+      -unless @team.club_base
+        = link_to 'Перейти к созданию базы клуба', { action: :new, controller: :club_bases }, class: 'btn btn-warning'

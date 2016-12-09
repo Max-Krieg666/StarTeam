@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
     if search_params
       @players = Search.new(search_params).apply_search.limit(200).includes(:country).order('countries.title, players.name').page(params[:page])
     else
-      @players = Player.where(state: 0).limit(500).includes(:country).order('countries.title, players.name').page(params[:page])
+      @players = Player.free_agent.limit(200).includes(:country).order('countries.title, players.name').page(params[:page])
     end
   end
 
