@@ -1,0 +1,41 @@
+en:
+  helpers:
+    choose_position: Choose position
+  views:
+    site_title: StarTeam football manager
+    users:
+      all: All users
+      my_page: My page
+      my_profile: My profile
+    countries:
+      block: Countries
+      all: All countries
+      create: Create a new country
+    players:
+      all: Players
+    teams:
+      budget: Budget
+      my_team: My team
+    transfers:
+      all: Transfers
+      create: Create a new player
+  buttons:
+    sign_up: Sign up
+    sign_in: Sign in
+    logout: Logout
+    save: Save
+    show: Show
+    edit: Edit
+    back: Back
+    buy: Buy
+    sell: Sell
+    increase: Increase
+    confirm: Confirm
+    cancel: Cancel
+    search: Search
+  prompt:
+    day: Day
+    month: Month
+    year: Year
+  errors:
+    any: An errors occurred when saving.

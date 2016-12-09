@@ -1,0 +1,41 @@
+ru:
+  helpers:
+    choose_position: Выберите позицию
+  views:
+    site_title: Футбольный менеджер StarTeam
+    users:
+      all: Все пользователи
+      my_page: Моя страница
+      my_profile: Мой профиль
+    countries:
+      block: Страны
+      all: Все страны
+      create: Создать страну
+    players:
+      all: Игроки
+      create: Создать игрока
+    teams:
+      budget: Бюджет
+      my_team: Моя команда
+    transfers:
+      all: Трансферы
+  buttons:
+    sign_up: Зарегистрироваться
+    sign_in: Войти
+    logout: Выйти
+    save: Сохранить
+    show: Показать
+    edit: Редактировать
+    back: Назад
+    buy: Купить
+    sell: Продать
+    increase: Увеличить
+    confirm: Подтвердить
+    cancel: Отменить
+    search: Искать
+  prompt:
+    day: День
+    month: Месяц
+    year: Год
+  errors:
+    any: При сохранении произошли ошибки.

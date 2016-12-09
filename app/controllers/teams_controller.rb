@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Команда изменена.' }
+        format.html { redirect_to @team, notice: I18n.t('flash.teams.title_changed') }
         format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit }
@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
     sp.save!
     # TODO при удалении команды отпускать на свободный рынок всех игроков в ней
     respond_to do |format|
-      format.html { redirect_to @current_user, notice: 'Команда удалена.' }
+      format.html { redirect_to @current_user, notice: I18n.t('flash.teams.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -47,9 +47,7 @@ class TeamsController < ApplicationController
 
   def team_params
     attrs = [:title]
-    if @current_user.try(:admin?)
-      attrs += [:budget, :fans, :sponsor]
-    end
+    attrs += [:budget, :fans, :sponsor] if @current_user.try(:admin?)
     params.require(:team).permit(*attrs)
   end
 end

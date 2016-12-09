@@ -2,7 +2,7 @@
   = f.hidden_field :player_id, value: params[:player_id]
   = error_messages_for(@transfer)
   -if params[:player_id]
-    -pl = PlayerInTeam.find(params[:player_id])
+    -pl = Player.find(params[:player_id])
   -else
     -pl = @transfer.player
   .form-group

@@ -597,12 +597,9 @@ class Name
       file_names = 'scotland'
       file_lastnames = 'scotland'
     end
-    if file_names.present?
-      file_names += '_names.yml'
-      file_lastnames += '_lastnames.yml'
-      return [file_names, file_lastnames]
-    else
-      raise "имён для страны #{@country_id} нету!"
-    end
+    raise "имён для страны #{@country_id} нету!" unless file_names.present?
+    file_names += '_names.yml'
+    file_lastnames += '_lastnames.yml'
+    [file_names, file_lastnames]
   end
 end

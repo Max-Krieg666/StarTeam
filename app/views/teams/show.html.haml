@@ -26,7 +26,7 @@
       Не создана
   %p
     %b Бюджет:
-    = number_to_currency(@team.budget, precision: 3, locale: :en)
+    = @team.budget_to_currency
   %p
     %b Фаны:
     %span.fa.fa-users

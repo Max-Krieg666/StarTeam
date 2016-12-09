@@ -94,10 +94,11 @@ class Sponsor < ActiveRecord::Base
   ]
 
   def self.create_rand(team_id)
-  	sp = self.new(
+    spec_num = SecureRandom.random_number(Sponsor.specializations.size)
+    sp = self.new(
       title: Sponsor.random_title,
       team_id: team_id,
-      specialization: Sponsor.specializations.values[SecureRandom.random_number(Sponsor.specializations.size)],
+      specialization: Sponsor.specializations.values[spec_num],
       cost_of_full_stake: SecureRandom.random_number(8000000..25000000).to_f
     )
     sp.lost_prize = (sp.cost_of_full_stake / 8000.0).round(3)

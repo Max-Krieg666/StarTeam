@@ -19,6 +19,10 @@ class Team < ActiveRecord::Base
     players.size
   end
 
+  def budget_to_currency
+    number_to_currency(budget, precision: 3, locale: :en)
+  end
+
   def averages
     av_skills = 0
     av_age = 0

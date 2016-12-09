@@ -44,3 +44,16 @@ en:
       max_level: Your stadium has a maximum level.
     teams:
       low_squad: There is a minimum count of players in your team (14).
+      title_changed: "Team's title was changed."
+      destroyed: Team was destroyed.
+    transfers:
+      created: Transfer offer was successfully created.
+      edited: Transfer offer was edited.
+      destroyed: Transfer offer was destroyed.
+    users:
+      account_confirmed: You have successfully confirmed your account.
+      invalid_confirmed_key: Your confirmed key is invalid.
+      created: User was created.
+      registration_completed: Registration completed.
+      edited: User was edited.
+      destroyed: User was destroyed.

@@ -1,6 +1,6 @@
 -if object.errors.any?
   .panel.panel-danger
-    .panel-heading При сохранении произошли ошибки!
+    .panel-heading= t('views.players.create')
   .panel-body
     %ul
       - object.errors.full_messages.each do |msg|

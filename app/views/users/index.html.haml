@@ -56,7 +56,7 @@
             .text-danger.li Не выбрано!
         %td= user.email
         -if @current_user.moderator?
-          %td= user.role_name
+          %td= user.role
           %td
             = link_to edit_user_path(user), class: 'btn btn-link' do
               = fa_icon "edit"
@@ -79,5 +79,5 @@
 -#      =user.login
 -#      =surround ?(,?) do
 -#        %i=user.email
--#      %span.text-muted=user.role_name
+-#      %span.text-muted=user.role
 -#=paginate @users

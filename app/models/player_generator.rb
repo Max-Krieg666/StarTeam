@@ -3,7 +3,7 @@ class PlayerGenerator
 
   def initialize(count, x = nil, pos = nil, state = 0)
     ActiveRecord::Base.transaction do
-    	count.times do |i|
+      count.times do |i|
         x = rand(252) if x.nil?
         pl = Player.new
         pl.position1 = pos || POS[rand(POS.size)]
@@ -94,9 +94,7 @@ class PlayerGenerator
 
   def self.rand_number(presence_numbers)
     num = rand(99) + 1
-    while presence_numbers.include?(num)
-      num = rand(99) + 1
-    end
+    num = rand(99) + 1 while presence_numbers.include?(num)
     num
   end
 end

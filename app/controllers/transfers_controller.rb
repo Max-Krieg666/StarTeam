@@ -3,7 +3,7 @@ class TransfersController < ApplicationController
   before_action :set_transfer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @transfers = Transfer.where(status:'Активен').page(params[:page])
+    @transfers = Transfer.where(status: 0).page(params[:page])
   end
 
   def show
@@ -18,13 +18,13 @@ class TransfersController < ApplicationController
 
   def create
     @transfer = Transfer.new(transfer_params)
-    pl=PlayerInTeam.find(transfer_params[:player_id])
-    @transfer.vendor_id=pl.team_id
-    @transfer.status='Активен'
-    pl.update(status:'transfer')
+    pl = Player.find(transfer_params[:player_id])
+    @transfer.vendor_id = pl.team_id
+    @transfer.status = 0
+    pl.update(status: 4)
     respond_to do |format|
       if @transfer.save
-        format.html { redirect_to @transfer, notice: 'Трансферное предложение успешно создано.' }
+        format.html { redirect_to @transfer, notice: I18n.t('flash.transfers.created') }
         format.json { render :show, status: :created, location: @transfer }
       else
         format.html { render :new }
@@ -36,7 +36,7 @@ class TransfersController < ApplicationController
   def update
     respond_to do |format|
       if @transfer.update(transfer_params)
-        format.html { redirect_to @transfer, notice: 'Трансферное предложение изменено.' }
+        format.html { redirect_to @transfer, notice: I18n.t('flash.transfers.edited') }
         format.json { render :show, status: :ok, location: @transfer }
       else
         format.html { render :edit }
@@ -48,7 +48,7 @@ class TransfersController < ApplicationController
   def destroy
     @transfer.destroy
     respond_to do |format|
-      format.html { redirect_to transfers_url, notice: 'Трансферное предложение удалено.' }
+      format.html { redirect_to transfers_url, notice: I18n.t('flash.transfers.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -60,6 +60,6 @@ class TransfersController < ApplicationController
   end
 
   def transfer_params
-    params.require(:transfer).permit(:cost,:player_id)#, :vendor_id, :purchaser_id, :cost, :status)
+    params.require(:transfer).permit(:cost, :player_id)#, :vendor_id, :purchaser_id, :cost, :status)
   end
 end

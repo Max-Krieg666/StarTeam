@@ -13,13 +13,13 @@ class Transfer < ActiveRecord::Base
   validates :vendor_id, presence: true
 
   def statuses_in_colors
-  	return case status
-		   when 0
-		  	 '#32CD32'
-		   when 1
-		  	 '#FF3030'
-		   else
-		  	 '#5CACEE'
-		   end
+    case status
+    when 0
+      '#32CD32'
+    when 1
+      '#FF3030'
+    else
+      '#5CACEE'
+    end
   end
 end

@@ -11,12 +11,19 @@ class User < ActiveRecord::Base
     :female
   ]
 
+  enum role: [
+    :user,
+    :moderator,
+    :administrator
+  ]
+
+  before_validation :login_and_email_strip, on: :save
+
   validates :avatar,
             attachment_content_type: { content_type: /\Aimage\/.*\Z/ },
             attachment_size: { less_than: 1.megabytes },
             attachment_file_name: { matches: [/png\Z/, /gif\Z/, /jpe?g\Z/] }
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }
-  @@roles = %w(Пользователь Модератор Администратор)
 
   before_validation :set_default_role, :check_bday
   validates :password, length: { minimum: 6, if: 'password.present?' }, presence: { on: :create }
@@ -26,8 +33,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { case_sensitive: false },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
-  def role_name
-    role && @@roles[role]
+  def login_and_email_strip
+    login.strip!
+    email.strip!
   end
 
   def moderator?
@@ -39,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def user?
-    role == 0
+    role.zero?
   end
 
   def set_default_role
@@ -47,8 +55,8 @@ class User < ActiveRecord::Base
   end
 
   def check_bday
-    return if self.birthday.blank?
-    self.errors[:birthday] << ' не существует!' if birthday > Time.zone.now
+    return if birthday.blank?
+    errors[:birthday] << ' не существует!' if birthday > Time.zone.now
   end
 
   def force_authenticate!(controller)

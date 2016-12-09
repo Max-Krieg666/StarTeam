@@ -3,6 +3,7 @@ module UsersHelper
     select_tag(country, options_for_select(
       [['', nil]] + Country.order('title').load.map{ |x| [x.title, x.id] },
         [selected]),
-    class: 'selectpicker', data: { 'live-search' => true })
+      class: 'selectpicker', data: { 'live-search' => true }
+    )
   end
 end

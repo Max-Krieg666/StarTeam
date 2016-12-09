@@ -4,7 +4,7 @@ module Definer
   def level_define
     if talent == 9
       if skill_level > 100
-        age < 33 ? a = 10 : a = 9
+        a = (age < 33 ? 10 : 9)
       elsif skill_level > 50
         a = 8 if age > 35
         a = 9 if age > 25 && age < 36
@@ -16,7 +16,7 @@ module Definer
       end
     elsif talent == 8
       if skill_level > 100
-        age < 33 ? a = 9 : a = 8
+        a = (age < 33 ? 9 : 8)
       elsif skill_level > 50
         a = 7 if age > 25
         a = 8 if age < 26
@@ -27,7 +27,7 @@ module Definer
       end
     elsif talent == 7
       if skill_level > 100
-        age < 33 ? a = 9 : a = 7
+        a = (age < 33 ? 9 : 7)
       elsif skill_level > 50
         a = 6 if age > 35
         a = 7 if age > 25 && age < 36
@@ -39,7 +39,7 @@ module Definer
       end
     elsif talent == 6
       if skill_level > 100
-        age < 33 ? a = 7 : a = 5
+        a = (age < 33 ? 7 : 5)
       elsif skill_level > 50
         a = 6 if age > 35
         a = 7 if age > 25 && age < 36
@@ -65,7 +65,7 @@ module Definer
       end
     elsif talent == 4 || talent == 3
       if skill_level > 100
-        age < 33 ? a = 6 : a = 5
+        a = (age < 33 ? 6 : 5)
       elsif skill_level > 50
         a = 4 if age > 35
         a = 5 if age > 25 && age < 36
@@ -77,7 +77,7 @@ module Definer
       end
     elsif talent == 2
       if skill_level > 100
-        age < 33 ? a = 4 : a = 3
+        a = (age < 33 ? 4 : 3)
       elsif skill_level > 50
         a = 2 if age > 35
         a = 3 if age > 25 && age < 36
@@ -89,13 +89,13 @@ module Definer
       end
     else # talent == 1
       if skill_level > 100
-        age < 33 ? a = 3 : a = 2
+        a = (age < 33 ? 3 : 2)
       elsif skill_level > 50
         a = 1 if age > 35
         a = 2 if age > 25 && age < 36
         a = 3 if age < 26
       else
-        age > 25 ? a = 1 : a = 2
+        a = (age > 25 ? 1 : 2)
       end
     end
     a
