@@ -29,7 +29,8 @@
     = @team.budget_to_currency
   %p
     %b Фаны:
-    %span.fa.fa-users
+    %span
+      = inline_svg 'group.svg', class: 'svg-picture'
     = @team.fans
 
   %br
@@ -40,29 +41,29 @@
         %th.text-center
           №
         %th.text-center
-          .fa.fa-male
+          = inline_svg 'footballer.svg', class: 'svg-picture-table'
           Игрок
         %th.text-center
-          .fa.fa-flag
+          = inline_svg 'flag.svg', class: 'svg-picture-table'
           Национальность
         %th.text-center{'colspan': 2}
-          .fa.fa-bookmark
+          = inline_svg 'location.svg', class: 'svg-picture-table'
           Позиция
         %th.text-center
-          .fa.fa-level-up
+          = inline_svg 'level-up.svg', class: 'svg-picture-table'
           Талант
         %th.text-center
-          .fa.fa-history
+          = inline_svg 'history.svg', class: 'svg-picture-table'
           Возраст
         %th.text-center
-          .fa.fa-line-chart
+          = inline_svg 'level.svg', class: 'svg-picture-medium'
           Мастерство
         %th.text-center
-          .fa.fa-money
+          = inline_svg 'money.svg', class: 'svg-picture-table'
           Цена
         / TODO подумать об измененении иконок font-awesome...
         %th.text-center{title: "Игры"}
-          .fa.fa-exclamation-triangle
+          = inline_svg 'field-vertical.svg', class: 'svg-picture-medium'
         %th.text-center{title: "Пропущенные голы"}
           .fa-stack
             .fa.fa-futbol-o.fa-stack-2x
@@ -82,9 +83,9 @@
             .fa-stack-1x.fa_icon_addition
               А
         %th.text-center{style: "color: #FF0", title: "Жёлтые карточки"}
-          .fa.fa-square
+          = inline_svg 'yellowcard.svg', size: "21px * 21px"
         %th.text-center{style: "color: #D00", title: "Красные карточки"}
-          .fa.fa-square
+          = inline_svg 'redcard.svg', size: "21px * 21px"
         %th.text-center{title: "Основной состав/запас"} О/З
         -if @current_user == @team.user
           %th
@@ -127,16 +128,16 @@
           -if @current_user == @team.user
             %td
               / = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-              / = fa_icon 'wrench'
+              / = inline_svg 'edit.svg', class: 'svg-picture white'
             %td
               = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-link' do
                 = fa_icon 'usd'
-                = fa_icon 'sign-out'
+                = inline_svg 'log-out.svg', class: 'svg-picture white'
               = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
                 .glyphicon.glyphicon-transfer
           %td
             = link_to pl, class: 'btn btn-link', title: 'Обзор игрока' do
-              = fa_icon 'street-view'
+              = inline_svg 'street-view.svg', class: 'svg-picture white'
   %table.table.table-bordered
     %thead
       %tr{class: 'info'}
@@ -167,11 +168,11 @@
   .btn-group
     -if @current_user == @team.user || @current_user.moderator?
       = link_to edit_team_path(@team), class: 'btn btn-danger' do
-        = fa_icon "edit"
+        = inline_svg 'edit-group.svg', class: 'svg-picture-medium white'
         Редактировать
     -if @current_user.moderator?
       = link_to teams_path, class: 'btn btn-warning' do
-        = fa_icon "reply"
+        = inline_svg 'reply.svg', class: 'svg-picture white'
         Все команды
     -if @current_user == @team.user
       -unless @team.stadium

@@ -16,7 +16,6 @@ class Player < ActiveRecord::Base
 
   scope :free_agent, -> { where(status: 0) }
 
-  
   #TODO positions на enum
   POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf).freeze
 

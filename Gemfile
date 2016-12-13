@@ -17,6 +17,7 @@ gem 'kaminari-bootstrap'
 # Icons
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+gem 'inline_svg'
 
 # JavaScript assets and libraries
 gem 'uglifier', '>= 1.3.0'

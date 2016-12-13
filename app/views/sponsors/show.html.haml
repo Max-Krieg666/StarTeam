@@ -29,9 +29,9 @@
 
   .btn-group
     = link_to @sponsor.team, class: 'btn btn-info' do
-      = fa_icon "users"
+      = inline_svg 'group.svg', class: 'svg-picture white'
       К команде << #{@sponsor.team.title} >>
     -if @current_user.moderator?
       = link_to edit_sponsor_path(@sponsor), class: 'btn btn-danger' do
-        = fa_icon "edit"
+        = inline_svg 'edit.svg', class: 'svg-picture white'
         = t('buttons.edit')

@@ -59,13 +59,13 @@
           %td= user.role
           %td
             = link_to edit_user_path(user), class: 'btn btn-link' do
-              = fa_icon "edit"
+              = inline_svg 'edit.svg', class: 'svg-picture white'
           %td
             = link_to user, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = fa_icon "remove"
+              = inline_svg 'trash.svg', class: 'svg-picture white'
         %td
           = link_to user, class: 'btn btn-link' do
-            = fa_icon "arrow-circle-right"
+            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture white'
 
 %br
 = paginate @users

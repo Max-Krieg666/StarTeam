@@ -4,8 +4,8 @@
 %br
 .btn-group
   = link_to @team, class: 'btn btn-warning' do
-    =fa_icon "reply"
+    = inline_svg 'reply.svg', class: 'svg-picture white'
     #{@team.title}
-  = link_to teams_path, class: 'btn btn-info' do
-    =fa_icon "list"
-    Все команды
+  /= link_to teams_path, class: 'btn btn-info' do
+    /= fa_icon "list"
+    /Все команды

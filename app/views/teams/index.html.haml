@@ -17,10 +17,10 @@
   %tbody
     - @teams.each do |team|
       %tr
-        %td= link_to team.user.login, team.user, style:"color: #FFA500"
-        %td= link_to team.title, team,  style:"color: #00F"
+        %td= link_to team.user.login, team.user, style: "color: #FFA500"
+        %td= link_to team.title, team,  style: "color: #00F"
         %td
-          = link_to team.sponsor.title, team.sponsor, style:"color: #550"
+          = link_to team.sponsor.title, team.sponsor, style: "color: #550"
         %td
           -if team.stadium
             = link_to "#{team.stadium.title} (#{team.stadium.capacity})", team.stadium, style: "color: #F00"
@@ -35,11 +35,11 @@
         %td= number_to_human(team.fans, locale: :en, units: {thousand: "K",million:"M"})
         -if @current_user.moderator?
           %td.text-center
-            = link_to edit_team_path(team), class: "btn btn-link" do
-              =fa_icon "edit"
+            = link_to edit_team_path(team), class: 'btn btn-link' do
+              = inline_svg 'edit-group.svg', class: 'svg-picture white'
           %td.text-center
-            = link_to team, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-link" do
-              =fa_icon "remove"
+            = link_to team, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-link' do
+              = inline_svg 'trash.svg', class: 'svg-picture white'
         %td.text-center
-          = link_to team, class: "btn btn-link" do
-            =fa_icon "arrow-circle-right"
+          = link_to team, class: 'btn btn-link' do
+            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture white'

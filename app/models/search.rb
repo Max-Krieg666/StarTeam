@@ -2,7 +2,13 @@ class Search
   attr_accessor :query, :country_id, :name, :position1, :skill_level, :talent, :age
 
   def initialize(params)
-    super(params)
+    # TODO переделать
+    @country_id = params[:country_id]
+    @name = params[:name]
+    @position1 = params[:position1]
+    @skill_level = params[:skill_level]
+    @talent = params[:talent]
+    @age = params[:age]
   end
 
   def apply_search

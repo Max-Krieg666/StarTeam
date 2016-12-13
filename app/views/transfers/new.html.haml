@@ -50,7 +50,7 @@
       %br
       = render 'form'
   = link_to transfers_path, class: 'btn btn-info' do
-    = fa_icon "reply"
+    = inline_svg 'reply.svg', class: 'svg-picture white'
     Все трансферы
   = link_to @current_user_team, class: 'btn btn-warning' do
     = fa_icon "users"

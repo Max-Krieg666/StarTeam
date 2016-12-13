@@ -57,13 +57,13 @@
           -if @current_user.moderator?
             %td
               = link_to edit_player_path(player), class: 'btn btn-link' do
-                = fa_icon "wrench"
+                = inline_svg 'edit.svg', class: 'svg-picture white'
             %td
               = link_to player, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-                = fa_icon "trash"
+              = inline_svg 'trash.svg', class: 'svg-picture white'
           %td
             = link_to player, class: 'btn btn-link' do
-              = fa_icon "street-view"
+              = inline_svg 'street-view.svg', class: 'svg-picture white'
           %td
             -if @current_user_team
               = link_to buy_processing_player_path(player), class: 'btn btn-default' do
@@ -75,7 +75,7 @@
 
   -if @current_user.moderator?
     = link_to new_player_path, class: 'btn btn-default' do
-      = fa_icon "plus"
+      = inline_svg 'plus.svg', class: 'svg-picture white'
       Новый игрок
 
   %br

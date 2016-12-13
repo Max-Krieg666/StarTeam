@@ -6,8 +6,8 @@
 %br
 .btn-group
   = link_to @country, class: 'btn btn-warning' do
-    = fa_icon "reply"
+    = inline_svg 'reply.svg', class: 'svg-picture white'
     #{@country.title}
   = link_to countries_path, class: 'btn btn-info' do
-    = fa_icon "flag"
+    = inline_svg 'flag.svg', class: 'svg-picture white'
     Все страны

@@ -1,5 +1,5 @@
 .field_with_errors{
-  @extend .has-error;
+	@extend .has-error;
 }
 
 $body-bg: #fff;
@@ -9,5 +9,24 @@ $brand-primary: #2dcc70;
 @import "bootstrap";
 
 .alert-notice {
-  @extend .alert-success;
+	@extend .alert-success;
+}
+
+.svg-picture {
+	width: 14px;
+	height: 14px;
+}
+
+.svg-picture-table {
+	width: 18px;
+	height: 18px;
+}
+
+.svg-picture-medium {
+	width: 21px;
+	height: 21px;
+}
+
+.white {
+	fill: #fff;
 }

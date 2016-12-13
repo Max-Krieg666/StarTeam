@@ -5,5 +5,5 @@
 %br
 
 = link_to @current_user_team, class: 'btn btn-info' do
-  = fa_icon "reply"
+  = inline_svg 'reply.svg', class: 'svg-picture white'
   Вернуться к команде << #{@current_user_team.title} >>
