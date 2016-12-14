@@ -4,7 +4,7 @@
   .row
     .col-md-3
       .form-group
-        .fa.fa-pencil.li
+        = inline_svg 'pencil.svg', class: 'svg-picture'
         = f.label :title
         = f.text_field :title, class: 'form-control'
   .actions

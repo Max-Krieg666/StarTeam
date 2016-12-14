@@ -83,14 +83,14 @@
     #team_info.tab-pane
       .row
         .form-group.col-md-3
-          .fa.fa-pencil.li
+          = inline_svg 'pencil.svg', class: 'svg-picture'
           -#TODO jquery check title auto
           = label_tag Team.human_attribute_name(:title)
           *
           = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
       .row
         .form-group.col-md-3
-          .fa.fa-flag.li
+          = inline_svg 'flag.svg', class: 'svg-picture'
           = label_tag Team.human_attribute_name(:country)
           *
           = select_country('team[country_id]', params[:team].try(:[], :country_id))

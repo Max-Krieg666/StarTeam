@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :sponsors, only: [:show, :edit, :update]
 
-  resources :teams
+  resources :teams, except: [:new, :create]
 
   get 'login' => "sessions#new", as: :login
 

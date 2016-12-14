@@ -1,5 +1,5 @@
 = form_for @sponsor do |f|
-  =error_messages_for(@sponsor)
+  = error_messages_for(@sponsor)
   .row
     .col-md-3
       .form-group
@@ -21,7 +21,8 @@
         = f.label :cost_of_full_stake
         .input-group
           = f.text_field :cost_of_full_stake, class: 'form-control'
-          %span.input-group-addon.fa.fa-usd
+          %span.input-group-addon
+            = inline_svg 'usd.svg', class: 'svg-picture'
 
   .actions
-    =f.submit t('buttons.save'), class: 'btn btn-primary'
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

@@ -131,10 +131,10 @@
               / = inline_svg 'edit.svg', class: 'svg-picture white'
             %td
               = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-link' do
-                = fa_icon 'usd'
+                = inline_svg 'usd.svg', class: 'svg-picture white'
                 = inline_svg 'log-out.svg', class: 'svg-picture white'
               = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-link' do
-                .glyphicon.glyphicon-transfer
+                = inline_svg 'transfer.svg', class: 'svg-picture white'
           %td
             = link_to pl, class: 'btn btn-link', title: 'Обзор игрока' do
               = inline_svg 'street-view.svg', class: 'svg-picture white'
@@ -172,7 +172,7 @@
         Редактировать
     -if @current_user.moderator?
       = link_to teams_path, class: 'btn btn-warning' do
-        = inline_svg 'reply.svg', class: 'svg-picture white'
+        = inline_svg 'reply.svg', class: 'svg-picture-medium white'
         Все команды
     -if @current_user == @team.user
       -unless @team.stadium

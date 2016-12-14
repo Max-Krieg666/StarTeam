@@ -5,31 +5,31 @@
   .col-md-4
     .list-group
       %h4.list-group-item.active{style: "color: #00F"}
-        .fa.fa-male
+        = inline_svg 'footballer.svg', class: 'svg-picture'
         = @player.name
         = image_tag @player.country.flag.url, title: @player.country.title
         .row{style: "color: #FFD700"}
           -quality = @player.quality
           -quality[0].times do
-            = fa_icon 'star'
+            = inline_svg 'star.svg', class: 'svg-picture'
           -if quality[1] == 1
-            = fa_icon 'star-half-o'
+            = inline_svg 'star-half.svg', class: 'svg-picture'
           -quality[2].times do
-            = fa_icon 'star-o'
+            = inline_svg 'star-o.svg', class: 'svg-picture'
       .list-group-item
-        .fa.fa-bookmark
+        = inline_svg 'location.svg', class: 'svg-picture'
         = @player.full_position_name
       .list-group-item
-        .fa.fa-level-up
+        = inline_svg 'level-up.svg', class: 'svg-picture'
         Талант: #{@player.talent}
       .list-group-item
-        .fa.fa-history
+        = inline_svg 'history.svg', class: 'svg-picture'
         Возраст: #{@player.age} #{Russian.p(@player.age, "год", "года", "лет")}
       .list-group-item
-        .fa.fa-line-chart
+        = inline_svg 'level.svg', class: 'svg-picture'
         Мастерство: #{@player.skill_level}
       .list-group-item
-        .fa.fa-money
+        = inline_svg 'money.svg', class: 'svg-picture'
         Цена: #{@player.price_to_currency}
 %br
 
@@ -58,5 +58,5 @@
     Все игроки
   -if @current_user_team
     = link_to @current_user_team, class: 'btn btn-primary' do
-      = fa_icon "users"
+      = inline_svg 'group.svg', class: 'svg-picture white'
       Моя команда

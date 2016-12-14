@@ -13,25 +13,25 @@
   .col-md-4
     .list-group
       %h3.list-group-item.active{style: "color: #00F"}
-        .fa.fa-male
+        = inline_svg 'footballer.svg', class: 'svg-picture'
         = @player.name
         = image_tag c.flag.url, title: c.title
         .row{style: "color: #FFD700"}
           -quality = @player.quality
           -quality[0].times do
-            = fa_icon 'star'
+            = inline_svg 'star.svg', class: 'svg-picture'
           -if quality[1] == 1
-            = fa_icon 'star-half-o'
+            = inline_svg 'star-half.svg', class: 'svg-picture'
           -quality[2].times do
-            = fa_icon 'star-o'
+            = inline_svg 'star-o.svg', class: 'svg-picture'
         = "№#{@player.number}"
       .list-group-item{title: "Позиция"}
         .div
-          .fa.fa-bookmark
+          = inline_svg 'location.svg', class: 'svg-picture'
           Номинальная позиция:
           = @player.full_position_name
         .div
-          .fa.fa-bookmark
+          = inline_svg 'location.svg', class: 'svg-picture'
           Реальная позиция:
           = @player.real_position_name
         .div
@@ -39,16 +39,16 @@
           Эффективность:
           = "#{(@player.efficienty * 100).to_i}%"
       .list-group-item{title: "Талант"}
-        .fa.fa-level-up
+        = inline_svg 'level-up.svg', class: 'svg-picture'
         = @player.talent
       .list-group-item{title: "Возраст"}
-        .fa.fa-history
+        = inline_svg 'history.svg', class: 'svg-picture'
         #{@player.age} #{Russian.p(@player.age, "год", "года", "лет")}
       .list-group-item{title: "Мастерство"}
-        .fa.fa-line-chart
+        = inline_svg 'level.svg', class: 'svg-picture'
         = @player.skill_level
       .list-group-item{title: "Цена"}
-        .fa.fa-money
+        = inline_svg 'money.svg', class: 'svg-picture'
         = @player.price_to_currency
       .list-group-item{title: "Специальные умения"}
         .fa.fa-flash
@@ -79,7 +79,7 @@
     %br
     .list-group
       %h4.list-group-item.active{style: "color: #00F", title: "Статистика"}
-        .glyphicon.glyphicon-stats
+        = inline_svg 'field-vertical.svg', class: 'svg-picture-medium'
       .list-group-item{title: "Игры"}
         .fa.fa-exclamation-triangle
       -if @player.goalkeeper?
@@ -131,7 +131,7 @@
     %br
     .list-group.h4
       .list-group-item.active{style: "color: #00F",title: "Карьера"}
-        .fa.fa-history
+        = inline_svg 'history.svg', class: 'svg-picture-medium'
       .list-group-item
         = @player.all_games
       -if @player.goalkeeper?
@@ -150,13 +150,13 @@
 
 .btn-group
   = link_to t, class: 'btn btn-info' do
-    = fa_icon "users"
+    = inline_svg 'group.svg', class: 'svg-picture white'
     = t.title
   -if @current_user_team == t
     / = link_to edit_player_in_team_path(@player_in_team), class: 'btn btn-danger' do
-    /  = fa_icon "wrench"
+    /  = inline_svg 'edit.svg', class: 'svg-picture white'
     /  = t('buttons.edit')
     = link_to sell_player_path(@player), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
-      = fa_icon 'usd'
+      = inline_svg 'usd.svg', class: 'svg-picture white'
       = fa_icon 'sign-out'
       = t('buttons.sell')

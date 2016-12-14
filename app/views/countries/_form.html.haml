@@ -1,19 +1,19 @@
 = form_for @country do |f|
-  =error_messages_for(@country)
+  = error_messages_for(@country)
 
   .row
     .col-md-3
       .form-group
-        .fa.fa-pencil
+        = inline_svg 'pencil.svg', class: 'svg-picture'
         = f.label :title
-        = f.text_field :title, class: "form-control"
+        = f.text_field :title, class: 'form-control'
   %br
   .row
     .col-md-3
       .form-group
-        .fa.fa-pencil
+        = inline_svg 'pencil.svg', class: 'svg-picture'
         = f.label :title_en
-        = f.text_field :title_en, class: "form-control"
+        = f.text_field :title_en, class: 'form-control'
   %br
   .row
     .col-md-3
@@ -22,5 +22,5 @@
         = f.label :flag
         = f.file_field :flag
   .actions
-    = f.submit t('buttons.save'), class: "btn btn-primary"
+    = f.submit t('buttons.save'), class: 'btn btn-primary'
 %br

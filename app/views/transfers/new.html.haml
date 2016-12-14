@@ -2,7 +2,7 @@
   .page-header
     %h1 Создание нового трансферного предложения
     -pl = Player.find(params[:player_id])
-    -c = Country.find(pl.country_id)
+    -c = pl.country
     %h3
       = pl.name
       = image_tag c.flag.url, title: c.title
@@ -11,32 +11,32 @@
     .col-md-4
       .list-group
         %h3.list-group-item.active{style: "color: #00F"}
-          .fa.fa-male
+          = inline_svg 'footballer.svg', class: 'svg-picture'
           = pl.name
           = image_tag c.flag.url, title: c.title
           .row{style: "color: #FFD700"}
             -quality = @player.quality
             -quality[0].times do
-              = fa_icon 'star'
+              = inline_svg 'star.svg', class: 'svg-picture'
             -if quality[1] == 1
-              = fa_icon 'star-half-o'
+              = inline_svg 'star-half.svg', class: 'svg-picture'
             -quality[2].times do
-              = fa_icon 'star-o'
+              = inline_svg 'star-o.svg', class: 'svg-picture'
           = "№#{pl.number}"
         .list-group-item{title: "Позиция"}
-          .fa.fa-bookmark
+          = inline_svg 'location.svg', class: 'svg-picture'
           = pl.full_position_name
         .list-group-item{title: "Талант"}
-          .fa.fa-level-up
+          = inline_svg 'level-up.svg', class: 'svg-picture'
           = pl.talent
         .list-group-item{title: "Возраст"}
-          .fa.fa-history
+          = inline_svg 'history.svg', class: 'svg-picture'
           #{pl.age} #{Russian.p(pl.age, "год", "года", "лет")}
         .list-group-item{title: "Мастерство"}
-          .fa.fa-line-chart
+          = inline_svg 'level.svg', class: 'svg-picture'
           = pl.skill_level
         .list-group-item{title: "Цена"}
-          .fa.fa-money
+          = inline_svg 'money.svg', class: 'svg-picture'
           = pl.price_to_currency
         .list-group-item{title: "Специальные умения"}
           .fa.fa-flash
@@ -53,5 +53,5 @@
     = inline_svg 'reply.svg', class: 'svg-picture white'
     Все трансферы
   = link_to @current_user_team, class: 'btn btn-warning' do
-    = fa_icon "users"
+    = inline_svg 'group.svg', class: 'svg-picture white'
     Моя команда

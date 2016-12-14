@@ -7,7 +7,7 @@
   %thead
     %tr
       %th.text-center
-        .fa.fa-male
+        = inline_svg 'footballer.svg', class: 'svg-picture'
         Игрок
       %th.text-center
         .fa.fa-upload
@@ -16,7 +16,7 @@
         .fa.fa-download
         Клуб-покупатель
       %th.text-center
-        .fa.fa-money
+        = inline_svg 'money.svg', class: 'svg-picture'
         Стоимость покупки
       %th.text-center
         .fa.fa-question-circle
@@ -43,14 +43,14 @@
           = transfer.status
         %td
           = link_to transfer, class: 'btn btn-link' do
-            = fa_icon "arrow-circle-right"
+            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture white'
         -if @current_user == transfer.player.team.user
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link' do
-              = fa_icon "wrench"
+              = inline_svg 'edit.svg', class: 'svg-picture white'
           %td
             = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = fa_icon "remove"
+              = inline_svg 'trash.svg', class: 'svg-picture white'
         -else
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link', title: 'Купить игрока' do

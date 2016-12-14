@@ -5,10 +5,10 @@
   %thead
     %tr
       %th.text-center
-        .fa.fa-pencil
+        = inline_svg 'pencil.svg', class: 'svg-picture'
         Название
       %th.text-center
-        .fa.fa-flag
+        = inline_svg 'flag.svg', class: 'svg-picture'
         Флаг
       %th
       %th
@@ -26,14 +26,14 @@
             = fa_icon "chevron-circle-right"
         %td
           = link_to edit_country_path(country), class: 'btn btn-link' do
-            = fa_icon "wrench"
+            = inline_svg 'edit.svg', class: 'svg-picture white'
         %td
           = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: 'btn btn-link' do
-            = fa_icon "trash-o"
+            = inline_svg 'trash.svg', class: 'svg-picture white'
 
 %br
 = link_to new_country_path, class:'btn btn-default' do
-  = inline_svg 'plus.svg', class: 'svg-picture white'
+  = inline_svg 'plus-circle.svg', class: 'svg-picture white'
   Создать страну
 
 %br

@@ -5,10 +5,10 @@
   %thead
     %tr
       %th.text-center
-        .fa.fa-user
+        = inline_svg 'person-circle.svg', class: 'svg-picture'
         Логин
       %th.text-center
-        .fa.fa-users
+        = inline_svg 'group.svg', class: 'svg-picture'
         Команда
       %th.text-center
         .fa.fa-picture-o
@@ -27,7 +27,7 @@
         Эл. почта
       -if @current_user.moderator?
         %th.text-center
-          .fa.fa-street-view
+          = inline_svg 'street-view.svg', class: 'svg-picture'
           Роль
         %th
         %th
@@ -69,15 +69,3 @@
 
 %br
 = paginate @users
--#.btn-toolbar
--#  =link_to registration_users_path, class: 'btn btn-primary' do
--#    =fa_icon 'user-plus'
--#    Новый пользователь
--#.list-group
--#  -@users.each do |user|
--#    =link_to user, class: 'list-group-item' do
--#      =user.login
--#      =surround ?(,?) do
--#        %i=user.email
--#      %span.text-muted=user.role
--#=paginate @users

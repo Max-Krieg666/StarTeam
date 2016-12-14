@@ -39,10 +39,10 @@
     %b Роль:
     = @user.role
   = link_to edit_user_path(@user), class: 'btn btn-danger' do
-    = fa_icon "edit"
+    = inline_svg 'edit.svg', class: 'svg-picture white'
     Редактировать
 = link_to users_path, class: 'btn btn-info' do
-  = fa_icon "users"
+  = inline_svg 'group.svg', class: 'svg-picture white'
   Все пользователи
 -if @user.team
   = link_to @user.team, class: 'btn btn-primary' do

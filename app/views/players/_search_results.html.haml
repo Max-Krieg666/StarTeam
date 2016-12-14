@@ -6,28 +6,28 @@
     %thead
       %tr
         %th.text-center
-          .fa.fa-male
+          = inline_svg 'footballer.svg', class: 'svg-picture'
           Игрок
         %th.text-center
-          .fa.fa-flag
+          = inline_svg 'flag.svg', class: 'svg-picture'
           Национальность
         %th.text-center
-          .fa.fa-bookmark
+          = inline_svg 'location.svg', class: 'svg-picture'
           Позиция
         %th.text-center
-          .fa.fa-level-up
+          = inline_svg 'level-up.svg', class: 'svg-picture'
           Талант
         %th.text-center
-          .fa.fa-history
+          = inline_svg 'history.svg', class: 'svg-picture'
           Возраст
         %th.text-center
-          .fa.fa-line-chart
+          = inline_svg 'level.svg', class: 'svg-picture'
           Мастерство
         %th.text-center
-          .fa.fa-money
+          = inline_svg 'money.svg', class: 'svg-picture'
           Цена
         %th.text-center
-          .fa.fa-star
+          = inline_svg 'star.svg', class: 'svg-picture'
           Качество игрока
         -#%th
         -#%th
@@ -49,11 +49,11 @@
           %td
             -quality = player.quality
             -quality[0].times do
-              = fa_icon 'star'
+              = inline_svg 'star.svg', class: 'svg-picture'
             -if quality[1] == 1
-              = fa_icon 'star-half-o'
+              = inline_svg 'star-half.svg', class: 'svg-picture'
             -quality[2].times do
-              = fa_icon 'star-o'
+              = inline_svg 'star-o.svg', class: 'svg-picture'
           -if @current_user.moderator?
             %td
               = link_to edit_player_path(player), class: 'btn btn-link' do
@@ -75,7 +75,7 @@
 
   -if @current_user.moderator?
     = link_to new_player_path, class: 'btn btn-default' do
-      = inline_svg 'plus.svg', class: 'svg-picture white'
+      = inline_svg 'plus-circle.svg', class: 'svg-picture white'
       Новый игрок
 
   %br

@@ -24,18 +24,18 @@
   %b Качество:
   -quality = @player.quality
   -quality[0].times do
-    = fa_icon 'star'
+    = inline_svg 'star.svg', class: 'svg-picture'
   -if quality[1] == 1
-    = fa_icon 'star-half-o'
+    = inline_svg 'star-half.svg', class: 'svg-picture'
   -quality[2].times do
-    = fa_icon 'star-o'
+    = inline_svg 'star-o.svg', class: 'svg-picture'
 
 -if @current_user.moderator?
   = link_to edit_player_path(@player), class: 'btn btn-danger' do
-    = fa_icon "wrench"
+    = inline_svg 'edit.svg', class: 'svg-picture white'
     = t('buttons.edit')
 = link_to players_path, class: 'btn btn-info' do
-  = fa_icon "users"
+  = inline_svg 'group.svg', class: 'svg-picture white'
   Все игроки
 -if @current_user_team
   = link_to buy_processing_player_path(@player), class: 'btn btn-default', id: 'buy' do
