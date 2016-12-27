@@ -6,8 +6,8 @@
 
 .btn-group
   = link_to @stadium, class: 'btn btn-info' do
-    = inline_svg 'reply.svg', class: 'svg-picture white'
+    = inline_svg 'reply.svg', class: 'svg-picture-btn white'
     = t('buttons.back')
   = link_to @stadium.team, class: 'btn btn-warning' do
-    = fa_icon "users"
+    = inline_svg 'group.svg', class: 'svg-picture-btn white'
     Команда << #{@stadium.team.title} >>

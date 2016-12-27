@@ -39,9 +39,9 @@
 
 .btn-group
   = link_to @stadium.team, class: 'btn btn-info' do
-    = inline_svg 'group.svg', class: 'svg-picture white'
+    = inline_svg 'group.svg', class: 'svg-picture-btn white'
     = @team.title
   -if @current_user == @team.user || @current_user.moderator?
     = link_to edit_stadium_path(@stadium), class: 'btn btn-danger' do
-      = inline_svg 'edit.svg', class: 'svg-picture white'
+      = inline_svg 'edit.svg', class: 'svg-picture-btn white'
       = t('buttons.edit')

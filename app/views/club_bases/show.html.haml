@@ -22,8 +22,8 @@
 
 -if @current_user == @user || @current_user.moderator?
   = link_to edit_club_basis_path(@club_base), class: 'btn btn-danger' do
-    = inline_svg 'edit.svg', class: 'svg-picture white'
+    = inline_svg 'edit.svg', class: 'svg-picture-btn white'
     = t('buttons.edit')
 = link_to @team, class: 'btn btn-info' do
-  = inline_svg 'group.svg', class: 'svg-picture white'
+  = inline_svg 'group.svg', class: 'svg-picture-btn white'
   Вернуться к команде << #{@team.title} >>

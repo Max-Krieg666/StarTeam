@@ -23,17 +23,17 @@
           = image_tag country.flag.url, alt: country.title
         %td
           = link_to country, class: 'btn btn-link' do
-            = fa_icon "chevron-circle-right"
+            = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn white'
         %td
           = link_to edit_country_path(country), class: 'btn btn-link' do
-            = inline_svg 'edit.svg', class: 'svg-picture white'
+            = inline_svg 'edit.svg', class: 'svg-picture-btn white'
         %td
           = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: 'btn btn-link' do
-            = inline_svg 'trash.svg', class: 'svg-picture white'
+            = inline_svg 'trash.svg', class: 'svg-picture-btn white'
 
 %br
 = link_to new_country_path, class:'btn btn-default' do
-  = inline_svg 'plus-circle.svg', class: 'svg-picture white'
+  = inline_svg 'plus-circle.svg', class: 'svg-picture-btn white'
   Создать страну
 
 %br

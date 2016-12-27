@@ -1,0 +1,48 @@
+.svg-picture {
+	width: 14px;
+	height: 14px;
+}
+
+.svg-picture-table {
+	width: 18px;
+	height: 18px;
+	vertical-align: middle !important;
+}
+
+.svg-picture-btn {
+	width: 21px;
+	height: 21px;
+	vertical-align: middle !important;
+}
+
+.svg-picture-medium {
+	width: 21px;
+	height: 21px;
+}
+
+.svg-picture-unstandart {
+	width: 22px;
+	height: 18px;
+}
+
+.svg-picture-more {
+	width: 25px;
+	height: 27px;
+}
+
+.svg-picture-giant {
+	width: 40px;
+	height: 40px;
+}
+
+.white {
+	fill: #fff;
+}
+
+.green {
+	fill: #228B22;
+}
+
+.red {
+	fill: #f00;
+}

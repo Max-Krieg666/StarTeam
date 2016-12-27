@@ -18,7 +18,7 @@
   .row
     .col-md-3
       .form-group
-        .fa.fa-file-image-o
+        = inline_svg 'picture.svg', class: 'svg-picture'
         = f.label :flag
         = f.file_field :flag
   .actions

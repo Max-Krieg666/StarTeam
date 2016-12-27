@@ -12,21 +12,7 @@ $brand-primary: #2dcc70;
 	@extend .alert-success;
 }
 
-.svg-picture {
-	width: 14px;
-	height: 14px;
-}
-
-.svg-picture-table {
-	width: 18px;
-	height: 18px;
-}
-
-.svg-picture-medium {
-	width: 21px;
-	height: 21px;
-}
-
-.white {
-	fill: #fff;
+.centralize {
+	vertical-align: middle !important;
+	padding-bottom: 1px;
 }

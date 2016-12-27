@@ -31,4 +31,6 @@
             -if @current_user_team
               %span.navbar-text= @current_user_team.title
               %span.navbar-text= "#{t('views.teams.budget')}: #{@current_user_team.budget_to_currency}"
-            = link_to t('buttons.logout'), logout_path, data: { method: :patch }
+            = link_to logout_path, data: { method: :patch } do
+              = t('buttons.logout')
+              /= inline_svg 'log-out.svg', class: 'svg-picture-btn'

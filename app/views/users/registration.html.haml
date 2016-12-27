@@ -4,8 +4,8 @@
   = error_messages_for(@user)
   -#TODO допилить вёрстку
   .help-block
-    .fa.fa-info-circle.li
-      = t('info-blocks.registration.whats_asterisk')
+    = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+    = t('info-blocks.registration.whats_asterisk')
   %ul.nav.nav-tabs
     %li.active
       %a{ "data-toggle" => "tab", href: "#user_info" }= t('info-blocks.registration.user_info')
@@ -16,88 +16,84 @@
     #user_info.tab-pane.active
       .row
         .form-group.col-md-3
-          .fa.fa-user.li
+          = inline_svg 'user.svg', class: 'svg-picture-table'
           -#TODO jquery check login auto
           = f.label :login
           *
           = f.text_field :login, class: 'form-control'
       .row
         .form-group.col-md-3
-          .fa.fa-envelope.li
+          = inline_svg 'email.svg', class: 'svg-picture-table'
           = f.label :email
           *
           = f.text_field :email, class: 'form-control'
         .form-group.col-md-3
           .help-block
-            .fa.fa-info-circle.li
+            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
             = t('info-blocks.registration.right_email')
       .row
         .form-group.col-md-3
-          .fa.fa-key.li
+          = inline_svg 'key.svg', class: 'svg-picture-table'
           -#TODO bootstrap strength meter
           = f.label :password
           *
           = f.password_field :password, class: 'form-control'
       .row
         .form-group.col-md-3
-          .fa.fa-key
-          .fa.fa-key.li
+          = inline_svg 'key.svg', class: 'svg-picture-table'
+          = inline_svg 'key.svg', class: 'svg-picture-table'
           = f.label :password_confirmation
           *
           = f.password_field :password_confirmation, class: 'form-control'
       .row
         .form-group.col-md-3
-          .fa.fa-picture-o
+          = inline_svg 'picture.svg', class: 'svg-picture-table'
           = f.label :avatar
           = f.file_field :avatar
       .row
         .form-group.col-md-3
-          .fa.fa-home.li
+          = inline_svg 'home.svg', class: 'svg-picture-table'
           = f.label :country
           *
           = select_country('user[country_id]', @user.country_id)
         .form-group.col-md-3
           .help-block
             %br
-            .fa.fa-info-circle.li
+            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
             = t('info-blocks.registration.your_country')
       .row
         .form-group.col-md-3
-          .fa.fa-venus-mars.li
+          = inline_svg 'sex.svg', class: 'svg-picture-unstandart'
           -#TODO м ж - integer значения + починить
           = f.label :sex
           = select_tag('user[sex]', options_for_select(User.sexes.keys.to_a, @user.sex), class: 'selectpicker')
       .row
         .form-group.col-md-6
-          .fa.fa-birthday-cake.li
+          = inline_svg 'birthday.svg', class: 'svg-picture-table'
           = f.label :birthday
           = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
-      -if @current_user.try(:administrator?)
-        .row
-          .form-group
-            = f.label :role
-            = f.select :role, User.roles.map.with_index { |name, i| [name, i] }, {}, class: 'form-control'
       .help-block
-        .fa.fa-info-circle.li
-          = t('info-blocks.registration.attention')
+        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+        = t('info-blocks.registration.attention')
     #team_info.tab-pane
+      %br
       .row
         .form-group.col-md-3
-          = inline_svg 'pencil.svg', class: 'svg-picture'
+          = inline_svg 'pencil.svg', class: 'svg-picture-table'
           -#TODO jquery check title auto
           = label_tag Team.human_attribute_name(:title)
           *
           = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
       .row
         .form-group.col-md-3
-          = inline_svg 'flag.svg', class: 'svg-picture'
+          = inline_svg 'flag.svg', class: 'svg-picture-table'
           = label_tag Team.human_attribute_name(:country)
           *
           = select_country('team[country_id]', params[:team].try(:[], :country_id))
         %br
         .form-group.col-md-3
           .help-block
-            .fa.fa-info-circle.li
+            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
             = t('info-blocks.registration.team_country')
 
   -#TODO разработать правила участия и кнопку CONFIRM

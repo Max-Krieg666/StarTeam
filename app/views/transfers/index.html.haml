@@ -1,25 +1,25 @@
 .page-header
   %h1
-    .glyphicon.glyphicon-transfer
+    = inline_svg 'transfer.svg', class: 'svg-picture-giant'
     Трансферы
 
 %table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th.text-center
-        = inline_svg 'footballer.svg', class: 'svg-picture'
+        = inline_svg 'footballer.svg', class: 'svg-picture-table'
         Игрок
       %th.text-center
-        .fa.fa-upload
+        = inline_svg 'vendor.svg', class: 'svg-picture-table'
         Клуб-продавец
       %th.text-center
-        .fa.fa-download
+        = inline_svg 'purchaser.svg', class: 'svg-picture-table'
         Клуб-покупатель
       %th.text-center
-        = inline_svg 'money.svg', class: 'svg-picture'
+        = inline_svg 'money.svg', class: 'svg-picture-table'
         Стоимость покупки
       %th.text-center
-        .fa.fa-question-circle
+        = inline_svg 'question-circle.svg', class: 'svg-picture-table'
         Статус
       %th
       %th
@@ -43,16 +43,16 @@
           = transfer.status
         %td
           = link_to transfer, class: 'btn btn-link' do
-            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture white'
+            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
         -if @current_user == transfer.player.team.user
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link' do
-              = inline_svg 'edit.svg', class: 'svg-picture white'
+              = inline_svg 'edit.svg', class: 'svg-picture-btn white'
           %td
             = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture white'
+              = inline_svg 'trash.svg', class: 'svg-picture-btn white'
         -else
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link', title: 'Купить игрока' do
-              .glyphicon.glyphicon-transfer
+              = inline_svg 'transfer.svg', class: 'svg-picture-btn white'
 %br

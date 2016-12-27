@@ -39,16 +39,19 @@
     %b Роль:
     = @user.role
   = link_to edit_user_path(@user), class: 'btn btn-danger' do
-    = inline_svg 'edit.svg', class: 'svg-picture white'
-    Редактировать
+    = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+    %span.centralize
+      Редактировать
 = link_to users_path, class: 'btn btn-info' do
-  = inline_svg 'group.svg', class: 'svg-picture white'
-  Все пользователи
+  = inline_svg 'group.svg', class: 'svg-picture-btn white'
+  %span.centralize
+    Все пользователи
 -if @user.team
   = link_to @user.team, class: 'btn btn-primary' do
-    = fa_icon "chevron-circle-right"
-    К команде << #{@user.team.title} >>
+    = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn white'
+    %span.centralize
+      К команде << #{@user.team.title} >>
 -else
   = link_to @user, class: 'btn btn-warning disabled' do
-    = fa_icon "chevron-circle-right"
+    = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn white'
     Команда не создана!

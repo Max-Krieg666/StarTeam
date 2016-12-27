@@ -6,8 +6,8 @@
 %br
 .btn-group
   = link_to @player, class: 'btn btn-warning' do
-    = fa_icon "male"
+    = inline_svg 'footballer.svg', class: 'svg-picture-btn white'
     #{@player.name}
   = link_to players_path, class: 'btn btn-info' do
-    = fa_icon "reply"
+    = inline_svg 'reply.svg', class: 'svg-picture-btn white'
     Все игроки

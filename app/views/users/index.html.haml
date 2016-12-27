@@ -11,19 +11,19 @@
         = inline_svg 'group.svg', class: 'svg-picture'
         Команда
       %th.text-center
-        .fa.fa-picture-o
+        = inline_svg 'picture.svg', class: 'svg-picture'
         Аватар
       %th.text-center
-        .fa.fa-home
+        = inline_svg 'home.svg', class: 'svg-picture'
         Страна
       %th.text-center
-        .fa.fa-venus-mars
+        = inline_svg 'sex.svg', class: 'svg-picture'
         Пол
       %th.text-center
-        .fa.fa-birthday-cake
+        = inline_svg 'birthday.svg', class: 'svg-picture'
         Дата рождения
       %th.text-center
-        .fa.fa-envelope
+        = inline_svg 'email.svg', class: 'svg-picture'
         Эл. почта
       -if @current_user.moderator?
         %th.text-center
@@ -59,13 +59,13 @@
           %td= user.role
           %td
             = link_to edit_user_path(user), class: 'btn btn-link' do
-              = inline_svg 'edit.svg', class: 'svg-picture white'
+              = inline_svg 'edit.svg', class: 'svg-picture-btn white'
           %td
             = link_to user, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture white'
+              = inline_svg 'trash.svg', class: 'svg-picture-btn white'
         %td
           = link_to user, class: 'btn btn-link' do
-            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture white'
+            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
 
 %br
 = paginate @users

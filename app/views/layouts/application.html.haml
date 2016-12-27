@@ -20,7 +20,9 @@
             .alert.alert-warning.fade.in
               %button{class: 'close', "aria-hidden" => 'true', "data-dismiss" => 'alert', "type" => 'button'}x
               %strong Вы не построили стадион!
-              = link_to 'Построить стадион сейчас', new_stadium_path, class: 'btn btn-danger', type: 'button'
+              = link_to new_stadium_path, class: 'btn btn-danger', type: 'button' do
+                = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
+                Построить стадион сейчас
       = render 'flash_messages'
       = yield
     %br

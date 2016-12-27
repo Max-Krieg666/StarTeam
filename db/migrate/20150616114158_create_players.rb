@@ -44,10 +44,6 @@ class CreatePlayers < ActiveRecord::Migration
       t.boolean :captain # капитан или нет
       t.integer :morale, default: 5 # мораль
       t.float :physical_condition, default: 1.0 # физ. готовность
-      
-      # TODO подумать, как сделать такую штуку как карьера
-      # типо 20 - 25 лет - FC Ross
-      # типо 25 - 40 лет - FC Manguul
 
       t.timestamps null: false
     end

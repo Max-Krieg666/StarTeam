@@ -6,28 +6,28 @@
     %thead
       %tr
         %th.text-center
-          = inline_svg 'footballer.svg', class: 'svg-picture'
+          = inline_svg 'footballer.svg', class: 'svg-picture-table'
           Игрок
         %th.text-center
-          = inline_svg 'flag.svg', class: 'svg-picture'
+          = inline_svg 'flag.svg', class: 'svg-picture-table'
           Национальность
         %th.text-center
-          = inline_svg 'location.svg', class: 'svg-picture'
+          = inline_svg 'location.svg', class: 'svg-picture-table'
           Позиция
         %th.text-center
-          = inline_svg 'level-up.svg', class: 'svg-picture'
+          = inline_svg 'level-up.svg', class: 'svg-picture-table'
           Талант
         %th.text-center
-          = inline_svg 'history.svg', class: 'svg-picture'
+          = inline_svg 'history.svg', class: 'svg-picture-table'
           Возраст
         %th.text-center
-          = inline_svg 'level.svg', class: 'svg-picture'
+          = inline_svg 'level.svg', class: 'svg-picture-unstandart'
           Мастерство
         %th.text-center
-          = inline_svg 'money.svg', class: 'svg-picture'
+          = inline_svg 'money.svg', class: 'svg-picture-table'
           Цена
         %th.text-center
-          = inline_svg 'star.svg', class: 'svg-picture'
+          = inline_svg 'star.svg', class: 'svg-picture-table'
           Качество игрока
         -#%th
         -#%th
@@ -39,8 +39,7 @@
       - @players.each do |player|
         %tr.text-center
           %td= player.name
-          %td
-            = image_tag player.country.flag.url, title: player.country.title
+          %td= image_tag player.country.flag.url, title: player.country.title
           %td= player.full_position_name
           %td= player.talent
           %td= player.age
@@ -57,17 +56,17 @@
           -if @current_user.moderator?
             %td
               = link_to edit_player_path(player), class: 'btn btn-link' do
-                = inline_svg 'edit.svg', class: 'svg-picture white'
+                = inline_svg 'edit.svg', class: 'svg-picture-btn white'
             %td
               = link_to player, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture white'
+                = inline_svg 'trash.svg', class: 'svg-picture-btn white'
           %td
             = link_to player, class: 'btn btn-link' do
-              = inline_svg 'street-view.svg', class: 'svg-picture white'
+              = inline_svg 'street-view.svg', class: 'svg-picture-btn white'
           %td
             -if @current_user_team
               = link_to buy_processing_player_path(player), class: 'btn btn-default' do
-                = fa_icon "share-square-o"
+                = inline_svg 'share-square-o.svg', class: 'svg-picture-btn white'
                 = t('buttons.buy')
             -else
               .text-danger Покупка не доступна
@@ -75,8 +74,9 @@
 
   -if @current_user.moderator?
     = link_to new_player_path, class: 'btn btn-default' do
-      = inline_svg 'plus-circle.svg', class: 'svg-picture white'
-      Новый игрок
+      = inline_svg 'plus-circle.svg', class: 'svg-picture-btn white'
+      %span.centralize
+        Новый игрок
 
   %br
   = paginate @players

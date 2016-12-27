@@ -2,10 +2,6 @@
 
 = render 'form'
 %br
-.btn-group
-  = link_to @sponsor, class: 'btn btn-warning' do
-    = fa_icon "reply"
-    #{@sponsor.title}
-  = link_to sponsors_path, class: 'btn btn-info' do
-    = fa_icon "list"
-    Все спонсоры
+= link_to @sponsor, class: 'btn btn-warning' do
+  = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+  #{@sponsor.title}

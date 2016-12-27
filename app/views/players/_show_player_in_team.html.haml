@@ -5,7 +5,7 @@
 .page-header
   %h2
     = @player.name
-    = fa_icon "copyright", title: 'Капитан' if @player.captain
+    = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
     = image_tag c.flag.url, title: c.title
   = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
   = image_tag t.country.flag.url, title: t.country.title
@@ -35,7 +35,7 @@
           Реальная позиция:
           = @player.real_position_name
         .div
-          .fa.fa-bookmark
+          = inline_svg 'cogwheel.svg', class: 'svg-picture'
           Эффективность:
           = "#{(@player.efficienty * 100).to_i}%"
       .list-group-item{title: "Талант"}
@@ -48,10 +48,10 @@
         = inline_svg 'level.svg', class: 'svg-picture'
         = @player.skill_level
       .list-group-item{title: "Цена"}
-        = inline_svg 'money.svg', class: 'svg-picture'
+        = inline_svg 'usd.svg', class: 'svg-picture'
         = @player.price_to_currency
       .list-group-item{title: "Специальные умения"}
-        .fa.fa-flash
+        = inline_svg 'flash.svg', class: 'svg-picture'
         = @player.show_special_skills
       .list-group-item
         Готовность к игре:
@@ -62,11 +62,14 @@
         -if @player.games_missed != 0
           Выбыл на #{@player.games_missed} #{Russian.p(@player.injured,"игру","игры","игр")}. Причина:
           -if @player.injured != 0
-            = fa_icon "plus-square", style: "color: #F00"
+            = inline_svg 'medkit.svg', class: 'svg-picture'
             = @player.injured
           -if @player.status == 'penalty'
-            = fa_icon "square", style: "color: #FF0" if @player.games_missed == 1
-            = fa_icon "square", style: "color: #D00" if @player.games_missed == 2
+            -if @player.games_missed == 1
+              = inline_svg 'yellow-card.svg'
+              x
+              = @player.season_yellow_cards
+            = inline_svg 'red-card.svg' if @player.games_missed == 2
         %br
         -if @player.basic
           .li{style:"color: #00F"} [Основной состав]
@@ -79,38 +82,28 @@
     %br
     .list-group
       %h4.list-group-item.active{style: "color: #00F", title: "Статистика"}
-        = inline_svg 'field-vertical.svg', class: 'svg-picture-medium'
+        = inline_svg 'statistics.svg', class: 'svg-picture-medium'
       .list-group-item{title: "Игры"}
-        .fa.fa-exclamation-triangle
+        = inline_svg 'field-vertical.svg', class: 'svg-picture-medium'
       -if @player.goalkeeper?
         .list-group-item{title: "Пропущенные голы"}
-          .fa-stack
-            .fa.fa-futbol-o.fa-stack-2x
-            .fa-stack-1x.fa_icon_addition.fa_symbol_bold
-              П
+          = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
       .list-group-item{title: "Забитые голы"}
-        .fa-stack
-          .fa.fa-futbol-o.fa-stack-2x
-          .fa.fa-plus.fa-stack-1x.fa_icon_addition
+        = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium green'
       .list-group-item{title: "Голевые пасы"}
-        .fa-stack
-          .fa.fa-futbol-o.fa-stack-2x
-          .fa.fa-share.fa-stack-1x.fa_icon_addition
+        = inline_svg 'goal-pass.svg', class: 'svg-picture-medium'
       .list-group-item{title: "Автоголы"}
-        .fa-stack
-          .fa.fa-futbol-o.fa-stack-2x
-          .fa-stack-1x.fa_icon_addition.fa_symbol_bold
-            А
-      .list-group-item{style: "color: #FF0", title: "Жёлтые карточки"}
-        .fa.fa-square
-      .list-group-item{style: "color: #D00", title: "Красные карточки"}
-        .fa.fa-square
+        = inline_svg 'autogoal.svg', class: 'svg-picture-medium'
+      .list-group-item{title: "Жёлтые карточки"}
+        = inline_svg 'yellow-card.svg', class: 'svg-picture-medium'
+      .list-group-item{title: "Красные карточки"}
+        = inline_svg 'red-card.svg', class: 'svg-picture-medium'
   .col-md-2
     %br
     %br
     .list-group.h4
       .list-group-item.active{style: "color: #00F", title: "Текущий сезон"}
-        .fa.fa-clock-o
+        = inline_svg 'timer.svg', class: 'svg-picture-medium'
       .list-group-item
         = @player.season_games
       -if @player.goalkeeper?
@@ -130,7 +123,7 @@
     %br
     %br
     .list-group.h4
-      .list-group-item.active{style: "color: #00F",title: "Карьера"}
+      .list-group-item.active{style: "color: #00F", title: "Карьера"}
         = inline_svg 'history.svg', class: 'svg-picture-medium'
       .list-group-item
         = @player.all_games
@@ -150,13 +143,14 @@
 
 .btn-group
   = link_to t, class: 'btn btn-info' do
-    = inline_svg 'group.svg', class: 'svg-picture white'
+    = inline_svg 'group.svg', class: 'svg-picture-btn white'
     = t.title
   -if @current_user_team == t
     / = link_to edit_player_in_team_path(@player_in_team), class: 'btn btn-danger' do
-    /  = inline_svg 'edit.svg', class: 'svg-picture white'
+    /  = inline_svg 'edit.svg', class: 'svg-picture-btn white'
     /  = t('buttons.edit')
     = link_to sell_player_path(@player), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
-      = inline_svg 'usd.svg', class: 'svg-picture white'
-      = fa_icon 'sign-out'
-      = t('buttons.sell')
+      = inline_svg 'usd.svg', class: 'svg-picture-btn white'
+      = inline_svg 'log-out.svg', class: 'svg-picture-btn white'
+      %span.centralize
+        = t('buttons.sell')

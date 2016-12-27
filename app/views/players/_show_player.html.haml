@@ -32,14 +32,17 @@
 
 -if @current_user.moderator?
   = link_to edit_player_path(@player), class: 'btn btn-danger' do
-    = inline_svg 'edit.svg', class: 'svg-picture white'
-    = t('buttons.edit')
+    = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+    %span.centralize
+      = t('buttons.edit')
 = link_to players_path, class: 'btn btn-info' do
-  = inline_svg 'group.svg', class: 'svg-picture white'
-  Все игроки
+  = inline_svg 'group.svg', class: 'svg-picture-btn white'
+  %span.centralize
+    Все игроки
 -if @current_user_team
   = link_to buy_processing_player_path(@player), class: 'btn btn-default', id: 'buy' do
-    = fa_icon "share-square-o"
-    = t('buttons.buy')
+    = inline_svg 'share-square-o.svg', class: 'svg-picture-btn'
+    %span.centralize
+      = t('buttons.buy')
 -else
   .text-danger Покупка не доступна
