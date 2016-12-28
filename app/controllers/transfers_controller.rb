@@ -7,28 +7,33 @@ class TransfersController < ApplicationController
   end
 
   def show
+    @player = @transfer.player
   end
 
   def new
     @transfer = Transfer.new
+    @player = Player.find(params[:player_id])
   end
 
   def edit
   end
 
   def create
-    @transfer = Transfer.new(transfer_params)
-    pl = Player.find(transfer_params[:player_id])
-    @transfer.vendor_id = pl.team_id
-    @transfer.status = 0
-    pl.update(status: 4)
-    respond_to do |format|
-      if @transfer.save
-        format.html { redirect_to @transfer, notice: I18n.t('flash.transfers.created') }
-        format.json { render :show, status: :created, location: @transfer }
-      else
-        format.html { render :new }
-        format.json { render json: @transfer.errors, status: :unprocessable_entity }
+    ActiveRecord::Base.transaction do
+      @transfer = Transfer.new(transfer_params)
+      pl = Player.find(transfer_params[:player_id])
+      @transfer.cost = @transfer.cost.round(3)
+      @transfer.vendor_id = pl.team_id
+      @transfer.status = 0
+      pl.update(status: 4)
+      respond_to do |format|
+        if @transfer.save
+          format.html { redirect_to @transfer, notice: I18n.t('flash.transfers.created') }
+          format.json { render :show, status: :created, location: @transfer }
+        else
+          format.html { render :new }
+          format.json { render json: @transfer.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

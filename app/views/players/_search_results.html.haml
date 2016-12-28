@@ -24,7 +24,7 @@
           = inline_svg 'level.svg', class: 'svg-picture-unstandart'
           Мастерство
         %th.text-center
-          = inline_svg 'money.svg', class: 'svg-picture-table'
+          = inline_svg 'usd.svg', class: 'svg-picture-table'
           Цена
         %th.text-center
           = inline_svg 'star.svg', class: 'svg-picture-table'
@@ -62,11 +62,11 @@
                 = inline_svg 'trash.svg', class: 'svg-picture-btn white'
           %td
             = link_to player, class: 'btn btn-link' do
-              = inline_svg 'street-view.svg', class: 'svg-picture-btn white'
+              = inline_svg 'street-view.svg', class: 'svg-picture-btn'
           %td
             -if @current_user_team
               = link_to buy_processing_player_path(player), class: 'btn btn-default' do
-                = inline_svg 'share-square-o.svg', class: 'svg-picture-btn white'
+                = inline_svg 'share-square-o.svg', class: 'svg-picture-btn'
                 = t('buttons.buy')
             -else
               .text-danger Покупка не доступна

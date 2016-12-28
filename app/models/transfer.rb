@@ -1,4 +1,5 @@
 class Transfer < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   belongs_to :player
   belongs_to :vendor, class_name: 'Team'
   belongs_to :purchaser, class_name: 'Team'
@@ -21,5 +22,9 @@ class Transfer < ActiveRecord::Base
     else
       '#5CACEE'
     end
+  end
+
+  def cost_to_currency
+    number_to_currency(cost, locale: :en, precision: 3)
   end
 end

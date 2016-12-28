@@ -1,46 +1,16 @@
+-c = @player.country
+-t = @player.team
 .text-center
   .page-header
     %h1 Создание нового трансферного предложения
-    -pl = Player.find(params[:player_id])
-    -c = pl.country
     %h3
-      = pl.name
+      = @player.name
+      = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
       = image_tag c.flag.url, title: c.title
+    = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
+    = image_tag t.country.flag.url, title: t.country.title
   .row.text-danger
-    .col-md-2
-    .col-md-4
-      .list-group
-        %h3.list-group-item.active{style: "color: #00F"}
-          = inline_svg 'footballer.svg', class: 'svg-picture'
-          = pl.name
-          = image_tag c.flag.url, title: c.title
-          .row{style: "color: #FFD700"}
-            -quality = @player.quality
-            -quality[0].times do
-              = inline_svg 'star.svg', class: 'svg-picture'
-            -if quality[1] == 1
-              = inline_svg 'star-half.svg', class: 'svg-picture'
-            -quality[2].times do
-              = inline_svg 'star-o.svg', class: 'svg-picture'
-          = "№#{pl.number}"
-        .list-group-item{title: "Позиция"}
-          = inline_svg 'location.svg', class: 'svg-picture'
-          = pl.full_position_name
-        .list-group-item{title: "Талант"}
-          = inline_svg 'level-up.svg', class: 'svg-picture'
-          = pl.talent
-        .list-group-item{title: "Возраст"}
-          = inline_svg 'history.svg', class: 'svg-picture'
-          #{pl.age} #{Russian.p(pl.age, "год", "года", "лет")}
-        .list-group-item{title: "Мастерство"}
-          = inline_svg 'level.svg', class: 'svg-picture'
-          = pl.skill_level
-        .list-group-item{title: "Цена"}
-          = inline_svg 'money.svg', class: 'svg-picture'
-          = pl.price_to_currency
-        .list-group-item{title: "Специальные умения"}
-          = inline_svg 'flash.svg', class: 'svg-picture'
-          = pl.show_special_skills
+    = render 'players/player_in_team_info'
     .col-md-2
     .col-md-3
       %br
@@ -49,10 +19,12 @@
       %br
       %br
       = render 'form'
+  = link_to @player, class: 'btn btn-primary' do
+    = inline_svg 'footballer.svg', class: 'svg-picture-btn'
+    Назад к игроку
   = link_to transfers_path, class: 'btn btn-info' do
     = inline_svg 'reply.svg', class: 'svg-picture-btn white'
-    %span.centralize
-      Все трансферы
+    Все трансферы
   = link_to @current_user_team, class: 'btn btn-warning' do
     = inline_svg 'group.svg', class: 'svg-picture-btn white'
     %span.centralize

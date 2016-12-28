@@ -1,8 +1,17 @@
-%h1 Информация о трансфере игрока
+-c = @player.country
+-t = @player.team
+.text-center
+  .page-header
+    %h1 Информация о трансфере игрока
+    %h3
+      = @player.name
+      = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
+      = image_tag c.flag.url, title: c.title
+    = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
+    = image_tag t.country.flag.url, title: t.country.title
+  .row.text-danger
+    = render 'players/player_in_team_info'
 
-%p
-  %b Игрок:
-  = @transfer.player
 %p
   %b Продавец:
   = @transfer.vendor
@@ -11,10 +20,11 @@
   = @transfer.purchaser
 %p
   %b Итоговая стоимость:
-  = @transfer.cost
+  = @transfer.cost_to_currency
 %p
   %b Статус:
-  = @transfer.status
+  %span{style: "color: " + "#{@transfer.statuses_in_colors}"}
+    = t("transfer.status.#{@transfer.status}")
 
 = link_to t('buttons.edit'), edit_transfer_path(@transfer), class: 'btn btn-danger'
 = link_to 'Все трансферы', transfers_path, class: 'btn btn-primary'

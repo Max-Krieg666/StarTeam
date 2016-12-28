@@ -121,11 +121,10 @@
               / = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
               / = inline_svg 'edit.svg', class: 'svg-picture-btn'
             %td
-              = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-default' do
-                = inline_svg 'usd.svg', class: 'svg-picture-btn green'
-                = inline_svg 'sell.svg', class: 'svg-picture-btn green'
               = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-default', title: 'Выставить на трансфер' do
                 = inline_svg 'transfer.svg', class: 'svg-picture-btn'
+              = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-default' do
+                = inline_svg 'usd.svg', class: 'svg-picture-btn green'
           %td
             = link_to pl, class: 'btn btn-default', title: 'Обзор игрока' do
               = inline_svg 'street-view.svg', class: 'svg-picture-btn green'

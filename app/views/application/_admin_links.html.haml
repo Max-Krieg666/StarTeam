@@ -4,19 +4,13 @@
     = t('views.countries.block')
     %b.caret
     %ul.dropdown-menu{"role" => "menu"}
-      %li
-        %a{href: countries_path}
-          = t('views.countries.all')
-        %a{href: new_country_path}
-          = t('views.countries.create')
+      .li= link_to t('views.countries.all'), countries_path, class: 'btn btn-link other-color-on-hover'
+      .li= link_to t('views.countries.create'), new_country_path, class: 'btn btn-link other-color-on-hover'
 %li.dropdown
   %a.dropdown-toggle{href: "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
     = t('views.players.all')
     %b.caret
     %ul.dropdown-menu{"role" => "menu"}
-      %li
-        %a{href: players_path}
-          = t('views.players.all')
-        %a{href: new_player_path}
-          = t('views.players.create')
+      .li= link_to t('views.players.all'), players_path, class: 'btn btn-link other-color-on-hover'
+      .li= link_to t('views.players.create'), new_player_path, class: 'btn btn-link other-color-on-hover'
 %li= link_to t('views.transfers.all'), transfers_path

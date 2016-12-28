@@ -1,6 +1,16 @@
 ru:
   helpers:
     choose_position: Выберите позицию
+  user:
+    sex:
+      male: Мужской
+      female: Женский
+      not_specified: Не указан
+  transfer:
+    status:
+      active: Активен
+      completed: Завершён
+      canceled: Отменён
   views:
     site_title: Футбольный менеджер StarTeam
     users:
@@ -15,8 +25,13 @@ ru:
       all: Игроки
       create: Создать игрока
     teams:
+      block: Команда
+      club_base: База клуба
+      stadium: Стадион
       budget: Бюджет
       my_team: Моя команда
+      training: Тренировка
+      statistics: Статистика игроков
     transfers:
       all: Трансферы
   buttons:
@@ -29,6 +44,7 @@ ru:
     back: Назад
     buy: Купить
     sell: Продать
+    transfer: Выставить на трансфер
     increase: Увеличить
     confirm: Подтвердить
     cancel: Отменить

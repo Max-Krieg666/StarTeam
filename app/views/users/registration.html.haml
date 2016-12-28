@@ -41,7 +41,6 @@
       .row
         .form-group.col-md-3
           = inline_svg 'key.svg', class: 'svg-picture-table'
-          = inline_svg 'key.svg', class: 'svg-picture-table'
           = f.label :password_confirmation
           *
           = f.password_field :password_confirmation, class: 'form-control'
@@ -64,9 +63,8 @@
       .row
         .form-group.col-md-3
           = inline_svg 'sex.svg', class: 'svg-picture-unstandart'
-          -#TODO м ж - integer значения + починить
           = f.label :sex
-          = select_tag('user[sex]', options_for_select(User.sexes.keys.to_a, @user.sex), class: 'selectpicker')
+          = select_tag('user[sex]', options_for_select(User.sexes.map { |k, _| [t("user.sex.#{k}"), k] }, @user.sex), class: 'selectpicker')
       .row
         .form-group.col-md-6
           = inline_svg 'birthday.svg', class: 'svg-picture-table'

@@ -9,73 +9,9 @@
     = image_tag c.flag.url, title: c.title
   = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
   = image_tag t.country.flag.url, title: t.country.title
+  
 .row.text-danger.text-center
-  .col-md-4
-    .list-group
-      %h3.list-group-item.active{style: "color: #00F"}
-        = inline_svg 'footballer.svg', class: 'svg-picture'
-        = @player.name
-        = image_tag c.flag.url, title: c.title
-        .row{style: "color: #FFD700"}
-          -quality = @player.quality
-          -quality[0].times do
-            = inline_svg 'star.svg', class: 'svg-picture'
-          -if quality[1] == 1
-            = inline_svg 'star-half.svg', class: 'svg-picture'
-          -quality[2].times do
-            = inline_svg 'star-o.svg', class: 'svg-picture'
-        = "№#{@player.number}"
-      .list-group-item{title: "Позиция"}
-        .div
-          = inline_svg 'location.svg', class: 'svg-picture'
-          Номинальная позиция:
-          = @player.full_position_name
-        .div
-          = inline_svg 'location.svg', class: 'svg-picture'
-          Реальная позиция:
-          = @player.real_position_name
-        .div
-          = inline_svg 'cogwheel.svg', class: 'svg-picture'
-          Эффективность:
-          = "#{(@player.efficienty * 100).to_i}%"
-      .list-group-item{title: "Талант"}
-        = inline_svg 'level-up.svg', class: 'svg-picture'
-        = @player.talent
-      .list-group-item{title: "Возраст"}
-        = inline_svg 'history.svg', class: 'svg-picture'
-        #{@player.age} #{Russian.p(@player.age, "год", "года", "лет")}
-      .list-group-item{title: "Мастерство"}
-        = inline_svg 'level.svg', class: 'svg-picture'
-        = @player.skill_level
-      .list-group-item{title: "Цена"}
-        = inline_svg 'usd.svg', class: 'svg-picture'
-        = @player.price_to_currency
-      .list-group-item{title: "Специальные умения"}
-        = inline_svg 'flash.svg', class: 'svg-picture'
-        = @player.show_special_skills
-      .list-group-item
-        Готовность к игре:
-        -if @player.can_play
-          %strong.text-success Да (#{@player.status})
-        -else
-          %strong.text-danger Нет (#{@player.status})
-        -if @player.games_missed != 0
-          Выбыл на #{@player.games_missed} #{Russian.p(@player.injured,"игру","игры","игр")}. Причина:
-          -if @player.injured != 0
-            = inline_svg 'medkit.svg', class: 'svg-picture'
-            = @player.injured
-          -if @player.status == 'penalty'
-            -if @player.games_missed == 1
-              = inline_svg 'yellow-card.svg'
-              x
-              = @player.season_yellow_cards
-            = inline_svg 'red-card.svg' if @player.games_missed == 2
-        %br
-        -if @player.basic
-          .li{style:"color: #00F"} [Основной состав]
-        -else
-          .li{style:"color: #D00"} [Запас]
-
+  = render 'player_in_team_info'
   .col-md-1
   .col-md-2
     %br
@@ -149,8 +85,9 @@
     / = link_to edit_player_in_team_path(@player_in_team), class: 'btn btn-danger' do
     /  = inline_svg 'edit.svg', class: 'svg-picture-btn white'
     /  = t('buttons.edit')
+    = link_to "/transfers/new?player_id=#{@player.id}", class: 'btn btn-default' do
+      = inline_svg 'transfer.svg', class: 'svg-picture-btn'
+      = t('buttons.transfer')
     = link_to sell_player_path(@player), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
       = inline_svg 'usd.svg', class: 'svg-picture-btn white'
-      = inline_svg 'log-out.svg', class: 'svg-picture-btn white'
-      %span.centralize
-        = t('buttons.sell')
+      = t('buttons.sell')

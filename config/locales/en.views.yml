@@ -14,8 +14,13 @@ en:
     players:
       all: Players
     teams:
+      block: Team
+      club_base: Club base
+      stadium: Stadium
       budget: Budget
       my_team: My team
+      training: Training
+      statistics: Statistics
     transfers:
       all: Transfers
       create: Create a new player
@@ -29,6 +34,7 @@ en:
     back: Back
     buy: Buy
     sell: Sell
+    transfer: Create a transfer
     increase: Increase
     confirm: Confirm
     cancel: Cancel

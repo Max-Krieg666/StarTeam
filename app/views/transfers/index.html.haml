@@ -16,7 +16,7 @@
         = inline_svg 'purchaser.svg', class: 'svg-picture-table'
         Клуб-покупатель
       %th.text-center
-        = inline_svg 'money.svg', class: 'svg-picture-table'
+        = inline_svg 'usd.svg', class: 'svg-picture-table'
         Стоимость покупки
       %th.text-center
         = inline_svg 'question-circle.svg', class: 'svg-picture-table'
@@ -28,31 +28,32 @@
   %tbody
     - @transfers.each do |transfer|
       %tr.text-center
-        %td= link_to transfer.player.name, transfer.player, style: "color: #410405"
+        %td
+          = link_to transfer.player.name, transfer.player, style: "color: #410405"
+          = image_tag transfer.player.country.flag.url, title: transfer.player.country.title
         %td
           = link_to transfer.vendor.title, transfer.vendor, style: "color: #00F"
+          = image_tag transfer.vendor.country.flag.url, title: transfer.vendor.country.title
         %td
-          = link_to transfer.purchaser.title, transfer.purchaser, style: "color: #00F" if transfer.purchaser
+          -if transfer.purchaser
+            = link_to transfer.purchaser.title, transfer.purchaser, style: "color: #00F"
+            = image_tag transfer.purchaser.country.flag.url, title: transfer.purchaser.country.title
         %td
-          / TODO: вынести в модель....
-          -a,count,i="#{transfer.cost}".reverse,0,0
-          -while a[i]!='.'
-            -count+=1;i+=1
-          = number_to_currency(transfer.cost, locale: :en, precision: count)
+          = transfer.cost_to_currency
         %td{style: "color: " + "#{transfer.statuses_in_colors}"}
-          = transfer.status
+          = t("transfer.status.#{transfer.status}")
         %td
           = link_to transfer, class: 'btn btn-link' do
-            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
+            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
         -if @current_user == transfer.player.team.user
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link' do
-              = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+              = inline_svg 'edit.svg', class: 'svg-picture-btn'
           %td
             = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture-btn white'
+              = inline_svg 'trash.svg', class: 'svg-picture-btn'
         -else
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link', title: 'Купить игрока' do
-              = inline_svg 'transfer.svg', class: 'svg-picture-btn white'
+              = inline_svg 'transfer.svg', class: 'svg-picture-btn'
 %br

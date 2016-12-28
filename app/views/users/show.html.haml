@@ -18,11 +18,11 @@
   = image_tag @country.flag.url
 %p
   %b Пол:
-  = @user.sex
+  = t("user.sex.#{@user.sex}")
 %p
   %b День рождения:
   -if @user.birthday
-    = @user.birthday
+    = l @user.birthday
   -else
     .text-danger.li Не выбрано!
 %p
