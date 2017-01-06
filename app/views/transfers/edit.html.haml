@@ -1,11 +1,18 @@
 -if @transfer.status == 1 || @transfer.status == 2
-  %h1 Нельзя редактировать данное трансферное предложение
+  %h1.danger-text Нельзя реализовать данное трансферное предложение
 -else
-  %h1 Редактирование трансферного предложения
+  %h1 Информация по трансферному предложению.
+  %h3 Вы заплатите #{@transfer.cost_to_currency}
+  
+  %br
+  = form_for @transfer do |f|
+    .actions
+      = f.submit t('buttons.confirm'), class: 'btn btn-primary'
+  %br
+  = link_to @transfer, class: 'btn btn-warning' do
+    = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
+    = t('buttons.show')
 
-  = render 'form'
-
-  = link_to t('buttons.show'), @transfer
 
 = link_to transfers_path, class: 'btn btn-info' do
   = inline_svg 'reply.svg', class: 'svg-picture-btn white'

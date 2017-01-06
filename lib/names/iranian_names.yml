@@ -16,8 +16,8 @@
 - name: Alah-Verdi
 - name: Ali
 - name: Ali-Dad
-- name: Ali-dad
 - name: Ali-Naghi
+- name: Alizera
 - name: Allahyar
 - name: Amin
 - name: Amir
@@ -87,6 +87,7 @@
 - name: Ebrahim
 - name: Ehsan
 - name: Emad
+- name: Eman
 - name: Esfandiar
 - name: Esfandyar
 - name: Eshqi
@@ -316,7 +317,7 @@
 - name: Sasan
 - name: Sattar
 - name: Sepehr
-- name: Seyyed
+- name: Seyed
 - name: Shahab
 - name: Shahan
 - name: Shahbaz

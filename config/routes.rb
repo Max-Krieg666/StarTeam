@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :teams, except: [:new, :create]
+  resources :operations, only: [:index]
 
   resources :stadia, except: [:index, :destroy] do
     member do

@@ -44,6 +44,7 @@ class RandomTeam
     players_count_main = 0 # д.б. 13
     players_count_foreigners = 0 # д.б. 5
     footballers_positions = FOOTBALLERS_POSITIONS[schema]
+    flag = false
     footballers_positions.each do |pos, count|
       pos_players = []
       count.times do
@@ -60,8 +61,10 @@ class RandomTeam
         end
         pos_players << random_player(pos, pl_c_id)
       end
+      flag = true if count > 2
       c = count > 1 ? count - 1 : count
-      pos_players.sort_by{ |p| p.skill_level }.last(c).each { |pl| pl.update(basic: true) }
+      c -= 1 if flag && c > 2
+      pos_players.sort_by { |p| p.skill_level }.last(c).each { |pl| pl.update(basic: true) }
     end
     return
   end

@@ -53,8 +53,7 @@
 %br
 .btn-group
   = link_to players_path, class: 'btn btn-info' do
-    = inline_svg 'male.svg', class: 'svg-picture-btn white'
-    = inline_svg 'male.svg', class: 'svg-picture-btn white'
+    = inline_svg 'footballer.svg', class: 'svg-picture-btn'
     Все игроки
   -if @current_user_team
     = link_to @current_user_team, class: 'btn btn-primary' do

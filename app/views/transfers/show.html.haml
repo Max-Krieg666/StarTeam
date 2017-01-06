@@ -14,17 +14,33 @@
 
 %p
   %b Продавец:
-  = @transfer.vendor
-%p
-  %b Покупатель:
-  = @transfer.purchaser
+  = link_to @transfer.vendor.title, @transfer.vendor, style: "color: #00F"
+  = image_tag @transfer.vendor.country.flag.url, title: @transfer.vendor.country.title
+
+-if @transfer.purchaser
+  %p
+    %b Покупатель:
+    = link_to @transfer.purchaser.title, @transfer.purchaser, style: "color: #00F"
+    = image_tag @transfer.purchaser.country.flag.url, title: @transfer.purchaser.country.title
 %p
   %b Итоговая стоимость:
   = @transfer.cost_to_currency
 %p
   %b Статус:
-  %span{style: "color: " + "#{@transfer.statuses_in_colors}"}
+  %span{style: "color: #{@transfer.statuses_in_colors}"}
     = t("transfer.status.#{@transfer.status}")
 
-= link_to t('buttons.edit'), edit_transfer_path(@transfer), class: 'btn btn-danger'
-= link_to 'Все трансферы', transfers_path, class: 'btn btn-primary'
+
+-if @current_user == @transfer.player.team.user
+  %td
+    = link_to edit_transfer_path(@transfer), class: 'btn btn-warning' do
+      = inline_svg 'edit.svg', class: 'svg-picture-btn'
+  %td
+    = link_to @transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger' do
+      = inline_svg 'trash.svg', class: 'svg-picture-btn'
+-else
+  %td
+    = link_to edit_transfer_path(@transfer), class: 'btn btn-primary', title: 'Купить игрока' do
+      = inline_svg 'transfer.svg', class: 'svg-picture-btn'
+= link_to transfers_path, class: 'btn btn-info' do
+  = inline_svg 'reply.svg', class: 'svg-picture-btn'

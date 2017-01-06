@@ -13,11 +13,20 @@
         = inline_svg 'vendor.svg', class: 'svg-picture-table'
         Клуб-продавец
       %th.text-center
-        = inline_svg 'purchaser.svg', class: 'svg-picture-table'
-        Клуб-покупатель
+        = inline_svg 'location.svg', class: 'svg-picture-table'
+        Позиция
+      %th.text-center
+        = inline_svg 'level-up.svg', class: 'svg-picture-table'
+        Талант
+      %th.text-center
+        = inline_svg 'history.svg', class: 'svg-picture-table'
+        Возраст
+      %th.text-center
+        = inline_svg 'level.svg', class: 'svg-picture-unstandart'
+        Мастерство
       %th.text-center
         = inline_svg 'usd.svg', class: 'svg-picture-table'
-        Стоимость покупки
+        Стоимость
       %th.text-center
         = inline_svg 'question-circle.svg', class: 'svg-picture-table'
         Статус
@@ -34,10 +43,11 @@
         %td
           = link_to transfer.vendor.title, transfer.vendor, style: "color: #00F"
           = image_tag transfer.vendor.country.flag.url, title: transfer.vendor.country.title
-        %td
-          -if transfer.purchaser
-            = link_to transfer.purchaser.title, transfer.purchaser, style: "color: #00F"
-            = image_tag transfer.purchaser.country.flag.url, title: transfer.purchaser.country.title
+        %td{title: transfer.player.position1}
+          = transfer.player.full_position_name
+        %td= transfer.player.talent
+        %td= transfer.player.age
+        %td= transfer.player.skill_level
         %td
           = transfer.cost_to_currency
         %td{style: "color: " + "#{transfer.statuses_in_colors}"}

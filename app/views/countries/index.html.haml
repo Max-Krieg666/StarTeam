@@ -11,8 +11,9 @@
         = inline_svg 'flag.svg', class: 'svg-picture'
         Флаг
       %th
-      %th
-      %th
+      -if @current_user.moderator?
+        %th
+        %th
       
   %tbody
     - @countries.each do |country|
@@ -23,18 +24,20 @@
           = image_tag country.flag.url, alt: country.title
         %td
           = link_to country, class: 'btn btn-link' do
-            = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn white'
-        %td
-          = link_to edit_country_path(country), class: 'btn btn-link' do
-            = inline_svg 'edit.svg', class: 'svg-picture-btn white'
-        %td
-          = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: 'btn btn-link' do
-            = inline_svg 'trash.svg', class: 'svg-picture-btn white'
+            = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn'
+        -if @current_user.moderator?
+          %td
+            = link_to edit_country_path(country), class: 'btn btn-link' do
+              = inline_svg 'edit.svg', class: 'svg-picture-btn'
+          %td
+            = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: 'btn btn-link' do
+              = inline_svg 'trash.svg', class: 'svg-picture-btn white'
 
-%br
-= link_to new_country_path, class:'btn btn-default' do
-  = inline_svg 'plus-circle.svg', class: 'svg-picture-btn white'
-  Создать страну
+-if @current_user.moderator?
+  %br
+  = link_to new_country_path, class:'btn btn-default' do
+    = inline_svg 'plus-circle.svg', class: 'svg-picture-btn white'
+    Создать страну
 
 %br
 = paginate @countries

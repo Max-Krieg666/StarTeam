@@ -84,16 +84,14 @@
         %th
     %tbody
       - @players.each do |pl|
-        -if pl.basic
-          -style = "#CEF6CE"
-        -else
-          -style = "#F6D9D9"
-        %tr.text-center{style: "background: #{style}"}
+        -color = pl.basic ? '#CEF6CE' : '#F6D9D9'
+        %tr.text-center{style: "background: #{color}"}
           %td
             %strong= pl.number
           %td
             = pl.name
             = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if pl.captain
+            = inline_svg 'transfer.svg', class: 'svg-picture', title: 'Капитан' if pl.status == 'transfer'
           %td= image_tag pl.country.flag.url, title: pl.country.title
           / TODO подумать как лучше отображать
           %td{title: pl.position1}
