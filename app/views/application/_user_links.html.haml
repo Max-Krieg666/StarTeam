@@ -8,6 +8,7 @@
       .li= link_to t('views.teams.training'), '#', class: 'btn btn-link other-color-on-hover'
       .li= link_to t('views.teams.statistics'), '#', class: 'btn btn-link other-color-on-hover'
       .li= link_to t('views.teams.budget_history'), operations_url, class: 'btn btn-link other-color-on-hover'
+      .li= link_to t('views.teams.transfer_history'), transfer_history_team_path(@current_user_team), class: 'btn btn-link other-color-on-hover'
       -if @current_user_team.stadium
         .li= link_to t('views.teams.stadium'), @current_user_team.stadium, class: 'btn btn-link other-color-on-hover'
       -if @current_user_team.club_base

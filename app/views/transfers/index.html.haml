@@ -1,6 +1,70 @@
 .page-header
   %h1
     = inline_svg 'transfer.svg', class: 'svg-picture-giant'
+    Мои предложения
+
+-if @user_transfers.blank?
+  .text-danger
+    Вы не выставили ни одного игрока на продажу.
+-else
+  %table.table.table-bordered.table-hover.table-condensed
+    %thead
+      %tr
+        %th.text-center
+          = inline_svg 'footballer.svg', class: 'svg-picture-table'
+          Игрок
+        %th.text-center
+          = inline_svg 'location.svg', class: 'svg-picture-table'
+          Позиция
+        %th.text-center
+          = inline_svg 'level-up.svg', class: 'svg-picture-table'
+          Талант
+        %th.text-center
+          = inline_svg 'history.svg', class: 'svg-picture-table'
+          Возраст
+        %th.text-center
+          = inline_svg 'level.svg', class: 'svg-picture-unstandart'
+          Мастерство
+        %th.text-center
+          = inline_svg 'usd.svg', class: 'svg-picture-table'
+          Стоимость
+        %th.text-center
+          = inline_svg 'question-circle.svg', class: 'svg-picture-table'
+          Статус
+        %th
+        %th
+        %th
+
+    %tbody
+      - @user_transfers.each do |transfer|
+        %tr.text-center
+          %td
+            = link_to transfer.player.name, transfer.player, style: "color: #410405"
+            = image_tag transfer.player.country.flag.url, title: transfer.player.country.title
+          %td{title: transfer.player.position1}
+            = transfer.player.full_position_name
+          %td= transfer.player.talent
+          %td= transfer.player.age
+          %td= transfer.player.skill_level
+          %td
+            = transfer.cost_to_currency
+          %td{style: "color: " + "#{transfer.statuses_in_colors}"}
+            = t("transfer.status.#{transfer.status}")
+          %td
+            = link_to transfer, class: 'btn btn-link' do
+              = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
+          %td
+            = link_to edit_transfer_path(transfer), class: 'btn btn-link' do
+              = inline_svg 'edit.svg', class: 'svg-picture-btn'
+          %td
+            = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
+              = inline_svg 'trash.svg', class: 'svg-picture-btn'
+%br
+%br
+
+.page-header
+  %h1
+    = inline_svg 'transfer.svg', class: 'svg-picture-giant'
     Трансферы
 
 %table.table.table-bordered.table-hover.table-condensed

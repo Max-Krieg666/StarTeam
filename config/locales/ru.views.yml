@@ -11,6 +11,13 @@ ru:
       active: Активен
       completed: Завершён
       canceled: Отменён
+  player:
+    status:
+      active: Готов
+      injured: Травмирован
+      penalty_redcard: Дисквалифицирован (Красная карточка)
+      penalty_yellowcards: Дисквалифицирован (Жёлтые карточки)
+      transfer: На трансфере
   views:
     site_title: Футбольный менеджер StarTeam
     users:
@@ -30,6 +37,7 @@ ru:
       stadium: Стадион
       budget: Бюджет
       budget_history: История финансовых операций
+      transfer_history: История трансферов
       my_team: Моя команда
       training: Тренировка
       statistics: Статистика игроков

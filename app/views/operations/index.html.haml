@@ -6,6 +6,9 @@
   %thead
     %tr
       %th.text-center
+        = inline_svg 'timer.svg', class: 'svg-picture'
+        Дата
+      %th.text-center
         = inline_svg 'pencil.svg', class: 'svg-picture'
         Название
       %th.text-center
@@ -16,6 +19,8 @@
     - @financies.each do |fin|
       -color = fin.kind ? '#CEF6CE' : '#F6D9D9'
       %tr.text-center{style: "background: #{color}"}
+        %td
+          = l fin.created_at
         %td
           = fin.title
         %td

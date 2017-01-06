@@ -54,9 +54,9 @@
       .list-group-item
         Готовность к игре:
         -if @player.can_play
-          %strong.text-success Да (#{@player.status})
+          %strong.text-success Да (#{I18n.t("player.status.#{@player.status}")})
         -else
-          %strong.text-danger Нет (#{@player.status})
+          %strong.text-danger Нет (#{I18n.t("player.status.#{@player.status}")})
         -if @player.games_missed != 0
           Выбыл на #{@player.games_missed} #{Russian.p(@player.injured,"игру","игры","игр")}. Причина:
           -if @player.injured != 0

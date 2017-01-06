@@ -1,14 +1,9 @@
 class Search
+  include ActiveModel::Model
   attr_accessor :query, :country_id, :name, :position1, :skill_level, :talent, :age
 
-  def initialize(params)
-    # TODO переделать
-    @country_id = params[:country_id]
-    @name = params[:name]
-    @position1 = params[:position1]
-    @skill_level = params[:skill_level]
-    @talent = params[:talent]
-    @age = params[:age]
+  def initialize(params = {})
+    super(params)
   end
 
   def apply_search

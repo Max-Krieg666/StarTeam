@@ -9,12 +9,15 @@
     -if @stadium.max_capacity != @stadium.capacity
       = form_for @stadium, url: capacity_up_stadium_path(@stadium), method: :patch do |f|
         .row
-          .col-md-3
-            .input-group
-              = f.number_field :capacity, class: 'form-control', min: @stadium.capacity + 1, max: @stadium.max_capacity
-              %span{class: "input-group-btn"}
-                .actions
-                  = f.submit t('buttons.increase'), class: 'btn btn-default'
+          .form-group.col-md-2
+            = f.number_field :capacity, class: 'form-control', min: @stadium.capacity + 1, max: @stadium.max_capacity
+          .form-group.col-md-2
+            .input-group-btn
+              .actions
+                = f.submit t('buttons.increase'), class: 'btn btn-default'
+          .col-md-4
+            .help-block
+              = inline_svg 'info-circle.svg', class: 'svg-picture-table'
               Цена за 1 место:
               = @stadium.seatcost
     -elsif @stadium.max_capacity == @stadium.capacity && @stadium.level < 5

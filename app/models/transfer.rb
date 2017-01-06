@@ -15,12 +15,12 @@ class Transfer < ActiveRecord::Base
 
   def statuses_in_colors
     case status
-    when 0
+    when 'active'
       '#32CD32'
-    when 1
-      '#FF3030'
-    else
+    when 'completed'
       '#5CACEE'
+    else
+      '#FF3030'
     end
   end
 
