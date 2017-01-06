@@ -69,6 +69,7 @@ class PlayersController < ApplicationController
         if @player.save
           @current_user_team.budget -= @player.price
           @current_user_team.save!
+          Operation.create(team_id: @current_user_team.id, sum: @player.price, kind: false, title: 'Покупка игрока')
           redirect_to @player, notice: I18n.t('flash.players.buyed')
         else
           render :buy_processing
@@ -78,7 +79,7 @@ class PlayersController < ApplicationController
   end
 
   def sell
-    if @player.team != @current_user_team.squad_size
+    if @player.team != @current_user_team
       redirect_to @player, danger: I18n.t('flash.insufficient_privileges')
     elsif @current_user_team.squad_size < 15
       redirect_to @current_user_team, notice: I18n.t('flash.teams.low_squad')
@@ -103,6 +104,7 @@ class PlayersController < ApplicationController
         # TODO тут же добавить запись о забитых голах и т.д. и запись о клубе
         @current_user_team.budget += @player.price / 2.0
         @current_user_team.save
+        Operation.create(team_id: @current_user_team.id, sum: @player.price / 2.0, kind: true, title: 'Продажа игрока на рынок свободных агентов')
       end
       redirect_to @current_user_team, notice: I18n.t('flash.players.sold')
     end

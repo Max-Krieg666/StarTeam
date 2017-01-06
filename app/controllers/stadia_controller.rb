@@ -51,6 +51,7 @@ class StadiaController < ApplicationController
         ActiveRecord::Base.transaction do
           team.budget -= values[0]
           team.save!
+          Operation.create(team_id: team.id, sum: values[0], kind: false, title: 'Модернизация стадиона')
           @stadium.level += 1
           @stadium.save!
         end
@@ -81,6 +82,7 @@ class StadiaController < ApplicationController
         ActiveRecord::Base.transaction do
           team.budget -= cost
           team.save!
+          Operation.create(team_id: team.id, sum: cost, kind: false, title: 'Строительство новых мест на стадионе')
           @stadium.update(capacity: new_capacity)
         end
         redirect_to @stadium, notice: I18n.t('flash.stadiums.upgraded')
