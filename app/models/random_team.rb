@@ -63,7 +63,7 @@ class RandomTeam
       end
       flag = true if count > 2
       c = count > 1 ? count - 1 : count
-      c -= 1 if flag && c > 2
+      c -= 1 if flag && c > 2 && count != 4
       pos_players.sort_by { |p| p.skill_level }.last(c).each { |pl| pl.update(basic: true) }
     end
     return

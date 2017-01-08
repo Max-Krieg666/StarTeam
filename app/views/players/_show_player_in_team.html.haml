@@ -12,70 +12,50 @@
   
 .row.text-danger.text-center
   = render 'player_in_team_info'
-  .col-md-1
-  .col-md-1
-    %br
-    %br
-    .list-group
-      %h4.list-group-item.active{style: "color: #00F", title: "Статистика"}
-        = inline_svg 'statistics.svg', class: 'svg-picture-medium'
-      .list-group-item{title: "Игры"}
-        = inline_svg 'field-vertical.svg', class: 'svg-picture-medium'
-      -if @player.goalkeeper?
-        .list-group-item{title: "Пропущенные голы"}
-          = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
-      .list-group-item{title: "Забитые голы"}
-        = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium green'
-      .list-group-item{title: "Голевые пасы"}
-        = inline_svg 'goal-pass.svg', class: 'svg-picture-medium'
-      .list-group-item{title: "Автоголы"}
-        = inline_svg 'autogoal.svg', class: 'svg-picture-medium'
-      .list-group-item{title: "Жёлтые карточки"}
-        = inline_svg 'yellow-card.svg', class: 'svg-picture-medium'
-      .list-group-item{title: "Красные карточки"}
-        = inline_svg 'red-card.svg', class: 'svg-picture-medium'
-  .col-md-2
-    %br
-    %br
-    .list-group.h4
-      .list-group-item.active{style: "color: #00F", title: "Текущий сезон"}
-        = inline_svg 'timer.svg', class: 'svg-picture-medium'
-      .list-group-item
-        = @player.season_games
-      -if @player.goalkeeper?
-        .list-group-item
-          = @player.season_conceded_goals
-      .list-group-item
-        = @player.season_goals
-      .list-group-item
-        = @player.season_passes
-      .list-group-item
-        = @player.season_autogoals
-      .list-group-item
-        = @player.season_yellow_cards
-      .list-group-item
-        = @player.season_red_cards
-  .col-md-2
-    %br
-    %br
-    .list-group.h4
-      .list-group-item.active{style: "color: #00F", title: "Карьера"}
-        = inline_svg 'history.svg', class: 'svg-picture-medium'
-      .list-group-item
-        = @player.all_games
-      -if @player.goalkeeper?
-        .list-group-item
-          = @player.all_conceded_goals
-      .list-group-item
-        = @player.all_goals
-      .list-group-item
-        = @player.all_passes
-      .list-group-item
-        = @player.all_autogoals
-      .list-group-item
-        = @player.all_yellow_cards
-      .list-group-item
-        = @player.all_red_cards
+  .col-md-4.player-stats
+    %table.table.table-bordered.table-hover.table-condensed
+      %thead
+        %tr{class: 'success'}
+          %th.text-center{style: "color: #00F", title: "Статистика"}
+            = inline_svg 'statistics.svg', class: 'svg-picture-medium'
+          %th.text-center{title: "Игры"}
+            = inline_svg 'field-vertical.svg', class: 'svg-picture-medium'
+          -if @player.goalkeeper?
+            %th.text-center{title: "Пропущенные голы"}
+              = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
+          %th.text-center{title: "Забитые голы"}
+            = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium green'
+          %th.text-center{title: "Голевые пасы"}
+            = inline_svg 'goal-pass.svg', class: 'svg-picture-medium'
+          %th.text-center{title: "Автоголы"}
+            = inline_svg 'autogoal.svg', class: 'svg-picture-medium'
+          %th.text-center{title: "Жёлтые карточки"}
+            = inline_svg 'yellow-card.svg'
+          %th.text-center{title: "Красные карточки"}
+            = inline_svg 'red-card.svg'
+      %tbody
+        %tr.text-center
+          %td{style: "color: #00F", title: "Текущий сезон"}
+            = inline_svg 'timer.svg', class: 'svg-picture-medium'
+          %td= @player.season_games
+          -if @player.goalkeeper?
+            %td= @player.season_conceded_goals
+          %td= @player.season_goals
+          %td= @player.season_passes
+          %td= @player.season_autogoals
+          %td= @player.season_yellow_cards
+          %td= @player.season_red_cards
+        %tr.text-center
+          %td{style: "color: #00F", title: "Карьера"}
+            = inline_svg 'history.svg', class: 'svg-picture-medium'
+          %td= @player.all_games
+          -if @player.goalkeeper?
+            %td= @player.all_conceded_goals
+          %td= @player.all_goals
+          %td= @player.all_passes
+          %td= @player.all_autogoals
+          %td= @player.all_yellow_cards
+          %td= @player.all_red_cards
 
 .btn-group
   = link_to t, class: 'btn btn-info' do

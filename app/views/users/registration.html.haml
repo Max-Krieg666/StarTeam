@@ -2,97 +2,82 @@
   %h1 Регистрация
 = form_for @user do |f|
   = error_messages_for(@user)
-  -#TODO допилить вёрстку
-  .help-block
-    = inline_svg 'info-circle.svg', class: 'svg-picture-table'
-    = t('info-blocks.registration.whats_asterisk')
-  %ul.nav.nav-tabs
-    %li.active
-      %a{ "data-toggle" => "tab", href: "#user_info" }= t('info-blocks.registration.user_info')
-    %li
-      %a{ "data-toggle" => "tab", href: "#team_info" }= t('info-blocks.registration.team_info')
-  / Tab panes
-  .tab-content
-    #user_info.tab-pane.active
-      .row
-        .form-group.col-md-3
-          = inline_svg 'user.svg', class: 'svg-picture-table'
-          -#TODO jquery check login auto
-          = f.label :login
-          *
-          = f.text_field :login, class: 'form-control'
-      .row
-        .form-group.col-md-3
-          = inline_svg 'email.svg', class: 'svg-picture-table'
-          = f.label :email
-          *
-          = f.text_field :email, class: 'form-control'
-        .form-group.col-md-3
-          .help-block
-            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
-            = t('info-blocks.registration.right_email')
-      .row
-        .form-group.col-md-3
-          = inline_svg 'key.svg', class: 'svg-picture-table'
-          -#TODO bootstrap strength meter
-          = f.label :password
-          *
-          = f.password_field :password, class: 'form-control'
-      .row
-        .form-group.col-md-3
-          = inline_svg 'key.svg', class: 'svg-picture-table'
-          = f.label :password_confirmation
-          *
-          = f.password_field :password_confirmation, class: 'form-control'
-      .row
-        .form-group.col-md-3
-          = inline_svg 'picture.svg', class: 'svg-picture-table'
-          = f.label :avatar
-          = f.file_field :avatar
-      .row
-        .form-group.col-md-3
-          = inline_svg 'home.svg', class: 'svg-picture-table'
-          = f.label :country
-          *
-          = select_country('user[country_id]', @user.country_id)
-        .form-group.col-md-3
-          .help-block
-            %br
-            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
-            = t('info-blocks.registration.your_country')
-      .row
-        .form-group.col-md-3
-          = inline_svg 'sex.svg', class: 'svg-picture-unstandart'
-          = f.label :sex
-          = select_tag('user[sex]', options_for_select(User.sexes.map { |k, _| [t("user.sex.#{k}"), k] }, @user.sex), class: 'selectpicker')
-      .row
-        .form-group.col-md-6
-          = inline_svg 'birthday.svg', class: 'svg-picture-table'
-          = f.label :birthday
-          = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
-      .help-block
+  / TODO допилить вёрстку
+  .row
+    .col-md-4
+      .help-block.bg-info
         = inline_svg 'info-circle.svg', class: 'svg-picture-table'
-        = t('info-blocks.registration.attention')
-    #team_info.tab-pane
-      %br
-      .row
-        .form-group.col-md-3
-          = inline_svg 'pencil.svg', class: 'svg-picture-table'
-          -#TODO jquery check title auto
-          = label_tag Team.human_attribute_name(:title)
-          *
-          = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
-      .row
-        .form-group.col-md-3
-          = inline_svg 'flag.svg', class: 'svg-picture-table'
-          = label_tag Team.human_attribute_name(:country)
-          *
-          = select_country('team[country_id]', params[:team].try(:[], :country_id))
+        = t('info-blocks.registration.whats_asterisk')
+  .row
+    .form-group.col-md-3
+      = inline_svg 'user.svg', class: 'svg-picture-table'
+      -#TODO jquery check login auto
+      = f.label :login
+      *
+      = f.text_field :login, class: 'form-control'
+    .form-group.col-md-3
+      = inline_svg 'email.svg', class: 'svg-picture-table'
+      = f.label :email
+      *
+      = f.text_field :email, class: 'form-control'
+    .form-group.col-md-3
+      .help-block.bg-info
+        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+        = t('info-blocks.registration.right_email')
+  .row
+    .form-group.col-md-3
+      = inline_svg 'key.svg', class: 'svg-picture-table'
+      -#TODO bootstrap strength meter
+      = f.label :password
+      *
+      = f.password_field :password, class: 'form-control'
+    .form-group.col-md-3
+      = inline_svg 'key.svg', class: 'svg-picture-table'
+      = f.label :password_confirmation
+      *
+      = f.password_field :password_confirmation, class: 'form-control'
+  .row
+    .form-group.col-md-3
+      = inline_svg 'picture.svg', class: 'svg-picture-table'
+      = f.label :avatar
+      = f.file_field :avatar
+    .form-group.col-md-3
+      = inline_svg 'home.svg', class: 'svg-picture-table'
+      = f.label :country
+      *
+      = select_country('user[country_id]', @user.country_id)
+    .form-group.col-md-5
+      .help-block.bg-info
         %br
-        .form-group.col-md-3
-          .help-block
-            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
-            = t('info-blocks.registration.team_country')
+        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+        = t('info-blocks.registration.your_country')
+  .row
+    .form-group.col-md-3
+      = inline_svg 'pencil.svg', class: 'svg-picture-table'
+      -#TODO jquery check title auto
+      = label_tag Team.human_attribute_name(:title)
+      *
+      = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
+    .form-group.col-md-3
+      = inline_svg 'flag.svg', class: 'svg-picture-table'
+      = label_tag Team.human_attribute_name(:country)
+      *
+      = select_country('team[country_id]', params[:team].try(:[], :country_id))
+    .form-group.col-md-5
+      .help-block.bg-info
+        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+        = t('info-blocks.registration.team_country')
+  .row
+    .form-group.col-md-3
+      = inline_svg 'sex.svg', class: 'svg-picture-unstandart'
+      = f.label :sex
+      = select_tag('user[sex]', options_for_select(User.sexes.map { |k, _| [t("user.sex.#{k}"), k] }, @user.sex), class: 'selectpicker')
+  .row
+    .form-group.col-md-6
+      = inline_svg 'birthday.svg', class: 'svg-picture-table'
+      = f.label :birthday
+      = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
+
 
   -#TODO разработать правила участия и кнопку CONFIRM
   .actions
