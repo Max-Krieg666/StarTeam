@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_one :team
   belongs_to :country
+  has_many :notifications
 
   cattr_reader :roles
 
@@ -60,5 +61,9 @@ class User < ActiveRecord::Base
 
   def force_authenticate!(controller)
     controller.session[:user_id] = id
+  end
+
+  def unread_notifications
+    notifications.where(viewed: false)
   end
 end

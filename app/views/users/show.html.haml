@@ -1,43 +1,49 @@
 .page-header
   %h1= @user.login
--if @user.team
-  %p
-    %b Команда:
-    = link_to @user.team.title, @user.team, style: "color: #00F"
-%p
-  %b Аватар:
-%p
-  %b
-  -if @user.avatar.blank?
-    .text-danger.li Аватар не загружен!
-  -else
-    = image_tag @user.avatar.url(:medium)
-%p
-  %b Страна:
-  = link_to @country.title, @country, class: 'btn btn-link', style: "color: #00688B"
-  = image_tag @country.flag.url
-%p
-  %b Пол:
-  = t("user.sex.#{@user.sex}")
-%p
-  %b День рождения:
-  -if @user.birthday
-    = l @user.birthday
-  -else
-    .text-danger.li Не выбрано!
-%p
-  %b Адрес эл. почты:
-  = @user.email
-%p
-  %b Статус аккаунта:
-  -if @user.confirmed_at.present?
-    .text-success.li Подтверждён
-  -else
-    .text-danger.li Не подтверждён
+.container
+  .row
+    .col-md-6
+      -if @user.team
+        %p
+          %b Команда:
+          = link_to @user.team.title, @user.team, style: "color: #00F"
+      %p
+        %b Страна:
+        = link_to @country.title, @country, class: 'btn btn-link', style: "color: #00688B"
+        = image_tag @country.flag.url
+      %p
+        %b Пол:
+        = t("user.sex.#{@user.sex}")
+      %p
+        %b День рождения:
+        -if @user.birthday
+          = l @user.birthday
+        -else
+          .text-danger.li Не выбрано!
+      %p
+        %b Адрес эл. почты:
+        = @user.email
+      %p
+        %b Статус аккаунта:
+        -if @user.confirmed_at.present?
+          .text-success.li Подтверждён
+        -else
+          .text-danger.li Не подтверждён
+      -if @current_user == @user || @current_user.moderator?
+        %p
+          %b Роль:
+          = @user.role
+    .col-md-6
+      %p
+        %b Аватар:
+      %p
+        %b
+        -if @user.avatar.blank?
+          = inline_svg 'no-avatar.svg', class: 'svg-no-avatar'
+        -else
+          = image_tag @user.avatar.url(:medium)
+
 -if @current_user == @user || @current_user.moderator?
-  %p
-    %b Роль:
-    = @user.role
   = link_to edit_user_path(@user), class: 'btn btn-danger' do
     = inline_svg 'edit.svg', class: 'svg-picture-btn white'
     %span.centralize

@@ -1,15 +1,20 @@
 class TeamsController < ApplicationController
   before_action :check_user
   before_action :set_team, except: [:destroy, :index]
+  before_action :set_variables, only: [:show, :statistics]
 
   def index
     @teams = Team.order('title')
   end
 
   def show
-    @players = @team.players.order('basic desc, position1 asc, skill_level desc')
-    @club_base = @team.club_base
-    @stadium = @team.stadium
+  end
+
+  def statistics
+  end
+
+  def operations
+    @financies = @team.operations.order('created_at desc').page(params[:page])
   end
 
   def transfer_history
@@ -33,11 +38,9 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    sp = @team.sponsor
     @team.destroy
-    sp.team_id = nil
-    sp.save!
     # TODO при удалении команды отпускать на свободный рынок всех игроков в ней
+    # а всё остальное уничтожать!
     respond_to do |format|
       format.html { redirect_to @current_user, notice: I18n.t('flash.teams.destroyed') }
       format.json { head :no_content }
@@ -54,5 +57,11 @@ class TeamsController < ApplicationController
     attrs = [:title]
     attrs += [:budget, :fans, :sponsor] if @current_user.try(:admin?)
     params.require(:team).permit(*attrs)
+  end
+
+  def set_variables
+    @players = @team.players.order('basic desc, position1 asc, skill_level desc')
+    @club_base = @team.club_base
+    @stadium = @team.stadium
   end
 end

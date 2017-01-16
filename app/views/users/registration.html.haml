@@ -2,7 +2,6 @@
   %h1 Регистрация
 = form_for @user do |f|
   = error_messages_for(@user)
-  / TODO допилить вёрстку
   .row
     .col-md-4
       .help-block.bg-info
@@ -81,7 +80,7 @@
 
   -#TODO разработать правила участия и кнопку CONFIRM
   .actions
-    -if @user.blank?
+    -if @user.new_record?
       = f.submit t('buttons.sign_up'), class: 'btn btn-primary'
     -else
       = f.submit t('buttons.save'), class: 'btn btn-primary'

@@ -4,132 +4,141 @@
       = @country.title
       = image_tag @country.flag.url, alt: @country.title
   %br
-  %h4 Пользователи:
-  -if @users.any?
-    %table.table.table-bordered.table-hover.table-condensed
-      %thead
-        %tr{class: 'success'}
-          %th.text-center
-            = inline_svg 'person-circle.svg', class: 'svg-picture'
-            Логин
-          %th.text-center
-            = inline_svg 'group.svg', class: 'svg-picture'
-            Команда
-      %tbody
-        - @users.each do |user|
-          %tr.text-center
-            %td= link_to user.login, user, style: "color: #FFA500"
-            %td
-              -t = user.team
-              -if t
-                = link_to t.title, t, style: "color: #00F"
-              -else
-                .text-danger.li Не создана!
-        = paginate @users, param_name: 'users_page'
-  -else
-    %h5.text-danger Пользователей из данной страны нет!
-  %br
-  %h4 Игроки в командах:
-  -if @players_in_teams.any?
-    %table.table.table-bordered.table-hover.table-condensed
-      %thead
-        %tr{class: 'success'}
-          %th.text-center
-            Команда
-          %th.text-center
-            = inline_svg 'footballer.svg', class: 'svg-picture'
-            Игрок
-          %th.text-center
-            = inline_svg 'location.svg', class: 'svg-picture'
-            Позиция
-          %th.text-center
-            = inline_svg 'level-up.svg', class: 'svg-picture'
-            Талант
-          %th.text-center
-            = inline_svg 'history.svg', class: 'svg-picture'
-            Возраст
-          %th.text-center
-            = inline_svg 'level.svg', class: 'svg-picture'
-            Мастерство
-          %th.text-center
-            = inline_svg 'usd.svg', class: 'svg-picture'
-            Цена
-          %th.text-center
-            = inline_svg 'star.svg', class: 'svg-picture'
-            Качество игрока
-      %tbody
-        - @players_in_teams.each do |pl|
-          %tr.text-center
-            -t = pl.team
-            %td= link_to t.title, t, style: "color: #00F"
-            %td= link_to pl.name, pl, style: "color: #410405"
-            %td{title: pl.position1}
-              = pl.full_position_name
-            %td= pl.talent
-            %td= pl.age
-            %td= pl.skill_level
-            %td= pl.price_to_currency
-            %td
-              -quality = pl.quality
-              -quality[0].times do
+  %ul.nav.nav-tabs
+    %li.active
+      %a{ "data-toggle" => "tab", href: "#users_info" }Пользователи
+    %li
+      %a{ "data-toggle" => "tab", href: "#players_in_teams_info" }Игроки в командах
+    %li
+      %a{ "data-toggle" => "tab", href: "#players_info" }Свободные агенты
+  / Tab panes
+  .tab-content
+    #users_info.tab-pane.active
+      -if @users.any?
+        %table.table.table-bordered.table-hover.table-condensed
+          %thead
+            %tr{class: 'success'}
+              %th.text-center
+                = inline_svg 'person-circle.svg', class: 'svg-picture'
+                Логин
+              %th.text-center
+                = inline_svg 'group.svg', class: 'svg-picture'
+                Команда
+          %tbody
+            - @users.each do |user|
+              %tr.text-center
+                %td= link_to user.login, user, style: "color: #FFA500"
+                %td
+                  -t = user.team
+                  -if t
+                    = link_to t.title, t, style: "color: #00F"
+                  -else
+                    .text-danger.li Не создана!
+            = paginate @users, param_name: 'users_page'
+      -else
+        %h5.text-danger Пользователей из данной страны нет!
+      %br
+    #players_in_teams_info.tab-pane
+      -if @players_in_teams.any?
+        %table.table.table-bordered.table-hover.table-condensed
+          %thead
+            %tr{class: 'success'}
+              %th.text-center
+                Команда
+              %th.text-center
+                = inline_svg 'footballer.svg', class: 'svg-picture'
+                Игрок
+              %th.text-center
+                = inline_svg 'location.svg', class: 'svg-picture'
+                Позиция
+              %th.text-center
+                = inline_svg 'level-up.svg', class: 'svg-picture'
+                Талант
+              %th.text-center
+                = inline_svg 'history.svg', class: 'svg-picture'
+                Возраст
+              %th.text-center
+                = inline_svg 'level.svg', class: 'svg-picture'
+                Мастерство
+              %th.text-center
+                = inline_svg 'usd.svg', class: 'svg-picture'
+                Цена
+              %th.text-center
                 = inline_svg 'star.svg', class: 'svg-picture'
-              -if quality[1] == 1
-                = inline_svg 'star-half.svg', class: 'svg-picture'
-              -quality[2].times do
-                = inline_svg 'star-o.svg', class: 'svg-picture'
-        = paginate @players_in_teams, param_name: 'players_in_teams_page'
-  -else
-    %h5.text-danger Представители данной страны не играют ни за один клуб!
-  %br
-  %h4 Свободные агенты:
-  -if @players.any?
-    %table.table.table-responsive.table-bordered.table-hover
-      %thead
-        %tr{class: 'success'}
-          %th.text-center
-            = inline_svg 'footballer.svg', class: 'svg-picture'
-            Игрок
-          %th.text-center
-            = inline_svg 'location.svg', class: 'svg-picture'
-            Позиция
-          %th.text-center
-            = inline_svg 'level-up.svg', class: 'svg-picture'
-            Талант
-          %th.text-center
-            = inline_svg 'history.svg', class: 'svg-picture'
-            Возраст
-          %th.text-center
-            = inline_svg 'level.svg', class: 'svg-picture'
-            Мастерство
-          %th.text-center
-            = inline_svg 'usd.svg', class: 'svg-picture'
-            Цена
-          %th.text-center
-            = inline_svg 'star.svg', class: 'svg-picture'
-            Качество игрока
+                Качество игрока
+          %tbody
+            - @players_in_teams.each do |pl|
+              %tr.text-center
+                -t = pl.team
+                %td= link_to t.title, t, style: "color: #00F"
+                %td= link_to pl.name, pl, style: "color: #410405"
+                %td{title: pl.position1}
+                  = pl.full_position_name
+                %td= pl.talent
+                %td= pl.age
+                %td= pl.skill_level
+                %td= pl.price_to_currency
+                %td
+                  -quality = pl.quality
+                  -quality[0].times do
+                    = inline_svg 'star.svg', class: 'svg-picture'
+                  -if quality[1] == 1
+                    = inline_svg 'star-half.svg', class: 'svg-picture'
+                  -quality[2].times do
+                    = inline_svg 'star-o.svg', class: 'svg-picture'
+            = paginate @players_in_teams, param_name: 'players_in_teams_page'
+      -else
+        %h5.text-danger Представители данной страны не играют ни за один клуб!
+      %br
+    #players_info.tab-pane
+      -if @players.any?
+        %table.table.table-responsive.table-bordered.table-hover
+          %thead
+            %tr{class: 'success'}
+              %th.text-center
+                = inline_svg 'footballer.svg', class: 'svg-picture'
+                Игрок
+              %th.text-center
+                = inline_svg 'location.svg', class: 'svg-picture'
+                Позиция
+              %th.text-center
+                = inline_svg 'level-up.svg', class: 'svg-picture'
+                Талант
+              %th.text-center
+                = inline_svg 'history.svg', class: 'svg-picture'
+                Возраст
+              %th.text-center
+                = inline_svg 'level.svg', class: 'svg-picture'
+                Мастерство
+              %th.text-center
+                = inline_svg 'usd.svg', class: 'svg-picture'
+                Цена
+              %th.text-center
+                = inline_svg 'star.svg', class: 'svg-picture'
+                Качество игрока
 
-      %tbody
-        - @players.each do |player|
-          %tr.text-center
-            %td= link_to player.name, player, style: "color: #106C7A"
-            %td{title: player.position1}
-              = player.full_position_name
-            %td= player.talent
-            %td= player.age
-            %td= player.skill_level
-            %td= player.price_to_currency
-            %td
-              -quality = player.quality
-              -quality[0].times do
-                = inline_svg 'star.svg', class: 'svg-picture'
-              -if quality[1] == 1
-                = inline_svg 'star-half.svg', class: 'svg-picture'
-              -quality[2].times do
-                = inline_svg 'star-o.svg', class: 'svg-picture'
-        = paginate @players, param_name: 'players_page'
-  -else
-    %h5.text-danger Игроков из данной страны нет!
-  %br
+          %tbody
+            - @players.each do |player|
+              %tr.text-center
+                %td= link_to player.name, player, style: "color: #106C7A"
+                %td{title: player.position1}
+                  = player.full_position_name
+                %td= player.talent
+                %td= player.age
+                %td= player.skill_level
+                %td= player.price_to_currency
+                %td
+                  -quality = player.quality
+                  -quality[0].times do
+                    = inline_svg 'star.svg', class: 'svg-picture'
+                  -if quality[1] == 1
+                    = inline_svg 'star-half.svg', class: 'svg-picture'
+                  -quality[2].times do
+                    = inline_svg 'star-o.svg', class: 'svg-picture'
+            = paginate @players, param_name: 'players_page'
+      -else
+        %h5.text-danger Игроков из данной страны нет!
+      %br
   -if @current_user.moderator?
     = link_to edit_country_path(@country), class: 'btn btn-danger' do
       = inline_svg 'edit.svg', class: 'svg-picture-btn white'

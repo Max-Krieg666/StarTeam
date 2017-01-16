@@ -52,7 +52,6 @@ class TransfersController < ApplicationController
         end
       end
     else
-      # TODO + отослать оповещение продавцу о покупке его игрока
       cb = @current_user_team.club_base
       if !@current_user_team
         flash[:danger] = I18n.t('flash.players.no_team')
@@ -88,9 +87,11 @@ class TransfersController < ApplicationController
           @current_user_team.budget -= @transfer.cost
           @current_user_team.save!
           Operation.create(team_id: @current_user_team.id, sum: @transfer.cost, kind: false, title: 'Покупка игрока на трансферном рынке')
+          Notification.create(user_id: @current_user.id, kind: 1, title: "Игрок #{@transfer.player.name} присоединился к Вашей команде. Клуб \"#{@transfer.vendor.title}\" получил #{@transfer.cost_to_currency}.")
           @transfer.vendor.budget += @transfer.cost
           @transfer.vendor.save!
           Operation.create(team_id: @transfer.vendor.id, sum: @transfer.cost, kind: true, title: 'Продажа игрока на трансферном рынке')
+          Notification.create(user_id: @transfer.vendor.user.id, kind: 1, title: "Вы продали игрока. Игрок #{@transfer.player.name} продолжит свою карьеру в клубе \"#{@current_user_team.title}\". Сумма сделки #{@transfer.cost_to_currency}.")
           redirect_to @transfer.player, notice: I18n.t('flash.players.buyed')
         end
       end

@@ -2,39 +2,11 @@
 
 .text-center
   .page-header
+    %h1 Статистика игроков
+    %br
     %h1
       = @team.title
       = image_tag @team.country.flag.url, title: @team.country.title
-  %p
-    %b Владелец:
-    = link_to @team.user.login, @team.user, style: "color: #FFA500", class: 'btn btn-link'
-  %p
-    %b Спонсор:
-    = link_to @team.sponsor.title, @team.sponsor, style: "color: #550", class: 'btn btn-link'
-    %p
-      %b Стадион:
-      -if @stadium
-        -stc = @stadium.capacity
-        = link_to @stadium, style: "color: #F00", class: 'btn btn-link' do
-          = inline_svg 'stadium.svg', class: 'svg-picture-btn green'
-          #{@stadium.title} (#{stc} #{Russian.p(stc, 'место', 'места', 'мест')})
-      -else
-        Не создан
-  %p
-    %b База клуба:
-    -if @club_base
-      = link_to @club_base.title + " (#{@club_base.level})", @club_base, style: "color: #458B74", class: 'btn btn-link'
-    -else
-      Не создана
-  %p
-    %b Бюджет:
-    = @team.budget_to_currency
-  %p
-    %b Фаны:
-    %span
-      = inline_svg 'group.svg', class: 'svg-picture'
-    = @team.fans
-
   %br
 
   %table.table.table-bordered.table-hover.table-condensed
@@ -63,11 +35,21 @@
         %th.text-center
           = inline_svg 'usd.svg', class: 'svg-picture-table'
           Цена
+        %th.text-center{title: "Игры"}
+          = inline_svg 'field-vertical.svg', class: 'svg-picture-medium'
+        %th.text-center{title: "Пропущенные голы"}
+          = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
+        %th.text-center{title: "Забитые голы"}
+          = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium green'
+        %th.text-center{title: "Голевые пасы"}
+          = inline_svg 'goal-pass.svg', class: 'svg-picture-medium'
+        %th.text-center{title: "Автоголы"}
+          = inline_svg 'autogoal.svg', class: 'svg-picture-medium'
+        %th.text-center{title: "Жёлтые карточки"}
+          = inline_svg 'yellow-card.svg'
+        %th.text-center{title: "Красные карточки"}
+          = inline_svg 'red-card.svg'
         %th.text-center{title: "Основной состав/запас"} О/З
-        %th.text-center
-          = inline_svg 'cogwheel.svg', class: 'svg-picture-table'
-          Действия
-
     %tbody
       - @players.each do |pl|
         -color = pl.basic ? '#CEF6CE' : '#F6D9D9'
@@ -77,7 +59,7 @@
           %td
             = pl.name
             = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if pl.captain
-            = inline_svg 'transfer.svg', class: 'svg-picture', title: 'На трансфере' if pl.status == 'transfer'
+            = inline_svg 'transfer.svg', class: 'svg-picture', title: 'Капитан' if pl.status == 'transfer'
           %td= image_tag pl.country.flag.url, title: pl.country.title
           / TODO подумать как лучше отображать
           %td{title: pl.position1}
@@ -88,20 +70,18 @@
           %td= pl.age
           %td= pl.skill_level
           %td= pl.price_to_currency
+          %td #{pl.season_games}/#{pl.all_games}
+          %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
+          %td #{pl.season_goals}/#{pl.all_goals}
+          %td #{pl.season_passes}/#{pl.all_passes}
+          %td #{pl.season_autogoals}/#{pl.all_autogoals}
+          %td #{pl.season_yellow_cards}/#{pl.all_yellow_cards}
+          %td #{pl.season_red_cards}/#{pl.all_red_cards}
           %td
             -if pl.basic
               .li{style: "color: #00F", title: "Основной состав"} О
             -else
               .li{style: "color: #D00", title: "Запас"} З
-          %td
-            / = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-            / = inline_svg 'edit.svg', class: 'svg-picture-btn'
-            = link_to pl, class: 'btn btn-default', title: 'Обзор игрока' do
-              = inline_svg 'street-view.svg', class: 'svg-picture-btn green'
-            = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-default', title: 'Выставить на трансфер' do
-              = inline_svg 'transfer.svg', class: 'svg-picture-btn'
-            = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-default' do
-              = inline_svg 'usd.svg', class: 'svg-picture-btn green'
   %table.table.table-bordered
     %thead
       %tr{class: 'info'}
@@ -131,6 +111,9 @@
             = @team.averages[:av_price]
   .btn-group
     -if @current_user == @team.user || @current_user.moderator?
+      = link_to @current_user_team, class: 'btn btn-warning' do
+        = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+        Вернуться к << #{@current_user_team.title} >>
       = link_to edit_team_path(@team), class: 'btn btn-danger' do
         = inline_svg 'edit-group.svg', class: 'svg-picture-btn white'
         Редактировать

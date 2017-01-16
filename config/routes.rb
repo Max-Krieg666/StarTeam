@@ -13,11 +13,13 @@ Rails.application.routes.draw do
 
   resources :teams, except: [:new, :create] do
     member do
+      get 'statistics'
+      get 'operations'
       get 'transfer_history'
     end
   end
 
-  resources :operations, only: [:index]
+  resources :notifications, only: [:index]
 
   resources :stadia, except: [:index, :destroy] do
     member do

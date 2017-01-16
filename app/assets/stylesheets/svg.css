@@ -35,6 +35,11 @@
 	height: 40px;
 }
 
+.svg-no-avatar {
+	width: 200px;
+	height: 200px;
+}
+
 .white {
 	fill: #fff;
 }

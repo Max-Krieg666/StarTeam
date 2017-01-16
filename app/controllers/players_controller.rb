@@ -24,7 +24,8 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if @player.save
-      redirect_to @player, notice: I18n.t('flash.players.created')
+      flash[:notice] = I18n.t('flash.players.created')
+      redirect_to @player
     else
       render :new
     end
@@ -70,7 +71,8 @@ class PlayersController < ApplicationController
           @current_user_team.budget -= @player.price
           @current_user_team.save!
           Operation.create(team_id: @current_user_team.id, sum: @player.price, kind: false, title: 'Покупка игрока')
-          redirect_to @player, notice: I18n.t('flash.players.buyed')
+          flash[:notice] = I18n.t('flash.players.buyed')
+          redirect_to @player
         else
           render :buy_processing
         end
@@ -80,11 +82,13 @@ class PlayersController < ApplicationController
 
   def sell
     if @player.team != @current_user_team
-      redirect_to @player, danger: I18n.t('flash.insufficient_privileges')
+      flash[:danger] = I18n.t('flash.insufficient_privileges')
+      redirect_to @player
     elsif @current_user_team.squad_size < 15
-      redirect_to @current_user_team, notice: I18n.t('flash.teams.low_squad')
+      flash[:danger] = I18n.t('flash.teams.low_squad')
+      redirect_to @current_user_team
     else
-    # TODO добавить проверку на то, есть ли травмы или дисквалификации - нельзя продавать тогда.
+      # TODO добавить проверку на то, есть ли травмы или дисквалификации - нельзя продавать тогда.
       ActiveRecord::Base.transaction do
         if @player.basic
           pl = @current_user_team.players.where(position1: @player.position1, basic: false).order('skill_level desc').first
@@ -97,7 +101,8 @@ class PlayersController < ApplicationController
               @player.captain = false
             end
           else
-            redirect_to @player, danger: I18n.t('flash.players.last')
+            flash[:danger] = I18n.t('flash.players.last')
+            redirect_to @player
           end
         end
         @player.update(state: 0, team_id: nil)
@@ -106,7 +111,8 @@ class PlayersController < ApplicationController
         @current_user_team.save
         Operation.create(team_id: @current_user_team.id, sum: @player.price / 2.0, kind: true, title: 'Продажа игрока на рынок свободных агентов')
       end
-      redirect_to @current_user_team, notice: I18n.t('flash.players.sold')
+      flash[:notice] = I18n.t('flash.players.sold')
+      redirect_to @current_user_team
     end
   end
 
@@ -117,7 +123,8 @@ class PlayersController < ApplicationController
     age = player_params[:age]
     @player.price = (tal.to_i * 10000.0 * skill.to_i / age.to_f).round(3)
     if @player.update(player_params)
-      redirect_to @player, notice: I18n.t('flash.players.edited')
+      flash[:notice] = I18n.t('flash.players.edited')
+      redirect_to @player
     else
       render :edit
     end
