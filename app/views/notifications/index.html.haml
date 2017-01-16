@@ -1,0 +1,36 @@
+.page-header
+  %h1 Уведомления
+
+-if @notifications.count > 0
+  /TODO info-block 'Чтобы прочитать уведомление, нажмите на него'
+  /TODO реализовать AJAX с нажатием на уведомление
+  %table.table.table-bordered.table-hover
+    %thead
+      %tr
+        %th.text-center
+          = inline_svg 'calendar.svg', class: 'svg-picture'
+          Дата
+        %th.text-center
+          = inline_svg 'pencil.svg', class: 'svg-picture'
+          Название
+        %th.text-center
+          = inline_svg 'info-circle.svg', class: 'svg-picture'
+          Тип
+        
+    %tbody
+      - @notifications.each do |note|
+        -color = note.viewed ? '#CEF6CE' : '#F6D9D9'
+        %tr.text-center{style: "background: #{color}"}
+          %td
+            = l note.created_at
+          %td
+            = note.title
+          %td
+            = note.kind
+-else
+  .text-danger Уведомлений нет.
+%br
+.btn-group
+  = link_to @current_user_team, class: 'btn btn-warning' do
+    = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+    Вернуться к << #{@current_user_team.title} >>

@@ -6,7 +6,7 @@ en:
     users:
       all: All users
       my_page: My page
-      my_profile: My profile
+      notifications: Notifications
     countries:
       block: Countries
       all: All countries
@@ -21,6 +21,7 @@ en:
       budget_history: Financial history
       transfer_history: Transfer history
       my_team: My team
+      squad: Squad
       training: Training
       statistics: Statistics
     transfers:

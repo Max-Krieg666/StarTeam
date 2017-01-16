@@ -551,7 +551,7 @@
   talent: 4
   age: 28
   skill_level: 28
-- name: Vanskart Hallstroem
+- name: Vanskart Hallström
   country_id: 224
   position1: 1
   talent: 2
@@ -2009,7 +2009,7 @@
   talent: 1
   age: 38
   skill_level: 24
-- name: Frederik Allstroem
+- name: Frederik Allström
   country_id: 224
   position1: 1
   talent: 6

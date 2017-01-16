@@ -23,7 +23,7 @@ ru:
     users:
       all: Все пользователи
       my_page: Моя страница
-      my_profile: Мой профиль
+      notifications: Уведомления
     countries:
       block: Страны
       all: Все страны
@@ -39,6 +39,7 @@ ru:
       budget_history: История финансовых операций
       transfer_history: История трансферов
       my_team: Моя команда
+      squad: Расстановка
       training: Тренировка
       statistics: Статистика игроков
     transfers:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401174045) do
+ActiveRecord::Schema.define(version: 20171301232725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20170401174045) do
     t.datetime "flag_updated_at"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "notifications", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "user_id"
+    t.boolean  "viewed"
+    t.string   "title"
+    t.integer  "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "operations", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|

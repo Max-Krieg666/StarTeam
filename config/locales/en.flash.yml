@@ -4,6 +4,7 @@ en:
     must_be_logged: You must be logged in to view this page.
     insufficient_privileges: Insufficient privileges.
     access_denied: Access denied.
+    has_errors: Errors has occurred
     bases:
       max_level: Club base has a maximum level.
       not_enough_money: On account of your team is not enough money to upgrade the club base.
