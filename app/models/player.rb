@@ -13,6 +13,7 @@ class Player < ActiveRecord::Base
   belongs_to :country
   belongs_to :team
   has_many :transfers
+  has_many :careers
 
   scope :free_agent, -> { where(status: 0) }
 

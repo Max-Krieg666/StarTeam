@@ -60,6 +60,9 @@ class RandomTeam
         end
         pos_players << random_player(pos, pl_c_id)
       end
+      pos_players.each do |p|
+        Career.create(player_id: p.id, age_begin: p.age, team_title: team.title)
+      end
       pos_players.sort_by { |p| p.skill_level }.last(count.last).each { |pl| pl.update(basic: true) }
     end
     return

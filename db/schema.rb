@@ -11,11 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171301232725) do
+ActiveRecord::Schema.define(version: 20171701010404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "careers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "player_id"
+    t.string   "team_title",                null: false
+    t.integer  "age_begin",                 null: false
+    t.integer  "age_end"
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "careers", ["player_id"], name: "index_careers_on_player_id", using: :btree
 
   create_table "club_bases", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "team_id"
@@ -41,11 +53,11 @@ ActiveRecord::Schema.define(version: 20171301232725) do
 
   create_table "notifications", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "user_id"
-    t.boolean  "viewed"
+    t.boolean  "viewed",     default: false
     t.string   "title"
     t.integer  "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "operations", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|

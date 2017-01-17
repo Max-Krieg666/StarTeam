@@ -70,6 +70,7 @@ class PlayersController < ApplicationController
         if @player.save
           @current_user_team.budget -= @player.price
           @current_user_team.save!
+          Career.create(player_id: @player.id, age_begin: @player.age, team_title: @current_user_team.title)
           Operation.create(team_id: @current_user_team.id, sum: @player.price, kind: false, title: 'Покупка игрока')
           flash[:notice] = I18n.t('flash.players.buyed')
           redirect_to @player
@@ -91,6 +92,7 @@ class PlayersController < ApplicationController
       # TODO добавить проверку на то, есть ли травмы или дисквалификации - нельзя продавать тогда.
       ActiveRecord::Base.transaction do
         if @player.basic
+          #TODO если игркоа в запасе на такую позицию нету, ставь игрока ближайшей позиции с потерей навыка
           pl = @current_user_team.players.where(position1: @player.position1, basic: false).order('skill_level desc').first
           if pl
             pl.update(basic: true)
@@ -105,8 +107,8 @@ class PlayersController < ApplicationController
             redirect_to @player
           end
         end
-        @player.update(state: 0, team_id: nil)
-        # TODO тут же добавить запись о забитых голах и т.д. и запись о клубе
+        @player.update(state: 0, team_id: nil, number: nil)
+        @player.careers.active.first.update(active: false, age_end: @player.age)
         @current_user_team.budget += @player.price / 2.0
         @current_user_team.save
         Operation.create(team_id: @current_user_team.id, sum: @player.price / 2.0, kind: true, title: 'Продажа игрока на рынок свободных агентов')

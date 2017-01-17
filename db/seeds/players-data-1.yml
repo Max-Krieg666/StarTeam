@@ -2255,7 +2255,7 @@
   talent: 4
   age: 28
   skill_level: 57
-- name: Adalheidur Gudmundsson
+- name: Aðalheidur Guðmundsson
   country_id: 78
   position1: 8
   talent: 7
@@ -2879,7 +2879,7 @@
   talent: 5
   age: 21
   skill_level: 36
-- name: Andri Gislasson
+- name: Andri Gíslasson
   country_id: 78
   position1: 7
   talent: 6
@@ -6106,6 +6106,7 @@
   position1: 7
   talent: 6
   age: 37
+  skill_level: 36
 - name: Alvaro Regato
   country_id: 208
   position1: 6

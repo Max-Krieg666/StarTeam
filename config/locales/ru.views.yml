@@ -44,6 +44,8 @@ ru:
       statistics: Статистика игроков
     transfers:
       all: Трансферы
+    careers:
+      now_end: н.в.
   buttons:
     sign_up: Зарегистрироваться
     sign_in: Войти

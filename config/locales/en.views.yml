@@ -27,6 +27,8 @@ en:
     transfers:
       all: Transfers
       create: Create a new player
+    careers:
+      now_end: now
   buttons:
     sign_up: Sign up
     sign_in: Sign in

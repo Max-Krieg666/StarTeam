@@ -83,7 +83,9 @@ class TransfersController < ApplicationController
           #   @player.captain = true
           #   captain.update(captain: false)
           # end
-          @transfer.update!(status: 1)
+          @transfer.player.careers.active.first.update(active: false, age_end: @transfer.player.age)
+          Career.create(player_id: @transfer.player.id, age_begin: @transfer.player.age, team_title: @current_user_team.title)
+          @transfer.update!(status: 1, purchaser_id: @current_user_team.id)
           @current_user_team.budget -= @transfer.cost
           @current_user_team.save!
           Operation.create(team_id: @current_user_team.id, sum: @transfer.cost, kind: false, title: 'Покупка игрока на трансферном рынке')
