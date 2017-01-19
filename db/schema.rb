@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171701010404) do
+ActiveRecord::Schema.define(version: 20171901004348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,41 @@ ActiveRecord::Schema.define(version: 20171701010404) do
     t.datetime "flag_updated_at"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "cups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer  "country_id"
+    t.string   "title",                        null: false
+    t.integer  "season",                       null: false
+    t.string   "current_stage"
+    t.integer  "count"
+    t.boolean  "active",        default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "games", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "home_id"
+    t.uuid     "guest_id"
+    t.string   "tournament_id"
+    t.boolean  "kind"
+    t.integer  "home_goals",    default: 0
+    t.integer  "guest_goals",   default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "games", ["guest_id"], name: "index_games_on_guest_id", using: :btree
+  add_index "games", ["home_id"], name: "index_games_on_home_id", using: :btree
+
+  create_table "leagues", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer  "country_id"
+    t.string   "title",                     null: false
+    t.integer  "season",                    null: false
+    t.integer  "count"
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "notifications", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -149,6 +184,37 @@ ActiveRecord::Schema.define(version: 20171701010404) do
     t.datetime "created_at",                                                        null: false
     t.datetime "updated_at",                                                        null: false
   end
+
+  create_table "teams_cups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "cup_id"
+    t.integer "division"
+    t.string  "stage"
+    t.integer "games",          default: 0
+    t.integer "goals",          default: 0
+    t.integer "goals_conceded", default: 0
+  end
+
+  add_index "teams_cups", ["cup_id"], name: "index_teams_cups_on_cup_id", using: :btree
+  add_index "teams_cups", ["team_id"], name: "index_teams_cups_on_team_id", using: :btree
+
+  create_table "teams_leagues", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "league_id"
+    t.integer "division"
+    t.integer "place"
+    t.integer "tour"
+    t.integer "games",          default: 0
+    t.integer "goals",          default: 0
+    t.integer "goals_conceded", default: 0
+    t.integer "wins",           default: 0
+    t.integer "draws",          default: 0
+    t.integer "loses",          default: 0
+    t.integer "points",         default: 0
+  end
+
+  add_index "teams_leagues", ["league_id"], name: "index_teams_leagues_on_league_id", using: :btree
+  add_index "teams_leagues", ["team_id"], name: "index_teams_leagues_on_team_id", using: :btree
 
   create_table "transfers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "player_id"

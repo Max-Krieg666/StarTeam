@@ -2,6 +2,8 @@ class Country < ActiveRecord::Base
   has_many :users
   has_many :teams
   has_many :players
+  has_many :cups
+  has_many :leagues
 
   validates :flag, attachment_presence: true,
             attachment_content_type: { content_type: /\Aimage\/.*\Z/ },

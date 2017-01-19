@@ -14,4 +14,4 @@ main fm-game project
 * position1: 6 --- 100 RM (+34)
 * position1: 7 --- 102 LF (+52)
 * position1: 8 --- 127 CF (+55)
-* position1: 9 --- 100 RF (+32)
+* position1: 9 --- 101 RF (+33)

@@ -9,6 +9,8 @@ class Team < ActiveRecord::Base
   has_many :players
   has_many :transfers
   has_many :operations
+  has_many :teams_leagues
+  has_many :teams_cups
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
   validates :budget, presence: true

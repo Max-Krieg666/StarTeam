@@ -4595,6 +4595,12 @@
   talent: 9
   age: 22
   skill_level: 98
+- name: Christian Musemeci
+  country_id: 1
+  position1: 9
+  talent: 9
+  age: 18
+  skill_level: 101
 - name: Liber Storm
   country_id: 208
   position1: 7
