@@ -23,7 +23,7 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.new(player_params)
-    if @player.save
+    if Generator::RandomCharacteristics.new(@player).randomize.save!
       flash[:notice] = I18n.t('flash.players.created')
       redirect_to @player
     else
@@ -116,6 +116,9 @@ class PlayersController < ApplicationController
       flash[:notice] = I18n.t('flash.players.sold')
       redirect_to @current_user_team
     end
+  end
+
+  def training
   end
 
   def update

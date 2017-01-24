@@ -13,6 +13,10 @@ class TeamsController < ApplicationController
   def statistics
   end
 
+  def training
+    @players = @team.players.order('position1 asc, basic desc, skill_level desc')
+  end
+
   def operations
     @financies = @team.operations.order('created_at desc').page(params[:page])
   end

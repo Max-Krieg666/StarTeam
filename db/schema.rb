@@ -116,6 +116,22 @@ ActiveRecord::Schema.define(version: 20171901004348) do
     t.integer  "skill_level",                                      null: false
     t.float    "price",                                            null: false
     t.integer  "state",                            default: 0
+    t.integer  "training_points",                  default: 0
+    t.integer  "tackling",                         default: 0
+    t.integer  "marking",                          default: 0
+    t.integer  "positioning",                      default: 0
+    t.integer  "heading",                          default: 0
+    t.integer  "pressure",                         default: 0
+    t.integer  "shot_accuracy",                    default: 0
+    t.integer  "shot_power",                       default: 0
+    t.integer  "dribbling",                        default: 0
+    t.integer  "passing",                          default: 0
+    t.integer  "carport",                          default: 0
+    t.integer  "speed",                            default: 0
+    t.integer  "endurance",                        default: 0
+    t.integer  "reaction",                         default: 0
+    t.integer  "aggression",                       default: 0
+    t.integer  "creativity",                       default: 0
     t.uuid     "team_id"
     t.string   "special_skill1",        limit: 2
     t.integer  "num_sp_s1"

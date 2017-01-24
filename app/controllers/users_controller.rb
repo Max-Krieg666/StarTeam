@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         if @team.save
           Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: 'Начисление начального бюджета')
           Sponsor.create_rand(@team.id)
-          RandomTeam.new(@team).generate
+          Generator::RandomTeam.new(@team).generate
           @team.captain.update(captain: true)
           if @current_user
             redirect_to @user, notice: I18n.t('flash.users.created')

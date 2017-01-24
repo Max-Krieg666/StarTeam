@@ -17,7 +17,8 @@ end
 # Игроки
 ActiveRecord::Base.transaction do
   YAML::load_file(Rails.root.join('db', 'seeds', 'players-data-1.yml')).each do |player_params|
-    Player.create!(player_params)
+    p = Player.new(player_params)
+    Generator::RandomCharacteristics.new(p).randomize.save!
   end
   puts "Игроков создано: #{Player.count}"
 end

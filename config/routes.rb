@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'buy_processing'
       patch 'buy'
       patch 'sell'
+      patch 'training'
     end
   end
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       get 'statistics'
       get 'operations'
       get 'transfer_history'
+      get 'training'
     end
   end
 

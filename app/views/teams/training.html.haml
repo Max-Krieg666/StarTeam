@@ -1,0 +1,62 @@
+.text-center
+  .page-header
+    %h1 Тренировка
+    %h1
+      = @team.title
+      = image_tag @team.country.flag.url, title: @team.country.title
+  %br
+
+  %table.table.table-bordered.table-hover.table-condensed
+    %thead
+      %tr.success
+        %th.text-center
+          = inline_svg 'footballer.svg', class: 'svg-picture-table'
+          Игрок
+        %th.text-center
+          = inline_svg 'location.svg', class: 'svg-picture-table'
+          Позиция
+        %th.text-center
+          = inline_svg 'level.svg', class: 'svg-picture-unstandart'
+          Мастерство
+        %th.text-center
+          = inline_svg 'training.svg', class: 'svg-picture-table'
+          Очки тренировки
+        %th.text-center{title: "Отбор"}От
+        %th.text-center{title: "Опека"}Оп
+        %th.text-center{title: "Выбор позиции"}Вп
+        %th.text-center{title: "Игра головой"}Иг
+        %th.text-center{title: "Прессинг"}Пр
+        %th.text-center{title: "Точность удара"}Ту
+        %th.text-center{title: "Сила удара"}Су
+        %th.text-center{title: "Дриблинг"}Др
+        %th.text-center{title: "Пас"}Пс
+        %th.text-center{title: "Навес"}Нв
+        %th.text-center{title: "Скорость"}Ск
+        %th.text-center{title: "Выносливость"}Вн
+        %th.text-center{title: "Реакция"}Рк
+        %th.text-center{title: "Агрессивность"}Аг
+        %th.text-center{title: "Креативность"}Кр
+    %tbody
+      - @players.each do |pl|
+        %tr.text-center
+          %td
+            = pl.name
+          %td{title: pl.position1}
+            = pl.full_position_name
+          %td= pl.skill_level
+          %td= pl.training_points
+          %td= pl.tackling
+          %td= pl.marking
+          %td= pl.positioning
+          %td= pl.heading
+          %td= pl.pressure
+          %td= pl.shot_accuracy
+          %td= pl.shot_power
+          %td= pl.dribbling
+          %td= pl.passing
+          %td= pl.carport
+          %td= pl.speed
+          %td= pl.endurance
+          %td= pl.reaction
+          %td= pl.aggression
+          %td= pl.creativity

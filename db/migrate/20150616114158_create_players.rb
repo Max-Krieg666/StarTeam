@@ -12,6 +12,28 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :skill_level, null: false
       t.float :price, null: false
       t.integer :state, default: 0 # 0 - свободен, 1 - в команде, 2 - завершил карьеру
+      
+      # характеристики
+      t.integer :training_points, default: 0 # очки тренировок
+      # защитные (5)
+      t.integer :tackling, default: 0 # Отбор
+      t.integer :marking, default: 0 # Опека
+      t.integer :positioning, default: 0 # Выбор позиции
+      t.integer :heading, default: 0 # Игра головой
+      t.integer :pressure, default: 0 # Прессинг
+      # атакующие (5)
+      t.integer :shot_accuracy, default: 0 # Точность удара
+      t.integer :shot_power, default: 0 # Сила удара
+      t.integer :dribbling, default: 0 # Дриблинг
+      t.integer :passing, default: 0 # Пас
+      t.integer :carport, default: 0 # Навес
+      # физические (3)
+      t.integer :speed, default: 0 # Скорость
+      t.integer :endurance, default: 0 # Выносливость
+      t.integer :reaction, default: 0 # Реакция
+      # ментальные (2)
+      t.integer :aggression, default: 0 # Агрессивность
+      t.integer :creativity, default: 0 # Креативность
 
       # игрок в команде
       t.uuid :team_id, index: true
