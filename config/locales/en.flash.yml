@@ -51,6 +51,8 @@ en:
       created: Transfer offer was successfully created.
       edited: Transfer offer was edited.
       destroyed: Transfer offer was destroyed.
+      errors:
+        cost_blank: Enter the price of the transfer offer.
     users:
       account_confirmed: You have successfully confirmed your account.
       invalid_confirmed_key: Your confirmed key is invalid.

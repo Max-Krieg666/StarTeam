@@ -8,7 +8,7 @@
     = csrf_meta_tags
   %body
     = render 'navbar'
-    .container
+    .container-fluid
       -if @current_user && @current_user.user?
         -if @current_user_team
           -if !@current_user_team.club_base

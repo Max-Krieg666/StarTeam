@@ -12,15 +12,12 @@
         %th.text-center
           = inline_svg 'footballer.svg', class: 'svg-picture-table'
           Игрок
-        %th.text-center
+        %th.text-center{title: "Позиция"}
           = inline_svg 'location.svg', class: 'svg-picture-table'
-          Позиция
-        %th.text-center
-          = inline_svg 'level.svg', class: 'svg-picture-unstandart'
-          Мастерство
-        %th.text-center
+        %th.text-center{title: "Мастерство"}
+          = inline_svg 'level.svg', class: 'svg-picture-table'
+        %th.text-center{title: "Очки тренировки"}
           = inline_svg 'training.svg', class: 'svg-picture-table'
-          Очки тренировки
         %th.text-center{title: "Отбор"}От
         %th.text-center{title: "Опека"}Оп
         %th.text-center{title: "Выбор позиции"}Вп
@@ -39,24 +36,85 @@
     %tbody
       - @players.each do |pl|
         %tr.text-center
-          %td
+          %td.info
             = pl.name
-          %td{title: pl.position1}
+          %td.info{title: pl.position1}
             = pl.full_position_name
-          %td= pl.skill_level
-          %td= pl.training_points
-          %td= pl.tackling
-          %td= pl.marking
-          %td= pl.positioning
-          %td= pl.heading
-          %td= pl.pressure
-          %td= pl.shot_accuracy
-          %td= pl.shot_power
-          %td= pl.dribbling
-          %td= pl.passing
-          %td= pl.carport
-          %td= pl.speed
-          %td= pl.endurance
-          %td= pl.reaction
-          %td= pl.aggression
-          %td= pl.creativity
+          %td.info
+            = pl.skill_level
+          %td.danger= pl.training_points
+          %td
+            = pl.tackling
+            -if pl.training_points >= Definer.need_points(pl.tackling) && pl.team == @current_user_team
+              = link_to tackling_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.marking
+            -if pl.training_points >= Definer.need_points(pl.marking) && pl.team == @current_user_team
+              = link_to marking_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.positioning
+            -if pl.training_points >= Definer.need_points(pl.positioning) && pl.team == @current_user_team
+              = link_to positioning_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.heading
+            -if pl.training_points >= Definer.need_points(pl.heading) && pl.team == @current_user_team
+              = link_to heading_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.pressure
+            -if pl.training_points >= Definer.need_points(pl.pressure) && pl.team == @current_user_team
+              = link_to pressure_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.shot_accuracy
+            -if pl.training_points >= Definer.need_points(pl.shot_accuracy) && pl.team == @current_user_team
+              = link_to shot_accuracy_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.shot_power
+            -if pl.training_points >= Definer.need_points(pl.shot_power) && pl.team == @current_user_team
+              = link_to shot_power_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.dribbling
+            -if pl.training_points >= Definer.need_points(pl.dribbling) && pl.team == @current_user_team
+              = link_to dribbling_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.passing
+            -if pl.training_points >= Definer.need_points(pl.passing) && pl.team == @current_user_team
+              = link_to passing_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.carport
+            -if pl.training_points >= Definer.need_points(pl.carport) && pl.team == @current_user_team
+              = link_to carport_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.speed
+            -if pl.training_points >= Definer.need_points(pl.speed) && pl.team == @current_user_team
+              = link_to speed_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.endurance
+            -if pl.training_points >= Definer.need_points(pl.endurance) && pl.team == @current_user_team
+              = link_to endurance_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.reaction
+            -if pl.training_points >= Definer.need_points(pl.reaction) && pl.team == @current_user_team
+              = link_to reaction_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.aggression
+            -if pl.training_points >= Definer.need_points(pl.aggression) && pl.team == @current_user_team
+              = link_to aggression_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'
+          %td
+            = pl.creativity
+            -if pl.training_points >= Definer.need_points(pl.creativity) && pl.team == @current_user_team
+              = link_to creativity_upgrade_player_path(pl), method: :patch do
+                = inline_svg 'arrow-up', class: 'svg-picture-table'

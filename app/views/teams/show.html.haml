@@ -58,7 +58,7 @@
           = inline_svg 'history.svg', class: 'svg-picture-table'
           Возраст
         %th.text-center
-          = inline_svg 'level.svg', class: 'svg-picture-unstandart'
+          = inline_svg 'level.svg', class: 'svg-picture-table'
           Мастерство
         %th.text-center
           = inline_svg 'usd.svg', class: 'svg-picture-table'
@@ -99,7 +99,7 @@
             = link_to pl, class: 'btn btn-default', title: 'Обзор игрока' do
               = inline_svg 'street-view.svg', class: 'svg-picture-btn green'
             -if @current_user == @team.user
-              = link_to "/transfers/new?player_id=#{pl.id}", class: 'btn btn-default', title: 'Выставить на трансфер' do
+              = link_to new_transfer_path(player_id: pl.id), class: 'btn btn-default', title: 'Выставить на трансфер' do
                 = inline_svg 'transfer.svg', class: 'svg-picture-btn'
               = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-default' do
                 = inline_svg 'usd.svg', class: 'svg-picture-btn green'

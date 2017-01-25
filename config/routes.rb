@@ -9,6 +9,23 @@ Rails.application.routes.draw do
       patch 'buy'
       patch 'sell'
       patch 'training'
+
+      # characteristics upgrade
+      patch 'tackling_upgrade'
+      patch 'marking_upgrade'
+      patch 'positioning_upgrade'
+      patch 'heading_upgrade'
+      patch 'pressure_upgrade'
+      patch 'shot_accuracy_upgrade'
+      patch 'shot_power_upgrade'
+      patch 'dribbling_upgrade'
+      patch 'passing_upgrade'
+      patch 'carport_upgrade'
+      patch 'speed_upgrade'
+      patch 'endurance_upgrade'
+      patch 'reaction_upgrade'
+      patch 'aggression_upgrade'
+      patch 'creativity_upgrade'
     end
   end
 

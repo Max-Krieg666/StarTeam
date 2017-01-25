@@ -100,4 +100,12 @@ module Definer
     end
     a
   end
+
+  def self.need_points(level)
+    if level.zero?
+      15
+    else # > 1
+      50 * level * level
+    end
+  end
 end

@@ -21,20 +21,22 @@ class TransfersController < ApplicationController
   end
 
   def create
-    ActiveRecord::Base.transaction do
-      @transfer = Transfer.new(transfer_params)
-      pl = Player.find(transfer_params[:player_id])
-      @transfer.cost = @transfer.cost.round(3)
-      @transfer.vendor_id = pl.team_id
-      @transfer.status = 0
-      pl.update(status: 4)
-      respond_to do |format|
+    if transfer_params[:cost].blank?
+      flash[:danger] = I18n.t('flash.transfers.errors.cost_blank')
+      redirect_to new_transfer_path(player_id: transfer_params[:player_id])
+    else
+      ActiveRecord::Base.transaction do
+        @transfer = Transfer.new(transfer_params)
+        pl = Player.find(transfer_params[:player_id])
+        @transfer.cost = @transfer.cost.round(3)
+        @transfer.vendor_id = pl.team_id
+        @transfer.status = 0
+        pl.update(status: 4)
         if @transfer.save
-          format.html { redirect_to @transfer, notice: I18n.t('flash.transfers.created') }
-          format.json { render :show, status: :created, location: @transfer }
+          flash[:notice] = I18n.t('flash.transfers.created')
+          redirect_to @transfer
         else
-          format.html { render :new }
-          format.json { render json: @transfer.errors, status: :unprocessable_entity }
+          render :new
         end
       end
     end

@@ -961,7 +961,6 @@
 - name: Hámóður
 - name: Hámundur
 - name: Hannes
-- name: Hannibal
 - name: Hans
 - name: Harald
 - name: Haraldur
@@ -1319,12 +1318,10 @@
 - name: Kaðall
 - name: Kai
 - name: Kaj
-- name: Kakali
-- name: Kaktus
 - name: Kaldi
 - name: Kaleb
 - name: Kálfur
-- name: Kali 1
+- name: Kali
 - name: Kalman
 - name: Kalmann
 - name: Kalmar

@@ -7,7 +7,7 @@ class Player < ActiveRecord::Base
   # 5 атакующих: Точность удара, Сила удара, Дриблинг, Пас, Навес
   # 3 физических: Скорость, Выносливость, Реакция
   # 2 ментальных: Агрессивность, Креативность
-  # TODO добавить их во вьюху тренировки(сделать) + на просмотр!!!
+  
   belongs_to :country
   belongs_to :team
   has_many :transfers
@@ -126,5 +126,9 @@ class Player < ActiveRecord::Base
       1.0
     else
     end
+  end
+
+  def self.calc_price(skill_level, talent, age)
+    (skill_level * talent * 10000 / age.to_f).round(3)
   end
 end
