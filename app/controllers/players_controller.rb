@@ -145,7 +145,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.tackling)
     @player.update(tackling: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    if params[:location] != 'show'
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def marking_upgrade
@@ -155,7 +159,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.marking)
     @player.update(marking: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def positioning_upgrade
@@ -165,7 +173,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.positioning)
     @player.update(positioning: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def heading_upgrade
@@ -175,7 +187,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.heading)
     @player.update(heading: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def pressure_upgrade
@@ -185,7 +201,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.pressure)
     @player.update(pressure: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def shot_accuracy_upgrade
@@ -195,7 +215,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.shot_accuracy)
     @player.update(shot_accuracy: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def shot_power_upgrade
@@ -205,7 +229,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.shot_power)
     @player.update(shot_power: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def dribbling_upgrade
@@ -215,7 +243,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.dribbling)
     @player.update(dribbling: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def passing_upgrade
@@ -225,7 +257,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.passing)
     @player.update(passing: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def carport_upgrade
@@ -235,7 +271,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.carport)
     @player.update(carport: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def speed_upgrade
@@ -245,7 +285,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.speed)
     @player.update(speed: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def endurance_upgrade
@@ -255,7 +299,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.endurance)
     @player.update(endurance: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def reaction_upgrade
@@ -265,7 +313,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.reaction)
     @player.update(reaction: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def aggression_upgrade
@@ -275,7 +327,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.aggression)
     @player.update(aggression: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   def creativity_upgrade
@@ -285,7 +341,11 @@ class PlayersController < ApplicationController
     new_training_points = @player.training_points - Definer.need_points(@player.creativity)
     @player.update(creativity: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
     flash[:notice] = "Характеристика у игрока #{@player.name} увеличена."
-    redirect_to training_team_path(@current_user_team)
+    unless params[:location]
+      redirect_to training_team_path(@current_user_team)
+    else
+      redirect_to @player
+    end
   end
 
   private

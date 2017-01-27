@@ -46,75 +46,91 @@
           %td
             = pl.tackling
             -if pl.training_points >= Definer.need_points(pl.tackling) && pl.team == @current_user_team
-              = link_to tackling_upgrade_player_path(pl), method: :patch do
+              = link_to tackling_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.tackling)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.marking
             -if pl.training_points >= Definer.need_points(pl.marking) && pl.team == @current_user_team
-              = link_to marking_upgrade_player_path(pl), method: :patch do
+              = link_to marking_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.marking)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.positioning
             -if pl.training_points >= Definer.need_points(pl.positioning) && pl.team == @current_user_team
-              = link_to positioning_upgrade_player_path(pl), method: :patch do
+              = link_to positioning_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.positioning)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.heading
             -if pl.training_points >= Definer.need_points(pl.heading) && pl.team == @current_user_team
-              = link_to heading_upgrade_player_path(pl), method: :patch do
+              = link_to heading_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.heading)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.pressure
             -if pl.training_points >= Definer.need_points(pl.pressure) && pl.team == @current_user_team
-              = link_to pressure_upgrade_player_path(pl), method: :patch do
+              = link_to pressure_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.pressure)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.shot_accuracy
             -if pl.training_points >= Definer.need_points(pl.shot_accuracy) && pl.team == @current_user_team
-              = link_to shot_accuracy_upgrade_player_path(pl), method: :patch do
+              = link_to shot_accuracy_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.shot_accuracy)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.shot_power
             -if pl.training_points >= Definer.need_points(pl.shot_power) && pl.team == @current_user_team
-              = link_to shot_power_upgrade_player_path(pl), method: :patch do
+              = link_to shot_power_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.shot_power)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.dribbling
             -if pl.training_points >= Definer.need_points(pl.dribbling) && pl.team == @current_user_team
-              = link_to dribbling_upgrade_player_path(pl), method: :patch do
+              = link_to dribbling_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.dribbling)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.passing
             -if pl.training_points >= Definer.need_points(pl.passing) && pl.team == @current_user_team
-              = link_to passing_upgrade_player_path(pl), method: :patch do
+              = link_to passing_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.passing)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.carport
             -if pl.training_points >= Definer.need_points(pl.carport) && pl.team == @current_user_team
-              = link_to carport_upgrade_player_path(pl), method: :patch do
+              = link_to carport_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.carport)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.speed
             -if pl.training_points >= Definer.need_points(pl.speed) && pl.team == @current_user_team
-              = link_to speed_upgrade_player_path(pl), method: :patch do
+              = link_to speed_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.speed)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.endurance
             -if pl.training_points >= Definer.need_points(pl.endurance) && pl.team == @current_user_team
-              = link_to endurance_upgrade_player_path(pl), method: :patch do
+              = link_to endurance_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.endurance)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.reaction
             -if pl.training_points >= Definer.need_points(pl.reaction) && pl.team == @current_user_team
-              = link_to reaction_upgrade_player_path(pl), method: :patch do
+              = link_to reaction_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.reaction)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.aggression
             -if pl.training_points >= Definer.need_points(pl.aggression) && pl.team == @current_user_team
-              = link_to aggression_upgrade_player_path(pl), method: :patch do
+              = link_to aggression_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.aggression)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
           %td
             = pl.creativity
             -if pl.training_points >= Definer.need_points(pl.creativity) && pl.team == @current_user_team
-              = link_to creativity_upgrade_player_path(pl), method: :patch do
+              = link_to creativity_upgrade_player_path(pl), method: :patch, data: { confirm: "Нужно потратить #{Definer.need_points(pl.creativity)} очков тренировки. Продолжить?" } do
                 = inline_svg 'arrow-up', class: 'svg-picture-table'
+  .btn-group
+    -if @current_user == @team.user || @current_user.moderator?
+      = link_to @current_user_team, class: 'btn btn-warning' do
+        = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+        Вернуться к << #{@current_user_team.title} >>
+    -if @current_user.moderator?
+      = link_to teams_path, class: 'btn btn-warning' do
+        = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+        Все команды
+    -if @current_user == @team.user
+      -unless @team.stadium
+        = link_to new_stadium_path, class: 'btn btn-primary' do
+          = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
+          Перейти к созданию стадиона
+      -unless @team.club_base
+        = link_to 'Перейти к созданию базы клуба', new_club_basis_path, class: 'btn btn-warning'

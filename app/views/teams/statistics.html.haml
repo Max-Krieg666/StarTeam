@@ -82,41 +82,38 @@
               .li{style: "color: #00F", title: "Основной состав"} О
             -else
               .li{style: "color: #D00", title: "Запас"} З
-  %table.table.table-bordered
-    %thead
       %tr{class: 'info'}
-        %th.text-center
+        %th.text-center{'colspan': 2}
           Всего игроков:
-          .text-danger
+          %span.text-danger
             = @team.squad_size
-        %th.text-center
-          Среднее
-          %br
-          по команде:
-        %th.text-center
-          Талант
-          .text-danger
-            = @team.averages[:av_tal]
-        %th.text-center
-          Возраст
-          .text-danger
-            = @team.averages[:av_age]
-        %th.text-center
-          Мастерство
-          .text-danger
-            = @team.averages[:av_skills]
-        %th.text-center
-          Цена
-          .text-danger
-            = @team.averages[:av_price]
+        %th.text-center{'colspan': 3}
+          Среднее по команде:
+        %th.text-center.text-danger
+          = @team.averages[:av_tal]
+        %th.text-center.text-danger
+          = @team.averages[:av_age]
+        %th.text-center.text-danger
+          = @team.averages[:av_skills]
+        %th.text-center.text-danger
+          = @team.averages[:av_price]
+        %th{'colspan': 8}
+      %tr{class: 'info'}
+        %th{'colspan': 2}
+        %th.text-center{'colspan': 3}
+          Суммарно:
+        %th{'colspan': 2}
+        %th.text-center.text-danger
+          = @team.averages[:full_power]
+        %th.text-center.text-danger
+          = @team.averages[:full_cost]
+        %th{'colspan': 8}
+
   .btn-group
     -if @current_user == @team.user || @current_user.moderator?
       = link_to @current_user_team, class: 'btn btn-warning' do
         = inline_svg 'reply.svg', class: 'svg-picture-btn white'
         Вернуться к << #{@current_user_team.title} >>
-      = link_to edit_team_path(@team), class: 'btn btn-danger' do
-        = inline_svg 'edit-group.svg', class: 'svg-picture-btn white'
-        Редактировать
     -if @current_user.moderator?
       = link_to teams_path, class: 'btn btn-warning' do
         = inline_svg 'reply.svg', class: 'svg-picture-btn white'
@@ -127,4 +124,4 @@
           = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
           Перейти к созданию стадиона
       -unless @team.club_base
-        = link_to 'Перейти к созданию базы клуба', { action: :new, controller: :club_bases }, class: 'btn btn-warning'
+        = link_to 'Перейти к созданию базы клуба', new_club_basis_path, class: 'btn btn-warning'

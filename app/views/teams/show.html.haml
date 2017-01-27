@@ -103,33 +103,32 @@
                 = inline_svg 'transfer.svg', class: 'svg-picture-btn'
               = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-default' do
                 = inline_svg 'usd.svg', class: 'svg-picture-btn green'
-  %table.table.table-bordered
-    %thead
       %tr{class: 'info'}
-        %th.text-center
+        %th.text-center{'colspan': 2}
           Всего игроков:
-          .text-danger
+          %span.text-danger
             = @team.squad_size
-        %th.text-center
-          Среднее
-          %br
-          по команде:
-        %th.text-center
-          Талант
-          .text-danger
-            = @team.averages[:av_tal]
-        %th.text-center
-          Возраст
-          .text-danger
-            = @team.averages[:av_age]
-        %th.text-center
-          Мастерство
-          .text-danger
-            = @team.averages[:av_skills]
-        %th.text-center
-          Цена
-          .text-danger
-            = @team.averages[:av_price]
+        %th.text-center{'colspan': 3}
+          Среднее по команде:
+        %th.text-center.text-danger
+          = @team.averages[:av_tal]
+        %th.text-center.text-danger
+          = @team.averages[:av_age]
+        %th.text-center.text-danger
+          = @team.averages[:av_skills]
+        %th.text-center.text-danger
+          = @team.averages[:av_price]
+        %th{'colspan': 2}
+      %tr{class: 'info'}
+        %th{'colspan': 2}
+        %th.text-center{'colspan': 3}
+          Суммарно:
+        %th{'colspan': 2}
+        %th.text-center.text-danger
+          = @team.averages[:full_power]
+        %th.text-center.text-danger
+          = @team.averages[:full_cost]
+        %th{'colspan': 2}
   .btn-group
     -if @current_user == @team.user || @current_user.moderator?
       = link_to edit_team_path(@team), class: 'btn btn-danger' do
@@ -145,4 +144,4 @@
           = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
           Перейти к созданию стадиона
       -unless @team.club_base
-        = link_to 'Перейти к созданию базы клуба', { action: :new, controller: :club_bases }, class: 'btn btn-warning'
+        = link_to 'Перейти к созданию базы клуба', new_club_basis_path, class: 'btn btn-warning'
