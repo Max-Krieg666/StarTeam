@@ -1,9 +1,15 @@
 ---
+- name: Agaja
 - name: Amadi
 - name: Azagba
+- name: Azomino
+- name: Edo-Bini
 - name: Ehioze
 - name: Enobakhare
+- name: Evian
 - name: Ewansiha
+- name: Gezo
+- name: Glele
 - name: Imarogbe
 - name: Nosakhere
 - name: Obaseki
@@ -13,10 +19,14 @@
 - name: Omorede
 - name: Omoruyi
 - name: Omwokha
+- name: Oranmiyan
 - name: Osagboro
 - name: Osahar
 - name: Osakwe
 - name: Osayaba
 - name: Osayande
+- name: Osayimwese
 - name: Osayiniwese
 - name: Osaze
+- name: Sourou-Migan
+- name: Trudo

@@ -325,8 +325,8 @@ module Generator
         file_lastnames = 'malawi'
       when 118
         # Мали
-        file_names = 'mali'
-        file_lastnames = 'mali'
+        file_names = 'western_african'
+        file_lastnames = 'malian'
       when 119
         # Мальдивы
         file_names = 'maldives'

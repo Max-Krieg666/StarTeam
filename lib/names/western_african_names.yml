@@ -17,8 +17,9 @@
 - name: Akachi
 - name: Akpofure
 - name: Akuchi
+- name: Alpha
 - name: Amadi
-- name: Amadi
+- name: Amadou
 - name: Anan
 - name: Awotwi
 - name: Ayo
@@ -100,6 +101,9 @@
 - name: Lanre
 - name: Lekan
 - name: Mamadou
+- name: Modibo
+- name: Mossa
+- name: Moussa
 - name: Ndidi
 - name: Ngozi
 - name: Nkemdilim
@@ -135,8 +139,11 @@
 - name: Onyekachi
 - name: Onyekachukwu
 - name: Opeyemi
+- name: Oumar
+- name: Ousmane
 - name: Oyibo
 - name: Temitope
+- name: Toumani
 - name: Udo
 - name: Uduak
 - name: Ufuoma
