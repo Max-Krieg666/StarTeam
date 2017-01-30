@@ -22,10 +22,18 @@
               = @stadium.seatcost
     -elsif @stadium.max_capacity == @stadium.capacity && @stadium.level < 5
       = @stadium.capacity
-      Достигнута максимальная вместительность. Необходимо увеличить уровень стадиона.
+      .row
+        .col-md-6
+          .help-block.bg-info
+            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+            Достигнута максимальная вместительность. Необходимо увеличить уровень стадиона.
     -else
       = @stadium.capacity
-      Достигнута максимальная вместительность.
+      .row
+        .col-md-4
+          .help-block.bg-info
+            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+            Достигнута максимальная вместительность.
   -else
     = @stadium.capacity
 %p
@@ -33,7 +41,8 @@
   = @stadium.level
   -if @current_user == @team.user || @current_user.administrator?
     -if @stadium.max_capacity == @stadium.capacity && @stadium.level < 5
-      = link_to '+', level_up_stadium_path(@stadium), method: :patch, class: 'btn btn-default btn-sm'
+      = link_to level_up_stadium_path(@stadium), method: :patch, class: 'btn btn-link' do
+        = inline_svg 'plus-circle', class: 'svg-picture-btn'
 
 %p
   %b 
