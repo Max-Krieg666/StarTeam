@@ -90,12 +90,12 @@ class TransfersController < ApplicationController
           @transfer.update!(status: 1, purchaser_id: @current_user_team.id)
           @current_user_team.budget -= @transfer.cost
           @current_user_team.save!
-          Operation.create(team_id: @current_user_team.id, sum: @transfer.cost, kind: false, title: 'Покупка игрока на трансферном рынке')
-          Notification.create(user_id: @current_user.id, kind: 1, title: "Игрок #{@transfer.player.name} присоединился к Вашей команде. Клуб \"#{@transfer.vendor.title}\" получил #{@transfer.cost_to_currency}.")
+          Operation.create(team_id: @current_user_team.id, sum: @transfer.cost, kind: false, title: I18n.t('messages.operation.buy_transfer'))
+          Notification.create(user_id: @current_user.id, kind: 1, title: I18n.t('messages.notification.sell_transfer', name: @transfer.player.name, team: @transfer.vendor.title, sum: @transfer.cost_to_currency))
           @transfer.vendor.budget += @transfer.cost
           @transfer.vendor.save!
-          Operation.create(team_id: @transfer.vendor.id, sum: @transfer.cost, kind: true, title: 'Продажа игрока на трансферном рынке')
-          Notification.create(user_id: @transfer.vendor.user.id, kind: 1, title: "Вы продали игрока. Игрок #{@transfer.player.name} продолжит свою карьеру в клубе \"#{@current_user_team.title}\". Сумма сделки #{@transfer.cost_to_currency}.")
+          Operation.create(team_id: @transfer.vendor.id, sum: @transfer.cost, kind: true, title: I18n.t('messages.operation.sell_transfer'))
+          Notification.create(user_id: @transfer.vendor.user.id, kind: 1, title: I18n.t('messages.notification.buy_transfer', name: @transfer.player.name, team: @current_user_team.title, sum: @transfer.cost_to_currency))
           redirect_to @transfer.player, notice: I18n.t('flash.players.buyed')
         end
       end

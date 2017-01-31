@@ -1,0 +1,13 @@
+ru:
+  messages:
+    operation:
+      init: Начисление начального бюджета
+      buy_transfer: Покупка игрока на трансферном рынке
+      sell_transfer: Продажа игрока на трансферном рынке
+      modernization_stadium: Модернизация стадиона
+      new_seats_on_stadium: Строительство новых мест на стадионе
+      modernization_club_base: Увеличение уровня базы клуба
+      upgrade_fields_club_base: Увеличение количества тренировочных полей базы клуба
+    notification:
+      buy_transfer: "Игрок %{name} присоединился к Вашей команде. Клуб %{team} получил %{sum}."
+      sell_transfer: "Вы продали игрока. Игрок %{name} продолжит свою карьеру в клубе %{team}. Сумма сделки составила %{sum}."

@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         @team = Team.new(team_params)
         @team.user_id = @user.id
         if @team.save
-          Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: 'Начисление начального бюджета')
+          Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: I18n.t('messages.operation.init'))
           Sponsor.create_rand(@team.id)
           Generator::RandomTeam.new(@team).generate
           @team.captain.update(captain: true)

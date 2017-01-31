@@ -32,6 +32,7 @@ en:
       edited: Player was edited.
       last: "This player is last on his position. You can't sell him."
       sold: The player fired from your team and became a free agent.
+      characteristics_improved: "Improved characteristics of a player %{name}."
     sponsors:
       edited: Sponsor was edited.
     stadiums:
