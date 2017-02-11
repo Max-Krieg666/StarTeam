@@ -32,6 +32,6 @@
       = inline_svg 'group.svg', class: 'svg-picture-btn white'
       К команде << #{@sponsor.team.title} >>
     -if @current_user.moderator?
-      = link_to edit_sponsor_path(@sponsor), class: 'btn btn-danger' do
+      = link_to edit_team_sponsor_path(@sponsor.team, @sponsor), class: 'btn btn-danger' do
         = inline_svg 'edit.svg', class: 'svg-picture-btn white'
         = t('buttons.edit')

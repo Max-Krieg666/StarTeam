@@ -2,6 +2,6 @@
 
 = render 'form'
 %br
-= link_to @sponsor, class: 'btn btn-warning' do
+= link_to [@team, @sponsor], class: 'btn btn-warning' do
   = inline_svg 'reply.svg', class: 'svg-picture-btn white'
   #{@sponsor.title}

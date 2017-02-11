@@ -7,7 +7,7 @@
   %b Уровень:
   = @club_base.level
   -if @club_base.level < 5
-    = link_to level_up_club_basis_path(@club_base), method: :patch, class: 'btn btn-link' do
+    = link_to level_up_team_club_basis_path(@team, @club_base), method: :patch, class: 'btn btn-link' do
       = inline_svg 'plus-circle', class: 'svg-picture-btn'
 %p
   %b Вместимость:
@@ -16,14 +16,14 @@
   %b Тренировочные поля:
   = @club_base.training_fields
   -if @club_base.training_fields < 5 && (@current_user == @team.user || @current_user.administrator?)
-    = link_to training_fields_up_club_basis_path(@club_base), method: :patch, class: 'btn btn-link' do
+    = link_to training_fields_up_team_club_basis_path(@team, @club_base), method: :patch, class: 'btn btn-link' do
       = inline_svg 'plus-circle', class: 'svg-picture-btn'
 %p
   %b Коэффициент повышения опыта:
   = @club_base.experience_up
 
 -if @current_user == @user || @current_user.moderator?
-  = link_to edit_club_basis_path(@club_base), class: 'btn btn-danger' do
+  = link_to edit_team_club_basis_path(@team, @club_base), class: 'btn btn-danger' do
     = inline_svg 'edit.svg', class: 'svg-picture-btn white'
     = t('buttons.edit')
 = link_to @team, class: 'btn btn-info' do

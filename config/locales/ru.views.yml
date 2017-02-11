@@ -6,6 +6,10 @@ ru:
       male: Мужской
       female: Женский
       not_specified: Не указан
+    role:
+      user: Пользователь
+      moderator: Модератор
+      administrator: Администратор
   transfer:
     status:
       active: Активен
@@ -32,6 +36,7 @@ ru:
       all: Игроки
       create: Создать игрока
     teams:
+      all: Все команды
       block: Команда
       club_base: База клуба
       stadium: Стадион

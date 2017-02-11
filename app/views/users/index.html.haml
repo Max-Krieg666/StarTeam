@@ -48,24 +48,23 @@
           -else
             = image_tag user.avatar.url(:thumb)
         %td= user.country.title
-        %td= user.sex
+        %td= user.sex_name
         %td
           -if user.birthday
             = user.birthday
           -else
             .text-danger.li Не выбрано!
         %td= user.email
-        -if @current_user.moderator?
-          %td= user.role
-          %td
-            = link_to edit_user_path(user), class: 'btn btn-link' do
-              = inline_svg 'edit.svg', class: 'svg-picture-btn white'
-          %td
-            = link_to user, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture-btn white'
+        %td= user.role_name
+        %td
+          = link_to edit_user_path(user), class: 'btn btn-link' do
+            = inline_svg 'edit.svg', class: 'svg-picture-btn'
+        %td
+          = link_to user, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
+            = inline_svg 'trash.svg', class: 'svg-picture-btn'
         %td
           = link_to user, class: 'btn btn-link' do
-            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
+            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
 
 %br
 = paginate @users

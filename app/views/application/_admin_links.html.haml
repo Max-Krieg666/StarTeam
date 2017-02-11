@@ -1,4 +1,5 @@
-%li.active= link_to t('views.users.all'), users_path
+%li= link_to t('views.users.all'), users_path
+%li= link_to t('views.teams.all'), teams_path
 %li.dropdown
   %a.dropdown-toggle{href: "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"} 
     = t('views.countries.block')

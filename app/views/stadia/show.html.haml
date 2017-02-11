@@ -7,7 +7,7 @@
   %b Вместительность:
   -if @current_user == @team.user || @current_user.administrator?
     -if @stadium.max_capacity != @stadium.capacity
-      = form_for @stadium, url: capacity_up_stadium_path(@stadium), method: :patch do |f|
+      = form_for [@team, @stadium], url: capacity_up_team_stadium_path(@team, @stadium), method: :patch do |f|
         .row
           .form-group.col-md-2
             = f.number_field :capacity, class: 'form-control', min: @stadium.capacity + 1, max: @stadium.max_capacity
@@ -41,7 +41,7 @@
   = @stadium.level
   -if @current_user == @team.user || @current_user.administrator?
     -if @stadium.max_capacity == @stadium.capacity && @stadium.level < 5
-      = link_to level_up_stadium_path(@stadium), method: :patch, class: 'btn btn-link' do
+      = link_to level_up_team_stadium_path(@team, @stadium), method: :patch, class: 'btn btn-link' do
         = inline_svg 'plus-circle', class: 'svg-picture-btn'
 
 %p
@@ -54,6 +54,6 @@
     = inline_svg 'group.svg', class: 'svg-picture-btn white'
     = @team.title
   -if @current_user == @team.user || @current_user.moderator?
-    = link_to edit_stadium_path(@stadium), class: 'btn btn-danger' do
+    = link_to edit_team_stadium_path(@team, @stadium), class: 'btn btn-danger' do
       = inline_svg 'edit.svg', class: 'svg-picture-btn white'
       = t('buttons.edit')

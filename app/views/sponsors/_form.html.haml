@@ -1,4 +1,4 @@
-= form_for @sponsor do |f|
+= form_for [@team, @sponsor] do |f|
   = error_messages_for(@sponsor)
   .row
     .col-md-3
@@ -9,7 +9,7 @@
     .col-md-3
       .form-group
         = f.label :specialization
-        = f.text_field :specialization, class: 'form-control'
+        = select_specialization('sponsor[specialization]', @sponsor.specialization)
   .row
     .col-md-3
       .form-group

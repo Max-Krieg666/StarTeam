@@ -10,9 +10,9 @@
       .li= link_to t('views.teams.budget_history'), operations_team_path(@current_user_team), class: 'btn btn-link other-color-on-hover'
       .li= link_to t('views.teams.transfer_history'), transfer_history_team_path(@current_user_team), class: 'btn btn-link other-color-on-hover'
       -if @current_user_team.stadium
-        .li= link_to t('views.teams.stadium'), @current_user_team.stadium, class: 'btn btn-link other-color-on-hover'
+        .li= link_to t('views.teams.stadium'), [@current_user_team, @current_user_team.stadium], class: 'btn btn-link other-color-on-hover'
       -if @current_user_team.club_base
-        .li= link_to t('views.teams.club_base'), @current_user_team.club_base, class: 'btn btn-link other-color-on-hover'
+        .li= link_to t('views.teams.club_base'), [@current_user_team, @current_user_team.club_base], class: 'btn btn-link other-color-on-hover'
 %li= link_to t('views.countries.all'), countries_path
 %li= link_to t('views.players.all'), players_path
 %li= link_to t('views.transfers.all'), transfers_path

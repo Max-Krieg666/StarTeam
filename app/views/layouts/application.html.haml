@@ -15,12 +15,12 @@
             .alert.alert-warning.fade.in
               %button{class: 'close', "aria-hidden" => 'true', "data-dismiss" => 'alert', "type" => 'button'}x
               %strong Вы не построили базу клуба!
-              = link_to 'Построить базу клуба сейчас', new_club_basis_path, class: 'btn btn-danger', type: 'button'
+              = link_to 'Построить базу клуба сейчас', new_team_club_basis_path(team_id: @current_user_team.id), class: 'btn btn-danger', type: 'button'
           -if !@current_user_team.stadium
             .alert.alert-warning.fade.in
               %button{class: 'close', "aria-hidden" => 'true', "data-dismiss" => 'alert', "type" => 'button'}x
               %strong Вы не построили стадион!
-              = link_to new_stadium_path, class: 'btn btn-danger', type: 'button' do
+              = link_to new_team_stadium_path(team_id: @current_user_team.id), class: 'btn btn-danger', type: 'button' do
                 = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
                 Построить стадион сейчас
       = render 'flash_messages'

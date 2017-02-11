@@ -36,16 +36,25 @@ Rails.application.routes.draw do
       get 'transfer_history'
       get 'training'
     end
+
+    resources :stadia, except: [:index, :destroy] do
+      member do
+        patch 'level_up'
+        patch 'capacity_up'
+      end
+    end
+
+    resources :club_bases, except: [:index, :destroy] do
+      member do
+        patch 'level_up'
+        patch 'training_fields_up'
+      end
+    end
+    
+    resources :sponsors, only: [:show, :edit, :update]
   end
 
   resources :notifications, only: [:index]
-
-  resources :stadia, except: [:index, :destroy] do
-    member do
-      patch 'level_up'
-      patch 'capacity_up'
-    end
-  end
 
   resources :users do
     collection do
@@ -55,15 +64,6 @@ Rails.application.routes.draw do
   end
 
   resources :countries
-
-  resources :club_bases, except: [:index, :destroy] do
-    member do
-      patch 'level_up'
-      patch 'training_fields_up'
-    end
-  end
-
-  resources :sponsors, only: [:show, :edit, :update]
 
   resources :teams, except: [:new, :create]
 

@@ -14,6 +14,7 @@ en:
     players:
       all: Players
     teams:
+      all: All teams
       block: Team
       club_base: Club base
       stadium: Stadium

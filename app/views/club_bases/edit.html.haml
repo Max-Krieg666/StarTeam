@@ -1,8 +1,8 @@
-%h1 Редактирование баз клубов
+%h1 Редактирование базы клуба
 
 = render 'form'
 
 %br
-= link_to players_path, class: 'btn btn-info' do
+= link_to [@team, @club_base], class: 'btn btn-info' do
   = inline_svg 'reply.svg', class: 'svg-picture-btn white'
   = t('buttons.back')

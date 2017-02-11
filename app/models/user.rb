@@ -38,6 +38,14 @@ class User < ActiveRecord::Base
     email.strip!
   end
 
+  def sex_name
+    I18n.t("user.sex.#{sex}")
+  end
+
+  def role_name
+    I18n.t("user.role.#{role}")
+  end
+
   def moderator?
     role == 'moderator' || administrator?
   end

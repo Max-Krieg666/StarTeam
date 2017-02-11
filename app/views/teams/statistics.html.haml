@@ -120,8 +120,8 @@
         Все команды
     -if @current_user == @team.user
       -unless @team.stadium
-        = link_to new_stadium_path, class: 'btn btn-primary' do
+        = link_to new_team_stadium_path(team_id: @current_user_team.id), class: 'btn btn-primary' do
           = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
           Перейти к созданию стадиона
       -unless @team.club_base
-        = link_to 'Перейти к созданию базы клуба', new_club_basis_path, class: 'btn btn-warning'
+        = link_to 'Перейти к созданию базы клуба', new_team_club_basis_path(team_id: @current_user_team.id), class: 'btn btn-warning'
