@@ -17,8 +17,9 @@ class StadiaController < ApplicationController
   end
 
   def update
+    @team = @current_user_team
     if @stadium.update(stadium_params)
-      redirect_to [@current_user_team, @stadium], notice: I18n.t('flash.stadiums.title_changed')
+      redirect_to [@team, @stadium], notice: I18n.t('flash.stadiums.title_changed')
     else
       render :edit
     end

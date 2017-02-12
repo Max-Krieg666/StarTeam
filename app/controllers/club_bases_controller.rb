@@ -23,7 +23,7 @@ class ClubBasesController < ApplicationController
       flash[:danger] = I18n.t('flash.bases.max_level')
       redirect_to [team, @club_base]
     else
-      values = ClubBase::LEVELS[@club_base.level]
+      values = ClubBase::LEVELS[@club_base.level + 1]
       if team.budget - values[0] < 0 # цена больше бюджета
         flash[:danger] = I18n.t('flash.bases.not_enough_money')
         redirect_to [team, @club_base]
@@ -49,7 +49,7 @@ class ClubBasesController < ApplicationController
       flash[:danger] = I18n.t('flash.bases.maximum_training_fields')
       redirect_to [team, @club_base]
     else
-      values = ClubBase::TRAINING_FIELDS[@club_base.training_fields]
+      values = ClubBase::TRAINING_FIELDS[@club_base.training_fields + 1]
       if team.budget - values[0] < 0 # цена больше бюджета
         flash[:danger] = I18n.t('flash.bases.not_enough_money')
         redirect_to [team, @club_base]
@@ -69,17 +69,19 @@ class ClubBasesController < ApplicationController
 
   def create
     @club_base = ClubBase.new(club_base_params)
-    @club_base.team_id = @current_user_team.id
+    @team = @current_user_team
+    @club_base.team_id = @team.id
     if @club_base.save
-      redirect_to [@current_user_team, @club_base], notice: I18n.t('flash.bases.created')
+      redirect_to [@team, @club_base], notice: I18n.t('flash.bases.created')
     else
       render :new
     end
   end
 
   def update
+    @team = @current_user_team
     if @club_base.update(club_base_params)
-      redirect_to [@current_user_team, @club_base], notice: I18n.t('flash.bases.title_was_edited')
+      redirect_to [@team, @club_base], notice: I18n.t('flash.bases.title_was_edited')
     else
       render :edit
     end

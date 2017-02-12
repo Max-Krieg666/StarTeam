@@ -4,6 +4,18 @@ class User < ActiveRecord::Base
   belongs_to :country
   has_many :notifications
 
+  def to_param
+    login.gsub(' ', '-')
+  end
+
+  def self.find(input)
+    input.length == 36 ? super : find_by_login(input)
+  end
+
+  def find_by_login(input)
+    self.where(login: input).first
+  end
+
   cattr_reader :roles
 
   enum sex: [
@@ -29,9 +41,11 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6, if: 'password.present?' }, presence: { on: :create }
   validates :login, presence: true, length: { minimum: 3, maximum: 24 },
-            uniqueness: true, exclusion: { in: %w(admin god root) }
+            uniqueness: true, exclusion: { in: %w(ADMIN AdMiN aDmIn Admin admin God god Root root) }
   validates :email, presence: true, uniqueness: { case_sensitive: false },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+
+  validates_format_of :login, with: /\A[-A-Za-z0-9@_. ]+\z/
 
   def login_and_email_strip
     login.strip!

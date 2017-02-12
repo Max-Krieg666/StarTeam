@@ -1,21 +1,44 @@
 class ClubBase < ActiveRecord::Base
   belongs_to :team
 
+  def to_param
+    title.gsub(' ', '-')
+  end
+
+  def self.find(input)
+    input.length == 36 ? super : find_by_title(input)
+  end
+
+  def find_by_title(input)
+    self.where(title: input).first
+  end
+
   LEVELS = {
-    1 => [50000.0, 0.2, 22],
-    2 => [400000.0, 0.2, 24],
-    3 => [1000000.0, 0.35, 26],
-    4 => [2500000.0, 0.25, 30]
+    1 => [0,         0,    20],
+    2 => [50000.0,   0.2,  22],
+    3 => [400000.0,  0.2,  24],
+    4 => [1000000.0, 0.35, 26],
+    5 => [2500000.0, 0.25, 30]
   }
 
   TRAINING_FIELDS = {
-    1 => [250000.0, 0.2],
-    2 => [750000.0, 0.2],
-    3 => [1500000.0, 0.35],
-    4 => [3500000.0, 0.25]
+    1 => [0,         0],
+    2 => [250000.0,  0.2],
+    3 => [750000.0,  0.2],
+    4 => [1500000.0, 0.35],
+    5 => [3500000.0, 0.25]
   }
 
-  validates :title, presence: true, uniqueness: true, length: { maximum: 30 }
+  def next_level_cost
+    LEVELS[level + 1][0]
+  end
+
+  def next_training_fields_cost
+    TRAINING_FIELDS[level + 1][0]
+  end
+
+  validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
+  validates_format_of :title, with: /\A[-A-Za-z0-9@_. ]+\z/
   validates :level, presence: true, inclusion: { in: 1..5 }
   validates :capacity, presence: true, inclusion: { in: [20, 22, 24, 26, 30] }
   validates :training_fields, presence: true, inclusion: { in: 1..5 }

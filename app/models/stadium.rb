@@ -1,6 +1,18 @@
 class Stadium < ActiveRecord::Base
   belongs_to :team
 
+  def to_param
+    title.gsub(' ', '-')
+  end
+
+  def self.find(input)
+    input.length == 36 ? super : find_by_title(input)
+  end
+
+  def find_by_title(input)
+    self.where(title: input).first
+  end
+
   # левел => стоимость, min, max, seatcost
   LEVELS = {
     1 => [0,         0, 1000,   30],
@@ -11,20 +23,25 @@ class Stadium < ActiveRecord::Base
   }
 
   validates :title, presence: true, uniqueness: true
+  validates_format_of :title, with: /\A[-A-Za-z0-9@_. ]+\z/
   validates :capacity, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :level, presence: true, inclusion: { in: 1..5 }
 
   def valid_capacity
-    prs = Stadium::LEVELS[level]
+    prs = LEVELS[level]
     "#{prs[1]} --- #{prs[2]}"
   end
 
+  def next_level_cost
+    LEVELS[level + 1][0]
+  end
+
   def max_capacity
-    Stadium::LEVELS[level][2]
+    LEVELS[level][2]
   end
 
   def seatcost
-    Stadium::LEVELS[level][3]
+    LEVELS[level][3]
   end
 end
 # level 1 --> COST: FREE  ;  capacity 200-1 000 [default]

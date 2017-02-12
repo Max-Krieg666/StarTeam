@@ -41,7 +41,7 @@
   = @stadium.level
   -if @current_user == @team.user || @current_user.administrator?
     -if @stadium.max_capacity == @stadium.capacity && @stadium.level < 5
-      = link_to level_up_team_stadium_path(@team, @stadium), method: :patch, class: 'btn btn-link' do
+      = link_to level_up_team_stadium_path(@team, @stadium), method: :patch, class: 'btn btn-link', data: { confirm: "Вы потратите #{number_to_currency(@stadium.next_level_cost, locale: :en, precision: 3)}. Продолжить?" } do
         = inline_svg 'plus-circle', class: 'svg-picture-btn'
 
 %p

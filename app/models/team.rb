@@ -12,7 +12,20 @@ class Team < ActiveRecord::Base
   has_many :teams_leagues
   has_many :teams_cups
 
+  def to_param
+    title.gsub(' ', '-')
+  end
+
+  def self.find(input)
+    input.length == 36 ? super : find_by_title(input)
+  end
+
+  def find_by_title(input)
+    self.where(title: input).first
+  end
+
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
+  validates_format_of :title, with: /\A[-A-Za-z0-9@_. ]+\z/
   validates :budget, presence: true
   validates :fans, presence: true
 
