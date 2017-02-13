@@ -2,7 +2,7 @@ class ClubBase < ActiveRecord::Base
   belongs_to :team
 
   def to_param
-    title.gsub(' ', '-')
+    title
   end
 
   def self.find(input)
@@ -38,7 +38,7 @@ class ClubBase < ActiveRecord::Base
   end
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
-  validates_format_of :title, with: /\A[-A-Za-z0-9@_. ]+\z/
+  validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
   validates :level, presence: true, inclusion: { in: 1..5 }
   validates :capacity, presence: true, inclusion: { in: [20, 22, 24, 26, 30] }
   validates :training_fields, presence: true, inclusion: { in: 1..5 }

@@ -95,6 +95,24 @@ ru:
         purchaser: Клуб-покупатель
         cost: Итоговая сумма
         status: Статус
+    errors:
+      models:
+        user:
+          attributes:
+            login:
+              incorrect: "должен содержать только буквы английского алфавита, цифры, знаки '-' и '_'"
+        team:
+          attributes:
+            title:
+              incorrect: "должно содержать только буквы английского алфавита, цифры, знаки '-' и '_'"
+        stadium:
+          attributes:
+            title:
+              incorrect: "должно содержать только буквы английского алфавита, цифры, знаки '-' и '_'"
+        club_base:
+          attributes:
+            title:
+              incorrect: "должно содержать только буквы английского алфавита, цифры, знаки '-' и '_'"
     models:
       sponsor: Спонсор
       club_base: База клуба

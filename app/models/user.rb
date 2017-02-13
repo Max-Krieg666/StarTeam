@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :notifications
 
   def to_param
-    login.gsub(' ', '-')
+    login
   end
 
   def self.find(input)
@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { case_sensitive: false },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
-  validates_format_of :login, with: /\A[-A-Za-z0-9@_. ]+\z/
+  validates_format_of :login, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
 
   def login_and_email_strip
     login.strip!

@@ -2,7 +2,7 @@ class Stadium < ActiveRecord::Base
   belongs_to :team
 
   def to_param
-    title.gsub(' ', '-')
+    title
   end
 
   def self.find(input)
@@ -23,7 +23,7 @@ class Stadium < ActiveRecord::Base
   }
 
   validates :title, presence: true, uniqueness: true
-  validates_format_of :title, with: /\A[-A-Za-z0-9@_. ]+\z/
+  validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
   validates :capacity, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :level, presence: true, inclusion: { in: 1..5 }
 

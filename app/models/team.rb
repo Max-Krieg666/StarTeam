@@ -13,7 +13,7 @@ class Team < ActiveRecord::Base
   has_many :teams_cups
 
   def to_param
-    title.gsub(' ', '-')
+    title
   end
 
   def self.find(input)
@@ -25,7 +25,7 @@ class Team < ActiveRecord::Base
   end
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
-  validates_format_of :title, with: /\A[-A-Za-z0-9@_. ]+\z/
+  validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
   validates :budget, presence: true
   validates :fans, presence: true
 
