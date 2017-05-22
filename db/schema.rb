@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20171901004348) do
     t.string   "tournament_id"
     t.boolean  "kind"
     t.integer  "home_goals",    default: 0
+    t.integer  "tour"
     t.integer  "guest_goals",   default: 0
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false

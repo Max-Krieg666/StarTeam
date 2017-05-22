@@ -14,6 +14,9 @@ gem 'bootstrap-select-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+# scheduling
+gem 'round_robin_tournament'
+
 # Icons
 gem 'inline_svg'
 

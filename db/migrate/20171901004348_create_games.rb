@@ -6,6 +6,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :tournament_id # id турнира...
       t.boolean :kind # тип турнира... - cup / false или league / true
       t.integer :home_goals, default: 0
+      t.integer :tour
       t.integer :guest_goals, default: 0
       # t.uuid :referee_id # id арбитра - на перспективу
       

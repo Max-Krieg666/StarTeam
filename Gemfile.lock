@@ -170,6 +170,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (11.2.2)
     ref (2.0.0)
+    round_robin_tournament (0.0.1)
     ruby_parser (3.7.3)
       sexp_processor (~> 4.1)
     russian (0.6.0)
@@ -232,6 +233,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.0)
   rails-i18n
+  round_robin_tournament
   russian
   sass-rails (~> 5.0)
   therubyracer
