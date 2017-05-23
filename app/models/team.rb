@@ -21,7 +21,7 @@ class Team < ActiveRecord::Base
   end
 
   def find_by_title(input)
-    self.where(title: input).first
+    where(title: input).first
   end
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }

@@ -6,15 +6,15 @@ class League < ActiveRecord::Base
 
   def generate_grid # турнирная сетка
     # не более 24 (!) команд!!!!!
-    teams = RoundRobinTournament.schedule(teams_leagues)
+    teams_in_leagues = RoundRobinTournament.schedule(teams_leagues)
 
-    teams.each_with_index do |pair, tour|
+    teams_in_leagues.each_with_index do |pair, tour|
       home = pair.first.team
       guest = pair.last.team
       Game.create(
         home_id: home.id,
         guest_id: guest.id,
-        tournament_id: self.id,
+        tournament_id: id,
         kind: true,
         tour: tour + 1
       )

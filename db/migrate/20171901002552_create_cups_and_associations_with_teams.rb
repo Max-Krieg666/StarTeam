@@ -5,7 +5,7 @@ class CreateCupsAndAssociationsWithTeams < ActiveRecord::Migration
       t.belongs_to :country
       t.string :title, null: false # название
       t.integer :season, null: false # сезон
-      t.string :current_stage # текущая стадия
+      t.integer :current_stage # текущая стадия
       t.integer :count # кол-во команд
       # t.integer :kind -> ? # тип?
       # t.references :grid, type: :uuid # ТУРНИРНАЯ СЕТКА
@@ -19,7 +19,7 @@ class CreateCupsAndAssociationsWithTeams < ActiveRecord::Migration
       t.belongs_to :cup, index: true
 
       t.integer :division # дивизион (если есть)
-      t.string :stage # стадия турнира
+      t.integer :stage # стадия турнира
 
       # а надо ли >>?
       t.integer :games, default: 0
