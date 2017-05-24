@@ -32,6 +32,8 @@ ru:
       block: Страны
       all: Все страны
       create: Создать страну
+      my_country: Моя страна
+      team_country: Страна клуба
     players:
       all: Игроки
       create: Создать игрока
@@ -52,7 +54,7 @@ ru:
     careers:
       now_end: н.в.
   buttons:
-    sign_up: Зарегистрироваться
+    sign_up: Регистрация
     sign_in: Войти
     logout: Выйти
     save: Сохранить

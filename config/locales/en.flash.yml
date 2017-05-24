@@ -48,6 +48,7 @@ en:
       low_squad: There is a minimum count of players in your team (14).
       title_changed: "Team's title was changed."
       destroyed: Team was destroyed.
+      not_filled_fields: "You are not filled neccessary fields 'Team title' or 'Country'"
     transfers:
       created: Transfer offer was successfully created.
       edited: Transfer offer was edited.
@@ -61,3 +62,13 @@ en:
       registration_completed: Registration completed.
       edited: User was edited.
       destroyed: User was destroyed.
+    leagues:
+      league_has_teams: "Delete error: some teams participate in this league."
+      destroyed: League was destroyed.
+      created: League was created.
+      edited: League was edited.
+    cups:
+      cup_has_teams: "Delete error: some teams participate in this cup."
+      destroyed: Cup was destroyed.
+      created: Cup was created.
+      edited: Cup was edited.

@@ -11,6 +11,8 @@ en:
       block: Countries
       all: All countries
       create: Create a new country
+      my_country: My country
+      team_country: "Team's country"
     players:
       all: Players
     teams:

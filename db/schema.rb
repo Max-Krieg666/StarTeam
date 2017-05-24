@@ -54,9 +54,8 @@ ActiveRecord::Schema.define(version: 20171901004348) do
   create_table "cups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "country_id"
     t.string   "title",                        null: false
-    t.integer  "season",                       null: false
-    t.string   "current_stage"
-    t.integer  "count"
+    t.integer  "current_stage"
+    t.integer  "count",         default: 0
     t.boolean  "active",        default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 20171901004348) do
     t.integer  "home_goals",    default: 0
     t.integer  "tour"
     t.integer  "guest_goals",   default: 0
+    t.datetime "starting_time"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -80,8 +80,7 @@ ActiveRecord::Schema.define(version: 20171901004348) do
   create_table "leagues", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "country_id"
     t.string   "title",                     null: false
-    t.integer  "season",                    null: false
-    t.integer  "count"
+    t.integer  "count",      default: 0
     t.boolean  "active",     default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -206,7 +205,7 @@ ActiveRecord::Schema.define(version: 20171901004348) do
     t.integer "team_id"
     t.integer "cup_id"
     t.integer "division"
-    t.string  "stage"
+    t.integer "stage"
     t.integer "games",          default: 0
     t.integer "goals",          default: 0
     t.integer "goals_conceded", default: 0

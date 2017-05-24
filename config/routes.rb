@@ -64,6 +64,10 @@ Rails.application.routes.draw do
   end
 
   resources :countries
+  
+  resources :leagues
+  resources :cups
+  resources :games
 
   get 'login' => "sessions#new", as: :login
 

@@ -5,9 +5,7 @@ class CreateCupsAndAssociationsWithTeams < ActiveRecord::Migration
       t.belongs_to :country
       t.string :title, null: false # название
       t.integer :current_stage # текущая стадия
-      t.integer :count # кол-во команд
-      # t.integer :kind -> ? # тип?
-      # t.references :grid, type: :uuid # ТУРНИРНАЯ СЕТКА
+      t.integer :count, default: 0 # кол-во команд
       t.boolean :active, default: true # активен или нет
 
       t.timestamps null: false

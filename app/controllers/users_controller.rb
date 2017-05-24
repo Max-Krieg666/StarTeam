@@ -35,19 +35,22 @@ class UsersController < ApplicationController
   end
 
   def create
+    # НЕАДЕКВАТНО РАБОТАЕТ если пользователь не ввел поля
     ActiveRecord::Base.transaction do
       @user = User.new(user_params)
       @user.confirmation_sent_at = DateTime.current
       @user.confirmation_token = SecureRandom.uuid
-      if @user.save
+      if @user.valid?
+        @user.save
         @team = Team.new(team_params)
         @team.user_id = @user.id
-        if @team.save
+        if @team.valid?
+          @team.save
           Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: I18n.t('messages.operation.init'))
           Sponsor.create_rand(@team.id)
           Generator::RandomTeam.new(@team).generate
           @team.captain.update(captain: true)
-          if @current_user
+          if @current_user && @current_user.administrator?
             redirect_to @user, notice: I18n.t('flash.users.created')
           else
             # ОТПРАВКА СООБЩЕНИЯ
@@ -56,6 +59,8 @@ class UsersController < ApplicationController
             @user.force_authenticate!(self)
             redirect_to @user, notice: I18n.t('flash.users.registration_completed')
           end
+        else
+          render :registration, notice: I18n.t('flash.teams.not_filled_fields')
         end
       else
         render :registration

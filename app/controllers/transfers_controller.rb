@@ -3,7 +3,7 @@ class TransfersController < ApplicationController
   before_action :set_transfer, only: [:show, :edit, :update, :destroy]
 
   def index
-    t = Transfer.where(status: 0)
+    t = Transfer.where(status: 0).order(created_at: :desc)
     @transfers = t.limit(500).page(params[:page])
     @user_transfers = t.where(vendor_id: @current_user_team.id)
   end
