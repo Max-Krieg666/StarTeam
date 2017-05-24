@@ -16,6 +16,7 @@ class League < ActiveRecord::Base
         guest_id: guest.id,
         tournament_id: id,
         kind: true,
+        starting_time: DateTime.current + (tour + 2).days,
         tour: tour + 1
       )
     end

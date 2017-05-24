@@ -123,3 +123,21 @@ ru:
       player: Игрок
       transfer: Трансфер
       operation: Операция
+      league: Лига
+      cup: Кубок
+      game: Матч
+  leagues:
+    title:
+      premier: Премьер-Лига
+      div1: Дивизион 1
+      div2: Дивизион 2
+      div3: Дивизион 3
+      div4_south: 'Дивизион 4. Зона Юг'
+      div4_north: 'Дивизион 5. Зона Север'
+      amateurs: Любительская Лига
+  cup:
+    title:
+      national: Национальный Кубок
+      regions: Кубок Регионов
+      world: Кубок Мира
+      champions: Кубок Чемпионов

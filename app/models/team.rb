@@ -11,6 +11,7 @@ class Team < ActiveRecord::Base
   has_many :operations
   has_many :teams_leagues
   has_many :teams_cups
+  has_many :games
 
   def to_param
     title
@@ -28,6 +29,24 @@ class Team < ActiveRecord::Base
   validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
   validates :budget, presence: true
   validates :fans, presence: true
+
+  def active_leagues_list
+    teams_leagues.joins(:leagues).where('leagues.active = true')
+  end
+
+  def active_cups_list
+    teams_cups.joins(:cups).where('cups.active = true')
+  end
+
+  def next_game
+    # first of next games
+    next_games.first
+  end
+
+  def next_games
+    # all next games
+    games.where('starting_time > ?', DateTime.current).order(:starting_time)
+  end
 
   def captain
     players.order('skill_level desc').first

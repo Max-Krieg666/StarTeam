@@ -56,6 +56,7 @@ class Cup < ActiveRecord::Base
       guest_id: guest.id,
       tournament_id: id,
       kind: false,
+      starting_time: DateTime.current + 2.days,
       tour: round
     )
   end

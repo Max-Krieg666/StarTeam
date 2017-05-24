@@ -4,7 +4,6 @@ class CreateLeaguesAndAssociationsWithTeams < ActiveRecord::Migration
       # Соревнования Лиги
       t.belongs_to :country
       t.string :title, null: false # название
-      t.integer :season, null: false # сезон
       t.integer :count # кол-во команд
       # t.references :grid, type: :uuid # ТУРНИРНАЯ СЕТКА
       t.boolean :active, default: true

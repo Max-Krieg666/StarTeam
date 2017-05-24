@@ -48,18 +48,19 @@ module Generator
         file_lastnames = 'portuguese'
       when 9, 11, 38, 49, 54, 55, 66, 79, 92, 96, 98, 124, 138, 153, 155, 156, 166, 208, 222, 227, 240
         # Андорра, Аргентина, Венесуэла, Гватемала, Гибралтар, Гондурас, Доминиканская Республика, Испания, Колумбия, Коста-Рика, Куба, Мексика, Никарагуа, Панама, Парагвай, Перу, Сальвадор, Уругвай, Чили, Эквадор, Канарские острова
-        word =  if @country_id == 79
-                  chance = rand(500)
-                  if chance > 415
-                    'spain_basque'
-                  elsif chance < 86
-                    'spain_catalonian'
-                  else
-                    'spain'
-                  end
-                else
-                  'spain'
-                end
+        word =
+          if @country_id == 79
+            chance = rand(500)
+            if chance > 415
+              'spain_basque'
+            elsif chance < 86
+              'spain_catalonian'
+            else
+              'spain'
+            end
+          else
+            'spain'
+          end
         file_names = word
         file_lastnames = word
       when 12

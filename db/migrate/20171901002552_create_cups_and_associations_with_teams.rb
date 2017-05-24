@@ -4,7 +4,6 @@ class CreateCupsAndAssociationsWithTeams < ActiveRecord::Migration
       # Кубковые соревнования
       t.belongs_to :country
       t.string :title, null: false # название
-      t.integer :season, null: false # сезон
       t.integer :current_stage # текущая стадия
       t.integer :count # кол-во команд
       # t.integer :kind -> ? # тип?

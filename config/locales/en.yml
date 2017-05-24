@@ -34,3 +34,18 @@ en:
           attributes:
             title:
               incorrect: "must be contains only English letters, digits, signs '-' and '_'"
+  leagues:
+    title:
+      premier: Premier-League
+      div1: Division 1
+      div2: Division 2
+      div3: Division 3
+      div4_south: 'Division 4. Southern zone'
+      div4_north: 'Division 5. Northern zone'
+      amateurs: Amateurs League
+  cup:
+    title:
+      national: National Cup
+      regions: Regions Cup
+      world: World Cup
+      champions: Champions Cup
