@@ -34,6 +34,15 @@ ru:
       create: Создать страну
       my_country: Моя страна
       team_country: Страна клуба
+    tournaments:
+      all: Турниры
+      friendly: Товарищеские матчи
+      leagues: Все лиги
+      new_league: Новая лига
+      my_league: Моя лига
+      cups: Все кубки
+      new_cup: Новый кубок
+      my_cup: Кубковые матчи
     players:
       all: Игроки
       create: Создать игрока

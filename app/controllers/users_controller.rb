@@ -40,12 +40,10 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       @user.confirmation_sent_at = DateTime.current
       @user.confirmation_token = SecureRandom.uuid
-      if @user.valid?
-        @user.save
+      if @user.save
         @team = Team.new(team_params)
         @team.user_id = @user.id
-        if @team.valid?
-          @team.save
+        if @team.save
           Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: I18n.t('messages.operation.init'))
           Sponsor.create_rand(@team.id)
           Generator::RandomTeam.new(@team).generate

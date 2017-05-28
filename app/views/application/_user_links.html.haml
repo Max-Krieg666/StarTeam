@@ -21,5 +21,16 @@
       %li= link_to t('views.countries.all'), countries_path, class: 'btn btn-link other-color-on-hover'
       %li= link_to t('views.countries.my_country'), @current_user.country, class: 'btn btn-link other-color-on-hover'
       %li= link_to t('views.countries.team_country'), @current_user.team.country, class: 'btn btn-link other-color-on-hover'
+%li.dropdown
+  %a.dropdown-toggle{href: "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
+    = t('views.tournaments.all')
+    %b.caret
+    %ul.dropdown-menu{"role" => "menu"}
+      - # TODO
+      .li= link_to t('views.tournaments.friendly'), '#', class: 'btn btn-link other-color-on-hover'
+      -if @current_user_team && @current_user_team.league
+        .li= link_to t('views.tournaments.my_league'), @current_user_team.league, class: 'btn btn-link other-color-on-hover'
+      -if @current_user_team && @current_user_team.cup
+        .li= link_to t('views.tournaments.my_cup'), @current_user_team.cup, class: 'btn btn-link other-color-on-hover'
 %li= link_to t('views.players.all'), players_path
 %li= link_to t('views.transfers.all'), transfers_path

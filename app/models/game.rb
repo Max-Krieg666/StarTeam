@@ -10,8 +10,10 @@ class Game < ActiveRecord::Base
     set_teams
     # first period
     first_main_period
+    # second period
     second_main_period
     # если победителя нет, и матч кубковый
+    # добавить сюда учет первого матча,если серия из 2х матчей
     if home_goals == guest_goals && !league?
       first_additional_period
       second_additional_period
@@ -35,27 +37,27 @@ class Game < ActiveRecord::Base
 
   private
 
-  def calculate_event
-    set_teams
-  end
-
   def first_main_period
     (1..45).each do |minute|
+      calculate_event
     end
   end
 
   def second_main_period
     (46..90).each do |minute|
+      calculate_event
     end
   end
 
   def first_additional_period
     (91..105).each do |minute|
+      calculate_event
     end
   end
 
   def second_additional_period
     (106..120).each do |minute|
+      calculate_event
     end
   end
 
@@ -75,5 +77,9 @@ class Game < ActiveRecord::Base
   end
 
   def penalty_serie
+  end
+
+  def calculate_event
+    set_teams
   end
 end

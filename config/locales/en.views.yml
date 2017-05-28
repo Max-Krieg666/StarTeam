@@ -13,6 +13,15 @@ en:
       create: Create a new country
       my_country: My country
       team_country: "Team's country"
+    tournaments:
+      all: Tournaments
+      friendly: Friendly games
+      leagues: All leagues
+      new_league: New league
+      my_league: My league
+      cups: All cups
+      new_cup: New cup
+      my_cup: Cup games
     players:
       all: Players
     teams:
