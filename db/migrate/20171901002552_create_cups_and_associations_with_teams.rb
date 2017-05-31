@@ -11,9 +11,9 @@ class CreateCupsAndAssociationsWithTeams < ActiveRecord::Migration
       t.timestamps null: false
     end
  
-    create_table :teams_cups, id: :uuid, default: 'uuid_generate_v4()' do |t|
-      t.belongs_to :team, index: true
-      t.belongs_to :cup, index: true
+    create_table :team_cups, id: :uuid, default: 'uuid_generate_v4()' do |t|
+      t.references :team, type: :uuid, index: true
+      t.references :cup, type: :uuid, index: true
 
       t.integer :division # дивизион (если есть)
       t.integer :stage # стадия турнира

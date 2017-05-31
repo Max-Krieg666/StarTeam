@@ -8,7 +8,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @teams_in_league = @league.teams_leagues
+    @teams_in_league = @league.team_leagues
   end
 
   def new
@@ -45,7 +45,7 @@ class LeaguesController < ApplicationController
   end
 
   def destroy
-    if @league.teams_leagues.any?
+    if @league.team_leagues.any?
       redirect_to @league, error: I18n.t('flash.leagues.league_has_teams')
     else
       @league.destroy

@@ -10,9 +10,9 @@ class CreateLeaguesAndAssociationsWithTeams < ActiveRecord::Migration
       t.timestamps null: false
     end
  
-    create_table :teams_leagues, id: :uuid, default: 'uuid_generate_v4()' do |t|
-      t.belongs_to :team, index: true
-      t.belongs_to :league, index: true
+    create_table :team_leagues, id: :uuid, default: 'uuid_generate_v4()' do |t|
+      t.references :team, type: :uuid, index: true
+      t.references :league, type: :uuid, index: true
 
       t.integer :division # дивизион
       t.integer :place # место команды

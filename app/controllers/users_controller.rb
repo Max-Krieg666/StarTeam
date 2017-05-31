@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    # НЕАДЕКВАТНО РАБОТАЕТ если пользователь не ввел поля
+    # TODO переписать на FORM OBJECT!!!!!!
     ActiveRecord::Base.transaction do
       @user = User.new(user_params)
       @user.confirmation_sent_at = DateTime.current
@@ -54,11 +54,13 @@ class UsersController < ApplicationController
             # ОТПРАВКА СООБЩЕНИЯ
             # todo JOB
             ConfirmationMailer.send_confirmation(@user, @team).deliver_later
-            @user.force_authenticate!(self)
+            session[:user_id] = @user.id
+            @user.authenticate(user_params[:password])
             redirect_to @user, notice: I18n.t('flash.users.registration_completed')
           end
         else
-          render :registration, notice: I18n.t('flash.teams.not_filled_fields')
+          flash[:danger] = @team.errors.messages
+          render :registration
         end
       else
         render :registration

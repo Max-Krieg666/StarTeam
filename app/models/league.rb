@@ -2,11 +2,11 @@ class League < ActiveRecord::Base
   require 'round_robin_tournament'
 
   belongs_to :country
-  has_many :teams_leagues
+  has_many :team_leagues
 
   def generate_grid # турнирная сетка
     # не более 24 (!) команд!!!!!
-    teams_in_leagues = RoundRobinTournament.schedule(teams_leagues)
+    teams_in_leagues = RoundRobinTournament.schedule(team_leagues)
 
     teams_in_leagues.each_with_index do |pair, tour|
       home = pair.first.team

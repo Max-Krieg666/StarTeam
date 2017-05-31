@@ -1,9 +1,9 @@
 class Cup < ActiveRecord::Base
   belongs_to :country
-  has_many :teams_cups
+  has_many :team_cups
 
   def initiate_grid # первый раунд турнирной сетки кубкового турнира
-    all_teams = teams_cups.to_a.dup
+    all_teams = team_cups.to_a.dup
     number = all_teams.size
     update(current_stage: 1, count: number)
     max_number = Math.log(all_teams.size, 2).ceil # ближайшая степень двойки
@@ -24,7 +24,7 @@ class Cup < ActiveRecord::Base
   def create_new_round(tour)
     update(current_stage: tour)
     # все команды, прошедшие в новую стадию кубкового турнира
-    all_teams_in_round = teams_cups.where(stage: tour).to_a
+    all_teams_in_round = team_cups.where(stage: tour).to_a
     size = all_teams_in_cup.size
     return false if size < 2
 
@@ -42,8 +42,8 @@ class Cup < ActiveRecord::Base
 
   def create_final_games(tour)
     update(current_stage: tour)
-    teams_in_final = teams_cups.where(stage: tour).to_a
-    teams_for_3rd_place = teams_cups.where(stage: tour - 1).to_a
+    teams_in_final = team_cups.where(stage: tour).to_a
+    teams_for_3rd_place = team_cups.where(stage: tour - 1).to_a
     # матч за 3 место
     create_cup_game(teams_for_3rd_place.first, teams_for_3rd_place.last, tour)
     # финал

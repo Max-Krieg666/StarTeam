@@ -9,8 +9,8 @@ class Team < ActiveRecord::Base
   has_many :players
   has_many :transfers
   has_many :operations
-  has_many :teams_leagues
-  has_many :teams_cups
+  has_many :team_leagues, class_name: 'TeamLeague'
+  has_many :team_cups, class_name: 'TeamCup'
   has_many :games
 
   def to_param
@@ -31,11 +31,13 @@ class Team < ActiveRecord::Base
   validates :fans, presence: true
 
   def active_leagues_list
-    teams_leagues.joins(:leagues).where('leagues.active = true')
+    return nil if !team_leagues
+    team_leagues.joins(:league).where('leagues.active = true')
   end
 
   def active_cups_list
-    teams_cups.joins(:cups).where('cups.active = true')
+    return nil if !team_cups
+    team_cups.joins(:cup).where('cups.active = true')
   end
 
   def next_game

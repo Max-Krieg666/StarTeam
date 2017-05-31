@@ -81,10 +81,6 @@ class User < ActiveRecord::Base
     errors[:birthday] << ' не существует!' if birthday > Time.zone.now
   end
 
-  def force_authenticate!(controller)
-    controller.session[:user_id] = id
-  end
-
   def unread_notifications
     notifications.where(viewed: false)
   end

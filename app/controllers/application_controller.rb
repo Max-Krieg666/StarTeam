@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :set_locale
+
   before_action :set_current_user
 
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
   private
-  #TODO custom 404 page
+
+  # TODO custom 404
 
   def set_current_user
     if session[:user_id].present?

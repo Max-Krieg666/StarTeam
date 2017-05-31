@@ -8,7 +8,7 @@ class CupsController < ApplicationController
   end
 
   def show
-    @teams_in_cup = @cup.teams_cups
+    @teams_in_cup = @cup.team_cups
   end
 
   def new
@@ -45,7 +45,7 @@ class CupsController < ApplicationController
   end
 
   def destroy
-    if @cup.teams_cups.any?
+    if @cup.team_cups.any?
       redirect_to @cup, error: I18n.t('flash.cups.cup_has_teams')
     else
       @cup.destroy

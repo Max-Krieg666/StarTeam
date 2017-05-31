@@ -191,19 +191,9 @@ ActiveRecord::Schema.define(version: 20171901004348) do
     t.datetime "updated_at",                           null: false
   end
 
-  create_table "teams", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "user_id"
-    t.string   "title",      limit: 30,                                             null: false
-    t.decimal  "budget",                precision: 20, scale: 2, default: 250000.0, null: false
-    t.integer  "fans",                                           default: 20,       null: false
-    t.integer  "country_id"
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
-  end
-
-  create_table "teams_cups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "cup_id"
+  create_table "team_cups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid    "team_id"
+    t.uuid    "cup_id"
     t.integer "division"
     t.integer "stage"
     t.integer "games",          default: 0
@@ -211,12 +201,12 @@ ActiveRecord::Schema.define(version: 20171901004348) do
     t.integer "goals_conceded", default: 0
   end
 
-  add_index "teams_cups", ["cup_id"], name: "index_teams_cups_on_cup_id", using: :btree
-  add_index "teams_cups", ["team_id"], name: "index_teams_cups_on_team_id", using: :btree
+  add_index "team_cups", ["cup_id"], name: "index_team_cups_on_cup_id", using: :btree
+  add_index "team_cups", ["team_id"], name: "index_team_cups_on_team_id", using: :btree
 
-  create_table "teams_leagues", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "league_id"
+  create_table "team_leagues", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid    "team_id"
+    t.uuid    "league_id"
     t.integer "division"
     t.integer "place"
     t.integer "tour"
@@ -229,8 +219,18 @@ ActiveRecord::Schema.define(version: 20171901004348) do
     t.integer "points",         default: 0
   end
 
-  add_index "teams_leagues", ["league_id"], name: "index_teams_leagues_on_league_id", using: :btree
-  add_index "teams_leagues", ["team_id"], name: "index_teams_leagues_on_team_id", using: :btree
+  add_index "team_leagues", ["league_id"], name: "index_team_leagues_on_league_id", using: :btree
+  add_index "team_leagues", ["team_id"], name: "index_team_leagues_on_team_id", using: :btree
+
+  create_table "teams", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "user_id"
+    t.string   "title",      limit: 30,                                             null: false
+    t.decimal  "budget",                precision: 20, scale: 2, default: 250000.0, null: false
+    t.integer  "fans",                                           default: 20,       null: false
+    t.integer  "country_id"
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+  end
 
   create_table "transfers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "player_id"
