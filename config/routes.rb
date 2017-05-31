@@ -65,6 +65,12 @@ Rails.application.routes.draw do
 
   resources :countries
   
+  resources :tournaments, only: [:index] do
+    collection do
+      get 'all'
+      get 'friendly'
+    end
+  end
   resources :leagues
   resources :cups
   resources :games

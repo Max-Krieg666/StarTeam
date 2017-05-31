@@ -3,9 +3,9 @@ if Country.count.zero?
     YAML::load_file(Rails.root.join('db', 'seeds', 'countries.yml')).each do |country|
       c = Country.new(country)
       begin
-        c.flag = File.new(Rails.root.join('flags', 'flags', 'shiny', '24', "#{c.title}.png"))
+        c.flag = File.new(Rails.root.join('app', 'assets', 'images', 'flags', "#{c.title}.png"))
       rescue
-        c.flag = File.new(Rails.root.join('flags', 'flags', 'shiny', '24', 'Unknown.png'))
+        c.flag = File.new(Rails.root.join('app', 'assets', 'images', 'flags', 'Unknown.png'))
       end
       c.save!
     end

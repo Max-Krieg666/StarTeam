@@ -1,0 +1,16 @@
+.col-md-3
+  .list-group
+    %h3.list-group-item.list-group-item-warning{style: "color: #F00"}
+      = t("cups.title.#{cup.title}")
+    .list-group-item{title: "Количество участников"}
+      = inline_svg 'group.svg', class: 'svg-picture'
+      = cup.count
+    .list-group-item{title: "Начало"}
+      = inline_svg 'timer.svg', class: 'svg-picture'
+      = l cup.created_at
+    .list-group-item{title: "Текущая стадия"}
+      = inline_svg 'competition.svg', class: 'svg-picture'
+      = cup.current_stage || 0
+    .list-group-item{title: "Подать заявку"}
+      = inline_svg 'plus-circle.svg', class: 'svg-picture-btn'
+      = link_to 'Подать заявку', '#'

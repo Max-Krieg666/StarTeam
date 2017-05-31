@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  # TODO подумать об отдельных методах на восстановление пароля, регистрацию и т.д.
-  # 2й TODO разобраться с отправкой на email писем Confirmable
-  # 3й TODO добавить модуль Recoverable собственноручный
-  # 4й TODO добавить модуль lockable
-  # 5й TODO добавить модуль OMNIAUTH
+  # TODO разобраться с отправкой на email писем Confirmable
+  # TODO добавить модуль Recoverable собственноручный
+  # TODO добавить модуль lockable
+  # TODO добавить модуль OMNIAUTH
   before_action :check_user, except: [:registration, :create]
   before_action :admin_permission, only: [:index, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]

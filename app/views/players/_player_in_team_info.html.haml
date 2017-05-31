@@ -12,21 +12,18 @@
           = inline_svg 'star-half.svg', class: 'svg-picture-btn'
         -quality[2].times do
           = inline_svg 'star-o.svg', class: 'svg-picture-btn'
-      = "№#{@player.number}"
+      №#{@player.number}
     .list-group-item{title: "Позиция"}
       .div
         = inline_svg 'location.svg', class: 'svg-picture-btn green'
-        Номинальная позиция:
-        = @player.full_position_name
+        Номинальная позиция: #{@player.full_position_name}
       -unless @transfer
         .div
           = inline_svg 'location.svg', class: 'svg-picture-btn red'
-          Реальная позиция:
-          = @player.real_position_name
+          Реальная позиция: #{@player.real_position_name}
         .div
           = inline_svg 'cogwheel.svg', class: 'svg-picture-btn'
-          Эффективность:
-          = "#{(@player.efficienty * 100).to_i}%"
+          Эффективность: #{(@player.efficienty * 100).to_i}%
     .list-group-item{title: "Талант"}
       = inline_svg 'level-up.svg', class: 'svg-picture-btn'
       = @player.talent

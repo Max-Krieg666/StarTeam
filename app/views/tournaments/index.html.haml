@@ -1,0 +1,15 @@
+.page-header
+  %h1
+    - country = @current_user.country
+    Турниры в стране "#{country.title}"
+    = image_tag country.flag.url, title: country.title
+
+%h2 Лиги
+.row
+  - @leagues.each do |league|
+    = render partial: 'league_info', locals: { league: league }
+
+%h2 Кубки
+- @cups.each do |cup|
+  .row
+    = render partial: 'cup_info', locals: { cup: cup }

@@ -43,7 +43,7 @@ en:
       div4_south: 'Division 4. Southern zone'
       div4_north: 'Division 5. Northern zone'
       amateurs: Amateurs League
-  cup:
+  cups:
     title:
       national: National Cup
       regions: Regions Cup

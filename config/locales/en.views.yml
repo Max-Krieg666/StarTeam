@@ -15,6 +15,7 @@ en:
       team_country: "Team's country"
     tournaments:
       all: Tournaments
+      list: All tournaments
       friendly: Friendly games
       leagues: All leagues
       new_league: New league

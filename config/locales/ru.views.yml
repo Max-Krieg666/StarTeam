@@ -36,6 +36,7 @@ ru:
       team_country: Страна клуба
     tournaments:
       all: Турниры
+      list: Все турниры
       friendly: Товарищеские матчи
       leagues: Все лиги
       new_league: Новая лига

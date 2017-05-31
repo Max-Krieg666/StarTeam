@@ -2,7 +2,15 @@
   %h1= @user.login
 .container
   .row
-    .col-md-6
+    .col-md-4
+      %p
+        %b
+        -if @user.avatar.blank?
+          = inline_svg 'no-avatar.svg', class: 'svg-no-avatar'
+        -else
+          = image_tag @user.avatar.url(:medium), class: 'avatar-css'
+    .col-md-2
+    .col-md-4
       -if @user.team
         %p
           %b Команда:
@@ -25,7 +33,7 @@
         = @user.email
       %p
         %b Статус аккаунта:
-        -if @user.confirmed_at.present?
+        -if @user.confirmed_at
           .text-success.li Подтверждён
         -else
           .text-danger.li Не подтверждён
@@ -33,15 +41,7 @@
         %p
           %b Роль:
           = @user.role_name
-    .col-md-6
-      %p
-        %b Аватар:
-      %p
-        %b
-        -if @user.avatar.blank?
-          = inline_svg 'no-avatar.svg', class: 'svg-no-avatar'
-        -else
-          = image_tag @user.avatar.url(:medium)
+    .col-md-2
 
 -if @current_user == @user || @current_user.moderator?
   = link_to edit_user_path(@user), class: 'btn btn-danger' do

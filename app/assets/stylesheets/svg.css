@@ -35,6 +35,10 @@
 	height: 200px;
 }
 
+.avatar-css {
+	border: 1px solid black;
+}
+
 .white {
 	fill: #fff;
 }
