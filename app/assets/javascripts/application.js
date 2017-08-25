@@ -17,6 +17,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).click(function(){
+$(document).click(function() {
     $('table').tablesorter();
 });

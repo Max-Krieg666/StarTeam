@@ -2,6 +2,14 @@ class Cup < ActiveRecord::Base
   belongs_to :country
   has_many :team_cups
 
+  def human_title
+    I18n.t("cups.title.#{title}")
+  end
+
+  def members_count
+    team_cups.size
+  end
+
   def initiate_grid # первый раунд турнирной сетки кубкового турнира
     all_teams = team_cups.to_a.dup
     number = all_teams.size

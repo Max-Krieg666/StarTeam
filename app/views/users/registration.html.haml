@@ -1,3 +1,4 @@
+/ TODO поменять вёрстку
 .page-header
   %h1 Регистрация
 = form_for @user do |f|
@@ -10,7 +11,7 @@
   .row
     .form-group.col-md-3
       = inline_svg 'user.svg', class: 'svg-picture-table'
-      -#TODO jquery check login auto
+      / TODO jquery check login auto
       = f.label :login
       *
       = f.text_field :login, class: 'form-control'
@@ -26,7 +27,7 @@
   .row
     .form-group.col-md-3
       = inline_svg 'key.svg', class: 'svg-picture-table'
-      -#TODO bootstrap strength meter
+      / TODO bootstrap strength meter
       = f.label :password
       *
       = f.password_field :password, class: 'form-control'
@@ -42,7 +43,7 @@
       = f.file_field :avatar
     .form-group.col-md-3
       = inline_svg 'home.svg', class: 'svg-picture-table'
-      = f.label :country
+      = f.label :country_id
       *
       = select_country('user[country_id]', @user.country_id)
     .form-group.col-md-5
@@ -54,13 +55,13 @@
     = f.fields_for :team, f.object.team do |team_form|
       .form-group.col-md-3
         = inline_svg 'pencil.svg', class: 'svg-picture-table'
-        -#TODO jquery check title auto
-        = label_tag Team.human_attribute_name(:title)
+        / TODO jquery check title auto
+        = team_form.label :title
         *
         = team_form.text_field :title, class: 'form-control'
       .form-group.col-md-3
         = inline_svg 'flag.svg', class: 'svg-picture-table'
-        = label_tag Team.human_attribute_name(:country)
+        = team_form.label :country_id
         *
         = select_country('user[team_attributes][country_id]', @user.team.country_id)
       .form-group.col-md-5
@@ -79,7 +80,7 @@
       = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
 
 
-  -#TODO разработать правила участия и кнопку CONFIRM
+  / TODO разработать правила участия и кнопку CONFIRM
   .actions
     -if @user.new_record?
       = f.submit t('buttons.sign_up'), class: 'btn btn-primary'

@@ -4,6 +4,14 @@ class League < ActiveRecord::Base
   belongs_to :country
   has_many :team_leagues
 
+  def human_title
+    I18n.t("leagues.title.#{title}")
+  end
+
+  def members_count
+    team_leagues.size
+  end
+
   def generate_grid # турнирная сетка
     # не более 24 (!) команд!!!!!
     teams_in_leagues = RoundRobinTournament.schedule(team_leagues)

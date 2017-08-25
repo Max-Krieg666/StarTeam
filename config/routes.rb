@@ -71,8 +71,13 @@ Rails.application.routes.draw do
       get 'friendly'
     end
   end
-  resources :leagues
-  resources :cups
+  resources :leagues do
+    post 'join', on: :member
+  end
+  resources :cups do
+    post 'join', on: :member
+  end
+
   resources :games
 
   get 'login' => "sessions#new", as: :login

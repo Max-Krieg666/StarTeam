@@ -71,3 +71,6 @@ en:
       destroyed: Cup was destroyed.
       created: Cup was created.
       edited: Cup was edited.
+    tournaments:
+      join_succeeded: Join to %{title} succeeded.
+      join_failed: Join to %{title} failed.

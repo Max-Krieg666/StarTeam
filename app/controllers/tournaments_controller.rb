@@ -7,7 +7,7 @@ class TournamentsController < ApplicationController
   end
 
   def all
-  	# TODO для админа
+    # TODO для админа
   end
 
   def friendly

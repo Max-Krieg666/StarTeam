@@ -38,7 +38,7 @@ ru:
         title: Название
         title_en: Название (английский)
       user:
-        country: Страна проживания
+        country_id: Страна проживания
         login: Логин
         password: Пароль
         password_confirmation: Подтверждение пароля
@@ -47,7 +47,7 @@ ru:
         birthday: Дата рождения
         mail: Адрес эл.почты
       team:
-        country: Страна
+        country_id: Страна
         user: Владелец
         title: Название команды
         sponsor: Спонсор
@@ -62,7 +62,7 @@ ru:
         team: Команда
       player:
         name: Игрок (Имя & Фамилия)
-        country: Национальность
+        country_id: Национальность
         position1: Основная позиция
         position2: Дополнительная позиция
         talent: Талант

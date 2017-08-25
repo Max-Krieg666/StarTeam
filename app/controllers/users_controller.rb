@@ -86,9 +86,9 @@ class UsersController < ApplicationController
 
   def user_params
     attrs = [
-      :login, :password, :sex,
-      :birthday, :email, :avatar,
-      :country_id, :password_confirmation,
+      :login, :email,
+      :password, :password_confirmation, :country_id,
+      :avatar, :sex, :birthday,
       team_attributes: [
         :title, :country_id
       ]

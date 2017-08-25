@@ -2,7 +2,7 @@ class LeaguesController < ApplicationController
   before_action :check_user
   before_action :moderator_permission, only: [:new, :create, :edit, :update]
   before_action :admin_permission, only: [:destroy]
-  before_action :set_league, only: [:show, :edit, :update, :destroy]
+  before_action :set_league, only: [:show, :edit, :update, :destroy, :join]
 
   def index
   end
@@ -53,6 +53,16 @@ class LeaguesController < ApplicationController
         format.html { redirect_to transfers_url, notice: I18n.t('flash.leagues.destroyed') }
         format.json { head :no_content }
       end
+    end
+  end
+
+  def join
+    if TeamLeague.create(team: @current_user_team, league: @league)
+      flash[:notice] = I18n.t('flash.tournaments.join_succeeded', title: @league.human_title)
+      redirect_to @league
+    else
+      flash[:danger] = I18n.t('flash.tournaments.join_failed', title: @league.human_title)
+      redirect_to tournaments_path
     end
   end
 

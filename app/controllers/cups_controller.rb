@@ -2,7 +2,7 @@ class CupsController < ApplicationController
   before_action :check_user
   before_action :moderator_permission, only: [:new, :create, :edit, :update]
   before_action :admin_permission, only: [:destroy]
-  before_action :set_cup, only: [:show, :edit, :update, :destroy]
+  before_action :set_cup, only: [:show, :edit, :update, :destroy, :join]
 
   def index
   end
@@ -53,6 +53,16 @@ class CupsController < ApplicationController
         format.html { redirect_to transfers_url, notice: I18n.t('flash.cups.destroyed') }
         format.json { head :no_content }
       end
+    end
+  end
+
+  def join
+    if TeamCup.create(team: @current_user_team, cup: @cup)
+      flash[:notice] = I18n.t('flash.tournaments.join_succeed', title: @cup.human_title)
+      redirect_to @cup
+    else
+      flash[:danger] = I18n.t('flash.tournaments.join_failed', title: @cup.human_title)
+      redirect_to tournaments_path
     end
   end
 

@@ -29,8 +29,8 @@
       .li= link_to t('views.tournaments.list'), tournaments_path, class: 'btn btn-link other-color-on-hover'
       .li= link_to t('views.tournaments.friendly'), friendly_tournaments_path, class: 'btn btn-link other-color-on-hover'
       -if @current_user_team && @current_user_team.active_leagues_list.any?
-        .li= link_to t('views.tournaments.my_league'), @current_user_team.active_leagues_list.first, class: 'btn btn-link other-color-on-hover'
+        .li= link_to t('views.tournaments.my_league'), @current_user_team.active_leagues_list.first.league, class: 'btn btn-link other-color-on-hover'
       -if @current_user_team && @current_user_team.active_cups_list.any?
-        .li= link_to t('views.tournaments.my_cup'), @current_user_team.active_cups_list.first, class: 'btn btn-link other-color-on-hover'
+        .li= link_to t('views.tournaments.my_cup'), @current_user_team.active_cups_list.first.cup, class: 'btn btn-link other-color-on-hover'
 %li= link_to t('views.players.all'), players_path
 %li= link_to t('views.transfers.all'), transfers_path
