@@ -17,7 +17,9 @@ class UsersController < ApplicationController
 
   def registration
     redirect_to @current_user if @current_user
-    @user = User.new
+    @user = User.new do |u|
+      u.team = Team.new
+    end
   end
 
   def confirmation
@@ -34,32 +36,25 @@ class UsersController < ApplicationController
   end
 
   def create
-    # TODO переписать на FORM OBJECT!!!!!!
     ActiveRecord::Base.transaction do
       @user = User.new(user_params)
       @user.confirmation_sent_at = DateTime.current
       @user.confirmation_token = SecureRandom.uuid
       if @user.save
-        @team = Team.new(team_params)
-        @team.user_id = @user.id
-        if @team.save
-          Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: I18n.t('messages.operation.init'))
-          Sponsor.create_rand(@team.id)
-          Generator::RandomTeam.new(@team).generate
-          @team.captain.update(captain: true)
-          if @current_user && @current_user.administrator?
-            redirect_to @user, notice: I18n.t('flash.users.created')
-          else
-            # ОТПРАВКА СООБЩЕНИЯ
-            # todo JOB
-            ConfirmationMailer.send_confirmation(@user, @team).deliver_later
-            session[:user_id] = @user.id
-            @user.authenticate(user_params[:password])
-            redirect_to @user, notice: I18n.t('flash.users.registration_completed')
-          end
+        @team = @user.team
+        Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: I18n.t('messages.operation.init'))
+        Sponsor.create_rand(@team.id)
+        Generator::RandomTeam.new(@team).generate
+        @team.captain.update(captain: true)
+        if @current_user && @current_user.administrator?
+          redirect_to @user, notice: I18n.t('flash.users.created')
         else
-          flash[:danger] = @team.errors.messages
-          render :registration
+          # ОТПРАВКА СООБЩЕНИЯ
+          # todo JOB
+          ConfirmationMailer.send_confirmation(@user, @team).deliver_later
+          session[:user_id] = @user.id
+          @user.authenticate(user_params[:password])
+          redirect_to @user, notice: I18n.t('flash.users.registration_completed')
         end
       else
         render :registration
@@ -90,16 +85,19 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    attrs = [:login, :password, :sex, :birthday, :email, :avatar, :country_id, :password_confirmation]
+    attrs = [
+      :login, :password, :sex,
+      :birthday, :email, :avatar,
+      :country_id, :password_confirmation,
+      team_attributes: [
+        :title, :country_id
+      ]
+    ]
     attrs << :role if @current_user.try(:admin?)
     params.require(:user).permit(*attrs)
   end
 
   def confirmation_params
     params.require(:user).permit(:confirmation_token)
-  end
-
-  def team_params
-    params.require(:team).permit(:title, :country_id)
   end
 end

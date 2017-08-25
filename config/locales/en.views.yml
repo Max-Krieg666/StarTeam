@@ -61,5 +61,6 @@ en:
     day: Day
     month: Month
     year: Year
+    choose_country: Choose country
   errors:
     any: An errors occurred when saving.

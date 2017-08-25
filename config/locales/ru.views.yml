@@ -82,5 +82,6 @@ ru:
     day: День
     month: Месяц
     year: Год
+    choose_country: Выберите страну
   errors:
     any: При сохранении произошли ошибки.

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   belongs_to :country
   has_many :notifications
 
+  accepts_nested_attributes_for :team
+
   def to_param
     login
   end

@@ -51,21 +51,22 @@
         = inline_svg 'info-circle.svg', class: 'svg-picture-table'
         = t('info-blocks.registration.your_country')
   .row
-    .form-group.col-md-3
-      = inline_svg 'pencil.svg', class: 'svg-picture-table'
-      -#TODO jquery check title auto
-      = label_tag Team.human_attribute_name(:title)
-      *
-      = text_field_tag 'team[title]', params[:team].try(:[], :title), class: 'form-control'
-    .form-group.col-md-3
-      = inline_svg 'flag.svg', class: 'svg-picture-table'
-      = label_tag Team.human_attribute_name(:country)
-      *
-      = select_country('team[country_id]', params[:team].try(:[], :country_id))
-    .form-group.col-md-5
-      .help-block.bg-info
-        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
-        = t('info-blocks.registration.team_country')
+    = f.fields_for :team, f.object.team do |team_form|
+      .form-group.col-md-3
+        = inline_svg 'pencil.svg', class: 'svg-picture-table'
+        -#TODO jquery check title auto
+        = label_tag Team.human_attribute_name(:title)
+        *
+        = team_form.text_field :title, class: 'form-control'
+      .form-group.col-md-3
+        = inline_svg 'flag.svg', class: 'svg-picture-table'
+        = label_tag Team.human_attribute_name(:country)
+        *
+        = select_country('user[team_attributes][country_id]', @user.team.country_id)
+      .form-group.col-md-5
+        .help-block.bg-info
+          = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+          = t('info-blocks.registration.team_country')
   .row
     .form-group.col-md-3
       = inline_svg 'sex.svg', class: 'svg-picture-table'
