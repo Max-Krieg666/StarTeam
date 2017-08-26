@@ -5,7 +5,9 @@ class CreateLeaguesAndAssociationsWithTeams < ActiveRecord::Migration
       t.belongs_to :country
       t.string :title, null: false # название
       t.integer :count, default: 0 # кол-во команд
-      t.boolean :active, default: true
+      t.integer :status, default: 0 # статус
+      t.datetime :start_time
+      t.datetime :end_time
 
       t.timestamps null: false
     end

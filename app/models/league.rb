@@ -4,8 +4,18 @@ class League < ActiveRecord::Base
   belongs_to :country
   has_many :team_leagues
 
+  enum status: [
+    :waiting,
+    :active,
+    :finished
+  ]
+
   def human_title
     I18n.t("leagues.title.#{title}")
+  end
+
+  def status_name
+    I18n.t("leagues.statuses.#{status}")
   end
 
   def members_count

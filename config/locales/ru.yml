@@ -95,6 +95,10 @@ ru:
         purchaser: Клуб-покупатель
         cost: Итоговая сумма
         status: Статус
+      cup:
+        status: Статус турнира
+      league:
+        status: Статус турнира
     errors:
       models:
         user:
@@ -135,9 +139,17 @@ ru:
       div4_south: 'Дивизион 4. Зона Юг'
       div4_north: 'Дивизион 4. Зона Север'
       amateurs: Любительская Лига
+    statuses:
+      waiting: В ожидании участников (минимум - 4)
+      active: Идёт
+      finished: Завершён
   cups:
     title:
       national: Национальный Кубок
       regions: Кубок Регионов
       world: Кубок Мира
       champions: Кубок Чемпионов
+    statuses:
+      waiting: В ожидании участников (минимум - 4)
+      active: Идёт
+      finished: Завершён

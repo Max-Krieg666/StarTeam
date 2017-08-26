@@ -43,9 +43,17 @@ en:
       div4_south: 'Division 4. Southern zone'
       div4_north: 'Division 4. Northern zone'
       amateurs: Amateurs League
+    statuses:
+      waiting: Waiting teams (min - 4)
+      active: Active
+      finished: Finished
   cups:
     title:
       national: National Cup
       regions: Regions Cup
       world: World Cup
       champions: Champions Cup
+    statuses:
+      waiting: Waiting teams (min - 4)
+      active: Active
+      finished: Finished

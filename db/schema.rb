@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171901004348) do
+ActiveRecord::Schema.define(version: 20170401174045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,12 +53,14 @@ ActiveRecord::Schema.define(version: 20171901004348) do
 
   create_table "cups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "country_id"
-    t.string   "title",                        null: false
+    t.string   "title",                     null: false
     t.integer  "current_stage"
     t.integer  "count",         default: 0
-    t.boolean  "active",        default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",        default: 0
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "games", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -79,11 +81,13 @@ ActiveRecord::Schema.define(version: 20171901004348) do
 
   create_table "leagues", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "country_id"
-    t.string   "title",                     null: false
+    t.string   "title",                  null: false
     t.integer  "count",      default: 0
-    t.boolean  "active",     default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "status",     default: 0
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "notifications", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|

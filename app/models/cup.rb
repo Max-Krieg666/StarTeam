@@ -2,8 +2,18 @@ class Cup < ActiveRecord::Base
   belongs_to :country
   has_many :team_cups
 
+  enum status: [
+    :waiting,
+    :active,
+    :finished
+  ]
+
   def human_title
     I18n.t("cups.title.#{title}")
+  end
+
+  def status_name
+    I18n.t("cups.statuses.#{status}")
   end
 
   def members_count
