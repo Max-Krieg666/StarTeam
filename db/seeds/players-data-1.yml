@@ -5561,12 +5561,24 @@
   talent: 4
   age: 31
   skill_level: 54
-- name: Hanza Ratak
-  country_id: 236
+- name: Hamza Ratak
+  country_id: 170
   position1: 5
   talent: 3
   age: 33
   skill_level: 41
+- name: Hamzah Dirani
+  country_id: 76
+  position1: 9
+  talent: 2
+  age: 30
+  skill_level: 44
+- name: Ganza Ritti
+  country_id: 80
+  position1: 0
+  talent: 5
+  age: 35
+  skill_level: 45
 - name: Steve Cosoro
   country_id: 247
   position1: 5
@@ -6772,4 +6784,28 @@
   position1: 5
   talent: 7
   age: 19
+  skill_level: 35
+- name: James Kane
+  country_id: 239
+  position1: 7
+  talent: 2
+  age: 28
+  skill_level: 40
+- name: Mick Stones
+  country_id: 239
+  position1: 7
+  talent: 5
+  age: 35
+  skill_level: 27
+- name: Bernard Stocker
+  country_id: 239
+  position1: 9
+  talent: 4
+  age: 17
+  skill_level: 50
+- name: Steven Cross
+  country_id: 239
+  position1: 9
+  talent: 3
+  age: 32
   skill_level: 35

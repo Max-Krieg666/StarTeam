@@ -49,7 +49,7 @@ class PlayersController < ApplicationController
       redirect_to @current_user_team
     elsif cb.capacity == @current_user_team.squad_size
       flash[:danger] = I18n.t('flash.players.club_base_low_level')
-      redirect_to cb
+      redirect_to [@current_user_team, cb]
     elsif @current_user_team.budget < @player.price
       flash[:danger] = I18n.t('flash.players.not_enough_money')
       redirect_to players_path

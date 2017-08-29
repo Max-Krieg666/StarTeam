@@ -34,12 +34,12 @@ class Team < ActiveRecord::Base
 
   def active_leagues_list
     return nil if !team_leagues
-    team_leagues.joins(:league).where('leagues.status = 1')
+    team_leagues.joins(:league).where('leagues.status != 2')
   end
 
   def active_cups_list
     return nil if !team_cups
-    team_cups.joins(:cup).where('cups.status = 1')
+    team_cups.joins(:cup).where('cups.status != 2')
   end
 
   def next_game

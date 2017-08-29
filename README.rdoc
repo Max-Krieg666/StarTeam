@@ -3,15 +3,15 @@ main fm-game project
 
 === STATISTICS
 
-==== Players (05 Dec 2017):
+==== Players (30 Aug 2017):
 
-* position1: 0 --- 133 GK (+41)
+* position1: 0 --- 134 GK (+42)
 * position1: 1 --- 100 LD (+5)
 * position1: 2 --- 133 CD (+14)
 * position1: 3 --- 100 RD (+36)
 * position1: 4 --- 100 LM (+47)
 * position1: 5 --- 133 CM (+53)
 * position1: 6 --- 100 RM (+34)
-* position1: 7 --- 102 LF (+52)
+* position1: 7 --- 104 LF (+54)
 * position1: 8 --- 127 CF (+55)
-* position1: 9 --- 101 RF (+33)
+* position1: 9 --- 104 RF (+36)

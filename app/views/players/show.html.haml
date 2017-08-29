@@ -1,7 +1,6 @@
--case @player.state
--when 'free_agent'
+-if @player.free_agent?
   = render 'show_player'
--when 'in_team'
+-elsif @player.in_team?
   = render 'show_player_in_team'
 -else # retired (veteran)
   = render 'show_retired_player'

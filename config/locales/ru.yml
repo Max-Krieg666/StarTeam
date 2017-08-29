@@ -99,6 +99,8 @@ ru:
         status: Статус турнира
       league:
         status: Статус турнира
+        start_time: Начало турнира
+        end_time: Окончание турнира
     errors:
       models:
         user:
@@ -143,6 +145,8 @@ ru:
       waiting: В ожидании участников (минимум - 4)
       active: Идёт
       finished: Завершён
+    participants: Участники
+    participants_list: Список участников
   cups:
     title:
       national: Национальный Кубок
@@ -153,3 +157,4 @@ ru:
       waiting: В ожидании участников (минимум - 4)
       active: Идёт
       finished: Завершён
+    participants: Участники

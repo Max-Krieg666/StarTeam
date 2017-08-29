@@ -10,6 +10,15 @@ class League < ActiveRecord::Base
     :finished
   ]
 
+  def percentage
+    # percent of complete
+    (teams_size / 24.0 * 100).round
+  end
+
+  def teams_size
+    team_leagues.size
+  end
+
   def human_title
     I18n.t("leagues.title.#{title}")
   end

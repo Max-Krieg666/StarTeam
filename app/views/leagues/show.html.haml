@@ -3,8 +3,10 @@
     - country = @league.country
     = image_tag country.flag.url, title: country.title
     #{country.title}. #{@league.human_title}
-  %h4
-    #{League.human_attribute_name(:status)}: #{@league.status_name}
+    .small
+      #{League.human_attribute_name(:status)}: #{@league.status_name}
+-if @league.waiting?
+  = render 'waiting_info'
 / .col-md-3
 /   .list-group
 /     %h3.list-group-item.active{style: "color: #00F"}
