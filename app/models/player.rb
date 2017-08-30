@@ -61,10 +61,6 @@ class Player < ActiveRecord::Base
     self.real_position ||= position1
   end
 
-  def goalkeeper?
-    position1 == 0
-  end
-
   def quality
     ld = level_define
     cel = ld / 2
@@ -104,7 +100,7 @@ class Player < ActiveRecord::Base
     end
   end
 
-  def is_position_keeper?
+  def goalkeeper?
     position1 == 0
   end
 

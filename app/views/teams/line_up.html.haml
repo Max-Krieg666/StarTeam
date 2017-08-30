@@ -1,0 +1,16 @@
+.row
+  .col-md-2
+  .col-md-4
+    #footballField
+  .col-md-1
+  .col-md-3
+    %ul.list-group
+      -@team.players.each do |pl|
+        .li.list-group-item{ id: pl.id }
+          #{pl.full_position_name} #{pl.number}. #{pl.name}
+          -if pl.goalkeeper?
+            .gk.red
+              .center.center-positing #{pl.number}
+          -else
+            .player
+              .center.center-positing #{pl.number}

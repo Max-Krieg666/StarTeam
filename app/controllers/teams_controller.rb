@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :check_user
   before_action :set_team, except: [:destroy, :index]
+  before_action :check_owner, except: [:destroy, :index, :show]
   before_action :set_variables, only: [:show, :statistics]
 
   def index
@@ -8,6 +9,9 @@ class TeamsController < ApplicationController
   end
 
   def show
+  end
+
+  def line_up
   end
 
   def statistics
@@ -67,5 +71,12 @@ class TeamsController < ApplicationController
     @players = @team.players.order('basic desc, position1 asc, skill_level desc')
     @club_base = @team.club_base
     @stadium = @team.stadium
+  end
+
+  def check_owner
+    if @team != @current_user_team
+      flash[:danger] = I18n.t('flash.access_denied')
+      redirect_to @current_user_team
+    end
   end
 end

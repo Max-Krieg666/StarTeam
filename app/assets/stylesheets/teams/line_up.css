@@ -1,0 +1,26 @@
+#footballField {
+    background-image: url(/assets/field.jpg);
+    margin-left: auto;
+    margin-right: auto;
+    width: 380px;
+    height: 600px;
+}
+
+.player {
+    background-image: url(/assets/shirt.svg);
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px;
+}
+
+.gk {
+    background-image: url(/assets/shirt-gk.png);
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px;
+}
+
+.center-positing {
+    position: relative;
+    vertical-align: middle;
+}
