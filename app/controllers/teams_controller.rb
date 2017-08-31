@@ -68,7 +68,7 @@ class TeamsController < ApplicationController
   end
 
   def set_variables
-    @players = @team.players.order('basic desc, position1 asc, skill_level desc')
+    @players = @team.basic_order
     @club_base = @team.club_base
     @stadium = @team.stadium
   end

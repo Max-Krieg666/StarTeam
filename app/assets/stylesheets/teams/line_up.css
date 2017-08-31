@@ -1,5 +1,6 @@
 #footballField {
     background-image: url(/assets/field.jpg);
+    background-size: 380px 600px;
     margin-left: auto;
     margin-right: auto;
     width: 380px;
@@ -7,20 +8,46 @@
 }
 
 .player {
+    line-height: 35px;
     background-image: url(/assets/shirt.svg);
     background-size: 35px 35px;
     width: 35px;
     height: 35px;
+    font-size: 12px;
 }
 
-.gk {
+.goalkeeper {
+    line-height: 35px;
+    position: relative;
     background-image: url(/assets/shirt-gk.png);
     background-size: 35px 35px;
     width: 35px;
     height: 35px;
+    font-size: 12px;
+}
+
+.number {
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .center-positing {
     position: relative;
     vertical-align: middle;
+}
+
+.field_with_border {
+}
+
+.attackers_positions {
+    height: 25%;
+}
+.midfielders_positions {
+    height: 25%;
+}
+.defenders_positions {
+    height: 25%;
+}
+.gk_position {
+    height: 25%;
 }

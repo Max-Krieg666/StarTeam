@@ -13,6 +13,10 @@ class Team < ActiveRecord::Base
   has_many :team_cups, class_name: 'TeamCup'
   has_many :games
 
+  def basic_order
+    players.order('basic desc, position1 asc, skill_level desc')
+  end
+
   def to_param
     title
   end

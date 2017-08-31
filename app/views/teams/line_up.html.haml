@@ -1,16 +1,42 @@
 .row
-  .col-md-2
-  .col-md-4
-    #footballField
-  .col-md-1
-  .col-md-3
-    %ul.list-group
-      -@team.players.each do |pl|
-        .li.list-group-item{ id: pl.id }
-          #{pl.full_position_name} #{pl.number}. #{pl.name}
-          -if pl.goalkeeper?
-            .gk.red
-              .center.center-positing #{pl.number}
-          -else
-            .player
-              .center.center-positing #{pl.number}
+  .col-md-4.col-md-offset-2
+    #footballField.container-fluid
+      .row.attackers_positions
+        .col-md-3.lf.field_with_border
+        .col-md-6.cf.field_with_border
+          .cf1
+          .cf2
+        .col-md-3.rf.field_with_border
+      .row.midfielders_positions
+        .col-md-3.lm.field_with_border
+        .col-md-6.cm.field_with_border
+          .cm1.field_with_border
+          .cm2.field_with_border
+        .col-md-3.rm.field_with_border
+      .row.defenders_positions
+        .col-md-3.ld.field_with_border
+        .col-md-6.cd.field_with_border
+          .cd1.field_with_border
+          .cd2.field_with_border
+        .col-md-3.rd.field_with_border
+      .row.gk_position
+        .col-md-12.gk.field_with_border
+
+  .col-md-3.col-md-offset-1
+    %table.table.table-bordered.table-condensed.table-hover
+      %thead
+      %tbody
+        -@team.basic_order.each do |pl|
+          %tr.center
+            %td= pl.full_position_name
+            %td= pl.name
+            %td= pl.skill_level
+            %td{ id: pl.id }
+              -if pl.goalkeeper?
+                .goalkeeper
+                  .number
+                    = pl.number
+              -else
+                .player
+                  .number
+                    = pl.number
