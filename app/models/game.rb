@@ -6,6 +6,11 @@ class Game < ActiveRecord::Base
     kind
   end
 
+  def tournament
+    klass = league? ? League : Cup
+    klass.find(tournament_id)
+  end
+
   def simulation
     set_teams
     # first period

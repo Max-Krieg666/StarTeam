@@ -31,21 +31,35 @@ class League < ActiveRecord::Base
     team_leagues.size
   end
 
+  def start
+    generate_grid
+    active!
+    start_time = DateTime.now
+    save!
+  end
+
   def generate_grid # турнирная сетка
     # не более 24 (!) команд!!!!!
-    teams_in_leagues = RoundRobinTournament.schedule(team_leagues)
+    games = RoundRobinTournament.schedule(team_leagues.to_a).map { |games| games.shuffle! }
+    games = games + games.reverse.map do |tour|
+        tour.shuffle.map { |pair| pair.reverse }
+      end
 
-    teams_in_leagues.each_with_index do |pair, tour|
-      home = pair.first.team
-      guest = pair.last.team
-      Game.create(
-        home_id: home.id,
-        guest_id: guest.id,
-        tournament_id: id,
-        kind: true,
-        starting_time: DateTime.current + (tour + 2).days,
-        tour: tour + 1
-      )
+    games.each_with_index do |tour, number|
+      tour.each do |pair|
+        next if pair.first.nil? || pair.last.nil?
+        home = pair.first.team
+        guest = pair.last.team
+        Game.create(
+          home_id: home.id,
+          guest_id: guest.id,
+          tournament_id: id,
+          kind: true,
+          starting_time: DateTime.current + (number + 2).days,
+          tour: number + 1
+        )
+      end
     end
+    return
   end
 end

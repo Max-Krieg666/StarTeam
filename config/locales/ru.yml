@@ -62,6 +62,7 @@ ru:
         team: Команда
       player:
         name: Игрок (Имя & Фамилия)
+        full_name: Имя игрока
         country_id: Национальность
         position1: Основная позиция
         position2: Дополнительная позиция

@@ -22,9 +22,14 @@
       .row.gk_position
         .col-md-12.gk.field_with_border
 
-  .col-md-3.col-md-offset-1
+  .col-md-5.col-md-offset-1
     %table.table.table-bordered.table-condensed.table-hover
       %thead
+        %tr.center
+          %th= Player.human_attribute_name(:position1)
+          %th= Player.human_attribute_name(:full_name)
+          %th= Player.human_attribute_name(:skill_level)
+          %th
       %tbody
         -@team.basic_order.each do |pl|
           %tr.center

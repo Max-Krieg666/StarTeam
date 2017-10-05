@@ -58,7 +58,7 @@ class CupsController < ApplicationController
 
   def join
     if TeamCup.create(team: @current_user_team, cup: @cup)
-      flash[:notice] = I18n.t('flash.tournaments.join_succeed', title: @cup.human_title)
+      flash[:notice] = I18n.t('flash.tournaments.join_succeeded', title: @cup.human_title)
       redirect_to @cup
     else
       flash[:danger] = I18n.t('flash.tournaments.join_failed', title: @cup.human_title)
