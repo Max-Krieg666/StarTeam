@@ -11,7 +11,7 @@
     .list-group-item{title: "Текущая стадия"}
       = inline_svg 'competition.svg', class: 'svg-picture'
       = cup.current_stage || 0
-    -if @current_user_team.active_cups_list.include?(cup)
+    -if @current_user_team.active_cups_list.include?(cup) && cup.waiting?
       .list-group-item{title: "Просмотр"}
         = inline_svg 'info-circle.svg', class: 'svg-picture-btn'
         = link_to 'Просмотр', cup

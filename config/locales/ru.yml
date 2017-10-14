@@ -148,6 +148,9 @@ ru:
       finished: Завершён
     participants: Участники
     participants_list: Список участников
+    table: Турнирная таблица
+    games_grid: Сетка игр
+    statistics: Статистика
   cups:
     title:
       national: Национальный Кубок

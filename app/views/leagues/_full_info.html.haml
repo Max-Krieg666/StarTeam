@@ -1,0 +1,9 @@
+= link_to t('leagues.table'), '#table', data: { toggle: 'collapse' }, class: 'btn btn-default'
+.collapse.in#table
+  = render 'table'
+= link_to t('leagues.games_grid'), '#games_grid', data: { toggle: 'collapse' }, class: 'btn btn-default'
+.collapse#games_grid
+  = render 'games_grid'
+= link_to t('leagues.statistics'), '#statistics', data: { toggle: 'collapse' }, class: 'btn btn-default'
+.collapse#statistics
+  = render 'statistics'

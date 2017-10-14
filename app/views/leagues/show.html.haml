@@ -7,21 +7,5 @@
       #{League.human_attribute_name(:status)}: #{@league.status_name}
 -if @league.waiting?
   = render 'waiting_info'
-/ .col-md-3
-/   .list-group
-/     %h3.list-group-item.active{style: "color: #00F"}
-/       = league.human_title
-/     .list-group-item{title: "Количество участников"}
-/       = inline_svg 'group.svg', class: 'svg-picture'
-/       = league.members_count
-/     .list-group-item{title: "Начало"}
-/       = inline_svg 'timer.svg', class: 'svg-picture'
-/       = l league.created_at
-/     -if @current_user_team.active_leagues_list.blank?
-/       .list-group-item{title: "Подать заявку"}
-/         = inline_svg 'plus-circle.svg', class: 'svg-picture-btn'
-/         = link_to 'Подать заявку', join_league_path(league), method: :post
-/     -else
-/       .list-group-item{title: "Просмотр"}
-/         = inline_svg 'info-circle.svg', class: 'svg-picture-btn'
-/         = link_to 'Просмотр', league
+-else
+  = render 'full_info'
