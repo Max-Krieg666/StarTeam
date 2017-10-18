@@ -17,8 +17,8 @@ class CreateLeaguesAndAssociationsWithTeams < ActiveRecord::Migration
       t.references :league, type: :uuid, index: true
 
       t.integer :division # дивизион
-      t.integer :place # место команды
-      t.integer :tour # тур
+      t.integer :place # место команды ## TODO помечено на УДАЛЕНИЕ
+      t.integer :tour # тур ## TODO помечено на УДАЛЕНИЕ
       t.integer :games, default: 0
       t.integer :goals, default: 0
       t.integer :goals_conceded, default: 0

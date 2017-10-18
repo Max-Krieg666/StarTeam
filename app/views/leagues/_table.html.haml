@@ -1,1 +1,26 @@
-league table
+.row
+  .col-md-8.col-md-offset-2
+    %table.table.table-bordered.table-condensed.table-hover
+      %thead
+        %tr
+          %th.center Позиция
+          %th.center Команда
+          %th.center Игры
+          %th.center Мячи
+          %th.center Победы
+          %th.center Ничьи
+          %th.center Поражения
+          %th.center Очки
+          %th.center Разница голов
+      %tbody
+        - @league.sorted_teams.each_with_index do |team_in_league, pos|
+          %tr.center
+            %td= pos + 1
+            %td= link_to team_in_league.team.title, team_in_league.team, style: "color: #00F"
+            %td= team_in_league.games
+            %td= team_in_league.goals_readable
+            %td= team_in_league.wins
+            %td= team_in_league.draws
+            %td= team_in_league.loses
+            %td= team_in_league.points
+            %td= team_in_league.goals_difference

@@ -1,1 +1,22 @@
-simple-tabled grid of all games in this tournament
+/ TODO this page
+.row
+  .col-md-10.col-md-offset-1
+    %table.table.table-bordered.table-condensed.table-hover
+      %thead
+        %tr
+          %th
+          - @league.sorted_teams.each_with_index do |team_in_league, index|
+            %th.center{title: team_in_league.team.title}= index
+      %tbody
+        - @grid.each do |team_in_grid, games|
+          %tr.center
+            %td= team_in_grid
+            - @league.sorted_teams.each do |team_in_league|
+              - team = team_in_league.team
+              -if team_in_grid == team.title
+                %td X
+                / сделать тут иконку мяча
+              - else
+                %td
+                  .floor_result= games[:home][team]
+                  .bottom_result= games[:guest][team]

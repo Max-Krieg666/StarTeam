@@ -7,16 +7,11 @@ module Generator
     end
 
     def rand_name
-      files = define_file
-      file1 = YAML.load_file(Rails.root.join('lib', 'names', files[0]))
-      file2 = YAML.load_file(Rails.root.join('lib', 'lastnames', files[1]))
-      name = file1[SecureRandom.random_number(file1.size)]['name'] + ' ' + file2[SecureRandom.random_number(file2.size)]['lastname']
-      name
-    end
-
-    def define_file
       file_names = nil
       file_lastnames = nil
+      second_name = false
+      second_name_chance = 0
+
       case @country_id
       when 1, 7, 10, 15, 17, 20, 23, 36, 39, 45, 57, 65, 125, 130, 145, 146, 147, 149, 157, 172, 177, 178, 179, 199, 235, 239, 241, 244, 252
         # Австралия, Ангилья, Антигуа и Барбуда, Багамы, Барбадос, Белиз, Бермуды, Великобритания, Виргинские острова, Гайана, Гренада, Доминика, Микронезия, федеративные штаты, Монтсеррат, Остров Мэн, Остров Норфолк, Острова Кайман, Острова Теркс и Кайкос, Питкерн, Остров Святой Елены, Сент-Винсент и Гренадины, Сент-Китс и Невис, Сент-Люсия, Тринидад и Тобаго, Ямайка, Англия, Кокосовые острова (Килинг), Остров Рождества, Южная Георгия и Южные Сандвичевы Острова
@@ -83,6 +78,8 @@ module Generator
         # Бахрейн, Иордания, Ирак, Йемен, Катар, Кувейт, Ливан, Объединенные Арабские Эмираты, Оман, Палестинская автономия, Саудовская Аравия, Сирийская Арабская Республика
         file_names = 'arabic'
         file_lastnames = 'arabic'
+        second_name = true
+        second_name_chance = 62
       when 19
         # Беларусь
         file_names = 'russian_and_belarus'
@@ -178,6 +175,8 @@ module Generator
         # Гренландия
         file_names = 'greenlandic'
         file_lastnames = 'greenlandic'
+        second_name = true
+        second_name_chance = 22
       when 59, 89, 248
         # Греция, Кипр, Северный Кипр
         file_names = 'greek'
@@ -190,6 +189,8 @@ module Generator
         # Дания
         file_names = 'danish'
         file_lastnames = 'danish'
+        second_name = true
+        second_name_chance = 35
       when 64
         # Джибути
         file_names = 'djibouti'
@@ -230,6 +231,8 @@ module Generator
         # Исландия
         file_names = 'icelandic'
         file_lastnames = 'icelandic'
+        second_name = true
+        second_name_chance = 62
       when 35, 80, 168
         # Ватикан, Италия, Сан-Марино
         file_names = 'italian'
@@ -384,6 +387,8 @@ module Generator
         # Норвегия, Шпицберген и Ян Майен
         file_names = 'norwegian'
         file_lastnames = 'norwegian'
+        second_name = true
+        second_name_chance = 55
       when 148
         # Острова Кука
         file_names = 'maori'
@@ -517,6 +522,8 @@ module Generator
         # Фарерские острова
         file_names = 'faroe'
         file_lastnames = 'faroe'
+        second_name = true
+        second_name_chance = 42
       when 210
         # Фиджи
         file_names = 'fiji'
@@ -558,6 +565,8 @@ module Generator
         # Швеция
         file_names = 'swedish'
         file_lastnames = 'swedish'
+        second_name = true
+        second_name_chance = 48
       when 226
         # Шри-Ланка
         file_names = 'sri_lankan'
@@ -602,7 +611,18 @@ module Generator
       raise "имён для страны #{@country_id} нету!" unless file_names.present?
       file_names += '_names.yml'
       file_lastnames += '_lastnames.yml'
-      [file_names, file_lastnames]
+      file1 = YAML.load_file(Rails.root.join('lib', 'names', file_names))
+      file2 = YAML.load_file(Rails.root.join('lib', 'lastnames', file_lastnames))
+
+      if second_name
+        name1 = file1[SecureRandom.random_number(file1.size)]['name']
+        name2 = file1[SecureRandom.random_number(file1.size)]['name'] if rand(100) < second_name_chance
+        lastname = file2[SecureRandom.random_number(file2.size)]['lastname']
+      else
+        name1 = file1[SecureRandom.random_number(file1.size)]['name']
+        lastname = file2[SecureRandom.random_number(file2.size)]['lastname']
+      end
+      [name1, name2, lastname].flatten.join(' ')
     end
   end
 end

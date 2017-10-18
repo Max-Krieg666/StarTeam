@@ -10,6 +10,11 @@ class League < ActiveRecord::Base
     :finished
   ]
 
+  # TODO добавить сортировку по РАЗНИЦЕ МЯЧЕЙ (goals - goals_conceded)
+  def sorted_teams
+    team_leagues.joins(:team).order('team_leagues.points desc, team_leagues.goals desc, team_leagues.games asc, team_leagues.wins desc, teams.title asc')
+  end
+
   def percentage
     # percent of complete
     (teams_size / 24.0 * 100).round

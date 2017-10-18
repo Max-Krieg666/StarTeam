@@ -9,6 +9,7 @@ class LeaguesController < ApplicationController
 
   def show
     @teams_in_league = @league.team_leagues
+    @grid = GamesGridService.perform(@league)
   end
 
   def new
