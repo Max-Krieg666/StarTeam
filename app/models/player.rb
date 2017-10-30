@@ -13,10 +13,16 @@ class Player < ActiveRecord::Base
   has_many :transfers
   has_many :careers
 
-  scope :free_agent, -> { where(status: 0) }
+  scope :free_agent, -> { where(state: :free_agent) }
 
-  #TODO positions на enum
-  POSITIONS = %w(Gk Ld Cd Rd Lm Cm Rm Lf Cf Rf).freeze
+  POSITIONS = [
+    :gk,
+    :ld, :cd, :rd,
+    :lm, :cm, :rm,
+    :lf, :cf, :rf
+  ].freeze
+
+  enum position1: POSITIONS
 
   enum state: [
     :free_agent,

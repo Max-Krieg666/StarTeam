@@ -1,4 +1,6 @@
-= link_to t('leagues.table'), '#table', data: { toggle: 'collapse' }, class: 'btn btn-default'
+= link_to '#table', data: { toggle: 'collapse' }, class: 'btn btn-default' do
+  = inline_svg 'sub-on.svg', class: 'svg-picture-medium'
+  = t('leagues.table')
 .collapse.in#table
   = render 'table'
 = link_to t('leagues.games_grid'), '#games_grid', data: { toggle: 'collapse' }, class: 'btn btn-default'

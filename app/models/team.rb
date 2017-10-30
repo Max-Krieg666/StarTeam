@@ -64,6 +64,54 @@ class Team < ActiveRecord::Base
     players.size
   end
 
+  def main_squad
+    players.where(basic: true)
+  end
+
+  def reserve_squad
+    players.where(basic: false)
+  end
+
+  def main_gk
+    main_squad.gk.first
+  end
+
+  def reserve_gk
+    reserve_squad.gk.first
+  end
+
+  def main_ld_cd_rd
+    main_squad.where('position1 in (?)', [:ld, :cd, :rd])
+  end
+
+  def reserve_ld_cd_rd
+    reserve_squad.where('position1 in (?)', [:ld, :cd, :rd])
+  end
+
+  def main_lm_cm_rm
+    main_squad.where('position1 in (?)', [:lm, :cm, :rm])
+  end
+
+  def reserve_lm_cm_rm
+    reserve_squad.where('position1 in (?)', [:lm, :cm, :rm])
+  end
+
+  def main_lf_cf_rf
+    main_squad.where('position1 in (?)', [:lf, :cf, :rf])
+  end
+
+  def reserve_lf_cf_rf
+    reserve_squad.where('position1 in (?)', [:lf, :cf, :rf])
+  end
+
+  def power_11
+    main_squad.pluck(:skill_level).inject(0, :+)
+  end
+
+  def power
+    players.pluck(:skill_level).inject(0, :+)
+  end
+
   def budget_to_currency
     number_to_currency(budget, precision: 3, locale: :en)
   end
