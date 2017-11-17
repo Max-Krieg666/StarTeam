@@ -37,6 +37,8 @@ en:
       squad: Squad
       training: Training
       statistics: Statistics
+      player_statistics: Players Stats
+      calendar: Calendar
     transfers:
       all: Transfers
       create: Create a new player

@@ -37,7 +37,7 @@
             %td= pl.name
             %td= pl.skill_level
             %td{ id: pl.id }
-              -if pl.goalkeeper?
+              -if pl.gk?
                 .goalkeeper
                   .number
                     = pl.number

@@ -58,7 +58,9 @@ ru:
       my_team: Моя команда
       squad: Расстановка
       training: Тренировка
-      statistics: Статистика игроков
+      statistics: Статистика
+      player_statistics: Статистика игроков
+      calendar: Календарь игр
     transfers:
       all: Трансферы
     careers:

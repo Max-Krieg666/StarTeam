@@ -23,7 +23,7 @@
                 = inline_svg 'statistics.svg', class: 'svg-picture-medium'
               %th.text-center{title: "Игры"}
                 = inline_svg 'game.svg', class: 'svg-picture-medium'
-              -if @player.goalkeeper?
+              -if @player.gk?
                 %th.text-center{title: "Пропущенные голы"}
                   = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
               %th.text-center{title: "Забитые голы"}
@@ -41,7 +41,7 @@
               %td{style: "color: #00F", title: "Текущий сезон"}
                 = inline_svg 'timer.svg', class: 'svg-picture-medium'
               %td= @player.season_games
-              -if @player.goalkeeper?
+              -if @player.gk?
                 %td= @player.season_conceded_goals
               %td= @player.season_goals
               %td= @player.season_passes
@@ -52,7 +52,7 @@
               %td{style: "color: #00F", title: "Карьера"}
                 = inline_svg 'history.svg', class: 'svg-picture-medium'
               %td= @player.all_games
-              -if @player.goalkeeper?
+              -if @player.gk?
                 %td= @player.all_conceded_goals
               %td= @player.all_goals
               %td= @player.all_passes

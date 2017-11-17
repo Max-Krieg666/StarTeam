@@ -3419,6 +3419,12 @@
   talent: 5
   age: 21
   skill_level: 45
+- name: Fotiss Ortzazoglu
+  country_id: 248
+  position1: 1
+  talent: 3
+  age: 27
+  skill_level: 39
 - name: Thierry Calendan
   country_id: 214
   position1: 0

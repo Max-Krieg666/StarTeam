@@ -51,12 +51,14 @@ class Player < ActiveRecord::Base
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
 
   def full_position_name
-    return POSITIONS[position1] if position2.nil?
-    POSITIONS[position1] + '/' + POSITIONS[position2]
+    # сделать позиции с заглавных букв!!!
+    return position1 if position2.nil?
+    position1 + '/' + position2
   end
 
   def real_position_name
-    POSITIONS[real_position]
+    # TODO this
+    # POSITIONS[real_position]
   end
 
   def set_price
@@ -88,42 +90,39 @@ class Player < ActiveRecord::Base
   end
 
   def choose_position2
-    case position1
-    when 1, 3 # Ld, Rd
-      [2]
-    when 2 # Cd
-      [1, 3]
-    when 4, 6 # Lm, Rm
-      [5]
-    when 5 # Cm
-      [4, 6]
-    when 7, 9 # Lf, Rf
-      [8]
-    when 8 # Cf
-      [7, 9]
-    else # 0 = Gk
-      []
-    end
-  end
-
-  def goalkeeper?
-    position1 == 0
+    # TODO this
+    # case position1
+    # when 1, 3 # Ld, Rd
+    #   [2]
+    # when 2 # Cd
+    #   [1, 3]
+    # when 4, 6 # Lm, Rm
+    #   [5]
+    # when 5 # Cm
+    #   [4, 6]
+    # when 7, 9 # Lf, Rf
+    #   [8]
+    # when 8 # Cf
+    #   [7, 9]
+    # else # 0 = Gk
+    #   []
+    # end
   end
 
   def is_position_defend?
-    [1, 2, 3].include?(position1)
+    [:ld, :cd, :rd].include?(position1)
   end
 
   def is_position_midfield?
-    [4, 5, 6].include?(position1)
+    [:lm, :cm, :rm].include?(position1)
   end
 
   def is_position_attack?
-    [7, 8, 9].include?(position1)
+    [:lf, :cf, :rf].include?(position1)
   end
 
   def change_efficienty
-    #TODO доделать вычисление эффекивности
+    # TODO доделать вычисление эффекивности
     if position1 == real_position
       1.0
     else

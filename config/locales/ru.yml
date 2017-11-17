@@ -151,6 +151,8 @@ ru:
     table: Турнирная таблица
     games_grid: Сетка игр
     statistics: Статистика
+    player_statistics: Статистика игроков
+    calendar: Календарь игр
   cups:
     title:
       national: Национальный Кубок

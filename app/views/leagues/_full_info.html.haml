@@ -1,11 +1,18 @@
-= link_to '#table', data: { toggle: 'collapse' }, class: 'btn btn-default' do
-  = inline_svg 'sub-on.svg', class: 'svg-picture-medium'
-  = t('leagues.table')
-.collapse.in#table
-  = render 'table'
-= link_to t('leagues.games_grid'), '#games_grid', data: { toggle: 'collapse' }, class: 'btn btn-default'
-.collapse#games_grid
-  = render 'games_grid'
-= link_to t('leagues.statistics'), '#statistics', data: { toggle: 'collapse' }, class: 'btn btn-default'
-.collapse#statistics
-  = render 'statistics'
+.btn-group
+  = link_to t('leagues.table'), '#table', data: { toggle: 'collapse' }, class: 'btn btn-default'
+  = link_to t('leagues.games_grid'), '#games_grid', data: { toggle: 'collapse' }, class: 'btn btn-default'
+  = link_to t('leagues.calendar'), '#calendar', data: { toggle: 'collapse' }, class: 'btn btn-default'
+  = link_to t('leagues.statistics'), '#statistics', data: { toggle: 'collapse' }, class: 'btn btn-default'
+  = link_to t('leagues.player_statistics'), '#player_statistics', data: { toggle: 'collapse' }, class: 'btn btn-default'
+
+%p
+  .collapse.in#table
+    = render 'table'
+  .collapse#games_grid
+    = render 'games_grid'
+  .collapse#calendar
+    = render 'calendar'
+  .collapse#statistics
+    = render 'statistics'
+  .collapse#player_statistics
+    = render 'player_statistics'
