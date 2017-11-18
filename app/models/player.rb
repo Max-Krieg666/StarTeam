@@ -43,7 +43,7 @@ class Player < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: [:position1, :age, :skill_level, :talent] }, length: { maximum: 50 }
   validates :country_id, presence: true
-  validates :position1, presence: true, inclusion: { in: 0..9 }
+  validates :position1, presence: true
   validates :talent, presence: true, inclusion: { in: 1..9 }
   validates :age, presence: true, inclusion: { in: 16..39 }
   validates :skill_level, presence: true, inclusion: { in: 1..200 }
