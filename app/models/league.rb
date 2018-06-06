@@ -39,7 +39,7 @@ class League < ActiveRecord::Base
   def start
     generate_grid
     active!
-    start_time = DateTime.now
+    start_time = DateTime.current
     save!
   end
 

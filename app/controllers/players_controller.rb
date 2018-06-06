@@ -54,6 +54,7 @@ class PlayersController < ApplicationController
       flash[:danger] = I18n.t('flash.players.not_enough_money')
       redirect_to players_path
     else # приобретение игрока возможно
+      # TODO: вынести в новый модуль Bying
       ActiveRecord::Base.transaction do
         @player.state = 1
         @player.team_id = @current_user_team.id
@@ -138,6 +139,7 @@ class PlayersController < ApplicationController
   
   # upgrade characteristics
   # TODO переписать на JS!!!
+  # либо рефакторнуть
   def tackling_upgrade
     new_skill_level = @player.skill_level + 1
     new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)

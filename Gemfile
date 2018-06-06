@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 # main gem
-gem 'rails', '4.2.7'
+gem 'rails', '~> 4.2.7'
 
 # database
 gem 'pg'
 
 # css
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '>= 5.0.7'
 gem 'haml-rails', '~> 1.0'
 gem 'bootstrap-sass'
 gem 'paperclip', '~> 5.2.0'

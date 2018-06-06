@@ -16,22 +16,25 @@ class User < ActiveRecord::Base
   end
 
   def find_by_login(input)
-    self.where(login: input).first
+    where(login: input).first
   end
 
   cattr_reader :roles
 
-  enum sex: [
+  SEXES = [
     :not_specified,
     :male,
     :female
-  ]
+  ].freeze
 
-  enum role: [
+  ROLES = [
     :user,
     :moderator,
     :administrator
-  ]
+  ].freeze
+
+  enum sex: SEXES
+  enum role: ROLES
 
   before_validation :login_and_email_strip, on: :save
   before_validation :set_default_role, :check_bday
@@ -85,7 +88,7 @@ class User < ActiveRecord::Base
 
   def check_bday
     return if birthday.blank?
-    errors[:birthday] << ' не существует!' if birthday > Time.zone.now
+    errors[:birthday] << I18n.t(:birthday_incorrect) if birthday > Time.zone.now
   end
 
   def unread_notifications

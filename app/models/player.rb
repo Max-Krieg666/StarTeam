@@ -22,26 +22,31 @@ class Player < ActiveRecord::Base
     :lf, :cf, :rf
   ].freeze
 
-  enum position1: POSITIONS
-
-  enum state: [
+  STATES = [
     :free_agent,
     :in_team,
     :retired
-  ]
+  ].freeze
 
-  enum status: [
+  STATUSES = [
     :active,
     :injured,
     :penalty_redcard,
     :penalty_yellowcards,
     :transfer
-  ]
+  ].freeze
+
+  enum position1: POSITIONS
+  enum state: STATES
+  enum status: STATUSES
 
   before_validation :set_price, on: :create
   before_validation :set_real_position, on: :create
 
-  validates :name, presence: true, uniqueness: { scope: [:position1, :age, :skill_level, :talent] }, length: { maximum: 50 }
+  validates :name,
+            presence: true,
+            uniqueness: { scope: [:position1, :age, :skill_level, :talent] },
+            length: { maximum: 50 }
   validates :country_id, presence: true
   validates :position1, presence: true
   validates :talent, presence: true, inclusion: { in: 1..9 }
@@ -51,9 +56,8 @@ class Player < ActiveRecord::Base
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
 
   def full_position_name
-    # сделать позиции с заглавных букв!!!
     return position1 if position2.nil?
-    position1 + '/' + position2
+    position1.capitalize + '/' + position2.capitalize
   end
 
   def real_position_name
