@@ -1,7 +1,7 @@
 class League < ActiveRecord::Base
   require 'round_robin_tournament'
 
-  belongs_to :country
+  belongs_to :country, inverse_of: :leagues
   has_many :team_leagues
 
   enum status: [

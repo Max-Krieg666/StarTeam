@@ -1,5 +1,5 @@
 class Career < ActiveRecord::Base
-  belongs_to :player
+  belongs_to :player, inverse_of: :careers
 
   scope :active, -> { where(active: true) }
 

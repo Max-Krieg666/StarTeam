@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_one :team
-  belongs_to :country
-  has_many :notifications
+  has_one :team, inverse_of: :user
+  belongs_to :country, inverse_of: :users
+  has_many :notifications, inverse_of: :user
 
   accepts_nested_attributes_for :team
 

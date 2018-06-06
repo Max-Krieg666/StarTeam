@@ -1,5 +1,5 @@
 class Cup < ActiveRecord::Base
-  belongs_to :country
+  belongs_to :country, inverse_of: :cups
   has_many :team_cups
 
   enum status: [

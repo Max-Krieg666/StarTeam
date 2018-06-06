@@ -8,10 +8,10 @@ class Player < ActiveRecord::Base
   # 3 физических: Скорость, Выносливость, Реакция
   # 2 ментальных: Агрессивность, Креативность
   
-  belongs_to :country
-  belongs_to :team
-  has_many :transfers
-  has_many :careers
+  belongs_to :country, inverse_of: :players
+  belongs_to :team, inverse_of: :players
+  has_many :transfers, inverse_of: :player
+  has_many :careers, inverse_of: :player
 
   scope :free_agent, -> { where(state: :free_agent) }
 

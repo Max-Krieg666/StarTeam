@@ -1,5 +1,5 @@
 class ClubBase < ActiveRecord::Base
-  belongs_to :team
+  belongs_to :team, inverse_of: :club_base
 
   def to_param
     title
