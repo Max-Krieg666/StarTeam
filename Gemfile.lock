@@ -126,14 +126,14 @@ GEM
     mime-types (2.99.3)
     mimemagic (0.3.2)
     mini_mime (1.0.0)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
-    nokogiri (1.6.8.1)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     ntlm-http (0.1.1)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
@@ -234,6 +234,7 @@ DEPENDENCIES
   kaminari
   kaminari-bootstrap
   mechanize
+  nokogiri (~> 1.8.2)
   paperclip (~> 5.2.0)
   pg
   rails (= 4.2.7)

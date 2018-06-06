@@ -14,6 +14,8 @@ gem 'bootstrap-select-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+gem 'nokogiri', '~> 1.8.2'
+
 # scheduling
 gem 'round_robin_tournament'
 
