@@ -7,9 +7,9 @@ gem 'pg'
 
 # css
 gem 'sass-rails', '~> 5.0'
-gem 'haml-rails'
+gem 'haml-rails', '~> 1.0'
 gem 'bootstrap-sass'
-gem 'paperclip'
+gem 'paperclip', '~> 5.2.0'
 gem 'bootstrap-select-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
