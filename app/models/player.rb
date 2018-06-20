@@ -12,6 +12,8 @@ class Player < ActiveRecord::Base
   belongs_to :team
   has_many :transfers
   has_many :careers
+  has_many :game_events
+  has_many :game_players
 
   scope :free_agent, -> { where(state: :free_agent) }
 

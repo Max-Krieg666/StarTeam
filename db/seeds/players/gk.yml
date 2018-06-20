@@ -869,3 +869,33 @@
   talent: 7
   age: 19
   skill_level: 47
+- name: Alexey Elliaev
+  country_id: 162
+  position1: 0
+  talent: 5
+  age: 32
+  skill_level: 59
+- name: Kakha Sturuadze
+  country_id: 60
+  position1: 0
+  talent: 3
+  age: 26
+  skill_level: 37
+- name: Jurius Marzinkiyavichus
+  country_id: 108
+  position1: 0
+  talent: 6
+  age: 34
+  skill_level: 38
+- name: Eduard Meyzhelaytis
+  country_id: 108
+  position1: 0
+  talent: 7
+  age: 22
+  skill_level: 42
+- name: Parvalal Bhilai
+  country_id: 72
+  position1: 0
+  talent: 4
+  age: 21
+  skill_level: 42

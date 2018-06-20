@@ -9,7 +9,7 @@
   country_id: 208
   position1: 5
   talent: 8
-  age: 31
+  age: 27
   skill_level: 67
 - name: Wan Pac-Chon
   country_id: 173
@@ -22,7 +22,7 @@
   position1: 5
   talent: 3
   age: 28
-  skill_level: 34
+  skill_level: 48
 - name: Sunil Takhla
   country_id: 210
   position1: 5
@@ -173,7 +173,7 @@
   talent: 9
   age: 29
   skill_level: 87
-- name: Nestor Fabiano Arshe
+- name: Nestor Fabiano Asceni
   country_id: 11
   position1: 5
   talent: 4
@@ -869,3 +869,63 @@
   talent: 9
   age: 17
   skill_level: 71
+- name: Guillherme Nasimento
+  country_id: 29
+  position1: 5
+  talent: 3
+  age: 35
+  skill_level: 58
+- name: Mustafa Akh-Kudzhi
+  country_id: 67
+  position1: 5
+  talent: 2
+  age: 25
+  skill_level: 33
+- name: Alan Moore
+  country_id: 140
+  position1: 5
+  talent: 4
+  age: 17
+  skill_level: 32
+- name: Maximillian Moore
+  country_id: 140
+  position1: 5
+  talent: 7
+  age: 17
+  skill_level: 38
+- name: Fogo Bota
+  country_id: 159
+  position1: 5
+  talent: 5
+  age: 32
+  skill_level: 39
+- name: Iraklios Kekos
+  country_id: 89
+  position1: 5
+  talent: 1
+  age: 31
+  skill_level: 37
+- name: Atos Saripidis
+  country_id: 89
+  position1: 5
+  talent: 2
+  age: 27
+  skill_level: 40
+- name: Theodoros Lazaridis
+  country_id: 59
+  position1: 5
+  talent: 3
+  age: 23
+  skill_level: 51
+- name: Rogerio Marquenna
+  country_id: 29
+  position1: 5
+  talent: 2
+  age: 34
+  skill_level: 38
+- name: Xavier Giacometti
+  country_id: 11
+  position1: 5
+  talent: 5
+  age: 19
+  skill_level: 28

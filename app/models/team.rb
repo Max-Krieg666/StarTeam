@@ -46,6 +46,14 @@ class Team < ActiveRecord::Base
     team_cups.joins(:cup).where('cups.status != 2')
   end
 
+  def is_in_league?(league_id)
+    !active_leagues_list.where(league_id: league_id).blank?
+  end
+
+  def is_in_cup?(cup_id)
+    !active_cups_list.where(cup_id: cup_id).blank?
+  end
+
   def next_game
     # first of next games
     next_games.first

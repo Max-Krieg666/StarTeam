@@ -1,5 +1,5 @@
 ---
-- name: Gerhard Sederberg
+- name: Axel Sederberg
   country_id: 224
   position1: 3
   talent: 5
@@ -659,3 +659,63 @@
   talent: 2
   age: 27
   skill_level: 36
+- name: Asagawa Yamato
+  country_id: 236
+  position1: 3
+  talent: 6
+  age: 20
+  skill_level: 44
+- name: Olis Skulme
+  country_id: 103
+  position1: 3
+  talent: 5
+  age: 21
+  skill_level: 47
+- name: Albert Liebling
+  country_id: 223
+  position1: 3
+  talent: 9
+  age: 33
+  skill_level: 48
+- name: Langston Hughes
+  country_id: 165
+  position1: 3
+  talent: 7
+  age: 19
+  skill_level: 56
+- name: Sergey Godynich
+  country_id: 19
+  position1: 3
+  talent: 5
+  age: 22
+  skill_level: 48
+- name: Marcelo Volta
+  country_id: 80
+  position1: 3
+  talent: 6
+  age: 27
+  skill_level: 44
+- name: Gilardo Zani
+  country_id: 80
+  position1: 3
+  talent: 5
+  age: 20
+  skill_level: 49
+- name: Faustino Lomiro
+  country_id: 124
+  position1: 3
+  talent: 8
+  age: 24
+  skill_level: 64
+- name: Samuel Montano
+  country_id: 222
+  position1: 3
+  talent: 4
+  age: 28
+  skill_level: 41
+- name: Nazih Saglik
+  country_id: 16
+  position1: 3
+  talent: 3
+  age: 27
+  skill_level: 35

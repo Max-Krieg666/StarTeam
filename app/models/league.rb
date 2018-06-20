@@ -10,6 +10,17 @@ class League < ActiveRecord::Base
     :finished
   ]
 
+  def games
+    Game.where(tournament_id: id)
+  end
+
+  def citizenships_info
+    teams_ids = Team.joins(:team_leagues).where('team_leagues.league_id = ?', id).map(&:id)
+    country_stat = Player.where(team_id: teams_ids).map(&:country_id)
+    # count_countries(country_stat)
+    Hash[count_countries(country_stat).sort_by(&:last).reverse]
+  end
+
   # TODO добавить сортировку по РАЗНИЦЕ МЯЧЕЙ (goals - goals_conceded)
   def sorted_teams
     team_leagues.joins(:team).order('team_leagues.points desc, team_leagues.goals desc, team_leagues.games asc, team_leagues.wins desc, teams.title asc')
@@ -61,10 +72,19 @@ class League < ActiveRecord::Base
           tournament_id: id,
           kind: true,
           starting_time: DateTime.current + (number + 2).days,
-          tour: number + 1
+          tour: number + 1,
+          game_statistic: GameStatistic.new
         )
       end
     end
     return
+  end
+
+  private
+
+  def count_countries(countries)
+    countries.each_with_object(Hash.new 0) do |country, counter|
+      counter[Country.find(country).title] += 1
+    end
   end
 end

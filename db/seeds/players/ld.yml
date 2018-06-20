@@ -689,3 +689,33 @@
   talent: 5
   age: 36
   skill_level: 44
+- name: Flavio di Gemnuza
+  country_id: 80
+  position1: 1
+  talent: 2
+  age: 36
+  skill_level: 34
+- name: Loventudo Lettio
+  country_id: 92
+  position1: 1
+  talent: 3
+  age: 38
+  skill_level: 41
+- name: Felipe Gui Veskita
+  country_id: 41
+  position1: 1
+  talent: 5
+  age: 21
+  skill_level: 47
+- name: Thomas Manneger
+  country_id: 2
+  position1: 1
+  talent: 6
+  age: 30
+  skill_level: 71
+- name: Mikki Mann
+  country_id: 239
+  position1: 1
+  talent: 2
+  age: 36
+  skill_level: 36

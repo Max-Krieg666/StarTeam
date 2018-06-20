@@ -9,12 +9,12 @@ class GamesGridService
 			home_games = Game.where(
 				tournament_id: league.id,
 				home_id: team.id
-			).each { |g| homes[g.guest] = g.simple_result_home }
+			).each { |g| homes[g.guest] = g.game_statistic.simple_result_home }
 
 			guest_games = Game.where(
 				tournament_id: league.id,
 				guest_id: team.id
-			).each { |g| guests[g.home] = g.simple_result_guest }
+			).each { |g| guests[g.home] = g.game_statistic.simple_result_guest }
 
 			resulted_hash[team.title] = {
 				home: homes,

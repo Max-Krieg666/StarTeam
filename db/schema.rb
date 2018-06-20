@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401174045) do
+ActiveRecord::Schema.define(version: 20171125002500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,17 +63,59 @@ ActiveRecord::Schema.define(version: 20170401174045) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "game_events", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid    "game_id"
+    t.uuid    "player_id"
+    t.integer "kind"
+    t.string  "minute"
+  end
+
+  create_table "game_players", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "game_id"
+    t.uuid     "player_id"
+    t.integer  "goals",           default: 0
+    t.integer  "shots",           default: 0
+    t.integer  "shots_at_target", default: 0
+    t.integer  "fouls_committed", default: 0
+    t.integer  "yellow_cards",    default: 0
+    t.integer  "red_cards",       default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "game_statistics", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "game_id"
+    t.integer  "home_goals"
+    t.integer  "home_shots",            default: 0
+    t.integer  "home_shots_at_target",  default: 0
+    t.integer  "home_corners",          default: 0
+    t.integer  "home_fouls_committed",  default: 0
+    t.integer  "home_yellow_cards",     default: 0
+    t.integer  "home_red_cards",        default: 0
+    t.integer  "home_offsides",         default: 0
+    t.integer  "home_ball_possession",  default: 0
+    t.integer  "guest_goals"
+    t.integer  "guest_shots",           default: 0
+    t.integer  "guest_shots_at_target", default: 0
+    t.integer  "guest_corners",         default: 0
+    t.integer  "guest_fouls_committed", default: 0
+    t.integer  "guest_yellow_cards",    default: 0
+    t.integer  "guest_red_cards",       default: 0
+    t.integer  "guest_offsides",        default: 0
+    t.integer  "guest_ball_possession", default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
   create_table "games", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "home_id"
     t.uuid     "guest_id"
     t.string   "tournament_id"
     t.boolean  "kind"
-    t.integer  "home_goals",    default: 0
     t.integer  "tour"
-    t.integer  "guest_goals",   default: 0
     t.datetime "starting_time"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "games", ["guest_id"], name: "index_games_on_guest_id", using: :btree

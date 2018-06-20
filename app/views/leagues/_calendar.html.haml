@@ -1,1 +1,14 @@
-тут будет календарь игр
+%table.table.table-bordered.table-condensed.table-hover
+  %thead
+    %tr
+      %th Тур
+      %th Игра
+      %th Счёт
+      %th Дата начала
+  %tbody
+    - @league.games.each do |game|
+      %tr
+        %td= game.tour
+        %td= game.who_plays
+        %td= game.game_statistic.simple_result_home
+        %td= l game.starting_time

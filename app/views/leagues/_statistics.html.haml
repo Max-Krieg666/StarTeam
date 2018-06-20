@@ -17,11 +17,9 @@ league infos:
     Голов в среднем за игру (гости)   1.2
     Зрителей всего   2 281 085
     Зрителей в среднем за игру   21 520
-
-.div
-  BLOCK2
   .div
-    Гражданство игроков
-    Франция   346   (54.9%)
-    Бразилия   35   (5.6%)
+    %h4 Гражданство игроков:
+    - @league.citizenships_info.each do |country, players_count|
+      .div
+        = "#{country}: #{players_count}"
      

@@ -659,3 +659,33 @@
   talent: 1
   age: 28
   skill_level: 69
+- name: Dimitrius Martelis
+  country_id: 59
+  position1: 6
+  talent: 4
+  age: 28
+  skill_level: 40
+- name: Ray Nylon
+  country_id: 239
+  position1: 6
+  talent: 8
+  age: 21
+  skill_level: 55
+- name: Chereshez Aytmatov
+  country_id: 205
+  position1: 6
+  talent: 5
+  age: 26
+  skill_level: 53
+- name: Lasha Abashidze
+  country_id: 60
+  position1: 6
+  talent: 6
+  age: 24
+  skill_level: 46
+- name: Tiro Forelli
+  country_id: 80
+  position1: 6
+  talent: 7
+  age: 18
+  skill_level: 47

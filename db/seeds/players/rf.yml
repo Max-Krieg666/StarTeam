@@ -659,3 +659,33 @@
   talent: 7
   age: 28
   skill_level: 61
+- name: Fran Casas Novas
+  country_id: 79
+  position1: 9
+  talent: 4
+  age: 33
+  skill_level: 43
+- name: Johren Tomberg
+  country_id: 21
+  position1: 9
+  talent: 7
+  age: 28
+  skill_level: 57
+- name: Thiago Campos
+  country_id: 29
+  position1: 9
+  talent: 7
+  age: 21
+  skill_level: 32
+- name: Mehnun Katrapi
+  country_id: 72
+  position1: 9
+  talent: 5
+  age: 36
+  skill_level: 44
+- name: Ben Ashner
+  country_id: 1
+  position1: 9
+  talent: 4
+  age: 20
+  skill_level: 36
