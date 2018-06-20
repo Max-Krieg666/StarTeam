@@ -689,3 +689,33 @@
   talent: 7
   age: 18
   skill_level: 47
+- name: Hernan Duopon
+  country_id: 214
+  position1: 6
+  talent: 5
+  age: 23
+  skill_level: 54
+- name: Bernard Straffmann
+  country_id: 223
+  position1: 6
+  talent: 4
+  age: 23
+  skill_level: 51
+- name: Lubomir Bodruc
+  country_id: 185
+  position1: 6
+  talent: 6
+  age: 28
+  skill_level: 45
+- name: Zvonimir Bejich
+  country_id: 185
+  position1: 6
+  talent: 6
+  age: 25
+  skill_level: 48
+- name: Milos Pacih
+  country_id: 221
+  position1: 6
+  talent: 1
+  age: 31
+  skill_level: 50

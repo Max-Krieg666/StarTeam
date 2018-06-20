@@ -82,7 +82,7 @@
             = inline_svg 'transfer.svg', class: 'svg-picture', title: 'На трансфере' if pl.status == 'transfer'
           %td= image_tag pl.country.flag.url, title: pl.country.title
           / TODO подумать как лучше отображать
-          %td{title: pl.position1}
+          %td
             = pl.full_position_name
           %td{title: pl.real_position}
             = pl.real_position_name

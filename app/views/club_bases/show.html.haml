@@ -6,7 +6,7 @@
 %p
   %b Уровень:
   = @club_base.level
-  -if @club_base.level < 5
+  -if @club_base.level < 5 && (@current_user == @team.user || @current_user.administrator?)
     = link_to level_up_team_club_basis_path(@team, @club_base), method: :patch, class: 'btn btn-link', data: { confirm: "Вы потратите #{number_to_currency(@club_base.next_level_cost, locale: :en, precision: 3)}. Продолжить?" } do
       = inline_svg 'plus-circle', class: 'svg-picture-btn'
 %p

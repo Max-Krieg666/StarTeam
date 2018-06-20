@@ -3,7 +3,7 @@ main fm-game project
 
 === STATISTICS
 
-==== Players (19 Nov 2017):
+==== Players (21 Jun 2018):
 
 * position1: 0 --- 150 GK
 * position1: 1 --- 120 LD
@@ -11,7 +11,7 @@ main fm-game project
 * position1: 3 --- 120 RD
 * position1: 4 --- 120 LM
 * position1: 5 --- 155 CM
-* position1: 6 --- 115 RM
+* position1: 6 --- 120 RM
 * position1: 7 --- 120 LF
 * position1: 8 --- 150 CF
 * position1: 9 --- 115 RF

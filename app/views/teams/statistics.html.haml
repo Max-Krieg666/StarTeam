@@ -2,7 +2,7 @@
 
 .text-center
   .page-header
-    %h1 Статистика игроков
+    %h1= t ('views.teams.player_statistics')
     %br
     %h1
       = @team.title
@@ -62,7 +62,7 @@
             = inline_svg 'transfer.svg', class: 'svg-picture', title: 'Трансфер' if pl.status == 'transfer'
           %td= image_tag pl.country.flag.url, title: pl.country.title
           / TODO подумать как лучше отображать
-          %td{title: pl.position1}
+          %td
             = pl.full_position_name
           %td{title: pl.real_position}
             = pl.real_position_name
