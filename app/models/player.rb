@@ -58,7 +58,7 @@ class Player < ActiveRecord::Base
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
 
   def full_position_name
-    return position1 if position2.nil?
+    return position1.capitalize if position2.nil?
     position1.capitalize + '/' + position2.capitalize
   end
 

@@ -59,7 +59,7 @@
           %td
             = pl.name
             = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if pl.captain
-            = inline_svg 'transfer.svg', class: 'svg-picture', title: 'Капитан' if pl.status == 'transfer'
+            = inline_svg 'transfer.svg', class: 'svg-picture', title: 'Трансфер' if pl.status == 'transfer'
           %td= image_tag pl.country.flag.url, title: pl.country.title
           / TODO подумать как лучше отображать
           %td{title: pl.position1}
@@ -113,15 +113,15 @@
     -if @current_user == @team.user || @current_user.moderator?
       = link_to @current_user_team, class: 'btn btn-warning' do
         = inline_svg 'reply.svg', class: 'svg-picture-btn white'
-        Вернуться к << #{@current_user_team.title} >>
+        #{t 'buttons.back_to'} << #{@current_user_team.title} >>
     -if @current_user.moderator?
       = link_to teams_path, class: 'btn btn-warning' do
         = inline_svg 'reply.svg', class: 'svg-picture-btn white'
-        Все команды
+        = t('views.teams.all_teams')
     -if @current_user_team == @team
       -unless @team.stadium
         = link_to new_team_stadium_path(@team), class: 'btn btn-primary' do
           = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
-          Перейти к созданию стадиона
+          = t('buttons.go_to_stadium_creating')
       -unless @team.club_base
-        = link_to 'Перейти к созданию базы клуба', new_team_club_basis_path(@team), class: 'btn btn-warning'
+        = link_to t('buttons.go_to_club_base_creating'), new_team_club_basis_path(@team), class: 'btn btn-warning'

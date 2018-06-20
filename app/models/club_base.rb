@@ -1,4 +1,6 @@
 class ClubBase < ActiveRecord::Base
+  DEFAULT_LEVEL = 5
+
   belongs_to :team, inverse_of: :club_base
 
   def to_param
@@ -12,6 +14,13 @@ class ClubBase < ActiveRecord::Base
   def find_by_title(input)
     where(title: input).first
   end
+
+  validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
+  validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
+  validates :level, presence: true, inclusion: { in: 1..5 }
+  validates :capacity, presence: true, inclusion: { in: [20, 22, 24, 26, 30] }
+  validates :training_fields, presence: true, inclusion: { in: 1..5 }
+  validates :experience_up, presence: true, inclusion: { in: 0.0..2.0 }
 
   LEVELS = {
     1 => [0,         0,    20],
@@ -37,12 +46,13 @@ class ClubBase < ActiveRecord::Base
     TRAINING_FIELDS[level + 1][0]
   end
 
-  validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
-  validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
-  validates :level, presence: true, inclusion: { in: 1..5 }
-  validates :capacity, presence: true, inclusion: { in: [20, 22, 24, 26, 30] }
-  validates :training_fields, presence: true, inclusion: { in: 1..5 }
-  validates :experience_up, presence: true, inclusion: { in: 0.0..2.0 }
+  def max_level?
+    level == DEFAULT_LEVEL
+  end
+
+  def max_training_fields?
+    training_fields == DEFAULT_LEVEL
+  end
 end
 # level 1 --> capacity 20 \ COST: FREE \ experience_up 0.0 [default]
 # level 2 --> capacity 23 \ COST: $50 000 \ experience_up 0.2

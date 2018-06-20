@@ -28,4 +28,4 @@
     = t('buttons.edit')
 = link_to @team, class: 'btn btn-info' do
   = inline_svg 'group.svg', class: 'svg-picture-btn white'
-  Вернуться к команде << #{@team.title} >>
+  #{t 'buttons.back_to'} << #{@team.title} >>

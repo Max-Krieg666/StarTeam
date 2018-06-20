@@ -1,6 +1,4 @@
 en:
-  helpers:
-    choose_position: Choose position
   views:
     site_title: StarTeam football manager
     users:
@@ -11,7 +9,6 @@ en:
       block: Countries
       all: All countries
       create: Create a new country
-      my_country: My country
       team_country: "Team's country"
     tournaments:
       all: Tournaments
@@ -29,40 +26,20 @@ en:
       all: All teams
       block: Team
       club_base: Club base
-      stadium: Stadium
-      budget: Budget
       budget_history: Financial history
-      transfer_history: Transfer history
-      my_team: My team
-      squad: Squad
-      training: Training
-      statistics: Statistics
       player_statistics: Players Stats
-      calendar: Calendar
     transfers:
       all: Transfers
       create: Create a new player
     careers:
       now_end: now
+  pagination:
+    first: "&laquo; First"
+    last: "Last &raquo;"
+    previous: "&lsaquo; Prev"
+    next: "Next &rsaquo;"
+    truncate: "&hellip;"
   buttons:
-    sign_up: Sign up
-    sign_in: Sign in
-    logout: Logout
-    save: Save
-    show: Show
-    edit: Edit
-    back: Back
-    buy: Buy
-    sell: Sell
     transfer: Create a transfer
-    increase: Increase
-    confirm: Confirm
-    cancel: Cancel
-    search: Search
-  prompt:
-    day: Day
-    month: Month
-    year: Year
-    choose_country: Choose country
   errors:
     any: An errors occurred when saving.

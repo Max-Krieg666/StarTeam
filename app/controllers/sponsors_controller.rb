@@ -26,6 +26,9 @@ class SponsorsController < ApplicationController
   end
 
   def sponsor_params
-    params.require(:sponsor).permit(:title, :specialization, :loyalty_factor, :cost_of_full_stake)#, :win_prize, :draw_prize, :lost_prize)
+    params.require(:sponsor).permit(
+      :title, :specialization,
+      :loyalty_factor, :cost_of_full_stake
+    )#, :win_prize, :draw_prize, :lost_prize)
   end
 end

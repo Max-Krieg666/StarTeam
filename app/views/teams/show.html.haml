@@ -7,7 +7,9 @@
       = image_tag @team.country.flag.url, title: @team.country.title
   %p
     %b Владелец:
-    = link_to @team.user.login, @team.user, style: "color: #FFA500", class: 'btn btn-link'
+    = link_to @team.user, style: "color: #FFA500", class: 'btn btn-link' do
+      = inline_svg 'no-avatar.svg', class: 'svg-picture-btn'
+      = @team.user.login
   %p
     %b Спонсор:
     = link_to @team.sponsor.title, [@team, @team.sponsor], style: "color: #550", class: 'btn btn-link'
@@ -96,12 +98,13 @@
           %td
             / = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
             / = inline_svg 'edit.svg', class: 'svg-picture-btn'
-            = link_to pl, class: 'btn btn-default', title: 'Обзор игрока' do
+            = link_to pl, title: 'Обзор игрока' do
               = inline_svg 'street-view.svg', class: 'svg-picture-btn green'
             -if @current_user == @team.user
-              = link_to new_transfer_path(player_id: pl.id), class: 'btn btn-default', title: 'Выставить на трансфер' do
+              = link_to new_transfer_path(player_id: pl.id), title: 'Выставить на трансфер' do
                 = inline_svg 'transfer.svg', class: 'svg-picture-btn'
-              = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-default' do
+                %span
+              = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока' do
                 = inline_svg 'usd.svg', class: 'svg-picture-btn green'
       %tr{class: 'info'}
         %th.text-center{'colspan': 2}

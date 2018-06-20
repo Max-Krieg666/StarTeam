@@ -50,7 +50,7 @@ class PlayersController < ApplicationController
     elsif cb.capacity == @current_user_team.squad_size
       flash[:danger] = I18n.t('flash.players.club_base_low_level')
       redirect_to [@current_user_team, cb]
-    elsif @current_user_team.budget < @player.price
+    elsif @current_user_team.low_budget?(@player.price)
       flash[:danger] = I18n.t('flash.players.not_enough_money')
       redirect_to players_path
     else # приобретение игрока возможно
@@ -86,7 +86,7 @@ class PlayersController < ApplicationController
     if @player.team != @current_user_team
       flash[:danger] = I18n.t('flash.insufficient_privileges')
       redirect_to @player
-    elsif @current_user_team.squad_size < 15
+    elsif @current_user_team.low_squad?
       flash[:danger] = I18n.t('flash.teams.low_squad')
       redirect_to @current_user_team
     else
@@ -109,10 +109,21 @@ class PlayersController < ApplicationController
           end
         end
         @player.update(state: 0, team_id: nil, number: nil)
-        @player.careers.active.first.update(active: false, age_end: @player.age)
+        if @player.careers.active.first
+          @player.careers.active.first.update_attributes(active: false, age_end: @player.age)
+        else
+          @player.careers.create(
+            active: false, age_begin: @player.age, age_end: @player.age,
+            team_title: @current_user_team.title,
+          ).save!
+        end
         @current_user_team.budget += @player.price / 2.0
         @current_user_team.save
-        Operation.create(team_id: @current_user_team.id, sum: @player.price / 2.0, kind: true, title: 'Продажа игрока на рынок свободных агентов')
+        @current_user_team.operations.create(
+          sum: @player.price / 2.0,
+          kind: true,
+          title: 'Продажа игрока на рынок свободных агентов'
+        )
       end
       flash[:notice] = I18n.t('flash.players.sold')
       redirect_to @current_user_team

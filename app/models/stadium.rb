@@ -1,4 +1,7 @@
 class Stadium < ActiveRecord::Base
+  DEFAULT_LEVEL = 5
+  MAX_CAPACITY = 100_000
+
   belongs_to :team, inverse_of: :stadium
 
   def to_param
@@ -42,6 +45,22 @@ class Stadium < ActiveRecord::Base
 
   def seatcost
     LEVELS[level][3]
+  end
+
+  def max_capacity?
+    capacity == MAX_CAPACITY && max_level?
+  end
+
+  def max_level?
+    level == DEFAULT_LEVEL
+  end
+
+  def low_capacity?(value)
+    capacity > value
+  end
+
+  def low_level?(value)
+    max_capacity < value
   end
 end
 # level 1 --> COST: FREE  ;  capacity 200-1 000 [default]

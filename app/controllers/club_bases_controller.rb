@@ -19,12 +19,12 @@ class ClubBasesController < ApplicationController
   def level_up
     team = @club_base.team
     # увеличение уровня базы клуба
-    if @club_base.level == 5
+    if @club_base.max_level?
       flash[:danger] = I18n.t('flash.bases.max_level')
       redirect_to [team, @club_base]
     else
       values = ClubBase::LEVELS[@club_base.level + 1]
-      if team.budget - values[0] < 0 # цена больше бюджета
+      if team.low_budget?(values[0]) # цена больше бюджета
         flash[:danger] = I18n.t('flash.bases.not_enough_money')
         redirect_to [team, @club_base]
       else
@@ -45,12 +45,12 @@ class ClubBasesController < ApplicationController
   def training_fields_up
     team = @club_base.team
     # увеличение к-во тренировочных полей
-    if @club_base.training_fields == 5
+    if @club_base.max_training_fields?
       flash[:danger] = I18n.t('flash.bases.maximum_training_fields')
       redirect_to [team, @club_base]
     else
       values = ClubBase::TRAINING_FIELDS[@club_base.training_fields + 1]
-      if team.budget - values[0] < 0 # цена больше бюджета
+      if team.low_budget?(values[0]) # цена больше бюджета
         flash[:danger] = I18n.t('flash.bases.not_enough_money')
         redirect_to [team, @club_base]
       else

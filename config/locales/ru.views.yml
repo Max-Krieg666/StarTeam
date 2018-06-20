@@ -72,6 +72,7 @@ ru:
     careers:
       now_end: н.в.
   buttons:
+    back_to: Вернуться к
     sign_up: Регистрация
     sign_in: Войти
     logout: Выйти
@@ -86,6 +87,8 @@ ru:
     confirm: Подтвердить
     cancel: Отменить
     search: Искать
+    go_to_club_base_creating: Перейти к созданию базы клуба
+    go_to_stadium_creating: Перейти к созданию стадиона
   prompt:
     day: День
     month: Месяц

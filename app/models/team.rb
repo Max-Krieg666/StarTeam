@@ -148,4 +148,12 @@ class Team < ActiveRecord::Base
       full_cost: number_to_currency(full_cost, locale: :en, precision: 3)
     }
   end
+
+  def low_budget?(cost)
+    budget < cost
+  end
+
+  def low_squad?
+    squad_size < 15
+  end
 end

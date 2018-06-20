@@ -5,7 +5,7 @@
         = inline_svg 'bars.svg', class: 'svg-picture'
       -if @current_user
         -unread_notifications = @current_user.unread_notifications.count
-        %div{ class: 'btn-group' }
+        .div{ class: 'btn-group' }
           %button{ id: "main_menu_btn", type: "button", class: "btn btn-link navbar-brand dropdown-toggle", data: { toggle: "dropdown" } }
             Меню
             %span{ class: "badge" }= unread_notifications

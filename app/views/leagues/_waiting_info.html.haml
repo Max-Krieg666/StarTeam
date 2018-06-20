@@ -1,6 +1,6 @@
 .center
   %h3
-    #{I18n.t('leagues.participants')}: #{@league.teams_size}/24
+    #{t('leagues.participants')}: #{@league.teams_size}/24
   %h3
     #{League.human_attribute_name(:start_time)}: #{l @league.start_time}
   %h3
@@ -15,7 +15,7 @@
     .progress-bar.progress-bar-warning.progress-bar-striped{ role: "progressbar", 'aria-valuenow' => "#{@league.teams_size - 4}", 'aria-valuemin'=>'0', 'aria-valuemax' => '20', style: "width: #{@league.percentage - 17}%" }
       %span.sr-only
 .center
-  %h3 #{I18n.t('leagues.participants_list')}:
+  %h3 #{t('leagues.participants_list')}:
   %ul.list-group.narrow-list-group
     -@league.team_leagues.each_with_index do |team_league, i|
       .li.list-group-item

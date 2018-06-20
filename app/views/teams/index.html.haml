@@ -17,22 +17,22 @@
   %tbody
     - @teams.each do |team|
       %tr
-        %td= link_to team.user.login, team.user, style: "color: #FFA500"
-        %td= link_to team.title, team, style: "color: #00F"
+        %td= link_to team.user.login, team.user, style: 'color: #FFA500'
+        %td= link_to team.title, team, style: 'color: #00F'
         %td
-          = link_to team.sponsor.title, [team, team.sponsor], style: "color: #550"
+          = link_to team.sponsor.title, [team, team.sponsor], style: 'color: #550'
         %td
           -if team.stadium
-            = link_to "#{team.stadium.title} (#{team.stadium.capacity})", [team, team.stadium], style: "color: #F00"
+            = link_to "#{team.stadium.title} (#{team.stadium.capacity})", [team, team.stadium], style: 'color: #F00'
           -else
             .text-danger Не создан!
         %td
           -if team.club_base
-            =link_to team.club_base.title, [team, team.club_base], style: "color: #458B74"
+            = link_to team.club_base.title, [team, team.club_base], style: 'color: #458B74'
           -else
             .text-danger Не создана!
         %td= team.budget_to_currency
-        %td= number_to_human(team.fans, locale: :en, units: { thousand: "K",million:"M" })
+        %td= number_to_human(team.fans, locale: :en, units: { thousand: 'K', million: 'M' })
         -if @current_user.moderator?
           %td.text-center
             = link_to edit_team_path(team), class: 'btn btn-link' do
