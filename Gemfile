@@ -1,18 +1,20 @@
 source 'https://rubygems.org'
 # main gem
-gem 'rails', '4.2.0'
+gem 'rails', '~> 4.2.7'
 
 # database
 gem 'pg'
 
 # css
-gem 'sass-rails', '~> 5.0'
-gem 'haml-rails'
+gem 'sass-rails', '>= 5.0.7'
+gem 'haml-rails', '~> 1.0'
 gem 'bootstrap-sass'
-gem 'paperclip'
+gem 'paperclip', '~> 5.2.0'
 gem 'bootstrap-select-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+
+gem 'nokogiri', '~> 1.8.2'
 
 # scheduling
 gem 'round_robin_tournament'

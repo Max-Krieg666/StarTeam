@@ -1,5 +1,5 @@
 class ClubBase < ActiveRecord::Base
-  belongs_to :team
+  belongs_to :team, inverse_of: :club_base
 
   def to_param
     title
@@ -10,7 +10,7 @@ class ClubBase < ActiveRecord::Base
   end
 
   def find_by_title(input)
-    self.where(title: input).first
+    where(title: input).first
   end
 
   LEVELS = {
@@ -19,7 +19,7 @@ class ClubBase < ActiveRecord::Base
     3 => [400000.0,  0.2,  24],
     4 => [1000000.0, 0.35, 26],
     5 => [2500000.0, 0.25, 30]
-  }
+  }.freeze
 
   TRAINING_FIELDS = {
     1 => [0,         0],
@@ -27,7 +27,7 @@ class ClubBase < ActiveRecord::Base
     3 => [750000.0,  0.2],
     4 => [1500000.0, 0.35],
     5 => [3500000.0, 0.25]
-  }
+  }.freeze
 
   def next_level_cost
     LEVELS[level + 1][0]

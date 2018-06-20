@@ -24,6 +24,12 @@ ru:
       transfer: На трансфере
   views:
     site_title: Футбольный менеджер StarTeam
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Предыдущая"
+      next: "Следующая &rsaquo;"
+      truncate: "&hellip;"
     users:
       all: Все пользователи
       my_page: Моя страница

@@ -1,8 +1,8 @@
 class Transfer < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
-  belongs_to :player
-  belongs_to :vendor, class_name: 'Team'
-  belongs_to :purchaser, class_name: 'Team'
+  belongs_to :player, inverse_of: :transfers
+  belongs_to :vendor, class_name: 'Team', inverse_of: :transfer
+  belongs_to :purchaser, class_name: 'Team', inverse_of: :transfer
 
   enum status: [
     :active,

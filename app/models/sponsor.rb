@@ -1,5 +1,5 @@
 class Sponsor < ActiveRecord::Base
-  belongs_to :team
+  belongs_to :team, inverse_of: :sponsor
 
   validates :title, presence: true, length: { maximum: 30 }
   validates :loyalty_factor, presence: true, numericality: { greater_than: -5.0 }

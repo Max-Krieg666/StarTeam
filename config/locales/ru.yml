@@ -1,11 +1,4 @@
 ru:
-  views:
-    pagination:
-      first: "&laquo; Первая"
-      last: "Последняя &raquo;"
-      previous: "&lsaquo; Предыдущая"
-      next: "Следующая &rsaquo;"
-      truncate: "&hellip;"
   helpers:
     page_entries_info:
       one_page:
@@ -164,3 +157,4 @@ ru:
       active: Идёт
       finished: Завершён
     participants: Участники
+  birthday_incorrect: ' не существует!'

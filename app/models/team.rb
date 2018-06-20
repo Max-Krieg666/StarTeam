@@ -1,17 +1,17 @@
 class Team < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   
-  belongs_to :user
-  belongs_to :country
-  has_one :sponsor
-  has_one :stadium
-  has_one :club_base
-  has_many :players
-  has_many :transfers
-  has_many :operations
+  belongs_to :user, inverse_of: :team
+  belongs_to :country, inverse_of: :teams
+  has_one :sponsor, inverse_of: :team
+  has_one :stadium, inverse_of: :team
+  has_one :club_base, inverse_of: :team
+  has_many :players, inverse_of: :team
+  has_many :transfers, inverse_of: :team
+  has_many :operations, inverse_of: :team
   has_many :team_leagues, class_name: 'TeamLeague'
   has_many :team_cups, class_name: 'TeamCup'
-  has_many :games
+  has_many :games, inverse_of: :team
 
   def basic_order
     players.order('basic desc, position1 asc, skill_level desc')
