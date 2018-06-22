@@ -14,9 +14,11 @@
 - lastname: Vilakati
 - lastname: Mdluli
 - lastname: Mkhonta
+- lastname: Mkhontfo
 - lastname: Tumbumuzi
 - lastname: Dube
 - lastname: Mavuso
+- lastname: Hlatjwako
 - lastname: Hlophe
 - lastname: Shabangu
 - lastname: Masuku
@@ -41,6 +43,8 @@
 - lastname: Dludlu
 - lastname: Mthethwa
 - lastname: Mnisi
+- lastname: Badenhorst
+- lastname: Ntimane
 - lastname: Ndlangamandla
 - lastname: Nhlabatsi
 - lastname: Mavimbela
@@ -53,6 +57,7 @@
 - lastname: Mkhatshwa
 - lastname: Gwebu
 - lastname: Mkhwanazi
+- lastname: Mkhweli
 - lastname: Malaza
 - lastname: Makhanya
 - lastname: Maphalala
@@ -61,6 +66,7 @@
 - lastname: Sukati
 - lastname: Mngomezulu
 - lastname: Mndzebele
+- lastname: Chabanku
 - lastname: Ndzimandze
 - lastname: Vilane
 - lastname: Ngcamphalala
@@ -146,6 +152,7 @@
 - lastname: Patel
 - lastname: Earnshaw
 - lastname: Henwood
+- lastname: Thindwa
 - lastname: Hlope
 - lastname: Makama
 - lastname: Mbuli
