@@ -1,6 +1,7 @@
 ---
 - name: Chipako
 - name: Alinafe
+- name: Beston
 - name: Chifundo
 - name: Chifuniro
 - name: Chikondi
@@ -11,18 +12,23 @@
 - name: Dalitso
 - name: Fatsani
 - name: Ganizani
+- name: James
 - name: Kondwani
 - name: Kumbukani
 - name: Limbani
 - name: Limbikani
+- name: Linos
 - name: Madalitso
 - name: Mavuto
 - name: Mayamiko
 - name: Mayeso
+- name: Mike
 - name: Mphatso
 - name: Mtendere
+- name: Musonda
 - name: Pemphero
 - name: Pilirani
+- name: Rahman
 - name: Tadala
 - name: Takondwa
 - name: Tamandani
