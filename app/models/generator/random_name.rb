@@ -432,7 +432,7 @@ module Generator
         file_lastnames = 'samoan'
       when 171
         # Свазиленд
-        file_names = rand(44) > 27 ? 'swaziland' : 'south_african'
+        file_names = rand(44) > 27 ? 'swaziland' : 'sar'
         file_lastnames = 'swaziland'
       when 173, 232
         # Северная Корея, Южная Корея
