@@ -124,31 +124,6 @@ class Team < ActiveRecord::Base
     number_to_currency(budget, precision: 3, locale: :en)
   end
 
-  def averages
-    av_skills = 0
-    av_age = 0
-    av_price = 0
-    av_tal = 0
-    full_power = 0
-    full_cost = 0
-    players.each do |pl|
-      av_skills += pl.skill_level
-      av_age += pl.age
-      av_price += pl.price
-      av_tal += pl.talent
-      full_power += pl.skill_level
-      full_cost += pl.price
-    end
-    {
-      av_skills: (av_skills / squad_size.to_f).round(2),
-      av_age: (av_age / squad_size.to_f).round(2),
-      av_price: number_to_currency((av_price / squad_size.to_f), locale: :en, precision: 3),
-      av_tal: (av_tal / squad_size.to_f).round(1),
-      full_power: full_power,
-      full_cost: number_to_currency(full_cost, locale: :en, precision: 3)
-    }
-  end
-
   def low_budget?(cost)
     budget < cost
   end

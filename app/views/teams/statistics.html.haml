@@ -66,10 +66,10 @@
             = pl.full_position_name
           %td{title: pl.real_position}
             = pl.real_position_name
-          %td= pl.talent
-          %td= pl.age
-          %td= pl.skill_level
-          %td= pl.price_to_currency
+          %td.js-talent= pl.talent
+          %td.js-age= pl.age
+          %td.js-skills= pl.skill_level
+          %td.js-price= pl.price_to_currency
           %td #{pl.season_games}/#{pl.all_games}
           %td #{pl.season_conceded_goals}/#{pl.all_conceded_goals}
           %td #{pl.season_goals}/#{pl.all_goals}
@@ -82,31 +82,25 @@
               .li{style: "color: #00F", title: "Основной состав"} О
             -else
               .li{style: "color: #D00", title: "Запас"} З
-      %tr{class: 'info'}
+      %tr{class: 'info js-averages'}
         %th.text-center{'colspan': 2}
           Всего игроков:
-          %span.text-danger
+          %span.text-danger#js-squad_size
             = @team.squad_size
         %th.text-center{'colspan': 3}
           Среднее по команде:
-        %th.text-center.text-danger
-          = @team.averages[:av_tal]
-        %th.text-center.text-danger
-          = @team.averages[:av_age]
-        %th.text-center.text-danger
-          = @team.averages[:av_skills]
-        %th.text-center.text-danger
-          = @team.averages[:av_price]
+        %th.text-center.text-danger#js-average-talent
+        %th.text-center.text-danger#js-average-age
+        %th.text-center.text-danger#js-average-skills
+        %th.text-center.text-danger#js-average-price
         %th{'colspan': 8}
       %tr{class: 'info'}
         %th{'colspan': 2}
         %th.text-center{'colspan': 3}
           Суммарно:
         %th{'colspan': 2}
-        %th.text-center.text-danger
-          = @team.averages[:full_power]
-        %th.text-center.text-danger
-          = @team.averages[:full_cost]
+        %th.text-center.text-danger#js-full-power
+        %th.text-center.text-danger#js-full-cost
         %th{'colspan': 8}
 
   .btn-group
