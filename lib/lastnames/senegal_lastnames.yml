@@ -1,13 +1,17 @@
 ---
 - lastname: Ba
 - lastname: Babacar
+- lastname: Badiane
+- lastname: Badji
+- lastname: Baldé
 - lastname: Bamba
 - lastname: Bangoura
 - lastname: Baraye
 - lastname: Barro-Diene
+- lastname: Bathily
 - lastname: Beye
 - lastname: Bige
-- lastname: Bocande
+- lastname: Bocandé
 - lastname: Boubacar
 - lastname: Boye
 - lastname: Camara
@@ -42,6 +46,7 @@
 - lastname: Diaw
 - lastname: Diawara
 - lastname: Diedhiou
+- lastname: Diémé
 - lastname: Diene
 - lastname: Dieng
 - lastname: Dieye
@@ -52,6 +57,7 @@
 - lastname: Djiba
 - lastname: Djiby
 - lastname: Djilobodji
+- lastname: Djitte
 - lastname: Dodds
 - lastname: Doumbia
 - lastname: Drame
@@ -60,6 +66,7 @@
 - lastname: Fall
 - lastname: Faty
 - lastname: Faye
+- lastname: Fedior
 - lastname: Fuema
 - lastname: Gadiaga
 - lastname: Gadio
@@ -78,7 +85,9 @@
 - lastname: Kamara
 - lastname: Kande
 - lastname: Kandji
+- lastname: Kanouté
 - lastname: Kante
+- lastname: Kanté
 - lastname: Kasse
 - lastname: Kebe
 - lastname: Keita
@@ -98,6 +107,7 @@
 - lastname: Lopy
 - lastname: Loum
 - lastname: Ly
+- lastname: "M'Baye"
 - lastname: Maiga
 - lastname: Mambety
 - lastname: Mandiang
@@ -106,6 +116,8 @@
 - lastname: Mangane
 - lastname: Mansaly
 - lastname: Mansour
+- lastname: Mar
+- lastname: Marone
 - lastname: Marre
 - lastname: Mbacke
 - lastname: Mbao
@@ -119,6 +131,8 @@
 - lastname: Moizan
 - lastname: Mordasini
 - lastname: Moreau
+- lastname: "N'Diaye"
+- lastname: "N'Doye"
 - lastname: Ndao
 - lastname: Ndaw
 - lastname: Ndiaga
@@ -128,6 +142,7 @@
 - lastname: Ndoye
 - lastname: Neumann
 - lastname: Ngom
+- lastname: Nguette
 - lastname: Niang
 - lastname: Niasse
 - lastname: Niouky
@@ -147,6 +162,7 @@
 - lastname: Sampil
 - lastname: Sane
 - lastname: Sankare
+- lastname: Sankharé
 - lastname: Sarr
 - lastname: Savane
 - lastname: Seck
@@ -168,6 +184,7 @@
 - lastname: Souare
 - lastname: Sougou
 - lastname: Soumah
+- lastname: Soumaré
 - lastname: Sow
 - lastname: Sy
 - lastname: Sylla
@@ -189,6 +206,7 @@
 - lastname: Vieyra
 - lastname: Wade
 - lastname: Wagne
+- lastname: Wagué
 - lastname: Waigo
 - lastname: Yero
 - lastname: Youm

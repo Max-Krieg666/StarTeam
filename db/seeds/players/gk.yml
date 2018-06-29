@@ -154,7 +154,7 @@
   position1: 0
   talent: 3
   age: 29
-  skill_level: 44
+  skill_level: 38
 - name: Daniel Berri
   country_id: 247
   position1: 0
@@ -899,3 +899,33 @@
   talent: 4
   age: 21
   skill_level: 42
+- name: Jørgen Håkonsen
+  country_id: 142
+  position1: 0
+  talent: 7
+  age: 26
+  skill_level: 55
+- name: Ralf Dahlberg
+  country_id: 224
+  position1: 0
+  talent: 4
+  age: 33
+  skill_level: 40
+- name: Tomas Berglund
+  country_id: 224
+  position1: 0
+  talent: 2
+  age: 22
+  skill_level: 45
+- name: Patrick Meyer
+  country_id: 62
+  position1: 0
+  talent: 1
+  age: 30
+  skill_level: 33
+- name: Torbjörn Lundmark
+  country_id: 224
+  position1: 0
+  talent: 8
+  age: 22
+  skill_level: 75

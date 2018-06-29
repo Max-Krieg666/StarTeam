@@ -719,3 +719,33 @@
   talent: 4
   age: 28
   skill_level: 37
+- name: Frode Larsen
+  country_id: 142
+  position1: 4
+  talent: 9
+  age: 20
+  skill_level: 79
+- name: Gylfi Eiriksson
+  country_id: 78
+  position1: 4
+  talent: 9
+  age: 24
+  skill_level: 98
+- name: Bengt Hedlund
+  country_id: 224
+  position1: 4
+  talent: 6
+  age: 29
+  skill_level: 50
+- name: Torstein Naess
+  country_id: 142
+  position1: 4
+  talent: 2
+  age: 29
+  skill_level: 34
+- name: Bertil Wiklund
+  country_id: 224
+  position1: 4
+  talent: 3
+  age: 35
+  skill_level: 45

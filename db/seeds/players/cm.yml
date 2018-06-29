@@ -929,3 +929,33 @@
   talent: 5
   age: 19
   skill_level: 28
+- name: Juuso Kuisma
+  country_id: 212
+  position1: 5
+  talent: 8
+  age: 26
+  skill_level: 58
+- name: Edu Hidalgo
+  country_id: 79
+  position1: 5
+  talent: 3
+  age: 28
+  skill_level: 34
+- name: Eyólfur Helgason
+  country_id: 78
+  position1: 5
+  talent: 6
+  age: 32
+  skill_level: 60
+- name: Magne Bjørndal
+  country_id: 142
+  position1: 5
+  talent: 7
+  age: 24
+  skill_level: 33
+- name: Bjørn Øye
+  country_id: 142
+  position1: 5
+  talent: 2
+  age: 25
+  skill_level: 40

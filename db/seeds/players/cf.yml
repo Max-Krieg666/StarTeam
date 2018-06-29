@@ -62,8 +62,8 @@
 - name: Ragnar Jorgijenson
   country_id: 78
   position1: 8
-  talent: 7
-  age: 20
+  talent: 1
+  age: 24
   skill_level: 45
 - name: Yens Graubber
   country_id: 52
@@ -929,3 +929,33 @@
   talent: 3
   age: 27
   skill_level: 61
+- name: Frank Bjørge
+  country_id: 142
+  position1: 8
+  talent: 3
+  age: 21
+  skill_level: 43
+- name: Østeyn Vatne
+  country_id: 142
+  position1: 8
+  talent: 6
+  age: 33
+  skill_level: 95
+- name: Frank Mjelde
+  country_id: 142
+  position1: 8
+  talent: 2
+  age: 36
+  skill_level: 36
+- name: Egil Gunnarsson
+  country_id: 209
+  position1: 8
+  talent: 4
+  age: 28
+  skill_level: 40
+- name: Björgólfur Gylfason
+  country_id: 78
+  position1: 8
+  talent: 9
+  age: 21
+  skill_level: 43
