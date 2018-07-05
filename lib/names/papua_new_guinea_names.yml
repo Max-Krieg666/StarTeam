@@ -1,97 +1,96 @@
 ---
+- name: Agolave
+- name: Akelika Yaga
+- name: Amborn
+- name: Andagalimp Wak
 - name: Barunoma
 - name: Buassi
-- name: Ewunga Goiba
-- name: Gesupo
-- name: Korpore
-- name: Lowai
-- name: Owa
-- name: Subul
-- name: Towa Ulta
-- name: Tupia Osiro
-- name: Yasa
-- name: Agolave
 - name: Endemongo
+- name: Ewunga Goiba
+- name: Gaima Yokumul
 - name: Gasowe
 - name: Gavey Akamo
+- name: Gerigl Gande
+- name: Gesupo
 - name: Gopie Ataiamelaho
 - name: Isakoa Hepu
 - name: Jokuri Hari
+- name: Kaglnogl
 - name: Kainaro Kravia
+- name: Kaura
 - name: Kepagane Peone
 - name: Khaswaho Baito Heiro
-- name: Kirupano Eza'e
+- name: Kiakoa
+- name: Kimba Kopol
+- name: "Kirupano Eza'e"
 - name: Kize Kize Obaneso
+- name: Klimbil
 - name: Koin
 - name: Kombagle
+- name: Kominika Korua Kolta
+- name: Kominika Kubal Nori
+- name: Kominika Kwipi Nembil
+- name: Komp Nikints
+- name: Kondon Agaundo
+- name: Konia Taglba
+- name: Kopia Kerika Kubal
+- name: Kopia Kerika Rebia
+- name: Kopia Rompinjimp Nanganbia
 - name: Koritoia Ope
+- name: Korpore
+- name: Korul Korul
+- name: Kuan
+- name: Kubarl
+- name: Kumai Kana
 - name: Kumi Kispe
+- name: Kut
+- name: Loo
+- name: Lowai
+- name: Maasi Pinjinga
+- name: Maba
+- name: Maepkang Miti
+- name: Miok
+- name: Mirani Gena
+- name: Mukuka Wingti
+- name: Naia Imulan
+- name: Namborn
+- name: Nambuka Ninji
+- name: Nambuka Titip
+- name: Nambuka Wamp Wan
+- name: Napornga Mare
+- name: Narmu Varnu
 - name: Nonggorr
+- name: Obi
 - name: Okame
+- name: Onguglo Komugl
+- name: Opa
+- name: Opramb Rumint
 - name: Ot
+- name: Owa
 - name: Pal
 - name: Pena
+- name: Penapul
 - name: Peng
+- name: Petro Pisine
+- name: Pinketa
 - name: Pok
 - name: Pora
+- name: Powa
 - name: Pupun
 - name: Seriate
 - name: Sinamoi
 - name: Sole Sole
-- name: Ulaline
-- name: Vojavona
-- name: Wera Mori
-- name: Yanopa Kai
-- name: Gaima Yokumul
-- name: Gerigl Gande
-- name: Kaglnogl
-- name: Kimba Kopol
-- name: Kondon Agaundo
-- name: Konia Taglba
-- name: Kopia Kerika Kubal
-- name: Korul Korul
-- name: Kumai Kana
-- name: Mirani Gena
-- name: Onguglo Komugl
-- name: Ulka Wena
-- name: Kopia Kerika Rebia
-- name: Maasi Pinjinga
-- name: Napornga Mare
-- name: Isakoa Hepu
-- name: Kopia Rompinjimp Nanganbia
-- name: Narmu Varnu
-- name: Akelika Yaga
-- name: Andagalimp Wak
-- name: Kominika Korua Kolta
-- name: Kominika Kubal Nori
-- name: Kominika Kwipi Nembil
-- name: Nambuka Ninji
-- name: Nambuka Titip
-- name: Nambuka Wamp Wan
-- name: Klimbil
-- name: Komp Nikints
-- name: Mukuka Wingti
-- name: Opa
-- name: Opramb Rumint
-- name: Powa
-- name: Wak
-- name: Kuan
-- name: Kut
-- name: Penapul
-- name: Wai
-- name: Wia Tugl
-- name: Amborn
-- name: Kiakoa
-- name: Loo
-- name: Miok
-- name: Naia Imulan
-- name: Namborn
-- name: Petro Pisine
-- name: Pinketa
+- name: Subul
 - name: Teatakan
-- name: Kaura
-- name: Kubarl
-- name: Maba
-- name: Maepkang Miti
-- name: Obi
+- name: Towa Ulta
+- name: Tupia Osiro
+- name: Ulaline
+- name: Ulka Wena
+- name: Vojavona
 - name: Wager
+- name: Wai
+- name: Wak
+- name: Wera Mori
+- name: Wia Tugl
+- name: Yanopa Kai
+- name: Yasa

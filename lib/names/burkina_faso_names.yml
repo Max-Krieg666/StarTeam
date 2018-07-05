@@ -1,6 +1,4 @@
 ---
-- name: Sangoulé
-- name: Sayé
 - name: Abanobi
 - name: Abaronye
 - name: Abasi
@@ -365,6 +363,8 @@
 - name: Rudo
 - name: Sabola
 - name: Sakidi
+- name: Sangoulé
+- name: Sayé
 - name: Sekai
 - name: Sekani
 - name: Sekou

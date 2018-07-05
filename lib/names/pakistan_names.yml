@@ -1,6 +1,7 @@
 ---
 - name: Aamir
 - name: Abbas
+- name: Abdul
 - name: Abdul Hafeez
 - name: Abdul Hakeen
 - name: Abdul Hakim
@@ -31,14 +32,18 @@
 - name: Aga
 - name: Agha
 - name: Ahmad
+- name: Ahmed
 - name: Ajaz
 - name: Akbar
+- name: Akbar Khan
 - name: Alam
 - name: Ali
 - name: Allahbukhsh
 - name: Allahditta
 - name: Allahrakha
+- name: Amenoolah Khan
 - name: Amin
+- name: Amir
 - name: Amirr
 - name: Amjad
 - name: Anis
@@ -49,10 +54,12 @@
 - name: Asif
 - name: Avid
 - name: Ayub
+- name: Ayub Khan
 - name: Azhar
 - name: Aziz
 - name: Babar
 - name: Baber
+- name: Babur
 - name: Badar
 - name: Bahadur
 - name: Baqar
@@ -60,9 +67,12 @@
 - name: Bazid
 - name: Bhasin
 - name: Bilal
+- name: Bishen
 - name: Busuttil
 - name: Danish
+- name: Danyal
 - name: Daud
+- name: Daud Khan
 - name: Din
 - name: Dost
 - name: Ebrahim
@@ -75,25 +85,39 @@
 - name: Fareed
 - name: Farook
 - name: Farooq
+- name: Farrukh
 - name: Faruq
+- name: Feroz
+- name: Feroze
 - name: Firdaus
 - name: Firdos
 - name: Firdose
 - name: Firdoze
 - name: Firoz
+- name: Futteh Khan
 - name: Gabir
 - name: Galal
 - name: Ghulam
+- name: Ghulam Khan
+- name: Gobind
 - name: Guda
+- name: Gul
+- name: Gulbahar
+- name: Gulshan
 - name: Gulzar
+- name: Gurdana Khan
 - name: Habib
 - name: Hafiz
 - name: Haidar
 - name: Hamid
 - name: Hanif
+- name: Harinder
+- name: Haris
+- name: Haroon
 - name: Harun
 - name: Hasan
 - name: Hashim
+- name: Hassan
 - name: Haydar
 - name: Humayun
 - name: Husain
@@ -104,9 +128,13 @@
 - name: Ibraheem
 - name: Idris
 - name: Ijaz
+- name: Ilderim Khan
 - name: Iman
 - name: Imran
+- name: Imran Khan
 - name: Inam
+- name: Inderjit
+- name: Inderpal
 - name: Inzamam
 - name: Iqbal
 - name: Irfan
@@ -117,37 +145,54 @@
 - name: Jafar
 - name: Jaffar
 - name: Jaffer
+- name: Jagjit
 - name: Jahangir
+- name: Jahangir Khan
 - name: Jamal
 - name: Jameel
 - name: Jamil
 - name: Jan
 - name: Jan Muhammad
+- name: Jansher Khan
+- name: Jaswinder
 - name: Javaid
 - name: Javed
 - name: Jhanda
+- name: Jitender
+- name: Jitinder
 - name: Juda
 - name: Kadir
 - name: Kala
 - name: Kamil
 - name: Karim
+- name: Kathe Khan
 - name: Kazi
 - name: Khaleel
 - name: Khalid
 - name: Khalig
 - name: Khalil
+- name: Khan
 - name: Khurshid
 - name: Khwaja
+- name: Kiran
 - name: Kudrat
 - name: Kuukburi
+- name: Lakshman Khan
 - name: Lateef
 - name: Latif
 - name: Liaqat
 - name: Mabarak
+- name: Mahinder
 - name: Mahmood
+- name: Mahmud
 - name: Majid
+- name: Maka Khan
+- name: Makarram Khan
+- name: Mandeep
 - name: Mangal
+- name: Maninder
 - name: Mansoor
+- name: Mansur Khan
 - name: Maroof
 - name: Maslama
 - name: Masood
@@ -156,27 +201,36 @@
 - name: Mehmud
 - name: Merdasan
 - name: Mirza
+- name: Mohammad
+- name: Mohinder
 - name: Mohsin
 - name: Moin
+- name: Moin Khan
 - name: Mostafa
 - name: Mudasser
+- name: Muhammad
 - name: Muhammed
 - name: Muhsin
 - name: Mujtaba
 - name: Mukhtar
 - name: Muneer
 - name: Munir
+- name: Murad
 - name: Mushtaq
 - name: Nabibukhsh
 - name: Nadim
 - name: Nadir
 - name: Naim
+- name: Narinder
+- name: Naseem
+- name: Nasim
 - name: Nasir
 - name: Naveed
 - name: Nazar
 - name: Nazir
 - name: Niaz
 - name: Noor
+- name: Nur
 - name: Omar
 - name: Osman
 - name: Parvaiz
@@ -186,16 +240,20 @@
 - name: Qadir
 - name: Qalander
 - name: Qasim
+- name: Rabnawaz Khan
 - name: Rafee
 - name: Rafi
+- name: Rafik Khan
 - name: Rafiq
 - name: Rahim
 - name: Rahman
 - name: Rajab
 - name: Rajah
+- name: Rajinder
 - name: Rana
 - name: Rao
 - name: Rashid
+- name: Ravinder
 - name: Raza
 - name: Razak
 - name: Rezaul
@@ -203,6 +261,7 @@
 - name: Riza
 - name: Rizwan
 - name: Roshan
+- name: Rostom Khan
 - name: Sabir
 - name: Saeed
 - name: Safdar
@@ -219,6 +278,7 @@
 - name: Sartaj
 - name: Shabbir
 - name: Shadaf
+- name: Shadman Khan
 - name: Shafee
 - name: Shafgat
 - name: Shafi
@@ -228,11 +288,15 @@
 - name: Shahid
 - name: Shahjahan
 - name: Shahnawaz
+- name: Shahnaz
+- name: Shahrukh
 - name: Shahzad
 - name: Shakil
 - name: Shakir
 - name: Shamim
 - name: Shamshad
+- name: Shamsuddin Khan
+- name: Shandar
 - name: Sharafat
 - name: Sharif
 - name: Shaukat
@@ -242,11 +306,15 @@
 - name: Shokat
 - name: Shouket
 - name: Shuja
+- name: Sifarish Khan
+- name: Sikandar
 - name: Sofian
+- name: Sohail
 - name: Sufyan
 - name: Suhail
 - name: Sulaiman
 - name: Sultan
+- name: Surinder
 - name: Syed
 - name: Tahir
 - name: Tamwar
@@ -260,8 +328,10 @@
 - name: Wasim
 - name: Womiq
 - name: Yahya
+- name: Yakub Khan
 - name: Yaqub
 - name: Yasin
+- name: Yasir
 - name: Yasruddin
 - name: Yazid
 - name: Younes
@@ -277,5 +347,6 @@
 - name: Zaman
 - name: Zamir
 - name: Zayyad
+- name: Zeenan Khan
 - name: Zia
 - name: Zulfikkur

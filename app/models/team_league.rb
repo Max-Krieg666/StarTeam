@@ -5,10 +5,10 @@ class TeamLeague < ActiveRecord::Base
   validates :team, uniqueness: { scope: :league }
 
   def goals_readable
-  	[goals, goals_conceded].join('-')
+    [goals, goals_conceded].join('-')
   end
 
   def goals_difference
-  	goals - goals_conceded
+    goals - goals_conceded
   end
 end

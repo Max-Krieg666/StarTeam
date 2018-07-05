@@ -1,13 +1,4 @@
 ---
-- name: Batbayar
-- name: Bat-Erdene
-- name: Chingis
-- name: Ganbaatar
-- name: Ganzorig
-- name: Naranbaatar
-- name: Nergüi
-- name: Otgonbayar
-- name: Tömörbaatar
 - name: Al
 - name: Alagh
 - name: Altan
@@ -18,7 +9,9 @@
 - name: Ariunbold
 - name: Arslan
 - name: Baichu
+- name: Bat-Erdene
 - name: Batachikhan
+- name: Batbayar
 - name: Batu
 - name: Bayan
 - name: Bayar
@@ -44,6 +37,7 @@
 - name: Checheg
 - name: Chengelay
 - name: Cheren
+- name: Chingis
 - name: Chinua
 - name: Chulunny
 - name: Dalan
@@ -66,6 +60,8 @@
 - name: Gal
 - name: Galdan
 - name: Gan
+- name: Ganbaatar
+- name: Ganzorig
 - name: Genghis
 - name: Gerel
 - name: Ghazan
@@ -76,7 +72,7 @@
 - name: Gutchluk
 - name: Guyuk
 - name: "Ho'elun"
-- name: horloogiyn
+- name: Horloogiyn
 - name: Houlun
 - name: Hulagu
 - name: Inalchuk
@@ -112,9 +108,11 @@
 - name: Mukuli
 - name: Munlik
 - name: Naiman
+- name: Naranbaatar
 - name: Nasan
 - name: Nayan
 - name: Negan
+- name: Nergüi
 - name: Nevniz
 - name: Nogay
 - name: Noyon
@@ -122,6 +120,7 @@
 - name: Ogotai
 - name: Osol
 - name: Otchigin
+- name: Otgonbayar
 - name: Oyugun
 - name: Punsalmaagiyn
 - name: Puntsagiyn
@@ -166,6 +165,7 @@
 - name: Tuli
 - name: Tuluy
 - name: Tumen
+- name: Tömörbaatar
 - name: Ulagan
 - name: Unegen
 - name: Vachir

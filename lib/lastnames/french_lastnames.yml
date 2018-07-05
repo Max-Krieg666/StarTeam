@@ -539,11 +539,12 @@
 - lastname: Curutchet
 - lastname: Cusson
 - lastname: Cuvier
-- lastname: d'Aigreville
-- lastname: d'Aubec
-- lastname: d'Espivant
-- lastname: d'Orsay
-- lastname: d'Orty
+- lastname: "d'Aigreville"
+- lastname: "d'Aubec"
+- lastname: "d'Espivant"
+- lastname: "d'Orsay"
+- lastname: "d'Orty"
+- lastname: "D'hauterive"
 - lastname: Daboussier
 - lastname: Dabry
 - lastname: Dacier
@@ -674,7 +675,6 @@
 - lastname: Devantier
 - lastname: Dewees
 - lastname: Deylaud
-- lastname: D'hauterive
 - lastname: Dhenin
 - lastname: Dhinnin
 - lastname: Diderot
@@ -1106,6 +1106,7 @@
 - lastname: Kiffer
 - lastname: Killy
 - lastname: Kucheida
+- lastname: "L'Heureux"
 - lastname: La Berche
 - lastname: La Pérouse
 - lastname: La Rochenoire
@@ -1254,7 +1255,6 @@
 - lastname: Levienaise
 - lastname: Leydier
 - lastname: Lézine
-- lastname: L'Heureux
 - lastname: Liegeois
 - lastname: Lievremont
 - lastname: Ligier

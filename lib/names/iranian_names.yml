@@ -93,7 +93,7 @@
 - name: Eshqi
 - name: Eskander
 - name: Esmaeel
-- name: Esma'il
+- name: "Esma'il"
 - name: Ezatollah
 - name: Faramarz
 - name: Faraz
@@ -168,7 +168,7 @@
 - name: Iraj
 - name: Isadi
 - name: Jafar
-- name: Ja'far
+- name: "Ja'far"
 - name: Jahandar
 - name: Jahangir
 - name: Jahanshah
@@ -300,14 +300,14 @@
 - name: Roozbeh
 - name: Rostam
 - name: Ruhollah
-- name: Sa'adi
+- name: "Sa'adi"
 - name: Sabbar
 - name: Sadegh
 - name: Sadra
 - name: Sadri
 - name: Saeed
 - name: Safa
-- name: Sa'id
+- name: "Sa'id"
 - name: Salar
 - name: Salman
 - name: Sam

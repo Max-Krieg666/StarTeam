@@ -44,8 +44,8 @@
 - name: Andoni
 - name: Andrés
 - name: Andreu
+- name: Angel
 - name: Ángel
-- name: Àngel
 - name: Angelino
 - name: Aníbal
 - name: Anselmo
@@ -171,12 +171,14 @@
 - name: Edelmiro
 - name: Eder
 - name: Edgardo
+- name: Edinson
 - name: Edmundo
 - name: Edorta
 - name: Eduard
 - name: Eduardo
 - name: Edur
 - name: Efraín
+- name: Egidio
 - name: Eguzki
 - name: Ekain
 - name: Ekaitz
@@ -278,8 +280,8 @@
 - name: Gutxi
 - name: Harkaitz
 - name: Haroldo
+- name: Hector
 - name: Héctor
-- name: Hèctor
 - name: Heliodoro
 - name: Heraclio
 - name: Herberto
@@ -402,13 +404,14 @@
 - name: Mattin
 - name: Matxin
 - name: Mauricio
+- name: Maxi
 - name: Maximiano
 - name: Maximiliano
 - name: Maximino
 - name: Máximo
 - name: Melchor
 - name: Miguel
-- name: Miguelangel
+- name: Miguel Angel
 - name: Miguelito
 - name: Mikel
 - name: Mintxo
@@ -441,8 +444,8 @@
 - name: Oriol
 - name: Oroitz
 - name: Ortzi
+- name: Oscar
 - name: Óscar
-- name: Òscar
 - name: Osvaldo
 - name: Ovidio
 - name: Pablo
@@ -552,8 +555,8 @@
 - name: Tiburcio
 - name: Timoteo
 - name: Tito
+- name: Tomas
 - name: Tomás
-- name: Tomàs
 - name: Toño
 - name: Toribio
 - name: Trinidad

@@ -1,11 +1,11 @@
 .narrow-progress-bar {
-	max-width: 50%;
-	margin-left: 25%;
-	border: 2px groove #000;
-	height: 30px;
+  max-width: 50%;
+  margin-left: 25%;
+  border: 2px groove #000;
+  height: 30px;
 }
 
 .narrow-list-group {
-	max-width: 33%;
-	margin-left: 33%;
+  max-width: 33%;
+  margin-left: 33%;
 }

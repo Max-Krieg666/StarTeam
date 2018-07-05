@@ -611,18 +611,20 @@
 - lastname: Dal Pane
 - lastname: Dal soglio
 - lastname: Dal Soglio
-- lastname: d'Alema
-- lastname: D'Alema
+- lastname: "D'Alema"
+- lastname: "D'Amato"
+- lastname: "D'Annunzio"
+- lastname: "D'Elia"
+- lastname: "D'Onofrio"
+- lastname: "D'Urso"
 - lastname: Dalla villa
 - lastname: Dallaglio
 - lastname: Dallapiccola
 - lastname: Damasco
 - lastname: Damasso
-- lastname: D'Amato
 - lastname: Damiani
 - lastname: Daniele
 - lastname: Danieli
-- lastname: D'Annunzio
 - lastname: Dassu
 - lastname: Dati
 - lastname: Datini
@@ -633,7 +635,7 @@
 - lastname: De Felice
 - lastname: De felitta
 - lastname: De Giovanni
-- lastname: de Giusti
+- lastname: De Giusti
 - lastname: De Laurentiis
 - lastname: De Marchi
 - lastname: De Martino
@@ -655,7 +657,6 @@
 - lastname: Del Fra
 - lastname: Del Noce
 - lastname: Del Piero
-- lastname: D'elia
 - lastname: Delicati
 - lastname: Della Corte
 - lastname: Della Mea
@@ -675,9 +676,8 @@
 - lastname: Di Grande
 - lastname: Di Iasio
 - lastname: Di Livio
-- lastname: Di natali
-- lastname: Di spina
-- lastname: Di tella
+- lastname: Di Natali
+- lastname: Di Spina
 - lastname: Di Tella
 - lastname: Di Vittorio
 - lastname: Diadoni
@@ -698,7 +698,6 @@
 - lastname: Donelli
 - lastname: Donini
 - lastname: Donizetti
-- lastname: D'onofrio
 - lastname: Donzelli
 - lastname: Dore
 - lastname: Dorso
@@ -706,7 +705,6 @@
 - lastname: Doumani
 - lastname: Duccio
 - lastname: Durante
-- lastname: D'urso
 - lastname: Eccelino
 - lastname: Einaudi
 - lastname: Emiliani
@@ -970,6 +968,7 @@
 - lastname: Jacopino
 - lastname: Josi
 - lastname: Jovine
+- lastname: "L'Archibudelli"
 - lastname: La Rocca
 - lastname: Labraccio
 - lastname: Labriola
@@ -995,7 +994,6 @@
 - lastname: Lapi
 - lastname: Lapin
 - lastname: Lapo
-- lastname: l'Archibudelli
 - lastname: Larini
 - lastname: Laspiga
 - lastname: Laterano

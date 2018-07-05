@@ -1,8 +1,4 @@
 ---
-- name: Maputo
-- name: Nuagobe
-- name: Samora
-- name: Yaya
 - name: Alinafe
 - name: Chifundo
 - name: Chifuniro
@@ -19,13 +15,16 @@
 - name: Limbani
 - name: Limbikani
 - name: Madalitso
+- name: Maputo
 - name: Mavuto
 - name: Mayamiko
 - name: Mayeso
 - name: Mphatso
 - name: Mtendere
+- name: Nuagobe
 - name: Pemphero
 - name: Pilirani
+- name: Samora
 - name: Tadala
 - name: Takondwa
 - name: Tamandani
@@ -33,3 +32,4 @@
 - name: Thokozani
 - name: Tiyamike
 - name: Yamikani
+- name: Yaya

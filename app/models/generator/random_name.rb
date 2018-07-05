@@ -37,10 +37,10 @@ module Generator
         # Американское Самоа, США, Британские, Виргинские острова, США, Гуам, Северные Марианские острова
         file_names = 'american'
         file_lastnames = 'english'
-      when 8, 29, 41, 51, 82, 159, 169
-        # Ангола, Бразилия, Восточный Тимор, Гвинея-Бисау, Кабо-Верде, Португалия, Сан-Томе и Принсипи
+      when 8
+        # Ангола
         file_names = 'portuguese'
-        file_lastnames = 'portuguese'
+        file_lastnames = 'angolian'
       when 9, 11, 38, 49, 54, 55, 66, 79, 92, 96, 98, 124, 138, 153, 155, 156, 166, 208, 222, 227, 240
         # Андорра, Аргентина, Венесуэла, Гватемала, Гибралтар, Гондурас, Доминиканская Республика, Испания, Колумбия, Коста-Рика, Куба, Мексика, Никарагуа, Панама, Парагвай, Перу, Сальвадор, Уругвай, Чили, Эквадор, Канарские острова
         word =
@@ -99,7 +99,7 @@ module Generator
       when 25
         # Боливия
         chance = rand(500)
-        word = chance > 350 ? 'bolivian' : 'spain'
+        word = chance > 399 ? 'spain' : 'bolivian'
         file_names = word
         file_lastnames = word
       when 27
@@ -110,6 +110,10 @@ module Generator
         # Ботсвана
         file_names = 'botswana'
         file_lastnames = 'botswana'
+      when 29, 41, 51, 82, 159, 169
+        # Бразилия, Восточный Тимор, Гвинея-Бисау, Кабо-Верде, Португалия, Сан-Томе и Принсипи
+        file_names = 'portuguese'
+        file_lastnames = 'portuguese'
       when 30, 73, 117, 182
         # Бруней-Даруссалам, Индонезия, Малайзия, Сингапур
         file_names = 'malay'
@@ -128,7 +132,7 @@ module Generator
         file_lastnames = 'bhutan'
       when 34
         # Вануату
-        file_names = 'polinesian'
+        file_names = 'vanuatu'
         file_lastnames = 'vanuatu'
       when 37
         # Венгрия
@@ -329,7 +333,7 @@ module Generator
         file_lastnames = 'malawi'
       when 118
         # Мали
-        file_names = 'western_african'
+        file_names = 'malian'
         file_lastnames = 'malian'
       when 119
         # Мальдивы
@@ -492,7 +496,7 @@ module Generator
         file_lastnames = 'tonga'
       when 200
         # Тувалу
-        file_names = 'polinesian'
+        file_names = 'tuvaluan'
         file_lastnames = 'tuvaluan'
       when 201
         # Тунис
@@ -577,7 +581,7 @@ module Generator
         file_lastnames = 'equatorial_guinea'
       when 229
         # Эритрея
-        file_names = 'eastern_african'
+        file_names = 'eritrean'
         file_lastnames = 'eritrean'
       when 230
         # Эстония
@@ -608,7 +612,7 @@ module Generator
         file_names = 'scotland'
         file_lastnames = 'scotland'
       end
-      raise "имён для страны #{@country_id} нету!" unless file_names.present?
+      raise "имён для страны #{@country_id} нет!" unless file_names.present?
       file_names += '_names.yml'
       file_lastnames += '_lastnames.yml'
       file1 = YAML.load_file(Rails.root.join('lib', 'names', file_names))

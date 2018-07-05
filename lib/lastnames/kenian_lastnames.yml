@@ -107,6 +107,7 @@
 - lastname: Lorupe
 - lastname: Lusalah
 - lastname: Lusweti
+- lastname: Maathai
 - lastname: Machuka
 - lastname: Maina
 - lastname: Maiyani
@@ -124,6 +125,7 @@
 - lastname: Mboya
 - lastname: Mbugua
 - lastname: Mbuvi
+- lastname: Mika
 - lastname: Misoi
 - lastname: Mitei
 - lastname: Modi
@@ -135,13 +137,14 @@
 - lastname: Muzorewa
 - lastname: Mwachofi
 - lastname: Mwale
+- lastname: Mwangi
+- lastname: "N'Gotho"
 - lastname: Ndugo
 - lastname: Nduria
 - lastname: Ndururi
 - lastname: Ngetich
 - lastname: Ngilu
 - lastname: Ngotho
-- lastname: N'Gotho
 - lastname: Ngugi
 - lastname: Ngumi
 - lastname: Njoka
@@ -205,10 +208,3 @@
 - lastname: Yego
 - lastname: Yongo
 - lastname: Zaman
-- lastname: Kamau
-- lastname: Kariuki
-- lastname: Kenyatta
-- lastname: Maathai
-- lastname: Maina
-- lastname: Mika
-- lastname: Mwangi
