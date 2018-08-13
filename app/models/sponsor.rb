@@ -109,7 +109,9 @@ class Sponsor < ActiveRecord::Base
   end
 
   def self.random_title
-    file = YAML.load_file(Rails.root.join('lib', 'lastnames', 'english_lastnames.yml'))
+    file = YAML.load_file(
+      Rails.root.join('lib', 'lastnames', 'english_lastnames.yml')
+    )
     title = file[SecureRandom.random_number(file.size)]['lastname']
     random = rand(5)
     case random

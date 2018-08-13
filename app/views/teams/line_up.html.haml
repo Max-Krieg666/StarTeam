@@ -1,5 +1,5 @@
-.row
-  .col-md-4.col-md-offset-2
+.row.line_up_block{ id: @team.id }
+  .col-md-4.col-sm-offset-1
     #footballField.container-fluid
       .row.attackers_positions
         .col-md-3.lf.field_with_border
@@ -22,13 +22,13 @@
       .row.gk_position
         .col-md-12.gk.field_with_border
 
-  .col-md-5.col-md-offset-1
+  .col-md-5.col-sm-offset-1
     %table.table.table-bordered.table-condensed.table-hover
       %thead
-        %tr.center
-          %th= Player.human_attribute_name(:position1)
-          %th= Player.human_attribute_name(:full_name)
-          %th= Player.human_attribute_name(:skill_level)
+        %tr
+          %th
+          %th.center= Player.human_attribute_name(:full_name)
+          %th.center= Player.human_attribute_name(:skill_level)
           %th
       %tbody
         -@team.basic_order.each do |pl|

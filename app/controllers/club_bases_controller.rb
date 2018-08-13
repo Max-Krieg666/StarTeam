@@ -31,7 +31,10 @@ class ClubBasesController < ApplicationController
         ActiveRecord::Base.transaction do
           team.budget -= values[0]
           team.save!
-          Operation.create(team_id: team.id, sum: values[0], kind: false, title: I18n.t('messages.operation.modernization_club_base'))
+          Operation.create(
+            team_id: team.id, sum: values[0], kind: false,
+            title: I18n.t('messages.operation.modernization_club_base')
+          )
           @club_base.level += 1
           @club_base.experience_up += values[1]
           @club_base.capacity = values[2]
@@ -57,7 +60,10 @@ class ClubBasesController < ApplicationController
         ActiveRecord::Base.transaction do
           team.budget -= values[0]
           team.save!
-          Operation.create(team_id: team.id, sum: values[0], kind: false, title: I18n.t('messages.operation.upgrade_fields_club_base'))
+          Operation.create(
+            team_id: team.id, sum: values[0], kind: false,
+            title: I18n.t('messages.operation.upgrade_fields_club_base')
+          )
           @club_base.training_fields += 1
           @club_base.experience_up += values[1]
           @club_base.save!

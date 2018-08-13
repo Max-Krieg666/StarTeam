@@ -39,12 +39,24 @@ class User < ActiveRecord::Base
   before_validation :login_and_email_strip, on: :save
   before_validation :set_default_role, :check_bday
 
-  validates :login, presence: true, length: { minimum: 3, maximum: 24, if: 'login.present?' },
-            uniqueness: true, exclusion: { in: %w(ADMIN AdMiN aDmIn Admin admin God god Root root) },
-            format: { with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect, if: 'login.present?' }
+  validates :login,
+            presence: true,
+            length: { minimum: 3, maximum: 24, if: 'login.present?' },
+            uniqueness: true,
+            exclusion: {
+              in: %w(ADMIN AdMiN aDmIn Admin admin God god Root root)
+            },
+            format: {
+              with: /\A[-A-Za-z0-9_]+\z/,
+              message: :incorrect,
+              if: 'login.present?'
+            }
 
   validates :email, presence: true, uniqueness: { case_sensitive: false },
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: 'email.present?' }
+            format: {
+              with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+              if: 'email.present?'
+            }
 
   validates :password, length: { minimum: 6, if: 'password.present?' }
   validates :password_confirmation, presence: { on: :create }

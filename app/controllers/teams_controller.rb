@@ -1,24 +1,26 @@
 class TeamsController < ApplicationController
-  before_action :check_user
-  before_action :set_team, except: [:destroy, :index]
-  before_action :check_owner, except: [:destroy, :index, :show]
+  before_action :check_user, except: [:get_players]
+  before_action :set_team, except: [:destroy, :index, :get_players]
+  before_action :check_owner, except: [:destroy, :index, :show, :get_players]
   before_action :set_variables, only: [:show, :statistics]
 
   def index
     @teams = Team.order('title')
   end
 
-  def show
-  end
+  def show; end
 
-  def line_up
-  end
+  def line_up; end
 
-  def statistics
+  def statistics; end
+
+  def get_players
+    # TODO add Serializer for this case
+    render json: { players: Player.where(team_id: params[:id]) }
   end
 
   def training
-    @players = @team.players.order('position1 asc, basic desc, skill_level desc')
+    @players = @team.basic_order
   end
 
   def operations
@@ -30,8 +32,7 @@ class TeamsController < ApplicationController
     @out = Transfer.where(status: 1, vendor_id: @current_user_team.id)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -74,9 +75,9 @@ class TeamsController < ApplicationController
   end
 
   def check_owner
-    if @team != @current_user_team
-      flash[:danger] = I18n.t('flash.access_denied')
-      redirect_to @current_user_team
-    end
+    return if @team == @current_user_team
+
+    flash[:danger] = I18n.t('flash.access_denied')
+    redirect_to @current_user_team
   end
 end

@@ -27,7 +27,9 @@ class Stadium < ActiveRecord::Base
 
   validates :title, presence: true, uniqueness: true
   validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
-  validates :capacity, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :capacity,
+            presence: true,
+            numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :level, presence: true, inclusion: { in: 1..5 }
 
   def valid_capacity

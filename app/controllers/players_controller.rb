@@ -35,6 +35,7 @@ class PlayersController < ApplicationController
   end
 
   def buy
+    # TODO подумать, как это отрефакторить
     # приходит id игрока
     cb = @current_user_team.club_base if @current_user_team
     # если игрок нашелся по id и свободен

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get 'transfer_history'
       get 'training'
       get 'line_up'
+      get 'get_players'
     end
 
     resources :stadia, except: [:index, :destroy] do

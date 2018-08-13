@@ -31,7 +31,11 @@ class Team < ActiveRecord::Base
 
   validates :country_id, presence: true
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 },
-            format: { with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect, if: 'title.present?' }
+            format: {
+              with: /\A[-A-Za-z0-9_]+\z/,
+              message: :incorrect,
+              if: 'title.present?'
+            }
 
   validates :budget, presence: true
   validates :fans, presence: true

@@ -17,7 +17,11 @@ malawi, maldives, maltese, mauritanian, mauritius, moldavian, mongolian,
 montenegro, mozambique, namibian, nepalese, niger, papua_new_guinea, phillippinian,
 rwanda, somali, sudan, tahiti, tajik, tanzanian, togo, tonga, tunisian, uzbek
 
-не заюзаны: caribbean
+не заюзаны: caribbean (?!)
+
+TODO ->
+выбор цветов команд (мб логотипов тоже) для отображения на странице
+команды и при выборе состава
 
 TODO ->
 перевести всё
@@ -27,9 +31,6 @@ TODO ->
 
 TODO ->
 Добавить тренеров (coach). [опционально пока что]
-
-TODO ->
-выбор цветов команд (мб логотипов тоже)
 
 TODO ->
 добавить вьюху календаря игр и вынести в навбар
