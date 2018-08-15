@@ -18,21 +18,22 @@ class Team < ActiveRecord::Base
   end
 
   def to_param
-    title
+    title.tr(' ', '+')
   end
 
   def self.find(input)
-    input.length == 36 ? super : find_by_title(input)
+    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
+    find_by_title(input.tr('+', ' '))
   end
 
   def find_by_title(input)
-    where(title: input).first
+    find_by title: input
   end
 
   validates :country_id, presence: true
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 },
             format: {
-              with: /\A[-A-Za-z0-9_]+\z/,
+              with: /\A[-A-Za-z0-9_ ]+\z/,
               message: :incorrect,
               if: 'title.present?'
             }

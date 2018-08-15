@@ -618,15 +618,13 @@ module Generator
       file1 = YAML.load_file(Rails.root.join('lib', 'names', file_names))
       file2 = YAML.load_file(Rails.root.join('lib', 'lastnames', file_lastnames))
 
-      if second_name
-        name1 = file1[SecureRandom.random_number(file1.size)]['name']
-        name2 = file1[SecureRandom.random_number(file1.size)]['name'] if rand(100) < second_name_chance
-        lastname = file2[SecureRandom.random_number(file2.size)]['lastname']
-      else
-        name1 = file1[SecureRandom.random_number(file1.size)]['name']
-        lastname = file2[SecureRandom.random_number(file2.size)]['lastname']
+      name1 = file1[SecureRandom.random_number(file1.size)]['name']
+      lastname = file2[SecureRandom.random_number(file2.size)]['lastname']
+      if second_name && rand(100) < second_name_chance
+        name2 = file1[SecureRandom.random_number(file1.size)]['name']
       end
-      [name1, name2, lastname].flatten.join(' ')
+
+      [name1, name2, lastname].compact.join(' ')
     end
   end
 end

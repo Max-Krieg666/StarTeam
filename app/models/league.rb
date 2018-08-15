@@ -19,14 +19,12 @@ class League < ActiveRecord::Base
                     .where('team_leagues.league_id = ?', id)
                     .map(&:id)
     country_stat = Player.where(team_id: teams_ids).map(&:country_id)
-    # count_countries(country_stat)
     Hash[count_countries(country_stat).sort_by(&:last).reverse]
   end
 
-  # TODO добавить сортировку по РАЗНИЦЕ МЯЧЕЙ (goals - goals_conceded)
   def sorted_teams
-    team_leagues.joins(:team).order(
-      'team_leagues.points desc, team_leagues.goals desc, team_leagues.games asc, team_leagues.wins desc, teams.title asc'
+    team_leagues.order(
+      'team_leagues.points desc, (team_leagues.goals - team_leagues.goals_conceded) desc, team_leagues.goals desc, team_leagues.games asc, team_leagues.wins desc'
     )
   end
 

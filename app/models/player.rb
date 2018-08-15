@@ -15,7 +15,19 @@ class Player < ActiveRecord::Base
   has_many :game_events
   has_many :game_players
 
-  scope :free_agent, -> { where(state: :free_agent) }
+  def to_param
+    return id if self.class.where(name: name).size > 1
+    name.tr(' ', '+')
+  end
+
+  def self.find(input)
+    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
+    find_by_name(input.tr('+', ' '))
+  end
+
+  def find_by_name(input)
+    find_by name: input
+  end
 
   POSITIONS = [
     :gk,

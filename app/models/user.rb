@@ -8,15 +8,16 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :team
 
   def to_param
-    login
+    login.tr(' ', '+')
   end
 
   def self.find(input)
-    input.length == 36 ? super : find_by_login(input)
+    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
+    find_by_login(input.tr('+', ' '))
   end
 
   def find_by_login(input)
-    where(login: input).first
+    find_by login: input
   end
 
   cattr_reader :roles
@@ -47,7 +48,7 @@ class User < ActiveRecord::Base
               in: %w(ADMIN AdMiN aDmIn Admin admin God god Root root)
             },
             format: {
-              with: /\A[-A-Za-z0-9_]+\z/,
+              with: /\A[-A-Za-z0-9_ ]+\z/,
               message: :incorrect,
               if: 'login.present?'
             }
