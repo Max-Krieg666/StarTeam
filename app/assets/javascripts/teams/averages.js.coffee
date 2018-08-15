@@ -12,13 +12,9 @@ $(document).ready ->
       full_price += parseFloat(price)
 
     $('#js-average-talent')[0].innerHTML = (full_tal / count).toFixed(2)
-
     $('#js-average-age')[0].innerHTML = (full_age / count).toFixed(2)
-
     $('#js-average-skills')[0].innerHTML = (full_skills / count).toFixed(2)
-
     $('#js-average-price')[0].innerHTML = number_to_currency((full_price / count).toFixed(3))
-
     $('#js-full-power')[0].innerHTML = full_skills
     $('#js-full-cost')[0].innerHTML = number_to_currency(full_price.toFixed(3))
 
