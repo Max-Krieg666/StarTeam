@@ -36,7 +36,7 @@
             %td= pl.full_position_name
             %td= pl.name
             %td= pl.skill_level
-            %td{ id: pl.id }
+            %td.draggable{ id: pl.id }
               -if pl.gk?
                 .goalkeeper
                   .number

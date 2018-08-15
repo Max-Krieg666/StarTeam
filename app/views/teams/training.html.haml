@@ -133,4 +133,6 @@
           = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
           = t('buttons.go_to_stadium_creating')
       -unless @team.club_base
-        = link_to t('buttons.go_to_club_base_creating'), new_team_club_basis_path(@team), class: 'btn btn-warning'
+        = link_to new_team_club_basis_path(@team), class: 'btn btn-warning' do
+          = inline_svg 'club_base.svg', class: 'svg-picture-btn white'
+          = t('buttons.go_to_club_base_creating')
