@@ -20,7 +20,7 @@ class SponsorsController < ApplicationController
   end
 
   private
-  
+
   def set_sponsor
     @sponsor = Sponsor.find(params[:id])
   end

@@ -5,9 +5,11 @@ en:
       buy_transfer: Buying a player on the transfer market
       sell_transfer: Selling a player on the transfer market
       modernization_stadium: Modernization of the stadium
-      new_seats_on_stadium: Building of a new seats on stadium
+      new_seats_on_stadium: Building of a new seats at stadium
       modernization_club_base: Modernization of the club base
       upgrade_fields_club_base: Increasing of training fields on your club base
+      player_sale_to_free_agents: Player's sale to free agent market
+      player_bying: Buying a player
     notification:
       buy_transfer: "A player %{name} joined your team. Team %{team} received %{sum}."
       sell_transfer: "You have sold a player. A player %{name} will continue his career at the team %{team}. The deal amounted to %{sum}."

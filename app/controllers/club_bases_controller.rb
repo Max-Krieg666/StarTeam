@@ -94,7 +94,6 @@ class ClubBasesController < ApplicationController
   end
 
   private
-  
   def set_club_base
     @club_base = ClubBase.find(params[:id])
   end

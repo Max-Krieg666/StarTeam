@@ -41,7 +41,11 @@ class UsersController < ApplicationController
       @user.confirmation_token = SecureRandom.uuid
       if @user.save
         @team = @user.team
-        Operation.create(team_id: @team.id, sum: 250000.0, kind: true, title: I18n.t('messages.operation.init'))
+        @team.operations.create(
+          sum: 250_000.0,
+          kind: true,
+          title: I18n.t('messages.operation.init')
+        )
         Sponsor.create_rand(@team.id)
         Generator::RandomTeam.new(@team).generate
         @team.captain.update(captain: true)
@@ -88,9 +92,7 @@ class UsersController < ApplicationController
       :login, :email,
       :password, :password_confirmation, :country_id,
       :avatar, :sex, :birthday,
-      team_attributes: [
-        :title, :country_id
-      ]
+      team_attributes: %i[title country_id]
     ]
     attrs << :role if @current_user.try(:admin?)
     params.require(:user).permit(*attrs)

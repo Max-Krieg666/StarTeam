@@ -8,6 +8,8 @@ ru:
       new_seats_on_stadium: Строительство новых мест на стадионе
       modernization_club_base: Увеличение уровня базы клуба
       upgrade_fields_club_base: Увеличение количества тренировочных полей базы клуба
+      player_sale_to_free_agents: Продажа игрока на рынок свободных агентов
+      player_bying: Покупка игрока
     notification:
       buy_transfer: "Игрок %{name} присоединился к Вашей команде. Клуб %{team} получил %{sum}."
       sell_transfer: "Вы продали игрока. Игрок %{name} продолжит свою карьеру в клубе %{team}. Сумма сделки составила %{sum}."

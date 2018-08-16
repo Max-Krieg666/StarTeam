@@ -84,17 +84,44 @@ class TransfersController < ApplicationController
           #   @player.captain = true
           #   captain.update(captain: false)
           # end
-          @transfer.player.careers.active.first.update(active: false, age_end: @transfer.player.age)
-          Career.create(player_id: @transfer.player.id, age_begin: @transfer.player.age, team_title: @current_user_team.title)
+          @transfer.player.careers.active.first.update(
+            active: false, age_end: @transfer.player.age
+          )
+          @transfer.player.careers.create(
+            age_begin: @transfer.player.age,
+            team_title: @current_user_team.title
+          )
           @transfer.update!(status: 1, purchaser_id: @current_user_team.id)
           @current_user_team.budget -= @transfer.cost
           @current_user_team.save!
-          Operation.create(team_id: @current_user_team.id, sum: @transfer.cost, kind: false, title: I18n.t('messages.operation.buy_transfer'))
-          Notification.create(user_id: @current_user.id, kind: 1, title: I18n.t('messages.notification.sell_transfer', name: @transfer.player.name, team: @transfer.vendor.title, sum: @transfer.cost_to_currency))
+          @current_user_team.operations.create(
+            sum: @transfer.cost,
+            kind: false,
+            title: I18n.t('messages.operation.buy_transfer')
+          )
+          @current_user.notifications.create(
+            kind: 1, title: I18n.t(
+              'messages.notification.sell_transfer',
+              name: @transfer.player.name,
+              team: @transfer.vendor.title,
+              sum: @transfer.cost_to_currency
+            )
+          )
           @transfer.vendor.budget += @transfer.cost
           @transfer.vendor.save!
-          Operation.create(team_id: @transfer.vendor.id, sum: @transfer.cost, kind: true, title: I18n.t('messages.operation.sell_transfer'))
-          Notification.create(user_id: @transfer.vendor.user.id, kind: 1, title: I18n.t('messages.notification.buy_transfer', name: @transfer.player.name, team: @current_user_team.title, sum: @transfer.cost_to_currency))
+          @transfer.vendor.operations.create(
+            sum: @transfer.cost,
+            kind: true,
+            title: I18n.t('messages.operation.sell_transfer')
+          )
+          @transfer.vendor.user.notifications.create(
+            kind: 1, title: I18n.t(
+              'messages.notification.buy_transfer',
+              name: @transfer.player.name,
+              team: @current_user_team.title,
+              sum: @transfer.cost_to_currency
+            )
+          )
           redirect_to @transfer.player, notice: I18n.t('flash.players.buyed')
         end
       end

@@ -33,20 +33,18 @@ class Game < ActiveRecord::Base
         first_additional_period
         second_additional_period
         # если опять ничья, то серия пенальти
-        if home_goals == guest_goals
-          penalty_serie
-        end
+        penalty_serie if home_goals == guest_goals
       end
     end
     self
   end
 
   def set_teams
-    @home_team = self.home
+    @home_team = home
     @home_team_squad = @home_team.players
     @home_team_main_squad = @home_team.players.where(basic: true)
     @home_team_reserve_squad = @home_team.players.where(basic: false)
-    @guest_team = self.guest
+    @guest_team = guest
     @guest_team_squad = @guest_team.players
     @guest_team_main_squad = @guest_team.players.where(basic: true)
     @guest_team_reserve_squad = @guest_team.players.where(basic: false)

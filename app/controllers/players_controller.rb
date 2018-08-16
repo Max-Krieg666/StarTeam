@@ -63,7 +63,9 @@ class PlayersController < ApplicationController
         @player.team_id = @current_user_team.id
         @player.number = buy_processing_params[:number]
         if buy_processing_params[:basic] == 'true'
-          @current_user_team.players.where(position1: @player.position1, basic: true).first.update(basic: false)
+          @current_user_team.players.where(
+            position1: @player.position1, basic: true
+          ).first.update(basic: false)
           @player.basic = buy_processing_params[:basic]
         end
         captain = @current_user_team.captain
@@ -74,8 +76,16 @@ class PlayersController < ApplicationController
         if @player.save
           @current_user_team.budget -= @player.price
           @current_user_team.save!
-          Career.create(player_id: @player.id, age_begin: @player.age, team_title: @current_user_team.title)
-          Operation.create(team_id: @current_user_team.id, sum: @player.price, kind: false, title: 'Покупка игрока')
+          Career.create(
+            player_id: @player.id,
+            age_begin: @player.age,
+            team_title: @current_user_team.title
+          )
+          @current_user_team.operations.create(
+            sum: @player.price,
+            kind: false,
+            title: I18n.t('messages.operation.player_bying')
+          )
           flash[:notice] = I18n.t('flash.players.buyed')
           redirect_to @player
         else
@@ -92,11 +102,13 @@ class PlayersController < ApplicationController
     elsif @current_user_team.low_squad?
       flash[:danger] = I18n.t('flash.teams.low_squad')
       redirect_to @current_user_team
+    elsif @player.injured || !@player.can_play || games_missed > 0
+      flash[:danger] = I18n.t('flash.players.was_disqualified')
+      redirect_to @player
     else
-      # TODO добавить проверку на то, есть ли травмы или дисквалификации - нельзя продавать тогда.
       ActiveRecord::Base.transaction do
         if @player.basic
-          #TODO если игркоа в запасе на такую позицию нету, ставь игрока ближайшей позиции с потерей навыка
+          # TODO если игрока в запасе на такую позицию нету, ставь игрока ближайшей позиции с потерей навыка
           pl = @current_user_team.players.where(position1: @player.position1, basic: false).order('skill_level desc').first
           if pl
             pl.update(basic: true)
@@ -125,7 +137,7 @@ class PlayersController < ApplicationController
         @current_user_team.operations.create(
           sum: @player.price / 2.0,
           kind: true,
-          title: 'Продажа игрока на рынок свободных агентов'
+          title: I18n.t('messages.operation.player_sale_to_free_agents')
         )
       end
       flash[:notice] = I18n.t('flash.players.sold')

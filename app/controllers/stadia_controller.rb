@@ -55,12 +55,16 @@ class StadiaController < ApplicationController
         ActiveRecord::Base.transaction do
           team.budget -= values[0]
           team.save!
-          Operation.create(team_id: team.id, sum: values[0], kind: false, title: I18n.t('messages.operation.modernization_stadium'))
+          team.operations.create(
+            sum: values[0],
+            kind: false,
+            title: I18n.t('messages.operation.modernization_stadium')
+          )
           @stadium.level += 1
           @stadium.save!
         end
         redirect_to [team, @stadium], notice: I18n.t('flash.stadiums.upgraded')
-      end 
+      end
     end
   end
 
@@ -86,7 +90,11 @@ class StadiaController < ApplicationController
         ActiveRecord::Base.transaction do
           team.budget -= cost
           team.save!
-          Operation.create(team_id: team.id, sum: cost, kind: false, title: I18n.t('messages.operation.new_seats_on_stadium'))
+          team.operations.create(
+            sum: cost,
+            kind: false,
+            title: I18n.t('messages.operation.new_seats_on_stadium')
+          )
           @stadium.update(capacity: new_capacity)
         end
         redirect_to [team, @stadium], notice: I18n.t('flash.stadiums.upgraded')
@@ -95,11 +103,11 @@ class StadiaController < ApplicationController
   end
 
   private
-  
+
   def set_stadium
     @stadium = Stadium.find(params[:id])
   end
-  
+
   def stadium_params
     params.require(:stadium).permit(:title)
   end

@@ -71,6 +71,8 @@ class Player < ActiveRecord::Base
     basic: false
   }.freeze
 
+  UNIQUENESS_NAME_SCOPE_WITH = %i[position1 age skill_level talent].freeze
+
   enum position1: POSITIONS
   enum state: STATES
   enum status: STATUSES
@@ -80,7 +82,7 @@ class Player < ActiveRecord::Base
 
   validates :name,
             presence: true,
-            uniqueness: { scope: [:position1, :age, :skill_level, :talent] },
+            uniqueness: { scope: UNIQUENESS_NAME_SCOPE_WITH },
             length: { maximum: 50 }
   validates :country_id, presence: true
   validates :position1, presence: true

@@ -33,6 +33,7 @@ en:
       last: "This player is last on his position. You can't sell him."
       sold: The player fired from your team and became a free agent.
       characteristics_improved: "Improved characteristics of a player %{name}."
+      was_disqualified: "You can't sell an injured or disqualified player."
     sponsors:
       edited: Sponsor was edited.
     stadiums:

@@ -14,7 +14,7 @@
         = link_to 'Подать заявку', join_league_path(league), method: :post
     -else
       .list-group-item{title: "Просмотр"}
-        -if @current_user_team.is_in_league?(league.id)
+        -if @current_user_team.in_league?(league.id)
           = inline_svg 'location.svg', class: 'svg-picture-medium red'
           Вы участвуете.
         = inline_svg 'info-circle.svg', class: 'svg-picture-btn'
