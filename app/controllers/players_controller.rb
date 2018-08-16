@@ -137,11 +137,10 @@ class PlayersController < ApplicationController
 
   def update
     # TODO продумать update, хотя бы минимальный
-    # TODO убрать skill
-    tal = player_params[:talent]
     skill = player_params[:skill_level]
+    tal = player_params[:talent]
     age = player_params[:age]
-    @player.price = Player.calc_price(skill.to_i, tal.to_i, age.to_f)
+    @player.price = Player.calc_price(skill, tal, age)
     if @player.update(player_params)
       flash[:notice] = I18n.t('flash.players.edited')
       redirect_to @player

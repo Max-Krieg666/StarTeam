@@ -22,7 +22,8 @@ class Cup < ActiveRecord::Base
     update(current_stage: 1, count: number)
     max_number = Math.log(all_teams.size, 2).ceil # ближайшая степень двойки
     rnd2 = max_number - number # число команд, начинающих со второго раунда
-    rnd2_teams = a.sample(rnd2).each { |teamInCup| teamInCup.update!(stage: 2) }
+    rnd2_teams =
+      a.sample(rnd2).each { |team_in_cup| team_in_cup.update!(stage: 2) }
     rnd1_teams = all_teams - rnd2_teams
 
     # матчи первого раунда кубкового турнира

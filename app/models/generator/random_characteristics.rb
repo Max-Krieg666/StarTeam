@@ -56,12 +56,12 @@ module Generator
         @force_attack = 25
         @force_physics = 35
         @force_mental = 10
-      when 1, 2, 3 # Ld & Cd & Rd
+      when 1, 2, 3 # Ld, Cd, Rd
         @force_defend = 45
         @force_attack = 20
         @force_physics = 20
         @force_mental = 15
-      when 4, 5, 6 # Lm & Cm & Rm
+      when 4, 5, 6 # Lm, Cm, Rm
         @force_defend = 25
         @force_attack = 25
         @force_physics = 25

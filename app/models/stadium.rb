@@ -5,28 +5,29 @@ class Stadium < ActiveRecord::Base
   belongs_to :team, inverse_of: :stadium
 
   def to_param
-    title
+    title.tr(' ', '+')
   end
 
   def self.find(input)
-    input.length == 36 ? super : find_by_title(input)
+    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
+    find_by_title(input.tr('+', ' '))
   end
 
   def find_by_title(input)
-    self.where(title: input).first
+    find_by title: input
   end
 
   # левел => стоимость, min, max, seatcost
   LEVELS = {
-    1 => [0,         0, 1000,   30],
-    2 => [200000.0,  0, 5000,   50],
-    3 => [500000.0,  0, 20000,  75],
-    4 => [1000000.0, 0, 50000,  100],
-    5 => [2500000.0, 0, 100000, 120]
-  }
+    1 => [0,           0, 1_000,   30],
+    2 => [200_000.0,   0, 5_000,   50],
+    3 => [500_000.0,   0, 20_000,  75],
+    4 => [1_000_000.0, 0, 50_000,  100],
+    5 => [2_500_000.0, 0, 100_000, 120]
+  }.freeze
 
   validates :title, presence: true, uniqueness: true
-  validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
+  validates_format_of :title, with: /\A[-A-Za-z0-9_ ]+\z/, message: :incorrect
   validates :capacity,
             presence: true,
             numericality: { greater_than_or_equal_to: 0, only_integer: true }

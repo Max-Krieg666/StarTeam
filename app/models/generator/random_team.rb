@@ -1,7 +1,6 @@
 module Generator
+  # класс для рандомизации команды
   class RandomTeam
-    # класс для рандомизации команды
-    
     attr_reader :team, :main_country_id, :numbers
 
     SCHEMAS = [
@@ -42,41 +41,43 @@ module Generator
 
     def generate
       schema = SCHEMAS[SecureRandom.random_number(19)]
-      players_count_main = 0 # д.б. 13
-      players_count_foreigners = 0 # д.б. 5
+      count_main = 0 # д.б. 13
+      count_foreigners = 0 # д.б. 5
       footballers_positions = FOOTBALLERS_POSITIONS[schema]
       footballers_positions.each do |pos, count|
         pos_players = []
         count.first.times do
           # рандомный выбор по странам игроков в порядке - по позициям
           chance = SecureRandom.random_number(100)
-          if chance > 76 && players_count_foreigners < 5 || players_count_main == 13
+          if chance > 76 && players_count_foreigners < 5 || count_main == 13
             k = SecureRandom.random_number(252) + 1
             k = SecureRandom.random_number(252) + 1 while k == @main_country_id
             pl_c_id = k
-            players_count_foreigners += 1
-          elsif chance <= 76 && players_count_main < 13 || players_count_foreigners == 5
+            count_foreigners += 1
+          elsif chance <= 76 && count_main < 13 || count_foreigners == 5
             pl_c_id = @main_country_id
-            players_count_main += 1
+            count_main += 1
           end
-          pos_players << random_player(pos, pl_c_id)
+          pos_players << random_player(pl_c_id, pos)
         end
-        pos_players.sort_by { |p| p.skill_level }.last(count.last).each do |p|
+        pos_players.sort_by(&:skill_level).last(count.last).each do |p|
           p.update(basic: true)
-          Career.create(player_id: p.id, age_begin: p.age, team_title: team.title)
+          Career.create(
+            player_id: p.id, age_begin: p.age, team_title: team.title
+          )
         end
       end
-      return
     end
 
     private
 
-    def random_player(position = nil, country_id)
+    def random_player(country_id, pos = nil)
       pl = Player.new
       pl.team_id = @team.id
       pl.country_id = country_id
       pl.name = Generator::RandomName.new(country_id).rand_name
-      pl.position1 = position || SecureRandom.random_number(Generator::RandomPlayer::POS.size)
+      pl.position1 =
+        pos || SecureRandom.random_number(Generator::RandomPlayer::POS.size)
       pl.state = 1
       pl.basic = false
       pl.talent = Generator::RandomPlayer.rand_talent
@@ -89,7 +90,7 @@ module Generator
     rescue ActiveRecord::RecordInvalid
       pl.name = Generator::RandomName.new(country_id).rand_name
       pl.save!
-      return pl
+      pl
     end
   end
 end

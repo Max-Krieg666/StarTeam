@@ -169,6 +169,6 @@ class Player < ActiveRecord::Base
   end
 
   def self.calc_price(skill_level, talent, age)
-    (skill_level * talent * 10_000 / age.to_f).round(3)
+    (skill_level.to_i * talent.to_i * 10_000 / age.to_f).round(3)
   end
 end

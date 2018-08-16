@@ -8,6 +8,20 @@ class Sponsor < ActiveRecord::Base
   validates :draw_prize, presence: true, numericality: { greater_than: 100.0 }
   validates :lost_prize, presence: true, numericality: { greater_than: 100.0 }
 
+  def to_param
+    return id if self.class.where(title: title).size > 1
+    title.tr(' ', '+')
+  end
+
+  def self.find(input)
+    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
+    find_by_title(input.tr('+', ' '))
+  end
+
+  def find_by_title(input)
+    find_by title: input
+  end
+
   enum specialization: [
     :space_research,
     :computer_hardware,
@@ -93,38 +107,40 @@ class Sponsor < ActiveRecord::Base
     :industrial_automation
   ]
 
-  def self.create_rand(team_id)
-    spec_num = SecureRandom.random_number(Sponsor.specializations.size)
-    sp = self.new(
-      title: Sponsor.random_title,
-      team_id: team_id,
-      specialization: Sponsor.specializations.values[spec_num],
-      cost_of_full_stake: SecureRandom.random_number(8000000..25000000).to_f
-    )
-    sp.lost_prize = (sp.cost_of_full_stake / 8000.0).round(3)
-    sp.draw_prize = (sp.lost_prize * 4).round(3)
-    sp.win_prize = (sp.draw_prize * 2).round(3)
-    sp.save!
-    sp
-  end
+  class << self
+    def create_rand(team_id)
+      spec_num = SecureRandom.random_number(Sponsor.specializations.size)
+      sp = self.new(
+        title: Sponsor.random_title,
+        team_id: team_id,
+        specialization: Sponsor.specializations.values[spec_num],
+        cost_of_full_stake: SecureRandom.random_number(8_000_000..25_000_000).to_f
+      )
+      sp.lost_prize = (sp.cost_of_full_stake / 8000.0).round(3)
+      sp.draw_prize = (sp.lost_prize * 4).round(3)
+      sp.win_prize = (sp.draw_prize * 2).round(3)
+      sp.save!
+      sp
+    end
 
-  def self.random_title
-    file = YAML.load_file(
-      Rails.root.join('lib', 'lastnames', 'english_lastnames.yml')
-    )
-    title = file[SecureRandom.random_number(file.size)]['lastname']
-    random = rand(5)
-    case random
-    when 0
-      title
-    when 1
-      title + ' Inc'
-    when 2
-      title + ' Ent.'
-    when 3
-      title + ' LLC'
-    else
-      title + ' Group'
+    def random_title
+      file = YAML.load_file(
+        Rails.root.join('lib', 'lastnames', 'english_lastnames.yml')
+      )
+      title = file[SecureRandom.random_number(file.size)]['lastname']
+      random = rand(5)
+      case random
+      when 0
+        title
+      when 1
+        title + ' Inc'
+      when 2
+        title + ' Ent.'
+      when 3
+        title + ' LLC'
+      else
+        title + ' Group'
+      end
     end
   end
 end

@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
             presence: true,
             uniqueness: { case_sensitive: false },
             format: {
-              with: /\A[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}\z/i,
+              with: /\A[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,}\z/i,
               if: 'email.present?'
             }
 

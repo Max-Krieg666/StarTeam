@@ -4,19 +4,20 @@ class ClubBase < ActiveRecord::Base
   belongs_to :team, inverse_of: :club_base
 
   def to_param
-    title
+    title.tr(' ', '+')
   end
 
   def self.find(input)
-    input.length == 36 ? super : find_by_title(input)
+    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
+    find_by_title(input.tr('+', ' '))
   end
 
   def find_by_title(input)
-    where(title: input).first
+    find_by title: input
   end
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
-  validates_format_of :title, with: /\A[-A-Za-z0-9_]+\z/, message: :incorrect
+  validates_format_of :title, with: /\A[-A-Za-z0-9_ ]+\z/, message: :incorrect
   validates :level, presence: true, inclusion: { in: 1..5 }
   validates :capacity, presence: true, inclusion: { in: [20, 22, 24, 26, 30] }
   validates :training_fields, presence: true, inclusion: { in: 1..5 }
