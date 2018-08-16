@@ -7,7 +7,7 @@ class Player < ActiveRecord::Base
   # 5 атакующих: Точность удара, Сила удара, Дриблинг, Пас, Навес
   # 3 физических: Скорость, Выносливость, Реакция
   # 2 ментальных: Агрессивность, Креативность
-  
+
   belongs_to :country, inverse_of: :players
   belongs_to :team, inverse_of: :players
   has_many :transfers, inverse_of: :player
@@ -29,26 +29,47 @@ class Player < ActiveRecord::Base
     find_by name: input
   end
 
-  POSITIONS = [
-    :gk,
-    :ld, :cd, :rd,
-    :lm, :cm, :rm,
-    :lf, :cf, :rf
+  POSITIONS = %i[
+    gk
+    ld cd rd
+    lm cm rm
+    lf cf rf
   ].freeze
 
-  STATES = [
-    :free_agent,
-    :in_team,
-    :retired
+  STATES = %i[free_agent in_team retired].freeze
+
+  STATUSES = %i[
+    active
+    injured penalty_redcard penalty_yellowcards
+    transfer
   ].freeze
 
-  STATUSES = [
-    :active,
-    :injured,
-    :penalty_redcard,
-    :penalty_yellowcards,
-    :transfer
+  CHARACTERISTICS = %i[
+    tackling marking positioning heading pressure
+    shot_accuracy shot_power dribbling passing carport
+    speed endurance reaction
+    aggression creativity
   ].freeze
+
+  DEFAULT_VALUES = {
+    team_id: nil,
+    state: :free_agent,
+    status: :active,
+    season_games: 0,
+    season_goals: 0,
+    season_passes: 0,
+    season_conceded_goals: 0,
+    season_autogoals: 0,
+    season_yellow_cards: 0,
+    season_red_cards: 0,
+    can_play: true,
+    games_missed: 0,
+    captain: false,
+    injured: false,
+    morale: 5,
+    physical_condition: 1.0,
+    basic: false
+  }.freeze
 
   enum position1: POSITIONS
   enum state: STATES
@@ -80,7 +101,7 @@ class Player < ActiveRecord::Base
   end
 
   def set_price
-    self.price ||= (skill_level * talent * 10000 / age.to_f).round(3)
+    self.price ||= (skill_level * talent * 10_000 / age.to_f).round(3)
   end
 
   def set_real_position
@@ -127,16 +148,16 @@ class Player < ActiveRecord::Base
     # end
   end
 
-  def is_position_defend?
-    [:ld, :cd, :rd].include?(position1)
+  def position_defend?
+    %i[ld cd rd].include?(position1)
   end
 
-  def is_position_midfield?
-    [:lm, :cm, :rm].include?(position1)
+  def position_midfield?
+    %i[lm cm rm].include?(position1)
   end
 
-  def is_position_attack?
-    [:lf, :cf, :rf].include?(position1)
+  def position_attack?
+    %i[lf cf rf].include?(position1)
   end
 
   def change_efficienty
@@ -148,6 +169,6 @@ class Player < ActiveRecord::Base
   end
 
   def self.calc_price(skill_level, talent, age)
-    (skill_level * talent * 10000 / age.to_f).round(3)
+    (skill_level * talent * 10_000 / age.to_f).round(3)
   end
 end

@@ -2,11 +2,7 @@ class Cup < ActiveRecord::Base
   belongs_to :country, inverse_of: :cups
   has_many :team_cups
 
-  enum status: [
-    :waiting,
-    :active,
-    :finished
-  ]
+  enum status: %i[waiting active finished]
 
   def human_title
     I18n.t("cups.title.#{title}")
@@ -37,7 +33,7 @@ class Cup < ActiveRecord::Base
       create_cup_game(team2, team1, 1)
     end
   end
-  
+
   # создание матчей новой стадии кубкового турнира
   def create_new_round(tour)
     update(current_stage: tour)
@@ -74,7 +70,7 @@ class Cup < ActiveRecord::Base
       guest_id: guest.id,
       tournament_id: id,
       kind: false,
-      starting_time: DateTime.current + 2.days,
+      starting_time: Time.current + 2.days,
       tour: round
     )
   end

@@ -56,25 +56,25 @@ class Game < ActiveRecord::Base
 
   def first_main_period
     (1..45).each do |minute|
-      calculate_event
+      calculate_event(minute)
     end
   end
 
   def second_main_period
     (46..90).each do |minute|
-      calculate_event
+      calculate_event(minute)
     end
   end
 
   def first_additional_period
     (91..105).each do |minute|
-      calculate_event
+      calculate_event(minute)
     end
   end
 
   def second_additional_period
     (106..120).each do |minute|
-      calculate_event
+      calculate_event(minute)
     end
   end
 
@@ -97,7 +97,7 @@ class Game < ActiveRecord::Base
   def penalty_serie
   end
 
-  def calculate_event
+  def calculate_event(minute)
     result = @home_team.power_11.to_f / @guest_team.power_11.to_f
 
     # Определение той команды, которая будет атаковать,

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'sessions#new'
-  
+
   resources :transfers
 
-  resources :players, except: [:destroy] do
+  resources :players, except: :destroy do
     member do
       get 'buy_processing'
       patch 'buy'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :teams, except: [:new, :create] do
+  resources :teams, except: %i[new create] do
     member do
       get 'statistics'
       get 'operations'
@@ -39,24 +39,24 @@ Rails.application.routes.draw do
       get 'get_players'
     end
 
-    resources :stadia, except: [:index, :destroy] do
+    resources :stadia, except: %i[index destroy] do
       member do
         patch 'level_up'
         patch 'capacity_up'
       end
     end
 
-    resources :club_bases, except: [:index, :destroy] do
+    resources :club_bases, except: %i[index destroy] do
       member do
         patch 'level_up'
         patch 'training_fields_up'
       end
     end
-    
-    resources :sponsors, only: [:show, :edit, :update]
+
+    resources :sponsors, only: %i[show edit update]
   end
 
-  resources :notifications, only: [:index]
+  resources :notifications, only: :index
 
   resources :users do
     collection do
@@ -66,8 +66,8 @@ Rails.application.routes.draw do
   end
 
   resources :countries
-  
-  resources :tournaments, only: [:index] do
+
+  resources :tournaments, only: :index do
     collection do
       get 'all'
       get 'friendly'
@@ -82,9 +82,7 @@ Rails.application.routes.draw do
 
   resources :games
 
-  get 'login' => "sessions#new", as: :login
-
-  post 'login' => "sessions#create"
-
-  patch 'logout' => "sessions#destroy", as: :logout
+  get 'login' => 'sessions#new', as: :login
+  post 'login' => 'sessions#create'
+  patch 'logout' => 'sessions#destroy', as: :logout
 end

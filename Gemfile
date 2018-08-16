@@ -2,15 +2,21 @@ source 'https://rubygems.org'
 # main gem
 gem 'rails', '~> 4.2.7'
 
+# improve rails
+gem 'active_model_serializers'
+
 # database
 gem 'pg'
 
 # css
-gem 'sass-rails', '>= 5.0.7'
-gem 'haml-rails', '~> 1.0'
 gem 'bootstrap-sass'
+gem 'haml-rails', '~> 1.0'
+gem 'sass-rails', '>= 5.0.7'
+
+# attachments (выпилить?)
 gem 'paperclip', '~> 5.2.0'
-gem 'bootstrap-select-rails'
+
+# pagination
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
@@ -23,15 +29,16 @@ gem 'round_robin_tournament'
 gem 'inline_svg'
 
 # JavaScript assets and libraries
-gem 'uglifier', '>= 1.3.0'
+gem 'bootstrap-select-rails'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jquery-tablesorter'
+gem 'uglifier', '>= 1.3.0'
 # gem 'jquery-validation-rails' + TODO https://habrahabr.ru/post/213077/
 # gem 'spinjs-rails' + TODO https://github.com/dnagir/spinjs-rails
 
-gem 'therubyracer', platforms: :ruby
 gem 'execjs'
+gem 'therubyracer', platforms: :ruby
 
 # internationalize
 gem 'rails-i18n'
@@ -41,8 +48,8 @@ gem 'russian'
 gem 'jbuilder', '~> 2.0'
 
 # other gems
-gem 'httparty'
 gem 'bcrypt'
+gem 'httparty'
 gem 'mechanize'
 
 group :development, :test do

@@ -2,9 +2,11 @@ class GameEvent < ActiveRecord::Base
   belongs_to :game
   belongs_to :player
 
-  enum kind: [
-    :goal, :goal_pen, :not_goal_pen,
-    :yellowcard, :doubleyellowcard, :redcard,
-    :injury, :on, :off
+  enum kind: %i[
+    nothing
+    goal goal_pen_realize goal_pen_not_realize
+    yellowcard doubleyellowcard redcard
+    injury
+    on off
   ]
 end

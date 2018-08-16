@@ -17,8 +17,7 @@ class TransfersController < ApplicationController
     @player = Player.find(params[:player_id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     if transfer_params[:cost].blank?

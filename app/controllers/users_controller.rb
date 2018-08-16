@@ -25,20 +25,19 @@ class UsersController < ApplicationController
   def confirmation
     u = User.where(confirmation_token: confirmation_params[:confirmation_token]).first
     if u && !u.confirmed_at.present?
-      u.update!(confirmed_at: DateTime.current)
+      u.update!(confirmed_at: Time.current)
       redirect_to u, notice: I18n.t('flash.users.account_confirmed')
     else
       redirect_to root_path, error: I18n.t('flash.users.invalid_confirmed_key')
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     ActiveRecord::Base.transaction do
       @user = User.new(user_params)
-      @user.confirmation_sent_at = DateTime.current
+      @user.confirmation_sent_at = Time.current
       @user.confirmation_token = SecureRandom.uuid
       if @user.save
         @team = @user.team
@@ -79,7 +78,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def set_user
     @user = User.find(params[:id])
   end

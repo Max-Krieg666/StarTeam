@@ -15,7 +15,6 @@ class TeamsController < ApplicationController
   def statistics; end
 
   def get_players
-    # TODO add Serializer for this case
     render json: { players: Player.where(team_id: params[:id]) }
   end
 
@@ -48,8 +47,6 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    # TODO при удалении команды отпускать на свободный рынок всех игроков в ней
-    # а всё остальное уничтожать!
     respond_to do |format|
       format.html { redirect_to @current_user, notice: I18n.t('flash.teams.destroyed') }
       format.json { head :no_content }
@@ -57,7 +54,7 @@ class TeamsController < ApplicationController
   end
 
   private
-  
+
   def set_team
     @team = Team.find(params[:id])
   end

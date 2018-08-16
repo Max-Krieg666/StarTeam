@@ -4,11 +4,7 @@ class League < ActiveRecord::Base
   belongs_to :country, inverse_of: :leagues
   has_many :team_leagues
 
-  enum status: [
-    :waiting,
-    :active,
-    :finished
-  ]
+  enum status: %i[waiting active finished]
 
   def games
     Game.where(tournament_id: id)
@@ -52,17 +48,15 @@ class League < ActiveRecord::Base
   def start
     generate_grid
     active!
-    start_time = DateTime.current
+    self.start_time = Time.current
     save!
   end
 
   def generate_grid # турнирная сетка
     # не более 24 (!) команд!!!!!
-    games = RoundRobinTournament.schedule(team_leagues.to_a).map do |gs|
-      gs.shuffle!
-    end
+    games = RoundRobinTournament.schedule(team_leagues.to_a).map(&:shuffle!)
     games += games.reverse.map do |tour|
-      tour.shuffle.map { |pair| pair.reverse }
+      tour.shuffle.map(&:reverse)
     end
 
     games.each_with_index do |tour, number|
@@ -75,19 +69,18 @@ class League < ActiveRecord::Base
           guest_id: guest.id,
           tournament_id: id,
           kind: true,
-          starting_time: DateTime.current + (number + 2).days,
+          starting_time: Time.current + (number + 2).days,
           tour: number + 1,
           game_statistic: GameStatistic.new
         )
       end
     end
-    return
   end
 
   private
 
   def count_countries(countries)
-    countries.each_with_object(Hash.new 0) do |country, counter|
+    countries.each_with_object({}) do |country, counter|
       counter[Country.find(country).title] += 1
     end
   end

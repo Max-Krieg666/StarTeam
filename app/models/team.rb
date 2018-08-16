@@ -1,17 +1,19 @@
 class Team < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
-  
+
   belongs_to :user, inverse_of: :team
   belongs_to :country, inverse_of: :teams
-  has_one :sponsor, inverse_of: :team
-  has_one :stadium, inverse_of: :team
-  has_one :club_base, inverse_of: :team
+  has_one :sponsor, inverse_of: :team, dependent: :destroy
+  has_one :stadium, inverse_of: :team, dependent: :destroy
+  has_one :club_base, inverse_of: :team, dependent: :destroy
   has_many :players, inverse_of: :team
-  has_many :transfers, inverse_of: :team
-  has_many :operations, inverse_of: :team
-  has_many :team_leagues, class_name: 'TeamLeague'
-  has_many :team_cups, class_name: 'TeamCup'
-  has_many :games, inverse_of: :team
+  has_many :transfers, inverse_of: :team, dependent: :destroy
+  has_many :operations, inverse_of: :team, dependent: :destroy
+  has_many :team_leagues, class_name: 'TeamLeague', dependent: :destroy
+  has_many :team_cups, class_name: 'TeamCup', dependent: :destroy
+  has_many :games, inverse_of: :team, dependent: :destroy
+
+  before_destroy :free_all_players
 
   def basic_order
     players.order('basic desc, position1 asc, skill_level desc')
@@ -42,12 +44,12 @@ class Team < ActiveRecord::Base
   validates :fans, presence: true
 
   def active_leagues_list
-    return nil if !team_leagues
+    return nil unless team_leagues
     team_leagues.joins(:league).where('leagues.status != 2')
   end
 
   def active_cups_list
-    return nil if !team_cups
+    return nil unless team_cups
     team_cups.joins(:cup).where('cups.status != 2')
   end
 
@@ -66,7 +68,7 @@ class Team < ActiveRecord::Base
 
   def next_games
     # all next games
-    games.where('starting_time > ?', DateTime.current).order(:starting_time)
+    games.where('starting_time > ?', Time.current).order(:starting_time)
   end
 
   def captain
@@ -135,5 +137,15 @@ class Team < ActiveRecord::Base
 
   def low_squad?
     squad_size < 15
+  end
+
+  private
+
+  def free_all_players
+    all_players = Player.where(team_id: team.id)
+    ids = all_players.pluck(&:id)
+
+    Carreer.where(player_id: ids, active: true).update_all(active: false)
+    all_players.update_all(Player::DEFAULT_VALUES)
   end
 end

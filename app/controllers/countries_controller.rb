@@ -17,8 +17,7 @@ class CountriesController < ApplicationController
     @country = Country.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @country = Country.new(country_params)
@@ -55,7 +54,7 @@ class CountriesController < ApplicationController
   end
 
   private
-  
+
   def set_country
     @country = Country.find(params[:id])
   end

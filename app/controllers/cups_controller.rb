@@ -4,8 +4,7 @@ class CupsController < ApplicationController
   before_action :admin_permission, only: [:destroy]
   before_action :set_cup, only: [:show, :edit, :update, :destroy, :join]
 
-  def index
-  end
+  def index; end
 
   def show
     @teams_in_cup = @cup.team_cups
@@ -29,8 +28,7 @@ class CupsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -67,7 +65,7 @@ class CupsController < ApplicationController
   end
 
   private
-  
+
   def set_cup
     @cup = Cup.find(params[:id])
   end

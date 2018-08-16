@@ -8,7 +8,7 @@ gabon, gambian, kazakhstan, kyrgyz, laos, lesotho, liberian, libyan,
 madagascar, maldives, maltese, mauritanian, mauritius, montenegro, moroccanian,
 mozambique, myanmar, namibian, nauru, niger, phillippinian, rwanda, samoan,
 sierra_leone, solomon_islands, sudan, tahiti, tajik, tanzanian, togo,
-tunisian, uzbek, zimbabwe
+tunisian, uzbek
 
 LASTNAMES-> abkhazian, burkina_faso, burundi, cambodia, car, chad, comorros,
 congo, cook_islands, cotedivoire, djibouti, dr_congo, egyptian, equatorial_guinea,

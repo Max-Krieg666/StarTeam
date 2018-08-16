@@ -1,25 +1,28 @@
 class PlayersController < ApplicationController
   before_action :check_user
-  before_action :set_player, except: [:index, :new, :create]
-  before_action :admin_permission, only: [:new, :create]
+  before_action :set_player, except: %i[index new create]
+  before_action :admin_permission, only: %i[new create]
 
   def index
-    if search_params
-      @players = Search.new(search_params).apply_search.limit(200).includes(:country).order('countries.title, players.name').page(params[:page])
-    else
-      @players = Player.free_agent.limit(200).includes(:country).order('countries.title, players.name').page(params[:page])
-    end
+    @players =
+      if search_params
+        Search.new(search_params).apply_search
+      else
+        Player.free_agent
+      end
+      .limit(200)
+      .includes(:country)
+      .order('countries.title, players.name')
+      .page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @player = Player.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @player = Player.new(player_params)
@@ -31,8 +34,7 @@ class PlayersController < ApplicationController
     end
   end
 
-  def buy_processing
-  end
+  def buy_processing; end
 
   def buy
     # TODO подумать, как это отрефакторить
@@ -110,12 +112,12 @@ class PlayersController < ApplicationController
           end
         end
         @player.update(state: 0, team_id: nil, number: nil)
-        if @player.careers.active.first
-          @player.careers.active.first.update_attributes(active: false, age_end: @player.age)
+        if career = @player.careers.active.first
+          career.update_attributes(active: false, age_end: @player.age)
         else
           @player.careers.create(
             active: false, age_begin: @player.age, age_end: @player.age,
-            team_title: @current_user_team.title,
+            team_title: @current_user_team.title
           ).save!
         end
         @current_user_team.budget += @player.price / 2.0
@@ -131,8 +133,7 @@ class PlayersController < ApplicationController
     end
   end
 
-  def training
-  end
+  def training; end
 
   def update
     # TODO продумать update, хотя бы минимальный
@@ -140,7 +141,7 @@ class PlayersController < ApplicationController
     tal = player_params[:talent]
     skill = player_params[:skill_level]
     age = player_params[:age]
-    @player.price = (tal.to_i * 10000.0 * skill.to_i / age.to_f).round(3)
+    @player.price = Player.calc_price(skill.to_i, tal.to_i, age.to_f)
     if @player.update(player_params)
       flash[:notice] = I18n.t('flash.players.edited')
       redirect_to @player
@@ -148,237 +149,44 @@ class PlayersController < ApplicationController
       render :edit
     end
   end
-  
-  # upgrade characteristics
-  # TODO переписать на JS!!!
-  # либо рефакторнуть
-  def tackling_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.tackling + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.tackling)
-    @player.update(tackling: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    if params[:location] != 'show'
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
 
-  def marking_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.marking + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.marking)
-    @player.update(marking: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def positioning_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.positioning + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.positioning)
-    @player.update(positioning: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def heading_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.heading + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.heading)
-    @player.update(heading: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def pressure_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.pressure + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.pressure)
-    @player.update(pressure: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def shot_accuracy_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.shot_accuracy + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.shot_accuracy)
-    @player.update(shot_accuracy: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def shot_power_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.shot_power + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.shot_power)
-    @player.update(shot_power: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def dribbling_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.dribbling + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.dribbling)
-    @player.update(dribbling: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def passing_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.passing + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.passing)
-    @player.update(passing: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def carport_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.carport + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.carport)
-    @player.update(carport: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def speed_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.speed + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.speed)
-    @player.update(speed: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def endurance_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.endurance + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.endurance)
-    @player.update(endurance: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def reaction_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.reaction + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.reaction)
-    @player.update(reaction: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def aggression_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.aggression + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.aggression)
-    @player.update(aggression: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
-    end
-  end
-
-  def creativity_upgrade
-    new_skill_level = @player.skill_level + 1
-    new_price = Player.calc_price(new_skill_level, @player.talent, @player.age)
-    new_val = @player.creativity + 1
-    new_training_points = @player.training_points - Definer.need_points(@player.creativity)
-    @player.update(creativity: new_val, training_points: new_training_points, price: new_price, skill_level: new_skill_level)
-    flash[:notice] = I18n.t('flash.players.characteristics_improved', name: @player.name)
-    unless params[:location]
-      redirect_to training_team_path(@current_user_team)
-    else
-      redirect_to @player
+  # upgrade ALL characteristics
+  Player::CHARACTERISTICS.each do |charc|
+    define_method "#{charc}_upgrade" do
+      new_level = @player.skill_level + 1
+      pts = @player.training_points - Definer.need_points(@player.send(charc))
+      upgrade_params = {
+        charc => @player.send(charc) + 1,
+        training_points: pts,
+        skill_level: new_level,
+        price: Player.calc_price(new_level, @player.talent, @player.age)
+      }
+      @player.update(upgrade_params)
+      flash[:notice] = I18n.t(
+        'flash.players.characteristics_improved', name: @player.name
+      )
+      if params[:location] != 'show'
+        redirect_to training_team_path(@current_user_team)
+      else
+        redirect_to @player
+      end
     end
   end
 
   private
-    
+
   def set_player
     @player = Player.find(params[:id])
   end
 
   def player_params
     params.require(:player).permit(
-      :name, :country_id, :position1, :position2,
-      :talent, :age, :skill_level
+      :name, :country_id, :position1, :position2, :talent, :age, :skill_level
     )
   end
 
   def buy_processing_params
-    params.require(:player).permit(
-      :number, :basic
-    )
+    params.require(:player).permit(:number, :basic)
   end
 
   def search_params

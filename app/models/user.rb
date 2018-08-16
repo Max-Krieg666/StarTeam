@@ -22,17 +22,9 @@ class User < ActiveRecord::Base
 
   cattr_reader :roles
 
-  SEXES = [
-    :not_specified,
-    :male,
-    :female
-  ].freeze
+  SEXES = %i[not_specified male female].freeze
 
-  ROLES = [
-    :user,
-    :moderator,
-    :administrator
-  ].freeze
+  ROLES = %i[user moderator administrator].freeze
 
   enum sex: SEXES
   enum role: ROLES
@@ -45,7 +37,7 @@ class User < ActiveRecord::Base
             length: { minimum: 3, maximum: 24, if: 'login.present?' },
             uniqueness: true,
             exclusion: {
-              in: %w(ADMIN AdMiN aDmIn Admin admin God god Root root)
+              in: %w[ADMIN AdMiN aDmIn Admin admin God god Root root]
             },
             format: {
               with: /\A[-A-Za-z0-9_ ]+\z/,
@@ -53,9 +45,11 @@ class User < ActiveRecord::Base
               if: 'login.present?'
             }
 
-  validates :email, presence: true, uniqueness: { case_sensitive: false },
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: false },
             format: {
-              with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+              with: /\A[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}\z/i,
               if: 'email.present?'
             }
 

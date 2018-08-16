@@ -4,8 +4,7 @@ class LeaguesController < ApplicationController
   before_action :admin_permission, only: [:destroy]
   before_action :set_league, only: [:show, :edit, :update, :destroy, :join]
 
-  def index
-  end
+  def index; end
 
   def show
     @teams_in_league = @league.team_leagues
@@ -30,8 +29,7 @@ class LeaguesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -68,7 +66,7 @@ class LeaguesController < ApplicationController
   end
 
   private
-  
+
   def set_league
     @league = League.find(params[:id])
   end
