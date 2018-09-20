@@ -49,7 +49,7 @@ module Generator
         count.first.times do
           # рандомный выбор по странам игроков в порядке - по позициям
           chance = SecureRandom.random_number(100)
-          if chance > 76 && players_count_foreigners < 5 || count_main == 13
+          if chance > 76 && count_foreigners < 5 || count_main == 13
             k = SecureRandom.random_number(252) + 1
             k = SecureRandom.random_number(252) + 1 while k == @main_country_id
             pl_c_id = k

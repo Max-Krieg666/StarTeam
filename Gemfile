@@ -32,10 +32,8 @@ gem 'inline_svg'
 gem 'bootstrap-select-rails'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'jquery-tablesorter'
 gem 'uglifier', '>= 1.3.0'
 # gem 'jquery-validation-rails' + TODO https://habrahabr.ru/post/213077/
-# gem 'spinjs-rails' + TODO https://github.com/dnagir/spinjs-rails
 
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby

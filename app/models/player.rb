@@ -1,7 +1,6 @@
 class Player < ActiveRecord::Base
   include Definer
   include ActionView::Helpers::NumberHelper
-  # include Basic_Player
 
   # 5 защитных: Отбор, Опека, Выбор позиции, Игра головой, Прессинг
   # 5 атакующих: Точность удара, Сила удара, Дриблинг, Пас, Навес
