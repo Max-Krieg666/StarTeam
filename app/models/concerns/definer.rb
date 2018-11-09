@@ -2,7 +2,8 @@ module Definer
   extend ActiveSupport::Concern
 
   def level_define
-    if talent == 9
+    case talent
+    when 9
       if skill_level > 100
         a = (age < 33 ? 10 : 9)
       elsif skill_level > 50
@@ -14,7 +15,7 @@ module Definer
         a = 7 if age > 25 && age < 36
         a = 8 if age < 26
       end
-    elsif talent == 8
+    when 8
       if skill_level > 100
         a = (age < 33 ? 9 : 8)
       elsif skill_level > 50
@@ -25,7 +26,7 @@ module Definer
         a = 6 if age > 25 && age < 36
         a = 7 if age < 26
       end
-    elsif talent == 7
+    when 7
       if skill_level > 100
         a = (age < 33 ? 9 : 7)
       elsif skill_level > 50
@@ -37,7 +38,7 @@ module Definer
         a = 6 if age > 25 && age < 36
         a = 7 if age < 26
       end
-    elsif talent == 6
+    when 6
       if skill_level > 100
         a = (age < 33 ? 7 : 5)
       elsif skill_level > 50
@@ -49,7 +50,7 @@ module Definer
         a = 5 if age > 25 && age < 36
         a = 7 if age < 26
       end
-    elsif talent == 5
+    when 5
       if skill_level > 100
         a = 7 if age < 26
         a = 6 if age > 25 && age < 33
@@ -63,7 +64,7 @@ module Definer
         a = 5 if age > 25 && age < 36
         a = 7 if age < 26
       end
-    elsif talent == 4 || talent == 3
+    when 3, 4
       if skill_level > 100
         a = (age < 33 ? 6 : 5)
       elsif skill_level > 50
@@ -75,7 +76,7 @@ module Definer
         a = 4 if age > 25 && age < 36
         a = 5 if age < 26
       end
-    elsif talent == 2
+    when 2
       if skill_level > 100
         a = (age < 33 ? 4 : 3)
       elsif skill_level > 50
@@ -87,7 +88,7 @@ module Definer
         a = 2 if age > 25 && age < 36
         a = 3 if age < 26
       end
-    else # talent == 1
+    else # 1
       if skill_level > 100
         a = (age < 33 ? 3 : 2)
       elsif skill_level > 50
