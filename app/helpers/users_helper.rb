@@ -3,7 +3,7 @@ module UsersHelper
     select_tag(
       country,
       options_for_select(
-        Country.order('title').load.map { |x| [x.title, x.id] },
+        Country.all.map { |c| [c.i18n_title, c.id] }.sort,
         [selected]
       ),
       class: 'selectpicker',
