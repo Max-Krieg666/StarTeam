@@ -12,6 +12,7 @@ class Team < ActiveRecord::Base
   has_many :team_leagues, class_name: 'TeamLeague', dependent: :destroy
   has_many :team_cups, class_name: 'TeamCup', dependent: :destroy
   has_many :games, inverse_of: :team, dependent: :destroy
+  has_many :game_events, inverse_of: :team
 
   before_destroy :free_all_players
 
