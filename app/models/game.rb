@@ -1,4 +1,4 @@
-class Game < ActiveRecord::Base
+class Game < ApplicationRecord
   belongs_to :home, class_name: 'Team', inverse_of: :games
   belongs_to :guest, class_name: 'Team', inverse_of: :games
 

@@ -17,8 +17,8 @@
           = link_to @user.team.title, @user.team, style: "color: #00F"
       %p
         %b Страна:
-        = link_to @country.title, @country, class: 'btn btn-link', style: "color: #00688B"
-        = image_tag @country.flag.url
+        = link_to @country.i18n_title, @country, class: 'btn btn-link', style: "color: #00688B"
+        = image_tag @country.flag.url, title: @country.i18n_title
       %p
         %b Пол:
         = @user.sex_name

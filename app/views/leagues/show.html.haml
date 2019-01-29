@@ -1,8 +1,8 @@
 .page-header
   %h2
     - country = @league.country
-    = image_tag country.flag.url, title: country.title
-    #{country.title}. #{@league.human_title}
+    = image_tag country.flag.url, title: country.i18n_title
+    #{country.i18n_title}. #{@league.human_title}
     .small
       #{League.human_attribute_name(:status)}: #{@league.status_name}
 -if @league.waiting?

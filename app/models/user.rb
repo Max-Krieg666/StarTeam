@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_secure_password
 
   has_one :team, inverse_of: :user
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   validates :login,
             presence: true,
-            length: { minimum: 3, maximum: 24, if: 'login.present?' },
+            length: { minimum: 3, maximum: 24, if: -> { login.present? } },
             uniqueness: true,
             exclusion: {
               in: %w[ADMIN AdMiN aDmIn Admin admin God god Root root]
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
             format: {
               with: /\A[-A-Za-z0-9_ ]+\z/,
               message: :incorrect,
-              if: 'login.present?'
+              if: -> { login.present? }
             }
 
   validates :email,
@@ -50,10 +50,10 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false },
             format: {
               with: /\A[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,}\z/i,
-              if: 'email.present?'
+              if: -> { email.present? }
             }
 
-  validates :password, length: { minimum: 6, if: 'password.present?' }
+  validates :password, length: { minimum: 6, if: -> { password.present? } }
   validates :password_confirmation, presence: { on: :create }
 
   validates :country_id, presence: true
@@ -94,8 +94,8 @@ class User < ActiveRecord::Base
   end
 
   def check_bday
-    return if birthday.blank?
-    errors[:birthday] << I18n.t(:birthday_incorrect) if birthday > Time.zone.now
+    return if birthday.blank? || birthday < Time.zone.now
+    errors[:birthday] << I18n.t(:birthday_incorrect)
   end
 
   def unread_notifications

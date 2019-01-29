@@ -7,7 +7,7 @@
 .btn-group
   = link_to @country, class: 'btn btn-warning' do
     = inline_svg 'reply.svg', class: 'svg-picture-btn white'
-    #{@country.title}
+    = @country.i18n_title
   = link_to countries_path, class: 'btn btn-info' do
     = inline_svg 'flag.svg', class: 'svg-picture-btn white'
     Все страны

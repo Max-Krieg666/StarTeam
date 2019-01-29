@@ -1,4 +1,4 @@
-class GameEvent < ActiveRecord::Base
+class GameEvent < ApplicationRecord
   belongs_to :game
   belongs_to :team, optional: true
   belongs_to :attacker_player, class_name: 'Player', optional: true

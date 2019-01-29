@@ -6,7 +6,7 @@
     %br
     %h1
       = @team.title
-      = image_tag @team.country.flag.url, title: @team.country.title
+      = image_tag @team.country.flag.url, title: @team.country.i18n_title
   %br
 
   %table.table.table-bordered.table-hover.table-condensed
@@ -60,7 +60,7 @@
             = pl.name
             = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if pl.captain
             = inline_svg 'transfer.svg', class: 'svg-picture', title: 'Трансфер' if pl.status == 'transfer'
-          %td= image_tag pl.country.flag.url, title: pl.country.title
+          %td= image_tag pl.country.flag.url, title: pl.country.i18n_title
           / TODO подумать как лучше отображать
           %td
             = pl.full_position_name

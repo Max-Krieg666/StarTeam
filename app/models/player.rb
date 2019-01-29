@@ -1,4 +1,4 @@
-class Player < ActiveRecord::Base
+class Player < ApplicationRecord
   include Definer
   include ActionView::Helpers::NumberHelper
 

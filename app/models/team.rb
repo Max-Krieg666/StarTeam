@@ -1,4 +1,4 @@
-class Team < ActiveRecord::Base
+class Team < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 
   belongs_to :user, inverse_of: :team
@@ -38,7 +38,7 @@ class Team < ActiveRecord::Base
             format: {
               with: /\A[-A-Za-z0-9_ ]+\z/,
               message: :incorrect,
-              if: 'title.present?'
+              if: -> { title.present? }
             }
 
   validates :budget, presence: true

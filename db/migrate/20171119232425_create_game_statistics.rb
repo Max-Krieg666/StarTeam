@@ -1,4 +1,4 @@
-class CreateGameStatistics < ActiveRecord::Migration
+class CreateGameStatistics < ActiveRecord::Migration[5.1]
   def change
     create_table :game_statistics, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.references :game, type: :uuid

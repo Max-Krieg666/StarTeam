@@ -1,4 +1,4 @@
-class CreateCupsAndAssociationsWithTeams < ActiveRecord::Migration
+class CreateCupsAndAssociationsWithTeams < ActiveRecord::Migration[5.1]
   def change
     create_table :cups, id: :uuid, default: 'uuid_generate_v4()' do |t|
       # Кубковые соревнования

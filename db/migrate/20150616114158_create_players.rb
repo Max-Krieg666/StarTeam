@@ -1,4 +1,4 @@
-class CreatePlayers < ActiveRecord::Migration
+class CreatePlayers < ActiveRecord::Migration[5.1]
   def change
     create_table :players, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string :name, null: false, unique: true, limit: 50

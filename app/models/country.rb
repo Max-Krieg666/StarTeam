@@ -1,4 +1,4 @@
-class Country < ActiveRecord::Base
+class Country < ApplicationRecord
   has_many :users, inverse_of: :country
   has_many :teams, inverse_of: :country
   has_many :players, inverse_of: :country
@@ -13,4 +13,8 @@ class Country < ActiveRecord::Base
                    }
   has_attached_file :flag
   validates :title, presence: true, uniqueness: true
+
+  def i18n_title
+    I18n.t("countries.#{title}")
+  end
 end

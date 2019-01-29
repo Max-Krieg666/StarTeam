@@ -1,4 +1,4 @@
-class Cup < ActiveRecord::Base
+class Cup < ApplicationRecord
   belongs_to :country, inverse_of: :cups
   has_many :team_cups
 

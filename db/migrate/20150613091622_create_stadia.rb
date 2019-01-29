@@ -1,4 +1,4 @@
-class CreateStadia < ActiveRecord::Migration
+class CreateStadia < ActiveRecord::Migration[5.1]
   def change
     create_table :stadia, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string :title, null: false, limit: 100, unique: true

@@ -1,4 +1,4 @@
-class Transfer < ActiveRecord::Base
+class Transfer < ApplicationRecord
   include ActionView::Helpers::NumberHelper
   belongs_to :player, inverse_of: :transfers
   belongs_to :vendor, class_name: 'Team', inverse_of: :transfers

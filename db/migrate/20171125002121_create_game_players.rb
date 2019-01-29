@@ -1,4 +1,4 @@
-class CreateGamePlayers < ActiveRecord::Migration
+class CreateGamePlayers < ActiveRecord::Migration[5.1]
   def change
     create_table :game_players, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.belongs_to :game, type: :uuid

@@ -3,7 +3,7 @@
 %p
   %b Национальность:
   -c = @player.country
-  = link_to c.title, c, class: 'btn btn-link', style: "color: #00688B"
+  = link_to c.i18n_title, c, class: 'btn btn-link', style: "color: #00688B"
   = image_tag c.flag.url
 %p
   %b Позиция:

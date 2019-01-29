@@ -1,4 +1,4 @@
-class GameStatistic < ActiveRecord::Base
+class GameStatistic < ApplicationRecord
   belongs_to :game
 
   def result

@@ -1,8 +1,8 @@
 .text-center
   .page-header
     %h3
-      = @country.title
-      = image_tag @country.flag.url, alt: @country.title
+      = @country.i18n_title
+      = image_tag @country.flag.url, alt: @country.i18n_title
   %br
   %ul.nav.nav-tabs
     %li{class: "#{'active' if params[:active_tab] == 'users_info' || !params[:active_tab]}"}
@@ -29,9 +29,8 @@
               %tr.text-center
                 %td= link_to user.login, user, style: "color: #FFA500"
                 %td
-                  -t = user.team
-                  -if t
-                    = link_to t.title, t, style: "color: #00F"
+                  -if user.team
+                    = link_to user.team, user.team, style: "color: #00F"
                   -else
                     .text-danger.li Не создана!
             = paginate @users, param_name: 'users_page', params: { active_tab: 'users_info' }

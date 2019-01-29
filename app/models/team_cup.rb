@@ -1,4 +1,4 @@
-class TeamCup < ActiveRecord::Base
+class TeamCup < ApplicationRecord
   belongs_to :team
   belongs_to :cup
 

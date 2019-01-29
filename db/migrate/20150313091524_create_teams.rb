@@ -1,4 +1,4 @@
-class CreateTeams < ActiveRecord::Migration
+class CreateTeams < ActiveRecord::Migration[5.1]
   def change
     create_table :teams, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.references :user, type: :uuid

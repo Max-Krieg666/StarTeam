@@ -1,4 +1,4 @@
-class Stadium < ActiveRecord::Base
+class Stadium < ApplicationRecord
   DEFAULT_LEVEL = 5
   MAX_CAPACITY = 100_000
 

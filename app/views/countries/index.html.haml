@@ -19,9 +19,9 @@
     - @countries.each do |country|
       %tr.text-center
         %td
-          = country.title
+          = country.i18n_title
         %td
-          = image_tag country.flag.url, alt: country.title
+          = image_tag country.flag.url, alt: country.i18n_title
         %td
           = link_to country, class: 'btn btn-link' do
             = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn'

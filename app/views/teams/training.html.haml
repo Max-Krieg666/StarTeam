@@ -3,7 +3,7 @@
     %h1= t 'teams.training'
     %h1
       = @team.title
-      = image_tag @team.country.flag.url, title: @team.country.title
+      = image_tag @team.country.flag.url, title: @team.country.i18n_title
   %br
 
   %table.table.table-bordered.table-hover.table-condensed

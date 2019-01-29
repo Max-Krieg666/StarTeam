@@ -6,9 +6,9 @@
   %h2
     = @player.name
     = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
-    = image_tag c.flag.url, title: c.title
+    = image_tag c.flag.url, title: c.i18n_title
   = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
-  = image_tag t.country.flag.url, title: t.country.title
+  = image_tag t.country.flag.url, title: t.country.i18n_title
   
 .row.text-danger.text-center
   = render 'player_in_team_info'
@@ -183,7 +183,8 @@
     / = link_to edit_player_in_team_path(@player_in_team), class: 'btn btn-danger' do
     /  = inline_svg 'edit.svg', class: 'svg-picture-btn white'
     /  = t('buttons.edit')
-    = link_to "/transfers/new?player_id=#{@player.id}", class: 'btn btn-default' do
+
+    = link_to new_transfer_path(player_id: @player.id), class: 'btn btn-default' do
       = inline_svg 'transfer.svg', class: 'svg-picture-btn'
       = t('buttons.transfer')
     = link_to sell_player_path(@player, location: 'show'), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do

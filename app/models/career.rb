@@ -1,4 +1,4 @@
-class Career < ActiveRecord::Base
+class Career < ApplicationRecord
   belongs_to :player, inverse_of: :careers
 
   scope :active, -> { where(active: true) }

@@ -1,4 +1,4 @@
-class Sponsor < ActiveRecord::Base
+class Sponsor < ApplicationRecord
   belongs_to :team, inverse_of: :sponsor
 
   validates :title, presence: true, length: { maximum: 30 }

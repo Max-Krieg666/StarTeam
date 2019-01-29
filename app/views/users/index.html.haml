@@ -47,7 +47,7 @@
             .text-danger.li Аватар не загружен!
           -else
             = image_tag user.avatar.url(:thumb)
-        %td= user.country.title
+        %td= user.country.i18n_title
         %td= user.sex_name
         %td
           -if user.birthday

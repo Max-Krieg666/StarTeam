@@ -1,4 +1,4 @@
-class ClubBase < ActiveRecord::Base
+class ClubBase < ApplicationRecord
   DEFAULT_LEVEL = 5
 
   belongs_to :team, inverse_of: :club_base

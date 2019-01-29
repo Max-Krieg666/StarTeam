@@ -1,4 +1,4 @@
-class League < ActiveRecord::Base
+class League < ApplicationRecord
   require 'round_robin_tournament'
 
   belongs_to :country, inverse_of: :leagues
