@@ -8,7 +8,7 @@ class Player < ApplicationRecord
   # 2 ментальных: Агрессивность, Креативность
 
   belongs_to :country, inverse_of: :players
-  belongs_to :team, inverse_of: :players
+  belongs_to :team, inverse_of: :players, optional: true
   has_many :transfers, inverse_of: :player
   has_many :careers, inverse_of: :player
   has_many :game_events
