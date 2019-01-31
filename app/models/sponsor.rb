@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: sponsors
+#
+#  id                 :uuid             not null, primary key
+#  title              :string(30)       not null
+#  specialization     :integer          not null
+#  team_id            :uuid
+#  loyalty_factor     :decimal(3, 2)    default(1.0), not null
+#  cost_of_full_stake :decimal(20, 2)   not null
+#  win_prize          :decimal(7, 2)    not null
+#  draw_prize         :decimal(7, 2)    not null
+#  lost_prize         :decimal(7, 2)    not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 class Sponsor < ApplicationRecord
   belongs_to :team, inverse_of: :sponsor
 

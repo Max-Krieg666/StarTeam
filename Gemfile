@@ -8,6 +8,7 @@ gem 'bootsnap'
 
 # database
 gem 'pg'
+gem 'annotate'
 
 # css
 gem 'bootstrap-sass'

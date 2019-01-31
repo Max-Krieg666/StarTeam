@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: game_events
+#
+#  id        :uuid             not null, primary key
+#  game_id   :uuid
+#  player_id :uuid
+#  kind      :integer
+#  minute    :string
+#
+
 class GameEvent < ApplicationRecord
   belongs_to :game
   belongs_to :team, optional: true
@@ -31,7 +42,7 @@ class GameEvent < ApplicationRecord
     # гол в девятку
     goal_to_9_point_zone:  12,
     # гол в нижний угол
-    goal_to_9_point_zone:  13,
+    goal_to_lower_corner:  13,
     # гол с рикошетом от защитника
     goal_by_rebound:       14,
     # гол с отскоком от вратаря

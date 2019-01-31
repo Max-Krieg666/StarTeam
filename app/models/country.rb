@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: countries
+#
+#  id                :bigint(8)        not null, primary key
+#  title             :string
+#  flag_file_name    :string
+#  flag_content_type :string
+#  flag_file_size    :integer
+#  flag_updated_at   :datetime
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 class Country < ApplicationRecord
   has_many :users, inverse_of: :country
   has_many :teams, inverse_of: :country

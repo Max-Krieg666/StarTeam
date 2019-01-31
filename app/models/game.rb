@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id            :uuid             not null, primary key
+#  home_id       :uuid
+#  guest_id      :uuid
+#  tournament_id :string
+#  kind          :boolean
+#  tour          :integer
+#  starting_time :datetime
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Game < ApplicationRecord
   belongs_to :home, class_name: 'Team', inverse_of: :games
   belongs_to :guest, class_name: 'Team', inverse_of: :games

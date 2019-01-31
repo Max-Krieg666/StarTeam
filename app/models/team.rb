@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: teams
+#
+#  id         :uuid             not null, primary key
+#  user_id    :uuid
+#  title      :string(30)       not null
+#  budget     :decimal(20, 2)   default(250000.0), not null
+#  fans       :integer          default(20), not null
+#  country_id :bigint(8)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Team < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 

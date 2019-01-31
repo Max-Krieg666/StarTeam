@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: transfers
+#
+#  id           :uuid             not null, primary key
+#  player_id    :uuid
+#  vendor_id    :uuid
+#  purchaser_id :uuid
+#  cost         :float            not null
+#  status       :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Transfer < ApplicationRecord
   include ActionView::Helpers::NumberHelper
   belongs_to :player, inverse_of: :transfers

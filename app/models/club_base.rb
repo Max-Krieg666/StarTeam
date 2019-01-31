@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: club_bases
+#
+#  id              :uuid             not null, primary key
+#  team_id         :uuid
+#  title           :string           not null
+#  level           :integer          default(1), not null
+#  capacity        :integer          default(20), not null
+#  training_fields :integer          default(1), not null
+#  experience_up   :float            default(0.0), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class ClubBase < ApplicationRecord
   DEFAULT_LEVEL = 5
 

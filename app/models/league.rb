@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: leagues
+#
+#  id         :uuid             not null, primary key
+#  country_id :bigint(8)
+#  title      :string           not null
+#  count      :integer          default(0)
+#  status     :integer          default("waiting")
+#  start_time :datetime
+#  end_time   :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class League < ApplicationRecord
   require 'round_robin_tournament'
 
