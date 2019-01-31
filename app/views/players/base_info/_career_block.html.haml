@@ -1,0 +1,16 @@
+%h3= t('views.players.career')
+%table.table.table-bordered.table-hover.table-condensed
+  %thead
+    %tr{class: 'info'}
+      %th.text-center{style: "color: #00F", title: "Возраст"}
+        = inline_svg 'timer.svg', class: 'svg-picture-medium'
+      %th.text-center{title: "Команда"}
+        = inline_svg 'group.svg', class: 'svg-picture-medium'
+  %tbody
+    -if @player.careers.blank?
+      %tr.text-center
+        %td{'colspan': 2}= t('views.careers.blank')
+    - @player.careers.order('age_begin').each do |info|
+      %tr.text-center
+        %td= info.age_period
+        %td= info.team_title

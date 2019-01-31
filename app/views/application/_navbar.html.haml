@@ -1,16 +1,16 @@
 %nav.navbar.navbar-inverse
   .container
     .navbar-header
-      = link_to ?#, class: 'navbar-toggle collapsed', data: { toggle: "collapse", target: "#menu" } do
+      = link_to '#', class: 'navbar-toggle collapsed', data: { toggle: 'collapse', target: 'menu' } do
         = inline_svg 'bars.svg', class: 'svg-picture'
       -if @current_user
         -unread_notifications = @current_user.unread_notifications.count
         .div{ class: 'btn-group' }
-          %button{ id: "main_menu_btn", type: "button", class: "btn btn-link navbar-brand dropdown-toggle", data: { toggle: "dropdown" } }
+          %button{ id: 'main_menu_btn', type: 'button', class: 'btn btn-link navbar-brand dropdown-toggle', data: { toggle: 'dropdown' } }
             Меню
-            %span{ class: "badge" }= unread_notifications
-            %span{ class: "caret" }
-          %ul{ class: "dropdown-menu" }
+            %span{ class: 'badge' }= unread_notifications
+            %span{ class: 'caret' }
+          %ul{ class: 'dropdown-menu' }
             .li= link_to t('views.users.my_page'), @current_user, class: 'btn btn-link other-color-on-hover'
             .li
               = link_to notifications_path, class: 'btn btn-link other-color-on-hover' do
@@ -27,16 +27,18 @@
           -else
             = render 'user_links'
       %ul.nav.navbar-nav.navbar-right
-        -if @current_user.blank?
-          %li= link_to t('buttons.sign_up'), registration_users_path
-          %li= link_to t('buttons.sign_in'), login_path
-        -else
+        -if @current_user
           %li
             %span.navbar-text= @current_user.login
             %span.navbar-text= @current_user.email
-            -if @current_user_team
+          -if @current_user_team
+            %li
               %span.navbar-text= @current_user_team.title
               %span.navbar-text= "#{t('views.teams.budget')}: #{@current_user_team.budget_to_currency}"
+          %li
             = link_to logout_path, data: { method: :patch } do
               = t('buttons.logout')
-              /= inline_svg 'log-out.svg', class: 'svg-picture-btn'
+              / = inline_svg 'log-out.svg', class: 'svg-picture-btn'
+        -else
+          %li= link_to t('buttons.sign_up'), registration_users_path
+          %li= link_to t('buttons.sign_in'), login_path

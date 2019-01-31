@@ -1,34 +1,41 @@
 .page-header
   %h1= @player.name
-%p
-  %b Национальность:
-  -c = @player.country
-  = link_to c.i18n_title, c, class: 'btn btn-link', style: "color: #00688B"
-  = image_tag c.flag.url
-%p
-  %b Позиция:
-  = @player.full_position_name
-%p
-  %b Талант:
-  = @player.talent
-%p
-  %b Возраст:
-  = @player.age
-%p
-  %b Мастерство:
-  = @player.skill_level
-%p
-  %b Цена:
-  = number_to_currency(@player.price, locale: :en)
-%p
-  %b Качество:
-  -quality = @player.quality
-  -quality[0].times do
-    = inline_svg 'star.svg', class: 'svg-picture'
-  -if quality[1] == 1
-    = inline_svg 'star-half.svg', class: 'svg-picture'
-  -quality[2].times do
-    = inline_svg 'star-o.svg', class: 'svg-picture'
+.row
+  .col-md-3
+    %p
+      %b Национальность:
+      = link_to @country.i18n_title, @country, class: 'btn btn-link', style: "color: #00688B"
+      = image_tag @country.flag.url
+  .col-md-2
+    %p
+      %b Позиция:
+      = @player.full_position_name
+    %p
+      %b Талант:
+      = @player.talent
+  .col-md-2
+    %p
+      %b Возраст:
+      = @player.age
+    %p
+      %b Мастерство:
+      = @player.skill_level
+  .col-md-5
+    = render 'players/base_info/career_block'
+.row
+  .col-md-3
+    %p
+      %b Цена:
+      = number_to_currency(@player.price, locale: :en)
+    %p
+      %b Качество:
+      -quality = @player.quality
+      -quality[0].times do
+        = inline_svg 'star.svg', class: 'svg-picture'
+      -if quality[1] == 1
+        = inline_svg 'star-half.svg', class: 'svg-picture'
+      -quality[2].times do
+        = inline_svg 'star-o.svg', class: 'svg-picture'
 
 -if @current_user.moderator?
   = link_to edit_player_path(@player), class: 'btn btn-danger' do
@@ -38,7 +45,7 @@
 = link_to players_path, class: 'btn btn-info' do
   = inline_svg 'group.svg', class: 'svg-picture-btn white'
   %span.centralize
-    Все игроки
+    = t('views.players.all')
 -if @current_user_team
   = link_to buy_processing_player_path(@player), class: 'btn btn-default', id: 'buy' do
     = inline_svg 'share-square-o.svg', class: 'svg-picture-btn'

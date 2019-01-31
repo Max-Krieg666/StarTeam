@@ -3,7 +3,7 @@
     %h3.list-group-item.active{style: "color: #00F"}
       = inline_svg 'footballer.svg', class: 'svg-picture-btn'
       = @player.name
-      = image_tag @player.country.flag.url, title: @player.country.i18n_title
+      = image_tag @country.flag.url, title: @country.i18n_title
       .row{style: "color: #FFD700"}
         -quality = @player.quality
         -quality[0].times do

@@ -30,7 +30,7 @@
                 %td= link_to user.login, user, style: "color: #FFA500"
                 %td
                   -if user.team
-                    = link_to user.team, user.team, style: "color: #00F"
+                    = link_to user.team.title, user.team, style: "color: #00F"
                   -else
                     .text-danger.li Не создана!
             = paginate @users, param_name: 'users_page', params: { active_tab: 'users_info' }
