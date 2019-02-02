@@ -68,21 +68,33 @@ ru:
         number: Номер
         season_games: Игры (сезон)
         all_games: Игры (карьера)
+        games: Игры
         season_goals: Голы (сезон)
         all_goals: Голы (карьера)
+        goals: Забитые голы
         season_conceded_goals: Пропущенные голы (сезон)
         all_conceded_goals: Пропущенные голы (карьера)
+        conceded_goals: Пропущенные голы
         season_autogoals: Автоголы (сезон)
         all_autogoals: Автоголы (карьера)
+        autogoals: Автоголы
+        season_passes: Голевые пасы (сезон)
+        all_passes: Голевые пасы (карьера)
+        passes: Голевые пасы
         season_yellow_cards: Желтые карточки (сезон)
         all_yellow_cards: Желтые карточки (карьера)
+        yellow_cards: Желтые карточки
         season_red_cards: Красные карточки (сезон)
         all_red_cards: Красные карточки (карьера)
+        red_cards: Красные карточки
         status: Статус
         basic: Основной состав?
         can_play: Может ли играть?
         games_missed: Пропускает матчей
         injured: Степень тяжести травмы
+        quality: Качество
+        captain: Капитан
+        set_to_transfer: Выставлен на трансфер
       transfer:
         player: Игрок
         vendor: Клуб-продавец

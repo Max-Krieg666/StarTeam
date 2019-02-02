@@ -45,3 +45,7 @@ en:
     transfer: Create a transfer
   errors:
     any: An errors occurred when saving.
+  confirm_messages:
+    sell_for_half_price: Do you want to sell your player for half price? This action cannot be undone!
+  actions:
+    sell_player: Sell a player

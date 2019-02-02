@@ -3,32 +3,32 @@
 .row
   .col-md-3
     %p
-      %b Национальность:
+      %b= Player.human_attribute_name(:country_id) + ':'
       = link_to @country.i18n_title, @country, class: 'btn btn-link', style: "color: #00688B"
       = image_tag @country.flag.url
   .col-md-2
     %p
-      %b Позиция:
+      %b= Player.human_attribute_name(:position1) + ':'
       = @player.full_position_name
     %p
-      %b Талант:
+      %b= Player.human_attribute_name(:talent) + ':'
       = @player.talent
   .col-md-2
     %p
-      %b Возраст:
+      %b= Player.human_attribute_name(:age) + ':'
       = @player.age
     %p
-      %b Мастерство:
+      %b= Player.human_attribute_name(:skill_level) + ':'
       = @player.skill_level
   .col-md-5
     = render 'players/base_info/career_block'
 .row
   .col-md-3
     %p
-      %b Цена:
+      %b= Player.human_attribute_name(:price) + ':'
       = number_to_currency(@player.price, locale: :en)
     %p
-      %b Качество:
+      %b= Player.human_attribute_name(:quality) + ':'
       -quality = @player.quality
       -quality[0].times do
         = inline_svg 'star.svg', class: 'svg-picture'
@@ -52,4 +52,4 @@
     %span.centralize
       = t('buttons.buy')
 -else
-  .text-danger Покупка не доступна
+  .text-danger= t('flash.players.buing_is_no_available')

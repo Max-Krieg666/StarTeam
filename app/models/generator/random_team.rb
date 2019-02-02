@@ -62,9 +62,6 @@ module Generator
         end
         pos_players.sort_by(&:skill_level).last(count.last).each do |p|
           p.update(basic: true)
-          Career.create(
-            player_id: p.id, age_begin: p.age, team_title: team.title
-          )
         end
       end
     end
@@ -85,6 +82,7 @@ module Generator
       pl.skill_level = Generator::RandomPlayer.rand_skill_level(pl.talent)
       pl.number = Generator::RandomPlayer.rand_number(@numbers)
       Generator::RandomCharacteristics.new(pl).randomize.save!
+      pl.careers.create(age_begin: pl.age, team_title: @team.title)
       @numbers << pl.number
       pl
     rescue ActiveRecord::RecordInvalid

@@ -6,15 +6,15 @@
       = @team.title
       = image_tag @team.country.flag.url, title: @team.country.i18n_title
   %p
-    %b Владелец:
+    %b= Team.human_attribute_name(:user) + ':'
     = link_to @team.user, style: "color: #FFA500", class: 'btn btn-link' do
       = inline_svg 'no-avatar.svg', class: 'svg-picture-btn'
       = @team.user.login
   %p
-    %b Спонсор:
+    %b= Team.human_attribute_name(:sponsor) + ':'
     = link_to @team.sponsor.title, [@team, @team.sponsor], style: "color: #550", class: 'btn btn-link'
     %p
-      %b Стадион:
+      %b= Team.human_attribute_name(:stadium) + ':'
       -if @stadium
         -stc = @stadium.capacity
         = link_to [@team, @stadium], style: "color: #F00", class: 'btn btn-link' do
@@ -23,7 +23,7 @@
       -else
         Не создан
   %p
-    %b База клуба:
+    %b= Team.human_attribute_name(:club_base) + ':'
     -if @club_base
       = link_to [@team, @club_base], style: "color: #458B74", class: 'btn btn-link' do
         = inline_svg 'club_base.svg', class: 'svg-picture-btn green'
@@ -31,10 +31,10 @@
     -else
       Не создана
   %p
-    %b Бюджет:
+    %b= Team.human_attribute_name(:budget) + ':'
     = @team.budget_to_currency
   %p
-    %b Фаны:
+    %b= Team.human_attribute_name(:fans) + ':'
     %span
       = inline_svg 'group.svg', class: 'svg-picture'
     = @team.fans
@@ -48,29 +48,29 @@
           №
         %th.text-center
           = inline_svg 'footballer.svg', class: 'svg-picture-table'
-          Игрок
+          = t('views.teams.player')
         %th.text-center
           = inline_svg 'flag.svg', class: 'svg-picture-table'
-          Национальность
+          = Player.human_attribute_name(:country_id)
         %th.text-center{'colspan': 2}
           = inline_svg 'location.svg', class: 'svg-picture-table'
-          Позиция
+          = Player.human_attribute_name(:position1)
         %th.text-center
           = inline_svg 'level-up.svg', class: 'svg-picture-table'
-          Талант
+          = Player.human_attribute_name(:talent)
         %th.text-center
           = inline_svg 'history.svg', class: 'svg-picture-table'
-          Возраст
+          = Player.human_attribute_name(:age)
         %th.text-center
           = inline_svg 'level.svg', class: 'svg-picture-table'
-          Мастерство
+          = Player.human_attribute_name(:skill_level)
         %th.text-center
           = inline_svg 'usd.svg', class: 'svg-picture-table'
-          Цена
+          = Player.human_attribute_name(:price)
         %th.text-center{title: "Основной состав/запас"} О/З
         %th.text-center
           = inline_svg 'cogwheel.svg', class: 'svg-picture-table'
-          Действия
+          = t('actions.title')
 
     %tbody
       - @players.each do |pl|
@@ -80,8 +80,8 @@
             %strong= pl.number
           %td
             = pl.name
-            = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if pl.captain
-            = inline_svg 'transfer.svg', class: 'svg-picture', title: 'На трансфере' if pl.status == 'transfer'
+            = inline_svg 'copyright.svg', class: 'svg-picture', title: Player.human_attribute_name(:captain) if pl.captain
+            = inline_svg 'transfer.svg', class: 'svg-picture', title: Player.human_attribute_name(:set_to_transfer) if pl.status == 'transfer'
           %td= image_tag pl.country.flag.url, title: pl.country.i18n_title
           / TODO подумать как лучше отображать
           %td
@@ -100,13 +100,13 @@
           %td
             / = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
             / = inline_svg 'edit.svg', class: 'svg-picture-btn'
-            = link_to pl, title: 'Обзор игрока' do
+            = link_to pl, title: t('buttons.player_overview') do
               = inline_svg 'street-view.svg', class: 'svg-picture-btn green'
             -if @current_user == @team.user
-              = link_to new_transfer_path(player_id: pl.id), title: 'Выставить на трансфер' do
+              = link_to new_transfer_path(player_id: pl.id), title: t('buttons.transfer') do
                 = inline_svg 'transfer.svg', class: 'svg-picture-btn'
                 %span
-              = link_to sell_player_path(pl), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока' do
+              = link_to sell_player_path(pl), method: :patch, data: { confirm: t('confirm_messages.sell_for_half_price') }, title: t('actions.sell_player') do
                 = inline_svg 'usd.svg', class: 'svg-picture-btn green'
       %tr{class: 'info js-averages'}
         %th.text-center{'colspan': 2}
@@ -129,14 +129,14 @@
         %th.text-center.text-danger#js-full-cost
         %th{'colspan': 2}
   .btn-group
-    -if @current_user == @team.user || @current_user.moderator?
+    -if @current_user_team == @team || @current_user.moderator?
       = link_to edit_team_path(@team), class: 'btn btn-danger' do
         = inline_svg 'edit-group.svg', class: 'svg-picture-btn white'
-        Редактировать
+        = t('buttons.edit')
     -if @current_user.moderator?
       = link_to teams_path, class: 'btn btn-warning' do
         = inline_svg 'reply.svg', class: 'svg-picture-btn white'
-        Все команды
+        = t('views.teams.all')
     -if @current_user_team == @team
       -unless @team.stadium
         = link_to new_team_stadium_path(@team), class: 'btn btn-primary' do

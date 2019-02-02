@@ -4,7 +4,7 @@
 .page-header.center
   %h2
     = @player.name
-    = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
+    = inline_svg 'copyright.svg', class: 'svg-picture', title: Player.human_attribute_name(:captain) if @player.captain
     = image_tag @country.flag.url, title: @country.i18n_title
   = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
   = image_tag t.country.flag.url, title: t.country.i18n_title
@@ -14,30 +14,30 @@
   .col-md-8
     .row
       .col-md-6
-        %h3 Статистика игрока
+        %h3= t('views.players.statistics')
         %table.table.table-bordered.table-hover.table-condensed
           %thead
             %tr{class: 'success'}
-              %th.text-center{style: "color: #00F", title: "Статистика"}
+              %th.text-center{style: "color: #00F", title: t('player.statistics')}
                 = inline_svg 'statistics.svg', class: 'svg-picture-medium'
-              %th.text-center{title: "Игры"}
+              %th.text-center{title: Player.human_attribute_name(:games)}
                 = inline_svg 'game.svg', class: 'svg-picture-medium'
               -if @player.gk?
-                %th.text-center{title: "Пропущенные голы"}
+                %th.text-center{title: Player.human_attribute_name(:conceded_goals)}
                   = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
-              %th.text-center{title: "Забитые голы"}
+              %th.text-center{title: Player.human_attribute_name(:goals)}
                 = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium green'
-              %th.text-center{title: "Голевые пасы"}
+              %th.text-center{title: Player.human_attribute_name(:passes)}
                 = inline_svg 'goal-pass.svg', class: 'svg-picture-medium'
-              %th.text-center{title: "Автоголы"}
+              %th.text-center{title: Player.human_attribute_name(:autogoals)}
                 = inline_svg 'autogoal.svg', class: 'svg-picture-medium'
-              %th.text-center{title: "Жёлтые карточки"}
+              %th.text-center{title: Player.human_attribute_name(:yellow_cards)}
                 = inline_svg 'yellow-card.svg'
-              %th.text-center{title: "Красные карточки"}
+              %th.text-center{title: Player.human_attribute_name(:red_cards)}
                 = inline_svg 'red-card.svg'
           %tbody
             %tr.text-center
-              %td{style: "color: #00F", title: "Текущий сезон"}
+              %td{style: "color: #00F", title: t('player.current_season')}
                 = inline_svg 'timer.svg', class: 'svg-picture-medium'
               %td= @player.season_games
               -if @player.gk?
@@ -48,7 +48,7 @@
               %td= @player.season_yellow_cards
               %td= @player.season_red_cards
             %tr.text-center
-              %td{style: "color: #00F", title: "Карьера"}
+              %td{style: "color: #00F", title: t('player.career')}
                 = inline_svg 'history.svg', class: 'svg-picture-medium'
               %td= @player.all_games
               -if @player.gk?
@@ -76,6 +76,6 @@
     = link_to new_transfer_path(player_id: @player.id), class: 'btn btn-default' do
       = inline_svg 'transfer.svg', class: 'svg-picture-btn'
       = t('buttons.transfer')
-    = link_to sell_player_path(@player, location: 'show'), method: :patch, data: { confirm: 'Продать игрока за полцены на рынок свободных агентов? Это действие отменить нельзя!' }, title: 'Продать игрока', class: 'btn btn-danger' do
+    = link_to sell_player_path(@player, location: 'show'), method: :patch, data: { confirm: t('confirm_messages.sell_for_half_price') }, title: t('actions.sell_player'), class: 'btn btn-danger' do
       = inline_svg 'usd.svg', class: 'svg-picture-btn white'
       = t('buttons.sell')

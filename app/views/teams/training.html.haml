@@ -1,6 +1,6 @@
 .text-center
   .page-header
-    %h1= t 'teams.training'
+    %h1= t('views.teams.training')
     %h1
       = @team.title
       = image_tag @team.country.flag.url, title: @team.country.i18n_title
@@ -11,7 +11,7 @@
       %tr.success
         %th.text-center
           = inline_svg 'footballer.svg', class: 'svg-picture-table'
-          = t 'teams.player'
+          = t('views.teams.player')
         %th.text-center{title: "Позиция"}
           = inline_svg 'location.svg', class: 'svg-picture-table'
         %th.text-center{title: "Мастерство"}

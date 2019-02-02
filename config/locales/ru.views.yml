@@ -20,6 +20,9 @@ ru:
       penalty_redcard: Дисквалифицирован (Красная карточка)
       penalty_yellowcards: Дисквалифицирован (Жёлтые карточки)
       transfer: На трансфере
+    current_season: Текущий сезон
+    career: Карьера
+    statistics: Статистика
   views:
     site_title: Футбольный менеджер StarTeam
     pagination:
@@ -53,6 +56,7 @@ ru:
       all: Все игроки
       create: Создать игрока
       career: Карьера игрока
+      statistics: Статистика игрока
     careers:
       blank: Игрок ещё не играл за профессиональную команду.
       now_end: н.в.
@@ -70,6 +74,8 @@ ru:
       statistics: Статистика
       player_statistics: Статистика игроков
       calendar: Календарь игр
+      current_balance: Текущий баланс
+      player: Игрок
     transfers:
       all: Трансферы
   buttons:
@@ -88,6 +94,7 @@ ru:
     confirm: Подтвердить
     cancel: Отменить
     search: Искать
+    player_overview: Обзор игрока
     go_to_club_base_creating: Перейти к созданию базы клуба
     go_to_stadium_creating: Перейти к созданию стадиона
   prompt:
@@ -102,3 +109,8 @@ ru:
     talent: 'Талант >'
   errors:
     any: При сохранении произошли ошибки.
+  confirm_messages:
+    sell_for_half_price: Продать игрока за полцены на рынок свободных агентов? Это действие нельзя отменить!
+  actions:
+    title: Действия
+    sell_player: Продать игрока
