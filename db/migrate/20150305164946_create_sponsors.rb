@@ -1,4 +1,4 @@
-class CreateSponsors < ActiveRecord::Migration
+class CreateSponsors < ActiveRecord::Migration[5.1]
   def change
     create_table :sponsors, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string :title, null: false, limit: 30

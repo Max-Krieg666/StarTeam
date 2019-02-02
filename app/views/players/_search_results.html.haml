@@ -39,7 +39,7 @@
       - @players.each do |player|
         %tr.text-center
           %td= player.name
-          %td= image_tag player.country.flag.url, title: player.country.title
+          %td= image_tag player.country.flag.url, title: player.country.i18n_title
           %td= player.full_position_name
           %td= player.talent
           %td= player.age

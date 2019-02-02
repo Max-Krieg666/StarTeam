@@ -1,4 +1,4 @@
-class CreateTransfers < ActiveRecord::Migration
+class CreateTransfers < ActiveRecord::Migration[5.1]
   def change
     create_table :transfers, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.uuid :player_id, index: true

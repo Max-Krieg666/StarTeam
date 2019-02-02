@@ -21,7 +21,11 @@ en:
       new_cup: New cup
       my_cup: Cup games
     players:
-      all: Players
+      page_title: Players
+      all: All players
+    careers:
+      blank: The player has not played for a professional team.
+      now_end: now
     teams:
       all: All teams
       block: Team
@@ -31,8 +35,6 @@ en:
     transfers:
       all: Transfers
       create: Create a new player
-    careers:
-      now_end: now
   pagination:
     first: "&laquo; First"
     last: "Last &raquo;"

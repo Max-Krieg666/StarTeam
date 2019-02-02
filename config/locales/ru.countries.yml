@@ -1,0 +1,254 @@
+ru:
+  countries:
+    'Australia': Австралия
+    'Austria': Австрия
+    'Azerbaijan': Азербайджан
+    'Albania': Албания
+    'Algeria': Алжир
+    'American Samoa': Американское Самоа
+    'Anguilla': Ангилья
+    'Angola': Ангола
+    'Andorra': Андорра
+    'Antigua and Barbuda': Антигуа и Барбуда
+    'Argentina': Аргентина
+    'Armenia': Армения
+    'Aruba': Аруба
+    'Afghanistan': Афганистан
+    'The Bahamas': Багамы
+    'Bangladesh': Бангладеш
+    'Barbados': Барбадос
+    'Bahrain': Бахрейн
+    'Belarus': Беларусь
+    'Belize': Белиз
+    'Belgium': Бельгия
+    'Benin': Бенин
+    'The Bermudes': Бермуды
+    'Bulgaria': Болгария
+    'Bolivia': Боливия
+    'Caribbean Netherlands': Бонэйр, Синт-Эстатиус и Саба
+    'Bosnia and Herzegovina': Босния и Герцеговина
+    'Botswana': Ботсвана
+    'Brazil': Бразилия
+    'Brunei Darussalam': Бруней-Даруссалам
+    'Burkina Faso': Буркина-Фасо
+    'Burundi': Бурунди
+    'Bhutan': Бутан
+    'Vanuatu': Вануату
+    'Vatican': Ватикан
+    'Kosovo': Косово
+    'Hungary': Венгрия
+    'Venezuela': Венесуэла
+    'British Virgin Islands': Британские Виргинские острова
+    'US Virgin Islands': Американские Виргинские острова
+    'East Timor': Восточный Тимор
+    'Vietnam': Вьетнам
+    'Gabon': Габон
+    'Haiti': Гаити
+    'Guyana': Гайана
+    'Gambia': Гамбия
+    'Ghana': Гана
+    'Guadeloupe': Гваделупа
+    'Guatemala': Гватемала
+    'Guinea': Гвинея
+    'Guinea-Bissau': Гвинея-Бисау
+    'Germany': Германия
+    'Guernsey': Гернси
+    'Gibraltar': Гибралтар
+    'Honduras': Гондурас
+    'Hong Kong': Гонконг
+    'Grenada': Гренада
+    'Greenland': Гренландия
+    'Greece': Греция
+    'Georgia': Грузия
+    'Guam': Гуам
+    'Denmark': Дания
+    'Jersey': Джерси
+    'Djibouti': Джибути
+    'Dominica': Доминика
+    'Dominican Republic': Доминиканская Республика
+    'Egypt': Египет
+    'Zambia': Замбия
+    'West Sahara': Западная Сахара
+    'Zimbabwe': Зимбабве
+    'Israel': Израиль
+    'India': Индия
+    'Indonesia': Индонезия
+    'Jordan': Иордания
+    'Iraq': Ирак
+    'Iran': Иран
+    'Ireland': Ирландия
+    'Iceland': Исландия
+    'Spain': Испания
+    'Italy': Италия
+    'Yemen': Йемен
+    'Cape Verde': Кабо-Верде
+    'Kazakhstan': Казахстан
+    'Cambodia': Камбоджа
+    'Cameroon': Камерун
+    'Canada': Канада
+    'Qatar': Катар
+    'Kenia': Кения
+    'Cyprus': Кипр
+    'Kiribati': Кирибати
+    'China': Китай
+    'Colombia': Колумбия
+    'Comoros': Коморы
+    'Congo': Конго
+    'Democratic Republic of the Congo': Конго ДР
+    'Costa Rica': Коста-Рика
+    "Côte d'Ivoire": "Кот-д'Ивуар"
+    'Cuba': Куба
+    'Kuwait': Кувейт
+    'Kyrgyzstan': Кыргызстан
+    'Curacao': Кюрасао
+    'Laos': Лаос
+    'Latvia': Латвия
+    'Lesotho': Лесото
+    'Liberia': Либерия
+    'Lebanon': Ливан
+    'Libya': Ливия
+    'Lithuania': Литва
+    'Liechtenstein': Лихтенштейн
+    'Luxembourg': Люксембург
+    'Mauritius': Маврикий
+    'Mauritania': Мавритания
+    'Madagascar': Мадагаскар
+    'Macau': Макао
+    'Macedonia': Македония
+    'Malawi': Малави
+    'Malaysia': Малайзия
+    'Mali': Мали
+    'Maldives': Мальдивы
+    'Malta': Мальта
+    'Morocco': Марокко
+    'Martinique': Мартиника
+    'Marshall Islands': Маршалловы Острова
+    'Mexico': Мексика
+    'Federated States of Micronesia': Федеративные Штаты Микронезии
+    'Mozambique': Мозамбик
+    'Moldova': Молдова
+    'Monaco': Монако
+    'Mongolia': Монголия
+    'Monserrat': Монтсеррат
+    'Myanmar': Мьянма
+    'Namibia': Намибия
+    'Nauru': Науру
+    'Nepal': Непал
+    'Niger': Нигер
+    'Nigeria': Нигерия
+    'Netherlands': Нидерланды
+    'Nicaragua': Никарагуа
+    'Niue': Ниуэ
+    'New Zealand': Новая Зеландия
+    'New Caledonia': Новая Каледония
+    'Norway': Норвегия
+    'United Arab Emirates': Объединенные Арабские Эмираты
+    'Oman': Оман
+    'Isle of Man': Остров Мэн
+    'Norfolk Island': Остров Норфолк
+    'Cayman Islands': Острова Кайман
+    'Cook Islands': Острова Кука
+    'Turks and Caicos Islands': Острова Теркс и Кайкос
+    'Pakistan': Пакистан
+    'Palau': Палау
+    'Palestinian Authority': Палестинская автономия
+    'Panama': Панама
+    'Papua New Guinea': Папуа - Новая Гвинея
+    'Paraguay': Парагвай
+    'Peru': Перу
+    'Pitkern': Питкерн
+    'Poland': Польша
+    'Portugal': Португалия
+    'Puerto-Rico': Пуэрто-Рико
+    'Reunion': Реюньон
+    'Russia': Россия
+    'Rwanda': Руанда
+    'Romania': Румыния
+    'USA': США
+    'Salvador': Сальвадор
+    'Samoa': Самоа
+    'San Marino': Сан-Марино
+    'Sao Tome and Principe': Сан-Томе и Принсипи
+    'Saudi Arabia': Саудовская Аравия
+    'Swaziland': Свазиленд
+    'Saint Helena Island': Остров Святой Елены
+    'North Korea': Северная Корея
+    'Northern Mariana Islands': Северные Марианские острова
+    'Seychelles': Сейшелы
+    'Senegal': Сенегал
+    'Saint Vincent and Grenadines': Сент-Винсент и Гренадины
+    'Saint Kitts and Nevis': Сент-Китс и Невис
+    'Saint Lucia': Сент-Люсия
+    'Saint Pierre and Miquelon': Сент-Пьер и Микелон
+    'Serbia': Сербия
+    'Singapore': Сингапур
+    'Sint Maarten': Синт-Мартен
+    'Syrian Arab Republic': Сирийская Арабская Республика
+    'Slovakia': Словакия
+    'Slovenia': Словения
+    'Solomon Islands': Соломоновы Острова
+    'Somali': Сомали
+    'Sudan': Судан
+    'Surinam': Суринам
+    'Sierra-Leone': Сьерра-Леоне
+    'Tajikistan': Таджикистан
+    'Thailand': Таиланд
+    'Taiwan': Тайвань
+    'Tansania': Танзания
+    'Togo': Того
+    'Tokelau': Токелау
+    'Tonga': Тонга
+    'Trinidad and Tobago': Тринидад и Тобаго
+    'Tuvalu': Тувалу
+    'Tunisia': Тунис
+    'Turkmenistan': Туркменистан
+    'Turkey': Турция
+    'Uganda': Уганда
+    'Uzbekistan': Узбекистан
+    'Ukraine': Украина
+    'Wallis and Futuna': Уоллис и Футуна
+    'Uruguay': Уругвай
+    'Faroe Islands': Фарерские острова
+    'Fiji': Фиджи
+    'Philippines': Филиппины
+    'Finland': Финляндия
+    'Falkland Islands': Фолклендские острова
+    'France': Франция
+    'French Guiana': Французская Гвиана
+    'French Polinesia': Французская Полинезия
+    'Croatia': Хорватия
+    'Central African Republic': Центрально-Африканская Республика
+    'Chad': Чад
+    'Montenegro': Черногория
+    'Czech': Чехия
+    'Chile': Чили
+    'Switzerland': Швейцария
+    'Sweden': Швеция
+    'Spitsbergen and Yan Mayen': Шпицберген и Ян Майен
+    'Sri-Lanka': Шри-Ланка
+    'Equador': Эквадор
+    'Equatorial Guinea': Экваториальная Гвинея
+    'Eritrea': Эритрея
+    'Estonia': Эстония
+    'Ethiopia': Эфиопия
+    'South Korea': Южная Корея
+    'South African Republic': Южно-Африканская Республика
+    'South Sudan': Южный Судан
+    'Jamaica': Ямайка
+    'Japan': Япония
+    'Abkhazia': Абхазия
+    'Aland': Аланд
+    'England': Англия
+    'Canary Islands': Канарские острова
+    'Cocos Island (Keeling)': Кокосовые острова (Килинг)
+    'Mayotta': Майотта
+    'Netherlands Antilles': Нидерландские Антиллы
+    'Christmas Island': Остров Рождества
+    'Wales': Уэльс
+    'Saint Barthelemy': Сен-Бартельми
+    'Northern Ireland': Северная Ирландия
+    'Northern Cyprus': Северный Кипр
+    'Somaliland': Сомалиленд
+    'Scotland': Шотландия
+    'South Ossetia': Южная Осетия
+    'South Georgia and South Sandwich Islands': Южная Георгия и Южные Сандвичевы Острова

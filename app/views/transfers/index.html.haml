@@ -40,7 +40,7 @@
         %tr.text-center
           %td
             = link_to transfer.player.name, transfer.player, style: "color: #410405"
-            = image_tag transfer.player.country.flag.url, title: transfer.player.country.title
+            = image_tag transfer.player.country.flag.url, title: transfer.player.country.i18n_title
           %td{title: transfer.player.position1}
             = transfer.player.full_position_name
           %td= transfer.player.talent
@@ -103,10 +103,10 @@
       %tr.text-center
         %td
           = link_to transfer.player.name, transfer.player, style: "color: #410405"
-          = image_tag transfer.player.country.flag.url, title: transfer.player.country.title
+          = image_tag transfer.player.country.flag.url, title: transfer.player.country.i18n_title
         %td
           = link_to transfer.vendor.title, transfer.vendor, style: "color: #00F"
-          = image_tag transfer.vendor.country.flag.url, title: transfer.vendor.country.title
+          = image_tag transfer.vendor.country.flag.url, title: transfer.vendor.country.i18n_title
         %td{title: transfer.player.position1}
           = transfer.player.full_position_name
         %td= transfer.player.talent

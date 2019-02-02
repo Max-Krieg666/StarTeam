@@ -1,4 +1,18 @@
-class Career < ActiveRecord::Base
+# == Schema Information
+#
+# Table name: careers
+#
+#  id         :uuid             not null, primary key
+#  player_id  :uuid
+#  team_title :string           not null
+#  age_begin  :integer          not null
+#  age_end    :integer
+#  active     :boolean          default(TRUE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+class Career < ApplicationRecord
   belongs_to :player, inverse_of: :careers
 
   scope :active, -> { where(active: true) }

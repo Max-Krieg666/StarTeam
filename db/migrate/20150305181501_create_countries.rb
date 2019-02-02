@@ -1,8 +1,7 @@
-class CreateCountries < ActiveRecord::Migration
+class CreateCountries < ActiveRecord::Migration[5.1]
   def change
     create_table :countries do |t|
       t.string :title
-      t.string :title_en # TODO добавить отображение этого поля на вьюхах+модель+контроллер!
       t.attachment :flag
 
       t.timestamps null: false

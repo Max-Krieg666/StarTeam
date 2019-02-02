@@ -8,11 +8,20 @@ Bundler.require(*Rails.groups)
 
 module SoccerInLife
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.0
+
     config.time_zone = 'Moscow'
     config.i18n.default_locale = :ru
-    config.active_record.raise_in_transactional_callbacks = true
+    config.action_controller.per_form_csrf_tokens = true
+    config.action_controller.forgery_protection_origin_check = true
 
     config.autoload_paths << Rails.root.join('app/serializers')
     config.autoload_paths << Rails.root.join('app/services')
+
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration can go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded after loading
+    # the framework and any gems in your application.
   end
 end

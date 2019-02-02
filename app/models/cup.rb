@@ -1,4 +1,20 @@
-class Cup < ActiveRecord::Base
+# == Schema Information
+#
+# Table name: cups
+#
+#  id            :uuid             not null, primary key
+#  country_id    :bigint(8)
+#  title         :string           not null
+#  current_stage :integer
+#  count         :integer          default(0)
+#  status        :integer          default("waiting")
+#  start_time    :datetime
+#  end_time      :datetime
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+class Cup < ApplicationRecord
   belongs_to :country, inverse_of: :cups
   has_many :team_cups
 

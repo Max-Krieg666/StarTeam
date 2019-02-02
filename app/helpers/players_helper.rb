@@ -2,10 +2,8 @@ module PlayersHelper
   def select_position1(title, selected = nil)
     select_tag(
       title,
-      options_for_select(
-        [[I18n.t('helpers.choose_position'), nil]] + Player::POSITIONS,
-        [selected]
-      ), class: 'form-control'
+      options_for_select(Player::POSITIONS, [selected]),
+      class: 'selectpicker', prompt: I18n.t('prompt.choose_position')
     )
   end
 end

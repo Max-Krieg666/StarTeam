@@ -1,4 +1,4 @@
-class CreateClubBases < ActiveRecord::Migration
+class CreateClubBases < ActiveRecord::Migration[5.1]
   def change
     create_table :club_bases, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.references :team, type: :uuid

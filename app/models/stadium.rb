@@ -1,4 +1,17 @@
-class Stadium < ActiveRecord::Base
+# == Schema Information
+#
+# Table name: stadia
+#
+#  id         :uuid             not null, primary key
+#  title      :string(100)      not null
+#  capacity   :integer          default(200), not null
+#  level      :integer          default(1), not null
+#  team_id    :uuid
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+class Stadium < ApplicationRecord
   DEFAULT_LEVEL = 5
   MAX_CAPACITY = 100_000
 

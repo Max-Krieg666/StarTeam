@@ -7,7 +7,7 @@
       %h4.list-group-item.active{style: "color: #00F"}
         = inline_svg 'footballer.svg', class: 'svg-picture'
         = @player.name
-        = image_tag @player.country.flag.url, title: @player.country.title
+        = image_tag @country.flag.url, title: @country.i18n_title
         .row{style: "color: #FFD700"}
           -quality = @player.quality
           -quality[0].times do
@@ -54,8 +54,8 @@
 .btn-group
   = link_to players_path, class: 'btn btn-info' do
     = inline_svg 'footballer.svg', class: 'svg-picture-btn'
-    Все игроки
+    = t('views.players.all')
   -if @current_user_team
     = link_to @current_user_team, class: 'btn btn-primary' do
       = inline_svg 'group.svg', class: 'svg-picture-btn white'
-      Моя команда
+      = t('views.teams.my_team')

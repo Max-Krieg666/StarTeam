@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :check_user
-  before_action :set_player, except: %i[index new create]
+  before_action :set_player_and_country, except: %i[index new create]
   before_action :admin_permission, only: %i[new create]
 
   def index
@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
       end
       .limit(200)
       .includes(:country)
-      .order('countries.title, players.name')
+      .order('players.name')
       .page(params[:page])
   end
 
@@ -102,7 +102,7 @@ class PlayersController < ApplicationController
     elsif @current_user_team.low_squad?
       flash[:danger] = I18n.t('flash.teams.low_squad')
       redirect_to @current_user_team
-    elsif @player.injured || !@player.can_play || games_missed > 0
+    elsif @player.injured || !@player.can_play || @player.games_missed > 0
       flash[:danger] = I18n.t('flash.players.was_disqualified')
       redirect_to @player
     else
@@ -186,8 +186,9 @@ class PlayersController < ApplicationController
 
   private
 
-  def set_player
+  def set_player_and_country
     @player = Player.find(params[:id])
+    @country = @player.country
   end
 
   def player_params

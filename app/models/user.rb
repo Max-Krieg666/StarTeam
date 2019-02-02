@@ -1,4 +1,30 @@
-class User < ActiveRecord::Base
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :uuid             not null, primary key
+#  login                  :string(24)       not null
+#  country_id             :bigint(8)
+#  sex                    :integer          default("not_specified")
+#  birthday               :date
+#  role                   :integer          default("user")
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  email                  :string           default(""), not null
+#  password_digest        :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
+class User < ApplicationRecord
   has_secure_password
 
   has_one :team, inverse_of: :user
@@ -34,7 +60,7 @@ class User < ActiveRecord::Base
 
   validates :login,
             presence: true,
-            length: { minimum: 3, maximum: 24, if: 'login.present?' },
+            length: { minimum: 3, maximum: 24, if: -> { login.present? } },
             uniqueness: true,
             exclusion: {
               in: %w[ADMIN AdMiN aDmIn Admin admin God god Root root]
@@ -42,7 +68,7 @@ class User < ActiveRecord::Base
             format: {
               with: /\A[-A-Za-z0-9_ ]+\z/,
               message: :incorrect,
-              if: 'login.present?'
+              if: -> { login.present? }
             }
 
   validates :email,
@@ -50,10 +76,10 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false },
             format: {
               with: /\A[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,}\z/i,
-              if: 'email.present?'
+              if: -> { email.present? }
             }
 
-  validates :password, length: { minimum: 6, if: 'password.present?' }
+  validates :password, length: { minimum: 6, if: -> { password.present? } }
   validates :password_confirmation, presence: { on: :create }
 
   validates :country_id, presence: true
@@ -94,8 +120,8 @@ class User < ActiveRecord::Base
   end
 
   def check_bday
-    return if birthday.blank?
-    errors[:birthday] << I18n.t(:birthday_incorrect) if birthday > Time.zone.now
+    return if birthday.blank? || birthday < Time.zone.now
+    errors[:birthday] << I18n.t(:birthday_incorrect)
   end
 
   def unread_notifications

@@ -1,6 +1,4 @@
 ru:
-  helpers:
-    choose_position: Выберите позицию
   user:
     sex:
       male: Мужской
@@ -51,8 +49,13 @@ ru:
       new_cup: Новый кубок
       my_cup: Кубковые матчи
     players:
-      all: Игроки
+      page_title: Игроки
+      all: Все игроки
       create: Создать игрока
+      career: Карьера игрока
+    careers:
+      blank: Игрок ещё не играл за профессиональную команду.
+      now_end: н.в.
     teams:
       all: Все команды
       block: Команда
@@ -69,8 +72,6 @@ ru:
       calendar: Календарь игр
     transfers:
       all: Трансферы
-    careers:
-      now_end: н.в.
   buttons:
     back_to: Вернуться к
     sign_up: Регистрация
@@ -93,6 +94,11 @@ ru:
     day: День
     month: Месяц
     year: Год
+    choose_position: Выберите позицию
     choose_country: Выберите страну
+    player: Игрок
+    age: 'Возраст >'
+    skill_level: 'Мастерство >'
+    talent: 'Талант >'
   errors:
     any: При сохранении произошли ошибки.

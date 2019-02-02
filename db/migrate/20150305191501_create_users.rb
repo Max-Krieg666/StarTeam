@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string :login, null: false, limit: 24
