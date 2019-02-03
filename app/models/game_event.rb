@@ -5,6 +5,7 @@
 #  id        :uuid             not null, primary key
 #  game_id   :uuid
 #  player_id :uuid
+#  team_id   :uuid
 #  kind      :integer
 #  minute    :string
 #

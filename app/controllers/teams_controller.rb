@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
   end
 
   def training
-    @players = @team.basic_order
+    @players = @team.order_by_main_position
   end
 
   def operations

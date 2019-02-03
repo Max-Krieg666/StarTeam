@@ -61,7 +61,9 @@ module Generator
           pos_players << random_player(pl_c_id, pos)
         end
         pos_players.sort_by(&:skill_level).last(count.last).each do |p|
-          p.update(basic: true)
+          p.set_real_position
+          p.basic = true
+          p.save
         end
       end
     end

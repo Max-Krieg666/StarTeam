@@ -16,7 +16,8 @@
 
 class Cup < ApplicationRecord
   belongs_to :country, inverse_of: :cups
-  has_many :team_cups
+  has_many :team_cups, inverse_of: :cup
+  has_many :games, as: :tournament, inverse_of: :cup
 
   enum status: %i[waiting active finished]
 
@@ -82,11 +83,9 @@ class Cup < ApplicationRecord
   end
 
   def create_cup_game(home, guest, round)
-    Game.create(
+    games.create(
       home_id: home.id,
       guest_id: guest.id,
-      tournament_id: id,
-      kind: false,
       starting_time: Time.current + 2.days,
       tour: round
     )

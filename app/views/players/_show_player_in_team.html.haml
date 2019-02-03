@@ -1,5 +1,3 @@
-/ TODO добавить отображение real_position, efficienty, morale, physical_condition
-
 -t = @player.team
 .page-header.center
   %h2
@@ -10,7 +8,7 @@
   = image_tag t.country.flag.url, title: t.country.i18n_title
   
 .row.text-danger.text-center
-  = render 'player_in_team_info'
+  = render 'players/base_info/base_info_block'
   .col-md-8
     .row
       .col-md-6

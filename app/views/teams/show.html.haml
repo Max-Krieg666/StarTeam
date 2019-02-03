@@ -81,12 +81,12 @@
           %td
             = pl.name
             = inline_svg 'copyright.svg', class: 'svg-picture', title: Player.human_attribute_name(:captain) if pl.captain
-            = inline_svg 'transfer.svg', class: 'svg-picture', title: Player.human_attribute_name(:set_to_transfer) if pl.status == 'transfer'
+            = inline_svg 'transfer.svg', class: 'svg-picture', title: Player.human_attribute_name(:set_to_transfer) if pl.transfer?
           %td= image_tag pl.country.flag.url, title: pl.country.i18n_title
           / TODO подумать как лучше отображать
           %td
             = pl.full_position_name
-          %td{title: pl.real_position}
+          %td{title: pl.real_position_name}
             = pl.real_position_name
           %td.js-talent= pl.talent
           %td.js-age= pl.age

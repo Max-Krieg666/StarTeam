@@ -17,13 +17,10 @@ class League < ApplicationRecord
   require 'round_robin_tournament'
 
   belongs_to :country, inverse_of: :leagues
-  has_many :team_leagues
+  has_many :team_leagues, inverse_of: :league
+  has_many :games, as: :tournament, inverse_of: :league
 
   enum status: %i[waiting active finished]
-
-  def games
-    Game.where(tournament_id: id)
-  end
 
   def citizenships_info
     teams_ids = Team.joins(:team_leagues)
@@ -79,11 +76,9 @@ class League < ApplicationRecord
         next if pair.first.nil? || pair.last.nil?
         home = pair.first.team
         guest = pair.last.team
-        Game.create(
+        games.create(
           home_id: home.id,
           guest_id: guest.id,
-          tournament_id: id,
-          kind: true,
           starting_time: Time.current + (number + 2).days,
           tour: number + 1,
           game_statistic: GameStatistic.new

@@ -66,6 +66,7 @@
 
 class Player < ApplicationRecord
   include Definer
+  include PositionMethods
   include ActionView::Helpers::NumberHelper
 
   # 5 защитных: Отбор, Опека, Выбор позиции, Игра головой, Прессинг
@@ -77,8 +78,8 @@ class Player < ApplicationRecord
   belongs_to :team, inverse_of: :players, optional: true
   has_many :transfers, inverse_of: :player
   has_many :careers, inverse_of: :player
-  has_many :game_events
-  has_many :game_players
+  has_many :game_events, inverse_of: :player
+  has_many :game_players, inverse_of: :player
 
   def to_param
     return id if self.class.where(name: name).size > 1
@@ -94,12 +95,11 @@ class Player < ApplicationRecord
     find_by name: input
   end
 
-  POSITIONS = %i[
-    gk
-    ld cd rd
-    lm cm rm
-    lf cf rf
-  ].freeze
+  GK_POSITION = %i[gk].freeze
+  DEF_POSITIONS = %i[ld cd rd].freeze
+  MID_POSITIONS = %i[lm cm rm].freeze
+  ATT_POSITIONS = %i[lf cf rf].freeze
+  POSITIONS = GK_POSITION + DEF_POSITIONS + MID_POSITIONS + ATT_POSITIONS
 
   STATES = %i[free_agent in_team retired].freeze
 
@@ -116,26 +116,6 @@ class Player < ApplicationRecord
     aggression creativity
   ].freeze
 
-  DEFAULT_VALUES = {
-    team_id: nil,
-    state: :free_agent,
-    status: :active,
-    season_games: 0,
-    season_goals: 0,
-    season_passes: 0,
-    season_conceded_goals: 0,
-    season_autogoals: 0,
-    season_yellow_cards: 0,
-    season_red_cards: 0,
-    can_play: true,
-    games_missed: 0,
-    captain: false,
-    injured: false,
-    morale: 5,
-    physical_condition: 1.0,
-    basic: false
-  }.freeze
-
   UNIQUENESS_NAME_SCOPE_WITH = %i[position1 age skill_level talent].freeze
 
   enum position1: POSITIONS
@@ -143,7 +123,6 @@ class Player < ApplicationRecord
   enum status: STATUSES
 
   before_validation :set_price, on: :create
-  before_validation :set_real_position, on: :create
 
   validates :name,
             presence: true,
@@ -158,13 +137,13 @@ class Player < ApplicationRecord
   validates :number, inclusion: { in: 1..99 }, allow_blank: true
 
   def full_position_name
-    return position1.capitalize if position2.nil?
-    position1.capitalize + '/' + position2.capitalize
+    return position1.capitalize unless position2
+    position1.capitalize + '/' + POSITIONS[position2].capitalize
   end
 
   def real_position_name
-    # TODO this
-    # POSITIONS[real_position]
+    return unless real_position
+    POSITIONS[real_position].capitalize
   end
 
   def set_price
@@ -196,43 +175,14 @@ class Player < ApplicationRecord
   end
 
   def choose_position2
-    # TODO this
-    # case position1
-    # when 1, 3 # Ld, Rd
-    #   [2]
-    # when 2 # Cd
-    #   [1, 3]
-    # when 4, 6 # Lm, Rm
-    #   [5]
-    # when 5 # Cm
-    #   [4, 6]
-    # when 7, 9 # Lf, Rf
-    #   [8]
-    # when 8 # Cf
-    #   [7, 9]
-    # else # 0 = Gk
-    #   []
-    # end
-  end
-
-  def position_defend?
-    %i[ld cd rd].include?(position1)
-  end
-
-  def position_midfield?
-    %i[lm cm rm].include?(position1)
-  end
-
-  def position_attack?
-    %i[lf cf rf].include?(position1)
+    AVAILABLE_POSITIONS_FOR_CHOOSING[position1]
   end
 
   def change_efficienty
-    # TODO доделать вычисление эффекивности
-    if position1 == real_position
-      1.0
-    else
-    end
+    ef1 = POSITION_EFFICIENCY_MODEL[position1][real_position]
+    return ef1 unless position2
+    ef2 = POSITION_EFFICIENCY_MODEL[position2][real_position]
+    [ef1, ef2].max
   end
 
   def self.calc_price(skill_level, talent, age)

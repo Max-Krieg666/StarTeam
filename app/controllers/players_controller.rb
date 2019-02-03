@@ -165,7 +165,7 @@ class PlayersController < ApplicationController
   Player::CHARACTERISTICS.each do |charc|
     define_method "#{charc}_upgrade" do
       new_level = @player.skill_level + 1
-      pts = @player.training_points - Definer.need_points(@player.send(charc))
+      pts = @player.training_points - @player.need_training_points(@player.send(charc))
       upgrade_params = {
         charc => @player.send(charc) + 1,
         training_points: pts,

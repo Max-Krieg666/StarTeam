@@ -65,10 +65,12 @@ ActiveRecord::Schema.define(version: 2017_11_25_002500) do
   create_table "game_events", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid "game_id"
     t.uuid "player_id"
+    t.uuid "team_id"
     t.integer "kind"
     t.string "minute"
     t.index ["game_id"], name: "index_game_events_on_game_id"
     t.index ["player_id"], name: "index_game_events_on_player_id"
+    t.index ["team_id"], name: "index_game_events_on_team_id"
   end
 
   create_table "game_players", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -114,14 +116,15 @@ ActiveRecord::Schema.define(version: 2017_11_25_002500) do
   create_table "games", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid "home_id"
     t.uuid "guest_id"
-    t.string "tournament_id"
-    t.boolean "kind"
+    t.string "tournament_type"
+    t.uuid "tournament_id"
     t.integer "tour"
     t.datetime "starting_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guest_id"], name: "index_games_on_guest_id"
     t.index ["home_id"], name: "index_games_on_home_id"
+    t.index ["tournament_type", "tournament_id"], name: "index_games_on_tournament_type_and_tournament_id"
   end
 
   create_table "leagues", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

@@ -80,15 +80,15 @@ module Generator
     end
 
     def find_defenders(squad)
-      squad.select { |pl| pl if pl.ld? || pl.cd? || pl.rd? }
+      squad.select { |pl| pl if pl.position_defend?(pl.real_position) }
     end
 
     def find_midfielders(squad)
-      squad.select { |pl| pl if pl.lm? || pl.cm? || pl.rm? }
+      squad.select { |pl| pl if pl.position_midfield?(pl.real_position) }
     end
 
     def find_scorers(squad)
-      squad.select { |pl| pl if pl.lf? || pl.cf? || pl.rf? }
+      squad.select { |pl| pl if pl.position_attack?(pl.real_position) }
     end
   end
 end

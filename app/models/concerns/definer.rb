@@ -1,6 +1,26 @@
 module Definer
   extend ActiveSupport::Concern
 
+  DEFAULT_VALUES = {
+    team_id: nil,
+    state: :free_agent,
+    status: :active,
+    season_games: 0,
+    season_goals: 0,
+    season_passes: 0,
+    season_conceded_goals: 0,
+    season_autogoals: 0,
+    season_yellow_cards: 0,
+    season_red_cards: 0,
+    can_play: true,
+    games_missed: 0,
+    captain: false,
+    injured: false,
+    morale: 5,
+    physical_condition: 1.0,
+    basic: false
+  }.freeze
+
   def level_define
     case talent
     when 9
@@ -102,7 +122,7 @@ module Definer
     a
   end
 
-  def self.need_points(level)
+  def need_training_points(level)
     if level.zero?
       15
     else # > 1

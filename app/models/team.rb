@@ -31,7 +31,11 @@ class Team < ApplicationRecord
   before_destroy :free_all_players
 
   def basic_order
-    players.order('basic desc, position1 asc, skill_level desc')
+    players.order('basic desc, real_position asc, position1 asc, skill_level desc')
+  end
+
+  def order_by_main_position
+    players.order('position1 asc, skill_level desc')
   end
 
   def to_param
