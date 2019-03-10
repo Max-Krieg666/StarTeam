@@ -151,7 +151,7 @@ class Player < ApplicationRecord
   end
 
   def set_real_position
-    self.real_position ||= position1
+    self.real_position ||= POSITIONS.index(position1)
   end
 
   def quality

@@ -1,7 +1,7 @@
 .text-center
   .page-header
-    %h1= t('views.teams.training')
     %h1
+      = t('views.teams.training')
       = @team.title
       = image_tag @team.country.flag.url, title: @team.country.i18n_title
   %br

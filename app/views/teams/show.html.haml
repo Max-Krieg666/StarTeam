@@ -5,14 +5,17 @@
     %h1
       = @team.title
       = image_tag @team.country.flag.url, title: @team.country.i18n_title
-  %p
-    %b= Team.human_attribute_name(:user) + ':'
-    = link_to @team.user, style: "color: #FFA500", class: 'btn btn-link' do
-      = inline_svg 'no-avatar.svg', class: 'svg-picture-btn'
-      = @team.user.login
-  %p
-    %b= Team.human_attribute_name(:sponsor) + ':'
-    = link_to @team.sponsor.title, [@team, @team.sponsor], style: "color: #550", class: 'btn btn-link'
+.row
+  .col-md-4
+    %p
+      %b= Team.human_attribute_name(:user) + ':'
+      = link_to @team.user, style: "color: #FFA500", class: 'btn btn-link' do
+        = inline_svg 'no-avatar.svg', class: 'svg-picture-btn'
+        = @team.user.login
+    %p
+      %b= Team.human_attribute_name(:sponsor) + ':'
+      = link_to @team.sponsor.title, [@team, @team.sponsor], style: "color: #550", class: 'btn btn-link'
+  .col-md-4
     %p
       %b= Team.human_attribute_name(:stadium) + ':'
       -if @stadium
@@ -22,22 +25,23 @@
           #{@stadium.title} (#{stc} #{Russian.p(stc, 'место', 'места', 'мест')})
       -else
         Не создан
-  %p
-    %b= Team.human_attribute_name(:club_base) + ':'
-    -if @club_base
-      = link_to [@team, @club_base], style: "color: #458B74", class: 'btn btn-link' do
-        = inline_svg 'club_base.svg', class: 'svg-picture-btn green'
-        = @club_base.title + " (#{@club_base.level})"
-    -else
-      Не создана
-  %p
-    %b= Team.human_attribute_name(:budget) + ':'
-    = @team.budget_to_currency
-  %p
-    %b= Team.human_attribute_name(:fans) + ':'
-    %span
-      = inline_svg 'group.svg', class: 'svg-picture'
-    = @team.fans
+    %p
+      %b= Team.human_attribute_name(:club_base) + ':'
+      -if @club_base
+        = link_to [@team, @club_base], style: "color: #458B74", class: 'btn btn-link' do
+          = inline_svg 'club_base.svg', class: 'svg-picture-btn green'
+          = @club_base.title + " (#{@club_base.level})"
+      -else
+        Не создана
+  .col-md-4
+    %p
+      %b= Team.human_attribute_name(:budget) + ':'
+      = @team.budget_to_currency
+    %p
+      %b= Team.human_attribute_name(:fans) + ':'
+      %span
+        = inline_svg 'group.svg', class: 'svg-picture'
+      = @team.fans
 
   %br
 

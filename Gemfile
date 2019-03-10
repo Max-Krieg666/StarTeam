@@ -22,12 +22,13 @@ gem 'paperclip', '~> 5.2.0'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+# files
 gem 'nokogiri'
 
 # scheduling
 gem 'round_robin_tournament'
 
-# Icons
+# icons
 gem 'inline_svg'
 
 # JavaScript assets and libraries
@@ -44,6 +45,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'rails-i18n'
 gem 'russian'
 
+
 # json api
 gem 'jbuilder'
 
@@ -53,6 +55,7 @@ gem 'httparty'
 gem 'mechanize'
 
 group :development, :test do
+  gem 'better_errors'
   gem 'byebug'
   gem 'web-console'
   gem 'listen'
