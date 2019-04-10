@@ -2,31 +2,33 @@
 #
 # Table name: teams
 #
-#  id         :uuid             not null, primary key
-#  user_id    :uuid
-#  title      :string(30)       not null
-#  budget     :decimal(20, 2)   default(250000.0), not null
-#  fans       :integer          default(20), not null
-#  country_id :bigint(8)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :uuid             not null, primary key
+#  user_id      :uuid
+#  title        :string(30)       not null
+#  budget       :decimal(20, 2)   default(250000.0), not null
+#  fans         :integer          default(20), not null
+#  country_id   :bigint(8)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  formation_id :uuid
 #
 
 class Team < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 
-  belongs_to :user, inverse_of: :team
   belongs_to :country, inverse_of: :teams
+  belongs_to :formation, inverse_of: :teams
+  belongs_to :user, inverse_of: :team
+  has_one :club_base, inverse_of: :team, dependent: :destroy
   has_one :sponsor, inverse_of: :team, dependent: :destroy
   has_one :stadium, inverse_of: :team, dependent: :destroy
-  has_one :club_base, inverse_of: :team, dependent: :destroy
-  has_many :players, inverse_of: :team
-  has_many :transfers, inverse_of: :team, dependent: :destroy
-  has_many :operations, inverse_of: :team, dependent: :destroy
-  has_many :team_leagues, class_name: 'TeamLeague', dependent: :destroy
-  has_many :team_cups, class_name: 'TeamCup', dependent: :destroy
   has_many :games, inverse_of: :team, dependent: :destroy
   has_many :game_events, inverse_of: :team
+  has_many :operations, inverse_of: :team, dependent: :destroy
+  has_many :players, inverse_of: :team
+  has_many :transfers, inverse_of: :team, dependent: :destroy
+  has_many :team_cups, class_name: 'TeamCup', dependent: :destroy
+  has_many :team_leagues, class_name: 'TeamLeague', dependent: :destroy
 
   before_destroy :free_all_players
 

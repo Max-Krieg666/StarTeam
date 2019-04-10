@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_11_25_002500) do
+ActiveRecord::Schema.define(version: 2019_11_04_012241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 2017_11_25_002500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_cups_on_country_id"
+  end
+
+  create_table "formations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "schema"
   end
 
   create_table "game_events", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -164,7 +169,7 @@ ActiveRecord::Schema.define(version: 2017_11_25_002500) do
     t.bigint "country_id"
     t.integer "position1", null: false
     t.integer "position2"
-    t.integer "real_position", null: false
+    t.integer "real_position"
     t.float "efficienty", default: 1.0
     t.integer "talent", null: false
     t.integer "age", null: false
@@ -284,6 +289,7 @@ ActiveRecord::Schema.define(version: 2017_11_25_002500) do
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "formation_id"
     t.index ["country_id"], name: "index_teams_on_country_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end

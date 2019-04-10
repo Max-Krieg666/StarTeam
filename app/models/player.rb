@@ -7,7 +7,6 @@
 #  country_id            :bigint(8)
 #  position1             :integer          not null
 #  position2             :integer
-#  real_position         :integer          not null
 #  efficienty            :float            default(1.0)
 #  talent                :integer          not null
 #  age                   :integer          not null
@@ -62,6 +61,7 @@
 #  physical_condition    :float            default(1.0)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  real_position         :integer
 #
 
 class Player < ApplicationRecord
@@ -122,6 +122,7 @@ class Player < ApplicationRecord
   enum state: STATES
   enum status: STATUSES
 
+  before_validation :set_real_position, on: :create, if: -> { basic? }
   before_validation :set_price, on: :create
 
   validates :name,
@@ -151,7 +152,7 @@ class Player < ApplicationRecord
   end
 
   def set_real_position
-    self.real_position ||= POSITIONS.index(position1)
+    self.real_position ||= POSITIONS.index(position1.to_sym)
   end
 
   def quality
@@ -176,6 +177,15 @@ class Player < ApplicationRecord
 
   def choose_position2
     AVAILABLE_POSITIONS_FOR_CHOOSING[position1]
+  end
+
+  def skill_level_with_efficienty
+    (skill_level * efficienty).round
+  end
+
+  def positions_compare?
+    POSITIONS.index(position1.to_sym) == real_position ||
+      POSITIONS.index(position2&.to_sym) == real_position
   end
 
   def change_efficienty

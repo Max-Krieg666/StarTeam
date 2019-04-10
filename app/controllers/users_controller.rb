@@ -40,21 +40,15 @@ class UsersController < ApplicationController
       @user.confirmation_sent_at = Time.current
       @user.confirmation_token = SecureRandom.uuid
       if @user.save
-        @team = @user.team
-        @team.operations.create(
-          sum: 250_000.0,
-          kind: true,
-          title: I18n.t('messages.operation.init')
-        )
-        Sponsor.create_rand(@team.id)
-        Generator::RandomTeam.new(@team).generate
-        @team.captain.update(captain: true)
+        # TODO move all to new SERVICE
+        team = CreateNewTeam.perform(@user, team_params)
+
         if @current_user && @current_user.administrator?
           redirect_to @user, notice: I18n.t('flash.users.created')
         else
           # ОТПРАВКА СООБЩЕНИЯ
           # todo JOB
-          ConfirmationMailer.send_confirmation(@user, @team).deliver_later
+          ConfirmationMailer.send_confirmation(@user, team).deliver_later
           session[:user_id] = @user.id
           @user.authenticate(user_params[:password])
           redirect_to @user, notice: I18n.t('flash.users.registration_completed')
@@ -91,11 +85,16 @@ class UsersController < ApplicationController
     attrs = [
       :login, :email,
       :password, :password_confirmation, :country_id,
-      :avatar, :sex, :birthday,
-      team_attributes: %i[title country_id]
+      :avatar, :sex, :birthday
     ]
     attrs << :role if @current_user.try(:admin?)
     params.require(:user).permit(*attrs)
+  end
+
+  def team_params
+    params.require(:user).permit(
+      team_attributes: %i[title country_id]
+    )
   end
 
   def confirmation_params

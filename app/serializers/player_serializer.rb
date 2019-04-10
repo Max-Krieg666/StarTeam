@@ -7,7 +7,6 @@
 #  country_id            :bigint(8)
 #  position1             :integer          not null
 #  position2             :integer
-#  real_position         :integer          not null
 #  efficienty            :float            default(1.0)
 #  talent                :integer          not null
 #  age                   :integer          not null
@@ -62,6 +61,7 @@
 #  physical_condition    :float            default(1.0)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  real_position         :integer
 #
 
 class PlayerSerializer < ActiveModel::Serializer

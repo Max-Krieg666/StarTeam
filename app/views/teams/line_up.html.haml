@@ -1,47 +1,50 @@
 .row.line_up_block{ id: @team.id }
+  /  .col-md-4.col-sm-offset-1
+  /    #footballField.container-fluid
+  /      .row.attackers_positions
+  /        .col-md-3.lf.field_with_border
+  /        .col-md-6.cf.field_with_border
+  /          .cf1
+  /          .cf2
+  /        .col-md-3.rf.field_with_border
+  /      .row.midfielders_positions
+  /        .col-md-3.lm.field_with_border
+  /        .col-md-6.cm.field_with_border
+  /          .cm1.field_with_border
+  /          .cm2.field_with_border
+  /        .col-md-3.rm.field_with_border
+  /      .row.defenders_positions
+  /        .col-md-3.ld.field_with_border
+  /        .col-md-6.cd.field_with_border
+  /          .cd1.field_with_border
+  /          .cd2.field_with_border
+  /        .col-md-3.rd.field_with_border
+  /      .row.gk_position
+  /        .col-md-12.gk.field_with_border
+  /
   .col-md-4.col-sm-offset-1
-    #footballField.container-fluid
-      .row.attackers_positions
-        .col-md-3.lf.field_with_border
-        .col-md-6.cf.field_with_border
-          .cf1
-          .cf2
-        .col-md-3.rf.field_with_border
-      .row.midfielders_positions
-        .col-md-3.lm.field_with_border
-        .col-md-6.cm.field_with_border
-          .cm1.field_with_border
-          .cm2.field_with_border
-        .col-md-3.rm.field_with_border
-      .row.defenders_positions
-        .col-md-3.ld.field_with_border
-        .col-md-6.cd.field_with_border
-          .cd1.field_with_border
-          .cd2.field_with_border
-        .col-md-3.rd.field_with_border
-      .row.gk_position
-        .col-md-12.gk.field_with_border
-
-  .col-md-5.col-sm-offset-1
-    %table.table.table-bordered.table-condensed.table-hover
+    %table.table.table-condenced.table-hover.table-green
       %thead
-        %tr
-          %th
-          %th.center= Player.human_attribute_name(:full_name)
-          %th.center= Player.human_attribute_name(:skill_level)
-          %th
       %tbody
-        -@team.basic_order.each do |pl|
-          %tr.center
-            %td= pl.full_position_name
-            %td= pl.name
-            %td= pl.skill_level
-            %td.draggable{ id: pl.id }
-              -if pl.gk?
-                .goalkeeper
-                  .number
-                    = pl.number
+        -@team.order_by_main_position.each do |pl|
+          %tr{ id: pl.id }
+            %td
+              = image_tag pl.country.flag.url, title: pl.country.i18n_title
+              .pos-letters
+                = pl.full_position_name
+            %td
+              .name-letters
+                = pl.name
+              = Player.human_attribute_name(:age) + ':'
+              = pl.age
+            %td.big-letters= pl.skill_level_with_efficienty
+            %td.big-letters
+              -if pl.positions_compare?
+                .blue-bold
+                  = pl.real_position_name
               -else
-                .player
-                  .number
-                    = pl.number
+                .red-bold
+                  = pl.real_position_name
+  .col-md-6.col-sm-offset-1
+    #footballField
+    / TODO choose formation

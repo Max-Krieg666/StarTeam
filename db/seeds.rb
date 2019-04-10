@@ -24,3 +24,13 @@ ActiveRecord::Base.transaction do
   end
   puts "Игроков создано: #{Player.count}"
 end
+
+# Схемы
+ActiveRecord::Base.transaction do
+  Dir[Rails.root.join('db', 'seeds', 'formations.yml')].each do |file|
+    YAML::load_file(file).each do |formation_params|
+      Formation.create(formation_params)
+    end
+  end
+  puts "Схем создано: #{Formation.count}"
+end

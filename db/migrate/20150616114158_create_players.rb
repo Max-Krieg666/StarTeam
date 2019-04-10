@@ -5,7 +5,7 @@ class CreatePlayers < ActiveRecord::Migration[5.1]
       t.belongs_to :country, index: true
       t.integer :position1, null: false
       t.integer :position2
-      t.integer :real_position, null: false # реальная позиция
+      t.integer :real_position # реальная позиция
       t.float :efficienty, default: 1.0 # эффективность игрока на позиции
       t.integer :talent, null: false
       t.integer :age, null: false

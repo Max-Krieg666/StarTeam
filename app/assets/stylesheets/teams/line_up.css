@@ -1,3 +1,30 @@
+.table-green {
+    background-color: #3dcc4a;
+}
+
+.name-letters {
+    font-size: 18px;
+}
+
+.pos-letters {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.big-letters {
+    font-size: 24px;
+}
+
+.blue-bold {
+    color: blue;
+    font-weight: bold;
+}
+
+.red-bold {
+    color: red;
+    font-weight: bold;
+}
+
 #footballField {
     background-image: url(/assets/field.jpg);
     background-size: 380px 600px;
