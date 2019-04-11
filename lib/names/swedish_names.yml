@@ -234,7 +234,7 @@
 - name: Annaton
 - name: Anne
 - name: Annes
-- name: Annæus
+- name: Annaeus
 - name: Anon
 - name: Anor
 - name: Anselm
@@ -2947,8 +2947,6 @@
 - name: Marelius
 - name: Marenius
 - name: Misa
-- name: Mischa
-- name: Misha
 - name: Modest
 - name: Modestus
 - name: Mogens
@@ -2994,9 +2992,6 @@
 - name: Nanne
 - name: Nanno
 - name: Nante
-- name: Napoleon
-- name: Napolion
-- name: Narcissus
 - name: Narve
 - name: Natan
 - name: Natanael
@@ -3009,7 +3004,6 @@
 - name: Nehemia
 - name: Nehemiah
 - name: Nehemias
-- name: Nehemja
 - name: Neil
 - name: Nelius
 - name: Nels
@@ -3028,15 +3022,7 @@
 - name: Newton
 - name: Nial
 - name: Nias
-- name: Nic
-- name: Nicanor
-- name: Nicci
 - name: Nicco
-- name: Nichlas
-- name: Nicholai
-- name: Nicholaj
-- name: Nicholas
-- name: Nicholaus
 - name: Nick
 - name: Nicke
 - name: Nicki
@@ -3070,13 +3056,9 @@
 - name: Nika
 - name: Nikael
 - name: Nikanor
-- name: Nike
-- name: Niki
 - name: Nikie
-- name: Nikita
 - name: Nikk
 - name: Nikke
-- name: Nikki
 - name: Nikkie
 - name: Nikko
 - name: Niklaes
@@ -3085,9 +3067,6 @@
 - name: Niklis
 - name: Niko
 - name: Nikodemus
-- name: Nikola
-- name: Nikolai
-- name: Nikolaj
 - name: Nikolas
 - name: Nikolaus
 - name: Nikolay
@@ -3207,7 +3186,6 @@
 - name: Ored
 - name: Orfeus
 - name: Orla
-- name: Orlando
 - name: Orm
 - name: Orpheus
 - name: Orri
@@ -3226,7 +3204,6 @@
 - name: Ossi
 - name: Ossian
 - name: Osvald
-- name: Oswald
 - name: Otelius
 - name: Othelius
 - name: Othmar
@@ -3271,10 +3248,6 @@
 - name: Paschalis
 - name: Patric
 - name: Patrich
-- name: Patricius
-- name: Patrick
-- name: Patrik
-- name: Patryk
 - name: Pau
 - name: Pauel
 - name: Paul
@@ -3933,7 +3906,7 @@
 - name: Sällfrid
 - name: Sällvar
 - name: Sämund
-- name: Sævar
+- name: Saevar
 - name: Såne
 - name: Sånne
 - name: Söfring

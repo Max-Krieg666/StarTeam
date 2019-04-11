@@ -1,10 +1,9 @@
 class CreateNewTeamService
   def self.perform(user, team_params)
-    team = user.team.build(team_params)
+    team = user.build_team(team_params[:team_attributes])
 
-    # todo add randomization with :formation
+    team = Generator::RandomTeam.new(team).generate
     Sponsor.create_rand(team.id)
-    Generator::RandomTeam.new(team).generate
     team.operations.create(
       sum: 250_000.0,
       kind: true,

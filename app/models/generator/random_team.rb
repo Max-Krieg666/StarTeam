@@ -24,13 +24,14 @@ module Generator
         end
         begin
           # игроки основного состава
-          pos_players.sort_by(&:skill_level).last(formation.number_of_players_for_position).each do |pl|
+          number_of_players = @team.formation.number_of_players_for_position(pos)
+          pos_players.sort_by(&:skill_level).last(number_of_players).each do |pl|
             pl.basic = true
             pl.careers.build(age_begin: pl.age, team_title: @team.title)
             pl.save
           end
           # игроки резерва
-          pos_players.sort_by(&:skill_level).first(count - formation.number_of_players_for_position).each do |pl|
+          pos_players.sort_by(&:skill_level).first(count - number_of_players).each do |pl|
             pl.careers.build(age_begin: pl.age, team_title: @team.title)
             pl.save
           end
@@ -39,6 +40,7 @@ module Generator
           pl.save
         end
       end
+      @team
     end
 
     private

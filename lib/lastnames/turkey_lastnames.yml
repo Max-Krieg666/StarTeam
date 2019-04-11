@@ -7,12 +7,12 @@
 - lastname: Al-Chagmini
 - lastname: Al-Dîn
 - lastname: Al-Fanari
-- lastname: Al-Jurjâni
-- lastname: Al-Marghînânî
-- lastname: Al-Sakkâkî
+- lastname: Al-Jurjani
+- lastname: Al-Marghînanî
+- lastname: Al-Sakkakî
 - lastname: Al-Suhrawardî
-- lastname: Al-Taftazânî
-- lastname: Al-Taftânî
+- lastname: Al-Taftazanî
+- lastname: Al-Taftanî
 - lastname: Al-Zamakhsharî
 - lastname: Alican
 - lastname: Alpay
@@ -50,7 +50,7 @@
 - lastname: Boratav
 - lastname: Bozbeyli
 - lastname: Bulent
-- lastname: Burhânneddin
+- lastname: Burhanneddin
 - lastname: Cagman
 - lastname: Cakar
 - lastname: Canbulatoglu
@@ -76,7 +76,7 @@
 - lastname: Dikerdem
 - lastname: Dogramaci
 - lastname: Dursun
-- lastname: Ebûssüûd
+- lastname: Ebussüud
 - lastname: Ece
 - lastname: Ecevit
 - lastname: Edebali
@@ -102,9 +102,9 @@
 - lastname: Goyman
 - lastname: Guney
 - lastname: Gurcan
-- lastname: Gurânî
+- lastname: Guranî
 - lastname: Guzey
-- lastname: Gâzi
+- lastname: Gazi
 - lastname: Gòrcar
 - lastname: Gökalp
 - lastname: Göyünc
@@ -123,7 +123,7 @@
 - lastname: Hayreddîn
 - lastname: Hikmet
 - lastname: Hoca
-- lastname: Hocazâde
+- lastname: Hocazade
 - lastname: Ihsanoglu
 - lastname: Ilahi
 - lastname: Ilker
@@ -174,7 +174,7 @@
 - lastname: Mandirali
 - lastname: Mansur
 - lastname: Mardin
-- lastname: Masûkî
+- lastname: Masukî
 - lastname: Melen
 - lastname: Menderes
 - lastname: Muaviye
@@ -204,7 +204,7 @@
 - lastname: Ramsaur
 - lastname: Recep
 - lastname: Rustu
-- lastname: Rûmî
+- lastname: Rumî
 - lastname: Rüstü
 - lastname: Safavî
 - lastname: Saffet
@@ -215,7 +215,7 @@
 - lastname: Sandalli
 - lastname: Sarcoglu
 - lastname: Segem
-- lastname: Selâniki
+- lastname: Selaniki
 - lastname: Selçuk
 - lastname: Sengor
 - lastname: Serif
@@ -225,13 +225,13 @@
 - lastname: Sezer
 - lastname: Sezgin
 - lastname: Shushud
-- lastname: Sihâbeddîn
+- lastname: Sihabeddîn
 - lastname: Sinan
 - lastname: Skender
 - lastname: Soylu
 - lastname: Suker
 - lastname: Suleymanoglu
-- lastname: Sunalp
+- lastname: Sunal
 - lastname: Sunay
 - lastname: Tagmaç
 - lastname: Talu
@@ -240,7 +240,7 @@
 - lastname: Tansel
 - lastname: Tarik
 - lastname: Tasilova
-- lastname: Tasköprülüzâde
+- lastname: Tasköprülüzade
 - lastname: Tatlises
 - lastname: Tavukcu
 - lastname: Tayfur
@@ -248,6 +248,7 @@
 - lastname: Telebi
 - lastname: Telik
 - lastname: Temiz
+- lastname: Temizkanoglu
 - lastname: Tevdet
 - lastname: Topaloglu
 - lastname: Toprak
@@ -274,7 +275,7 @@
 - lastname: Yamak
 - lastname: Yazîcî
 - lastname: Yazîcîoglu
-- lastname: Yazîcîzâde
+- lastname: Yazîcîzade
 - lastname: Yigit
 - lastname: Yildiz
 - lastname: Yildizoglu
@@ -290,7 +291,7 @@
 - lastname: Çandarli
 - lastname: Çelebi
 - lastname: Çölasan
-- lastname: Ögûtmen
+- lastname: Ögutmen
 - lastname: Ökte
 - lastname: Öz
 - lastname: Özal
