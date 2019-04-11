@@ -959,3 +959,33 @@
   talent: 2
   age: 25
   skill_level: 40
+- name: Luciano Marini
+  country_id: 80
+  position1: 5
+  talent: 5
+  age: 34
+  skill_level: 42
+- name: Andrea Masiello
+  country_id: 80
+  position1: 5
+  talent: 2
+  age: 31
+  skill_level: 34
+- name: Massimo Lazzari
+  country_id: 80
+  position1: 5
+  talent: 6
+  age: 26
+  skill_level: 58
+- name: Demetrio Gallo
+  country_id: 80
+  position1: 5
+  talent: 7
+  age: 18
+  skill_level: 40
+- name: Maurizio Barbieri
+  country_id: 80
+  position1: 5
+  talent: 1
+  age: 24
+  skill_level: 38

@@ -929,3 +929,33 @@
   talent: 8
   age: 22
   skill_level: 75
+- name: Adriano Ferretti
+  country_id: 80
+  position1: 0
+  talent: 6
+  age: 26
+  skill_level: 45
+- name: Guglielmo Fiore
+  country_id: 80
+  position1: 0
+  talent: 4
+  age: 25
+  skill_level: 49
+- name: Nicola Izzo
+  country_id: 80
+  position1: 0
+  talent: 2
+  age: 34
+  skill_level: 48
+- name: Salvatore Vastola
+  country_id: 80
+  position1: 0
+  talent: 8
+  age: 29
+  skill_level: 68
+- name: Davide Locatelli
+  country_id: 80
+  position1: 0
+  talent: 3
+  age: 20
+  skill_level: 35

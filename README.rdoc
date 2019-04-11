@@ -5,12 +5,12 @@ main fm-game project
 
 ==== Players (27 Jun 2018):
 
-* position1: 0 --- 155 GK
+* position1: 0 --- 160 GK
 * position1: 1 --- 120 LD
-* position1: 2 --- 160 CD
+* position1: 2 --- 165 CD
 * position1: 3 --- 120 RD
 * position1: 4 --- 125 LM
-* position1: 5 --- 160 CM
+* position1: 5 --- 165 CM
 * position1: 6 --- 120 RM
 * position1: 7 --- 120 LF
 * position1: 8 --- 160 CF
