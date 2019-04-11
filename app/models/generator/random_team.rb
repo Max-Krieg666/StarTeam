@@ -63,12 +63,12 @@ module Generator
 
     def random_country_id
       chance = SecureRandom.random_number(100)
-      if chance > 76 && count_foreigners < 5 || count_main == 13
+      if chance > 76 && @count_foreigners < 5 || @count_main == 13
         k = SecureRandom.random_number(252) + 1
         k = SecureRandom.random_number(252) + 1 while k == @main_country_id
         @count_foreigners += 1
         k
-      elsif chance <= 76 && count_main < 13 || count_foreigners == 5
+      elsif chance <= 76 && @count_main < 13 || @count_foreigners == 5
         @count_main += 1
         @main_country_id
       end
