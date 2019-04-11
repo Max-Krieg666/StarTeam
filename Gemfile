@@ -1,21 +1,21 @@
 source 'https://rubygems.org'
 # main gem
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.2'
 
 # improve rails
 gem 'active_model_serializers'
 gem 'bootsnap'
 
 # database
-gem 'pg'
 gem 'annotate'
+gem 'pg'
 
 # css
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '>= 3.4.1'
 gem 'haml-rails', '~> 1.0'
 gem 'sass-rails', '>= 5.0.7'
 
-# attachments (выпилить?)
+# attachments (TODO: выпилить?)
 gem 'paperclip', '~> 5.2.0'
 
 # pagination
@@ -45,7 +45,6 @@ gem 'therubyracer', platforms: :ruby
 gem 'rails-i18n'
 gem 'russian'
 
-
 # json api
 gem 'jbuilder'
 
@@ -57,6 +56,6 @@ gem 'mechanize'
 group :development, :test do
   gem 'better_errors'
   gem 'byebug'
-  gem 'web-console'
   gem 'listen'
+  gem 'web-console'
 end

@@ -50,3 +50,5 @@
   schema: 'gk|ld|cd|rd|lm|cm|cm|cm|rm|lf|cf'
 - name: '3-5-2 Right-Center'
   schema: 'gk|ld|cd|rd|lm|cm|cm|cm|rm|cf|rf'
+- name: '3-3-4'
+  schema: 'gk|ld|cd|rd|lm|cm|rm|lf|cf|cf|rf'
