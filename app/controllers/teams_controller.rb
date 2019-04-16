@@ -61,7 +61,7 @@ class TeamsController < ApplicationController
 
   def team_params
     attrs = [:title]
-    attrs += [:budget, :fans, :sponsor] if @current_user.try(:admin?)
+    attrs += [:budget, :fans, :sponsor] if @current_user&.admin?
     params.require(:team).permit(*attrs)
   end
 

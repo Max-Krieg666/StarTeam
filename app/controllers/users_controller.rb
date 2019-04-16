@@ -84,7 +84,7 @@ class UsersController < ApplicationController
       :avatar, :sex, :birthday,
       team_attributes: %i[title country_id]
     ]
-    attrs << :role if @current_user.try(:admin?)
+    attrs << :role if @current_user&.admin?
     params.require(:user).permit(*attrs)
   end
 

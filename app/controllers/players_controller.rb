@@ -106,6 +106,7 @@ class PlayersController < ApplicationController
       flash[:danger] = I18n.t('flash.players.was_disqualified')
       redirect_to @player
     else
+      # TODO move logic to service
       ActiveRecord::Base.transaction do
         if @player.basic
           # TODO если игрока в запасе на такую позицию нету, ставь игрока ближайшей позиции с потерей навыка
