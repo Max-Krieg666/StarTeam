@@ -129,4 +129,25 @@ module Definer
       50 * level * level
     end
   end
+
+  def color_for_current_skill_level(lvl)
+    case lvl
+    when 200..300
+      '#00ff17'
+    when 150..200
+      '#10a520'
+    when 100..150
+      '#0c7a17'
+    when 75..100
+      '#c5d500'
+    when 45..75
+      '#fffb00'
+    when 30..45
+      '#f58500'
+    when 20..30
+      '#fd9e01'
+    else
+      '#fd0101'
+    end
+  end
 end

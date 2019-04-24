@@ -36,7 +36,7 @@ module Generator
             pl.save
           end
         rescue ActiveRecord::RecordInvalid
-          pl.name = Generator::RandomName.new(pl.country_id).rand_name
+          pl.name = RandomName.new(pl.country_id).rand_name
           pl.save
         end
       end
@@ -50,8 +50,7 @@ module Generator
       pl.team_id = @team.id
       pl.country_id = country_id
       pl.name = RandomName.new(country_id).rand_name
-      pl.position1 =
-        pos || SecureRandom.random_number(RandomPlayer::POS.size)
+      pl.position1 = pos || SecureRandom.random_number(RandomPlayer::POS.size)
       pl.state = 1
       pl.basic = false
       pl.talent = RandomPlayer.rand_talent

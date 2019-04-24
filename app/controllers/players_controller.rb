@@ -34,6 +34,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  def change_player_basic
+    # для JS изменения позиции игрока
+  end
+
   def buy_processing; end
 
   def buy

@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      @user = User.new(user_params.except(:team_attributes))
+      @user = User.new(user_params.dup.except(:team_attributes))
       @user.confirmation_sent_at = Time.current
       @user.confirmation_token = SecureRandom.uuid
       if @user.save
