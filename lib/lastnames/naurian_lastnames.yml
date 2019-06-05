@@ -29,7 +29,6 @@
 - lastname: Aremwa
 - lastname: Aroi
 - lastname: Atsime
-- lastname: Ağır
 - lastname: Bagadouwe
 - lastname: Bagaga
 - lastname: Baguga
@@ -39,7 +38,6 @@
 - lastname: Batsiua
 - lastname: Batsuia
 - lastname: Bernicke
-- lastname: Bill
 - lastname: Billeam
 - lastname: Bingham
 - lastname: Bop
@@ -56,6 +54,7 @@
 - lastname: Clodumar
 - lastname: Cook
 - lastname: Dabana
+- lastname: Dabwid
 - lastname: Dabwido
 - lastname: Dageago
 - lastname: Dagiaro
@@ -75,6 +74,7 @@
 - lastname: Denagabwida
 - lastname: Depaune
 - lastname: Deraudag
+- lastname: DeRoburt
 - lastname: Detabene
 - lastname: Detabouw
 - lastname: Detageouwa
@@ -121,12 +121,10 @@
 - lastname: Jeremiah
 - lastname: Jones
 - lastname: Joram
-- lastname: Julius
 - lastname: Kam
 - lastname: Kamoriki
 - lastname: Kamtaura
 - lastname: Kanth
-- lastname: Karl
 - lastname: Keke
 - lastname: Kepae
 - lastname: Kephas
@@ -154,7 +152,6 @@
 - lastname: Obeta
 - lastname: Olsson
 - lastname: Palik
-- lastname: Phillip
 - lastname: Pitcher
 - lastname: Raidi
 - lastname: Reweru
@@ -166,9 +163,7 @@
 - lastname: Scriven
 - lastname: Seymour
 - lastname: Silk
-- lastname: Simon
 - lastname: Skipper
-- lastname: Solomon
 - lastname: Soriano
 - lastname: Sosefo
 - lastname: Spanner
@@ -189,7 +184,6 @@
 - lastname: Thoma
 - lastname: Togoran
 - lastname: Tokataake
-- lastname: Tom
 - lastname: Tsiode
 - lastname: Tsitsi
 - lastname: Uepa
@@ -199,4 +193,3 @@
 - lastname: Vorbach
 - lastname: Waqa
 - lastname: Wharton
-- lastname: Zacharias

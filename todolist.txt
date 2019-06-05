@@ -21,7 +21,7 @@ NAMES----> burundi, cambodia, car, chad,
 comorros, congo, djibouti, dr_congo, egyptian, equatorial_guinea, fiji,
 gabon, gambian, kazakhstan, kyrgyz, laos, lesotho, liberian, libyan,
 madagascar, maldives, maltese, mauritanian, mauritius, montenegro, moroccanian,
-mozambique, myanmar, namibian, nauru, niger, phillippinian, rwanda, samoan,
+mozambique, myanmar, namibian, niger, phillippinian, rwanda, samoan,
 sierra_leone, solomon_islands, sudan, tahiti, tajik, tanzanian, togo,
 tunisian, uzbek
 

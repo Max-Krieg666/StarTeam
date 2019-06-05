@@ -369,8 +369,8 @@ module Generator
         file_lastnames = 'namibian'
       when 133
         # Науру
-        file_names = 'english'
-        file_lastnames = 'nauru'
+        file_names = 'naurian'
+        file_lastnames = 'naurian'
       when 134
         # Непал
         file_names = 'nepalese'
