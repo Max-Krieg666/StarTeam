@@ -36,9 +36,11 @@ module Generator
       defender_mids    = find_midfielders(defender_main_squad)
       attacker_scorers = find_scorers(attacker_main_squad)
       defender_scorers = find_scorers(defender_main_squad)
+
       attacker_current_team_size = attacker_main_squad.size
       defender_current_team_size = defender_main_squad.size
-      moments          = []
+
+      moments = []
 
       # определение участвующих в эпизоде игроков
       player_attacker = attacker_main_squad.sample
@@ -67,8 +69,6 @@ module Generator
         # j=rand(7)
         # var_moments=["Очень опасный момент! #{@team_attack[pl1].name} из команды #{@nam_attack} вкладывает всю силу в удар по воротам!", "#{@team_attack[pl1].name} из команды #{@nam_attack} прицельно бьёт по мячу!", "#{@team_attack[pl1].name} из команды #{@nam_attack} бьёт с лёту!", "#{@team_attack[pl1].name} из команды #{@nam_attack} останавливает мяч и опасно бьёт по воротам!", "#{@team_attack[pl1].name} из команды #{@nam_attack} пытается завершить атаку дальним ударом!", "#{@team_attack[pl1].name} из команды #{@nam_attack} пытается прорваться к воротам! Осталось всего двух защитников обыграть!", "#{@team_attack[pl1].name} из команды #{@nam_attack} делает пас вразрез, выводя своего партнера на рандеву с вратарем соперников!"]
       end
-
-
 
       # далее с.132 tmatch.rb
     end
