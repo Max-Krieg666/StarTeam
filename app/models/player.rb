@@ -92,7 +92,7 @@ class Player < ApplicationRecord
   end
 
   def find_by_name(input)
-    find_by name: input
+    find_by(name: input)
   end
 
   GK_POSITION = %i[gk].freeze

@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
 
   before_action :set_locale
-
   before_action :set_current_user
 
   def set_locale
@@ -14,38 +13,33 @@ class ApplicationController < ActionController::Base
   # TODO custom 404
 
   def set_current_user
-    if session[:user_id].present?
-      @current_user = User.find(session[:user_id])
-      @current_user_team = @current_user.team if @current_user.team.present?
-    end
+    return if session[:user_id].blank?
+    @current_user = User.find(session[:user_id])
+    @current_user_team = @current_user.team if @current_user.team.present?
   end
 
   def require_login
-    if @current_user
-      flash[:danger] = I18n.t('flash.authorization_required')
-      redirect_to login_path
-    end
+    return unless @current_user
+    flash[:danger] = I18n.t('flash.authorization_required')
+    redirect_to login_path
   end
 
   def check_user
-    if @current_user.blank?
-      flash[:danger] = I18n.t('flash.must_be_logged')
-      redirect_to root_path
-    end
+    return if @current_user.present?
+    flash[:danger] = I18n.t('flash.must_be_logged')
+    redirect_to root_path
   end
 
   def moderator_permission
-    unless @current_user.try(:moderator?)
-      flash[:danger] = I18n.t('flash.insufficient_privileges')
-      redirect_to login_path
-    end
+    return if @current_user&.moderator?
+    flash[:danger] = I18n.t('flash.insufficient_privileges')
+    redirect_to login_path
   end
 
   def admin_permission
-    unless @current_user.try(:administrator?)
-      flash[:danger] = I18n.t('flash.insufficient_privileges')
-      redirect_to login_path
-    end
+    return if @current_user&.administrator?
+    flash[:danger] = I18n.t('flash.insufficient_privileges')
+    redirect_to login_path
   end
 
   def render_error(msg = I18n.t('flash.access_denied'))

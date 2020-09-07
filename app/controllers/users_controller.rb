@@ -36,25 +36,21 @@ class UsersController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      @user = User.new(user_params)
+      @user = User.new(user_params.dup.except(:team_attributes))
       @user.confirmation_sent_at = Time.current
       @user.confirmation_token = SecureRandom.uuid
       if @user.save
-        # TODO move all to new SERVICE
-        team = CreateNewTeam.perform(@user, team_params)
+        team = CreateNewTeamService.perform(@user, team_params)
 
-        if @current_user && @current_user.administrator?
-          redirect_to @user, notice: I18n.t('flash.users.created')
-        else
-          # ОТПРАВКА СООБЩЕНИЯ
-          # todo JOB
-          ConfirmationMailer.send_confirmation(@user, team).deliver_later
-          session[:user_id] = @user.id
-          @user.authenticate(user_params[:password])
-          redirect_to @user, notice: I18n.t('flash.users.registration_completed')
-        end
+        # ОТПРАВКА СООБЩЕНИЯ
+        # TODO: refactor -> JOB
+        # NOTE: TEMPORARY STUB
+        # ConfirmationMailer.send_confirmation(@user, team).deliver_later
+        session[:user_id] = @user.id
+        @user.authenticate(user_params[:password])
+        redirect_to @user, notice: I18n.t('flash.users.registration_completed')
       else
-        render :registration
+        render :registration, params: params
       end
     end
   end
@@ -85,9 +81,10 @@ class UsersController < ApplicationController
     attrs = [
       :login, :email,
       :password, :password_confirmation, :country_id,
-      :avatar, :sex, :birthday
+      :avatar, :sex, :birthday,
+      team_attributes: %i[title country_id]
     ]
-    attrs << :role if @current_user.try(:admin?)
+    attrs << :role if @current_user&.admin?
     params.require(:user).permit(*attrs)
   end
 

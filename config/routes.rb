@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get   :buy_processing
       patch :buy
+      patch :change_player_basic
       patch :sell
       patch :training
 

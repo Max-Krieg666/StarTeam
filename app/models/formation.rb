@@ -55,21 +55,21 @@ class Formation < ApplicationRecord
     end
 
     unallocated_players = 7
-    three_players_per_pos.each do |p|
-      value_boost = rand(1...2)
-      positions_count[p.key] = p.value + value_boost
+    three_players_per_pos.each do |pos, val|
+      value_boost = rand(1..2)
+      positions_count[pos] = val + value_boost
       unallocated_players -= value_boost
     end
-    two_players_per_pos.each do |p|
+    two_players_per_pos.each do |pos, val|
       break if unallocated_players.zero?
       value_boost = 1
-      positions_count[p.key] = p.value + value_boost
+      positions_count[pos] = val + value_boost
       unallocated_players -= value_boost
     end
-    one_player_per_pos.each do |p|
+    one_player_per_pos.each do |pos, val|
       break if unallocated_players.zero?
       value_boost = 1
-      positions_count[p.key] = p.value + value_boost
+      positions_count[pos] = val + value_boost
       unallocated_players -= value_boost
     end
     positions_count

@@ -52,7 +52,7 @@
         = inline_svg 'info-circle.svg', class: 'svg-picture-table'
         = t('info-blocks.registration.your_country')
   .row
-    = f.fields_for :team, f.object.team do |team_form|
+    = f.fields_for :team, f.object.team || f.object.build_team do |team_form|
       .form-group.col-md-3
         = inline_svg 'pencil.svg', class: 'svg-picture-table'
         / TODO jquery check title auto

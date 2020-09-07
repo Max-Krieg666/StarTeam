@@ -1,6 +1,6 @@
 ---
 - name: Abel
-- name: Abílio
+- name: Abilio
 - name: Abraão
 - name: Adalberto
 - name: Adão
@@ -23,10 +23,10 @@
 - name: Amando
 - name: Ambrósio
 - name: Américo
-- name: Amílcar
+- name: Amilcar
 - name: Anacleto
 - name: André
-- name: Aníbal
+- name: Anibal
 - name: Anselmo
 - name: António
 - name: Antônio
@@ -34,10 +34,10 @@
 - name: Armando
 - name: Arsenio
 - name: Artur
-- name: Atílio
+- name: Atilio
 - name: Augusto
 - name: Aurélio
-- name: Balduíno
+- name: Balduino
 - name: Bartolomeu
 - name: Benedito
 - name: Benigno
@@ -72,7 +72,7 @@
 - name: Cezário
 - name: Chico
 - name: Cipriano
-- name: Ciríaco
+- name: Ciriaco
 - name: Cláudio
 - name: Cleto
 - name: Cornélio
@@ -93,7 +93,7 @@
 - name: Dinis
 - name: Diniz
 - name: Diogo
-- name: Dionísio
+- name: Dionisio
 - name: Domingos
 - name: Donato
 - name: Du
@@ -103,7 +103,7 @@
 - name: Edmundo
 - name: Edu
 - name: Eduardo
-- name: Egídio
+- name: Egidio
 - name: Elder
 - name: Eleuterio
 - name: Elias
@@ -118,7 +118,7 @@
 - name: Eugênio
 - name: Eusébio
 - name: Eustaquio
-- name: Eutímio
+- name: Eutimio
 - name: Evaristo
 - name: Ezequiel
 - name: Fabiano
@@ -166,7 +166,7 @@
 - name: Herberto
 - name: Heriberto
 - name: Hermenegildo
-- name: Hermínio
+- name: Herminio
 - name: Hipólito
 - name: Horácio
 - name: Hugo
@@ -198,7 +198,7 @@
 - name: Lucas
 - name: Luciano
 - name: Lúcio
-- name: Luís
+- name: Luis
 - name: Luisinho
 - name: Luiz
 - name: Manoel
@@ -218,7 +218,7 @@
 - name: Mateus
 - name: Matheus
 - name: Matias
-- name: Maurício
+- name: Mauricio
 - name: Mauro
 - name: Maximiano
 - name: Maximiliano
@@ -246,8 +246,8 @@
 - name: Oscar
 - name: Osvaldo
 - name: Otávio
-- name: Ovídio
-- name: Patrício
+- name: Ovidio
+- name: Patricio
 - name: Paulinho
 - name: Paulino
 - name: Paulo
@@ -255,7 +255,7 @@
 - name: Pedro
 - name: Pio
 - name: Plácido
-- name: Plínio
+- name: Plinio
 - name: Primo
 - name: Quim
 - name: Quirino
@@ -317,14 +317,14 @@
 - name: Valério
 - name: Valter
 - name: Vasco
-- name: Veríssimo
+- name: Verissimo
 - name: Vicente
 - name: Victor
 - name: Victorino
-- name: Vinícius
-- name: Virgílio
+- name: Vinicius
+- name: Virgilio
 - name: Viriato
-- name: Vítor
+- name: Vitor
 - name: Xande
 - name: Xandinho
 - name: Xavier

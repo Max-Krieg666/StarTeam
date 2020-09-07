@@ -209,7 +209,7 @@
 - name: Annul
 - name: Annulv
 - name: Annved
-- name: Annæus
+- name: Annaeus
 - name: Anon
 - name: Anselm
 - name: Ansgar
@@ -640,7 +640,7 @@
 - name: Bylov
 - name: Byrge
 - name: Byron
-- name: Bærulf
+- name: Baerulf
 - name: Bård
 - name: Bårek
 - name: Bølog
@@ -991,7 +991,7 @@
 - name: Elisar
 - name: Eliser
 - name: Eliseus
-- name: Elisæus
+- name: Elisaeus
 - name: Elius
 - name: Eljar
 - name: Ellan
@@ -1327,8 +1327,8 @@
 - name: Gitle
 - name: Gitlef
 - name: Gitleff
-- name: Giærmund
-- name: Giæver
+- name: Giaermund
+- name: Giaever
 - name: Gjavvald
 - name: Gjeble
 - name: Gjerlaug
@@ -1353,7 +1353,7 @@
 - name: Gjul
 - name: Gjur
 - name: Gjurd
-- name: Gjæver
+- name: Gjaever
 - name: Gjørvald
 - name: Gjøte
 - name: Glambek
@@ -2010,8 +2010,8 @@
 - name: Juul
 - name: Jürg
 - name: Jyri
-- name: Jæger
-- name: Jænis
+- name: Jaeger
+- name: Jaenis
 - name: Jødel
 - name: Jøel
 - name: Jøger
@@ -2210,8 +2210,8 @@
 - name: Juul
 - name: Jürg
 - name: Jyri
-- name: Jæger
-- name: Jænis
+- name: Jaeger
+- name: Jaenis
 - name: Jødel
 - name: Jøel
 - name: Jøger
@@ -2419,7 +2419,7 @@
 - name: Lysander
 - name: Lython
 - name: Lyton
-- name: Lægjest
+- name: Laegjest
 - name: Løden
 - name: Løve
 - name: Løver
@@ -2554,7 +2554,7 @@
 - name: Nilvart
 - name: Niri
 - name: Njord
-- name: Njædel
+- name: Njaedel
 - name: Njål
 - name: Njård
 - name: Njørd
@@ -3235,7 +3235,7 @@
 - name: Snerre
 - name: Snorre
 - name: Snorri
-- name: Snære
+- name: Snaere
 - name: Sofus
 - name: Sokrates
 - name: Solan
@@ -3367,13 +3367,13 @@
 - name: Syver
 - name: Syverin
 - name: Syvert
-- name: Sæbjørn
-- name: Sæfinn
-- name: Sæming
-- name: Sæmund
-- name: Særek
-- name: Sævald
-- name: Sævar
+- name: Saebjørn
+- name: Saefinn
+- name: Saeming
+- name: Saemund
+- name: Saerek
+- name: Saevald
+- name: Saevar
 - name: Såmund
 - name: Såve
 - name: Såvi
@@ -3523,7 +3523,7 @@
 - name: Tjogjei
 - name: Tjojei
 - name: Tjostolv
-- name: Tjærand
+- name: Tjaerand
 - name: Tjøl
 - name: Tjølv
 - name: Tjøstel
@@ -3663,7 +3663,7 @@
 - name: Trygvald
 - name: Trygve
 - name: Trym
-- name: Træsmund
+- name: Traesmund
 - name: Tue
 - name: Tullin
 - name: Ture
