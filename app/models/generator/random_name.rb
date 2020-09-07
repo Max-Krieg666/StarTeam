@@ -292,8 +292,8 @@ module Generator
         file_lastnames = 'latvian'
       when 104
         # Лесото
-        file_names = 'lesotho'
-        file_lastnames = 'lesotho'
+        file_names = 'lesothian'
+        file_lastnames = 'lesothian'
       when 105
         # Либерия
         file_names = 'liberian'
@@ -369,8 +369,8 @@ module Generator
         file_lastnames = 'namibian'
       when 133
         # Науру
-        file_names = 'english'
-        file_lastnames = 'nauru'
+        file_names = 'naurian'
+        file_lastnames = 'naurian'
       when 134
         # Непал
         file_names = 'nepalese'

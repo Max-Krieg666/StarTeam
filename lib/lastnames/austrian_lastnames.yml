@@ -8,6 +8,8 @@
 - lastname: Badeni
 - lastname: Bauer
 - lastname: Baumschlager
+- lastname: Berg
+- lastname: Bergmeier
 - lastname: Biedermeier
 - lastname: Bieler
 - lastname: Bietak
@@ -37,6 +39,7 @@
 - lastname: Feuerstein
 - lastname: Fingerlos
 - lastname: Fink
+- lastname: Fischer
 - lastname: Fischhof
 - lastname: Frece
 - lastname: Freindametz
@@ -56,6 +59,7 @@
 - lastname: Grün
 - lastname: Haas
 - lastname: Haider
+- lastname: Haneke
 - lastname: Hanl
 - lastname: Happ
 - lastname: Harrer
@@ -63,12 +67,14 @@
 - lastname: Haugwitz
 - lastname: Heideck
 - lastname: Hein
+- lastname: Helnwein
 - lastname: Henning
 - lastname: Heregger
 - lastname: Herrmann
 - lastname: Herzog
 - lastname: Hipfl
 - lastname: Hoellwarth
+- lastname: Hofer
 - lastname: Hofler
 - lastname: Hohenwart
 - lastname: Hollar
@@ -89,6 +95,7 @@
 - lastname: Knauss
 - lastname: Knobloch
 - lastname: Koeck
+- lastname: Koeler
 - lastname: Koell
 - lastname: Koellerer
 - lastname: Kolowrat
@@ -103,16 +110,19 @@
 - lastname: Lachkovics
 - lastname: Leibnitz
 - lastname: Leismuller
+- lastname: Lenner
 - lastname: Lichtenegger
-- lastname: Lictenegger
+- lastname: Lichtsteiner
 - lastname: Linser
 - lastname: Lischka
 - lastname: Loehr
 - lastname: Loidl
+- lastname: Lorenz
 - lastname: Lueger
 - lastname: Luschin
-- lastname: Mò hlbacher
+- lastname: Maas
 - lastname: Mader
+- lastname: Mahlbacher
 - lastname: Margreiter
 - lastname: Maurer
 - lastname: Mautner
@@ -141,6 +151,7 @@
 - lastname: Plischke
 - lastname: Poestinger
 - lastname: Polster
+- lastname: Popper
 - lastname: Poppmeier
 - lastname: Postinger
 - lastname: Prieler
@@ -177,8 +188,10 @@
 - lastname: Schichegger
 - lastname: Schiegl
 - lastname: Schifferer
+- lastname: Schifter
 - lastname: Schilchegger
 - lastname: Schimpf
+- lastname: Schlager
 - lastname: Schmalzl
 - lastname: Schmidt
 - lastname: Schmollinger
@@ -236,6 +249,7 @@
 - lastname: Wichsberger
 - lastname: Widhoezl
 - lastname: Wiesner
+- lastname: Wilder
 - lastname: Wilfing
 - lastname: Wilhelm
 - lastname: Windischgraetz
