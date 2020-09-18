@@ -18,11 +18,9 @@ class Transfer < ApplicationRecord
   belongs_to :vendor, class_name: 'Team', inverse_of: :transfers
   belongs_to :purchaser, class_name: 'Team', inverse_of: :transfers
 
-  enum status: [
-    :active,
-    :completed,
-    :canceled
-  ]
+  STATUSES = %i[active completed canceled].freeze
+
+  enum status: STATUSES
 
   validates :player_id, presence: true
   validates :vendor_id, presence: true

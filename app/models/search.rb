@@ -28,9 +28,7 @@ class Search
   end
 
   def position_inspect
-    return true if position1.blank? ||
-                   position1.present? && Player::POSITIONS.find_index(position1)
-    false
+    position1.blank? || Player::POSITIONS.find_index(position1)
   end
 
   def position_search

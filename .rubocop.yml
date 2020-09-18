@@ -1,0 +1,80 @@
+require:
+- rubocop-performance
+- rubocop-rails
+- rubocop-rspec
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/BlockLength:
+  Max: 200
+  Exclude:
+  - 'Rakefile'
+  - '**/*.rake'
+  - 'spec/**/*'
+
+Metrics/LineLength:
+  Max: 120
+  IgnoredPatterns: ['\A#']
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Rails/HttpPositionalArguments:
+  Exclude:
+  - 'spec/**/*'
+
+AllCops:
+  Exclude:
+  - 'tmp/**/*'
+  - 'db/**/*'
+  - 'bin/**/*'
+  - 'vendor/bundle/**/*'
+
+# нет проверки на выравнивание хэша
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+
+# нет пустой строки после использования guard-clause
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# кол-во expect в блоке it или specify
+RSpec/MultipleExpectations:
+  Max: 5
+
+# кол-во строк в блоке it или specify
+RSpec/ExampleLength:
+  Max: 10
+
+# использование allow_any_instance_of
+RSpec/AnyInstance:
+  Enabled: false
+
+# use receive
+RSpec/MessageSpies:
+  EnforcedStyle: receive

@@ -15,6 +15,7 @@
 
 class Team < ApplicationRecord
   include ActionView::Helpers::NumberHelper
+  include Finder
 
   belongs_to :country, inverse_of: :teams
   belongs_to :formation, inverse_of: :teams
@@ -44,15 +45,6 @@ class Team < ApplicationRecord
     title.tr(' ', '+')
   end
 
-  def self.find(input)
-    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
-    find_by_title(input.tr('+', ' '))
-  end
-
-  def find_by_title(input)
-    find_by title: input
-  end
-
   validates :country_id, presence: true
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 },
             format: {
@@ -65,12 +57,14 @@ class Team < ApplicationRecord
   validates :fans, presence: true
 
   def active_leagues_list
-    return nil unless team_leagues
+    return unless team_leagues
+
     team_leagues.joins(:league).where('leagues.status != 2')
   end
 
   def active_cups_list
-    return nil unless team_cups
+    return unless team_cups
+
     team_cups.joins(:cup).where('cups.status != 2')
   end
 

@@ -64,8 +64,8 @@ class League < ApplicationRecord
     save!
   end
 
-  def generate_grid # турнирная сетка
-    # не более 24 (!) команд!!!!!
+  # Турнирная сетка (не более 24 (!) команд!!!!!)
+  def generate_grid 
     games = RoundRobinTournament.schedule(team_leagues.to_a).map(&:shuffle!)
     games += games.reverse.map do |tour|
       tour.shuffle.map(&:reverse)
@@ -74,6 +74,7 @@ class League < ApplicationRecord
     games.each_with_index do |tour, number|
       tour.each do |pair|
         next if pair.first.nil? || pair.last.nil?
+
         home = pair.first.team
         guest = pair.last.team
         games.create(

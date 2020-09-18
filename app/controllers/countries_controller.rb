@@ -9,8 +9,14 @@ class CountriesController < ApplicationController
 
   def show
     @users = User.includes(:country).where(country_id: @country.id).page(params[:users_page])
-    @players = Player.includes(:country).where(country_id: @country.id, state: 0).order(:name, :position1).page(params[:players_page])
-    @players_in_teams = Player.includes(:country).where(country_id: @country.id, state: 1).order(:name, :position1).page(params[:players_in_teams_page])
+    @players = Player.includes(:country)
+                     .where(country_id: @country.id, state: 0)
+                     .order(:name, :position1)
+                     .page(params[:players_page])
+    @players_in_teams = Player.includes(:country)
+                              .where(country_id: @country.id, state: 1)
+                              .order(:name, :position1)
+                              .page(params[:players_in_teams_page])
   end
 
   def new

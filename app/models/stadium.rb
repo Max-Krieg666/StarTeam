@@ -12,6 +12,8 @@
 #
 
 class Stadium < ApplicationRecord
+  include Finder
+
   DEFAULT_LEVEL = 5
   MAX_CAPACITY = 100_000
 
@@ -19,15 +21,6 @@ class Stadium < ApplicationRecord
 
   def to_param
     title.tr(' ', '+')
-  end
-
-  def self.find(input)
-    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
-    find_by_title(input.tr('+', ' '))
-  end
-
-  def find_by_title(input)
-    find_by title: input
   end
 
   # левел => стоимость, min, max, seatcost
@@ -41,9 +34,8 @@ class Stadium < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates_format_of :title, with: /\A[-A-Za-z0-9_ ]+\z/, message: :incorrect
-  validates :capacity,
-            presence: true,
-            numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :capacity, presence: true,
+                       numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :level, presence: true, inclusion: { in: 1..5 }
 
   def valid_capacity

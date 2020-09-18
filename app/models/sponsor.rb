@@ -16,6 +16,8 @@
 #
 
 class Sponsor < ApplicationRecord
+  include Finder
+
   belongs_to :team, inverse_of: :sponsor
 
   validates :title, presence: true, length: { maximum: 30 }
@@ -27,102 +29,96 @@ class Sponsor < ApplicationRecord
 
   def to_param
     return id if self.class.where(title: title).size > 1
+
     title.tr(' ', '+')
   end
 
-  def self.find(input)
-    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
-    find_by_title(input.tr('+', ' '))
-  end
+  SPECIALIZATIONS = %i[
+    space_research
+    computer_hardware
+    computer_software
+    computer_networking
+    internet
+    web_security
+    semiconductors
+    telecommunications
+    law_practice
+    management_consulting
+    biotechnology
+    medical_practice
+    drugs_production
+    pharmaceuticals
+    veterinary
+    medical_devices
+    cosmetics
+    apparel_and_fashion
+    sporting_goods
+    tobacco
+    supermarkets
+    electronics_production
+    furniture
+    retail
+    entertainment
+    gambling_and_casinos
+    leisure_and_travel_and_tourism
+    tour_agency
+    restaurants
+    alcohol
+    film_studio
+    broadcast_media
+    art_studio
+    hotels
+    banking
+    insurance
+    financial_services
+    real_estate
+    investment_banking
+    investment_management
+    accounting
+    construction
+    building_materials
+    architecture_and_planning
+    civil_engineering
+    airline
+    automotive
+    chemicals
+    machinery
+    mining_and_metals
+    oil_and_energy
+    shipbuilding
+    textiles
+    paper_and_forest_products
+    railroad_manufacture
+    scientific_researches
+    weapon_production
+    marketing
+    advertising
+    pr_agency
+    newspapers
+    publishing
+    information_services
+    environmental_services
+    package_or_freight_delivery
+    transportationg_or_trucking_or_railroad
+    maritime
+    information_technology_and_services
+    design
+    program_development
+    computer_games
+    nanotechnology
+    record_label
+    logistics_and_supply_chain
+    computer_security
+    outsourcing
+    health_wellness_and_fitness
+    media_production
+    animation
+    business_supplies_and_equipment
+    luxury_goods_and_jewelry
+    industrial_automation
+  ].freeze
 
-  def find_by_title(input)
-    find_by title: input
-  end
-
-  enum specialization: [
-    :space_research,
-    :computer_hardware,
-    :computer_software,
-    :computer_networking,
-    :internet,
-    :web_security,
-    :semiconductors,
-    :telecommunications,
-    :law_practice,
-    :management_consulting,
-    :biotechnology,
-    :medical_practice,
-    :drugs_production,
-    :pharmaceuticals,
-    :veterinary,
-    :medical_devices,
-    :cosmetics,
-    :apparel_and_fashion,
-    :sporting_goods,
-    :tobacco,
-    :supermarkets,
-    :electronics_production,
-    :furniture,
-    :retail,
-    :entertainment,
-    :gambling_and_casinos,
-    :leisure_and_travel_and_tourism,
-    :tour_agency,
-    :restaurants,
-    :alcohol,
-    :film_studio,
-    :broadcast_media,
-    :art_studio,
-    :hotels,
-    :banking,
-    :insurance,
-    :financial_services,
-    :real_estate,
-    :investment_banking,
-    :investment_management,
-    :accounting,
-    :construction,
-    :building_materials,
-    :architecture_and_planning,
-    :civil_engineering,
-    :airline,
-    :automotive,
-    :chemicals,
-    :machinery,
-    :mining_and_metals,
-    :oil_and_energy,
-    :shipbuilding,
-    :textiles,
-    :paper_and_forest_products,
-    :railroad_manufacture,
-    :scientific_researches,
-    :weapon_production,
-    :marketing,
-    :advertising,
-    :pr_agency,
-    :newspapers,
-    :publishing,
-    :information_services,
-    :environmental_services,
-    :package_or_freight_delivery,
-    :transportationg_or_trucking_or_railroad,
-    :maritime,
-    :information_technology_and_services,
-    :design,
-    :program_development,
-    :computer_games,
-    :nanotechnology,
-    :record_label,
-    :logistics_and_supply_chain,
-    :computer_security,
-    :outsourcing,
-    :health_wellness_and_fitness,
-    :media_production,
-    :animation,
-    :business_supplies_and_equipment,
-    :luxury_goods_and_jewelry,
-    :industrial_automation
-  ]
+  enum specialization: SPECIALIZATIONS
 
   class << self
     def create_rand(team_id)
@@ -141,9 +137,7 @@ class Sponsor < ApplicationRecord
     end
 
     def random_title
-      file = YAML.load_file(
-        Rails.root.join('lib', 'lastnames', 'english_lastnames.yml')
-      )
+      file = YAML.load_file(Rails.root.join('lib', 'lastnames', 'english_lastnames.yml'))
       title = file[SecureRandom.random_number(file.size)]['lastname']
       random = rand(5)
       case random

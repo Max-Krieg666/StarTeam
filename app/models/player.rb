@@ -66,6 +66,7 @@
 
 class Player < ApplicationRecord
   include Definer
+  include Finder
   include PositionMethods
   include ActionView::Helpers::NumberHelper
 
@@ -83,16 +84,8 @@ class Player < ApplicationRecord
 
   def to_param
     return id if self.class.where(name: name).size > 1
+
     name.tr(' ', '+')
-  end
-
-  def self.find(input)
-    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
-    find_by_name(input.tr('+', ' '))
-  end
-
-  def find_by_name(input)
-    find_by(name: input)
   end
 
   GK_POSITION = %i[gk].freeze
@@ -139,11 +132,13 @@ class Player < ApplicationRecord
 
   def full_position_name
     return position1.capitalize unless position2
+
     position1.capitalize + '/' + POSITIONS[position2].capitalize
   end
 
   def real_position_name
     return unless real_position
+
     POSITIONS[real_position].capitalize
   end
 
@@ -169,6 +164,7 @@ class Player < ApplicationRecord
 
   def show_special_skills
     return 'Нет спец. умений' if special_skill1.blank?
+
     str = special_skill1 + "-#{num_sp_s1}"
     str += ' / ' + special_skill2 + "-#{num_sp_s2}" if special_skill2
     str += ' / ' + special_skill3 + "-#{num_sp_s3}" if special_skill3
@@ -191,6 +187,7 @@ class Player < ApplicationRecord
   def change_efficienty
     ef1 = POSITION_EFFICIENCY_MODEL[position1][real_position]
     return ef1 unless position2
+
     ef2 = POSITION_EFFICIENCY_MODEL[position2][real_position]
     [ef1, ef2].max
   end

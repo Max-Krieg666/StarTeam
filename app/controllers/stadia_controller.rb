@@ -45,12 +45,10 @@ class StadiaController < ApplicationController
     # увеличение уровня стадиона
     if @stadium.max_level?
       flash[:danger] = I18n.t('flash.stadiums.max_level')
-      redirect_to [team, @stadium]
     else
       values = Stadium::LEVELS[@stadium.level + 1]
       if team.low_budget?(values[0]) # цена больше бюджета
         flash[:danger] = I18n.t('flash.stadiums.not_enough_money') + values[0].to_s
-        redirect_to [team, @stadium]
       else
         ActiveRecord::Base.transaction do
           team.budget -= values[0]
@@ -63,9 +61,11 @@ class StadiaController < ApplicationController
           @stadium.level += 1
           @stadium.save!
         end
-        redirect_to [team, @stadium], notice: I18n.t('flash.stadiums.upgraded')
+        flash[:notice] = I18n.t('flash.stadiums.upgraded')
       end
     end
+
+    redirect_to [team, @stadium]
   end
 
   def capacity_up
@@ -73,19 +73,15 @@ class StadiaController < ApplicationController
     team = @stadium.team
     if @stadium.low_capacity?(new_capacity)
       flash[:danger] = I18n.t('flash.stadiums.low_capacity')
-      redirect_to [team, @stadium]
     elsif @stadium.low_level?(new_capacity)
       flash[:danger] = I18n.t('flash.stadiums.low_level')
-      redirect_to [team, @stadium]
     elsif @stadium.max_capacity?
       flash[:danger] = I18n.t('flash.stadiums.max_capacity')
-      redirect_to [team, @stadium]
     else
       difference = new_capacity - @stadium.capacity
       cost = difference * Stadium::LEVELS[@stadium.level][3]
       if team.low_budget?(cost)
         flash[:danger] = I18n.t('flash.stadiums.not_enough_money') + cost.to_s
-        redirect_to [team, @stadium]
       else
         ActiveRecord::Base.transaction do
           team.budget -= cost
@@ -97,9 +93,11 @@ class StadiaController < ApplicationController
           )
           @stadium.update(capacity: new_capacity)
         end
-        redirect_to [team, @stadium], notice: I18n.t('flash.stadiums.upgraded')
+        flash[:notice] = I18n.t('flash.stadiums.upgraded')
       end
     end
+
+    redirect_to [team, @stadium]
   end
 
   private

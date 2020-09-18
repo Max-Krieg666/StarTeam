@@ -62,12 +62,14 @@ class Formation < ApplicationRecord
     end
     two_players_per_pos.each do |pos, val|
       break if unallocated_players.zero?
+
       value_boost = 1
       positions_count[pos] = val + value_boost
       unallocated_players -= value_boost
     end
     one_player_per_pos.each do |pos, val|
       break if unallocated_players.zero?
+
       value_boost = 1
       positions_count[pos] = val + value_boost
       unallocated_players -= value_boost

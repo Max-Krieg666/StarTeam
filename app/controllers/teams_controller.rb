@@ -26,6 +26,7 @@ class TeamsController < ApplicationController
     @financies = @team.operations.order('created_at desc').page(params[:page])
   end
 
+  # TODO use scopes ?
   def transfer_history
     @in = Transfer.where(status: 1, purchaser_id: @current_user_team.id)
     @out = Transfer.where(status: 1, vendor_id: @current_user_team.id)

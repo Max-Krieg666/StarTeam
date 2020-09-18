@@ -25,6 +25,8 @@
 #
 
 class User < ApplicationRecord
+  include Finder
+
   has_secure_password
 
   has_one :team, inverse_of: :user
@@ -37,19 +39,9 @@ class User < ApplicationRecord
     login.tr(' ', '+')
   end
 
-  def self.find(input)
-    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
-    find_by_login(input.tr('+', ' '))
-  end
-
-  def find_by_login(input)
-    find_by login: input
-  end
-
   cattr_reader :roles
 
   SEXES = %i[not_specified male female].freeze
-
   ROLES = %i[user moderator administrator].freeze
 
   enum sex: SEXES

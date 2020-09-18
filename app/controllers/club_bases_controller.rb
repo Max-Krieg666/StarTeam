@@ -21,12 +21,10 @@ class ClubBasesController < ApplicationController
     # увеличение уровня базы клуба
     if @club_base.max_level?
       flash[:danger] = I18n.t('flash.bases.max_level')
-      redirect_to [team, @club_base]
     else
       values = ClubBase::LEVELS[@club_base.level + 1]
       if team.low_budget?(values[0]) # цена больше бюджета
         flash[:danger] = I18n.t('flash.bases.not_enough_money')
-        redirect_to [team, @club_base]
       else
         ActiveRecord::Base.transaction do
           team.budget -= values[0]
@@ -40,9 +38,11 @@ class ClubBasesController < ApplicationController
           @club_base.capacity = values[2]
           @club_base.save!
         end
-        redirect_to [team, @club_base], notice: I18n.t('flash.bases.upgraded')
+        flash[:notice] = I18n.t('flash.bases.upgraded')
       end
     end
+
+    redirect_to [team, @club_base]
   end
 
   def training_fields_up
@@ -50,12 +50,10 @@ class ClubBasesController < ApplicationController
     # увеличение к-во тренировочных полей
     if @club_base.max_training_fields?
       flash[:danger] = I18n.t('flash.bases.maximum_training_fields')
-      redirect_to [team, @club_base]
     else
       values = ClubBase::TRAINING_FIELDS[@club_base.training_fields + 1]
       if team.low_budget?(values[0]) # цена больше бюджета
         flash[:danger] = I18n.t('flash.bases.not_enough_money')
-        redirect_to [team, @club_base]
       else
         ActiveRecord::Base.transaction do
           team.budget -= values[0]
@@ -68,9 +66,11 @@ class ClubBasesController < ApplicationController
           @club_base.experience_up += values[1]
           @club_base.save!
         end
-        redirect_to [team, @club_base], notice: I18n.t('flash.bases.upgraded')
+        flash[:notice] = I18n.t('flash.bases.upgraded')
       end
     end
+
+    redirect_to [team, @club_base]
   end
 
   def create
@@ -94,6 +94,7 @@ class ClubBasesController < ApplicationController
   end
 
   private
+
   def set_club_base
     @club_base = ClubBase.find(params[:id])
   end

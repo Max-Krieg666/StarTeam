@@ -23,7 +23,8 @@ class Game < ApplicationRecord
   has_many :game_events, dependent: :destroy, inverse_of: :game
   has_many :game_players, dependent: :destroy, inverse_of: :game
 
-  def league? # игра лиги
+  # Игра лиги
+  def league?
     tournament_type == 'league'
   end
 

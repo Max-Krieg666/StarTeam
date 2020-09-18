@@ -13,6 +13,7 @@
 
 class Operation < ApplicationRecord
   include ActionView::Helpers::NumberHelper
+
   belongs_to :team, inverse_of: :operations
 
   def sum_to_currency

@@ -18,8 +18,8 @@ module Generator
           Generator::RandomCharacteristics.new(pl).randomize.save!
         end
       end
-    rescue Exception => ex
-      puts ex.message
+    rescue => e
+      puts "FAILURE WITH ->>>> #{e.message}"
     end
 
     class << self

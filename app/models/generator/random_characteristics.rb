@@ -105,6 +105,7 @@ module Generator
       end
       @current_skills += mental_points
       return if @current_skills == @skill_level
+
       (skill_level - current_skills).times do
         mental[rand(2)] += 1
       end

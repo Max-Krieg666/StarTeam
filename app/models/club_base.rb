@@ -14,21 +14,14 @@
 #
 
 class ClubBase < ApplicationRecord
+  include Finder
+
   DEFAULT_LEVEL = 5
 
   belongs_to :team, inverse_of: :club_base
 
   def to_param
     title.tr(' ', '+')
-  end
-
-  def self.find(input)
-    return super if input =~ /\A[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}\z/
-    find_by_title(input.tr('+', ' '))
-  end
-
-  def find_by_title(input)
-    find_by title: input
   end
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 24 }
