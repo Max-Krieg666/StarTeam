@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     u = User.where(confirmation_token: confirmation_params[:confirmation_token]).first
     if u && !u.confirmed_at.present?
       u.update!(confirmed_at: Time.current)
-      redirect_to u, notice: I18n.t('flash.users.account_confirmed')
+      redirect_to u, success: I18n.t('flash.users.account_confirmed')
     else
       redirect_to root_path, error: I18n.t('flash.users.invalid_confirmed_key')
     end
@@ -37,8 +37,6 @@ class UsersController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       @user = User.new(user_params.dup.except(:team_attributes))
-      @user.confirmation_sent_at = Time.current
-      @user.confirmation_token = SecureRandom.uuid
       if @user.save
         team = CreateNewTeamService.perform(@user, team_params)
 
@@ -48,7 +46,7 @@ class UsersController < ApplicationController
         # ConfirmationMailer.send_confirmation(@user, team).deliver_later
         session[:user_id] = @user.id
         @user.authenticate(user_params[:password])
-        redirect_to @user, notice: I18n.t('flash.users.registration_completed')
+        redirect_to @user, success: I18n.t('flash.users.registration_completed')
       else
         render :registration, params: params
       end
@@ -57,7 +55,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: I18n.t('flash.users.edited')
+      redirect_to @user, success: I18n.t('flash.users.edited')
     else
       render :edit
     end
@@ -66,7 +64,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: I18n.t('flash.users.destroyed') }
+      format.html { redirect_to users_url, success: I18n.t('flash.users.destroyed') }
       format.json { head :no_content }
     end
   end

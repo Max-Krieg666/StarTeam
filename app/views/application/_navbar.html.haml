@@ -2,7 +2,7 @@
   .container-fluid
     .navbar-header
       = link_to '#', class: 'navbar-toggle collapsed', data: { toggle: 'collapse', target: 'menu' } do
-        = inline_svg 'bars.svg', class: 'svg-picture'
+        = inline_svg_tag 'bars.svg', class: 'svg-picture'
       -if @current_user
         -unread_notifications = "(#{@current_user.unread_notifications.count})"
         .div{ class: 'btn-group' }
@@ -42,7 +42,7 @@
           .li
             = link_to logout_path, data: { method: :patch } do
               = t('buttons.logout')
-              = inline_svg 'log-out.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'log-out.svg', class: 'svg-picture-btn'
         -else
           .li= link_to t('buttons.sign_up'), registration_users_path
           .li= link_to t('buttons.sign_in'), login_path

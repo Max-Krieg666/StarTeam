@@ -16,21 +16,21 @@ gem 'haml-rails'
 gem 'sass-rails'
 gem 'sprockets-rails', '>= 2.3.2'
 
+# icons
+gem 'inline_svg'
+
 # attachments (TODO: выпилить?)
 gem 'paperclip'
 
 # pagination
 gem 'kaminari'
-gem 'kaminari-bootstrap'
+gem 'bootstrap4-kaminari-views'
 
 # files
 gem 'nokogiri'
 
 # scheduling
 gem 'round_robin_tournament'
-
-# icons
-gem 'inline_svg'
 
 # JavaScript assets and libraries
 gem 'coffee-rails'
@@ -50,7 +50,8 @@ gem 'jbuilder'
 
 # other gems
 gem 'bcrypt'
-gem 'httparty'
+gem 'faker'
+gem 'httparty', require: false
 gem 'mechanize'
 
 group :development, :test do

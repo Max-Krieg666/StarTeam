@@ -1,12 +1,11 @@
 module Generator
   # класс для рандомизации команды
   class RandomTeam
-    attr_reader :team, :main_country_id, :numbers, :count_main, :count_foreigners
+    attr_reader :team, :main_country_id, :count_main, :count_foreigners
 
     def initialize(team)
       @team = team
       @main_country_id = team.country_id
-      @numbers = []
       @count_main = 0 # 13 игроков из основной страны
       @count_foreigners = 0 # 5 игроков-иностранцев
     end
@@ -14,7 +13,7 @@ module Generator
     def generate
       random_formation = Formation.order('random()').first
       @team.formation = random_formation
-      @team.save
+      @team.save!
       footballers_per_position = random_formation.with_reserve_players_before_generation
       footballers_per_position.each do |pos, count|
         pos_players = []
@@ -56,17 +55,16 @@ module Generator
       pl.talent = RandomPlayer.rand_talent
       pl.age = RandomPlayer.rand_age(pl.talent)
       pl.skill_level = RandomPlayer.rand_skill_level(pl.talent)
-      pl.number = RandomPlayer.rand_number(@numbers)
-      @numbers << pl.number
+      pl.number = RandomPlayer.rand_number
       pl = RandomCharacteristics.new(pl).randomize
       pl
     end
 
     def random_country_id
-      chance = SecureRandom.random_number(100)
+      chance = Faker::Number.between(from: 0, to: 100)
       if chance > 76 && @count_foreigners < 5 || @count_main == 13
-        k = SecureRandom.random_number(252) + 1
-        k = SecureRandom.random_number(252) + 1 while k == @main_country_id
+        k = Faker::Number.between(from: 1, to: 252)
+        k = Faker::Number.between(from: 1, to: 252) while k == @main_country_id
         @count_foreigners += 1
         k
       elsif chance <= 76 && @count_main < 13 || @count_foreigners == 5

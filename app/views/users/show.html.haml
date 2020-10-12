@@ -6,7 +6,7 @@
       %p
         %b
         -if @user.avatar.blank?
-          = inline_svg 'no-avatar.svg', class: 'svg-no-avatar'
+          = inline_svg_tag 'no-avatar.svg', class: 'svg-no-avatar'
         -else
           = image_tag @user.avatar.url(:medium), class: 'avatar-css'
     .col-md-1
@@ -46,19 +46,19 @@
 
 -if @current_user == @user || @current_user.moderator?
   = link_to edit_user_path(@user), class: 'btn btn-danger' do
-    = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'edit.svg', class: 'svg-picture-btn white'
     %span.centralize
       Редактировать
 = link_to users_path, class: 'btn btn-info' do
-  = inline_svg 'group.svg', class: 'svg-picture-btn white'
+  = inline_svg_tag 'group.svg', class: 'svg-picture-btn white'
   %span.centralize
     Все пользователи
 -if @user.team
   = link_to @user.team, class: 'btn btn-primary' do
-    = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'chevron-circle-right.svg', class: 'svg-picture-btn white'
     %span.centralize
       К команде << #{@user.team.title} >>
 -else
   = link_to @user, class: 'btn btn-warning disabled' do
-    = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'chevron-circle-right.svg', class: 'svg-picture-btn white'
     Команда не создана!

@@ -83,6 +83,8 @@ class Player < ApplicationRecord
   has_many :game_players, inverse_of: :player
 
   def to_param
+    return id if matches_with_other_player?
+
     name.tr(' ', '+')
   end
 
@@ -196,5 +198,11 @@ class Player < ApplicationRecord
 
   def available_to_buing_for?(team)
     team.budget >= price
+  end
+
+  private
+
+  def matches_with_other_player?
+    Player.where(name: name).count > 1
   end
 end

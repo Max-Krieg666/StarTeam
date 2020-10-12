@@ -27,7 +27,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if Generator::RandomCharacteristics.new(@player).randomize.save!
-      flash[:notice] = I18n.t('flash.players.created')
+      flash[:success] = I18n.t('flash.players.created')
       redirect_to @player
     else
       render :new
@@ -91,7 +91,7 @@ class PlayersController < ApplicationController
             kind: false,
             title: I18n.t('messages.operation.player_bying')
           )
-          flash[:notice] = I18n.t('flash.players.buyed')
+          flash[:success] = I18n.t('flash.players.buyed')
           redirect_to @player
         else
           render :buy_processing
@@ -146,7 +146,7 @@ class PlayersController < ApplicationController
           title: I18n.t('messages.operation.player_sale_to_free_agents')
         )
       end
-      flash[:notice] = I18n.t('flash.players.sold')
+      flash[:success] = I18n.t('flash.players.sold')
       redirect_to @current_user_team
     end
   end
@@ -160,7 +160,7 @@ class PlayersController < ApplicationController
     age = player_params[:age]
     @player.price = Player.calc_price(skill, tal, age)
     if @player.update(player_params)
-      flash[:notice] = I18n.t('flash.players.edited')
+      flash[:success] = I18n.t('flash.players.edited')
       redirect_to @player
     else
       render :edit
@@ -179,7 +179,7 @@ class PlayersController < ApplicationController
         price: Player.calc_price(new_level, @player.talent, @player.age)
       }
       @player.update(upgrade_params)
-      flash[:notice] = I18n.t(
+      flash[:success] = I18n.t(
         'flash.players.characteristics_improved', name: @player.name
       )
       if params[:location] != 'show'

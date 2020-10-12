@@ -14,40 +14,40 @@
         %th.text-center
           №
         %th.text-center
-          = inline_svg 'footballer.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'footballer.svg', class: 'svg-picture-table'
           Игрок
         %th.text-center
-          = inline_svg 'flag.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'flag.svg', class: 'svg-picture-table'
           Национальность
         %th.text-center{'colspan': 2}
-          = inline_svg 'location.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'location.svg', class: 'svg-picture-table'
           Позиция
         %th.text-center
-          = inline_svg 'level-up.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'level-up.svg', class: 'svg-picture-table'
           Талант
         %th.text-center
-          = inline_svg 'history.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'history.svg', class: 'svg-picture-table'
           Возраст
         %th.text-center
-          = inline_svg 'level.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'level.svg', class: 'svg-picture-table'
           Мастерство
         %th.text-center
-          = inline_svg 'usd.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'usd.svg', class: 'svg-picture-table'
           Цена
         %th.text-center{title: "Игры"}
-          = inline_svg 'game.svg', class: 'svg-picture-medium'
+          = inline_svg_tag 'game.svg', class: 'svg-picture-medium'
         %th.text-center{title: "Пропущенные голы"}
-          = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
+          = inline_svg_tag 'soccer-ball.svg', class: 'svg-picture-medium red'
         %th.text-center{title: "Забитые голы"}
-          = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium green'
+          = inline_svg_tag 'soccer-ball.svg', class: 'svg-picture-medium green'
         %th.text-center{title: "Голевые пасы"}
-          = inline_svg 'goal-pass.svg', class: 'svg-picture-medium'
+          = inline_svg_tag 'goal-pass.svg', class: 'svg-picture-medium'
         %th.text-center{title: "Автоголы"}
-          = inline_svg 'autogoal.svg', class: 'svg-picture-medium'
+          = inline_svg_tag 'autogoal.svg', class: 'svg-picture-medium'
         %th.text-center{title: "Жёлтые карточки"}
-          = inline_svg 'yellow-card.svg'
+          = inline_svg_tag 'yellow-card.svg'
         %th.text-center{title: "Красные карточки"}
-          = inline_svg 'red-card.svg'
+          = inline_svg_tag 'red-card.svg'
         %th.text-center{title: "Основной состав/запас"} О/З
     %tbody
       - @players.each do |pl|
@@ -57,8 +57,8 @@
             %strong= pl.number
           %td
             = pl.name
-            = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if pl.captain
-            = inline_svg 'transfer.svg', class: 'svg-picture', title: 'Трансфер' if pl.status == 'transfer'
+            = inline_svg_tag 'copyright.svg', class: 'svg-picture', title: 'Капитан' if pl.captain
+            = inline_svg_tag 'transfer.svg', class: 'svg-picture', title: 'Трансфер' if pl.status == 'transfer'
           %td= image_tag pl.country.flag.url, title: pl.country.i18n_title
           / TODO подумать как лучше отображать
           %td
@@ -105,18 +105,18 @@
   .btn-group
     -if @current_user == @team.user || @current_user.moderator?
       = link_to @current_user_team, class: 'btn btn-warning' do
-        = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+        = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
         #{t 'buttons.back_to'} << #{@current_user_team.title} >>
     -if @current_user.moderator?
       = link_to teams_path, class: 'btn btn-warning' do
-        = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+        = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
         = t('views.teams.all_teams')
     -if @current_user_team == @team
       -unless @team.stadium
         = link_to new_team_stadium_path(@team), class: 'btn btn-primary' do
-          = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
+          = inline_svg_tag 'stadium.svg', class: 'svg-picture-btn white'
           = t('buttons.go_to_stadium_creating')
       -unless @team.club_base
         = link_to new_team_club_basis_path(@team), class: 'btn btn-warning' do
-          = inline_svg 'club_base.svg', class: 'svg-picture-btn white'
+          = inline_svg_tag 'club_base.svg', class: 'svg-picture-btn white'
           = t('buttons.go_to_club_base_creating')

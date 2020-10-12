@@ -8,13 +8,15 @@ class CountriesController < ApplicationController
   end
 
   def show
-    @users = User.includes(:country).where(country_id: @country.id).page(params[:users_page])
+    @users = User.includes(:country)
+                 .where(country_id: @country.id, role: :user)
+                 .page(params[:users_page])
     @players = Player.includes(:country)
-                     .where(country_id: @country.id, state: 0)
+                     .where(country_id: @country.id, state: :free_agent)
                      .order(:name, :position1)
                      .page(params[:players_page])
     @players_in_teams = Player.includes(:country)
-                              .where(country_id: @country.id, state: 1)
+                              .where(country_id: @country.id, state: :in_team)
                               .order(:name, :position1)
                               .page(params[:players_in_teams_page])
   end
@@ -30,7 +32,7 @@ class CountriesController < ApplicationController
 
     respond_to do |format|
       if @country.save
-        format.html { redirect_to @country, notice: I18n.t('flash.countries.created') }
+        format.html { redirect_to @country, success: I18n.t('flash.countries.created') }
         format.json { render :show, status: :created, location: @country }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class CountriesController < ApplicationController
   def update
     respond_to do |format|
       if @country.update(country_params)
-        format.html { redirect_to @country, notice: I18n.t('flash.countries.edited') }
+        format.html { redirect_to @country, success: I18n.t('flash.countries.edited') }
         format.json { render :show, status: :ok, location: @country }
       else
         format.html { render :edit }
@@ -54,7 +56,7 @@ class CountriesController < ApplicationController
   def destroy
     @country.destroy
     respond_to do |format|
-      format.html { redirect_to countries_url, notice: I18n.t('flash.countries.destroyed') }
+      format.html { redirect_to countries_url, success: I18n.t('flash.countries.destroyed') }
       format.json { head :no_content }
     end
   end

@@ -92,10 +92,8 @@ module Generator
         end
       end
 
-      def rand_number(presence_numbers)
-        num = rand(99) + 1
-        num = rand(99) + 1 while presence_numbers.include?(num)
-        num
+      def rand_number
+        Faker::Number.unique.between(from: 1, to: 100)
       end
     end
   end

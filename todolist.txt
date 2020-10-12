@@ -19,15 +19,15 @@ TODO ->
 UPDate
 NAMES----> burundi, cambodia, car, chad,
 comorros, congo, djibouti, dr_congo, egyptian, equatorial_guinea, fiji,
-gabon, gambian, kazakhstan, kyrgyz, laos, liberian, libyan,
+gabon, gambian, kazakhstan, laos, liberian, libyan,
 madagascar, maldives, maltese, mauritanian, mauritius, montenegro, moroccanian,
 mozambique, myanmar, namibian, niger, phillippinian, rwanda, samoan,
-sierra_leone, sudan, tahiti, tajik, tanzanian, togo,
+sudan, tahiti, tajik, tanzanian, togo,
 tunisian, uzbek
 
 LASTNAMES-> abkhazian, burkina_faso, burundi, cambodia, car, chad, comorros,
 congo, cook_islands, cotedivoire, djibouti, dr_congo, egyptian, equatorial_guinea,
-fiji, gabon, gambian, kiribati, kyrgyz, liberian, madagascar,
+fiji, gabon, gambian, kiribati, liberian, madagascar,
 malawi, maldives, maltese, mauritanian, mauritius, moldavian,
 montenegro, mozambique, namibian, nepalese, niger, papua_new_guinea, phillippinian,
 rwanda, somali, sudan, tahiti, tajik, tanzanian, togo, tonga, tunisian, uzbek

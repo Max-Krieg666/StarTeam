@@ -19,7 +19,7 @@ class StadiaController < ApplicationController
   def update
     @team = @current_user_team
     if @stadium.update(stadium_params)
-      redirect_to [@team, @stadium], notice: I18n.t('flash.stadiums.title_changed')
+      redirect_to [@team, @stadium], success: I18n.t('flash.stadiums.title_changed')
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class StadiaController < ApplicationController
     @stadium.team_id = @team.id
     respond_to do |format|
       if @stadium.save
-        format.html { redirect_to [@team, @stadium], notice: I18n.t('flash.stadiums.created') }
+        format.html { redirect_to [@team, @stadium], success: I18n.t('flash.stadiums.created') }
         format.json { render :show, status: :created, location: @stadium }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@ class StadiaController < ApplicationController
           @stadium.level += 1
           @stadium.save!
         end
-        flash[:notice] = I18n.t('flash.stadiums.upgraded')
+        flash[:success] = I18n.t('flash.stadiums.upgraded')
       end
     end
 
@@ -93,7 +93,7 @@ class StadiaController < ApplicationController
           )
           @stadium.update(capacity: new_capacity)
         end
-        flash[:notice] = I18n.t('flash.stadiums.upgraded')
+        flash[:success] = I18n.t('flash.stadiums.upgraded')
       end
     end
 

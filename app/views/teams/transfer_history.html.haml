@@ -1,39 +1,39 @@
 .page-header
   %h1
-    = inline_svg 'transfer.svg', class: 'svg-picture-giant'
+    = inline_svg_tag 'transfer.svg', class: 'svg-picture-giant'
     История трансферов
 
 .page-header
   %h3
     Вошли
-    = inline_svg 'sub-on.svg', class: 'svg-picture-giant green'
+    = inline_svg_tag 'sub-on.svg', class: 'svg-picture-giant green'
 
 %table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th.text-center
-        = inline_svg 'footballer.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'footballer.svg', class: 'svg-picture-table'
         Игрок
       %th.text-center
-        = inline_svg 'vendor.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'vendor.svg', class: 'svg-picture-table'
         Клуб-продавец
       %th.text-center
-        = inline_svg 'location.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'location.svg', class: 'svg-picture-table'
         Позиция
       %th.text-center
-        = inline_svg 'level-up.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'level-up.svg', class: 'svg-picture-table'
         Талант
       %th.text-center
-        = inline_svg 'history.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'history.svg', class: 'svg-picture-table'
         Возраст
       %th.text-center
-        = inline_svg 'level.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'level.svg', class: 'svg-picture-table'
         Мастерство
       %th.text-center
-        = inline_svg 'usd.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'usd.svg', class: 'svg-picture-table'
         Стоимость
       %th.text-center
-        = inline_svg 'question-circle.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'question-circle.svg', class: 'svg-picture-table'
         Статус
 
   %tbody
@@ -58,34 +58,34 @@
 .page-header
   %h3
     Вышли
-    = inline_svg 'sub-off.svg', class: 'svg-picture-giant red'
+    = inline_svg_tag 'sub-off.svg', class: 'svg-picture-giant red'
     
 %table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th.text-center
-        = inline_svg 'footballer.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'footballer.svg', class: 'svg-picture-table'
         Игрок
       %th.text-center
-        = inline_svg 'vendor.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'vendor.svg', class: 'svg-picture-table'
         Клуб-покупатель
       %th.text-center
-        = inline_svg 'location.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'location.svg', class: 'svg-picture-table'
         Позиция
       %th.text-center
-        = inline_svg 'level-up.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'level-up.svg', class: 'svg-picture-table'
         Талант
       %th.text-center
-        = inline_svg 'history.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'history.svg', class: 'svg-picture-table'
         Возраст
       %th.text-center
-        = inline_svg 'level.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'level.svg', class: 'svg-picture-table'
         Мастерство
       %th.text-center
-        = inline_svg 'usd.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'usd.svg', class: 'svg-picture-table'
         Стоимость
       %th.text-center
-        = inline_svg 'question-circle.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'question-circle.svg', class: 'svg-picture-table'
         Статус
 
   %tbody
@@ -109,5 +109,5 @@
 
 .btn-group
   = link_to @current_user_team, class: 'btn btn-warning' do
-    = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
     #{t 'buttons.back_to'} << #{@current_user_team.title} >>

@@ -10,6 +10,7 @@ class CreateNewTeamService
       title: I18n.t('messages.operation.init')
     )
     team.captain.update(captain: true)
+    Faker::UniqueGenerator.clear
 
     team
   end

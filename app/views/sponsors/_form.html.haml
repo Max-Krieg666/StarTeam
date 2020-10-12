@@ -22,7 +22,7 @@
         .input-group
           = f.text_field :cost_of_full_stake, class: 'form-control'
           %span.input-group-addon
-            = inline_svg 'usd.svg', class: 'svg-picture'
+            = inline_svg_tag 'usd.svg', class: 'svg-picture'
 
   .actions
     = f.submit t('buttons.save'), class: 'btn btn-primary'

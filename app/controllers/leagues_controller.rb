@@ -20,7 +20,7 @@ class LeaguesController < ApplicationController
 
     respond_to do |format|
       if @league.save
-        format.html { redirect_to @league, notice: I18n.t('flash.leagues.created') }
+        format.html { redirect_to @league, success: I18n.t('flash.leagues.created') }
         format.json { render :show, status: :created, location: @league }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class LeaguesController < ApplicationController
   def update
     respond_to do |format|
       if @league.update(country_params)
-        format.html { redirect_to @league, notice: I18n.t('flash.leagues.edited') }
+        format.html { redirect_to @league, success: I18n.t('flash.leagues.edited') }
         format.json { render :show, status: :ok, location: @league }
       else
         format.html { render :edit }
@@ -49,7 +49,7 @@ class LeaguesController < ApplicationController
     else
       @league.destroy
       respond_to do |format|
-        format.html { redirect_to transfers_url, notice: I18n.t('flash.leagues.destroyed') }
+        format.html { redirect_to transfers_url, success: I18n.t('flash.leagues.destroyed') }
         format.json { head :no_content }
       end
     end
@@ -57,7 +57,7 @@ class LeaguesController < ApplicationController
 
   def join
     if TeamLeague.create(team: @current_user_team, league: @league)
-      flash[:notice] = I18n.t('flash.tournaments.join_succeeded', title: @league.human_title)
+      flash[:success] = I18n.t('flash.tournaments.join_succeeded', title: @league.human_title)
       redirect_to @league
     else
       flash[:danger] = I18n.t('flash.tournaments.join_failed', title: @league.human_title)

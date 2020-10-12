@@ -28,6 +28,7 @@ class User < ApplicationRecord
   include Finder
 
   has_secure_password
+  paginates_per 10
 
   has_one :team, inverse_of: :user
   belongs_to :country, inverse_of: :users
@@ -49,6 +50,7 @@ class User < ApplicationRecord
 
   before_validation :login_and_email_strip, on: :save
   before_validation :set_default_role, :check_bday
+  before_create :set_confirmation_attrs
 
   validates :login,
             presence: true,
@@ -87,6 +89,11 @@ class User < ApplicationRecord
     email.strip!
   end
 
+  def set_confirmation_attrs
+    self.confirmation_sent_at = Time.current
+    self.confirmation_token = SecureRandom.uuid
+  end
+
   def sex_name
     I18n.t("user.sex.#{sex}")
   end
@@ -97,14 +104,6 @@ class User < ApplicationRecord
 
   def moderator?
     role == 'moderator' || administrator?
-  end
-
-  def administrator?
-    role == 'administrator'
-  end
-
-  def user?
-    role == 'user'
   end
 
   def set_default_role

@@ -4,14 +4,14 @@
   .row
     .col-md-3
       .form-group
-        = inline_svg 'pencil.svg', class: 'svg-picture'
+        = inline_svg_tag 'pencil.svg', class: 'svg-picture'
         = f.label :title
         = f.text_field :title, class: 'form-control'
   %br
   .row
     .col-md-3
       .form-group
-        = inline_svg 'picture.svg', class: 'svg-picture'
+        = inline_svg_tag 'picture.svg', class: 'svg-picture'
         = f.label :flag
         = f.file_field :flag
   .actions

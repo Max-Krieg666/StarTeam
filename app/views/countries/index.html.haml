@@ -5,10 +5,10 @@
   %thead
     %tr
       %th.text-center
-        = inline_svg 'pencil.svg', class: 'svg-picture'
+        = inline_svg_tag 'pencil.svg', class: 'svg-picture'
         Название
       %th.text-center
-        = inline_svg 'flag.svg', class: 'svg-picture'
+        = inline_svg_tag 'flag.svg', class: 'svg-picture'
         Флаг
       %th
       -if @current_user.moderator?
@@ -24,20 +24,19 @@
           = image_tag country.flag.url, alt: country.i18n_title
         %td
           = link_to country, class: 'btn btn-link' do
-            = inline_svg 'chevron-circle-right.svg', class: 'svg-picture-btn'
+            = inline_svg_tag 'chevron-circle-right.svg', class: 'svg-picture-btn'
         -if @current_user.moderator?
           %td
             = link_to edit_country_path(country), class: 'btn btn-link' do
-              = inline_svg 'edit.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'edit.svg', class: 'svg-picture-btn'
           %td
-            = link_to country, :method => :delete, :data => {:confirm => 'Вы уверены?'}, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture-btn white'
+            = link_to country, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
+              = inline_svg_tag 'trash.svg', class: 'svg-picture-btn white'
 
 -if @current_user.moderator?
   %br
   = link_to new_country_path, class:'btn btn-default' do
-    = inline_svg 'plus-circle.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'plus-circle.svg', class: 'svg-picture-btn white'
     Создать страну
 
-%br
-= paginate @countries
+= paginate @countries, theme: 'twitter-bootstrap-4'

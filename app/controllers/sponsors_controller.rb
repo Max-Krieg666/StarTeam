@@ -13,7 +13,7 @@ class SponsorsController < ApplicationController
 
   def update
     if @sponsor.update(sponsor_params)
-      redirect_to [@sponsor.team, @sponsor], notice: I18n.t('flash.sponsors.edited')
+      redirect_to [@sponsor.team, @sponsor], success: I18n.t('flash.sponsors.edited')
     else
       render :edit
     end

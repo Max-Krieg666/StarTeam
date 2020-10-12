@@ -38,7 +38,7 @@ class ClubBasesController < ApplicationController
           @club_base.capacity = values[2]
           @club_base.save!
         end
-        flash[:notice] = I18n.t('flash.bases.upgraded')
+        flash[:success] = I18n.t('flash.bases.upgraded')
       end
     end
 
@@ -66,7 +66,7 @@ class ClubBasesController < ApplicationController
           @club_base.experience_up += values[1]
           @club_base.save!
         end
-        flash[:notice] = I18n.t('flash.bases.upgraded')
+        flash[:success] = I18n.t('flash.bases.upgraded')
       end
     end
 
@@ -78,7 +78,7 @@ class ClubBasesController < ApplicationController
     @team = @current_user_team
     @club_base.team_id = @team.id
     if @club_base.save
-      redirect_to [@team, @club_base], notice: I18n.t('flash.bases.created')
+      redirect_to [@team, @club_base], success: I18n.t('flash.bases.created')
     else
       render :new
     end
@@ -87,7 +87,7 @@ class ClubBasesController < ApplicationController
   def update
     @team = @current_user_team
     if @club_base.update(club_base_params)
-      redirect_to [@team, @club_base], notice: I18n.t('flash.bases.title_was_edited')
+      redirect_to [@team, @club_base], success: I18n.t('flash.bases.title_was_edited')
     else
       render :edit
     end

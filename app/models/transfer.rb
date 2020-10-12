@@ -24,6 +24,7 @@ class Transfer < ApplicationRecord
 
   validates :player_id, presence: true
   validates :vendor_id, presence: true
+  validates :purchaser_id, presence: true, if: :completed?
 
   def statuses_in_colors
     case status

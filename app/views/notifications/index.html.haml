@@ -8,13 +8,13 @@
     %thead
       %tr
         %th.text-center
-          = inline_svg 'calendar.svg', class: 'svg-picture'
+          = inline_svg_tag 'calendar.svg', class: 'svg-picture'
           Дата
         %th.text-center
-          = inline_svg 'pencil.svg', class: 'svg-picture'
+          = inline_svg_tag 'pencil.svg', class: 'svg-picture'
           Название
         %th.text-center
-          = inline_svg 'info-circle.svg', class: 'svg-picture'
+          = inline_svg_tag 'info-circle.svg', class: 'svg-picture'
           Тип
         
     %tbody
@@ -32,5 +32,5 @@
 %br
 .btn-group
   = link_to @current_user_team, class: 'btn btn-warning' do
-    = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
     #{t 'buttons.back_to'} << #{@current_user_team.title} >>

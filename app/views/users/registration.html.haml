@@ -6,76 +6,76 @@
   .row
     .col-md-4
       .help-block.bg-info
-        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'info-circle.svg', class: 'svg-picture-table'
         = t('info-blocks.registration.whats_asterisk')
   .row
     .form-group.col-md-3
-      = inline_svg 'user.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'user.svg', class: 'svg-picture-table'
       / TODO jquery check login auto
       = f.label :login
       *
       = f.text_field :login, class: 'form-control'
     .form-group.col-md-3
-      = inline_svg 'email.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'email.svg', class: 'svg-picture-table'
       = f.label :email
       *
       = f.text_field :email, class: 'form-control'
     .form-group.col-md-3
       .help-block.bg-info
-        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'info-circle.svg', class: 'svg-picture-table'
         = t('info-blocks.registration.right_email')
   .row
     .form-group.col-md-3
-      = inline_svg 'key.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'key.svg', class: 'svg-picture-table'
       / TODO bootstrap strength meter
       = f.label :password
       *
       = f.password_field :password, class: 'form-control'
     .form-group.col-md-3
-      = inline_svg 'key.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'key.svg', class: 'svg-picture-table'
       = f.label :password_confirmation
       *
       = f.password_field :password_confirmation, class: 'form-control'
   .row
     .form-group.col-md-3
-      = inline_svg 'picture.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'picture.svg', class: 'svg-picture-table'
       = f.label :avatar
       = f.file_field :avatar
     .form-group.col-md-3
-      = inline_svg 'home.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'home.svg', class: 'svg-picture-table'
       = f.label :country
       *
       = select_country('user[country_id]', @user.country_id)
     .form-group.col-md-5
       .help-block.bg-info
         %br
-        = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'info-circle.svg', class: 'svg-picture-table'
         = t('info-blocks.registration.your_country')
   .row
     = f.fields_for :team, f.object.team || f.object.build_team do |team_form|
       .form-group.col-md-3
-        = inline_svg 'pencil.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'pencil.svg', class: 'svg-picture-table'
         / TODO jquery check title auto
         = team_form.label :title
         *
         = team_form.text_field :title, class: 'form-control'
       .form-group.col-md-3
-        = inline_svg 'flag.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'flag.svg', class: 'svg-picture-table'
         = team_form.label :country
         *
         = select_country('user[team_attributes][country_id]', @user.team.country_id)
       .form-group.col-md-5
         .help-block.bg-info
-          = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'info-circle.svg', class: 'svg-picture-table'
           = t('info-blocks.registration.team_country')
   .row
     .form-group.col-md-3
-      = inline_svg 'sex.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'sex.svg', class: 'svg-picture-table'
       = f.label :sex
       = select_tag('user[sex]', options_for_select(User.sexes.map { |k, _| [t("user.sex.#{k}"), k] }, @user.sex))
   .row
     .form-group.col-md-6
-      = inline_svg 'birthday.svg', class: 'svg-picture-table'
+      = inline_svg_tag 'birthday.svg', class: 'svg-picture-table'
       = f.label :birthday
       = f.date_select :birthday, start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
 

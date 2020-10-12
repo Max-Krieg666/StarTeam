@@ -31,8 +31,8 @@
       %b= Player.human_attribute_name(:quality) + ':'
       -quality = @player.quality
       -quality[0].times do
-        = inline_svg 'star.svg', class: 'svg-picture'
+        = inline_svg_tag 'star.svg', class: 'svg-picture'
       -if quality[1] == 1
-        = inline_svg 'star-half.svg', class: 'svg-picture'
+        = inline_svg_tag 'star-half.svg', class: 'svg-picture'
       -quality[2].times do
-        = inline_svg 'star-o.svg', class: 'svg-picture'
+        = inline_svg_tag 'star-o.svg', class: 'svg-picture'

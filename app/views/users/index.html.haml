@@ -5,29 +5,29 @@
   %thead
     %tr
       %th.text-center
-        = inline_svg 'person-circle.svg', class: 'svg-picture'
+        = inline_svg_tag 'person-circle.svg', class: 'svg-picture'
         Логин
       %th.text-center
-        = inline_svg 'group.svg', class: 'svg-picture'
+        = inline_svg_tag 'group.svg', class: 'svg-picture'
         Команда
       %th.text-center
-        = inline_svg 'picture.svg', class: 'svg-picture'
+        = inline_svg_tag 'picture.svg', class: 'svg-picture'
         Аватар
       %th.text-center
-        = inline_svg 'home.svg', class: 'svg-picture'
+        = inline_svg_tag 'home.svg', class: 'svg-picture'
         Страна
       %th.text-center
-        = inline_svg 'sex.svg', class: 'svg-picture'
+        = inline_svg_tag 'sex.svg', class: 'svg-picture'
         Пол
       %th.text-center
-        = inline_svg 'birthday.svg', class: 'svg-picture'
+        = inline_svg_tag 'birthday.svg', class: 'svg-picture'
         Дата рождения
       %th.text-center
-        = inline_svg 'email.svg', class: 'svg-picture'
+        = inline_svg_tag 'email.svg', class: 'svg-picture'
         Эл. почта
       -if @current_user.moderator?
         %th.text-center
-          = inline_svg 'street-view.svg', class: 'svg-picture'
+          = inline_svg_tag 'street-view.svg', class: 'svg-picture'
           Роль
         %th
         %th
@@ -58,13 +58,13 @@
         %td= user.role_name
         %td
           = link_to edit_user_path(user), class: 'btn btn-link' do
-            = inline_svg 'edit.svg', class: 'svg-picture-btn'
+            = inline_svg_tag 'edit.svg', class: 'svg-picture-btn'
         %td
           = link_to user, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-            = inline_svg 'trash.svg', class: 'svg-picture-btn'
+            = inline_svg_tag 'trash.svg', class: 'svg-picture-btn'
         %td
           = link_to user, class: 'btn btn-link' do
-            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
+            = inline_svg_tag 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
 
 %br
-= paginate @users
+= paginate @users, theme: 'twitter-bootstrap-4'

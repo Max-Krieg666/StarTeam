@@ -1,3 +1,4 @@
+%br
 .text-center
   .page-header
     %h3
@@ -5,27 +6,30 @@
       = image_tag @country.flag.url, alt: @country.i18n_title
   %br
   %ul.nav.nav-tabs
-    %li.nav-item{class: "#{'active' if params[:active_tab] == 'users_info' || !params[:active_tab]}"}
+    %li.nav-item
       %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#users_info" }Пользователи
-    %li.nav-item{class: "#{'active' if params[:active_tab] == 'players_in_teams_info'}"}
+    %li.nav-item
       %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#players_in_teams_info" }Игроки в командах
-    %li.nav-item{class: "#{'active' if params[:active_tab] == 'players_info'}"}
+    %li.nav-item
       %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#players_info" }Свободные агенты
-    %li.nav-item{class: "#{'active' if params[:active_tab] == 'tournaments_info'}"}
+    %li.nav-item
       %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#tournaments_info" }Турниры
   / Tab panes
   .tab-content
-    #users_info.tab-pane{class: "#{'active' if params[:active_tab] == 'users_info' || !params[:active_tab]}"}
+    #users_info.tab-pane.fade
       -if @users.any?
         %table.table.table-bordered.table-hover.table-condensed
           %thead
             %tr{class: 'success'}
               %th.text-center
-                = inline_svg 'person-circle.svg', class: 'svg-picture'
-                Логин
+                = inline_svg_tag 'person-circle.svg', class: 'svg-picture-btn'
+                = User.human_attribute_name(:login)
               %th.text-center
-                = inline_svg 'group.svg', class: 'svg-picture'
-                Команда
+                = inline_svg_tag 'group.svg', class: 'svg-picture-btn'
+                = User.human_attribute_name(:team)
+              %th.text-center
+                = inline_svg_tag 'timer.svg', class: 'svg-picture-btn'
+                = User.human_attribute_name(:created_at)
           %tbody
             - @users.each do |user|
               %tr.text-center
@@ -35,38 +39,39 @@
                     = link_to user.team.title, user.team, style: "color: #00F"
                   -else
                     .text-danger.li Не создана!
-            = paginate @users, param_name: 'users_page', params: { active_tab: 'users_info' }
+                %td= l(user.created_at)
+        = paginate @users, theme: 'twitter-bootstrap-4', param_name: 'users_page', params: { active_tab: 'users_info' }
       -else
         %h5.text-danger Пользователей из данной страны нет!
       %br
-    #players_in_teams_info.tab-pane{class: "#{'active' if params[:active_tab] == 'players_in_teams_info'}"}
+    #players_in_teams_info.tab-pane.fade
       -if @players_in_teams.any?
         %table.table.table-bordered.table-hover.table-condensed
           %thead
             %tr{class: 'success'}
               %th.text-center
-                Команда
+                = Player.human_attribute_name(:team)
               %th.text-center
-                = inline_svg 'footballer.svg', class: 'svg-picture'
-                Игрок
+                = inline_svg_tag 'footballer.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:full_name)
               %th.text-center
-                = inline_svg 'location.svg', class: 'svg-picture'
-                Позиция
+                = inline_svg_tag 'location.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:position1)
               %th.text-center
-                = inline_svg 'level-up.svg', class: 'svg-picture'
-                Талант
+                = inline_svg_tag 'level-up.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:talent)
               %th.text-center
-                = inline_svg 'history.svg', class: 'svg-picture'
-                Возраст
+                = inline_svg_tag 'history.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:age)
               %th.text-center
-                = inline_svg 'level.svg', class: 'svg-picture'
-                Мастерство
+                = inline_svg_tag 'level.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:skill_level)
               %th.text-center
-                = inline_svg 'usd.svg', class: 'svg-picture'
-                Цена
+                = inline_svg_tag 'usd.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:price)
               %th.text-center
-                = inline_svg 'star.svg', class: 'svg-picture'
-                Качество игрока
+                = inline_svg_tag 'star.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:quality)
           %tbody
             - @players_in_teams.each do |pl|
               %tr.text-center
@@ -82,41 +87,41 @@
                 %td
                   -quality = pl.quality
                   -quality[0].times do
-                    = inline_svg 'star.svg', class: 'svg-picture'
+                    = inline_svg_tag 'star.svg', class: 'svg-picture'
                   -if quality[1] == 1
-                    = inline_svg 'star-half.svg', class: 'svg-picture'
+                    = inline_svg_tag 'star-half.svg', class: 'svg-picture'
                   -quality[2].times do
-                    = inline_svg 'star-o.svg', class: 'svg-picture'
-            = paginate @players_in_teams, param_name: 'players_in_teams_page', params: { active_tab: 'players_in_teams_info' }
+                    = inline_svg_tag 'star-o.svg', class: 'svg-picture'
+        = paginate @players_in_teams, theme: 'twitter-bootstrap-4', param_name: 'players_in_teams_page', params: { active_tab: 'players_in_teams_info' }
       -else
         %h5.text-danger Представители данной страны не играют ни за один клуб!
       %br
-    #players_info.tab-pane{class: "#{'active' if params[:active_tab] == 'players_info'}"}
+    #players_info.tab-pane.fade
       -if @players.any?
         %table.table.table-responsive.table-bordered.table-hover
           %thead
             %tr{class: 'success'}
               %th.text-center
-                = inline_svg 'footballer.svg', class: 'svg-picture'
-                Игрок
+                = inline_svg_tag 'footballer.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:full_name)
               %th.text-center
-                = inline_svg 'location.svg', class: 'svg-picture'
-                Позиция
+                = inline_svg_tag 'location.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:position1)
               %th.text-center
-                = inline_svg 'level-up.svg', class: 'svg-picture'
-                Талант
+                = inline_svg_tag 'level-up.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:talent)
               %th.text-center
-                = inline_svg 'history.svg', class: 'svg-picture'
-                Возраст
+                = inline_svg_tag 'history.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:age)
               %th.text-center
-                = inline_svg 'level.svg', class: 'svg-picture'
-                Мастерство
+                = inline_svg_tag 'level.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:skill_level)
               %th.text-center
-                = inline_svg 'usd.svg', class: 'svg-picture'
-                Цена
+                = inline_svg_tag 'usd.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:price)
               %th.text-center
-                = inline_svg 'star.svg', class: 'svg-picture'
-                Качество игрока
+                = inline_svg_tag 'star.svg', class: 'svg-picture'
+                = Player.human_attribute_name(:quality)
 
           %tbody
             - @players.each do |player|
@@ -131,21 +136,22 @@
                 %td
                   -quality = player.quality
                   -quality[0].times do
-                    = inline_svg 'star.svg', class: 'svg-picture'
+                    = inline_svg_tag 'star.svg', class: 'svg-picture'
                   -if quality[1] == 1
-                    = inline_svg 'star-half.svg', class: 'svg-picture'
+                    = inline_svg_tag 'star-half.svg', class: 'svg-picture'
                   -quality[2].times do
-                    = inline_svg 'star-o.svg', class: 'svg-picture'
-            = paginate @players, param_name: 'players_page', params: { active_tab: 'players_info' }
+                    = inline_svg_tag 'star-o.svg', class: 'svg-picture'
+        = paginate @players, theme: 'twitter-bootstrap-4', param_name: 'players_page', params: { active_tab: 'players_info' }
       -else
         %h5.text-danger Игроков из данной страны нет!
       %br
-    #tournaments_info.tab-pane{class: "#{'active' if params[:active_tab] == 'tournaments_info'}"}
+    #tournaments_info.tab-pane.fade
       = render partial: 'tournaments/tournaments_in_country', locals: { country: @country }
   -if @current_user.moderator?
     = link_to edit_country_path(@country), class: 'btn btn-danger' do
-      = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+      = inline_svg_tag 'edit.svg', class: 'svg-picture-btn white'
       = t('buttons.edit')
+  %br
   = link_to countries_path, class: 'btn btn-info' do
-    = inline_svg 'flag.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'flag.svg', class: 'svg-picture-btn white'
     Все страны

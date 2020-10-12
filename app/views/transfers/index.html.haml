@@ -1,6 +1,6 @@
 .page-header
   %h1
-    = inline_svg 'transfer.svg', class: 'svg-picture-giant'
+    = inline_svg_tag 'transfer.svg', class: 'svg-picture-giant'
     Мои предложения
 
 -if @user_transfers.blank?
@@ -11,25 +11,25 @@
     %thead
       %tr
         %th.text-center
-          = inline_svg 'footballer.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'footballer.svg', class: 'svg-picture-table'
           Игрок
         %th.text-center
-          = inline_svg 'location.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'location.svg', class: 'svg-picture-table'
           Позиция
         %th.text-center
-          = inline_svg 'level-up.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'level-up.svg', class: 'svg-picture-table'
           Талант
         %th.text-center
-          = inline_svg 'history.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'history.svg', class: 'svg-picture-table'
           Возраст
         %th.text-center
-          = inline_svg 'level.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'level.svg', class: 'svg-picture-table'
           Мастерство
         %th.text-center
-          = inline_svg 'usd.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'usd.svg', class: 'svg-picture-table'
           Стоимость
         %th.text-center
-          = inline_svg 'question-circle.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'question-circle.svg', class: 'svg-picture-table'
           Статус
         %th
         %th
@@ -52,47 +52,47 @@
             = t("transfer.status.#{transfer.status}")
           %td
             = link_to transfer, class: 'btn btn-link' do
-              = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link' do
-              = inline_svg 'edit.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'edit.svg', class: 'svg-picture-btn'
           %td
             = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'trash.svg', class: 'svg-picture-btn'
 %br
 %br
 
 .page-header
   %h1
-    = inline_svg 'transfer.svg', class: 'svg-picture-giant'
+    = inline_svg_tag 'transfer.svg', class: 'svg-picture-giant'
     Трансферы
 
 %table.table.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th.text-center
-        = inline_svg 'footballer.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'footballer.svg', class: 'svg-picture-table'
         Игрок
       %th.text-center
-        = inline_svg 'vendor.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'vendor.svg', class: 'svg-picture-table'
         Клуб-продавец
       %th.text-center
-        = inline_svg 'location.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'location.svg', class: 'svg-picture-table'
         Позиция
       %th.text-center
-        = inline_svg 'level-up.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'level-up.svg', class: 'svg-picture-table'
         Талант
       %th.text-center
-        = inline_svg 'history.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'history.svg', class: 'svg-picture-table'
         Возраст
       %th.text-center
-        = inline_svg 'level.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'level.svg', class: 'svg-picture-table'
         Мастерство
       %th.text-center
-        = inline_svg 'usd.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'usd.svg', class: 'svg-picture-table'
         Стоимость
       %th.text-center
-        = inline_svg 'question-circle.svg', class: 'svg-picture-table'
+        = inline_svg_tag 'question-circle.svg', class: 'svg-picture-table'
         Статус
       %th
       %th
@@ -118,16 +118,16 @@
           = t("transfer.status.#{transfer.status}")
         %td
           = link_to transfer, class: 'btn btn-link' do
-            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
+            = inline_svg_tag 'arrow-circle-o-right.svg', class: 'svg-picture-btn'
         -if @current_user == transfer.player.team.user
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link' do
-              = inline_svg 'edit.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'edit.svg', class: 'svg-picture-btn'
           %td
             = link_to transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'trash.svg', class: 'svg-picture-btn'
         -else
           %td
             = link_to edit_transfer_path(transfer), class: 'btn btn-link', title: 'Купить игрока' do
-              = inline_svg 'transfer.svg', class: 'svg-picture-btn'
+              = inline_svg_tag 'transfer.svg', class: 'svg-picture-btn'
 %br

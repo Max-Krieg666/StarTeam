@@ -1,17 +1,32 @@
-desc 'Создание 2 пользователей с разными правами'
 namespace :users do
-  task create: :environment do
-    print '2 users_create: '
-    User.create!(
-      login: 'Main_admin', password: 'administrator', password_confirmation: 'administrator',
-      email: 'admin@testing-ts.ru', sex: 1, role: 2, country_id: 1
-    )
-    print '. '
-    User.create!(
-      login: 'Moderator', password: 'moderator', password_confirmation: 'moderator',
-      email: 'moder@testing-ts.ru', sex: 1, role: 1, country_id: 1
-    )
-    print '. '
+  desc 'Создание N пользователей для страны C'
+  task :create, [:count, :country_id] => :environment do |_task, args|
+    count = args[:count].to_i
+    country = Country.find(args[:country_id])
+    puts "Создаём #{count} пользователей и команд в стране #{country.i18n_title}"
+    count.times do
+      ActiveRecord::Base.transaction do
+        login = Faker::Internet.username
+        email = Faker::Internet.email
+        user_params = {
+          login: login,
+          email: email,
+          password: email,
+          password_confirmation: email,
+          role: :user,
+          country_id: country.id
+        }
+
+        @user = User.create!(user_params)
+        team_name = "FC #{login.capitalize} #{Faker::Creature::Animal.name.capitalize}s"
+        team_params = { title: team_name, country_id: country.id }
+        CreateNewTeamService.perform(@user, team_attributes: team_params)
+        puts "#{@user.login} =>> #{team_name}"
+      end
+    rescue => e
+      puts "Failed with #{e.message}"
+      next
+    end
     puts 'OK!'
   end
 end

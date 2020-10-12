@@ -6,55 +6,70 @@
       = @team.title
       = image_tag @team.country.flag.url, title: @team.country.i18n_title
 .row
-  .col-md-3
-    %p
-      = inline_svg 'no-avatar.svg', class: 'svg-picture-btn'
+  .col-md-3.card
+    %p.card-body
+      = inline_svg_tag 'no-avatar.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:user) + ':'
-      = link_to @team.user, style: "color: #FFA500", class: 'btn btn-link' do
-        = @team.user.login
-  .col-md-3
-    %p
-      = inline_svg 'stadium.svg', class: 'svg-picture-btn'
+      = link_to @team.user.login, @team.user, style: 'color: #FFA500'
+      %br
+      = User.human_attribute_name(:country) + ':'
+      = link_to @team.user.country.i18n_title, @team.user.country
+      = image_tag @team.user.country.flag.url, title: @team.user.country.i18n_title
+  .col-md-3.card
+    %p.card-body
+      = inline_svg_tag 'stadium.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:stadium) + ':'
       -if @stadium
-        -stc = @stadium.capacity
-        = link_to [@team, @stadium], style: "color: #F00", class: 'btn btn-link' do
-          #{@stadium.title} (#{stc} #{Russian.p(stc, 'место', 'места', 'мест')})
+        = link_to @stadium.title, [@team, @stadium], style: "color: #F00"
+        %br
+        = Stadium.human_attribute_name(:level) + ':'
+        = @stadium.level
+        %br
+        = Stadium.human_attribute_name(:capacity) + ':'
+        = "#{@stadium.capacity} #{Russian.p(@stadium.capacity, 'место', 'места', 'мест')}"
       -else
         Не создан
-  .col-md-3
-    %p
-      = inline_svg 'usd.svg', class: 'svg-picture-btn'
+  .col-md-3.card
+    %p.card-body
+      = inline_svg_tag 'usd.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:budget) + ':'
-      = link_to @team.budget_to_currency, operations_team_path(@team), style: "color: #F00", class: 'btn btn-link'
-  .col-md-3
-    %p
-      = inline_svg 'price-tag.svg', class: 'svg-picture-btn'
+      = link_to @team.budget_to_currency, operations_team_path(@team), style: "color: #0BB"
+  .col-md-3.card
+    %p.card-body
+      = inline_svg_tag 'price-tag.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:sponsor) + ':'
-      = link_to @sponsor.title, [@team, @sponsor], style: "color: #550", class: 'btn btn-link'
+      = link_to @sponsor.title, [@team, @sponsor], style: "color: #550"
 
 .row
-  .col-md-3
-  .col-md-3
-    %p
-      = inline_svg 'club_base.svg', class: 'svg-picture-btn'
+  .col-md-3.card
+  .col-md-3.card
+    %p.card-body
+      = inline_svg_tag 'club_base.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:club_base) + ':'
       -if @club_base
-        = link_to [@team, @club_base], style: "color: #458B74", class: 'btn btn-link' do
-          = @club_base.title + " (#{@club_base.level})"
+        = link_to @club_base.title, [@team, @club_base], style: 'color: #458B74'
+        %br
+        = ClubBase.human_attribute_name(:level) + ':'
+        = @club_base.level
+        %br
+        = ClubBase.human_attribute_name(:capacity) + ':'
+        = @club_base.capacity
+        %br
+        = ClubBase.human_attribute_name(:training_fields) + ':'
+        = @club_base.training_fields
       -else
         Не создана
-  .col-md-3
-    %p
-      = inline_svg 'group.svg', class: 'svg-picture-btn'
+  .col-md-3.card
+    %p.card-body
+      = inline_svg_tag 'group.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:fans) + ':'
       = @team.fans
-  .col-md-3
-    %p
-      = inline_svg 'tactic-green.svg', class: 'svg-picture-btn'
+  .col-md-3.card
+    %p.card-body
+      = inline_svg_tag 'tactic-green.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:formation) + ':'
       = @team.formation.name
-
+%br
 .row
   %table.table.table-bordered.table-hover.table-condensed
     %thead
@@ -62,29 +77,29 @@
         %th.text-center
           №
         %th.text-center
-          = inline_svg 'footballer.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'footballer.svg', class: 'svg-picture-table'
           = t('views.teams.player')
         %th.text-center
-          = inline_svg 'flag.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'flag.svg', class: 'svg-picture-table'
           = Player.human_attribute_name(:country)
         %th.text-center{'colspan': 2}
-          = inline_svg 'location.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'location.svg', class: 'svg-picture-table'
           = Player.human_attribute_name(:position1)
         %th.text-center
-          = inline_svg 'level-up.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'level-up.svg', class: 'svg-picture-table'
           = Player.human_attribute_name(:talent)
         %th.text-center
-          = inline_svg 'history.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'history.svg', class: 'svg-picture-table'
           = Player.human_attribute_name(:age)
         %th.text-center
-          = inline_svg 'level.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'level.svg', class: 'svg-picture-table'
           = Player.human_attribute_name(:skill_level)
         %th.text-center
-          = inline_svg 'usd.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'usd.svg', class: 'svg-picture-table'
           = Player.human_attribute_name(:price)
         %th.text-center{title: "Основной состав/запас"} О/З
         %th.text-center
-          = inline_svg 'cogwheel.svg', class: 'svg-picture-table'
+          = inline_svg_tag 'cogwheel.svg', class: 'svg-picture-table'
           = t('actions.title')
 
     %tbody
@@ -95,8 +110,8 @@
             %strong= pl.number
           %td
             = pl.name
-            = inline_svg 'copyright.svg', class: 'svg-picture', title: Player.human_attribute_name(:captain) if pl.captain
-            = inline_svg 'transfer.svg', class: 'svg-picture', title: Player.human_attribute_name(:set_to_transfer) if pl.transfer?
+            = inline_svg_tag 'copyright.svg', class: 'svg-picture', title: Player.human_attribute_name(:captain) if pl.captain
+            = inline_svg_tag 'transfer.svg', class: 'svg-picture', title: Player.human_attribute_name(:set_to_transfer) if pl.transfer?
           %td= image_tag pl.country.flag.url, title: pl.country.i18n_title
           / TODO подумать как лучше отображать
           %td
@@ -114,15 +129,15 @@
               .li{style: "color: #D00", title: "Запас"} З
           %td
             / = link_to edit_player_in_team_path(pl), title: 'Редактировать игрока', class: 'btn btn-link' do
-            / = inline_svg 'edit.svg', class: 'svg-picture-btn'
+            / = inline_svg_tag 'edit.svg', class: 'svg-picture-btn'
             = link_to pl, title: t('buttons.player_overview') do
-              = inline_svg 'street-view.svg', class: 'svg-picture-btn green'
+              = inline_svg_tag 'street-view.svg', class: 'svg-picture-btn green'
             -if @current_user == @team.user
               = link_to new_transfer_path(player_id: pl.id), title: t('buttons.transfer') do
-                = inline_svg 'transfer.svg', class: 'svg-picture-btn'
+                = inline_svg_tag 'transfer.svg', class: 'svg-picture-btn'
                 %span
               = link_to sell_player_path(pl), method: :patch, class: 'no-spinner', data: { confirm: t('confirm_messages.sell_for_half_price') }, title: t('actions.sell_player') do
-                = inline_svg 'usd.svg', class: 'svg-picture-btn green'
+                = inline_svg_tag 'usd.svg', class: 'svg-picture-btn green'
       %tr{class: 'info js-averages'}
         %th.text-center{'colspan': 2}
           Всего игроков:
@@ -146,18 +161,18 @@
   .btn-group
     -if @current_user_team == @team || @current_user.moderator?
       = link_to edit_team_path(@team), class: 'btn btn-danger' do
-        = inline_svg 'edit-group.svg', class: 'svg-picture-btn white'
+        = inline_svg_tag 'edit-group.svg', class: 'svg-picture-btn white'
         = t('buttons.edit')
     -if @current_user.moderator?
       = link_to teams_path, class: 'btn btn-warning' do
-        = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+        = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
         = t('views.teams.all')
     -if @current_user_team == @team
       -unless @team.stadium
         = link_to new_team_stadium_path(@team), class: 'btn btn-primary' do
-          = inline_svg 'stadium.svg', class: 'svg-picture-btn white'
+          = inline_svg_tag 'stadium.svg', class: 'svg-picture-btn white'
           = t('buttons.go_to_stadium_creating')
       -unless @team.club_base
         = link_to new_team_club_basis_path(@team), class: 'btn btn-warning' do
-          = inline_svg 'club_base.svg', class: 'svg-picture-btn white'
+          = inline_svg_tag 'club_base.svg', class: 'svg-picture-btn white'
           = t('buttons.go_to_club_base_creating')

@@ -19,7 +19,7 @@ class CupsController < ApplicationController
 
     respond_to do |format|
       if @cup.save
-        format.html { redirect_to @cup, notice: I18n.t('flash.cups.created') }
+        format.html { redirect_to @cup, success: I18n.t('flash.cups.created') }
         format.json { render :show, status: :created, location: @cup }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class CupsController < ApplicationController
   def update
     respond_to do |format|
       if @cup.update(country_params)
-        format.html { redirect_to @cup, notice: I18n.t('flash.cups.edited') }
+        format.html { redirect_to @cup, success: I18n.t('flash.cups.edited') }
         format.json { render :show, status: :ok, location: @cup }
       else
         format.html { render :edit }
@@ -48,7 +48,7 @@ class CupsController < ApplicationController
     else
       @cup.destroy
       respond_to do |format|
-        format.html { redirect_to transfers_url, notice: I18n.t('flash.cups.destroyed') }
+        format.html { redirect_to transfers_url, success: I18n.t('flash.cups.destroyed') }
         format.json { head :no_content }
       end
     end
@@ -56,7 +56,7 @@ class CupsController < ApplicationController
 
   def join
     if TeamCup.create(team: @current_user_team, cup: @cup)
-      flash[:notice] = I18n.t('flash.tournaments.join_succeeded', title: @cup.human_title)
+      flash[:success] = I18n.t('flash.tournaments.join_succeeded', title: @cup.human_title)
       redirect_to @cup
     else
       flash[:danger] = I18n.t('flash.tournaments.join_failed', title: @cup.human_title)

@@ -4,6 +4,6 @@
 
 %br
 = link_to @current_user_team, class: 'btn btn-info' do
-  = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+  = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
   %span.centralize
     #{t 'buttons.back_to'} << #{@current_user_team.title} >>

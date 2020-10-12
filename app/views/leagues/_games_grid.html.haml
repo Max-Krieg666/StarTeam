@@ -13,7 +13,7 @@
             - @league.sorted_teams.each do |team_in_league|
               - team = team_in_league.team
               -if team_in_grid == team.title
-                %td{style: "vertical-align: middle"}= inline_svg 'soccer-ball.svg', class: 'svg-picture-medium'
+                %td{style: "vertical-align: middle"}= inline_svg_tag 'soccer-ball.svg', class: 'svg-picture-medium'
               - else
                 %td
                   .floor_result= games[:home][team]

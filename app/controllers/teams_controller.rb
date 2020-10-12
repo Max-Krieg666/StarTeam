@@ -28,8 +28,8 @@ class TeamsController < ApplicationController
 
   # TODO use scopes ?
   def transfer_history
-    @in = Transfer.where(status: 1, purchaser_id: @current_user_team.id)
-    @out = Transfer.where(status: 1, vendor_id: @current_user_team.id)
+    @in = Transfer.where(status: :completed, purchaser_id: @current_user_team.id)
+    @out = Transfer.where(status: :completed, vendor_id: @current_user_team.id)
   end
 
   def edit; end
@@ -37,7 +37,7 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: I18n.t('flash.teams.title_changed') }
+        format.html { redirect_to @team, success: I18n.t('flash.teams.title_changed') }
         format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit }
@@ -49,7 +49,7 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     respond_to do |format|
-      format.html { redirect_to @current_user, notice: I18n.t('flash.teams.destroyed') }
+      format.html { redirect_to @current_user, success: I18n.t('flash.teams.destroyed') }
       format.json { head :no_content }
     end
   end

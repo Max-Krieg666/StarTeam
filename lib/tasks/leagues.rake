@@ -1,5 +1,5 @@
-desc 'ПЕРВОНАЧАЛЬНОЕ (!) Создание лиг и кубков для каждой страны (!)'
 namespace :leagues do
+  desc 'ПЕРВОНАЧАЛЬНОЕ (!) Создание лиг и кубков для каждой страны (!)'
   task create: :environment do
     puts 'start creating... leagues for countries'
     Country.all.each do |country|

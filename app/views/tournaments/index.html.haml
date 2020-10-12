@@ -1,6 +1,7 @@
+-country = @current_user.country
 .page-header
   %h1
     Турниры в стране "#{country.i18n_title}"
     = image_tag country.flag.url, title: country.i18n_title
 
-= render 'tournaments_in_country', locals: { country: @current_user.country, leagues: @leagues, cups: @cups }
+= render partial: 'tournaments_in_country', locals: { country: country, leagues: @leagues, cups: @cups }

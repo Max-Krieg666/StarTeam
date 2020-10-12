@@ -3,9 +3,9 @@
   %thead
     %tr{class: 'info'}
       %th.text-center{style: "color: #00F", title: "Возраст"}
-        = inline_svg 'timer.svg', class: 'svg-picture-medium'
+        = inline_svg_tag 'timer.svg', class: 'svg-picture-medium'
       %th.text-center{title: "Команда"}
-        = inline_svg 'group.svg', class: 'svg-picture-medium'
+        = inline_svg_tag 'group.svg', class: 'svg-picture-medium'
   %tbody
     -if @player.careers.blank?
       %tr.text-center

@@ -36,10 +36,10 @@
         -if @current_user.moderator?
           %td.text-center
             = link_to edit_team_path(team), class: 'btn btn-link' do
-              = inline_svg 'edit-group.svg', class: 'svg-picture-btn white'
+              = inline_svg_tag 'edit-group.svg', class: 'svg-picture-btn white'
           %td.text-center
             = link_to team, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-link' do
-              = inline_svg 'trash.svg', class: 'svg-picture-btn white'
+              = inline_svg_tag 'trash.svg', class: 'svg-picture-btn white'
         %td.text-center
           = link_to team, class: 'btn btn-link' do
-            = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
+            = inline_svg_tag 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'

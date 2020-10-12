@@ -5,7 +5,7 @@
     %h1 Информация о трансфере игрока
     %h3
       = @player.name
-      = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
+      = inline_svg_tag 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
       = image_tag c.flag.url, title: c.i18n_title
     = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
     = image_tag t.country.flag.url, title: t.country.i18n_title
@@ -34,13 +34,13 @@
 -if @current_user == @transfer.player.team.user
   %td
     = link_to edit_transfer_path(@transfer), class: 'btn btn-warning' do
-      = inline_svg 'edit.svg', class: 'svg-picture-btn'
+      = inline_svg_tag 'edit.svg', class: 'svg-picture-btn'
   %td
     = link_to @transfer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger' do
-      = inline_svg 'trash.svg', class: 'svg-picture-btn'
+      = inline_svg_tag 'trash.svg', class: 'svg-picture-btn'
 -else
   %td
     = link_to edit_transfer_path(@transfer), class: 'btn btn-primary', title: 'Купить игрока' do
-      = inline_svg 'transfer.svg', class: 'svg-picture-btn'
+      = inline_svg_tag 'transfer.svg', class: 'svg-picture-btn'
 = link_to transfers_path, class: 'btn btn-info' do
-  = inline_svg 'reply.svg', class: 'svg-picture-btn'
+  = inline_svg_tag 'reply.svg', class: 'svg-picture-btn'

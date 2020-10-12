@@ -39,6 +39,8 @@ ru:
         sex: Пол
         birthday: Дата рождения
         mail: Адрес эл.почты
+        created_at: Дата регистрации
+        team: Команда
       team:
         country: Страна
         user: Владелец
@@ -55,6 +57,7 @@ ru:
         level: Уровень
         team: Команда
       player:
+        team: Команда
         name: Игрок (Имя & Фамилия)
         full_name: Имя игрока
         country: Национальность

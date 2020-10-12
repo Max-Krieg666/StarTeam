@@ -5,27 +5,25 @@
     %h1 Создание нового трансферного предложения
     %h3
       = @player.name
-      = inline_svg 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
+      = inline_svg_tag 'copyright.svg', class: 'svg-picture', title: 'Капитан' if @player.captain
       = image_tag c.flag.url, title: c.i18n_title
     = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
     = image_tag t.country.flag.url, title: t.country.i18n_title
   .row.text-danger
+    / TODO доработать
     = render 'players/player_in_team_info'
     .col-md-2
     .col-md-3
       %br
       %br
-      %br
-      %br
-      %br
       = render 'form'
   = link_to @player, class: 'btn btn-primary' do
-    = inline_svg 'footballer.svg', class: 'svg-picture-btn'
+    = inline_svg_tag 'footballer.svg', class: 'svg-picture-btn'
     Назад к игроку
   = link_to transfers_path, class: 'btn btn-info' do
-    = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
     Все трансферы
   = link_to @current_user_team, class: 'btn btn-warning' do
-    = inline_svg 'group.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'group.svg', class: 'svg-picture-btn white'
     %span.centralize
       = t('views.teams.my_team')

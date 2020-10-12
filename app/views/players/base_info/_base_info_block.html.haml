@@ -2,52 +2,60 @@
 
 .col-md-4
   .list-group
-    %h3.list-group-item.active{style: "color: #00F"}
-      = inline_svg 'footballer.svg', class: 'svg-picture-btn'
+    %h3.list-group-item.active{style: "color: #000"}
+      = inline_svg_tag 'footballer.svg', class: 'svg-picture-btn'
       = @player.name
       = image_tag @country.flag.url, title: @country.i18n_title
-      .row{style: "color: #FFD700"}
-        -quality = @player.quality
-        -quality[0].times do
-          = inline_svg 'star.svg', class: 'svg-picture-btn'
-        -if quality[1] == 1
-          = inline_svg 'star-half.svg', class: 'svg-picture-btn'
-        -quality[2].times do
-          = inline_svg 'star-o.svg', class: 'svg-picture-btn'
+      .row
+        .col-md-3
+        .col-md-6
+          -quality = @player.quality
+          -quality[0].times do
+            = inline_svg_tag 'star.svg', class: 'svg-picture-btn'
+          -if quality[1] == 1
+            = inline_svg_tag 'star-half.svg', class: 'svg-picture-btn'
+          -quality[2].times do
+            = inline_svg_tag 'star-o.svg', class: 'svg-picture-btn'
+        .col-md-3
       №#{@player.number}
-    .list-group-item{title: "Позиция"}
+    .list-group-item{title: Player.human_attribute_name(:position1)}
       .div
-        = inline_svg 'location.svg', class: 'svg-picture-btn green'
+        = inline_svg_tag 'location.svg', class: 'svg-picture-btn green'
         Номинальная позиция: #{@player.full_position_name}
       -unless @transfer
         .div
-          = inline_svg 'location.svg', class: 'svg-picture-btn red'
+          = inline_svg_tag 'location.svg', class: 'svg-picture-btn red'
           Реальная позиция: #{@player.real_position_name}
         .div
-          = inline_svg 'cogwheel.svg', class: 'svg-picture-btn'
+          = inline_svg_tag 'cogwheel.svg', class: 'svg-picture-btn'
           Эффективность: #{(@player.efficienty * 100).to_i}%
-    .list-group-item{title: "Талант"}
-      = inline_svg 'level-up.svg', class: 'svg-picture-btn'
+    .list-group-item
+      = inline_svg_tag 'level-up.svg', class: 'svg-picture-btn'
+      = Player.human_attribute_name(:talent) + ':'
       = @player.talent
-    .list-group-item{title: "Возраст"}
-      = inline_svg 'history.svg', class: 'svg-picture-btn'
-      #{@player.age} #{Russian.p(@player.age, "год", "года", "лет")}
-    .list-group-item{title: "Мастерство"}
-      = inline_svg 'level.svg', class: 'svg-picture-btn'
+    .list-group-item
+      = inline_svg_tag 'history.svg', class: 'svg-picture-btn'
+      = Player.human_attribute_name(:age) + ':'
+      = "#{@player.age} #{Russian.p(@player.age, "год", "года", "лет")}"
+    .list-group-item
+      = inline_svg_tag 'level.svg', class: 'svg-picture-btn'
+      = Player.human_attribute_name(:skill_level) + ':'
       = @player.skill_level
     -if @transfer
       .list-group-item{title: "Цена"}
-        = inline_svg 'usd.svg', class: 'svg-picture-btn'
+        = inline_svg_tag 'usd.svg', class: 'svg-picture-btn'
         %span.player-info-first-price
           = @player.price_to_currency
         %span.player-info-second-price
           = @transfer.cost_to_currency
     -else
-      .list-group-item{title: "Цена"}
-        = inline_svg 'usd.svg', class: 'svg-picture-btn'
+      .list-group-item
+        = inline_svg_tag 'usd.svg', class: 'svg-picture-btn'
+        = Player.human_attribute_name(:price) + ':'
         = @player.price_to_currency
-    .list-group-item{title: "Специальные умения"}
-      = inline_svg 'flash.svg', class: 'svg-picture-btn'
+    .list-group-item
+      = inline_svg_tag 'flash.svg', class: 'svg-picture-btn'
+      = Player.human_attribute_name(:special_skill1) + ':'
       = @player.show_special_skills
     -unless @transfer
       .list-group-item
@@ -59,14 +67,14 @@
         -if @player.games_missed != 0
           Выбыл на #{@player.games_missed} #{Russian.p(@player.injured,"игру","игры","игр")}. Причина:
           -if @player.injured != 0
-            = inline_svg 'medkit.svg', class: 'svg-picture-btn'
+            = inline_svg_tag 'medkit.svg', class: 'svg-picture-btn'
             = @player.injured
           -if @player.status == 'penalty'
             -if @player.games_missed == 1
-              = inline_svg 'yellow-card.svg'
+              = inline_svg_tag 'yellow-card.svg'
               x
               = @player.season_yellow_cards
-            = inline_svg 'red-card.svg' if @player.games_missed == 2
+            = inline_svg_tag 'red-card.svg' if @player.games_missed == 2
         %br
         -if @player.basic
           .li{style:"color: #00F"} [Основной состав]

@@ -1,10 +1,10 @@
 .page-header
   %h1 Стадион "#{@stadium.title}"
 %p
-  %b Владелец:
+  %b= Stadium.human_attribute_name(:team) + ':'
   = link_to @team.title, @team, style: "color: #00F"
 %p
-  %b Вместительность:
+  %b= Stadium.human_attribute_name(:capacity) + ':'
   -if @current_user == @team.user || @current_user.administrator?
     -if @stadium.max_capacity != @stadium.capacity
       = form_for [@team, @stadium], url: capacity_up_team_stadium_path(@team, @stadium), method: :patch do |f|
@@ -17,7 +17,7 @@
                 = f.submit t('buttons.increase'), class: 'btn btn-default'
           .col-md-4
             .help-block
-              = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+              = inline_svg_tag 'info-circle.svg', class: 'svg-picture-table'
               Цена за 1 место:
               = @stadium.seatcost
     -elsif @stadium.max_capacity == @stadium.capacity && @stadium.level < 5
@@ -25,24 +25,24 @@
       .row
         .col-md-6
           .help-block.bg-info
-            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+            = inline_svg_tag 'info-circle.svg', class: 'svg-picture-table'
             Достигнута максимальная вместительность. Необходимо увеличить уровень стадиона.
     -else
       = @stadium.capacity
       .row
         .col-md-4
           .help-block.bg-info
-            = inline_svg 'info-circle.svg', class: 'svg-picture-table'
+            = inline_svg_tag 'info-circle.svg', class: 'svg-picture-table'
             Достигнута максимальная вместительность.
   -else
     = @stadium.capacity
 %p
-  %b Уровень:
+  %b= Stadium.human_attribute_name(:level) + ':'
   = @stadium.level
   -if @current_user == @team.user || @current_user.administrator?
     -if @stadium.max_capacity == @stadium.capacity && @stadium.level < 5
       = link_to level_up_team_stadium_path(@team, @stadium), method: :patch, class: 'btn btn-link', data: { confirm: "Вы потратите #{number_to_currency(@stadium.next_level_cost, locale: :en, precision: 3)}. Продолжить?" } do
-        = inline_svg 'plus-circle', class: 'svg-picture-btn'
+        = inline_svg_tag 'plus-circle', class: 'svg-picture-btn'
 
 %p
   %b 
@@ -51,9 +51,9 @@
 
 .btn-group
   = link_to @stadium.team, class: 'btn btn-info' do
-    = inline_svg 'group.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'group.svg', class: 'svg-picture-btn white'
     = @team.title
   -if @current_user == @team.user || @current_user.moderator?
     = link_to edit_team_stadium_path(@team, @stadium), class: 'btn btn-danger' do
-      = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+      = inline_svg_tag 'edit.svg', class: 'svg-picture-btn white'
       = t('buttons.edit')

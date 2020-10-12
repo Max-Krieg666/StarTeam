@@ -2,7 +2,7 @@
 .page-header.center
   %h2
     = @player.name
-    = inline_svg 'copyright.svg', class: 'svg-picture', title: Player.human_attribute_name(:captain) if @player.captain
+    = inline_svg_tag 'copyright.svg', class: 'svg-picture', title: Player.human_attribute_name(:captain) if @player.captain
     = image_tag @country.flag.url, title: @country.i18n_title
   = link_to "[#{t.title}]", t, class: 'btn btn-link', style: "color: #000"
   = image_tag t.country.flag.url, title: t.country.i18n_title
@@ -17,26 +17,26 @@
           %thead
             %tr{class: 'success'}
               %th.text-center{style: "color: #00F", title: t('player.statistics')}
-                = inline_svg 'statistics.svg', class: 'svg-picture-medium'
+                = inline_svg_tag 'statistics.svg', class: 'svg-picture-medium'
               %th.text-center{title: Player.human_attribute_name(:games)}
-                = inline_svg 'game.svg', class: 'svg-picture-medium'
+                = inline_svg_tag 'game.svg', class: 'svg-picture-medium'
               -if @player.gk?
                 %th.text-center{title: Player.human_attribute_name(:conceded_goals)}
-                  = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium red'
+                  = inline_svg_tag 'soccer-ball.svg', class: 'svg-picture-medium red'
               %th.text-center{title: Player.human_attribute_name(:goals)}
-                = inline_svg 'soccer-ball.svg', class: 'svg-picture-medium green'
+                = inline_svg_tag 'soccer-ball.svg', class: 'svg-picture-medium green'
               %th.text-center{title: Player.human_attribute_name(:passes)}
-                = inline_svg 'goal-pass.svg', class: 'svg-picture-medium'
+                = inline_svg_tag 'goal-pass.svg', class: 'svg-picture-medium'
               %th.text-center{title: Player.human_attribute_name(:autogoals)}
-                = inline_svg 'autogoal.svg', class: 'svg-picture-medium'
+                = inline_svg_tag 'autogoal.svg', class: 'svg-picture-medium'
               %th.text-center{title: Player.human_attribute_name(:yellow_cards)}
-                = inline_svg 'yellow-card.svg'
+                = inline_svg_tag 'yellow-card.svg'
               %th.text-center{title: Player.human_attribute_name(:red_cards)}
-                = inline_svg 'red-card.svg'
+                = inline_svg_tag 'red-card.svg'
           %tbody
             %tr.text-center
               %td{style: "color: #00F", title: t('player.current_season')}
-                = inline_svg 'timer.svg', class: 'svg-picture-medium'
+                = inline_svg_tag 'timer.svg', class: 'svg-picture-medium'
               %td= @player.season_games
               -if @player.gk?
                 %td= @player.season_conceded_goals
@@ -47,7 +47,7 @@
               %td= @player.season_red_cards
             %tr.text-center
               %td{style: "color: #00F", title: t('player.career')}
-                = inline_svg 'history.svg', class: 'svg-picture-medium'
+                = inline_svg_tag 'history.svg', class: 'svg-picture-medium'
               %td= @player.all_games
               -if @player.gk?
                 %td= @player.all_conceded_goals
@@ -64,16 +64,16 @@
 
 .btn-group
   = link_to t, class: 'btn btn-info' do
-    = inline_svg 'group.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'group.svg', class: 'svg-picture-btn white'
     = t.title
   -if @current_user_team == t
     / = link_to edit_player_in_team_path(@player_in_team), class: 'btn btn-danger' do
-    /  = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+    /  = inline_svg_tag 'edit.svg', class: 'svg-picture-btn white'
     /  = t('buttons.edit')
 
     = link_to new_transfer_path(player_id: @player.id), class: 'btn btn-default' do
-      = inline_svg 'transfer.svg', class: 'svg-picture-btn'
+      = inline_svg_tag 'transfer.svg', class: 'svg-picture-btn'
       = t('buttons.transfer')
     = link_to sell_player_path(@player, location: 'show'), method: :patch, data: { confirm: t('confirm_messages.sell_for_half_price') }, title: t('actions.sell_player'), class: 'btn btn-danger' do
-      = inline_svg 'usd.svg', class: 'svg-picture-btn white'
+      = inline_svg_tag 'usd.svg', class: 'svg-picture-btn white'
       = t('buttons.sell')

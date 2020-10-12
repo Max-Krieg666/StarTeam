@@ -10,11 +10,11 @@
       = f.submit t('buttons.confirm'), class: 'btn btn-primary'
   %br
   = link_to @transfer, class: 'btn btn-warning' do
-    = inline_svg 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
+    = inline_svg_tag 'arrow-circle-o-right.svg', class: 'svg-picture-btn white'
     = t('buttons.show')
 
 
 = link_to transfers_path, class: 'btn btn-info' do
-  = inline_svg 'reply.svg', class: 'svg-picture-btn white'
+  = inline_svg_tag 'reply.svg', class: 'svg-picture-btn white'
   %span.centralize
     Все трансферы

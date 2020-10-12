@@ -9,11 +9,11 @@
     %b Коэффициент лояльности:
     = @sponsor.loyalty_factor
     -if @sponsor.loyalty_factor > 5.0
-      = inline_svg 'happy.svg', class: 'svg-picture-btn green'
+      = inline_svg_tag 'happy.svg', class: 'svg-picture-btn green'
     -elsif @sponsor.loyalty_factor > 0.5
-      = inline_svg 'neutral.svg', class: 'svg-picture-btn'
+      = inline_svg_tag 'neutral.svg', class: 'svg-picture-btn'
     -else
-      = inline_svg 'sad.svg', class: 'svg-picture-btn red'
+      = inline_svg_tag 'sad.svg', class: 'svg-picture-btn red'
   %p
     %b Стоимость полного пакета акций:
     = number_to_currency(@sponsor.cost_of_full_stake, locale: :en)
@@ -29,9 +29,9 @@
 
   .btn-group
     = link_to @sponsor.team, class: 'btn btn-info' do
-      = inline_svg 'group.svg', class: 'svg-picture-btn white'
+      = inline_svg_tag 'group.svg', class: 'svg-picture-btn white'
       К команде << #{@sponsor.team.title} >>
     -if @current_user.moderator?
       = link_to edit_team_sponsor_path(@sponsor.team, @sponsor), class: 'btn btn-danger' do
-        = inline_svg 'edit.svg', class: 'svg-picture-btn white'
+        = inline_svg_tag 'edit.svg', class: 'svg-picture-btn white'
         = t('buttons.edit')
