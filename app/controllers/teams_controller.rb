@@ -70,6 +70,7 @@ class TeamsController < ApplicationController
     @players = @team.basic_order
     @club_base = @team.club_base
     @stadium = @team.stadium
+    @sponsor = @team.sponsor
   end
 
   def check_owner

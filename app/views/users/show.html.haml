@@ -9,12 +9,13 @@
           = inline_svg 'no-avatar.svg', class: 'svg-no-avatar'
         -else
           = image_tag @user.avatar.url(:medium), class: 'avatar-css'
-    .col-md-2
-    .col-md-4
+    .col-md-1
+    .col-md-5
       -if @user.team
         %p
           %b Команда:
           = link_to @user.team.title, @user.team, style: "color: #00F"
+          = image_tag @user.team.country.flag.url, title: @user.team.country.i18n_title
       %p
         %b Страна:
         = link_to @country.i18n_title, @country, class: 'btn btn-link', style: "color: #00688B"

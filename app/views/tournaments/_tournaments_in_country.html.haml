@@ -1,0 +1,12 @@
+- leagues ||= country.leagues.not_finished
+- cups ||= country.cups.not_finished
+
+%h2 Лиги
+.row
+  - leagues.each do |league|
+    = render partial: 'league_info', locals: { league: league }
+
+%h2 Кубки
+- cups.each do |cup|
+  .row
+    = render partial: 'cup_info', locals: { cup: cup }

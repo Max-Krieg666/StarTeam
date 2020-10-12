@@ -5,12 +5,14 @@
       = image_tag @country.flag.url, alt: @country.i18n_title
   %br
   %ul.nav.nav-tabs
-    %li{class: "#{'active' if params[:active_tab] == 'users_info' || !params[:active_tab]}"}
-      %a{ "data-toggle" => "tab", href: "#users_info" }Пользователи
-    %li{class: "#{'active' if params[:active_tab] == 'players_in_teams_info'}"}
-      %a{ "data-toggle" => "tab", href: "#players_in_teams_info" }Игроки в командах
-    %li{class: "#{'active' if params[:active_tab] == 'players_info'}"}
-      %a{ "data-toggle" => "tab", href: "#players_info" }Свободные агенты
+    %li.nav-item{class: "#{'active' if params[:active_tab] == 'users_info' || !params[:active_tab]}"}
+      %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#users_info" }Пользователи
+    %li.nav-item{class: "#{'active' if params[:active_tab] == 'players_in_teams_info'}"}
+      %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#players_in_teams_info" }Игроки в командах
+    %li.nav-item{class: "#{'active' if params[:active_tab] == 'players_info'}"}
+      %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#players_info" }Свободные агенты
+    %li.nav-item{class: "#{'active' if params[:active_tab] == 'tournaments_info'}"}
+      %a.nav-link.no-spinner{ "data-toggle" => "tab", href: "#tournaments_info" }Турниры
   / Tab panes
   .tab-content
     #users_info.tab-pane{class: "#{'active' if params[:active_tab] == 'users_info' || !params[:active_tab]}"}
@@ -138,6 +140,8 @@
       -else
         %h5.text-danger Игроков из данной страны нет!
       %br
+    #tournaments_info.tab-pane{class: "#{'active' if params[:active_tab] == 'tournaments_info'}"}
+      = render partial: 'tournaments/tournaments_in_country', locals: { country: @country }
   -if @current_user.moderator?
     = link_to edit_country_path(@country), class: 'btn btn-danger' do
       = inline_svg 'edit.svg', class: 'svg-picture-btn white'

@@ -107,6 +107,8 @@ ru:
     age: 'Возраст >'
     skill_level: 'Мастерство >'
     talent: 'Талант >'
+    price: 'Цена >'
+    available_for_buying: 'Доступен для покупки?'
   errors:
     any: При сохранении произошли ошибки.
   confirm_messages:

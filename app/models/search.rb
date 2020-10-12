@@ -1,6 +1,9 @@
 class Search
   include ActiveModel::Model
-  attr_accessor :query, :country_id, :name, :position1, :skill_level, :talent, :age
+  attr_accessor :query, :current_user_team,
+                :country_id, :name,
+                :position1, :skill_level, :talent, :age,
+                :price, :available_for_buying
 
   def initialize(params = {})
     super(params)
@@ -10,11 +13,12 @@ class Search
     @query = Player.free_agent
     countries_search
     name_search
-    position_inspect
     position_search
     skill_level_search
     talent_search
+    price_search
     age_search
+    available_for_buying_search
   end
 
   def countries_search
@@ -27,12 +31,10 @@ class Search
     @query
   end
 
-  def position_inspect
-    position1.blank? || Player::POSITIONS.find_index(position1)
-  end
-
   def position_search
-    @query = @query.where(position1: Player::POSITIONS.find_index(position1)) if position1.present?
+    return @query if position1.blank?
+
+    @query = @query.where(position1: Player::POSITIONS.find_index(position1.to_sym))
     @query
   end
 
@@ -46,8 +48,18 @@ class Search
     @query
   end
 
+  def price_search
+    @query = @query.where('price > ?', price) if price.present?
+    @query
+  end
+
   def age_search
     @query = @query.where('age > ?', age) if age.present?
+    @query
+  end
+
+  def available_for_buying_search
+    @query = @query.where('price <= ?', @current_user_team.budget) if available_for_buying == 'true'
     @query
   end
 end

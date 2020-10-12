@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 # main gem
-gem 'rails', '~> 5.2.2'
+gem 'rails', '>= 6.0.1'
 
 # improve rails
 gem 'active_model_serializers'
@@ -10,13 +10,14 @@ gem 'bootsnap'
 gem 'annotate'
 gem 'pg'
 
-# css
-gem 'bootstrap-sass', '>= 3.4.1'
-gem 'haml-rails', '~> 1.0'
-gem 'sass-rails', '>= 5.0.7'
+# css & js
+gem 'bootstrap'
+gem 'haml-rails'
+gem 'sass-rails'
+gem 'sprockets-rails', '>= 2.3.2'
 
 # attachments (TODO: выпилить?)
-gem 'paperclip', '~> 5.2.0'
+gem 'paperclip'
 
 # pagination
 gem 'kaminari'
@@ -32,14 +33,13 @@ gem 'round_robin_tournament'
 gem 'inline_svg'
 
 # JavaScript assets and libraries
-gem 'bootstrap-select-rails'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'uglifier'
 # gem 'jquery-validation-rails' + TODO https://habrahabr.ru/post/213077/
 
 gem 'execjs'
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer'
 
 # internationalize
 gem 'rails-i18n'

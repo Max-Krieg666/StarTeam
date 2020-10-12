@@ -6,45 +6,56 @@
       = @team.title
       = image_tag @team.country.flag.url, title: @team.country.i18n_title
 .row
-  .col-md-4
+  .col-md-3
     %p
+      = inline_svg 'no-avatar.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:user) + ':'
       = link_to @team.user, style: "color: #FFA500", class: 'btn btn-link' do
-        = inline_svg 'no-avatar.svg', class: 'svg-picture-btn'
         = @team.user.login
+  .col-md-3
     %p
-      %b= Team.human_attribute_name(:sponsor) + ':'
-      = link_to @team.sponsor.title, [@team, @team.sponsor], style: "color: #550", class: 'btn btn-link'
-  .col-md-4
-    %p
+      = inline_svg 'stadium.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:stadium) + ':'
       -if @stadium
         -stc = @stadium.capacity
         = link_to [@team, @stadium], style: "color: #F00", class: 'btn btn-link' do
-          = inline_svg 'stadium.svg', class: 'svg-picture-btn green'
           #{@stadium.title} (#{stc} #{Russian.p(stc, 'место', 'места', 'мест')})
       -else
         Не создан
+  .col-md-3
     %p
+      = inline_svg 'usd.svg', class: 'svg-picture-btn'
+      %b= Team.human_attribute_name(:budget) + ':'
+      = link_to @team.budget_to_currency, operations_team_path(@team), style: "color: #F00", class: 'btn btn-link'
+  .col-md-3
+    %p
+      = inline_svg 'price-tag.svg', class: 'svg-picture-btn'
+      %b= Team.human_attribute_name(:sponsor) + ':'
+      = link_to @sponsor.title, [@team, @sponsor], style: "color: #550", class: 'btn btn-link'
+
+.row
+  .col-md-3
+  .col-md-3
+    %p
+      = inline_svg 'club_base.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:club_base) + ':'
       -if @club_base
         = link_to [@team, @club_base], style: "color: #458B74", class: 'btn btn-link' do
-          = inline_svg 'club_base.svg', class: 'svg-picture-btn green'
           = @club_base.title + " (#{@club_base.level})"
       -else
         Не создана
-  .col-md-4
+  .col-md-3
     %p
-      %b= Team.human_attribute_name(:budget) + ':'
-      = @team.budget_to_currency
-    %p
+      = inline_svg 'group.svg', class: 'svg-picture-btn'
       %b= Team.human_attribute_name(:fans) + ':'
-      %span
-        = inline_svg 'group.svg', class: 'svg-picture'
       = @team.fans
+  .col-md-3
+    %p
+      = inline_svg 'tactic-green.svg', class: 'svg-picture-btn'
+      %b= Team.human_attribute_name(:formation) + ':'
+      = @team.formation.name
 
-  %br
-
+.row
   %table.table.table-bordered.table-hover.table-condensed
     %thead
       %tr{class: 'success'}
@@ -55,7 +66,7 @@
           = t('views.teams.player')
         %th.text-center
           = inline_svg 'flag.svg', class: 'svg-picture-table'
-          = Player.human_attribute_name(:country_id)
+          = Player.human_attribute_name(:country)
         %th.text-center{'colspan': 2}
           = inline_svg 'location.svg', class: 'svg-picture-table'
           = Player.human_attribute_name(:position1)
@@ -110,7 +121,7 @@
               = link_to new_transfer_path(player_id: pl.id), title: t('buttons.transfer') do
                 = inline_svg 'transfer.svg', class: 'svg-picture-btn'
                 %span
-              = link_to sell_player_path(pl), method: :patch, data: { confirm: t('confirm_messages.sell_for_half_price') }, title: t('actions.sell_player') do
+              = link_to sell_player_path(pl), method: :patch, class: 'no-spinner', data: { confirm: t('confirm_messages.sell_for_half_price') }, title: t('actions.sell_player') do
                 = inline_svg 'usd.svg', class: 'svg-picture-btn green'
       %tr{class: 'info js-averages'}
         %th.text-center{'colspan': 2}

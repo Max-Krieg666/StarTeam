@@ -64,7 +64,7 @@
             = link_to player, class: 'btn btn-link' do
               = inline_svg 'street-view.svg', class: 'svg-picture-btn'
           %td
-            -if @current_user_team
+            -if @current_user_team && player.available_to_buing_for?(@current_user_team)
               = link_to buy_processing_player_path(player), class: 'btn btn-default' do
                 = inline_svg 'share-square-o.svg', class: 'svg-picture-btn'
                 = t('buttons.buy')

@@ -1,11 +1,11 @@
 .page-header
-  %h1= @player.name
+  %h1= "Выставить на трансфер игрока #{@player.name}"
 .row
   .col-md-3
     %p
       %b= Player.human_attribute_name(:country) + ':'
-      = link_to @country.i18n_title, @country, class: 'btn btn-link', style: "color: #00688B"
-      = image_tag @country.flag.url
+      = link_to @player.country.i18n_title, @country, class: 'btn btn-link', style: "color: #00688B"
+      = image_tag @player.country.flag.url
   .col-md-2
     %p
       %b= Player.human_attribute_name(:position1) + ':'
@@ -36,20 +36,3 @@
         = inline_svg 'star-half.svg', class: 'svg-picture'
       -quality[2].times do
         = inline_svg 'star-o.svg', class: 'svg-picture'
-
--if @current_user.moderator?
-  = link_to edit_player_path(@player), class: 'btn btn-danger' do
-    = inline_svg 'edit.svg', class: 'svg-picture-btn white'
-    %span.centralize
-      = t('buttons.edit')
-= link_to players_path, class: 'btn btn-info' do
-  = inline_svg 'group.svg', class: 'svg-picture-btn white'
-  %span.centralize
-    = t('views.players.all')
--if @current_user_team && @player.available_to_buing_for?(@current_user_team)
-  = link_to buy_processing_player_path(@player), class: 'btn btn-default', id: 'buy' do
-    = inline_svg 'share-square-o.svg', class: 'svg-picture-btn'
-    %span.centralize
-      = t('buttons.buy')
--else
-  .text-danger= t('flash.players.buing_is_no_available')

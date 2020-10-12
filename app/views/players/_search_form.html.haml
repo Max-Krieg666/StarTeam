@@ -7,7 +7,8 @@
       = select_country('search[country_id]', params[:search].try(:[], :country_id))
     .form-group.col-md-3
       = select_position1('search[position1]', params[:search].try(:[], :position1))
-    = submit_tag t('buttons.search'), name: nil, class: 'btn btn-default'
+    .form-group.col-md-2
+      = submit_tag t('buttons.search'), name: nil, class: 'btn btn-default'
   .row
     .form-group.col-md-2
       = text_field_tag 'search[age]', params[:search].try(:[], :age), class: 'form-control', placeholder: t('prompt.age')
@@ -15,3 +16,8 @@
       = text_field_tag 'search[skill_level]', params[:search].try(:[], :skill_level), class: 'form-control', placeholder: t('prompt.skill_level')
     .form-group.col-md-2
       = text_field_tag 'search[talent]', params[:search].try(:[], :talent), class: 'form-control', placeholder: t('prompt.talent')
+    .form-group.col-md-2
+      = text_field_tag 'search[price]', params[:search].try(:[], :price), class: 'form-control', placeholder: t('prompt.price')
+    .form-group.col-md-4
+      = t('prompt.available_for_buying')
+      = check_box_tag 'search[available_for_buying]', params[:search].try(:[], :available_for_buying) || true, class: 'form-check-input'

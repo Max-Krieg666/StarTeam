@@ -1,10 +1,10 @@
-%nav.navbar.navbar-inverse
-  .container
+%nav.navbar.navbar-dark.bg-dark
+  .container-fluid
     .navbar-header
       = link_to '#', class: 'navbar-toggle collapsed', data: { toggle: 'collapse', target: 'menu' } do
         = inline_svg 'bars.svg', class: 'svg-picture'
       -if @current_user
-        -unread_notifications = @current_user.unread_notifications.count
+        -unread_notifications = "(#{@current_user.unread_notifications.count})"
         .div{ class: 'btn-group' }
           %button{ id: 'main_menu_btn', type: 'button', class: 'btn btn-link navbar-brand dropdown-toggle', data: { toggle: 'dropdown' } }
             Меню
@@ -18,27 +18,31 @@
                 = content_tag :span, unread_notifications, class: 'badge'
             .li= link_to t('views.teams.my_team'), @current_user_team, class: 'btn btn-link other-color-on-hover'
       -else
-        %span.h3.navbar-text= t('views.site_title')
-    #menu.collapse.navbar-collapse
+        .span.h3.navbar-text= t('views.site_title')
+    .menu-left
       -if @current_user
-        %ul.nav.nav-pills
+        .ul.nav.nav-pills
           -if @current_user.moderator?
             = render 'admin_links'
           -else
             = render 'user_links'
-      %ul.nav.navbar-nav.navbar-right
+    .menu-right
+      .ul.nav.navbar-nav
         -if @current_user
-          %li
-            %span.navbar-text= @current_user.login
-            %span.navbar-text= @current_user.email
+          .li
+            .span.navbar-text Текущий пользователь:
+            .span.navbar-text= @current_user.login
+            .span.navbar-text= @current_user.email
           -if @current_user_team
-            %li
-              %span.navbar-text= @current_user_team.title
-              %span.navbar-text= "#{t('views.teams.budget')}: #{@current_user_team.budget_to_currency}"
-          %li
+            .li
+              .span.navbar-text Ваша команда:
+              .span.navbar-text= @current_user_team.title
+            .li
+              .span.navbar-text= "#{t('views.teams.budget')}: #{@current_user_team.budget_to_currency}"
+          .li
             = link_to logout_path, data: { method: :patch } do
               = t('buttons.logout')
-              / = inline_svg 'log-out.svg', class: 'svg-picture-btn'
+              = inline_svg 'log-out.svg', class: 'svg-picture-btn'
         -else
-          %li= link_to t('buttons.sign_up'), registration_users_path
-          %li= link_to t('buttons.sign_in'), login_path
+          .li= link_to t('buttons.sign_up'), registration_users_path
+          .li= link_to t('buttons.sign_in'), login_path

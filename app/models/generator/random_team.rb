@@ -14,7 +14,7 @@ module Generator
     def generate
       random_formation = Formation.order('random()').first
       @team.formation = random_formation
-      @team.save!
+      @team.save
       footballers_per_position = random_formation.with_reserve_players_before_generation
       footballers_per_position.each do |pos, count|
         pos_players = []

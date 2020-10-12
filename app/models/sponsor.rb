@@ -28,8 +28,6 @@ class Sponsor < ApplicationRecord
   validates :lost_prize, presence: true, numericality: { greater_than: 100.0 }
 
   def to_param
-    return id if self.class.where(title: title).size > 1
-
     title.tr(' ', '+')
   end
 
@@ -146,7 +144,7 @@ class Sponsor < ApplicationRecord
       when 1
         title + ' Inc'
       when 2
-        title + ' Ent.'
+        title + ' Ent'
       when 3
         title + ' LLC'
       else

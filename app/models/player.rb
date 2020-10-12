@@ -83,8 +83,6 @@ class Player < ApplicationRecord
   has_many :game_players, inverse_of: :player
 
   def to_param
-    return id if self.class.where(name: name).size > 1
-
     name.tr(' ', '+')
   end
 
@@ -194,5 +192,9 @@ class Player < ApplicationRecord
 
   def self.calc_price(skill_level, talent, age)
     (skill_level.to_i * talent.to_i * 10_000 / age.to_f).round(3)
+  end
+
+  def available_to_buing_for?(team)
+    team.budget >= price
   end
 end

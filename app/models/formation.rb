@@ -11,46 +11,46 @@ class Formation < ApplicationRecord
   has_many :teams, inverse_of: :formation
 
   DEFAULT_POSITIONS_COUNTER = {
-    'gk': 0,
-    'ld': 0,
-    'cd': 0,
-    'rd': 0,
-    'lm': 0,
-    'cm': 0,
-    'rm': 0,
-    'lf': 0,
-    'cf': 0,
-    'rf': 0
+    gk: 0,
+    ld: 0,
+    cd: 0,
+    rd: 0,
+    lm: 0,
+    cm: 0,
+    rm: 0,
+    lf: 0,
+    cf: 0,
+    rf: 0
   }.freeze
 
   def with_reserve_players_before_generation
     positions_count = DEFAULT_POSITIONS_COUNTER.dup
-    positions_count.each do |pos, _|
+    positions_count.keys.each do |pos|
       positions_count[pos] = number_of_players_for_position(pos)
     end
     boost_players_per_position(positions_count)
   end
 
   def number_of_players_for_position(position)
-    schema.scan(position).size
+    schema.scan(position.to_s).size
   end
 
   def boost_players_per_position(positions_count)
-    zero_players_per_pos = []
-    one_player_per_pos = []
-    two_players_per_pos = []
-    three_players_per_pos = []
+    zero_players_per_pos = {}
+    one_player_per_pos = {}
+    two_players_per_pos = {}
+    three_players_per_pos = {}
 
     positions_count.each do |pos, count|
       case count
       when 1
-        one_player_per_pos << { pos => count }
+        one_player_per_pos[pos] = count
       when 2
-        two_players_per_pos << { pos => count }
+        two_players_per_pos[pos] = count
       when 3
-        three_players_per_pos << { pos => count }
+        three_players_per_pos[pos] = count
       else # 0
-        zero_players_per_pos << { pos => count }
+        zero_players_per_pos[pos] = count
       end
     end
 

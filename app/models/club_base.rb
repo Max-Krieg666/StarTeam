@@ -48,11 +48,15 @@ class ClubBase < ApplicationRecord
   }.freeze
 
   def next_level_cost
+    return if max_level?
+
     LEVELS[level + 1][0]
   end
 
   def next_training_fields_cost
-    TRAINING_FIELDS[level + 1][0]
+    return if max_training_fields?
+
+    TRAINING_FIELDS[training_fields + 1][0]
   end
 
   def max_level?

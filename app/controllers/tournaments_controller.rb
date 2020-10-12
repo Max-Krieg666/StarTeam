@@ -2,8 +2,8 @@ class TournamentsController < ApplicationController
   before_action :check_user
 
   def index
-    @leagues = @current_user.country.leagues.where.not(status: 2)
-    @cups = @current_user.country.cups.where.not(status: 2)
+    @leagues = @current_user.country.leagues.not_finished
+    @cups = @current_user.country.cups.not_finished
   end
 
   def all

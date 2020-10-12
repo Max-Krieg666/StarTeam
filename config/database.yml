@@ -4,8 +4,8 @@ development:
   database: star_team_development
   host: localhost
   pool: 5
-  username: audunn
-  password: x72uidgsk
+  username: username
+  password: password
 
 test:
   adapter: postgresql
@@ -13,13 +13,13 @@ test:
   database: star_team_test
   host: localhost
   pool: 5
-  username: audunn
-  password: x72uidgsk
+  username: username
+  password: password
 
 # production:
 #   adapter: postgresql
 #   encoding: unicode
 #   database: star_team_production
 #   pool: 5
-#   username: audunn
-#   password: x72uidgsk
+#   username: username
+#   password: password

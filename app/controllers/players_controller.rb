@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
   def index
     @players =
       if search_params
-        Search.new(search_params).apply_search
+        Search.new(search_params.merge(current_user_team: @current_user_team)).apply_search
       else
         Player.free_agent
       end
@@ -69,8 +69,9 @@ class PlayersController < ApplicationController
         if buy_processing_params[:basic] == 'true'
           @current_user_team.players.where(
             position1: @player.position1, basic: true
-          ).first.update(basic: false)
+          ).first.update(basic: false, real_position: nil)
           @player.basic = buy_processing_params[:basic]
+          @player.real_position = Player::POSITIONS.find_index(@player.position1.to_sym)
         end
         captain = @current_user_team.captain
         if @player.skill_level > captain.skill_level
@@ -113,13 +114,13 @@ class PlayersController < ApplicationController
       # TODO move logic to service
       ActiveRecord::Base.transaction do
         if @player.basic
-          # TODO если игрока в запасе на такую позицию нету, ставь игрока ближайшей позиции с потерей навыка
-          pl = @current_user_team.players.where(position1: @player.position1, basic: false).order('skill_level desc').first
+          # TODO если игрока в запасе на такую позицию нет, ставь игрока ближайшей позиции с потерей навыка
+          pl = @current_user_team.players.where(position1: @player.position1, basic: false).order('skill_level desc').limit(1).offset(1)
           if pl
-            pl.update(basic: true)
+            pl.update(basic: true, real_position: Player::POSITIONS.find_index(@player.position1.to_sym))
             @player.basic = false
             if @player.captain
-              p = @current_user_team.players.order('skill_level desc').limit(1).offset(1)
+              p = @current_user_team.players.order('age desc').limit(1).offset(1)
               p.update(captain: true)
               @player.captain = false
             end
@@ -208,8 +209,9 @@ class PlayersController < ApplicationController
 
   def search_params
     return if params[:search].blank?
+
     params.require(:search).permit(
-      :name, :country_id, :position1, :skill_level, :talent, :age
+      :name, :country_id, :position1, :skill_level, :talent, :age, :price, :available_for_buying
     )
   end
 end

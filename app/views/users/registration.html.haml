@@ -43,7 +43,7 @@
       = f.file_field :avatar
     .form-group.col-md-3
       = inline_svg 'home.svg', class: 'svg-picture-table'
-      = f.label :country_id
+      = f.label :country
       *
       = select_country('user[country_id]', @user.country_id)
     .form-group.col-md-5
@@ -61,7 +61,7 @@
         = team_form.text_field :title, class: 'form-control'
       .form-group.col-md-3
         = inline_svg 'flag.svg', class: 'svg-picture-table'
-        = team_form.label :country_id
+        = team_form.label :country
         *
         = select_country('user[team_attributes][country_id]', @user.team.country_id)
       .form-group.col-md-5
@@ -72,12 +72,12 @@
     .form-group.col-md-3
       = inline_svg 'sex.svg', class: 'svg-picture-table'
       = f.label :sex
-      = select_tag('user[sex]', options_for_select(User.sexes.map { |k, _| [t("user.sex.#{k}"), k] }, @user.sex), class: 'selectpicker')
+      = select_tag('user[sex]', options_for_select(User.sexes.map { |k, _| [t("user.sex.#{k}"), k] }, @user.sex))
   .row
     .form-group.col-md-6
       = inline_svg 'birthday.svg', class: 'svg-picture-table'
       = f.label :birthday
-      = f.date_select :birthday, class: 'selectpicker', start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
+      = f.date_select :birthday, start_year: Date.today.year, end_year: 1930, prompt: { day: t('prompt.day'), month: t('prompt.month'), year: t('prompt.year') }
 
 
   / TODO разработать правила участия и кнопку CONFIRM
